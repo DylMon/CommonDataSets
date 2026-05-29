@@ -64,6 +64,7 @@ body {
 
 .portfolio-item-wrapper {
     position: relative;
+    cursor: pointer;
 }
 
 .portfolio-img-background {
@@ -74,9 +75,11 @@ body {
     background-repeat: no-repeat;
 }
 
-.img-text-wrapper{
+.img-text-wrapper {
     position: absolute;
     top: 0;
+    left: 0;
+    right: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -87,10 +90,11 @@ body {
     padding-right: 100px;
 }
 
-.logo-wrapper img{
+.logo-wrapper img {
     width: 35%;
     margin-bottom: 20px;
 }
+
 /* Needs to be more specific with selector */
 .img-text-wrapper .subtitle {
     transition: 1s;
@@ -106,6 +110,60 @@ body {
 .img-darken {
     transition: 1s;
     filter: brightness(10%);
+}
+
+/* Floating back button (mobile only) */
+.floating-back {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.82);
+    color: white;
+    padding: 14px 22px;
+    border-radius: 0;
+    text-decoration: none;
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.04em;
+    z-index: 9999;
+    box-shadow: 2px -2px 10px rgba(0,0,0,0.25);
+    transition: background 0.15s;
+}
+.floating-back:active {
+    background: #000;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 900px) {
+    .portfolio-items-wrapper {
+        grid-template-columns: 1fr 1fr;
+    }
+    .img-text-wrapper {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+@media (max-width: 540px) {
+    .portfolio-items-wrapper {
+        grid-template-columns: 1fr;
+    }
+    .portfolio-img-background {
+        height: 260px;
+    }
+    .nav-wrapper {
+        padding: 20px 16px;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    .floating-back {
+        display: block;
+    }
 }
 
 
