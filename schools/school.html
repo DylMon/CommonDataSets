@@ -243,6 +243,7 @@
         .from('schools')
         .select('*')
         .eq('slug', slug)
+        .eq('data_year', '2023-24')
         .single();
 
       if (error || !data) {

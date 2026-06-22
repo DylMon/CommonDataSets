@@ -3,7 +3,7 @@
 
 CREATE TABLE IF NOT EXISTS schools (
   id                     SERIAL PRIMARY KEY,
-  slug                   TEXT UNIQUE NOT NULL,        -- url slug, e.g. "mit", "harvard"
+  slug                   TEXT NOT NULL,               -- url slug, e.g. "mit", "harvard"
   name                   TEXT NOT NULL,
   scorecard_id           INTEGER,                      -- College Scorecard unit_id
   data_year              TEXT DEFAULT '2023-24',
@@ -107,7 +107,9 @@ CREATE TABLE IF NOT EXISTS schools (
   -- { male: {applied, admitted, enrolled}, female: {applied, admitted, enrolled},
   --   total: {applied, admitted, rate, enrolled} }
 
-  updated_at             TIMESTAMPTZ DEFAULT NOW()
+  updated_at             TIMESTAMPTZ DEFAULT NOW(),
+
+  UNIQUE (slug, data_year)
 );
 
 -- Public read-only access

@@ -2,7 +2,8 @@
  * Seed script: pulls data from the College Scorecard API and upserts into Supabase.
  *
  * Usage:
- *   npm run seed
+ *   npm run seed              # fetches latest year
+ *   npm run seed -- --year 2022  # fetches 2022-23 data
  *
  * Requires:
  *   npm install   (already done — see package.json)
@@ -26,6 +27,11 @@ const supabase = createClient(
 
 const SCORECARD_BASE = 'https://api.data.gov/ed/collegescorecard/v1/schools';
 const API_KEY = process.env.SCORECARD_API_KEY;
+
+const yearArg = process.argv.indexOf('--year');
+const YEAR    = yearArg !== -1 ? process.argv[yearArg + 1] : null;
+const PREFIX  = YEAR ? `${YEAR}` : 'latest';
+const DATA_YEAR = YEAR ? `${YEAR}-${String(parseInt(YEAR) + 1).slice(2)}` : '2023-24';
 
 // College Scorecard unit_id for each school.
 const SCHOOLS = [
@@ -71,35 +77,35 @@ const FIELDS = [
   'school.state',
   'school.ownership',
   'school.school_url',
-  'latest.admissions.admission_rate.overall',
-  'latest.student.size',
-  'latest.admissions.sat_scores.average.overall',
-  'latest.admissions.sat_scores.25th_percentile.critical_reading',
-  'latest.admissions.sat_scores.75th_percentile.critical_reading',
-  'latest.admissions.sat_scores.25th_percentile.math',
-  'latest.admissions.sat_scores.75th_percentile.math',
-  'latest.admissions.act_scores.25th_percentile.cumulative',
-  'latest.admissions.act_scores.75th_percentile.cumulative',
-  'latest.admissions.act_scores.25th_percentile.math',
-  'latest.admissions.act_scores.75th_percentile.math',
-  'latest.admissions.act_scores.25th_percentile.english',
-  'latest.admissions.act_scores.75th_percentile.english',
-  'latest.cost.tuition.in_state',
-  'latest.cost.tuition.out_of_state',
-  'latest.cost.roomboard.oncampus',
-  'latest.cost.booksupply',
-  'latest.cost.otherexpense.oncampus',
-  'latest.student.demographics.race_ethnicity.white',
-  'latest.student.demographics.race_ethnicity.black',
-  'latest.student.demographics.race_ethnicity.hispanic',
-  'latest.student.demographics.race_ethnicity.asian',
-  'latest.student.demographics.race_ethnicity.aian',
-  'latest.student.demographics.race_ethnicity.nhpi',
-  'latest.student.demographics.race_ethnicity.two_or_more',
-  'latest.student.demographics.race_ethnicity.non_resident_alien',
-  'latest.student.demographics.race_ethnicity.unknown',
-  'latest.student.demographics.men',
-  'latest.student.demographics.women',
+  `${PREFIX}.admissions.admission_rate.overall`,
+  `${PREFIX}.student.size`,
+  `${PREFIX}.admissions.sat_scores.average.overall`,
+  `${PREFIX}.admissions.sat_scores.25th_percentile.critical_reading`,
+  `${PREFIX}.admissions.sat_scores.75th_percentile.critical_reading`,
+  `${PREFIX}.admissions.sat_scores.25th_percentile.math`,
+  `${PREFIX}.admissions.sat_scores.75th_percentile.math`,
+  `${PREFIX}.admissions.act_scores.25th_percentile.cumulative`,
+  `${PREFIX}.admissions.act_scores.75th_percentile.cumulative`,
+  `${PREFIX}.admissions.act_scores.25th_percentile.math`,
+  `${PREFIX}.admissions.act_scores.75th_percentile.math`,
+  `${PREFIX}.admissions.act_scores.25th_percentile.english`,
+  `${PREFIX}.admissions.act_scores.75th_percentile.english`,
+  `${PREFIX}.cost.tuition.in_state`,
+  `${PREFIX}.cost.tuition.out_of_state`,
+  `${PREFIX}.cost.roomboard.oncampus`,
+  `${PREFIX}.cost.booksupply`,
+  `${PREFIX}.cost.otherexpense.oncampus`,
+  `${PREFIX}.student.demographics.race_ethnicity.white`,
+  `${PREFIX}.student.demographics.race_ethnicity.black`,
+  `${PREFIX}.student.demographics.race_ethnicity.hispanic`,
+  `${PREFIX}.student.demographics.race_ethnicity.asian`,
+  `${PREFIX}.student.demographics.race_ethnicity.aian`,
+  `${PREFIX}.student.demographics.race_ethnicity.nhpi`,
+  `${PREFIX}.student.demographics.race_ethnicity.two_or_more`,
+  `${PREFIX}.student.demographics.race_ethnicity.non_resident_alien`,
+  `${PREFIX}.student.demographics.race_ethnicity.unknown`,
+  `${PREFIX}.student.demographics.men`,
+  `${PREFIX}.student.demographics.women`,
 ].join(',');
 
 function get(raw, field) {
@@ -130,17 +136,17 @@ async function seedSchool(school) {
   }
 
   const demographics = {
-    nonresident_aliens: get(raw, 'latest.student.demographics.race_ethnicity.non_resident_alien'),
-    hispanic:           get(raw, 'latest.student.demographics.race_ethnicity.hispanic'),
-    black:              get(raw, 'latest.student.demographics.race_ethnicity.black'),
-    white:              get(raw, 'latest.student.demographics.race_ethnicity.white'),
-    american_indian:    get(raw, 'latest.student.demographics.race_ethnicity.aian'),
-    asian:              get(raw, 'latest.student.demographics.race_ethnicity.asian'),
-    pacific_islander:   get(raw, 'latest.student.demographics.race_ethnicity.nhpi'),
-    two_or_more:        get(raw, 'latest.student.demographics.race_ethnicity.two_or_more'),
-    unknown:            get(raw, 'latest.student.demographics.race_ethnicity.unknown'),
-    men_pct:            get(raw, 'latest.student.demographics.men'),
-    women_pct:          get(raw, 'latest.student.demographics.women'),
+    nonresident_aliens: get(raw, `${PREFIX}.student.demographics.race_ethnicity.non_resident_alien`),
+    hispanic:           get(raw, `${PREFIX}.student.demographics.race_ethnicity.hispanic`),
+    black:              get(raw, `${PREFIX}.student.demographics.race_ethnicity.black`),
+    white:              get(raw, `${PREFIX}.student.demographics.race_ethnicity.white`),
+    american_indian:    get(raw, `${PREFIX}.student.demographics.race_ethnicity.aian`),
+    asian:              get(raw, `${PREFIX}.student.demographics.race_ethnicity.asian`),
+    pacific_islander:   get(raw, `${PREFIX}.student.demographics.race_ethnicity.nhpi`),
+    two_or_more:        get(raw, `${PREFIX}.student.demographics.race_ethnicity.two_or_more`),
+    unknown:            get(raw, `${PREFIX}.student.demographics.race_ethnicity.unknown`),
+    men_pct:            get(raw, `${PREFIX}.student.demographics.men`),
+    women_pct:          get(raw, `${PREFIX}.student.demographics.women`),
   };
 
   const city  = get(raw, 'school.city');
@@ -150,33 +156,34 @@ async function seedSchool(school) {
     slug:                 school.slug,
     name:                 school.name,
     scorecard_id:         school.scorecard_id,
+    data_year:            DATA_YEAR,
     city,
     state,
     location:             [city, state].filter(Boolean).join(', '),
     school_type:          ownershipToType(get(raw, 'school.ownership')),
     website:              get(raw, 'school.school_url'),
 
-    acceptance_rate:      get(raw, 'latest.admissions.admission_rate.overall'),
-    total_undergrads:     get(raw, 'latest.student.size'),
+    acceptance_rate:      get(raw, `${PREFIX}.admissions.admission_rate.overall`),
+    total_undergrads:     get(raw, `${PREFIX}.student.size`),
 
-    sat_avg:              get(raw, 'latest.admissions.sat_scores.average.overall'),
-    sat_reading_25:       get(raw, 'latest.admissions.sat_scores.25th_percentile.critical_reading'),
-    sat_reading_75:       get(raw, 'latest.admissions.sat_scores.75th_percentile.critical_reading'),
-    sat_math_25:          get(raw, 'latest.admissions.sat_scores.25th_percentile.math'),
-    sat_math_75:          get(raw, 'latest.admissions.sat_scores.75th_percentile.math'),
+    sat_avg:              get(raw, `${PREFIX}.admissions.sat_scores.average.overall`),
+    sat_reading_25:       get(raw, `${PREFIX}.admissions.sat_scores.25th_percentile.critical_reading`),
+    sat_reading_75:       get(raw, `${PREFIX}.admissions.sat_scores.75th_percentile.critical_reading`),
+    sat_math_25:          get(raw, `${PREFIX}.admissions.sat_scores.25th_percentile.math`),
+    sat_math_75:          get(raw, `${PREFIX}.admissions.sat_scores.75th_percentile.math`),
 
-    act_25:               get(raw, 'latest.admissions.act_scores.25th_percentile.cumulative'),
-    act_75:               get(raw, 'latest.admissions.act_scores.75th_percentile.cumulative'),
-    act_math_25:          get(raw, 'latest.admissions.act_scores.25th_percentile.math'),
-    act_math_75:          get(raw, 'latest.admissions.act_scores.75th_percentile.math'),
-    act_english_25:       get(raw, 'latest.admissions.act_scores.25th_percentile.english'),
-    act_english_75:       get(raw, 'latest.admissions.act_scores.75th_percentile.english'),
+    act_25:               get(raw, `${PREFIX}.admissions.act_scores.25th_percentile.cumulative`),
+    act_75:               get(raw, `${PREFIX}.admissions.act_scores.75th_percentile.cumulative`),
+    act_math_25:          get(raw, `${PREFIX}.admissions.act_scores.25th_percentile.math`),
+    act_math_75:          get(raw, `${PREFIX}.admissions.act_scores.75th_percentile.math`),
+    act_english_25:       get(raw, `${PREFIX}.admissions.act_scores.25th_percentile.english`),
+    act_english_75:       get(raw, `${PREFIX}.admissions.act_scores.75th_percentile.english`),
 
-    tuition_in_state:     get(raw, 'latest.cost.tuition.in_state'),
-    tuition_out_of_state: get(raw, 'latest.cost.tuition.out_of_state'),
-    room_and_board:       get(raw, 'latest.cost.roomboard.oncampus'),
-    books_supplies:       get(raw, 'latest.cost.booksupply'),
-    other_expenses_in:    get(raw, 'latest.cost.otherexpense.oncampus'),
+    tuition_in_state:     get(raw, `${PREFIX}.cost.tuition.in_state`),
+    tuition_out_of_state: get(raw, `${PREFIX}.cost.tuition.out_of_state`),
+    room_and_board:       get(raw, `${PREFIX}.cost.roomboard.oncampus`),
+    books_supplies:       get(raw, `${PREFIX}.cost.booksupply`),
+    other_expenses_in:    get(raw, `${PREFIX}.cost.otherexpense.oncampus`),
 
     demographics,
 
@@ -185,7 +192,7 @@ async function seedSchool(school) {
 
   const { error } = await supabase
     .from('schools')
-    .upsert(row, { onConflict: 'slug' });
+    .upsert(row, { onConflict: 'slug,data_year' });
 
   if (error) {
     console.error(`  Error upserting ${school.name}:`, error.message);
@@ -195,6 +202,7 @@ async function seedSchool(school) {
 }
 
 async function main() {
+  console.log(`Seeding data_year=${DATA_YEAR} (prefix="${PREFIX}")…\n`);
   for (const school of SCHOOLS) {
     await seedSchool(school);
     await new Promise(r => setTimeout(r, 300));
