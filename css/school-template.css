@@ -189,3 +189,12 @@ body {
   .floating-back { display: block; }
   .card { grid-template-columns: 280px; }
 }
+
+/* TEMPORARY — source color coding: green = College Scorecard API, orange = CDS backfill */
+.src-scorecard .card-text p,
+.src-scorecard .card-stats .value,
+.src-scorecard .tbl td,
+.src-scorecard .facts .line,
+.src-scorecard .facts .line .label { color: green; }
+
+.src-backfill .tbl td { color: darkorange; }

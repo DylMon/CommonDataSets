@@ -59,8 +59,8 @@
       return val;
     }
 
-    function section(title, content) {
-      return `<div class="info"><h4>${title}</h4></div>${content}`;
+    function section(title, content, source = 'backfill') {
+      return `<div class="src-${source}"><div class="info"><h4>${title}</h4></div>${content}</div>`;
     }
 
     function tableHtml(headers, rows) {
@@ -134,7 +134,7 @@
       const lines = rows.map(([label, val]) =>
         `<div class="line"><span class="label">${label}:</span> ${val}</div>`
       ).join('');
-      return section('Fast Facts', `<div class="facts">${lines}</div>`);
+      return section('Fast Facts', `<div class="facts">${lines}</div>`, 'scorecard');
     }
 
     function renderTuition(s) {
@@ -147,7 +147,7 @@
       const inTotal  = [s.tuition_in_state, s.room_and_board, s.books_supplies, s.other_expenses_in].reduce((a,v) => a + (v||0), 0);
       const outTotal = [s.tuition_out_of_state, s.room_and_board, s.books_supplies, s.other_expenses_in].reduce((a,v) => a + (v||0), 0);
       rows.push(['<strong>Total</strong>', `<strong>$${inTotal.toLocaleString()}</strong>`, `<strong>$${outTotal.toLocaleString()}</strong>`]);
-      return section('Tuition / Fees', tableHtml(['', 'In-State', 'Out-of-State'], rows));
+      return section('Tuition / Fees', tableHtml(['', 'In-State', 'Out-of-State'], rows), 'scorecard');
     }
 
     function renderDemographics(s) {
@@ -170,7 +170,8 @@
       ] : null;
       return section('Student Body Demographics',
         tableHtml(['Ethnic Background', '% of Undergraduates'], rows) +
-        (genderRows ? tableHtml(['Gender', '% of Undergraduates'], genderRows) : '')
+        (genderRows ? tableHtml(['Gender', '% of Undergraduates'], genderRows) : ''),
+        'scorecard'
       );
     }
 
@@ -273,7 +274,7 @@
             <div class="brand">A2C Common Data Sets — ${s.name}</div>
           </div>
 
-          ${renderCards(s)}
+          <div class="src-scorecard">${renderCards(s)}</div>
 
           <section class="row"><div class="container">
             ${renderFastFacts(s)}
