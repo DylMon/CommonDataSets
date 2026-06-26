@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>School Admissions Data — CommonDataSets</title>
+  <meta name="description" content="College admissions data including acceptance rate, SAT/ACT scores, GPA, tuition, and student demographics. Updated through 2023–24.">
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/base.css?v=2">
   <link rel="stylesheet" href="../css/school-template.css?v=2">
@@ -493,6 +494,13 @@
 
       document.documentElement.style.setProperty('--brand', meta.color);
       document.title = `${s.name} Admissions Data — CommonDataSets`;
+      const pct = s.acceptance_rate != null ? (s.acceptance_rate * 100).toFixed(1) + '%' : null;
+      const descParts = [`${s.name} admissions data for 2023–24`];
+      if (pct) descParts.push(`${pct} acceptance rate`);
+      if (s.sat_avg) descParts.push(`${s.sat_avg} SAT average`);
+      if (s.location) descParts.push(s.location);
+      document.querySelector('meta[name="description"]').content = descParts.join(' · ') + '.';
+
 
       document.getElementById('school-hero').innerHTML   = renderHero(s, slug, meta);
       document.getElementById('stats-strip').innerHTML   = renderStatsStrip(s);
