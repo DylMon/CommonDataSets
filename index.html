@@ -99,7 +99,7 @@
             document.getElementById('school-list').innerHTML = sorted.map((s, i) => {
                 const actRange = s.act_25 != null && s.act_75 != null ? `${s.act_25}–${s.act_75}` : '—';
                 return `
-                <a class="school-row" href="schools/school.html?school=${s.slug}">
+                <a class="school-row" href="schools/${s.slug}.html">
                     <div class="school-rank">${i + 1}</div>
                     <img class="school-logo" src="images/logos/${LOGOS[s.slug]}" alt="${s.name}" />
                     <div class="school-name">${s.name}</div>

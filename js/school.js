@@ -1,0 +1,501 @@
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+const SUPABASE_URL  = 'https://wakqidqrkqyplobtlzpn.supabase.co';
+const SUPABASE_ANON = 'sb_publishable_Wl0t3iYbEMPci_Vn3dPg3A_QmWrIjBJ';
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON);
+
+const SCHOOL_META = {
+  'mit':          { color: '#a41931', banner: 'bannerMIT.png' },
+  'harvard':      { color: '#a6152c', banner: 'bannerharvard.png' },
+  'stanford':     { color: '#8c1515', banner: 'bannerstanford2.jpg' },
+  'princeton':    { color: '#ed6d0b', banner: 'bannerprinceton.png' },
+  'yale':         { color: '#00356b', banner: 'banneryale.png' },
+  'columbia':     { color: '#6dabe4', banner: 'bannercolumbia.png' },
+  'upenn':        { color: '#00144d', banner: 'bannerupenn.png' },
+  'caltech':      { color: '#ff6e1e', banner: 'bannerCaltech.png' },
+  'duke':         { color: '#004c97', banner: 'bannerduke.png' },
+  'jhu':          { color: '#002d72', banner: 'bannerJHU.png' },
+  'northwestern': { color: '#4e2686', banner: 'bannerNU.png' },
+  'dartmouth':    { color: '#00693e', banner: 'bannerdartmouth.png' },
+  'brown':        { color: '#ed1e25', banner: 'bannerbrown.png' },
+  'vanderbilt':   { color: '#dcb163', banner: 'bannervandy.png' },
+  'rice':         { color: '#002169', banner: 'bannerrice.png' },
+  'washu':        { color: '#a60c10', banner: 'bannerwashu.png' },
+  'notre-dame':   { color: '#0c2340', banner: 'bannerND.png' },
+  'cornell':      { color: '#b31b1b', banner: 'bannercornell.png' },
+  'uchicago':     { color: '#a6152c', banner: 'banneruchicago.jpg' },
+  'cmu':          { color: '#c41230', banner: 'bannercmu.png' },
+  'georgetown':   { color: '#041e42', banner: 'bannergeorgetown.png' },
+  'emory':        { color: '#002878', banner: 'banneremory.png' },
+  'wake-forest':  { color: '#1a1a1a', banner: 'bannerwakeforest.png' },
+  'tufts':        { color: '#3172ae', banner: 'bannertufts.png' },
+  'ucla':         { color: '#017dc3', banner: 'bannerucla.png' },
+  'berkeley':     { color: '#193460', banner: 'bannerberkeley.png' },
+  'ucsb':         { color: '#003660', banner: 'bannerucsb.png' },
+  'uva':          { color: '#232d4b', banner: 'bannerUVA.png' },
+  'umich':        { color: '#00274c', banner: 'bannerUMich.png' },
+  'unc':          { color: '#4b9cd3', banner: 'bannerUNC.png' },
+  'uf':           { color: '#fa4616', banner: 'banneruf.png' },
+  'usc':          { color: '#990000', banner: 'bannerUSC.png' },
+  'nyu':          { color: '#58078d', banner: 'bannerNYU.png' },
+};
+
+const LOGOS = {
+  'mit':          'MITlogo.png',
+  'harvard':      'harvardlogo.png',
+  'stanford':     'stanfordlogo.png',
+  'princeton':    'princetonlogo.png',
+  'yale':         'yalelogo.png',
+  'columbia':     'Columbialogo.png',
+  'upenn':        'UPennlogo.png',
+  'caltech':      'Caltechlogo.png',
+  'duke':         'Dukelogo1.png',
+  'jhu':          'JHUlogo.png',
+  'northwestern': 'NUlogo1.png',
+  'dartmouth':    'dartmouthlogo1.png',
+  'brown':        'brownlogo.png',
+  'vanderbilt':   'vandylogo.png',
+  'rice':         'ricelogo.png',
+  'washu':        'washulogo.png',
+  'notre-dame':   'NDlogo.png',
+  'cornell':      'cornelllogo.png',
+  'uchicago':     'uchicagologo.png',
+  'cmu':          'CMUlogo.png',
+  'georgetown':   'georgetownlogo.png',
+  'emory':        'emorylogo.png',
+  'wake-forest':  'wakeforestlogo.png',
+  'tufts':        'tuftslogo.png',
+  'ucla':         'uclalogo.png',
+  'berkeley':     'ucblogo.png',
+  'ucsb':         'ucsblogo.png',
+  'uva':          'UVAlogo.png',
+  'umich':        'UMichlogo.png',
+  'unc':          'UNClogo.png',
+  'uf':           'uflogo.png',
+  'usc':          'USClogo.png',
+  'nyu':          'NYUlogo.png',
+};
+
+// ── Helpers ────────────────────────────────────────────────────────────
+
+function fmt(val, type) {
+  if (val == null) return '—';
+  if (type === 'money') return '$' + Number(val).toLocaleString();
+  if (type === 'pct')   return (val * 100).toFixed(1) + '%';
+  return val;
+}
+
+function tableHtml(headers, rows) {
+  const th = headers.map(h => `<th>${h}</th>`).join('');
+  const tbody = rows.map(r =>
+    `<tr>${r.map(c => `<td>${c}</td>`).join('')}</tr>`
+  ).join('');
+  return `<div class="tbl-wrap"><table class="tbl"><thead><tr>${th}</tr></thead><tbody>${tbody}</tbody></table></div>`;
+}
+
+function scoreBarHtml(label, val25, val75, scaleMin, scaleMax) {
+  if (val25 == null || val75 == null) {
+    return `<div class="score-row">
+      <div class="score-row-label">${label}</div>
+      <span class="score-na-text">Not reported</span>
+    </div>`;
+  }
+  const left  = ((val25 - scaleMin) / (scaleMax - scaleMin) * 100).toFixed(1);
+  const width = ((val75  - val25)   / (scaleMax - scaleMin) * 100).toFixed(1);
+  return `<div class="score-row">
+    <div class="score-row-label">${label}</div>
+    <div class="score-bar-wrap">
+      <div class="score-bar-track">
+        <div class="score-bar-fill" style="left:${left}%;width:${width}%"></div>
+      </div>
+      <div class="score-bar-vals">${val25} – ${val75}</div>
+    </div>
+  </div>`;
+}
+
+function demoBarHtml(label, val) {
+  if (val == null) return '';
+  const pct = (val * 100);
+  const barWidth = Math.max(pct, 0.3).toFixed(1);
+  return `<div class="demo-bar-row">
+    <div class="demo-bar-label">${label}</div>
+    <div class="demo-bar-track"><div class="demo-bar-fill" style="width:${barWidth}%"></div></div>
+    <div class="demo-bar-pct">${pct.toFixed(1)}%</div>
+  </div>`;
+}
+
+// ── Render: Hero ────────────────────────────────────────────────────────
+
+function renderHero(s, slug, meta) {
+  const bannerStyle = meta.banner
+    ? `background-image:url('../images/banners/${meta.banner}');background-size:cover;background-position:center;background-repeat:no-repeat`
+    : `background:linear-gradient(135deg,${meta.color},#000)`;
+  const logo = LOGOS[slug]
+    ? `<img class="hero-logo" src="../images/logos/${LOGOS[slug]}" alt="${s.name}">`
+    : '';
+  const metaParts = [s.location, s.school_type].filter(Boolean);
+  const siteLink = s.website
+    ? ` · <a class="hero-site-link" href="${/^https?:\/\//.test(s.website) ? '' : 'https://'}${s.website}" target="_blank" rel="noopener">Official Site →</a>`
+    : '';
+  return `
+    <div class="school-hero" style="${bannerStyle}">
+      <div class="hero-overlay">
+        ${logo}
+        <div class="hero-text">
+          <h1 class="hero-name">${s.name}</h1>
+          <p class="hero-meta">${metaParts.join(' · ')}${siteLink}</p>
+        </div>
+      </div>
+    </div>`;
+}
+
+// ── Render: Stats strip ─────────────────────────────────────────────────
+
+function renderStatsStrip(s) {
+  const chips = [
+    ['Acceptance Rate', s.acceptance_rate != null ? (s.acceptance_rate * 100).toFixed(1) + '%' : '—'],
+    ['SAT Average',     s.sat_avg ?? '—'],
+    ['ACT Range',       s.act_25 != null && s.act_75 != null ? `${s.act_25}–${s.act_75}` : '—'],
+    ['Avg GPA (W)',     s.avg_gpa_weighted != null ? parseFloat(s.avg_gpa_weighted).toFixed(2) : '—'],
+    ['Undergrads',      s.total_undergrads != null ? s.total_undergrads.toLocaleString() : '—'],
+    ['Tuition (OOS)',   s.tuition_out_of_state != null ? '$' + s.tuition_out_of_state.toLocaleString() : '—'],
+  ];
+  return chips.map((c, i) =>
+    (i > 0 ? '<div class="stat-divider"></div>' : '') +
+    `<div class="stat-chip">
+      <div class="stat-chip-val">${c[1]}</div>
+      <div class="stat-chip-label">${c[0]}</div>
+    </div>`
+  ).join('');
+}
+
+// ── Render: Admissions section ──────────────────────────────────────────
+
+function renderAdmissionsSection(s) {
+  function kv(label, val) {
+    return `<div class="kv-label">${label}</div><div class="kv-val">${val ?? '—'}</div>`;
+  }
+
+  const kvGrid = `<div class="kv-grid">
+    ${kv('Location',                  s.location)}
+    ${kv('School Type',               s.school_type)}
+    ${kv('US News Ranking',           s.us_news_ranking)}
+    ${kv('Early Action / Decision',   s.ea_ed_type)}
+    ${kv('EA/ED Deadline',            s.ea_ed_deadline)}
+    ${kv('Regular Decision Deadline', s.rd_deadline)}
+    ${kv('SAT Writing Required',      s.sat_writing_required != null ? (s.sat_writing_required ? 'Yes' : 'No') : null)}
+    ${kv('ACT Writing Required',      s.act_writing_required != null ? (s.act_writing_required ? 'Yes' : 'No') : null)}
+    ${kv('SAT Superscore',            s.sat_superscore != null ? (s.sat_superscore ? 'Yes' : 'No') : null)}
+    ${kv('ACT Superscore',            s.act_superscore != null ? (s.act_superscore ? 'Yes' : 'No') : null)}
+  </div>`;
+
+  const ratePct = s.acceptance_rate != null ? (s.acceptance_rate * 100).toFixed(1) + '%' : null;
+  const funnel = `<div class="funnel">
+    <div class="funnel-step">
+      <div class="funnel-val">${s.applicants_total != null ? s.applicants_total.toLocaleString() : '—'}</div>
+      <div class="funnel-label">Applied</div>
+    </div>
+    <div class="funnel-arrow">→</div>
+    <div class="funnel-step">
+      <div class="funnel-val">${s.admitted_total != null ? s.admitted_total.toLocaleString() : '—'}</div>
+      <div class="funnel-label">Admitted</div>
+      ${ratePct ? `<div class="funnel-pct">${ratePct} rate</div>` : ''}
+    </div>
+    <div class="funnel-arrow">→</div>
+    <div class="funnel-step">
+      <div class="funnel-val">${s.enrolled_total != null ? s.enrolled_total.toLocaleString() : '—'}</div>
+      <div class="funnel-label">Enrolled</div>
+    </div>
+  </div>`;
+
+  let poolsHtml = '<p class="no-data">Data not yet available.</p>';
+  if (s.applicant_pools) {
+    const p = s.applicant_pools;
+    poolsHtml = tableHtml(
+      ['Round', 'Applied', 'Accepted', 'Rate'],
+      [
+        ['Early Action / Decision', fmt(p.ea?.applied), fmt(p.ea?.accepted),
+          p.ea?.rate != null ? (p.ea.rate * 100).toFixed(1) + '%' : '—'],
+        ['Regular Decision', fmt(p.rd?.applied), fmt(p.rd?.accepted),
+          p.rd?.rate != null ? (p.rd.rate * 100).toFixed(1) + '%' : '—'],
+        ['Waitlist Offered / Accepted', fmt(p.waitlist?.offered), fmt(p.waitlist?.accepted_spots), '—'],
+      ]
+    );
+  }
+
+  let classRankHtml = '<p class="no-data">Data not yet available.</p>';
+  if (s.class_rank) {
+    const r = s.class_rank;
+    classRankHtml = tableHtml(
+      ['Rank Tier', '% of Enrolled Students'],
+      [
+        ['Top 10%',    r.top10    != null ? (r.top10    * 100).toFixed(0) + '%' : '—'],
+        ['Top 25%',    r.top25    != null ? (r.top25    * 100).toFixed(0) + '%' : '—'],
+        ['Top 50%',    r.top50    != null ? (r.top50    * 100).toFixed(0) + '%' : '—'],
+        ['Bottom 50%', r.bottom50 != null ? (r.bottom50 * 100).toFixed(0) + '%' : '—'],
+        ['Bottom 25%', r.bottom25 != null ? (r.bottom25 * 100).toFixed(0) + '%' : '—'],
+      ]
+    );
+  }
+
+  let gpaDistHtml = '<p class="no-data">Data not yet available.</p>';
+  if (s.gpa_distribution) {
+    const g = s.gpa_distribution;
+    const rows = [
+      ['4.0',       g.gpa_40],
+      ['3.75–3.99', g.gpa_375_399],
+      ['3.50–3.74', g.gpa_350_374],
+      ['3.25–3.49', g.gpa_325_349],
+      ['3.00–3.24', g.gpa_300_324],
+      ['2.50–2.99', g.gpa_250_299],
+      ['2.00–2.49', g.gpa_200_249],
+      ['Below 2.0', g.gpa_100_199],
+    ].map(([label, val]) => [label, val != null ? (val * 100).toFixed(0) + '%' : '—']);
+    gpaDistHtml = tableHtml(['GPA Range', '% of Enrolled Students'], rows);
+  }
+
+  let factorsHtml = '<p class="no-data">Data not yet available.</p>';
+  if (s.admission_factors) {
+    const FACTOR_LABELS = {
+      rigor: 'Rigor of Secondary School Record', class_rank: 'Class Rank',
+      academic_gpa: 'Academic GPA', test_scores: 'Standardized Test Scores',
+      essay: 'Application Essay', recommendations: 'Recommendations',
+      interview: 'Interview', extracurriculars: 'Extracurricular Activities',
+      talent: 'Talent / Ability', character: 'Character / Personal Qualities',
+      first_gen: 'First Generation', alumni_relation: 'Alumni/ae Relation',
+      geo_residence: 'Geographical Residence', state_residence: 'State Residence',
+      religious: 'Religious Affiliation', racial_ethnic: 'Racial / Ethnic Status',
+      volunteer: 'Volunteer Work', work_experience: 'Work Experience',
+      applicant_interest: "Level of Applicant's Interest",
+    };
+    const RATINGS = ['very_important', 'important', 'considered', 'not_considered'];
+    const rows = Object.entries(FACTOR_LABELS).map(([key, label]) => {
+      const rating = s.admission_factors[key];
+      return [label, ...RATINGS.map(r => r === rating ? '✓' : '')];
+    });
+    factorsHtml = tableHtml(['Factor', 'Very Important', 'Important', 'Considered', 'Not Considered'], rows);
+  }
+
+  return `
+    <section class="school-section">
+      <h2 class="section-title">Admissions</h2>
+      ${kvGrid}
+      <h3 class="subsection-title">Applicant Funnel</h3>
+      ${funnel}
+      <h3 class="subsection-title">Applicant Pools (EA vs RD)</h3>
+      ${poolsHtml}
+      <h3 class="subsection-title">Class Rank of Enrolled Students</h3>
+      ${classRankHtml}
+      <h3 class="subsection-title">GPA Distribution of Enrolled Students</h3>
+      ${gpaDistHtml}
+      <h3 class="subsection-title">Admission Factors</h3>
+      ${factorsHtml}
+    </section>`;
+}
+
+// ── Render: Test Scores section ─────────────────────────────────────────
+
+function renderTestScoresSection(s) {
+  const satAvgRow = s.sat_avg != null
+    ? `<div class="score-row">
+        <div class="score-row-label">Average (total)</div>
+        <div class="score-bar-wrap">
+          <div class="score-bar-track">
+            <div class="score-bar-fill" style="left:${((s.sat_avg - 400) / 1200 * 100).toFixed(1)}%;width:1.5%"></div>
+          </div>
+          <div class="score-bar-vals">${s.sat_avg}</div>
+        </div>
+      </div>`
+    : `<div class="score-row">
+        <div class="score-row-label">Average (total)</div>
+        <span class="score-na-text">Not reported</span>
+      </div>`;
+
+  return `
+    <section class="school-section">
+      <h2 class="section-title">Test Scores</h2>
+      <h3 class="subsection-title">SAT — 25th to 75th Percentile</h3>
+      <div class="score-rows">
+        ${satAvgRow}
+        ${scoreBarHtml('Reading &amp; Writing', s.sat_reading_25, s.sat_reading_75, 200, 800)}
+        ${scoreBarHtml('Math', s.sat_math_25, s.sat_math_75, 200, 800)}
+      </div>
+      <h3 class="subsection-title">ACT — 25th to 75th Percentile</h3>
+      <div class="score-rows">
+        ${scoreBarHtml('Composite', s.act_25, s.act_75, 1, 36)}
+        ${scoreBarHtml('Math', s.act_math_25, s.act_math_75, 1, 36)}
+        ${scoreBarHtml('English', s.act_english_25, s.act_english_75, 1, 36)}
+      </div>
+    </section>`;
+}
+
+// ── Render: Cost section ────────────────────────────────────────────────
+
+function renderCostSection(s) {
+  const reqFeesOut = s.required_fees_out ?? s.required_fees_in;
+  const otherOut   = s.other_expenses_out ?? s.other_expenses_in;
+
+  const inTotal  = [s.tuition_in_state, s.room_and_board, s.books_supplies, s.required_fees_in, s.other_expenses_in]
+    .reduce((a, v) => a + (v || 0), 0);
+  const outTotal = [s.tuition_out_of_state, s.room_and_board, s.books_supplies, reqFeesOut, otherOut]
+    .reduce((a, v) => a + (v || 0), 0);
+
+  const rows = [
+    ['Tuition',                fmt(s.tuition_in_state, 'money'),  fmt(s.tuition_out_of_state, 'money')],
+    ['Room &amp; Board',       fmt(s.room_and_board, 'money'),    fmt(s.room_and_board, 'money')],
+    ['Books &amp; Supplies',   fmt(s.books_supplies, 'money'),    fmt(s.books_supplies, 'money')],
+    ['Required Fees',          fmt(s.required_fees_in, 'money'),  fmt(reqFeesOut, 'money')],
+    ['Other Expenses',         fmt(s.other_expenses_in, 'money'), fmt(otherOut, 'money')],
+    [
+      '<strong>Total Cost of Attendance</strong>',
+      inTotal  > 0 ? `<strong>$${inTotal.toLocaleString()}</strong>`  : '—',
+      outTotal > 0 ? `<strong>$${outTotal.toLocaleString()}</strong>` : '—',
+    ],
+  ];
+
+  const appFee = s.application_fee != null
+    ? `<p class="section-note" style="margin-top:14px">Application Fee: <strong>$${s.application_fee}</strong></p>`
+    : '';
+
+  return `
+    <section class="school-section">
+      <h2 class="section-title">Cost</h2>
+      ${tableHtml(['', 'In-State', 'Out-of-State'], rows)}
+      ${appFee}
+    </section>`;
+}
+
+// ── Render: Student Body section ────────────────────────────────────────
+
+function renderStudentBodySection(s) {
+  let raceHtml = '<p class="no-data">Data not yet available.</p>';
+  if (s.demographics) {
+    const d = s.demographics;
+    raceHtml = `<div class="demo-bars">
+      ${demoBarHtml('Asian',                             d.asian)}
+      ${demoBarHtml('White',                            d.white)}
+      ${demoBarHtml('Hispanic / Latino',                d.hispanic)}
+      ${demoBarHtml('Black / African American',         d.black)}
+      ${demoBarHtml('Nonresident Aliens',               d.nonresident_aliens)}
+      ${demoBarHtml('Two or More Races',                d.two_or_more)}
+      ${demoBarHtml('American Indian / Alaska Native',  d.american_indian)}
+      ${demoBarHtml('Native Hawaiian / Pac. Islander',  d.pacific_islander)}
+      ${demoBarHtml('Unknown',                          d.unknown)}
+    </div>`;
+  }
+
+  let genderHtml = '<p class="no-data">Data not yet available.</p>';
+  if (s.demographics?.men_pct != null) {
+    genderHtml = `<div class="demo-bars">
+      ${demoBarHtml('Men',   s.demographics.men_pct)}
+      ${demoBarHtml('Women', s.demographics.women_pct)}
+    </div>`;
+  }
+
+  let genderRoundsHtml = '<p class="no-data">Data not yet available.</p>';
+  if (s.gender_breakdown) {
+    const g = s.gender_breakdown;
+    genderRoundsHtml = tableHtml(
+      ['', 'Applied', 'Accepted', 'Enrolled'],
+      [
+        ['Male',   fmt(g.applied?.male),   fmt(g.accepted?.male),   fmt(g.enrolled?.male)],
+        ['Female', fmt(g.applied?.female), fmt(g.accepted?.female), fmt(g.enrolled?.female)],
+      ]
+    );
+  }
+
+  let geoHtml = '<p class="no-data">Data not yet available.</p>';
+  if (s.geographic_breakdown) {
+    const g = s.geographic_breakdown;
+    geoHtml = `<div class="demo-bars">
+      ${demoBarHtml('In-State',      g.in_state_pct)}
+      ${demoBarHtml('Out-of-State',  g.out_of_state_pct)}
+      ${demoBarHtml('International', g.international_pct)}
+    </div>`;
+  }
+
+  let transferHtml = '<p class="no-data">Data not yet available.</p>';
+  if (s.transfer_stats) {
+    const t = s.transfer_stats;
+    transferHtml = tableHtml(
+      ['', 'Applied', 'Admitted', 'Enrolled'],
+      [
+        ['Male',   fmt(t.male?.applied),   fmt(t.male?.admitted),   fmt(t.male?.enrolled)],
+        ['Female', fmt(t.female?.applied), fmt(t.female?.admitted), fmt(t.female?.enrolled)],
+        ['Total',  fmt(t.total?.applied),  fmt(t.total?.admitted),  fmt(t.total?.enrolled)],
+      ]
+    );
+  }
+
+  const ugNote = s.total_undergrads != null
+    ? `<p class="section-note">Total Undergraduates: <strong>${s.total_undergrads.toLocaleString()}</strong></p>`
+    : '';
+
+  return `
+    <section class="school-section">
+      <h2 class="section-title">Student Body</h2>
+      ${ugNote}
+      <h3 class="subsection-title">Race / Ethnicity</h3>
+      ${raceHtml}
+      <h3 class="subsection-title">Gender</h3>
+      ${genderHtml}
+      <h3 class="subsection-title">Gender by Admissions Round</h3>
+      ${genderRoundsHtml}
+      <h3 class="subsection-title">Geographic Origin</h3>
+      ${geoHtml}
+      <h3 class="subsection-title">Transfer Admissions</h3>
+      ${transferHtml}
+    </section>`;
+}
+
+// ── Init ────────────────────────────────────────────────────────────────
+
+async function init() {
+  const slug = window.SCHOOL_SLUG || new URLSearchParams(window.location.search).get('school');
+
+  if (!slug) {
+    document.getElementById('school-sections').innerHTML =
+      '<p class="loading">No school specified. Add <code>?school=mit</code> to the URL.</p>';
+    return;
+  }
+
+  const { data: s, error } = await supabase
+    .from('schools')
+    .select('*')
+    .eq('slug', slug)
+    .eq('data_year', '2023-24')
+    .single();
+
+  if (error || !s) {
+    document.getElementById('school-sections').innerHTML =
+      `<p class="loading">School not found: <strong>${slug}</strong></p>`;
+    return;
+  }
+
+  const meta = SCHOOL_META[slug] ?? { color: '#333', banner: null };
+
+  document.documentElement.style.setProperty('--brand', meta.color);
+  document.title = `${s.name} Admissions Data — CommonDataSets`;
+  const pct = s.acceptance_rate != null ? (s.acceptance_rate * 100).toFixed(1) + '%' : null;
+  const descParts = [`${s.name} admissions data for 2023–24`];
+  if (pct) descParts.push(`${pct} acceptance rate`);
+  if (s.sat_avg) descParts.push(`${s.sat_avg} SAT average`);
+  if (s.location) descParts.push(s.location);
+  document.querySelector('meta[name="description"]').content = descParts.join(' · ') + '.';
+
+  document.getElementById('school-hero').innerHTML   = renderHero(s, slug, meta);
+  document.getElementById('stats-strip').innerHTML   = renderStatsStrip(s);
+  document.getElementById('school-sections').innerHTML =
+    renderAdmissionsSection(s) +
+    renderTestScoresSection(s) +
+    renderCostSection(s) +
+    renderStudentBodySection(s);
+
+  const back = document.createElement('a');
+  back.className = 'floating-back';
+  back.href = '../index.html';
+  back.textContent = '← Schools';
+  document.body.appendChild(back);
+}
+
+init();

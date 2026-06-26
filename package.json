@@ -3,7 +3,8 @@
   "type": "module",
   "scripts": {
     "seed": "node scripts/seed.js",
-    "backfill": "node scripts/backfill-cds.js"
+    "backfill": "node scripts/backfill-cds.js",
+    "generate": "node scripts/generate-school-pages.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.49.4",
