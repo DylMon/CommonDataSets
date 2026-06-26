@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CommonDataSets</title>
+    <title>CommonDataSets — College Admissions Data for Top US Universities</title>
+    <meta name="description" content="Acceptance rates, SAT scores, GPA, tuition, and admissions data for 33 top US universities — all in one place. Updated through 2023–24.">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/base.css?v=2">
     <script src="js/header.js?v=2" defer></script>
@@ -98,7 +99,7 @@
             document.getElementById('school-list').innerHTML = sorted.map((s, i) => {
                 const actRange = s.act_25 != null && s.act_75 != null ? `${s.act_25}–${s.act_75}` : '—';
                 return `
-                <div class="school-row" onclick="window.location.href='schools/school.html?school=${s.slug}'">
+                <a class="school-row" href="schools/${s.slug}.html">
                     <div class="school-rank">${i + 1}</div>
                     <img class="school-logo" src="images/logos/${LOGOS[s.slug]}" alt="${s.name}" />
                     <div class="school-name">${s.name}</div>
@@ -116,7 +117,7 @@
                             <div class="stat-label">ACT Range</div>
                         </div>
                     </div>
-                </div>`;
+                </a>`;
             }).join('');
         }
 
