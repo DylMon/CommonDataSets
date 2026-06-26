@@ -1,0 +1,74 @@
+WORKFLOW — Adding Schools & Updating Data
+==========================================
+
+ARCHITECTURE OVERVIEW
+---------------------
+- Supabase (PostgreSQL): source of truth for all school data
+- scripts/seed.js: pulls from College Scorecard API → upserts into Supabase
+- scripts/generate-school-pages.js: queries Supabase → generates static HTML shells + sitemap.xml
+- js/school.js: shared frontend module; renders all page content at runtime from Supabase
+- schools/{slug}.html: thin static shells with hardcoded slug, <title>, <meta description>, <canonical>
+
+The runtime content (hero, stats strip, tables, charts) is always live from Supabase.
+Only the <title> and <meta description> in the HTML files are baked in at generation time.
+
+
+ADDING A NEW SCHOOL
+-------------------
+1. Supabase
+   - Insert a row into the schools table (manually or extend seed.js with the school's IPEDS unit ID)
+   - Required fields: slug, name, data_year ('2023-24'), and whatever data is available
+
+2. js/school.js
+   - Add the slug to SCHOOL_META with its brand color and banner filename:
+       'newschool': { color: '#xxxxxx', banner: 'bannernewschool.png' },
+   - Add the slug to LOGOS with its logo filename:
+       'newschool': 'newschoollogo.png',
+
+3. images/
+   - Drop the logo file into images/logos/
+   - Drop the banner file into images/banners/
+
+4. scripts/generate-school-pages.js
+   - Add the slug and display name to the SCHOOL_NAMES map:
+       'newschool': 'New School Name',
+
+5. Run the generator
+   npm run generate
+   This creates schools/newschool.html and updates sitemap.xml.
+
+6. Commit and push
+   git add js/school.js scripts/generate-school-pages.js images/ schools/newschool.html sitemap.xml
+   git commit -m "Add New School"
+   git push origin SEO   (or main, depending on branch)
+
+
+UPDATING SITEWIDE DATA (RE-SEED)
+---------------------------------
+Run these two commands in order:
+
+   npm run seed       # pulls fresh College Scorecard data → upserts into Supabase
+   npm run generate   # rebuilds all 33 HTML shells with updated meta descriptions
+
+Then commit and push the changed schools/*.html and sitemap.xml files.
+
+NOTE: Runtime content updates immediately after seeding (no regeneration needed).
+Only the static <title> and <meta description> in the HTML shells go stale —
+regenerate to keep search snippet text accurate.
+
+
+DUPLICATION TO WATCH
+--------------------
+Three places require manual updates when adding a school:
+  - SCHOOL_META in js/school.js           (color + banner)
+  - LOGOS in js/school.js                 (logo filename)
+  - SCHOOL_NAMES in scripts/generate-school-pages.js  (display name for HTML generation)
+
+These are intentionally separate concerns (runtime rendering vs. static generation)
+but must be kept in sync by hand.
+
+
+FUTURE IMPROVEMENT IDEA
+------------------------
+A single npm run deploy script could chain: seed → generate → git commit
+Worth doing if data update frequency increases.
