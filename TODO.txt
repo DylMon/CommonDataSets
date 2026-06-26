@@ -1,0 +1,69 @@
+-- TO-DO --
+
+--HOME PAGE--
+
+1. Home page should be a ranked list of schools
+- filters rank by individual stats
+- Each school has a thumbnail with x common useful stats (SAT, Accpt rate, etc.)
+- filters that allow toggles between each of these top ranks
+
+2. US/Global Map
+- clickable states / countries that further filter universities
+- works along with the other filters
+
+
+--SCHOOL PAGE--
+-
+
+
+-- DATA AUDIT (snapshot: 2026-06-26, data_year=2023-24) --
+-- Field names present in the DB per school. Does not reflect accuracy/freshness. --
+-- Sources: [S] = College Scorecard API (seed.js)  [C] = CDS backfill from old HTML (backfill-cds.js) --
+
+FIELDS POPULATED ON EVERY SCHOOL
+  [S] location, city, state, school_type, website
+  [S] acceptance_rate, total_undergrads
+  [S] tuition_in_state, tuition_out_of_state, room_and_board, books_supplies, other_expenses_in
+  [S] demographics (race/ethnicity percentages)
+  [C] us_news_ranking
+  [C] applicants_total, admitted_total, enrolled_total
+  [C] ea_ed_type, ea_ed_deadline, rd_deadline
+  [C] sat_writing_required, act_writing_required
+  [C] sat_superscore, act_superscore, sat_score_choice, act_score_choice
+  [C] avg_gpa_weighted
+  [C] undergrads_male, undergrads_female  (missing: jhu)
+  [C] required_fees_in, application_fee
+  [C] gender_breakdown, geographic_breakdown, class_rank, gpa_distribution, demographics_detail
+
+FIELDS EMPTY ON EVERY SCHOOL (never populated)
+  [ ] act_avg
+  [ ] required_fees_out, other_expenses_out
+  [ ] applicant_pools
+  [ ] sat_act_breakdown
+  [ ] admission_factors
+  [ ] transfer_stats
+
+SAT/ACT SCORES — varies by school (UC system went test-blind)
+  [S] sat_avg, sat_reading_25/75, sat_math_25/75
+      MISSING: berkeley, caltech, ucla, ucsb
+  [S] act_25, act_75
+      MISSING: berkeley, caltech, ucla, ucsb
+  [S] act_math_25/75, act_english_25/75
+      MISSING: berkeley, caltech, emory, georgetown, notre-dame, nyu, tufts, ucla, ucsb
+
+PER-SCHOOL BREAKDOWN
+(only deviations from the "every school" lists above are noted)
+
+Berkeley (berkeley)
+  POPULATED: location, city, state, school_type, website, us_news_ranking, acceptance_rate,
+    applicants_total, admitted_total, enrolled_total, ea_ed_type, ea_ed_deadline, rd_deadline,
+    sat_writing_required, act_writing_required, sat_superscore, act_superscore, sat_score_choice,
+    act_score_choice, avg_gpa_weighted, total_undergrads, undergrads_male, undergrads_female,
+    tuition_in_state, tuition_out_of_state, room_and_board, required_fees_in, books_supplies,
+    other_expenses_in, application_fee, gender_breakdown, demographics, geographic_breakdown,
+    class_rank, gpa_distribution, demographics_detail
+  EMPTY: sat_avg, sat_reading_25, sat_reading_75, sat_math_25, sat_math_75, act_avg,
+    act_25, act_75, act_math_25, act_math_75, act_english_25, act_english_75,
+    required_fees_out, other_expenses_out, applicant_pools, sat_act_breakdown,
+    admission_factors, transfer_stats
+
