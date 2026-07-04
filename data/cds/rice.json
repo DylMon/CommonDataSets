@@ -1,0 +1,156 @@
+{
+  "slug": "rice",
+  "name": "Rice University",
+  "data_year": "2024-25",
+  "city": "Houston",
+  "state": "TX",
+  "location": "Houston, TX",
+  "school_type": "Private",
+  "website": "rice.edu",
+
+  "applicants_total": 32473,
+  "applicants_men": 17033,
+  "applicants_women": 15436,
+  "admitted_total": 2597,
+  "admitted_men": 1330,
+  "admitted_women": 1267,
+  "enrolled_total": 1148,
+  "enrolled_men": 586,
+  "enrolled_women": 561,
+  "acceptance_rate": 0.080,
+  "application_fee": 75,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "1/4",
+
+  "waitlist_offered": 3920,
+  "waitlist_accepted": 2794,
+  "waitlist_admitted": 122,
+
+  "ea_ed_type": "ED",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": 3087,
+  "ea_apps_admitted": 519,
+
+  "sat_submitted_pct": 0.48,
+  "sat_submitted_count": 546,
+  "act_submitted_pct": 0.22,
+  "act_submitted_count": 248,
+  "sat_composite_25": 1510,
+  "sat_composite_75": 1560,
+  "sat_reading_25": 740,
+  "sat_reading_75": 770,
+  "sat_math_25": 770,
+  "sat_math_75": 800,
+  "act_composite_25": 34,
+  "act_composite_75": 35,
+  "act_math_25": 33,
+  "act_math_75": 36,
+  "act_english_25": 35,
+  "act_english_75": 36,
+
+  "total_undergrads": 4789,
+  "undergrads_male": 2412,
+  "undergrads_female": 2376,
+  "retention_rate": 0.9741,
+
+  "tuition": 66540,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 957,
+  "room_and_board": 19550,
+  "books_supplies": 1490,
+  "other_expenses": 3025,
+
+  "pct_out_of_state": 0.57,
+  "pct_on_campus_housing": 0.59,
+
+  "applicant_pools": {
+    "ea": { "applied": 3087, "admitted": 519, "rate": 0.1681 },
+    "rd": { "applied": null, "admitted": null, "rate": null },
+    "waitlist": { "offered": 3920, "accepted_spots": 2794, "enrolled": 122 }
+  },
+
+  "gender_breakdown": {
+    "applied":  { "male": 17033, "female": 15436 },
+    "accepted": { "male": 1330,  "female": 1267  },
+    "enrolled": { "male": 586,   "female": 561   }
+  },
+
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 156,
+      "hispanic":           192,
+      "black":              67,
+      "white":              294,
+      "american_indian":    1,
+      "asian":              333,
+      "pacific_islander":   1,
+      "two_or_more":        69,
+      "unknown":            34,
+      "total":              1147
+    },
+    "undergrad": {
+      "nonresident_aliens": 622,
+      "hispanic":           797,
+      "black":              377,
+      "white":              1223,
+      "american_indian":    7,
+      "asian":              1390,
+      "pacific_islander":   3,
+      "two_or_more":        265,
+      "unknown":            105,
+      "total":              4789
+    }
+  },
+
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.57,
+    "international_pct": 0.130
+  },
+
+  "sat_act_breakdown": {
+    "sat_submitted_count": 546,
+    "sat_submitted_pct":   0.48,
+    "act_submitted_count": 248,
+    "act_submitted_pct":   0.22
+  },
+
+  "class_rank": {
+    "top10":    0.89,
+    "top25":    0.96,
+    "top50":    1.0,
+    "bottom50": 0.0,
+    "bottom25": 0.0
+  },
+
+  "gpa_distribution": null,
+
+  "admission_factors": {
+    "rigor":              "very_important",
+    "class_rank":         "very_important",
+    "academic_gpa":       "very_important",
+    "test_scores":        "very_important",
+    "essay":              "very_important",
+    "recommendations":    "very_important",
+    "interview":          "important",
+    "extracurriculars":   "very_important",
+    "talent":             "very_important",
+    "character":          "very_important",
+    "first_gen":          "important",
+    "alumni_relation":    "considered",
+    "geo_residence":      "important",
+    "state_residence":    "important",
+    "religious":          "considered",
+    "racial_ethnic":      null,
+    "volunteer":          "important",
+    "work_experience":    "important",
+    "applicant_interest": "important"
+  },
+
+  "transfer_stats": {
+    "male":   { "applied": 868,  "admitted": 58,  "enrolled": 35 },
+    "female": { "applied": 605,  "admitted": 44,  "enrolled": 25 },
+    "total":  { "applied": 1473, "admitted": 102, "enrolled": 60 }
+  }
+}

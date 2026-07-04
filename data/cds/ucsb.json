@@ -1,0 +1,152 @@
+{
+  "slug": "ucsb",
+  "name": "University of California, Santa Barbara",
+  "data_year": "2024-25",
+  "city": "Santa Barbara",
+  "state": "CA",
+  "location": "Santa Barbara, CA",
+  "school_type": "Public",
+  "website": "ucsb.edu",
+  "applicants_total": 110266,
+  "applicants_men": null,
+  "applicants_women": null,
+  "admitted_total": 36347,
+  "admitted_men": null,
+  "admitted_women": null,
+  "enrolled_total": 5008,
+  "enrolled_men": null,
+  "enrolled_women": null,
+  "acceptance_rate": 0.3297,
+  "application_fee": 80,
+  "avg_gpa_weighted": 4.3,
+  "rd_deadline": "11/30",
+  "waitlist_offered": 15958,
+  "waitlist_accepted": 10641,
+  "waitlist_admitted": 8715,
+  "ea_ed_type": null,
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": null,
+  "sat_submitted_count": null,
+  "act_submitted_pct": null,
+  "act_submitted_count": null,
+  "sat_composite_25": null,
+  "sat_composite_75": null,
+  "sat_reading_25": null,
+  "sat_reading_75": null,
+  "sat_math_25": null,
+  "sat_math_75": null,
+  "act_composite_25": null,
+  "act_composite_75": null,
+  "act_math_25": null,
+  "act_math_75": null,
+  "act_english_25": null,
+  "act_english_75": null,
+  "total_undergrads": 23181,
+  "undergrads_male": null,
+  "undergrads_female": null,
+  "retention_rate": 0.9326,
+  "tuition": null,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": null,
+  "room_and_board": null,
+  "books_supplies": null,
+  "other_expenses": null,
+  "pct_out_of_state": 0.1,
+  "pct_on_campus_housing": 0.95,
+  "applicant_pools": {
+    "ea": {
+      "applied": null,
+      "admitted": null,
+      "rate": null
+    },
+    "rd": {
+      "applied": null,
+      "admitted": null,
+      "rate": null
+    },
+    "waitlist": {
+      "offered": 15958,
+      "accepted_spots": 10641,
+      "enrolled": 8715
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": null,
+      "female": null
+    },
+    "accepted": {
+      "male": null,
+      "female": null
+    },
+    "enrolled": {
+      "male": null,
+      "female": null
+    }
+  },
+  "demographics_detail": null,
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.1,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": null,
+    "sat_submitted_pct": null,
+    "act_submitted_count": null,
+    "act_submitted_pct": null
+  },
+  "class_rank": null,
+  "gpa_distribution": {
+    "4_0": 0.9036,
+    "3_75_to_3_99": 0.0614,
+    "3_50_to_3_74": 0.0286,
+    "3_25_to_3_49": 0.0043,
+    "3_00_to_3_24": 0.0016,
+    "2_50_to_2_99": 0.0004,
+    "2_00_to_2_49": null,
+    "1_00_to_1_99": null,
+    "below_1_0": null
+  },
+  "admission_factors": {
+    "rigor": "important",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "not_considered",
+    "essay": "very_important",
+    "recommendations": "not_considered",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 9374,
+      "admitted": 5439,
+      "enrolled": 1065
+    },
+    "female": {
+      "applied": 8149,
+      "admitted": 5383,
+      "enrolled": 969
+    },
+    "total": {
+      "applied": 18440,
+      "admitted": 11369,
+      "enrolled": 2109
+    }
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "slug": "upenn",
+  "name": "University of Pennsylvania",
+  "data_year": "2024-25",
+  "city": "Philadelphia",
+  "state": "PA",
+  "location": "Philadelphia, PA",
+  "school_type": "Private",
+  "website": "www.upenn.edu",
+  "applicants_total": 65236,
+  "applicants_men": 30339,
+  "applicants_women": 34887,
+  "admitted_total": 3523,
+  "admitted_men": 1634,
+  "admitted_women": 1889,
+  "enrolled_total": 2395,
+  "enrolled_men": null,
+  "enrolled_women": null,
+  "acceptance_rate": 0.054,
+  "application_fee": 75,
+  "avg_gpa_weighted": 3.9,
+  "rd_deadline": "1/5",
+  "waitlist_offered": 2958,
+  "waitlist_accepted": 2288,
+  "waitlist_admitted": 66,
+  "ea_ed_type": "ED",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": 8683,
+  "ea_apps_admitted": 1235,
+  "sat_submitted_pct": 0.5,
+  "sat_submitted_count": 1204,
+  "act_submitted_pct": 0.17,
+  "act_submitted_count": 416,
+  "sat_composite_25": 1510,
+  "sat_composite_75": 1570,
+  "sat_reading_25": 740,
+  "sat_reading_75": 770,
+  "sat_math_25": 770,
+  "sat_math_75": 800,
+  "act_composite_25": 34,
+  "act_composite_75": 36,
+  "act_math_25": 34,
+  "act_math_75": 36,
+  "act_english_25": 35,
+  "act_english_75": 36,
+  "total_undergrads": 10013,
+  "undergrads_male": null,
+  "undergrads_female": null,
+  "retention_rate": 0.988,
+  "tuition": 63204,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 8032,
+  "room_and_board": 19876,
+  "books_supplies": 1412,
+  "other_expenses": 2008,
+  "pct_out_of_state": 0.83,
+  "pct_on_campus_housing": 0.52,
+  "applicant_pools": {
+    "ea": {
+      "applied": 8683,
+      "admitted": 1235,
+      "rate": 0.1423
+    },
+    "rd": {
+      "applied": null,
+      "admitted": null,
+      "rate": null
+    },
+    "waitlist": {
+      "offered": 2958,
+      "accepted_spots": 2288,
+      "enrolled": 66
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 30339,
+      "female": 34887
+    },
+    "accepted": {
+      "male": 1634,
+      "female": 1889
+    },
+    "enrolled": {
+      "male": null,
+      "female": null
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 309,
+      "hispanic": 271,
+      "black": 206,
+      "white": 525,
+      "american_indian": 8,
+      "asian": 753,
+      "pacific_islander": 1,
+      "two_or_more": 126,
+      "unknown": 194,
+      "total": 2393
+    },
+    "undergrad": null
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.83,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 1204,
+    "sat_submitted_pct": 0.5,
+    "act_submitted_count": 416,
+    "act_submitted_pct": 0.17
+  },
+  "class_rank": {
+    "top10": 0.91,
+    "top25": 0.99,
+    "top50": 1.0,
+    "bottom50": 0.0,
+    "bottom25": 0.0
+  },
+  "gpa_distribution": {
+    "4_0": 0.59,
+    "3_75_to_3_99": 0.31,
+    "3_50_to_3_74": 0.05,
+    "3_25_to_3_49": 0.05,
+    "3_00_to_3_24": 0.0,
+    "2_50_to_2_99": 0.0,
+    "2_00_to_2_49": null,
+    "1_00_to_1_99": null,
+    "below_1_0": null
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "very_important",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "very_important",
+    "recommendations": "very_important",
+    "interview": "not_considered",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "very_important",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "important",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 2509,
+      "admitted": 67,
+      "enrolled": 46
+    },
+    "female": {
+      "applied": 2007,
+      "admitted": 78,
+      "enrolled": 54
+    },
+    "total": {
+      "applied": 4521,
+      "admitted": 145,
+      "enrolled": 100
+    }
+  }
+}

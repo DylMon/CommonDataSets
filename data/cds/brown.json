@@ -1,0 +1,156 @@
+{
+  "slug": "brown",
+  "name": "Brown University",
+  "data_year": "2024-25",
+  "city": "Providence",
+  "state": "RI",
+  "location": "Providence, RI",
+  "school_type": "Private",
+  "website": "www.brown.edu",
+
+  "applicants_total": 48904,
+  "applicants_men": 18960,
+  "applicants_women": 29917,
+  "admitted_total": 2638,
+  "admitted_men": 1326,
+  "admitted_women": 1309,
+  "enrolled_total": 1719,
+  "enrolled_men": 855,
+  "enrolled_women": 863,
+  "acceptance_rate": 0.0539,
+  "application_fee": 75,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "1/3",
+
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": 118,
+
+  "ea_ed_type": "ED",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": 6251,
+  "ea_apps_admitted": 898,
+
+  "sat_submitted_pct": 0.61,
+  "sat_submitted_count": 1046,
+  "act_submitted_pct": 0.24,
+  "act_submitted_count": 410,
+  "sat_composite_25": 1510,
+  "sat_composite_75": 1560,
+  "sat_reading_25": 740,
+  "sat_reading_75": 780,
+  "sat_math_25": 770,
+  "sat_math_75": 800,
+  "act_composite_25": 34,
+  "act_composite_75": 35,
+  "act_math_25": 32,
+  "act_math_75": 35,
+  "act_english_25": 35,
+  "act_english_75": 36,
+
+  "total_undergrads": 7910,
+  "undergrads_male": 3589,
+  "undergrads_female": 3602,
+  "retention_rate": 0.988,
+
+  "tuition": 71700,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 2850,
+  "room_and_board": 18514,
+  "books_supplies": 1300,
+  "other_expenses": 2820,
+
+  "pct_out_of_state": 0.94,
+  "pct_on_campus_housing": 0.75,
+
+  "applicant_pools": {
+    "ea": { "applied": 6251, "admitted": 898, "rate": 0.1437 },
+    "rd": { "applied": null, "admitted": null, "rate": null },
+    "waitlist": { "offered": null, "accepted_spots": null, "enrolled": 118 }
+  },
+
+  "gender_breakdown": {
+    "applied":  { "male": 18960, "female": 29917 },
+    "accepted": { "male": 1326,  "female": 1309  },
+    "enrolled": { "male": 855,   "female": 863   }
+  },
+
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 242,
+      "hispanic":           173,
+      "black":              94,
+      "white":              526,
+      "american_indian":    1,
+      "asian":              470,
+      "pacific_islander":   0,
+      "two_or_more":        119,
+      "unknown":            94,
+      "total":              1719
+    },
+    "undergrad": {
+      "nonresident_aliens": 917,
+      "hispanic":           876,
+      "black":              591,
+      "white":              2379,
+      "american_indian":    15,
+      "asian":              1653,
+      "pacific_islander":   8,
+      "two_or_more":        574,
+      "unknown":            213,
+      "total":              7226
+    }
+  },
+
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.94,
+    "international_pct": 0.1408
+  },
+
+  "sat_act_breakdown": {
+    "sat_submitted_count": 1046,
+    "sat_submitted_pct":   0.61,
+    "act_submitted_count": 410,
+    "act_submitted_pct":   0.24
+  },
+
+  "class_rank": {
+    "top10":    0.89,
+    "top25":    0.98,
+    "top50":    1.0,
+    "bottom50": 0.0,
+    "bottom25": 0.0
+  },
+
+  "gpa_distribution": null,
+
+  "admission_factors": {
+    "rigor":            "very_important",
+    "class_rank":       "very_important",
+    "academic_gpa":     "very_important",
+    "test_scores":      "very_important",
+    "essay":            "very_important",
+    "recommendations":  "very_important",
+    "interview":        "not_considered",
+    "extracurriculars": "important",
+    "talent":           "very_important",
+    "character":        "very_important",
+    "first_gen":        "considered",
+    "alumni_relation":  "considered",
+    "geo_residence":    "considered",
+    "state_residence":  "considered",
+    "religious":        "not_considered",
+    "racial_ethnic":    null,
+    "volunteer":        "considered",
+    "work_experience":  "considered",
+    "applicant_interest": "not_considered"
+  },
+
+  "transfer_stats": {
+    "male":   { "applied": 1491, "admitted": 116, "enrolled": 85 },
+    "female": { "applied": 1493, "admitted": 99,  "enrolled": 60 },
+    "total":  { "applied": 2987, "admitted": 215, "enrolled": 145 }
+  }
+}

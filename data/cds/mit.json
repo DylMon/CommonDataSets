@@ -1,0 +1,156 @@
+{
+  "slug": "mit",
+  "name": "Massachusetts Institute of Technology",
+  "data_year": "2024-25",
+  "city": "Cambridge",
+  "state": "MA",
+  "location": "Cambridge, MA",
+  "school_type": "Private",
+  "website": "mit.edu",
+
+  "applicants_total": 28232,
+  "applicants_men": 17210,
+  "applicants_women": 8975,
+  "admitted_total": 1284,
+  "admitted_men": 606,
+  "admitted_women": 612,
+  "enrolled_total": 1106,
+  "enrolled_men": 547,
+  "enrolled_women": 499,
+  "acceptance_rate": 0.0455,
+  "application_fee": 75,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "1/1",
+
+  "waitlist_offered": 590,
+  "waitlist_accepted": 509,
+  "waitlist_admitted": 9,
+
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/20",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+
+  "sat_submitted_pct": 0.83,
+  "sat_submitted_count": 918,
+  "act_submitted_pct": 0.29,
+  "act_submitted_count": 323,
+  "sat_composite_25": 1520,
+  "sat_composite_75": 1570,
+  "sat_reading_25": 740,
+  "sat_reading_75": 780,
+  "sat_math_25": 780,
+  "sat_math_75": 800,
+  "act_composite_25": 34,
+  "act_composite_75": 36,
+  "act_math_25": 35,
+  "act_math_75": 36,
+  "act_english_25": 35,
+  "act_english_75": 36,
+
+  "total_undergrads": 4535,
+  "undergrads_male": 2351,
+  "undergrads_female": 2184,
+  "retention_rate": 0.99,
+
+  "tuition": 64310,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 420,
+  "room_and_board": 21264,
+  "books_supplies": 910,
+  "other_expenses": 2436,
+
+  "pct_out_of_state": 0.91,
+  "pct_on_campus_housing": 0.92,
+
+  "applicant_pools": {
+    "ea": { "applied": null, "admitted": null, "rate": null },
+    "rd": { "applied": null, "admitted": null, "rate": null },
+    "waitlist": { "offered": 590, "accepted_spots": 509, "enrolled": 9 }
+  },
+
+  "gender_breakdown": {
+    "applied":  { "male": 17210, "female": 8975 },
+    "accepted": { "male": 606,   "female": 612  },
+    "enrolled": { "male": 547,   "female": 499  }
+  },
+
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 125,
+      "hispanic":           118,
+      "black":              41,
+      "white":              263,
+      "american_indian":    3,
+      "asian":              462,
+      "pacific_islander":   1,
+      "two_or_more":        60,
+      "unknown":            25,
+      "total":              1098
+    },
+    "undergrad": {
+      "nonresident_aliens": 529,
+      "hispanic":           639,
+      "black":              349,
+      "white":              964,
+      "american_indian":    9,
+      "asian":              1595,
+      "pacific_islander":   2,
+      "two_or_more":        310,
+      "unknown":            138,
+      "total":              4535
+    }
+  },
+
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.91,
+    "international_pct": null
+  },
+
+  "sat_act_breakdown": {
+    "sat_submitted_count": 918,
+    "sat_submitted_pct":   0.83,
+    "act_submitted_count": 323,
+    "act_submitted_pct":   0.29
+  },
+
+  "class_rank": {
+    "top10":    0.96,
+    "top25":    0.99,
+    "top50":    1.0,
+    "bottom50": 0.0,
+    "bottom25": 0.0
+  },
+
+  "gpa_distribution": null,
+
+  "admission_factors": {
+    "rigor":              "very_important",
+    "class_rank":         "important",
+    "academic_gpa":       "very_important",
+    "test_scores":        "very_important",
+    "essay":              "very_important",
+    "recommendations":    "very_important",
+    "interview":          "important",
+    "extracurriculars":   "important",
+    "talent":             "important",
+    "character":          "very_important",
+    "first_gen":          "considered",
+    "alumni_relation":    "not_considered",
+    "geo_residence":      "considered",
+    "state_residence":    "not_considered",
+    "religious":          "not_considered",
+    "racial_ethnic":      null,
+    "volunteer":          "considered",
+    "work_experience":    "considered",
+    "applicant_interest": "not_considered"
+  },
+
+  "transfer_stats": {
+    "male":   { "applied": 864,  "admitted": 22, "enrolled": 18 },
+    "female": { "applied": 330,  "admitted": 8,  "enrolled": 8  },
+    "total":  { "applied": 1346, "admitted": 32, "enrolled": 28 }
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "slug": "emory",
+  "name": "Emory University",
+  "data_year": "2024-25",
+  "city": "Atlanta",
+  "state": "GA",
+  "location": "Atlanta, GA",
+  "school_type": "Private",
+  "website": "emory.edu",
+  "applicants_total": 34614,
+  "applicants_men": 13792,
+  "applicants_women": 20814,
+  "admitted_total": 3562,
+  "admitted_men": 1558,
+  "admitted_women": 2004,
+  "enrolled_total": 1438,
+  "enrolled_men": 631,
+  "enrolled_women": 807,
+  "acceptance_rate": 0.1029,
+  "application_fee": 75,
+  "avg_gpa_weighted": 3.84,
+  "rd_deadline": "1/1",
+  "waitlist_offered": 6098,
+  "waitlist_accepted": 3355,
+  "waitlist_admitted": 109,
+  "ea_ed_type": "ED",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": 4193,
+  "ea_apps_admitted": 974,
+  "sat_submitted_pct": 0.43,
+  "sat_submitted_count": 623,
+  "act_submitted_pct": 0.2,
+  "act_submitted_count": 286,
+  "sat_composite_25": 1480,
+  "sat_composite_75": 1540,
+  "sat_reading_25": 720,
+  "sat_reading_75": 760,
+  "sat_math_25": 750,
+  "sat_math_75": 790,
+  "act_composite_25": 32,
+  "act_composite_75": 35,
+  "act_math_25": null,
+  "act_math_75": null,
+  "act_english_25": null,
+  "act_english_75": null,
+  "total_undergrads": 7407,
+  "undergrads_male": 3203,
+  "undergrads_female": 4204,
+  "retention_rate": 0.96,
+  "tuition": 67080,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 976,
+  "room_and_board": 21244,
+  "books_supplies": null,
+  "other_expenses": null,
+  "pct_out_of_state": 0.82,
+  "pct_on_campus_housing": 0.57,
+  "applicant_pools": {
+    "ea": {
+      "applied": 4193,
+      "admitted": 974,
+      "rate": 0.2323
+    },
+    "rd": {
+      "applied": null,
+      "admitted": null,
+      "rate": null
+    },
+    "waitlist": {
+      "offered": 6098,
+      "accepted_spots": 3355,
+      "enrolled": 109
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 13792,
+      "female": 20814
+    },
+    "accepted": {
+      "male": 1558,
+      "female": 2004
+    },
+    "enrolled": {
+      "male": 631,
+      "female": 807
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 238,
+      "hispanic": 173,
+      "black": 143,
+      "white": 400,
+      "american_indian": 2,
+      "asian": 351,
+      "pacific_islander": 0,
+      "two_or_more": 50,
+      "unknown": 81,
+      "total": 1438
+    },
+    "undergrad": {
+      "nonresident_aliens": 1238,
+      "hispanic": 885,
+      "black": 762,
+      "white": 2196,
+      "american_indian": 4,
+      "asian": 1834,
+      "pacific_islander": 1,
+      "two_or_more": 306,
+      "unknown": 181,
+      "total": 7407
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.82,
+    "international_pct": 0.167
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 623,
+    "sat_submitted_pct": 0.43,
+    "act_submitted_count": 286,
+    "act_submitted_pct": 0.2
+  },
+  "class_rank": {
+    "top10": 0.8,
+    "top25": 0.97,
+    "top50": 1.0,
+    "bottom50": 0.0,
+    "bottom25": 0.0
+  },
+  "gpa_distribution": {
+    "4_0": 0.1741,
+    "3_75_to_3_99": 0.5838,
+    "3_50_to_3_74": 0.2124,
+    "3_25_to_3_49": 0.0253,
+    "3_00_to_3_24": 0.0044,
+    "2_50_to_2_99": 0.0,
+    "2_00_to_2_49": 0.0,
+    "1_00_to_1_99": null,
+    "below_1_0": null
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "important",
+    "essay": "important",
+    "recommendations": "very_important",
+    "interview": "considered",
+    "extracurriculars": "very_important",
+    "talent": "very_important",
+    "character": "very_important",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1231,
+      "admitted": 201,
+      "enrolled": 76
+    },
+    "female": {
+      "applied": 1213,
+      "admitted": 195,
+      "enrolled": 65
+    },
+    "total": {
+      "applied": 2445,
+      "admitted": 396,
+      "enrolled": 141
+    }
+  }
+}

@@ -3,6 +3,8 @@
   "type": "module",
   "scripts": {
     "seed": "node scripts/seed.js",
+    "seed:cds": "node scripts/seed-cds.js",
+    "analyze": "node scripts/analyze-db.js",
     "backfill": "node scripts/backfill-cds.js",
     "generate": "node scripts/generate-school-pages.js"
   },

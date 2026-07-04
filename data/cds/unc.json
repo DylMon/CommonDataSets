@@ -1,0 +1,158 @@
+{
+  "slug": "unc",
+  "name": "University of North Carolina at Chapel Hill",
+  "data_year": "2024-25",
+  "city": "Chapel Hill",
+  "state": "NC",
+  "location": "Chapel Hill, NC",
+  "school_type": "Public",
+  "website": "unc.edu",
+  "applicants_total": 66535,
+  "applicants_men": 27899,
+  "applicants_women": 38636,
+  "admitted_total": 10209,
+  "admitted_men": null,
+  "admitted_women": null,
+  "enrolled_total": 4640,
+  "enrolled_men": null,
+  "enrolled_women": null,
+  "acceptance_rate": 0.1534,
+  "application_fee": 85,
+  "avg_gpa_weighted": 4.49,
+  "rd_deadline": "1/15",
+  "waitlist_offered": 6120,
+  "waitlist_accepted": 4084,
+  "waitlist_admitted": 295,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "10/15",
+  "ea_ed_notification": "1/31",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.28,
+  "sat_submitted_count": 1320,
+  "act_submitted_pct": 0.41,
+  "act_submitted_count": 1896,
+  "sat_composite_25": 1400,
+  "sat_composite_75": 1530,
+  "sat_reading_25": 690,
+  "sat_reading_75": 750,
+  "sat_math_25": 700,
+  "sat_math_75": 780,
+  "act_composite_25": 28,
+  "act_composite_75": 34,
+  "act_math_25": 26,
+  "act_math_75": 33,
+  "act_english_25": 27,
+  "act_english_75": 35,
+  "total_undergrads": 21075,
+  "undergrads_male": null,
+  "undergrads_female": null,
+  "retention_rate": 0.966,
+  "tuition": null,
+  "tuition_in_state": 7020,
+  "tuition_out_of_state": 43152,
+  "required_fees": 2076,
+  "room_and_board": 15038,
+  "books_supplies": 622,
+  "other_expenses": 3010,
+  "pct_out_of_state": 0.168,
+  "pct_on_campus_housing": null,
+  "applicant_pools": {
+    "ea": {
+      "applied": null,
+      "admitted": null,
+      "rate": null
+    },
+    "rd": {
+      "applied": null,
+      "admitted": null,
+      "rate": null
+    },
+    "waitlist": {
+      "offered": 6120,
+      "accepted_spots": 4084,
+      "enrolled": 295
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 27899,
+      "female": 38636
+    },
+    "accepted": {
+      "male": null,
+      "female": null
+    },
+    "enrolled": {
+      "male": null,
+      "female": null
+    }
+  },
+  "demographics_detail": null,
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.168,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 1320,
+    "sat_submitted_pct": 0.28,
+    "act_submitted_count": 1896,
+    "act_submitted_pct": 0.41
+  },
+  "class_rank": {
+    "top10": 0.77,
+    "top25": 0.97,
+    "top50": 1.0,
+    "bottom50": 0.0,
+    "bottom25": 0.0
+  },
+  "gpa_distribution": {
+    "4_0": 0.97,
+    "3_75_to_3_99": 0.02,
+    "3_50_to_3_74": 0.01,
+    "3_25_to_3_49": null,
+    "3_00_to_3_24": null,
+    "2_50_to_2_99": null,
+    "2_00_to_2_49": null,
+    "1_00_to_1_99": null,
+    "below_1_0": null
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "important",
+    "academic_gpa": "important",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "important",
+    "interview": "not_considered",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "important",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "not_considered",
+    "state_residence": "important",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "important",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 2325,
+      "admitted": 795,
+      "enrolled": 441
+    },
+    "female": {
+      "applied": 2367,
+      "admitted": 918,
+      "enrolled": 539
+    },
+    "total": {
+      "applied": 4692,
+      "admitted": 1713,
+      "enrolled": 980
+    }
+  }
+}

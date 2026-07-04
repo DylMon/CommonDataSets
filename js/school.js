@@ -152,13 +152,26 @@ function renderHero(s, slug, meta) {
 // ── Render: Stats strip ─────────────────────────────────────────────────
 
 function renderStatsStrip(s) {
+  // SAT: prefer composite range (CDS), fall back to average (Scorecard legacy)
+  const satVal   = s.sat_composite_25 != null && s.sat_composite_75 != null
+    ? `${s.sat_composite_25}–${s.sat_composite_75}`
+    : (s.sat_avg ?? '—');
+  const satLabel = s.sat_composite_25 != null ? 'SAT Range' : 'SAT Average';
+
+  // ACT: new schema uses act_composite_25/75; old schema used act_25/75
+  const act25 = s.act_composite_25 ?? s.act_25;
+  const act75 = s.act_composite_75 ?? s.act_75;
+
+  // Tuition: private schools expose a single `tuition` field; public use tuition_out_of_state
+  const tuitionOOS = s.tuition_out_of_state ?? s.tuition;
+
   const chips = [
     ['Acceptance Rate', s.acceptance_rate != null ? (s.acceptance_rate * 100).toFixed(1) + '%' : '—'],
-    ['SAT Average',     s.sat_avg ?? '—'],
-    ['ACT Range',       s.act_25 != null && s.act_75 != null ? `${s.act_25}–${s.act_75}` : '—'],
+    [satLabel,          satVal],
+    ['ACT Range',       act25 != null && act75 != null ? `${act25}–${act75}` : '—'],
     ['Avg GPA (W)',     s.avg_gpa_weighted != null ? parseFloat(s.avg_gpa_weighted).toFixed(2) : '—'],
     ['Undergrads',      s.total_undergrads != null ? s.total_undergrads.toLocaleString() : '—'],
-    ['Tuition (OOS)',   s.tuition_out_of_state != null ? '$' + s.tuition_out_of_state.toLocaleString() : '—'],
+    ['Tuition (OOS)',   tuitionOOS != null ? '$' + tuitionOOS.toLocaleString() : '—'],
   ];
   return chips.map((c, i) =>
     (i > 0 ? '<div class="stat-divider"></div>' : '') +
@@ -179,14 +192,10 @@ function renderAdmissionsSection(s) {
   const kvGrid = `<div class="kv-grid">
     ${kv('Location',                  s.location)}
     ${kv('School Type',               s.school_type)}
-    ${kv('US News Ranking',           s.us_news_ranking)}
     ${kv('Early Action / Decision',   s.ea_ed_type)}
     ${kv('EA/ED Deadline',            s.ea_ed_deadline)}
     ${kv('Regular Decision Deadline', s.rd_deadline)}
-    ${kv('SAT Writing Required',      s.sat_writing_required != null ? (s.sat_writing_required ? 'Yes' : 'No') : null)}
-    ${kv('ACT Writing Required',      s.act_writing_required != null ? (s.act_writing_required ? 'Yes' : 'No') : null)}
-    ${kv('SAT Superscore',            s.sat_superscore != null ? (s.sat_superscore ? 'Yes' : 'No') : null)}
-    ${kv('ACT Superscore',            s.act_superscore != null ? (s.act_superscore ? 'Yes' : 'No') : null)}
+    ${kv('Application Fee',           s.application_fee != null ? '$' + s.application_fee : null)}
   </div>`;
 
   const ratePct = s.acceptance_rate != null ? (s.acceptance_rate * 100).toFixed(1) + '%' : null;
@@ -214,9 +223,9 @@ function renderAdmissionsSection(s) {
     poolsHtml = tableHtml(
       ['Round', 'Applied', 'Accepted', 'Rate'],
       [
-        ['Early Action / Decision', fmt(p.ea?.applied), fmt(p.ea?.accepted),
+        ['Early Action / Decision', fmt(p.ea?.applied), fmt(p.ea?.admitted ?? p.ea?.accepted),
           p.ea?.rate != null ? (p.ea.rate * 100).toFixed(1) + '%' : '—'],
-        ['Regular Decision', fmt(p.rd?.applied), fmt(p.rd?.accepted),
+        ['Regular Decision', fmt(p.rd?.applied), fmt(p.rd?.admitted ?? p.rd?.accepted),
           p.rd?.rate != null ? (p.rd.rate * 100).toFixed(1) + '%' : '—'],
         ['Waitlist Offered / Accepted', fmt(p.waitlist?.offered), fmt(p.waitlist?.accepted_spots), '—'],
       ]
@@ -242,14 +251,15 @@ function renderAdmissionsSection(s) {
   if (s.gpa_distribution) {
     const g = s.gpa_distribution;
     const rows = [
-      ['4.0',       g.gpa_40],
-      ['3.75–3.99', g.gpa_375_399],
-      ['3.50–3.74', g.gpa_350_374],
-      ['3.25–3.49', g.gpa_325_349],
-      ['3.00–3.24', g.gpa_300_324],
-      ['2.50–2.99', g.gpa_250_299],
-      ['2.00–2.49', g.gpa_200_249],
-      ['Below 2.0', g.gpa_100_199],
+      ['4.0',       g['4_0']],
+      ['3.75–3.99', g['3_75_to_3_99']],
+      ['3.50–3.74', g['3_50_to_3_74']],
+      ['3.25–3.49', g['3_25_to_3_49']],
+      ['3.00–3.24', g['3_00_to_3_24']],
+      ['2.50–2.99', g['2_50_to_2_99']],
+      ['2.00–2.49', g['2_00_to_2_49']],
+      ['1.00–1.99', g['1_00_to_1_99']],
+      ['Below 1.0', g['below_1_0']],
     ].map(([label, val]) => [label, val != null ? (val * 100).toFixed(0) + '%' : '—']);
     gpaDistHtml = tableHtml(['GPA Range', '% of Enrolled Students'], rows);
   }
@@ -296,6 +306,11 @@ function renderAdmissionsSection(s) {
 // ── Render: Test Scores section ─────────────────────────────────────────
 
 function renderTestScoresSection(s) {
+  // ACT composite: new schema uses act_composite_25/75; old schema used act_25/75
+  const act25 = s.act_composite_25 ?? s.act_25;
+  const act75 = s.act_composite_75 ?? s.act_75;
+
+  // SAT average row: only present in Scorecard data; CDS schools use percentile bars only
   const satAvgRow = s.sat_avg != null
     ? `<div class="score-row">
         <div class="score-row-label">Average (total)</div>
@@ -306,10 +321,7 @@ function renderTestScoresSection(s) {
           <div class="score-bar-vals">${s.sat_avg}</div>
         </div>
       </div>`
-    : `<div class="score-row">
-        <div class="score-row-label">Average (total)</div>
-        <span class="score-na-text">Not reported</span>
-      </div>`;
+    : '';
 
   return `
     <section class="school-section">
@@ -317,12 +329,13 @@ function renderTestScoresSection(s) {
       <h3 class="subsection-title">SAT — 25th to 75th Percentile</h3>
       <div class="score-rows">
         ${satAvgRow}
+        ${scoreBarHtml('Composite', s.sat_composite_25, s.sat_composite_75, 400, 1600)}
         ${scoreBarHtml('Reading &amp; Writing', s.sat_reading_25, s.sat_reading_75, 200, 800)}
         ${scoreBarHtml('Math', s.sat_math_25, s.sat_math_75, 200, 800)}
       </div>
       <h3 class="subsection-title">ACT — 25th to 75th Percentile</h3>
       <div class="score-rows">
-        ${scoreBarHtml('Composite', s.act_25, s.act_75, 1, 36)}
+        ${scoreBarHtml('Composite', act25, act75, 1, 36)}
         ${scoreBarHtml('Math', s.act_math_25, s.act_math_75, 1, 36)}
         ${scoreBarHtml('English', s.act_english_25, s.act_english_75, 1, 36)}
       </div>
@@ -332,20 +345,28 @@ function renderTestScoresSection(s) {
 // ── Render: Cost section ────────────────────────────────────────────────
 
 function renderCostSection(s) {
-  const reqFeesOut = s.required_fees_out ?? s.required_fees_in;
-  const otherOut   = s.other_expenses_out ?? s.other_expenses_in;
+  // Private schools: single `tuition` applies to both columns
+  // Public schools: separate tuition_in_state / tuition_out_of_state
+  const tuitionIn  = s.tuition_in_state  ?? s.tuition;
+  const tuitionOut = s.tuition_out_of_state ?? s.tuition;
 
-  const inTotal  = [s.tuition_in_state, s.room_and_board, s.books_supplies, s.required_fees_in, s.other_expenses_in]
+  // New schema has single required_fees / other_expenses; old had in/out splits
+  const feesIn  = s.required_fees ?? s.required_fees_in;
+  const feesOut = s.required_fees ?? s.required_fees_out ?? s.required_fees_in;
+  const otherIn  = s.other_expenses ?? s.other_expenses_in;
+  const otherOut = s.other_expenses ?? s.other_expenses_out ?? s.other_expenses_in;
+
+  const inTotal  = [tuitionIn,  s.room_and_board, s.books_supplies, feesIn,  otherIn]
     .reduce((a, v) => a + (v || 0), 0);
-  const outTotal = [s.tuition_out_of_state, s.room_and_board, s.books_supplies, reqFeesOut, otherOut]
+  const outTotal = [tuitionOut, s.room_and_board, s.books_supplies, feesOut, otherOut]
     .reduce((a, v) => a + (v || 0), 0);
 
   const rows = [
-    ['Tuition',                fmt(s.tuition_in_state, 'money'),  fmt(s.tuition_out_of_state, 'money')],
-    ['Room &amp; Board',       fmt(s.room_and_board, 'money'),    fmt(s.room_and_board, 'money')],
-    ['Books &amp; Supplies',   fmt(s.books_supplies, 'money'),    fmt(s.books_supplies, 'money')],
-    ['Required Fees',          fmt(s.required_fees_in, 'money'),  fmt(reqFeesOut, 'money')],
-    ['Other Expenses',         fmt(s.other_expenses_in, 'money'), fmt(otherOut, 'money')],
+    ['Tuition',                       fmt(tuitionIn, 'money'),      fmt(tuitionOut, 'money')],
+    ['Room &amp; Board',              fmt(s.room_and_board, 'money'), fmt(s.room_and_board, 'money')],
+    ['Books &amp; Supplies',          fmt(s.books_supplies, 'money'), fmt(s.books_supplies, 'money')],
+    ['Required Fees',                 fmt(feesIn, 'money'),          fmt(feesOut, 'money')],
+    ['Other Expenses',                fmt(otherIn, 'money'),         fmt(otherOut, 'money')],
     [
       '<strong>Total Cost of Attendance</strong>',
       inTotal  > 0 ? `<strong>$${inTotal.toLocaleString()}</strong>`  : '—',
@@ -369,10 +390,27 @@ function renderCostSection(s) {
 
 function renderStudentBodySection(s) {
   let raceHtml = '<p class="no-data">Data not yet available.</p>';
-  if (s.demographics) {
+
+  if (s.demographics_detail?.undergrad) {
+    // CDS path — raw counts; convert to fractions using total
+    const d     = s.demographics_detail.undergrad;
+    const total = d.total || 1;
+    raceHtml = `<div class="demo-bars">
+      ${demoBarHtml('Asian',                            d.asian            != null ? d.asian            / total : null)}
+      ${demoBarHtml('White',                            d.white            != null ? d.white            / total : null)}
+      ${demoBarHtml('Hispanic / Latino',                d.hispanic         != null ? d.hispanic         / total : null)}
+      ${demoBarHtml('Black / African American',         d.black            != null ? d.black            / total : null)}
+      ${demoBarHtml('Nonresident Aliens',               d.nonresident_aliens != null ? d.nonresident_aliens / total : null)}
+      ${demoBarHtml('Two or More Races',                d.two_or_more      != null ? d.two_or_more      / total : null)}
+      ${demoBarHtml('American Indian / Alaska Native',  d.american_indian  != null ? d.american_indian  / total : null)}
+      ${demoBarHtml('Native Hawaiian / Pac. Islander',  d.pacific_islander != null ? d.pacific_islander / total : null)}
+      ${demoBarHtml('Unknown',                          d.unknown          != null ? d.unknown          / total : null)}
+    </div>`;
+  } else if (s.demographics) {
+    // Legacy Scorecard path — values are already fractions
     const d = s.demographics;
     raceHtml = `<div class="demo-bars">
-      ${demoBarHtml('Asian',                             d.asian)}
+      ${demoBarHtml('Asian',                            d.asian)}
       ${demoBarHtml('White',                            d.white)}
       ${demoBarHtml('Hispanic / Latino',                d.hispanic)}
       ${demoBarHtml('Black / African American',         d.black)}
@@ -385,7 +423,15 @@ function renderStudentBodySection(s) {
   }
 
   let genderHtml = '<p class="no-data">Data not yet available.</p>';
-  if (s.demographics?.men_pct != null) {
+  if (s.undergrads_male != null && s.total_undergrads) {
+    // CDS path — raw counts
+    const total = s.total_undergrads;
+    genderHtml = `<div class="demo-bars">
+      ${demoBarHtml('Men',   s.undergrads_male   / total)}
+      ${demoBarHtml('Women', s.undergrads_female / total)}
+    </div>`;
+  } else if (s.demographics?.men_pct != null) {
+    // Legacy Scorecard path
     genderHtml = `<div class="demo-bars">
       ${demoBarHtml('Men',   s.demographics.men_pct)}
       ${demoBarHtml('Women', s.demographics.women_pct)}
@@ -407,11 +453,24 @@ function renderStudentBodySection(s) {
   let geoHtml = '<p class="no-data">Data not yet available.</p>';
   if (s.geographic_breakdown) {
     const g = s.geographic_breakdown;
-    geoHtml = `<div class="demo-bars">
-      ${demoBarHtml('In-State',      g.in_state_pct)}
-      ${demoBarHtml('Out-of-State',  g.out_of_state_pct)}
-      ${demoBarHtml('International', g.international_pct)}
-    </div>`;
+    if (g.in_state_pct != null) {
+      // Legacy Scorecard: explicit in/out/international split
+      geoHtml = `<div class="demo-bars">
+        ${demoBarHtml('In-State',      g.in_state_pct)}
+        ${demoBarHtml('Out-of-State',  g.out_of_state_pct)}
+        ${demoBarHtml('International', g.international_pct)}
+      </div>`;
+    } else if (g.out_of_state_pct != null) {
+      // CDS: out_of_state_pct includes international; derive domestic splits
+      const inState     = 1 - g.out_of_state_pct;
+      const intl        = g.international_pct ?? 0;
+      const domesticOOS = Math.max(g.out_of_state_pct - intl, 0);
+      geoHtml = `<div class="demo-bars">
+        ${demoBarHtml('In-State',             inState > 0 ? inState : null)}
+        ${demoBarHtml('Out-of-State (Domestic)', domesticOOS > 0 ? domesticOOS : null)}
+        ${demoBarHtml('International',        intl > 0 ? intl : null)}
+      </div>`;
+    }
   }
 
   let transferHtml = '<p class="no-data">Data not yet available.</p>';
@@ -459,12 +518,22 @@ async function init() {
     return;
   }
 
-  const { data: s, error } = await supabase
-    .from('schools')
+  // Try CDS data first (cds_2024_2025); fall back to legacy Scorecard data
+  let { data: s, error } = await supabase
+    .from('cds_2024_2025')
     .select('*')
     .eq('slug', slug)
-    .eq('data_year', '2023-24')
+    .eq('data_year', '2024-25')
     .single();
+
+  if (error || !s) {
+    ({ data: s, error } = await supabase
+      .from('schools')
+      .select('*')
+      .eq('slug', slug)
+      .eq('data_year', '2023-24')
+      .single());
+  }
 
   if (error || !s) {
     document.getElementById('school-sections').innerHTML =
@@ -476,10 +545,14 @@ async function init() {
 
   document.documentElement.style.setProperty('--brand', meta.color);
   document.title = `${s.name} Admissions Data — CommonDataSets`;
+
   const pct = s.acceptance_rate != null ? (s.acceptance_rate * 100).toFixed(1) + '%' : null;
-  const descParts = [`${s.name} admissions data for 2023–24`];
+  const descParts = [`${s.name} admissions data for ${s.data_year}`];
   if (pct) descParts.push(`${pct} acceptance rate`);
-  if (s.sat_avg) descParts.push(`${s.sat_avg} SAT average`);
+  const satRange = s.sat_composite_25 != null
+    ? `${s.sat_composite_25}–${s.sat_composite_75} SAT`
+    : (s.sat_avg ? `${s.sat_avg} SAT average` : null);
+  if (satRange) descParts.push(satRange);
   if (s.location) descParts.push(s.location);
   document.querySelector('meta[name="description"]').content = descParts.join(' · ') + '.';
 
