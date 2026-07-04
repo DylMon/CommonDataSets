@@ -1,0 +1,332 @@
+[
+  {
+    "slug": "princeton",
+    "name": "Princeton University",
+    "scorecard_id": 186131,
+    "us_news_rank": 1,
+    "us_news_rank_year": "2025",
+    "test_policy": "required",
+    "endowment_total": 34100000000,
+    "endowment_per_student": 3190000
+  },
+  {
+    "slug": "mit",
+    "name": "Massachusetts Institute of Technology",
+    "scorecard_id": 166683,
+    "us_news_rank": 2,
+    "us_news_rank_year": "2025",
+    "test_policy": "required",
+    "endowment_total": 24600000000,
+    "endowment_per_student": 1130000
+  },
+  {
+    "slug": "harvard",
+    "name": "Harvard University",
+    "scorecard_id": 166027,
+    "us_news_rank": 3,
+    "us_news_rank_year": "2025",
+    "test_policy": "required",
+    "endowment_total": 50700000000,
+    "endowment_per_student": 2400000
+  },
+  {
+    "slug": "stanford",
+    "name": "Stanford University",
+    "scorecard_id": 243744,
+    "us_news_rank": 4,
+    "us_news_rank_year": "2025",
+    "test_policy": "required",
+    "endowment_total": 36500000000,
+    "endowment_per_student": 1890000
+  },
+  {
+    "slug": "yale",
+    "name": "Yale University",
+    "scorecard_id": 130794,
+    "us_news_rank": 5,
+    "us_news_rank_year": "2025",
+    "test_policy": "required",
+    "endowment_total": 40700000000,
+    "endowment_per_student": 2780000
+  },
+  {
+    "slug": "caltech",
+    "name": "California Institute of Technology",
+    "scorecard_id": 110404,
+    "us_news_rank": 6,
+    "us_news_rank_year": "2025",
+    "test_policy": "required",
+    "endowment_total": 3800000000,
+    "endowment_per_student": 1040000
+  },
+  {
+    "slug": "duke",
+    "name": "Duke University",
+    "scorecard_id": 198419,
+    "us_news_rank": 6,
+    "us_news_rank_year": "2025",
+    "test_policy": "required",
+    "endowment_total": 12700000000,
+    "endowment_per_student": 714000
+  },
+  {
+    "slug": "jhu",
+    "name": "Johns Hopkins University",
+    "scorecard_id": 162928,
+    "us_news_rank": 6,
+    "us_news_rank_year": "2025",
+    "test_policy": "required",
+    "endowment_total": 10300000000,
+    "endowment_per_student": 617000
+  },
+  {
+    "slug": "northwestern",
+    "name": "Northwestern University",
+    "scorecard_id": 147767,
+    "us_news_rank": 6,
+    "us_news_rank_year": "2025",
+    "test_policy": "required",
+    "endowment_total": 14300000000,
+    "endowment_per_student": 688000
+  },
+  {
+    "slug": "upenn",
+    "name": "University of Pennsylvania",
+    "scorecard_id": 215062,
+    "us_news_rank": 10,
+    "us_news_rank_year": "2025",
+    "test_policy": "required",
+    "endowment_total": 20700000000,
+    "endowment_per_student": 635000
+  },
+  {
+    "slug": "cornell",
+    "name": "Cornell University",
+    "scorecard_id": 190415,
+    "us_news_rank": 11,
+    "us_news_rank_year": "2025",
+    "test_policy": "required",
+    "endowment_total": 10200000000,
+    "endowment_per_student": 235000
+  },
+  {
+    "slug": "uchicago",
+    "name": "University of Chicago",
+    "scorecard_id": 144050,
+    "us_news_rank": 11,
+    "us_news_rank_year": "2025",
+    "test_policy": "required",
+    "endowment_total": 10400000000,
+    "endowment_per_student": 519000
+  },
+  {
+    "slug": "brown",
+    "name": "Brown University",
+    "scorecard_id": 217156,
+    "us_news_rank": 13,
+    "us_news_rank_year": "2025",
+    "test_policy": "required",
+    "endowment_total": 7200000000,
+    "endowment_per_student": 391000
+  },
+  {
+    "slug": "columbia",
+    "name": "Columbia University",
+    "scorecard_id": 190150,
+    "us_news_rank": 13,
+    "us_news_rank_year": "2025",
+    "test_policy": "required",
+    "endowment_total": 14300000000,
+    "endowment_per_student": 349000
+  },
+  {
+    "slug": "dartmouth",
+    "name": "Dartmouth College",
+    "scorecard_id": 182670,
+    "us_news_rank": 15,
+    "us_news_rank_year": "2025",
+    "test_policy": "required",
+    "endowment_total": 8500000000,
+    "endowment_per_student": 1090000
+  },
+  {
+    "slug": "ucla",
+    "name": "University of California, Los Angeles",
+    "scorecard_id": 110662,
+    "us_news_rank": 15,
+    "us_news_rank_year": "2025",
+    "test_policy": "optional",
+    "endowment_total": 7100000000,
+    "endowment_per_student": 157000
+  },
+  {
+    "slug": "berkeley",
+    "name": "University of California, Berkeley",
+    "scorecard_id": 110635,
+    "us_news_rank": 17,
+    "us_news_rank_year": "2025",
+    "test_policy": "optional",
+    "endowment_total": 6200000000,
+    "endowment_per_student": 149000
+  },
+  {
+    "slug": "notre-dame",
+    "name": "University of Notre Dame",
+    "scorecard_id": 147244,
+    "us_news_rank": 18,
+    "us_news_rank_year": "2025",
+    "test_policy": "required",
+    "endowment_total": 18900000000,
+    "endowment_per_student": 1000000
+  },
+  {
+    "slug": "rice",
+    "name": "Rice University",
+    "scorecard_id": 227757,
+    "us_news_rank": 18,
+    "us_news_rank_year": "2025",
+    "test_policy": "required",
+    "endowment_total": 8200000000,
+    "endowment_per_student": 963000
+  },
+  {
+    "slug": "vanderbilt",
+    "name": "Vanderbilt University",
+    "scorecard_id": 221999,
+    "us_news_rank": 18,
+    "us_news_rank_year": "2025",
+    "test_policy": "required",
+    "endowment_total": 12100000000,
+    "endowment_per_student": 739000
+  },
+  {
+    "slug": "cmu",
+    "name": "Carnegie Mellon University",
+    "scorecard_id": 211440,
+    "us_news_rank": 21,
+    "us_news_rank_year": "2025",
+    "test_policy": "required",
+    "endowment_total": 10300000000,
+    "endowment_per_student": 596000
+  },
+  {
+    "slug": "umich",
+    "name": "University of Michigan",
+    "scorecard_id": 170976,
+    "us_news_rank": 21,
+    "us_news_rank_year": "2025",
+    "test_policy": "optional",
+    "endowment_total": 17800000000,
+    "endowment_per_student": 285000
+  },
+  {
+    "slug": "washu",
+    "name": "Washington University in St. Louis",
+    "scorecard_id": 179867,
+    "us_news_rank": 21,
+    "us_news_rank_year": "2025",
+    "test_policy": "optional",
+    "endowment_total": 11700000000,
+    "endowment_per_student": 800000
+  },
+  {
+    "slug": "emory",
+    "name": "Emory University",
+    "scorecard_id": 139658,
+    "us_news_rank": 24,
+    "us_news_rank_year": "2025",
+    "test_policy": "optional",
+    "endowment_total": 11100000000,
+    "endowment_per_student": 824000
+  },
+  {
+    "slug": "georgetown",
+    "name": "Georgetown University",
+    "scorecard_id": 131496,
+    "us_news_rank": 24,
+    "us_news_rank_year": "2025",
+    "test_policy": "optional",
+    "endowment_total": 2900000000,
+    "endowment_per_student": 82000
+  },
+  {
+    "slug": "uva",
+    "name": "University of Virginia",
+    "scorecard_id": 234076,
+    "us_news_rank": 24,
+    "us_news_rank_year": "2025",
+    "test_policy": "optional",
+    "endowment_total": 14400000000,
+    "endowment_per_student": 628000
+  },
+  {
+    "slug": "unc",
+    "name": "University of North Carolina at Chapel Hill",
+    "scorecard_id": 199120,
+    "us_news_rank": 27,
+    "us_news_rank_year": "2025",
+    "test_policy": "optional",
+    "endowment_total": 5000000000,
+    "endowment_per_student": 152000
+  },
+  {
+    "slug": "usc",
+    "name": "University of Southern California",
+    "scorecard_id": 123961,
+    "us_news_rank": 27,
+    "us_news_rank_year": "2025",
+    "test_policy": "optional",
+    "endowment_total": 8900000000,
+    "endowment_per_student": 207000
+  },
+  {
+    "slug": "nyu",
+    "name": "New York University",
+    "scorecard_id": 193900,
+    "us_news_rank": 30,
+    "us_news_rank_year": "2025",
+    "test_policy": "optional",
+    "endowment_total": 5900000000,
+    "endowment_per_student": 65000
+  },
+  {
+    "slug": "uf",
+    "name": "University of Florida",
+    "scorecard_id": 134130,
+    "us_news_rank": 30,
+    "us_news_rank_year": "2025",
+    "test_policy": "optional",
+    "endowment_total": 3400000000,
+    "endowment_per_student": 63000
+  },
+  {
+    "slug": "tufts",
+    "name": "Tufts University",
+    "scorecard_id": 168148,
+    "us_news_rank": 37,
+    "us_news_rank_year": "2025",
+    "test_policy": "optional",
+    "endowment_total": 2600000000,
+    "endowment_per_student": 193000
+  },
+  {
+    "slug": "ucsb",
+    "name": "University of California, Santa Barbara",
+    "scorecard_id": 110680,
+    "us_news_rank": 39,
+    "us_news_rank_year": "2025",
+    "test_policy": "optional",
+    "endowment_total": 700000000,
+    "endowment_per_student": 20000
+  },
+  {
+    "slug": "wake-forest",
+    "name": "Wake Forest University",
+    "scorecard_id": 200217,
+    "us_news_rank": 46,
+    "us_news_rank_year": "2025",
+    "test_policy": "optional",
+    "endowment_total": 2200000000,
+    "endowment_per_student": 208000
+  }
+]
