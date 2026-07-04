@@ -1,0 +1,183 @@
+{
+  "slug": "washu",
+  "name": "Washington University in St. Louis",
+  "data_year": "2024-25",
+  "city": "St. Louis",
+  "state": "MO",
+  "location": "St. Louis, MO",
+  "school_type": "Private",
+  "website": "washu.edu",
+  "applicants_total": 32754,
+  "applicants_men": 15330,
+  "applicants_women": 17411,
+  "admitted_total": 3951,
+  "admitted_men": 1920,
+  "admitted_women": 2030,
+  "enrolled_total": 1847,
+  "enrolled_men": 862,
+  "enrolled_women": 984,
+  "acceptance_rate": 0.1207,
+  "application_fee": 75,
+  "avg_gpa_weighted": 4.19,
+  "rd_deadline": "1/2",
+  "waitlist_offered": null,
+  "waitlist_accepted": 2658,
+  "waitlist_admitted": 210,
+  "ea_ed_type": "ED",
+  "ea_ed_deadline": "11/3",
+  "ea_ed_notification": "12/12",
+  "ea_apps_received": 4817,
+  "ea_apps_admitted": 1217,
+  "sat_submitted_pct": 0.29,
+  "sat_submitted_count": 538,
+  "act_submitted_pct": 0.28,
+  "act_submitted_count": 517,
+  "sat_composite_25": 1500,
+  "sat_composite_75": 1570,
+  "sat_reading_25": 730,
+  "sat_reading_75": 770,
+  "sat_math_25": 770,
+  "sat_math_75": 800,
+  "act_composite_25": 33,
+  "act_composite_75": 35,
+  "act_math_25": 31,
+  "act_math_75": 35,
+  "act_english_25": 34,
+  "act_english_75": 35,
+  "total_undergrads": 8220,
+  "undergrads_male": 3674,
+  "undergrads_female": 4545,
+  "retention_rate": 0.95,
+  "tuition": 68240,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 1354,
+  "room_and_board": 23338,
+  "books_supplies": 1357,
+  "other_expenses": 2695,
+  "pct_out_of_state": 0.84,
+  "pct_on_campus_housing": 0.69,
+  "applicant_pools": {
+    "ea": {
+      "applied": 4817,
+      "admitted": 1217,
+      "rate": 0.2526
+    },
+    "rd": {
+      "applied": null,
+      "admitted": null,
+      "rate": null
+    },
+    "waitlist": {
+      "offered": null,
+      "accepted_spots": 2658,
+      "enrolled": 210
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 15330,
+      "female": 17411
+    },
+    "accepted": {
+      "male": 1920,
+      "female": 2030
+    },
+    "enrolled": {
+      "male": 862,
+      "female": 984
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 210,
+      "hispanic": 239,
+      "black": 106,
+      "white": 686,
+      "american_indian": 5,
+      "asian": 412,
+      "pacific_islander": 0,
+      "two_or_more": 93,
+      "unknown": 96,
+      "total": 1847
+    },
+    "undergrad": {
+      "nonresident_aliens": 774,
+      "hispanic": 1059,
+      "black": 762,
+      "white": 3258,
+      "american_indian": 8,
+      "asian": 1665,
+      "pacific_islander": 4,
+      "two_or_more": 497,
+      "unknown": 193,
+      "total": 8220
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.84,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 538,
+    "sat_submitted_pct": 0.29,
+    "act_submitted_count": 517,
+    "act_submitted_pct": 0.28
+  },
+  "class_rank": {
+    "top10": 0.86,
+    "top25": 0.98,
+    "top50": 1.0,
+    "bottom50": 0.0,
+    "bottom25": 0.0
+  },
+  "gpa_distribution": {
+    "4_0": 0.65,
+    "3_75_to_3_99": 0.24,
+    "3_50_to_3_74": 0.07,
+    "3_25_to_3_49": 0.04,
+    "3_00_to_3_24": 0.0,
+    "2_50_to_2_99": 0,
+    "2_00_to_2_49": null,
+    "1_00_to_1_99": null,
+    "below_1_0": null
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "very_important",
+    "academic_gpa": "very_important",
+    "test_scores": "very_important",
+    "essay": "very_important",
+    "recommendations": "very_important",
+    "interview": "not_considered",
+    "extracurriculars": "very_important",
+    "talent": "very_important",
+    "character": "very_important",
+    "first_gen": "very_important",
+    "alumni_relation": "important",
+    "geo_residence": "important",
+    "state_residence": "considered",
+    "religious": "considered",
+    "racial_ethnic": null,
+    "volunteer": "very_important",
+    "work_experience": "very_important",
+    "applicant_interest": "important"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 931,
+      "admitted": 145,
+      "enrolled": 53
+    },
+    "female": {
+      "applied": 770,
+      "admitted": 89,
+      "enrolled": 46
+    },
+    "total": {
+      "applied": 1706,
+      "admitted": 239,
+      "enrolled": 99
+    }
+  }
+}

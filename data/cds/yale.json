@@ -1,0 +1,156 @@
+{
+  "slug": "yale",
+  "name": "Yale University",
+  "data_year": "2024-25",
+  "city": "New Haven",
+  "state": "CT",
+  "location": "New Haven, CT",
+  "school_type": "Private",
+  "website": "www.yale.edu",
+
+  "applicants_total": 57517,
+  "applicants_men": 24951,
+  "applicants_women": 32540,
+  "admitted_total": 2227,
+  "admitted_men": 1136,
+  "admitted_women": 1091,
+  "enrolled_total": 1554,
+  "enrolled_men": 782,
+  "enrolled_women": 772,
+  "acceptance_rate": 0.0387,
+  "application_fee": 80,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "1/2",
+
+  "waitlist_offered": 773,
+  "waitlist_accepted": 565,
+  "waitlist_admitted": 23,
+
+  "ea_ed_type": "REA",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+
+  "sat_submitted_pct": 0.61,
+  "sat_submitted_count": 950,
+  "act_submitted_pct": 0.25,
+  "act_submitted_count": 384,
+  "sat_composite_25": 1480,
+  "sat_composite_75": 1560,
+  "sat_reading_25": 730,
+  "sat_reading_75": 780,
+  "sat_math_25": 740,
+  "sat_math_75": 790,
+  "act_composite_25": 33,
+  "act_composite_75": 35,
+  "act_math_25": 31,
+  "act_math_75": 35,
+  "act_english_25": 34,
+  "act_english_75": 36,
+
+  "total_undergrads": 6814,
+  "undergrads_male": 3267,
+  "undergrads_female": 3450,
+  "retention_rate": 0.988,
+
+  "tuition": 69900,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": null,
+  "room_and_board": 20650,
+  "books_supplies": 1000,
+  "other_expenses": 2700,
+
+  "pct_out_of_state": 0.93,
+  "pct_on_campus_housing": 1.0,
+
+  "applicant_pools": {
+    "ea": { "applied": null, "admitted": null, "rate": null },
+    "rd": { "applied": null, "admitted": null, "rate": null },
+    "waitlist": { "offered": 773, "accepted_spots": 565, "enrolled": 23 }
+  },
+
+  "gender_breakdown": {
+    "applied":  { "male": 24951, "female": 32540 },
+    "accepted": { "male": 1136,  "female": 1091  },
+    "enrolled": { "male": 782,   "female": 772   }
+  },
+
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 169,
+      "hispanic":           289,
+      "black":              149,
+      "white":              463,
+      "american_indian":    7,
+      "asian":              320,
+      "pacific_islander":   2,
+      "two_or_more":        100,
+      "unknown":            55,
+      "total":              1554
+    },
+    "undergrad": {
+      "nonresident_aliens": 754,
+      "hispanic":           1121,
+      "black":              628,
+      "white":              2110,
+      "american_indian":    27,
+      "asian":              1483,
+      "pacific_islander":   11,
+      "two_or_more":        479,
+      "unknown":            145,
+      "total":              6758
+    }
+  },
+
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.93,
+    "international_pct": 0.1087
+  },
+
+  "sat_act_breakdown": {
+    "sat_submitted_count": 950,
+    "sat_submitted_pct":   0.61,
+    "act_submitted_count": 384,
+    "act_submitted_pct":   0.25
+  },
+
+  "class_rank": {
+    "top10":    0.96,
+    "top25":    0.99,
+    "top50":    1.0,
+    "bottom50": 0.0,
+    "bottom25": 0.0
+  },
+
+  "gpa_distribution": null,
+
+  "admission_factors": {
+    "rigor":            "very_important",
+    "class_rank":       "very_important",
+    "academic_gpa":     "very_important",
+    "test_scores":      "considered",
+    "essay":            "very_important",
+    "recommendations":  "very_important",
+    "interview":        "considered",
+    "extracurriculars": "very_important",
+    "talent":           "very_important",
+    "character":        "very_important",
+    "first_gen":        "considered",
+    "alumni_relation":  "considered",
+    "geo_residence":    "considered",
+    "state_residence":  "considered",
+    "religious":        "not_considered",
+    "racial_ethnic":    null,
+    "volunteer":        "considered",
+    "work_experience":  "considered",
+    "applicant_interest": "not_considered"
+  },
+
+  "transfer_stats": {
+    "male":   { "applied": 1061, "admitted": 15, "enrolled": 11 },
+    "female": { "applied": 988,  "admitted": 13, "enrolled": 10 },
+    "total":  { "applied": 2055, "admitted": 30, "enrolled": 23 }
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "slug": "wake-forest",
+  "name": "Wake Forest University",
+  "data_year": "2024-25",
+  "city": "Winston-Salem",
+  "state": "NC",
+  "location": "Winston-Salem, NC",
+  "school_type": "Private",
+  "website": "wfu.edu",
+
+  "applicants_total": 18727,
+  "applicants_men": 8224,
+  "applicants_women": 10498,
+  "admitted_total": 4058,
+  "admitted_men": 1919,
+  "admitted_women": 2137,
+  "enrolled_total": 1466,
+  "enrolled_men": 672,
+  "enrolled_women": 794,
+  "acceptance_rate": 0.2167,
+  "application_fee": 85,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "1/1",
+
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+
+  "ea_ed_type": "ED",
+  "ea_ed_deadline": "11/15",
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+
+  "sat_submitted_pct": 0.222,
+  "sat_submitted_count": 325,
+  "act_submitted_pct": 0.257,
+  "act_submitted_count": 376,
+  "sat_composite_25": 1420,
+  "sat_composite_75": 1500,
+  "sat_reading_25": 700,
+  "sat_reading_75": 750,
+  "sat_math_25": 710,
+  "sat_math_75": 770,
+  "act_composite_25": 32,
+  "act_composite_75": 34,
+  "act_math_25": 29,
+  "act_math_75": 34,
+  "act_english_25": 34,
+  "act_english_75": 35,
+
+  "total_undergrads": 5490,
+  "undergrads_male": 2461,
+  "undergrads_female": 3027,
+  "retention_rate": 0.926,
+
+  "tuition": 69130,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 1202,
+  "room_and_board": 22104,
+  "books_supplies": 1718,
+  "other_expenses": 1880,
+
+  "pct_out_of_state": 0.873,
+  "pct_on_campus_housing": 0.75,
+
+  "applicant_pools": {
+    "ea": { "applied": null, "admitted": null, "rate": null },
+    "rd": { "applied": null, "admitted": null, "rate": null },
+    "waitlist": { "offered": null, "accepted_spots": null, "enrolled": null }
+  },
+
+  "gender_breakdown": {
+    "applied":  { "male": 8224, "female": 10498 },
+    "accepted": { "male": 1919, "female": 2137  },
+    "enrolled": { "male": 672,  "female": 794   }
+  },
+
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 43,
+      "hispanic":           135,
+      "black":              66,
+      "white":              1020,
+      "american_indian":    2,
+      "asian":              52,
+      "pacific_islander":   0,
+      "two_or_more":        57,
+      "unknown":            89,
+      "total":              1464
+    },
+    "undergrad": {
+      "nonresident_aliens": 317,
+      "hispanic":           531,
+      "black":              353,
+      "white":              3572,
+      "american_indian":    4,
+      "asian":              289,
+      "pacific_islander":   8,
+      "two_or_more":        253,
+      "unknown":            158,
+      "total":              5485
+    }
+  },
+
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.873,
+    "international_pct": null
+  },
+
+  "sat_act_breakdown": {
+    "sat_submitted_count": 325,
+    "sat_submitted_pct":   0.222,
+    "act_submitted_count": 376,
+    "act_submitted_pct":   0.257
+  },
+
+  "class_rank": {
+    "top10":    0.642,
+    "top25":    0.918,
+    "top50":    0.985,
+    "bottom50": 0.015,
+    "bottom25": null
+  },
+
+  "gpa_distribution": null,
+
+  "admission_factors": {
+    "rigor":              "very_important",
+    "class_rank":         "very_important",
+    "academic_gpa":       "very_important",
+    "test_scores":        "considered",
+    "essay":              "very_important",
+    "recommendations":    "important",
+    "interview":          "important",
+    "extracurriculars":   "important",
+    "talent":             "important",
+    "character":          "very_important",
+    "first_gen":          "considered",
+    "alumni_relation":    "considered",
+    "geo_residence":      "considered",
+    "state_residence":    "considered",
+    "religious":          "considered",
+    "racial_ethnic":      null,
+    "volunteer":          "considered",
+    "work_experience":    "considered",
+    "applicant_interest": "considered"
+  },
+
+  "transfer_stats": {
+    "male":   { "applied": 220, "admitted": 75, "enrolled": 29 },
+    "female": { "applied": 201, "admitted": 76, "enrolled": 20 },
+    "total":  { "applied": 421, "admitted": 151, "enrolled": 49 }
+  }
+}

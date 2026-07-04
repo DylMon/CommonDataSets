@@ -1,0 +1,156 @@
+{
+  "slug": "tufts",
+  "name": "Tufts University",
+  "data_year": "2024-25",
+  "city": "Medford",
+  "state": "MA",
+  "location": "Medford, MA",
+  "school_type": "Private",
+  "website": "tufts.edu",
+
+  "applicants_total": 34330,
+  "applicants_men": 14314,
+  "applicants_women": 18839,
+  "admitted_total": 3957,
+  "admitted_men": 1633,
+  "admitted_women": 2189,
+  "enrolled_total": 1801,
+  "enrolled_men": 745,
+  "enrolled_women": 1013,
+  "acceptance_rate": 0.1153,
+  "application_fee": null,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "1/6",
+
+  "waitlist_offered": 2800,
+  "waitlist_accepted": 991,
+  "waitlist_admitted": 354,
+
+  "ea_ed_type": "ED",
+  "ea_ed_deadline": "11/4",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+
+  "sat_submitted_pct": 0.38,
+  "sat_submitted_count": 687,
+  "act_submitted_pct": 0.18,
+  "act_submitted_count": 318,
+  "sat_composite_25": 1480,
+  "sat_composite_75": 1540,
+  "sat_reading_25": 720,
+  "sat_reading_75": 770,
+  "sat_math_25": 750,
+  "sat_math_75": 790,
+  "act_composite_25": 33,
+  "act_composite_75": 35,
+  "act_math_25": null,
+  "act_math_75": null,
+  "act_english_25": null,
+  "act_english_75": null,
+
+  "total_undergrads": 7126,
+  "undergrads_male": 3032,
+  "undergrads_female": 3940,
+  "retention_rate": 0.9550,
+
+  "tuition": null,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": null,
+  "room_and_board": null,
+  "books_supplies": null,
+  "other_expenses": null,
+
+  "pct_out_of_state": 0.76,
+  "pct_on_campus_housing": 0.59,
+
+  "applicant_pools": {
+    "ea": { "applied": null, "admitted": null, "rate": null },
+    "rd": { "applied": null, "admitted": null, "rate": null },
+    "waitlist": { "offered": 2800, "accepted_spots": 991, "enrolled": 354 }
+  },
+
+  "gender_breakdown": {
+    "applied":  { "male": 14314, "female": 18839 },
+    "accepted": { "male": 1633,  "female": 2189  },
+    "enrolled": { "male": 745,   "female": 1013  }
+  },
+
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 238,
+      "hispanic":           181,
+      "black":              73,
+      "white":              751,
+      "american_indian":    0,
+      "asian":              312,
+      "pacific_islander":   0,
+      "two_or_more":        121,
+      "unknown":            123,
+      "total":              1799
+    },
+    "undergrad": {
+      "nonresident_aliens": 890,
+      "hispanic":           724,
+      "black":              438,
+      "white":              2890,
+      "american_indian":    3,
+      "asian":              1192,
+      "pacific_islander":   8,
+      "two_or_more":        553,
+      "unknown":            428,
+      "total":              7126
+    }
+  },
+
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.76,
+    "international_pct": 0.125
+  },
+
+  "sat_act_breakdown": {
+    "sat_submitted_count": 687,
+    "sat_submitted_pct":   0.38,
+    "act_submitted_count": 318,
+    "act_submitted_pct":   0.18
+  },
+
+  "class_rank": {
+    "top10":    0.79,
+    "top25":    0.93,
+    "top50":    0.99,
+    "bottom50": 0.01,
+    "bottom25": 0.0
+  },
+
+  "gpa_distribution": null,
+
+  "admission_factors": {
+    "rigor":              "very_important",
+    "class_rank":         "very_important",
+    "academic_gpa":       "very_important",
+    "test_scores":        "important",
+    "essay":              "very_important",
+    "recommendations":    "very_important",
+    "interview":          "important",
+    "extracurriculars":   "very_important",
+    "talent":             "very_important",
+    "character":          "very_important",
+    "first_gen":          "important",
+    "alumni_relation":    "important",
+    "geo_residence":      "important",
+    "state_residence":    "considered",
+    "religious":          "considered",
+    "racial_ethnic":      null,
+    "volunteer":          "important",
+    "work_experience":    "important",
+    "applicant_interest": "important"
+  },
+
+  "transfer_stats": {
+    "male":   { "applied": 708,  "admitted": 135, "enrolled": 53  },
+    "female": { "applied": 820,  "admitted": 192, "enrolled": 59  },
+    "total":  { "applied": 1610, "admitted": 342, "enrolled": 118 }
+  }
+}

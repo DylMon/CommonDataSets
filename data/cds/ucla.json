@@ -1,0 +1,177 @@
+{
+  "slug": "ucla",
+  "name": "University of California, Los Angeles",
+  "data_year": "2024-25",
+  "city": "Los Angeles",
+  "state": "CA",
+  "location": "Los Angeles, CA",
+  "school_type": "Public",
+  "website": "ucla.edu",
+  "applicants_total": 145086,
+  "applicants_men": 65079,
+  "applicants_women": 73508,
+  "admitted_total": 13659,
+  "admitted_men": 5546,
+  "admitted_women": 7274,
+  "enrolled_total": 6553,
+  "enrolled_men": 2547,
+  "enrolled_women": 3652,
+  "acceptance_rate": 0.0941,
+  "application_fee": 70,
+  "avg_gpa_weighted": 3.94,
+  "rd_deadline": "11/30",
+  "waitlist_offered": 20563,
+  "waitlist_accepted": 13612,
+  "waitlist_admitted": 1514,
+  "ea_ed_type": null,
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": null,
+  "sat_submitted_count": null,
+  "act_submitted_pct": null,
+  "act_submitted_count": null,
+  "sat_composite_25": null,
+  "sat_composite_75": null,
+  "sat_reading_25": null,
+  "sat_reading_75": null,
+  "sat_math_25": null,
+  "sat_math_75": null,
+  "act_composite_25": null,
+  "act_composite_75": null,
+  "act_math_25": null,
+  "act_math_75": null,
+  "act_english_25": null,
+  "act_english_75": null,
+  "total_undergrads": 33534,
+  "undergrads_male": 13479,
+  "undergrads_female": 19728,
+  "retention_rate": 0.97,
+  "tuition": null,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": null,
+  "room_and_board": null,
+  "books_supplies": null,
+  "other_expenses": null,
+  "pct_out_of_state": 0.15,
+  "pct_on_campus_housing": 0.418,
+  "applicant_pools": {
+    "ea": {
+      "applied": null,
+      "admitted": null,
+      "rate": null
+    },
+    "rd": {
+      "applied": null,
+      "admitted": null,
+      "rate": null
+    },
+    "waitlist": {
+      "offered": 20563,
+      "accepted_spots": 13612,
+      "enrolled": 1514
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 65079,
+      "female": 73508
+    },
+    "accepted": {
+      "male": 5546,
+      "female": 7274
+    },
+    "enrolled": {
+      "male": 2547,
+      "female": 3652
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 549,
+      "hispanic": 1601,
+      "black": 202,
+      "white": 1291,
+      "american_indian": 8,
+      "asian": 2005,
+      "pacific_islander": 6,
+      "two_or_more": 576,
+      "unknown": 313,
+      "total": 6551
+    },
+    "undergrad": {
+      "nonresident_aliens": 2627,
+      "hispanic": 8299,
+      "black": 1071,
+      "white": 7610,
+      "american_indian": 41,
+      "asian": 10014,
+      "pacific_islander": 53,
+      "two_or_more": 2671,
+      "unknown": 1148,
+      "total": 33534
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.15,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": null,
+    "sat_submitted_pct": null,
+    "act_submitted_count": null,
+    "act_submitted_pct": null
+  },
+  "class_rank": null,
+  "gpa_distribution": {
+    "4_0": 0.588,
+    "3_75_to_3_99": 0.346,
+    "3_50_to_3_74": 0.049,
+    "3_25_to_3_49": 0.01,
+    "3_00_to_3_24": 0.004,
+    "2_50_to_2_99": 0.003,
+    "2_00_to_2_49": 0.0,
+    "1_00_to_1_99": null,
+    "below_1_0": null
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "not_considered",
+    "essay": "very_important",
+    "recommendations": "not_considered",
+    "interview": "not_considered",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "important",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "important",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 14411,
+      "admitted": 3015,
+      "enrolled": 1727
+    },
+    "female": {
+      "applied": 12769,
+      "admitted": 3333,
+      "enrolled": 2034
+    },
+    "total": {
+      "applied": 28487,
+      "admitted": 6665,
+      "enrolled": 3933
+    }
+  }
+}

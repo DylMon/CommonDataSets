@@ -1,0 +1,156 @@
+{
+  "slug": "caltech",
+  "name": "California Institute of Technology",
+  "data_year": "2024-25",
+  "city": "Pasadena",
+  "state": "CA",
+  "location": "Pasadena, CA",
+  "school_type": "Private",
+  "website": "caltech.edu",
+
+  "applicants_total": 13856,
+  "applicants_men": 9401,
+  "applicants_women": 4446,
+  "admitted_total": 356,
+  "admitted_men": 166,
+  "admitted_women": 190,
+  "enrolled_total": 218,
+  "enrolled_men": 107,
+  "enrolled_women": 111,
+  "acceptance_rate": 0.0257,
+  "application_fee": 75,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "1/3",
+
+  "waitlist_offered": 206,
+  "waitlist_accepted": 171,
+  "waitlist_admitted": 41,
+
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+
+  "sat_submitted_pct": null,
+  "sat_submitted_count": null,
+  "act_submitted_pct": null,
+  "act_submitted_count": null,
+  "sat_composite_25": null,
+  "sat_composite_75": null,
+  "sat_reading_25": null,
+  "sat_reading_75": null,
+  "sat_math_25": null,
+  "sat_math_75": null,
+  "act_composite_25": null,
+  "act_composite_75": null,
+  "act_math_25": null,
+  "act_math_75": null,
+  "act_english_25": null,
+  "act_english_75": null,
+
+  "total_undergrads": 987,
+  "undergrads_male": 541,
+  "undergrads_female": 446,
+  "retention_rate": 0.974,
+
+  "tuition": 65622,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 3086,
+  "room_and_board": 20991,
+  "books_supplies": 1428,
+  "other_expenses": 3285,
+
+  "pct_out_of_state": 0.64,
+  "pct_on_campus_housing": 0.90,
+
+  "applicant_pools": {
+    "ea": { "applied": null, "admitted": null, "rate": null },
+    "rd": { "applied": null, "admitted": null, "rate": null },
+    "waitlist": { "offered": 206, "accepted_spots": 171, "enrolled": 41 }
+  },
+
+  "gender_breakdown": {
+    "applied":  { "male": 9401, "female": 4446 },
+    "accepted": { "male": 166,  "female": 190  },
+    "enrolled": { "male": 107,  "female": 111  }
+  },
+
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 33,
+      "hispanic":           22,
+      "black":              12,
+      "white":              43,
+      "american_indian":    0,
+      "asian":              90,
+      "pacific_islander":   1,
+      "two_or_more":        17,
+      "unknown":            0,
+      "total":              218
+    },
+    "undergrad": {
+      "nonresident_aliens": 139,
+      "hispanic":           172,
+      "black":              46,
+      "white":              185,
+      "american_indian":    1,
+      "asian":              354,
+      "pacific_islander":   1,
+      "two_or_more":        88,
+      "unknown":            1,
+      "total":              987
+    }
+  },
+
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.64,
+    "international_pct": null
+  },
+
+  "sat_act_breakdown": {
+    "sat_submitted_count": null,
+    "sat_submitted_pct":   null,
+    "act_submitted_count": null,
+    "act_submitted_pct":   null
+  },
+
+  "class_rank": {
+    "top10":    0.864,
+    "top25":    0.977,
+    "top50":    1.0,
+    "bottom50": 0.0,
+    "bottom25": null
+  },
+
+  "gpa_distribution": null,
+
+  "admission_factors": {
+    "rigor":              "very_important",
+    "class_rank":         "important",
+    "academic_gpa":       "important",
+    "test_scores":        "very_important",
+    "essay":              "very_important",
+    "recommendations":    "very_important",
+    "interview":          "not_considered",
+    "extracurriculars":   "important",
+    "talent":             "considered",
+    "character":          "very_important",
+    "first_gen":          "considered",
+    "alumni_relation":    "not_considered",
+    "geo_residence":      "considered",
+    "state_residence":    "not_considered",
+    "religious":          "not_considered",
+    "racial_ethnic":      null,
+    "volunteer":          "considered",
+    "work_experience":    "considered",
+    "applicant_interest": "not_considered"
+  },
+
+  "transfer_stats": {
+    "male":   { "applied": 138, "admitted": 7,  "enrolled": 6  },
+    "female": { "applied": 40,  "admitted": 4,  "enrolled": 4  },
+    "total":  { "applied": 178, "admitted": 11, "enrolled": 10 }
+  }
+}

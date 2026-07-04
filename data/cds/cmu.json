@@ -1,0 +1,183 @@
+{
+  "slug": "cmu",
+  "name": "Carnegie Mellon University",
+  "data_year": "2024-25",
+  "city": "Pittsburgh",
+  "state": "PA",
+  "location": "Pittsburgh, PA",
+  "school_type": "Private",
+  "website": "cmu.edu",
+  "applicants_total": 33941,
+  "applicants_men": 20143,
+  "applicants_women": 12735,
+  "admitted_total": 3959,
+  "admitted_men": 1973,
+  "admitted_women": 1870,
+  "enrolled_total": 1808,
+  "enrolled_men": 973,
+  "enrolled_women": 780,
+  "acceptance_rate": 0.1166,
+  "application_fee": 75,
+  "avg_gpa_weighted": 3.89,
+  "rd_deadline": "1/1",
+  "waitlist_offered": 16484,
+  "waitlist_accepted": 10062,
+  "waitlist_admitted": 32,
+  "ea_ed_type": "ED",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": 4423,
+  "ea_apps_admitted": 612,
+  "sat_submitted_pct": 0.526,
+  "sat_submitted_count": 951,
+  "act_submitted_pct": 0.224,
+  "act_submitted_count": 405,
+  "sat_composite_25": 1510,
+  "sat_composite_75": 1560,
+  "sat_reading_25": 730,
+  "sat_reading_75": 770,
+  "sat_math_25": 770,
+  "sat_math_75": 800,
+  "act_composite_25": 34,
+  "act_composite_75": 35,
+  "act_math_25": 34,
+  "act_math_75": 36,
+  "act_english_25": 33,
+  "act_english_75": 36,
+  "total_undergrads": 7824,
+  "undergrads_male": null,
+  "undergrads_female": null,
+  "retention_rate": 0.98,
+  "tuition": 67020,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 1756,
+  "room_and_board": 18894,
+  "books_supplies": 1000,
+  "other_expenses": 1400,
+  "pct_out_of_state": 0.884,
+  "pct_on_campus_housing": 0.999,
+  "applicant_pools": {
+    "ea": {
+      "applied": 4423,
+      "admitted": 612,
+      "rate": 0.1384
+    },
+    "rd": {
+      "applied": null,
+      "admitted": null,
+      "rate": null
+    },
+    "waitlist": {
+      "offered": 16484,
+      "accepted_spots": 10062,
+      "enrolled": 32
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 20143,
+      "female": 12735
+    },
+    "accepted": {
+      "male": 1973,
+      "female": 1870
+    },
+    "enrolled": {
+      "male": 973,
+      "female": 780
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 362,
+      "hispanic": 115,
+      "black": 39,
+      "white": 379,
+      "american_indian": 0,
+      "asian": 711,
+      "pacific_islander": 0,
+      "two_or_more": 75,
+      "unknown": 127,
+      "total": 1808
+    },
+    "undergrad": {
+      "nonresident_aliens": 1823,
+      "hispanic": 735,
+      "black": 298,
+      "white": 1607,
+      "american_indian": 1,
+      "asian": 2530,
+      "pacific_islander": 2,
+      "two_or_more": 394,
+      "unknown": 434,
+      "total": 7824
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.884,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 951,
+    "sat_submitted_pct": 0.526,
+    "act_submitted_count": 405,
+    "act_submitted_pct": 0.224
+  },
+  "class_rank": {
+    "top10": 0.968,
+    "top25": 0.998,
+    "top50": 0.998,
+    "bottom50": 0.002,
+    "bottom25": 0.001
+  },
+  "gpa_distribution": {
+    "4_0": 0.469,
+    "3_75_to_3_99": 0.383,
+    "3_50_to_3_74": 0.113,
+    "3_25_to_3_49": 0.026,
+    "3_00_to_3_24": 0.003,
+    "2_50_to_2_99": 0.004,
+    "2_00_to_2_49": 0.0006,
+    "1_00_to_1_99": 0.0006,
+    "below_1_0": null
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "very_important",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "important",
+    "interview": "not_considered",
+    "extracurriculars": "very_important",
+    "talent": "important",
+    "character": "very_important",
+    "first_gen": "important",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "very_important",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1084,
+      "admitted": 52,
+      "enrolled": 21
+    },
+    "female": {
+      "applied": 540,
+      "admitted": 41,
+      "enrolled": 15
+    },
+    "total": {
+      "applied": 1688,
+      "admitted": 94,
+      "enrolled": 37
+    }
+  }
+}

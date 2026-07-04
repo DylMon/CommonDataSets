@@ -1,0 +1,158 @@
+{
+  "slug": "uva",
+  "name": "University of Virginia",
+  "data_year": "2024-25",
+  "city": "Charlottesville",
+  "state": "VA",
+  "location": "Charlottesville, VA",
+  "school_type": "Public",
+  "website": "virginia.edu",
+  "applicants_total": 58951,
+  "applicants_men": 27252,
+  "applicants_women": 31685,
+  "admitted_total": 9909,
+  "admitted_men": 4382,
+  "admitted_women": 5527,
+  "enrolled_total": 3961,
+  "enrolled_men": null,
+  "enrolled_women": null,
+  "acceptance_rate": 0.1681,
+  "application_fee": 75,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "1/1",
+  "waitlist_offered": 10470,
+  "waitlist_accepted": 6759,
+  "waitlist_admitted": 242,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "10/15",
+  "ea_ed_notification": "1/31",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.456,
+  "sat_submitted_count": 1805,
+  "act_submitted_pct": 0.138,
+  "act_submitted_count": 547,
+  "sat_composite_25": 1410,
+  "sat_composite_75": 1520,
+  "sat_reading_25": 700,
+  "sat_reading_75": 760,
+  "sat_math_25": 710,
+  "sat_math_75": 780,
+  "act_composite_25": 32,
+  "act_composite_75": 35,
+  "act_math_25": 30,
+  "act_math_75": 35,
+  "act_english_25": 34,
+  "act_english_75": 35,
+  "total_undergrads": 17901,
+  "undergrads_male": null,
+  "undergrads_female": null,
+  "retention_rate": 0.979,
+  "tuition": null,
+  "tuition_in_state": 18613,
+  "tuition_out_of_state": 56994,
+  "required_fees": 3793,
+  "room_and_board": 15300,
+  "books_supplies": 1520,
+  "other_expenses": 3530,
+  "pct_out_of_state": 0.31,
+  "pct_on_campus_housing": null,
+  "applicant_pools": {
+    "ea": {
+      "applied": null,
+      "admitted": null,
+      "rate": null
+    },
+    "rd": {
+      "applied": null,
+      "admitted": null,
+      "rate": null
+    },
+    "waitlist": {
+      "offered": 10470,
+      "accepted_spots": 6759,
+      "enrolled": 242
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 27252,
+      "female": 31685
+    },
+    "accepted": {
+      "male": 4382,
+      "female": 5527
+    },
+    "enrolled": {
+      "male": null,
+      "female": null
+    }
+  },
+  "demographics_detail": null,
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.31,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 1805,
+    "sat_submitted_pct": 0.456,
+    "act_submitted_count": 547,
+    "act_submitted_pct": 0.138
+  },
+  "class_rank": {
+    "top10": 0.84,
+    "top25": 0.97,
+    "top50": 0.99,
+    "bottom50": 0.01,
+    "bottom25": null
+  },
+  "gpa_distribution": {
+    "4_0": 0.905,
+    "3_75_to_3_99": 0.068,
+    "3_50_to_3_74": 0.021,
+    "3_25_to_3_49": 0.003,
+    "3_00_to_3_24": 0.001,
+    "2_50_to_2_99": 0.002,
+    "2_00_to_2_49": null,
+    "1_00_to_1_99": null,
+    "below_1_0": null
+  },
+  "admission_factors": {
+    "rigor": "important",
+    "class_rank": "very_important",
+    "academic_gpa": "very_important",
+    "test_scores": "important",
+    "essay": "very_important",
+    "recommendations": "very_important",
+    "interview": "important",
+    "extracurriculars": "important",
+    "talent": "very_important",
+    "character": "important",
+    "first_gen": "very_important",
+    "alumni_relation": "important",
+    "geo_residence": "very_important",
+    "state_residence": "very_important",
+    "religious": "important",
+    "racial_ethnic": null,
+    "volunteer": "very_important",
+    "work_experience": "very_important",
+    "applicant_interest": "important"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 2360,
+      "admitted": 696,
+      "enrolled": 450
+    },
+    "female": {
+      "applied": 1884,
+      "admitted": 661,
+      "enrolled": 401
+    },
+    "total": {
+      "applied": 4245,
+      "admitted": 1357,
+      "enrolled": 851
+    }
+  }
+}

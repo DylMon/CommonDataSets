@@ -1,0 +1,161 @@
+{
+  "slug": "uf",
+  "name": "University of Florida",
+  "data_year": "2024-25",
+  "city": "Gainesville",
+  "state": "FL",
+  "location": "Gainesville, FL",
+  "school_type": "Public",
+  "website": "ufl.edu",
+  "applicants_total": 73557,
+  "applicants_men": null,
+  "applicants_women": null,
+  "admitted_total": 17804,
+  "admitted_men": null,
+  "admitted_women": null,
+  "enrolled_total": 7513,
+  "enrolled_men": null,
+  "enrolled_women": null,
+  "acceptance_rate": 0.242,
+  "application_fee": 30,
+  "avg_gpa_weighted": 3.92,
+  "rd_deadline": "3/1",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "1/23",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.8,
+  "sat_submitted_count": 5908,
+  "act_submitted_pct": 0.4,
+  "act_submitted_count": 2952,
+  "sat_composite_25": 1330,
+  "sat_composite_75": 1470,
+  "sat_reading_25": 660,
+  "sat_reading_75": 730,
+  "sat_math_25": 660,
+  "sat_math_75": 750,
+  "act_composite_25": 29,
+  "act_composite_75": 33,
+  "act_math_25": 26,
+  "act_math_75": 32,
+  "act_english_25": 28,
+  "act_english_75": 35,
+  "total_undergrads": 36573,
+  "undergrads_male": null,
+  "undergrads_female": null,
+  "retention_rate": 0.98,
+  "tuition": null,
+  "tuition_in_state": 4477,
+  "tuition_out_of_state": 27815,
+  "required_fees": 1904,
+  "room_and_board": 12615,
+  "books_supplies": 826,
+  "other_expenses": 4359,
+  "pct_out_of_state": 0.1982,
+  "pct_on_campus_housing": 0.7476,
+  "applicant_pools": {
+    "ea": {
+      "applied": null,
+      "admitted": null,
+      "rate": null
+    },
+    "rd": {
+      "applied": null,
+      "admitted": null,
+      "rate": null
+    },
+    "waitlist": {
+      "offered": null,
+      "accepted_spots": null,
+      "enrolled": null
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": null,
+      "female": null
+    },
+    "accepted": {
+      "male": null,
+      "female": null
+    },
+    "enrolled": {
+      "male": null,
+      "female": null
+    }
+  },
+  "demographics_detail": {
+    "first_year": null,
+    "undergrad": null
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.1982,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 5908,
+    "sat_submitted_pct": 0.8,
+    "act_submitted_count": 2952,
+    "act_submitted_pct": 0.4
+  },
+  "class_rank": {
+    "top10": 0.84,
+    "top25": 0.98,
+    "top50": 1.0,
+    "bottom50": 0.0,
+    "bottom25": null
+  },
+  "gpa_distribution": {
+    "4_0": 0.53,
+    "3_75_to_3_99": 0.41,
+    "3_50_to_3_74": 0.06,
+    "3_25_to_3_49": null,
+    "3_00_to_3_24": null,
+    "2_50_to_2_99": null,
+    "2_00_to_2_49": null,
+    "1_00_to_1_99": null,
+    "below_1_0": null
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "important",
+    "essay": "important",
+    "recommendations": "considered",
+    "interview": "considered",
+    "extracurriculars": "very_important",
+    "talent": "very_important",
+    "character": "important",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "important",
+    "state_residence": "important",
+    "religious": "considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "important",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 2905,
+      "admitted": 1264,
+      "enrolled": 1033
+    },
+    "female": {
+      "applied": 2965,
+      "admitted": 1369,
+      "enrolled": 1091
+    },
+    "total": {
+      "applied": 5870,
+      "admitted": 2633,
+      "enrolled": 2124
+    }
+  }
+}

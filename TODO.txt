@@ -1,4 +1,27 @@
 -- TO-DO --
+-- GENERAL -- 
+
+1. Implement comparison tool / page 
+    - two windows to search for available schools
+    - see difference in stats 
+
+2. About page 
+    - good for SEO 
+    - mission statement
+    - "Ads keep us free" LMAO 
+    - "Your donation would help us stay free" LMAOOOO 
+
+3. Footer 
+    - should have an email contact for any nerds with feedback or questions 
+    - data sources 
+    - copyright info (?) 
+    - redundant page navigation (CUZ WHY NOT) 
+
+4. Common Dataset Crawler 
+    - python script and llm assisted data generator that prepares data for an update to supabase 
+    - need to clean out polluted data from current data 
+    - actually need to steer away from College Scorecard API entirely. otherwise our name is misleading. 
+
 
 --HOME PAGE--
 

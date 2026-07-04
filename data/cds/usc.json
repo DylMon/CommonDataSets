@@ -1,0 +1,158 @@
+{
+  "slug": "usc",
+  "name": "University of Southern California",
+  "data_year": "2024-25",
+  "city": "Los Angeles",
+  "state": "CA",
+  "location": "Los Angeles, CA",
+  "school_type": "Private",
+  "website": "usc.edu",
+  "applicants_total": 82027,
+  "applicants_men": null,
+  "applicants_women": null,
+  "admitted_total": 8050,
+  "admitted_men": null,
+  "admitted_women": null,
+  "enrolled_total": 3489,
+  "enrolled_men": null,
+  "enrolled_women": null,
+  "acceptance_rate": 0.0981,
+  "application_fee": 85,
+  "avg_gpa_weighted": 3.8,
+  "rd_deadline": "1/15",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "ED",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": 4461,
+  "ea_apps_admitted": 1245,
+  "sat_submitted_pct": 0.3,
+  "sat_submitted_count": 1044,
+  "act_submitted_pct": 0.12,
+  "act_submitted_count": 426,
+  "sat_composite_25": null,
+  "sat_composite_75": null,
+  "sat_reading_25": 710,
+  "sat_reading_75": 760,
+  "sat_math_25": 740,
+  "sat_math_75": 790,
+  "act_composite_25": 32,
+  "act_composite_75": 35,
+  "act_math_25": 29,
+  "act_math_75": 35,
+  "act_english_25": 33,
+  "act_english_75": 35,
+  "total_undergrads": 20630,
+  "undergrads_male": null,
+  "undergrads_female": null,
+  "retention_rate": 0.956,
+  "tuition": 66640,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 2047,
+  "room_and_board": 19200,
+  "books_supplies": 1200,
+  "other_expenses": 1820,
+  "pct_out_of_state": 0.46,
+  "pct_on_campus_housing": null,
+  "applicant_pools": {
+    "ea": {
+      "applied": 4461,
+      "admitted": 1245,
+      "rate": 0.279
+    },
+    "rd": {
+      "applied": null,
+      "admitted": null,
+      "rate": null
+    },
+    "waitlist": {
+      "offered": null,
+      "accepted_spots": null,
+      "enrolled": null
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": null,
+      "female": null
+    },
+    "accepted": {
+      "male": null,
+      "female": null
+    },
+    "enrolled": {
+      "male": null,
+      "female": null
+    }
+  },
+  "demographics_detail": null,
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.46,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 1044,
+    "sat_submitted_pct": 0.3,
+    "act_submitted_count": 426,
+    "act_submitted_pct": 0.12
+  },
+  "class_rank": {
+    "top10": 0.73,
+    "top25": 0.94,
+    "top50": 0.99,
+    "bottom50": 0.01,
+    "bottom25": 0.0
+  },
+  "gpa_distribution": {
+    "4_0": 0.271,
+    "3_75_to_3_99": 0.51,
+    "3_50_to_3_74": 0.153,
+    "3_25_to_3_49": 0.04,
+    "3_00_to_3_24": 0.016,
+    "2_50_to_2_99": 0.007,
+    "2_00_to_2_49": 0.003,
+    "1_00_to_1_99": null,
+    "below_1_0": null
+  },
+  "admission_factors": {
+    "rigor": "important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "very_important",
+    "essay": "very_important",
+    "recommendations": "very_important",
+    "interview": "considered",
+    "extracurriculars": "very_important",
+    "talent": "very_important",
+    "character": "very_important",
+    "first_gen": "important",
+    "alumni_relation": "important",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "important",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 5608,
+      "admitted": 1143,
+      "enrolled": 667
+    },
+    "female": {
+      "applied": 5398,
+      "admitted": 1238,
+      "enrolled": 672
+    },
+    "total": {
+      "applied": 11019,
+      "admitted": 2381,
+      "enrolled": 1339
+    }
+  }
+}

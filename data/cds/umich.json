@@ -1,0 +1,152 @@
+{
+  "slug": "umich",
+  "name": "University of Michigan",
+  "data_year": "2024-25",
+  "city": "Ann Arbor",
+  "state": "MI",
+  "location": "Ann Arbor, MI",
+  "school_type": "Public",
+  "website": "umich.edu",
+  "applicants_total": 98310,
+  "applicants_men": 48101,
+  "applicants_women": 50209,
+  "admitted_total": 15373,
+  "admitted_men": 6684,
+  "admitted_women": 8689,
+  "enrolled_total": 7278,
+  "enrolled_men": 3199,
+  "enrolled_women": 4079,
+  "acceptance_rate": 0.1564,
+  "application_fee": 75,
+  "avg_gpa_weighted": 3.9,
+  "rd_deadline": "2/1",
+  "waitlist_offered": 24804,
+  "waitlist_accepted": 18793,
+  "waitlist_admitted": 973,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "1/31",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.51,
+  "sat_submitted_count": 3697,
+  "act_submitted_pct": 0.18,
+  "act_submitted_count": 1274,
+  "sat_composite_25": 1360,
+  "sat_composite_75": 1530,
+  "sat_reading_25": 680,
+  "sat_reading_75": 750,
+  "sat_math_25": 680,
+  "sat_math_75": 780,
+  "act_composite_25": 31,
+  "act_composite_75": 34,
+  "act_math_25": 30,
+  "act_math_75": 35,
+  "act_english_25": 33,
+  "act_english_75": 35,
+  "total_undergrads": 34454,
+  "undergrads_male": null,
+  "undergrads_female": null,
+  "retention_rate": 0.97,
+  "tuition": null,
+  "tuition_in_state": 17404,
+  "tuition_out_of_state": 60614,
+  "required_fees": 332,
+  "room_and_board": 15328,
+  "books_supplies": 1158,
+  "other_expenses": 2310,
+  "pct_out_of_state": 0.45,
+  "pct_on_campus_housing": null,
+  "applicant_pools": {
+    "ea": {
+      "applied": null,
+      "admitted": null,
+      "rate": null
+    },
+    "rd": {
+      "applied": null,
+      "admitted": null,
+      "rate": null
+    },
+    "waitlist": {
+      "offered": 24804,
+      "accepted_spots": 18793,
+      "enrolled": 973
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 48101,
+      "female": 50209
+    },
+    "accepted": {
+      "male": 6684,
+      "female": 8689
+    },
+    "enrolled": {
+      "male": 3199,
+      "female": 4079
+    }
+  },
+  "demographics_detail": null,
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.45,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 3697,
+    "sat_submitted_pct": 0.51,
+    "act_submitted_count": 1274,
+    "act_submitted_pct": 0.18
+  },
+  "class_rank": null,
+  "gpa_distribution": {
+    "4_0": 0.388,
+    "3_75_to_3_99": 0.54,
+    "3_50_to_3_74": 0.057,
+    "3_25_to_3_49": 0.009,
+    "3_00_to_3_24": 0.004,
+    "2_50_to_2_99": 0.0,
+    "2_00_to_2_49": 0.0,
+    "1_00_to_1_99": null,
+    "below_1_0": null
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "important",
+    "essay": "important",
+    "recommendations": "important",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "important",
+    "first_gen": "important",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": null,
+      "admitted": null,
+      "enrolled": null
+    },
+    "female": {
+      "applied": null,
+      "admitted": null,
+      "enrolled": null
+    },
+    "total": {
+      "applied": 6832,
+      "admitted": 2385,
+      "enrolled": 1580
+    }
+  }
+}
