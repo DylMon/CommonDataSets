@@ -131,18 +131,41 @@
             }).join('');
         }
 
-        async function init() {
-            const { data, error } = await supabase
-                .from('schools')
-                .select('slug, name, us_news_ranking, acceptance_rate, sat_avg, act_25, act_75')
-                .eq('data_year', '2023-24');
+        function estimateSatAvg(school, cds) {
+            if (cds?.sat_composite_25 != null && cds?.sat_composite_75 != null) {
+                return Math.round((cds.sat_composite_25 + cds.sat_composite_75) / 2);
+            }
+            if (cds?.sat_reading_25 != null && cds?.sat_reading_75 != null &&
+                cds?.sat_math_25 != null && cds?.sat_math_75 != null) {
+                const total25 = cds.sat_reading_25 + cds.sat_math_25;
+                const total75 = cds.sat_reading_75 + cds.sat_math_75;
+                return Math.round((total25 + total75) / 2);
+            }
+            return school.sat_avg ?? null;
+        }
 
-            if (error || !data) {
+        async function init() {
+            const [{ data: schoolsData, error }, { data: cdsData }] = await Promise.all([
+                supabase
+                    .from('schools')
+                    .select('slug, name, us_news_ranking, acceptance_rate, sat_avg, act_25, act_75')
+                    .eq('data_year', '2023-24'),
+                supabase
+                    .from('cds_2024_2025')
+                    .select('slug, sat_composite_25, sat_composite_75, sat_reading_25, sat_reading_75, sat_math_25, sat_math_75'),
+            ]);
+
+            if (error || !schoolsData) {
                 document.getElementById('school-list').innerHTML = '<p class="loading">Failed to load schools.</p>';
                 return;
             }
 
-            allSchools = data;
+            const cdsBySlug = new Map((cdsData ?? []).map(c => [c.slug, c]));
+
+            allSchools = schoolsData.map(s => ({
+                ...s,
+                sat_avg: estimateSatAvg(s, cdsBySlug.get(s.slug)),
+            }));
             renderList('us-news');
 
             document.querySelectorAll('.sort-btn').forEach(btn => {

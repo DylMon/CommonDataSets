@@ -17,18 +17,271 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/base.css?v=2">
+    <link rel="stylesheet" href="css/compare.css?v=2">
     <script src="js/header.js?v=2" defer></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2245119166025427"
      crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container">
-        <div class="content-wrapper">
+        <div class="compare-wrapper">
+            <div class="compare-slot" data-slot="1">
+                <label class="compare-label">School 1</label>
+                <div class="compare-search">
+                    <input type="text" class="compare-input" data-slot="1" placeholder="Search schools…" autocomplete="off">
+                    <button class="compare-clear" data-slot="1" aria-label="Clear">&times;</button>
+                    <div class="compare-dropdown" data-slot="1"></div>
+                </div>
+                <div class="compare-result" id="compare-result-1"></div>
+            </div>
+
+            <div class="compare-divider"><span class="compare-divider-label">VS</span></div>
+
+            <div class="compare-slot" data-slot="2">
+                <label class="compare-label">School 2</label>
+                <div class="compare-search">
+                    <input type="text" class="compare-input" data-slot="2" placeholder="Search schools…" autocomplete="off">
+                    <button class="compare-clear" data-slot="2" aria-label="Clear">&times;</button>
+                    <div class="compare-dropdown" data-slot="2"></div>
+                </div>
+                <div class="compare-result" id="compare-result-2"></div>
+            </div>
         </div>
     </div>
+
+    <script type="module">
+        import { supabase } from './js/supabase-client.js';
+
+        const SCHOOL_COLORS = {
+            'mit': '#a41931', 'harvard': '#a6152c', 'stanford': '#8c1515', 'princeton': '#ed6d0b',
+            'yale': '#00356b', 'columbia': '#6dabe4', 'upenn': '#00144d', 'caltech': '#ff6e1e',
+            'duke': '#004c97', 'jhu': '#002d72', 'northwestern': '#4e2686', 'dartmouth': '#00693e',
+            'brown': '#ed1e25', 'vanderbilt': '#dcb163', 'rice': '#002169', 'washu': '#a60c10',
+            'notre-dame': '#0c2340', 'cornell': '#b31b1b', 'uchicago': '#a6152c', 'cmu': '#c41230',
+            'georgetown': '#041e42', 'emory': '#002878', 'wake-forest': '#1a1a1a', 'tufts': '#3172ae',
+            'ucla': '#017dc3', 'berkeley': '#193460', 'ucsb': '#003660', 'uva': '#232d4b',
+            'umich': '#00274c', 'unc': '#4b9cd3', 'uf': '#fa4616', 'usc': '#990000', 'nyu': '#58078d',
+        };
+
+        const LOGOS = {
+            'mit': 'MITlogo.png', 'harvard': 'harvardlogo.png', 'stanford': 'stanfordlogo.png',
+            'princeton': 'princetonlogo.png', 'yale': 'yalelogo.png', 'columbia': 'Columbialogo.png',
+            'upenn': 'UPennlogo.png', 'caltech': 'Caltechlogo.png', 'duke': 'Dukelogo1.png',
+            'jhu': 'JHUlogo.png', 'northwestern': 'NUlogo1.png', 'dartmouth': 'dartmouthlogo1.png',
+            'brown': 'brownlogo.png', 'vanderbilt': 'vandylogo.png', 'rice': 'ricelogo.png',
+            'washu': 'washulogo.png', 'notre-dame': 'NDlogo.png', 'cornell': 'cornelllogo.png',
+            'uchicago': 'uchicagologo.png', 'cmu': 'CMUlogo.png', 'georgetown': 'georgetownlogo.png',
+            'emory': 'emorylogo.png', 'wake-forest': 'wakeforestlogo.png', 'tufts': 'tuftslogo.png',
+            'ucla': 'uclalogo.png', 'berkeley': 'ucblogo.png', 'ucsb': 'ucsblogo.png',
+            'uva': 'UVAlogo.png', 'umich': 'UMichlogo.png', 'unc': 'UNClogo.png',
+            'uf': 'uflogo.png', 'usc': 'USClogo.png', 'nyu': 'NYUlogo.png',
+        };
+
+        let allSchools = [];
+        const selected = { 1: null, 2: null };
+
+        function fmtPct(val) {
+            return val != null ? (val * 100).toFixed(1) + '%' : '—';
+        }
+
+        function fmtMoney(val) {
+            return val != null ? '$' + val.toLocaleString() : '—';
+        }
+
+        function fmtGpa(val) {
+            return val != null ? parseFloat(val).toFixed(2) : '—';
+        }
+
+        function matches(school, query) {
+            return school.name.toLowerCase().includes(query.toLowerCase());
+        }
+
+        function renderDropdown(slot) {
+            const input = document.querySelector(`.compare-input[data-slot="${slot}"]`);
+            const dropdown = document.querySelector(`.compare-dropdown[data-slot="${slot}"]`);
+            const query = input.value.trim();
+            const otherSlot = slot === 1 ? 2 : 1;
+
+            const results = allSchools
+                .filter(s => s.slug !== selected[otherSlot]?.slug)
+                .filter(s => query === '' || matches(s, query))
+                .sort((a, b) => a.name.localeCompare(b.name));
+
+            dropdown.innerHTML = results.length
+                ? results.map(s => `
+                    <div class="compare-option" data-slug="${s.slug}" data-slot="${slot}">
+                        <img class="compare-option-logo" src="images/logos/${LOGOS[s.slug]}" alt="">
+                        <span class="compare-option-name">${s.name}</span>
+                    </div>`).join('')
+                : `<div class="compare-empty">No schools found.</div>`;
+
+            dropdown.classList.add('open');
+            updateWrapperPadding();
+        }
+
+        function closeDropdown(slot) {
+            document.querySelector(`.compare-dropdown[data-slot="${slot}"]`).classList.remove('open');
+            updateWrapperPadding();
+        }
+
+        function updateWrapperPadding() {
+            const anyOpen = document.querySelector('.compare-dropdown.open');
+            document.querySelector('.compare-wrapper').classList.toggle('dropdown-open', !!anyOpen);
+        }
+
+        function selectSchool(slot, slug) {
+            const school = allSchools.find(s => s.slug === slug);
+            if (!school) return;
+            selected[slot] = school;
+
+            const input = document.querySelector(`.compare-input[data-slot="${slot}"]`);
+            input.value = school.name;
+            document.querySelector(`.compare-clear[data-slot="${slot}"]`).classList.add('visible');
+            closeDropdown(slot);
+            renderResult(slot);
+        }
+
+        function clearSlot(slot) {
+            selected[slot] = null;
+            const input = document.querySelector(`.compare-input[data-slot="${slot}"]`);
+            input.value = '';
+            document.querySelector(`.compare-clear[data-slot="${slot}"]`).classList.remove('visible');
+            document.getElementById(`compare-result-${slot}`).innerHTML = '';
+            compareStats();
+            input.focus();
+        }
+
+        function renderResult(slot) {
+            const s = selected[slot];
+            const el = document.getElementById(`compare-result-${slot}`);
+            if (!s) {
+                el.innerHTML = '';
+                return;
+            }
+            const actRange = s.act_25 != null && s.act_75 != null ? `${s.act_25}–${s.act_75}` : '—';
+            const color = SCHOOL_COLORS[s.slug] ?? '#ccc';
+
+            el.innerHTML = `
+                <div class="compare-card" style="border-top-color:${color}">
+                    <img class="compare-card-logo" src="images/logos/${LOGOS[s.slug]}" alt="${s.name}">
+                    <div class="compare-card-body">
+                        <div class="compare-card-name">${s.name}</div>
+                        <a class="compare-card-link" href="schools/${s.slug}.html">View Full Profile →</a>
+                    </div>
+                    <div class="compare-card-stats-wrap">
+                        <div class="compare-card-stats">
+                            <div class="stat-item">
+                                <div class="stat-val" data-stat="acceptance">${fmtPct(s.acceptance_rate)}</div>
+                                <div class="stat-label">Acceptance</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-val" data-stat="sat">${s.sat_avg ?? '—'}</div>
+                                <div class="stat-label">SAT Avg</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-val" data-stat="act">${actRange}</div>
+                                <div class="stat-label">ACT Range</div>
+                            </div>
+                        </div>
+                        <div class="compare-card-stats">
+                            <div class="stat-item">
+                                <div class="stat-val" data-stat="undergrads">${s.total_undergrads != null ? s.total_undergrads.toLocaleString() : '—'}</div>
+                                <div class="stat-label">Undergrads</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-val" data-stat="gpa">${fmtGpa(s.avg_gpa_weighted)}</div>
+                                <div class="stat-label">Avg GPA</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-val" data-stat="tuition">${fmtMoney(s.tuition_out_of_state)}</div>
+                                <div class="stat-label">Tuition (OOS)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+
+            compareStats();
+        }
+
+        function clearColors() {
+            document.querySelectorAll('.stat-val').forEach(el =>
+                el.classList.remove('stat-higher', 'stat-lower'));
+        }
+
+        function colorStat(slot, stat, cls) {
+            const el = document.querySelector(`#compare-result-${slot} .stat-val[data-stat="${stat}"]`);
+            if (el) el.classList.add(cls);
+        }
+
+        function compareStat(stat, valA, valB) {
+            if (valA == null || valB == null || valA === valB) return;
+            if (valA > valB) {
+                colorStat(1, stat, 'stat-higher');
+                colorStat(2, stat, 'stat-lower');
+            } else {
+                colorStat(2, stat, 'stat-higher');
+                colorStat(1, stat, 'stat-lower');
+            }
+        }
+
+        function actMid(s) {
+            return s.act_25 != null && s.act_75 != null ? (s.act_25 + s.act_75) / 2 : null;
+        }
+
+        function compareStats() {
+            clearColors();
+            const a = selected[1], b = selected[2];
+            if (!a || !b) return;
+
+            compareStat('acceptance', a.acceptance_rate, b.acceptance_rate);
+            compareStat('sat', a.sat_avg, b.sat_avg);
+            compareStat('act', actMid(a), actMid(b));
+            compareStat('undergrads', a.total_undergrads, b.total_undergrads);
+            compareStat('gpa', a.avg_gpa_weighted, b.avg_gpa_weighted);
+            compareStat('tuition', a.tuition_out_of_state, b.tuition_out_of_state);
+        }
+
+        function wireSlot(slot) {
+            const input = document.querySelector(`.compare-input[data-slot="${slot}"]`);
+            const clearBtn = document.querySelector(`.compare-clear[data-slot="${slot}"]`);
+            const dropdown = document.querySelector(`.compare-dropdown[data-slot="${slot}"]`);
+
+            input.addEventListener('focus', () => renderDropdown(slot));
+            input.addEventListener('input', () => {
+                if (selected[slot] && input.value !== selected[slot].name) {
+                    selected[slot] = null;
+                    clearBtn.classList.remove('visible');
+                    renderResult(slot);
+                }
+                renderDropdown(slot);
+            });
+
+            dropdown.addEventListener('click', (e) => {
+                const opt = e.target.closest('.compare-option');
+                if (opt) selectSchool(slot, opt.dataset.slug);
+            });
+
+            clearBtn.addEventListener('click', () => clearSlot(slot));
+
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest(`.compare-slot[data-slot="${slot}"]`)) closeDropdown(slot);
+            });
+        }
+
+        async function init() {
+            const { data, error } = await supabase
+                .from('schools')
+                .select('slug, name, acceptance_rate, sat_avg, act_25, act_75, total_undergrads, avg_gpa_weighted, tuition_out_of_state')
+                .eq('data_year', '2023-24');
+
+            if (error || !data) return;
+
+            allSchools = data;
+            wireSlot(1);
+            wireSlot(2);
+        }
+
+        init();
+    </script>
+</body>
 </html>
-<div class="info">
-<h4>
-    Work In Progress
-   </h4>
-</div>
