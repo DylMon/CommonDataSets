@@ -2,11 +2,8 @@
   "name": "commondatasets-seed",
   "type": "module",
   "scripts": {
-    "seed": "node scripts/seed.js",
     "seed:cds": "node scripts/seed-cds.js",
     "seed:scorecard": "node scripts/seed-scorecard.js",
-    "analyze": "node scripts/analyze-db.js",
-    "backfill": "node scripts/backfill-cds.js",
     "generate": "node scripts/generate-school-pages.js"
   },
   "dependencies": {

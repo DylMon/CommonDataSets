@@ -80,21 +80,15 @@
         };
 
         const SORTERS = {
-            'us-news':        (a, b) => parseRank(a.us_news_ranking) - parseRank(b.us_news_ranking),
+            'us-news':        (a, b) => (a.us_news_rank ?? 999) - (b.us_news_rank ?? 999),
             'acceptance-asc': (a, b) => (a.acceptance_rate ?? 1) - (b.acceptance_rate ?? 1),
             'acceptance-desc':(a, b) => (b.acceptance_rate ?? 0) - (a.acceptance_rate ?? 0),
             'sat':            (a, b) => (b.sat_avg ?? 0) - (a.sat_avg ?? 0),
             'act':            (a, b) => actMid(b) - actMid(a),
         };
 
-        function parseRank(str) {
-            if (!str) return 999;
-            const m = str.match(/(\d+)/);
-            return m ? parseInt(m[1]) : 999;
-        }
-
         function actMid(s) {
-            if (s.act_25 != null && s.act_75 != null) return (s.act_25 + s.act_75) / 2;
+            if (s.act_composite_25 != null && s.act_composite_75 != null) return (s.act_composite_25 + s.act_composite_75) / 2;
             return 0;
         }
 
@@ -107,7 +101,7 @@
         function renderList(sortKey) {
             const sorted = [...allSchools].sort(SORTERS[sortKey]);
             document.getElementById('school-list').innerHTML = sorted.map((s, i) => {
-                const actRange = s.act_25 != null && s.act_75 != null ? `${s.act_25}–${s.act_75}` : '—';
+                const actRange = s.act_composite_25 != null && s.act_composite_75 != null ? `${s.act_composite_25}–${s.act_composite_75}` : '—';
                 return `
                 <a class="school-row" href="schools/${s.slug}.html">
                     <div class="school-rank">${i + 1}</div>
@@ -131,41 +125,38 @@
             }).join('');
         }
 
-        function estimateSatAvg(school, cds) {
-            if (cds?.sat_composite_25 != null && cds?.sat_composite_75 != null) {
-                return Math.round((cds.sat_composite_25 + cds.sat_composite_75) / 2);
-            }
-            if (cds?.sat_reading_25 != null && cds?.sat_reading_75 != null &&
-                cds?.sat_math_25 != null && cds?.sat_math_75 != null) {
-                const total25 = cds.sat_reading_25 + cds.sat_math_25;
-                const total75 = cds.sat_reading_75 + cds.sat_math_75;
-                return Math.round((total25 + total75) / 2);
-            }
-            return school.sat_avg ?? null;
-        }
-
         async function init() {
-            const [{ data: schoolsData, error }, { data: cdsData }] = await Promise.all([
+            const [{ data: scorecardData, error }, { data: cdsData }] = await Promise.all([
                 supabase
-                    .from('schools')
-                    .select('slug, name, us_news_ranking, acceptance_rate, sat_avg, act_25, act_75')
-                    .eq('data_year', '2023-24'),
+                    .from('college_scorecard')
+                    .select('slug, name, us_news_rank'),
                 supabase
                     .from('cds_2024_2025')
-                    .select('slug, sat_composite_25, sat_composite_75, sat_reading_25, sat_reading_75, sat_math_25, sat_math_75'),
+                    .select('slug, name, acceptance_rate, sat_composite_25, sat_composite_75, act_composite_25, act_composite_75'),
             ]);
 
-            if (error || !schoolsData) {
+            if (error || !scorecardData) {
                 document.getElementById('school-list').innerHTML = '<p class="loading">Failed to load schools.</p>';
                 return;
             }
 
             const cdsBySlug = new Map((cdsData ?? []).map(c => [c.slug, c]));
 
-            allSchools = schoolsData.map(s => ({
-                ...s,
-                sat_avg: estimateSatAvg(s, cdsBySlug.get(s.slug)),
-            }));
+            allSchools = scorecardData.map(sc => {
+                const cds = cdsBySlug.get(sc.slug);
+                const sat_avg = cds?.sat_composite_25 != null && cds?.sat_composite_75 != null
+                    ? Math.round((cds.sat_composite_25 + cds.sat_composite_75) / 2)
+                    : null;
+                return {
+                    slug: sc.slug,
+                    name: cds?.name ?? sc.name,
+                    us_news_rank: sc.us_news_rank,
+                    acceptance_rate: cds?.acceptance_rate ?? null,
+                    sat_avg,
+                    act_composite_25: cds?.act_composite_25 ?? null,
+                    act_composite_75: cds?.act_composite_75 ?? null,
+                };
+            });
             renderList('us-news');
 
             document.querySelectorAll('.sort-btn').forEach(btn => {
