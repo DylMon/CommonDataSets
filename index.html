@@ -23,7 +23,20 @@
 </head>
 <body>
     <div class="container">
+        <div class="site-hero">
+            <h1 class="site-hero-title">CommonDataSets</h1>
+            <p class="site-hero-sub">Admissions data for top US universities · 2024–2025</p>
+            <p class="site-hero-desc">CommonDataSets compiles official Common Data Set submissions directly from 33 top US universities, giving students and families one place to compare verified admissions statistics, test score ranges, cost of attendance, and enrollment data without the noise.</p>
+        </div>
         <div class="content-wrapper">
+            <div class="search-bar">
+                <div class="search-wrap">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                    </svg>
+                    <input type="text" id="school-search" class="search-input" placeholder="Search schools…" autocomplete="off">
+                </div>
+            </div>
             <div class="sort-bar">
                 <span class="sort-label">Sort by</span>
                 <button class="sort-btn active" data-sort="us-news">US News</button>
@@ -31,9 +44,18 @@
                 <button class="sort-btn" data-sort="acceptance-desc">Acceptance (Highest)</button>
                 <button class="sort-btn" data-sort="sat">SAT</button>
                 <button class="sort-btn" data-sort="act">ACT</button>
+                <button class="sort-btn" data-sort="favorites">Favorites</button>
             </div>
             <div id="school-list"><p class="loading">Loading…</p></div>
         </div>
+        <footer class="site-footer">
+            <div class="footer-brand">CommonDataSets</div>
+            <nav class="footer-nav">
+                <a href="index.html">Data Sets</a>
+                <a href="compare.html">Compare</a>
+                <a href="info.html">Info</a>
+            </nav>
+        </footer>
     </div>
 
     <script type="module">
@@ -79,12 +101,24 @@
             'nyu':          'NYUlogo.png',
         };
 
+        let favorites = new Set(JSON.parse(localStorage.getItem('cds_favorites') ?? '[]'));
+
+        function saveFavorites() {
+            localStorage.setItem('cds_favorites', JSON.stringify([...favorites]));
+        }
+
         const SORTERS = {
             'us-news':        (a, b) => (a.us_news_rank ?? 999) - (b.us_news_rank ?? 999),
             'acceptance-asc': (a, b) => (a.acceptance_rate ?? 1) - (b.acceptance_rate ?? 1),
             'acceptance-desc':(a, b) => (b.acceptance_rate ?? 0) - (a.acceptance_rate ?? 0),
             'sat':            (a, b) => (b.sat_avg ?? 0) - (a.sat_avg ?? 0),
             'act':            (a, b) => actMid(b) - actMid(a),
+            'favorites':      (a, b) => {
+                const af = favorites.has(a.slug) ? 0 : 1;
+                const bf = favorites.has(b.slug) ? 0 : 1;
+                if (af !== bf) return af - bf;
+                return (a.us_news_rank ?? 999) - (b.us_news_rank ?? 999);
+            },
         };
 
         function actMid(s) {
@@ -92,36 +126,86 @@
             return 0;
         }
 
-        function fmtPct(val) {
-            return val != null ? (val * 100).toFixed(1) + '%' : '—';
-        }
+        function fmtPct(val) { return val != null ? (val * 100).toFixed(1) + '%' : '—'; }
+        function fmtMoney(val) { return val != null ? '$' + val.toLocaleString() : '—'; }
 
         let allSchools = [];
+        let searchQuery = '';
+
+        function renderDetailPanel(s) {
+            const tuitionVal = s.tuition_out_of_state ?? s.tuition;
+            const eaLabel = s.ea_ed_type === 'EA' ? 'Early Action'
+                          : s.ea_ed_type === 'ED' ? 'Early Decision'
+                          : s.ea_ed_type;
+            const waitlistHtml = s.waitlist_offered != null
+                ? `<span class="detail-waitlist">Waitlist: ${s.waitlist_offered.toLocaleString()} offered · ${s.waitlist_admitted != null ? s.waitlist_admitted.toLocaleString() + ' admitted' : '—'}</span>`
+                : '<span class="detail-waitlist">Waitlist data not reported in CDS</span>';
+
+            return `
+                <div class="detail-grid">
+                    <div class="detail-section">
+                        <div class="detail-section-title">Deadlines</div>
+                        ${eaLabel ? `<div class="detail-kv"><span>${eaLabel}</span><span>${s.ea_ed_deadline ?? '—'}</span></div>` : ''}
+                        <div class="detail-kv"><span>Regular Decision</span><span>${s.rd_deadline ?? '—'}</span></div>
+                    </div>
+                    <div class="detail-section">
+                        <div class="detail-section-title">Test Scores (25–75th)</div>
+                        <div class="detail-kv"><span>SAT Composite</span><span>${s.sat_composite_25 != null ? `${s.sat_composite_25}–${s.sat_composite_75}` : '—'}</span></div>
+                        <div class="detail-kv"><span>ACT Composite</span><span>${s.act_composite_25 != null ? `${s.act_composite_25}–${s.act_composite_75}` : '—'}</span></div>
+                    </div>
+                    <div class="detail-section">
+                        <div class="detail-section-title">Quick Facts</div>
+                        <div class="detail-kv"><span>Tuition (OOS)</span><span>${fmtMoney(tuitionVal)}</span></div>
+                        <div class="detail-kv"><span>Undergrads</span><span>${s.total_undergrads != null ? s.total_undergrads.toLocaleString() : '—'}</span></div>
+                        <div class="detail-kv"><span>Retention Rate</span><span>${s.retention_rate != null ? (s.retention_rate * 100).toFixed(0) + '%' : '—'}</span></div>
+                    </div>
+                    <div class="detail-section">
+                        <div class="detail-section-title">Outcomes</div>
+                        <div class="detail-kv"><span>4yr Grad Rate</span><span>${s.graduation_rate_4yr != null ? (s.graduation_rate_4yr * 100).toFixed(0) + '%' : '—'}</span></div>
+                        <div class="detail-kv"><span>Median Earn (6yr)</span><span>${fmtMoney(s.median_earnings_6yr)}</span></div>
+                    </div>
+                </div>
+                <div class="detail-footer">
+                    ${waitlistHtml}
+                    <a href="schools/${s.slug}.html" class="detail-profile-link">View Full Profile →</a>
+                </div>`;
+        }
 
         function renderList(sortKey) {
-            const sorted = [...allSchools].sort(SORTERS[sortKey]);
+            const q = searchQuery.toLowerCase();
+            const source = q ? allSchools.filter(s => s.name.toLowerCase().includes(q)) : allSchools;
+            const sorted = [...source].sort(SORTERS[sortKey]);
             document.getElementById('school-list').innerHTML = sorted.map((s, i) => {
                 const actRange = s.act_composite_25 != null && s.act_composite_75 != null ? `${s.act_composite_25}–${s.act_composite_75}` : '—';
+                const isFav = favorites.has(s.slug);
                 return `
-                <a class="school-row" href="schools/${s.slug}.html">
-                    <div class="school-rank">${i + 1}</div>
-                    <img class="school-logo" src="images/logos/${LOGOS[s.slug]}" alt="${s.name}" />
-                    <div class="school-name">${s.name}</div>
-                    <div class="school-stats">
-                        <div class="stat-item">
-                            <div class="stat-val">${fmtPct(s.acceptance_rate)}</div>
-                            <div class="stat-label">Acceptance</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-val">${s.sat_avg ?? '—'}</div>
-                            <div class="stat-label">SAT Avg</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-val">${actRange}</div>
-                            <div class="stat-label">ACT Range</div>
+                <div class="school-card">
+                    <div class="school-row">
+                        <div class="school-rank">${i + 1}</div>
+                        <img class="school-logo" src="images/logos/${LOGOS[s.slug]}" alt="${s.name}" />
+                        <div class="school-name">${s.name}</div>
+                        <button class="fav-btn${isFav ? ' favorited' : ''}" data-slug="${s.slug}" title="${isFav ? 'Remove from favorites' : 'Add to favorites'}">
+                            <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                        </button>
+                        <div class="school-stats">
+                            <div class="stat-item">
+                                <div class="stat-val">${fmtPct(s.acceptance_rate)}</div>
+                                <div class="stat-label">Acceptance</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-val">${s.sat_avg ?? '—'}</div>
+                                <div class="stat-label">SAT Avg</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-val">${actRange}</div>
+                                <div class="stat-label">ACT Range</div>
+                            </div>
                         </div>
                     </div>
-                </a>`;
+                    <div class="school-detail-inner">
+                        ${renderDetailPanel(s)}
+                    </div>
+                </div>`;
             }).join('');
         }
 
@@ -129,10 +213,10 @@
             const [{ data: scorecardData, error }, { data: cdsData }] = await Promise.all([
                 supabase
                     .from('college_scorecard')
-                    .select('slug, name, us_news_rank'),
+                    .select('slug, name, us_news_rank, graduation_rate_4yr, median_earnings_6yr'),
                 supabase
                     .from('cds_2024_2025')
-                    .select('slug, name, acceptance_rate, sat_composite_25, sat_composite_75, act_composite_25, act_composite_75'),
+                    .select('slug, name, acceptance_rate, sat_composite_25, sat_composite_75, act_composite_25, act_composite_75, ea_ed_type, ea_ed_deadline, rd_deadline, tuition, tuition_out_of_state, total_undergrads, retention_rate, waitlist_offered, waitlist_admitted'),
             ]);
 
             if (error || !scorecardData) {
@@ -151,13 +235,32 @@
                     slug: sc.slug,
                     name: cds?.name ?? sc.name,
                     us_news_rank: sc.us_news_rank,
+                    graduation_rate_4yr: sc.graduation_rate_4yr ?? null,
+                    median_earnings_6yr: sc.median_earnings_6yr ?? null,
                     acceptance_rate: cds?.acceptance_rate ?? null,
                     sat_avg,
+                    sat_composite_25: cds?.sat_composite_25 ?? null,
+                    sat_composite_75: cds?.sat_composite_75 ?? null,
                     act_composite_25: cds?.act_composite_25 ?? null,
                     act_composite_75: cds?.act_composite_75 ?? null,
+                    ea_ed_type: cds?.ea_ed_type ?? null,
+                    ea_ed_deadline: cds?.ea_ed_deadline ?? null,
+                    rd_deadline: cds?.rd_deadline ?? null,
+                    tuition: cds?.tuition ?? null,
+                    tuition_out_of_state: cds?.tuition_out_of_state ?? null,
+                    total_undergrads: cds?.total_undergrads ?? null,
+                    retention_rate: cds?.retention_rate ?? null,
+                    waitlist_offered: cds?.waitlist_offered ?? null,
+                    waitlist_admitted: cds?.waitlist_admitted ?? null,
                 };
             });
             renderList('us-news');
+
+            document.getElementById('school-search').addEventListener('input', e => {
+                searchQuery = e.target.value.trim();
+                const activeSort = document.querySelector('.sort-btn.active')?.dataset.sort ?? 'us-news';
+                renderList(activeSort);
+            });
 
             document.querySelectorAll('.sort-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
@@ -166,6 +269,25 @@
                     renderList(btn.dataset.sort);
                 });
             });
+
+            document.getElementById('school-list').addEventListener('click', e => {
+                const btn = e.target.closest('.fav-btn');
+                if (!btn) return;
+                const slug = btn.dataset.slug;
+                if (favorites.has(slug)) {
+                    favorites.delete(slug);
+                    btn.classList.remove('favorited');
+                    btn.title = 'Add to favorites';
+                } else {
+                    favorites.add(slug);
+                    btn.classList.add('favorited');
+                    btn.title = 'Remove from favorites';
+                }
+                saveFavorites();
+                const activeSort = document.querySelector('.sort-btn.active')?.dataset.sort ?? 'us-news';
+                if (activeSort === 'favorites') renderList('favorites');
+            });
+
         }
 
         init();

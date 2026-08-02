@@ -4,7 +4,7 @@
     const root = inSubdir ? '../' : '';
 
     const active = path.includes('compare') ? 'compare'
-                 : path.includes('about')   ? 'about'
+                 : path.includes('info')    ? 'info'
                  : 'index';
 
     function navLink(href, label, key) {
@@ -17,10 +17,7 @@
             <div class="left-side">
                 ${navLink('index.html', 'Data Sets', 'index')}
                 ${navLink('compare.html', 'Compare', 'compare')}
-            </div>
-            <div class="center-brand">
-                <div class="brand">CommonDataSets</div>
-                <p class="brand-sub">Current data through 2024–2025</p>
+                ${navLink('info.html', 'Info', 'info')}
             </div>
         </div>`;
 
