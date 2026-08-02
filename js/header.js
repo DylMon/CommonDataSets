@@ -20,7 +20,7 @@
             </div>
             <div class="center-brand">
                 <div class="brand">CommonDataSets</div>
-                <p class="brand-sub">Current data through 2023–2024</p>
+                <p class="brand-sub">Current data through 2024–2025</p>
             </div>
         </div>`;
 

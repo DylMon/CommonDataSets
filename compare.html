@@ -158,7 +158,7 @@
                 el.innerHTML = '';
                 return;
             }
-            const actRange = s.act_25 != null && s.act_75 != null ? `${s.act_25}–${s.act_75}` : '—';
+            const actRange = s.act_composite_25 != null && s.act_composite_75 != null ? `${s.act_composite_25}–${s.act_composite_75}` : '—';
             const color = SCHOOL_COLORS[s.slug] ?? '#ccc';
 
             el.innerHTML = `
@@ -175,7 +175,7 @@
                                 <div class="stat-label">Acceptance</div>
                             </div>
                             <div class="stat-item">
-                                <div class="stat-val" data-stat="sat">${s.sat_avg ?? '—'}</div>
+                                <div class="stat-val" data-stat="sat">${s.sat_avg != null ? s.sat_avg : '—'}</div>
                                 <div class="stat-label">SAT Avg</div>
                             </div>
                             <div class="stat-item">
@@ -225,7 +225,7 @@
         }
 
         function actMid(s) {
-            return s.act_25 != null && s.act_75 != null ? (s.act_25 + s.act_75) / 2 : null;
+            return s.act_composite_25 != null && s.act_composite_75 != null ? (s.act_composite_25 + s.act_composite_75) / 2 : null;
         }
 
         function compareStats() {
@@ -270,13 +270,18 @@
 
         async function init() {
             const { data, error } = await supabase
-                .from('schools')
-                .select('slug, name, acceptance_rate, sat_avg, act_25, act_75, total_undergrads, avg_gpa_weighted, tuition_out_of_state')
-                .eq('data_year', '2023-24');
+                .from('cds_2024_2025')
+                .select('slug, name, acceptance_rate, sat_composite_25, sat_composite_75, act_composite_25, act_composite_75, total_undergrads, avg_gpa_weighted, tuition, tuition_out_of_state');
 
             if (error || !data) return;
 
-            allSchools = data;
+            allSchools = data.map(s => ({
+                ...s,
+                sat_avg: s.sat_composite_25 != null && s.sat_composite_75 != null
+                    ? Math.round((s.sat_composite_25 + s.sat_composite_75) / 2)
+                    : null,
+                tuition_out_of_state: s.tuition_out_of_state ?? s.tuition,
+            }));
             wireSlot(1);
             wireSlot(2);
         }
