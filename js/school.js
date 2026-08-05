@@ -1,9 +1,3 @@
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
-
-const SUPABASE_URL  = 'https://wakqidqrkqyplobtlzpn.supabase.co';
-const SUPABASE_ANON = 'sb_publishable_Wl0t3iYbEMPci_Vn3dPg3A_QmWrIjBJ';
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON);
-
 const SCHOOL_META = {
   'mit':          { color: '#a41931', banner: 'bannerMIT.png' },
   'harvard':      { color: '#a6152c', banner: 'bannerharvard.png' },
@@ -76,6 +70,46 @@ const LOGOS = {
   'nyu':          'NYUlogo.png',
 };
 
+// ── Favorites & History ────────────────────────────────────────────────
+
+const FAV_KEY     = 'cds_favorites';
+const HISTORY_KEY = 'cds_recently_viewed';
+
+function getFavs()     { return new Set(JSON.parse(localStorage.getItem(FAV_KEY) ?? '[]')); }
+function saveFavs(set) { localStorage.setItem(FAV_KEY, JSON.stringify([...set])); }
+
+function renderFavoritesBox(allSchools) {
+  const slugs = [...getFavs()];
+  const box = document.getElementById('school-fav-box');
+  if (!box) return;
+  if (!slugs.length) { box.style.display = 'none'; return; }
+  box.style.display = '';
+  document.getElementById('school-fav-list').innerHTML = slugs.map(sl => {
+    const school = allSchools.find(s => s.slug === sl);
+    if (!school) return '';
+    return `<a class="history-item" href="${sl}.html">
+      <img class="history-logo" src="../images/logos/${LOGOS[sl] ?? ''}" alt="">
+      <span class="history-name">${school.name}</span>
+    </a>`;
+  }).filter(Boolean).join('');
+}
+
+function renderHistoryBox(allSchools) {
+  const slugs = JSON.parse(localStorage.getItem(HISTORY_KEY) ?? '[]');
+  const box = document.getElementById('school-history-box');
+  if (!box) return;
+  if (!slugs.length) { box.style.display = 'none'; return; }
+  box.style.display = '';
+  document.getElementById('school-history-list').innerHTML = slugs.map(sl => {
+    const school = allSchools.find(s => s.slug === sl);
+    if (!school) return '';
+    return `<a class="history-item" href="${sl}.html">
+      <img class="history-logo" src="../images/logos/${LOGOS[sl] ?? ''}" alt="">
+      <span class="history-name">${school.name}</span>
+    </a>`;
+  }).filter(Boolean).join('');
+}
+
 // ── Helpers ────────────────────────────────────────────────────────────
 
 function fmt(val, type) {
@@ -142,7 +176,12 @@ function renderHero(s, slug, meta) {
       <div class="hero-overlay">
         ${logo}
         <div class="hero-text">
-          <h1 class="hero-name">${s.name}</h1>
+          <h1 class="hero-name">
+            ${s.name}
+            <button class="fav-btn hero-fav-btn${getFavs().has(slug) ? ' favorited' : ''}" id="hero-fav-btn" title="${getFavs().has(slug) ? 'Remove from favorites' : 'Add to favorites'}">
+              <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+            </button>
+          </h1>
           <p class="hero-meta">${metaParts.join(' · ')}${siteLink}</p>
         </div>
       </div>
@@ -473,14 +512,22 @@ async function init() {
     return;
   }
 
-  let { data: s, error } = await supabase
-    .from('cds_2024_2025')
-    .select('*')
-    .eq('slug', slug)
-    .eq('data_year', '2024-25')
-    .single();
+  // Record immediately — synchronous, before any async work
+  const historyKey = 'cds_recently_viewed';
+  let recentHistory = JSON.parse(localStorage.getItem(historyKey) ?? '[]');
+  recentHistory = [slug, ...recentHistory.filter(s => s !== slug)].slice(0, 5);
+  localStorage.setItem(historyKey, JSON.stringify(recentHistory));
 
-  if (error || !s) {
+  const res = await fetch('../data/schools.json');
+  if (!res.ok) {
+    document.getElementById('school-sections').innerHTML =
+      '<p class="loading">Failed to load school data.</p>';
+    return;
+  }
+  const { schools } = await res.json();
+  const s = schools.find(school => school.slug === slug);
+
+  if (!s) {
     document.getElementById('school-sections').innerHTML =
       `<p class="loading">School not found: <strong>${slug}</strong></p>`;
     return;
@@ -501,13 +548,53 @@ async function init() {
   if (s.location) descParts.push(s.location);
   document.querySelector('meta[name="description"]').content = descParts.join(' · ') + '.';
 
-  document.getElementById('school-hero').innerHTML   = renderHero(s, slug, meta);
-  document.getElementById('stats-strip').innerHTML   = renderStatsStrip(s);
+  document.getElementById('school-hero').innerHTML = renderHero(s, slug, meta);
+
+  document.getElementById('hero-fav-btn').addEventListener('click', () => {
+    const favs = getFavs();
+    const btn  = document.getElementById('hero-fav-btn');
+    if (favs.has(slug)) {
+      favs.delete(slug);
+      btn.classList.remove('favorited');
+      btn.title = 'Add to favorites';
+    } else {
+      favs.add(slug);
+      btn.classList.add('favorited');
+      btn.title = 'Remove from favorites';
+    }
+    saveFavs(favs);
+    renderFavoritesBox(schools);
+  });
+
+  document.getElementById('stats-strip').innerHTML = renderStatsStrip(s);
   document.getElementById('school-sections').innerHTML =
     renderAdmissionsSection(s) +
     renderTestScoresSection(s) +
     renderCostSection(s) +
     renderStudentBodySection(s);
+
+  // Inject right sidebar alongside school-sections
+  const sectionsEl = document.getElementById('school-sections');
+  const layout = document.createElement('div');
+  layout.className = 'school-page-layout';
+  sectionsEl.parentElement.insertBefore(layout, sectionsEl);
+  layout.appendChild(sectionsEl);
+
+  const sidebar = document.createElement('div');
+  sidebar.className = 'right-sidebar';
+  sidebar.innerHTML = `
+    <div class="history-box" id="school-fav-box" style="display:none">
+      <div class="history-title">Favorites</div>
+      <div id="school-fav-list"></div>
+    </div>
+    <div class="history-box" id="school-history-box" style="display:none">
+      <div class="history-title">History</div>
+      <div id="school-history-list"></div>
+    </div>`;
+  layout.appendChild(sidebar);
+
+  renderFavoritesBox(schools);
+  renderHistoryBox(schools);
 
   const back = document.createElement('a');
   back.className = 'floating-back';

@@ -55,7 +55,6 @@
     </div>
 
     <script type="module">
-        import { supabase } from './js/supabase-client.js';
 
         const SCHOOL_COLORS = {
             'mit': '#a41931', 'harvard': '#a6152c', 'stanford': '#8c1515', 'princeton': '#ed6d0b',
@@ -274,19 +273,10 @@
         }
 
         async function init() {
-            const { data, error } = await supabase
-                .from('cds_2024_2025')
-                .select('slug, name, acceptance_rate, sat_composite_25, sat_composite_75, act_composite_25, act_composite_75, total_undergrads, avg_gpa_weighted, tuition, tuition_out_of_state');
-
-            if (error || !data) return;
-
-            allSchools = data.map(s => ({
-                ...s,
-                sat_avg: s.sat_composite_25 != null && s.sat_composite_75 != null
-                    ? Math.round((s.sat_composite_25 + s.sat_composite_75) / 2)
-                    : null,
-                tuition_out_of_state: s.tuition_out_of_state ?? s.tuition,
-            }));
+            const res = await fetch('data/schools.json');
+            if (!res.ok) return;
+            const { schools } = await res.json();
+            allSchools = schools;
             wireSlot(1);
             wireSlot(2);
         }

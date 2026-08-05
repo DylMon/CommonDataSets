@@ -37,16 +37,83 @@
                     <input type="text" id="school-search" class="search-input" placeholder="Search schools…" autocomplete="off">
                 </div>
             </div>
+            <p class="results-count" id="results-count"></p>
+            <div class="page-layout">
+            <div class="sidebar">
+            <div class="controls-container">
             <div class="sort-bar">
                 <span class="sort-label">Sort by</span>
-                <button class="sort-btn active" data-sort="us-news">US News</button>
-                <button class="sort-btn" data-sort="acceptance-asc">Acceptance (Lowest)</button>
-                <button class="sort-btn" data-sort="acceptance-desc">Acceptance (Highest)</button>
-                <button class="sort-btn" data-sort="sat">SAT</button>
-                <button class="sort-btn" data-sort="act">ACT</button>
-                <button class="sort-btn" data-sort="favorites">Favorites</button>
+                <div class="sort-dropdown" id="sort-dropdown">
+                    <button class="sort-dropdown-btn" id="sort-dropdown-btn">
+                        <span id="sort-label-text">US News</span>
+                        <svg class="sort-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="sort-dropdown-menu" id="sort-dropdown-menu">
+                        <button class="sort-option active" data-sort="us-news">US News</button>
+                        <button class="sort-option" data-sort="acceptance-asc">Acceptance (Low → High)</button>
+                        <button class="sort-option" data-sort="acceptance-desc">Acceptance (High → Low)</button>
+                        <button class="sort-option" data-sort="sat">SAT Score</button>
+                        <button class="sort-option" data-sort="act">ACT Score</button>
+                        <button class="sort-option" data-sort="tuition-asc">Tuition (Low → High)</button>
+                        <button class="sort-option" data-sort="grad-rate">Grad Rate</button>
+                        <button class="sort-option" data-sort="earnings">Median Earnings</button>
+                        <button class="sort-option" data-sort="favorites">Favorites</button>
+                    </div>
+                </div>
             </div>
+            <div class="filter-bar">
+                <span class="filter-group-label">Early Application</span>
+                <div class="filter-group">
+                    <button class="filter-btn active" data-filter="ea-ed" data-value="all">All</button>
+                    <button class="filter-btn" data-filter="ea-ed" data-value="ea">Early Action</button>
+                    <button class="filter-btn" data-filter="ea-ed" data-value="ed">Early Decision</button>
+                </div>
+                <span class="filter-sep"></span>
+                <span class="filter-group-label">Student Body <input type="text" class="range-value-input" id="size-val" value="All"></span>
+                <div class="filter-range-wrap">
+                    <input type="range" class="filter-range" id="size-range" min="0" max="40000" value="40000" step="1000">
+                    <div class="range-ends"><span>0</span><span>40k+</span></div>
+                </div>
+                <span class="filter-sep"></span>
+                <span class="filter-group-label">Acceptance Rate <input type="text" class="range-value-input" id="sel-val" value="All"></span>
+                <div class="filter-range-wrap">
+                    <input type="range" class="filter-range" id="sel-range" min="0" max="100" value="100" step="1">
+                    <div class="range-ends"><span>0%</span><span>100%</span></div>
+                </div>
+                <span class="filter-sep"></span>
+                <span class="filter-group-label">Tuition (OOS) <input type="text" class="range-value-input" id="tuition-val" value="All" style="width:62px"></span>
+                <div class="filter-range-wrap">
+                    <input type="range" class="filter-range" id="tuition-range" min="0" max="75000" value="75000" step="1000">
+                    <div class="range-ends"><span>$0</span><span>$75k+</span></div>
+                </div>
+                <span class="filter-sep"></span>
+                <span class="filter-group-label">My SAT Score <input type="text" class="range-value-input" id="sat-val" value="All" style="width:44px"></span>
+                <div class="filter-range-wrap">
+                    <input type="range" class="filter-range" id="sat-range" min="900" max="1600" value="1600" step="10">
+                    <div class="range-ends"><span>900</span><span>1600</span></div>
+                </div>
+                <span class="filter-sep"></span>
+                <span class="filter-group-label">Min Earnings <input type="text" class="range-value-input" id="earn-val" value="All" style="width:50px"></span>
+                <div class="filter-range-wrap">
+                    <input type="range" class="filter-range" id="earn-range" min="0" max="140000" value="0" step="5000">
+                    <div class="range-ends"><span>$0</span><span>$140k</span></div>
+                </div>
+            <button class="reset-btn" id="reset-filters-btn">Reset All Filters</button>
+            </div>
+            </div>
+            </div><!-- /.sidebar -->
             <div id="school-list"><p class="loading">Loading…</p></div>
+            <div class="right-sidebar">
+                <div class="history-box" id="favorites-box" style="display:none">
+                    <div class="history-title">Favorites</div>
+                    <div id="favorites-list"></div>
+                </div>
+                <div class="history-box" id="history-box" style="display:none">
+                    <div class="history-title">History</div>
+                    <div id="history-list"></div>
+                </div>
+            </div>
+            </div><!-- /.page-layout -->
         </div>
         <footer class="site-footer">
             <div class="footer-brand">CommonDataSets</div>
@@ -59,12 +126,6 @@
     </div>
 
     <script type="module">
-        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
-
-        const SUPABASE_URL  = 'https://wakqidqrkqyplobtlzpn.supabase.co';
-        const SUPABASE_ANON = 'sb_publishable_Wl0t3iYbEMPci_Vn3dPg3A_QmWrIjBJ';
-        const supabase = createClient(SUPABASE_URL, SUPABASE_ANON);
-
         const LOGOS = {
             'mit':          'MITlogo.png',
             'harvard':      'harvardlogo.png',
@@ -107,12 +168,30 @@
             localStorage.setItem('cds_favorites', JSON.stringify([...favorites]));
         }
 
+        const activeFilters = { eaEd: 'all', size: 40000, selectivity: 100, tuition: 75000, sat: 1600, earnings: 0 };
+
+        function applyFilters(schools) {
+            return schools.filter(s => {
+                if (activeFilters.eaEd === 'ea' && s.ea_ed_type !== 'EA') return false;
+                if (activeFilters.eaEd === 'ed' && s.ea_ed_type !== 'ED') return false;
+                if (activeFilters.size < 40000 && (s.total_undergrads == null || s.total_undergrads > activeFilters.size)) return false;
+                if (activeFilters.selectivity < 100 && (s.acceptance_rate == null || s.acceptance_rate * 100 > activeFilters.selectivity)) return false;
+                if (activeFilters.tuition < 75000 && ((s.tuition_out_of_state ?? s.tuition) == null || (s.tuition_out_of_state ?? s.tuition) > activeFilters.tuition)) return false;
+                if (activeFilters.sat < 1600 && (s.sat_composite_25 == null || s.sat_composite_25 > activeFilters.sat)) return false;
+                if (activeFilters.earnings > 0 && (s.median_earnings_6yr == null || s.median_earnings_6yr < activeFilters.earnings)) return false;
+                return true;
+            });
+        }
+
         const SORTERS = {
             'us-news':        (a, b) => (a.us_news_rank ?? 999) - (b.us_news_rank ?? 999),
             'acceptance-asc': (a, b) => (a.acceptance_rate ?? 1) - (b.acceptance_rate ?? 1),
             'acceptance-desc':(a, b) => (b.acceptance_rate ?? 0) - (a.acceptance_rate ?? 0),
             'sat':            (a, b) => (b.sat_avg ?? 0) - (a.sat_avg ?? 0),
             'act':            (a, b) => actMid(b) - actMid(a),
+            'tuition-asc':    (a, b) => (a.tuition_out_of_state ?? a.tuition ?? Infinity) - (b.tuition_out_of_state ?? b.tuition ?? Infinity),
+            'grad-rate':      (a, b) => (b.graduation_rate_4yr ?? 0) - (a.graduation_rate_4yr ?? 0),
+            'earnings':       (a, b) => (b.median_earnings_6yr ?? 0) - (a.median_earnings_6yr ?? 0),
             'favorites':      (a, b) => {
                 const af = favorites.has(a.slug) ? 0 : 1;
                 const bf = favorites.has(b.slug) ? 0 : 1;
@@ -131,6 +210,37 @@
 
         let allSchools = [];
         let searchQuery = '';
+        let currentSort = 'us-news';
+
+        function renderFavoritesBox() {
+            const slugs = [...favorites];
+            const box = document.getElementById('favorites-box');
+            if (!slugs.length) { box.style.display = 'none'; return; }
+            box.style.display = '';
+            document.getElementById('favorites-list').innerHTML = slugs.map(slug => {
+                const school = allSchools.find(s => s.slug === slug);
+                if (!school) return '';
+                return `<a class="history-item" href="schools/${slug}.html">
+                    <img class="history-logo" src="images/logos/${LOGOS[slug] ?? ''}" alt="">
+                    <span class="history-name">${school.name}</span>
+                </a>`;
+            }).filter(Boolean).join('');
+        }
+
+        function renderHistory() {
+            const slugs = JSON.parse(localStorage.getItem('cds_recently_viewed') ?? '[]');
+            const box = document.getElementById('history-box');
+            if (!slugs.length) { box.style.display = 'none'; return; }
+            box.style.display = '';
+            document.getElementById('history-list').innerHTML = slugs.map(slug => {
+                const school = allSchools.find(s => s.slug === slug);
+                if (!school) return '';
+                return `<a class="history-item" href="schools/${slug}.html">
+                    <img class="history-logo" src="images/logos/${LOGOS[slug] ?? ''}" alt="">
+                    <span class="history-name">${school.name}</span>
+                </a>`;
+            }).filter(Boolean).join('');
+        }
 
         function renderDetailPanel(s) {
             const tuitionVal = s.tuition_out_of_state ?? s.tuition;
@@ -167,14 +277,15 @@
                 </div>
                 <div class="detail-footer">
                     ${waitlistHtml}
-                    <a href="schools/${s.slug}.html" class="detail-profile-link">View Full Profile →</a>
                 </div>`;
         }
 
         function renderList(sortKey) {
             const q = searchQuery.toLowerCase();
-            const source = q ? allSchools.filter(s => s.name.toLowerCase().includes(q)) : allSchools;
+            let source = q ? allSchools.filter(s => s.name.toLowerCase().includes(q)) : allSchools;
+            source = applyFilters(source);
             const sorted = [...source].sort(SORTERS[sortKey]);
+            document.getElementById('results-count').textContent = `Showing ${sorted.length} of ${allSchools.length} institutions`;
             document.getElementById('school-list').innerHTML = sorted.map((s, i) => {
                 const actRange = s.act_composite_25 != null && s.act_composite_75 != null ? `${s.act_composite_25}–${s.act_composite_75}` : '—';
                 const isFav = favorites.has(s.slug);
@@ -183,10 +294,12 @@
                     <div class="school-row">
                         <div class="school-rank">${i + 1}</div>
                         <img class="school-logo" src="images/logos/${LOGOS[s.slug]}" alt="${s.name}" />
-                        <div class="school-name">${s.name}</div>
-                        <button class="fav-btn${isFav ? ' favorited' : ''}" data-slug="${s.slug}" title="${isFav ? 'Remove from favorites' : 'Add to favorites'}">
-                            <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-                        </button>
+                        <div class="school-name">
+                            <a class="school-name-link" href="schools/${s.slug}.html">${s.name}</a>
+                            <button class="fav-btn${isFav ? ' favorited' : ''}" data-slug="${s.slug}" title="${isFav ? 'Remove from favorites' : 'Add to favorites'}">
+                                <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                            </button>
+                        </div>
                         <div class="school-stats">
                             <div class="stat-item">
                                 <div class="stat-val">${fmtPct(s.acceptance_rate)}</div>
@@ -210,63 +323,37 @@
         }
 
         async function init() {
-            const [{ data: scorecardData, error }, { data: cdsData }] = await Promise.all([
-                supabase
-                    .from('college_scorecard')
-                    .select('slug, name, us_news_rank, graduation_rate_4yr, median_earnings_6yr'),
-                supabase
-                    .from('cds_2024_2025')
-                    .select('slug, name, acceptance_rate, sat_composite_25, sat_composite_75, act_composite_25, act_composite_75, ea_ed_type, ea_ed_deadline, rd_deadline, tuition, tuition_out_of_state, total_undergrads, retention_rate, waitlist_offered, waitlist_admitted'),
-            ]);
-
-            if (error || !scorecardData) {
+            const res = await fetch('data/schools.json');
+            if (!res.ok) {
                 document.getElementById('school-list').innerHTML = '<p class="loading">Failed to load schools.</p>';
                 return;
             }
-
-            const cdsBySlug = new Map((cdsData ?? []).map(c => [c.slug, c]));
-
-            allSchools = scorecardData.map(sc => {
-                const cds = cdsBySlug.get(sc.slug);
-                const sat_avg = cds?.sat_composite_25 != null && cds?.sat_composite_75 != null
-                    ? Math.round((cds.sat_composite_25 + cds.sat_composite_75) / 2)
-                    : null;
-                return {
-                    slug: sc.slug,
-                    name: cds?.name ?? sc.name,
-                    us_news_rank: sc.us_news_rank,
-                    graduation_rate_4yr: sc.graduation_rate_4yr ?? null,
-                    median_earnings_6yr: sc.median_earnings_6yr ?? null,
-                    acceptance_rate: cds?.acceptance_rate ?? null,
-                    sat_avg,
-                    sat_composite_25: cds?.sat_composite_25 ?? null,
-                    sat_composite_75: cds?.sat_composite_75 ?? null,
-                    act_composite_25: cds?.act_composite_25 ?? null,
-                    act_composite_75: cds?.act_composite_75 ?? null,
-                    ea_ed_type: cds?.ea_ed_type ?? null,
-                    ea_ed_deadline: cds?.ea_ed_deadline ?? null,
-                    rd_deadline: cds?.rd_deadline ?? null,
-                    tuition: cds?.tuition ?? null,
-                    tuition_out_of_state: cds?.tuition_out_of_state ?? null,
-                    total_undergrads: cds?.total_undergrads ?? null,
-                    retention_rate: cds?.retention_rate ?? null,
-                    waitlist_offered: cds?.waitlist_offered ?? null,
-                    waitlist_admitted: cds?.waitlist_admitted ?? null,
-                };
-            });
+            const { schools } = await res.json();
+            allSchools = schools;
             renderList('us-news');
+            renderFavoritesBox();
+            renderHistory();
 
             document.getElementById('school-search').addEventListener('input', e => {
                 searchQuery = e.target.value.trim();
-                const activeSort = document.querySelector('.sort-btn.active')?.dataset.sort ?? 'us-news';
-                renderList(activeSort);
+                renderList(currentSort);
             });
 
-            document.querySelectorAll('.sort-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    renderList(btn.dataset.sort);
+            const sortDropdown = document.getElementById('sort-dropdown');
+            document.getElementById('sort-dropdown-btn').addEventListener('click', () => {
+                sortDropdown.classList.toggle('open');
+            });
+            document.addEventListener('click', e => {
+                if (!e.target.closest('#sort-dropdown')) sortDropdown.classList.remove('open');
+            });
+            document.querySelectorAll('.sort-option').forEach(opt => {
+                opt.addEventListener('click', () => {
+                    document.querySelectorAll('.sort-option').forEach(o => o.classList.remove('active'));
+                    opt.classList.add('active');
+                    currentSort = opt.dataset.sort;
+                    document.getElementById('sort-label-text').textContent = opt.textContent;
+                    sortDropdown.classList.remove('open');
+                    renderList(currentSort);
                 });
             });
 
@@ -284,13 +371,195 @@
                     btn.title = 'Remove from favorites';
                 }
                 saveFavorites();
-                const activeSort = document.querySelector('.sort-btn.active')?.dataset.sort ?? 'us-news';
-                if (activeSort === 'favorites') renderList('favorites');
+                renderFavoritesBox();
+                if (currentSort === 'favorites') renderList('favorites');
+            });
+
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    activeFilters.eaEd = btn.dataset.value;
+                    document.querySelectorAll('.filter-btn[data-filter="ea-ed"]').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    renderList(currentSort);
+                });
+            });
+
+            function updateRangeFill(input) {
+                const pct = (input.value - input.min) / (input.max - input.min) * 100;
+                input.style.background = `linear-gradient(to right, #3d5a80 ${pct}%, #e8e8e8 ${pct}%)`;
+            }
+
+            function applyRangeRender() {
+                renderList(currentSort);
+            }
+
+            const sizeRange = document.getElementById('size-range');
+            const sizeVal  = document.getElementById('size-val');
+
+            function setSizeValue(num) {
+                num = Math.max(0, Math.min(40000, Math.round(num / 1000) * 1000));
+                activeFilters.size = num;
+                sizeRange.value = num;
+                sizeVal.value   = num >= 40000 ? 'All' : num.toLocaleString();
+                updateRangeFill(sizeRange);
+            }
+
+            sizeRange.addEventListener('input', () => {
+                const val = +sizeRange.value;
+                activeFilters.size = val;
+                sizeVal.value = val >= 40000 ? 'All' : val.toLocaleString();
+                updateRangeFill(sizeRange);
+            });
+            sizeRange.addEventListener('change', applyRangeRender);
+
+            sizeVal.addEventListener('focus', () => sizeVal.select());
+            sizeVal.addEventListener('keydown', e => { if (e.key === 'Enter') sizeVal.blur(); });
+            sizeVal.addEventListener('change', () => {
+                const raw = sizeVal.value.replace(/[,\s]/g, '');
+                const num = raw === '' || raw.toLowerCase() === 'all' ? 40000 : parseInt(raw, 10);
+                setSizeValue(isNaN(num) ? 40000 : num);
+                applyRangeRender();
+            });
+            updateRangeFill(sizeRange);
+
+            const selRange = document.getElementById('sel-range');
+            const selVal   = document.getElementById('sel-val');
+
+            function setSelValue(num) {
+                num = Math.max(0, Math.min(100, Math.round(num)));
+                activeFilters.selectivity = num;
+                selRange.value = num;
+                selVal.value   = num >= 100 ? 'All' : '≤' + num + '%';
+                updateRangeFill(selRange);
+            }
+
+            selRange.addEventListener('input', () => {
+                const val = +selRange.value;
+                activeFilters.selectivity = val;
+                selVal.value = val >= 100 ? 'All' : '≤' + val + '%';
+                updateRangeFill(selRange);
+            });
+            selRange.addEventListener('change', applyRangeRender);
+
+            selVal.addEventListener('focus', () => selVal.select());
+            selVal.addEventListener('keydown', e => { if (e.key === 'Enter') selVal.blur(); });
+            selVal.addEventListener('change', () => {
+                const raw = selVal.value.replace(/[≤%\s]/g, '');
+                const num = raw === '' || raw.toLowerCase() === 'all' ? 100 : parseFloat(raw);
+                setSelValue(isNaN(num) ? 100 : num);
+                applyRangeRender();
+            });
+            updateRangeFill(selRange);
+
+            const tuitionRange = document.getElementById('tuition-range');
+            const tuitionVal   = document.getElementById('tuition-val');
+
+            function setTuitionValue(num) {
+                num = Math.max(0, Math.min(75000, Math.round(num / 1000) * 1000));
+                activeFilters.tuition = num;
+                tuitionRange.value = num;
+                tuitionVal.value   = num >= 75000 ? 'All' : '$' + num.toLocaleString();
+                updateRangeFill(tuitionRange);
+            }
+
+            tuitionRange.addEventListener('input', () => {
+                const val = +tuitionRange.value;
+                activeFilters.tuition = val;
+                tuitionVal.value = val >= 75000 ? 'All' : '$' + val.toLocaleString();
+                updateRangeFill(tuitionRange);
+            });
+            tuitionRange.addEventListener('change', applyRangeRender);
+
+            tuitionVal.addEventListener('focus', () => tuitionVal.select());
+            tuitionVal.addEventListener('keydown', e => { if (e.key === 'Enter') tuitionVal.blur(); });
+            tuitionVal.addEventListener('change', () => {
+                const raw = tuitionVal.value.replace(/[$,\s]/g, '');
+                const num = raw === '' || raw.toLowerCase() === 'all' ? 75000 : parseInt(raw, 10);
+                setTuitionValue(isNaN(num) ? 75000 : num);
+                applyRangeRender();
+            });
+            updateRangeFill(tuitionRange);
+
+            const satRange = document.getElementById('sat-range');
+            const satVal   = document.getElementById('sat-val');
+
+            function setSatValue(num) {
+                num = Math.max(900, Math.min(1600, Math.round(num / 10) * 10));
+                activeFilters.sat = num;
+                satRange.value = num;
+                satVal.value   = num >= 1600 ? 'All' : num.toString();
+                updateRangeFill(satRange);
+            }
+
+            satRange.addEventListener('input', () => {
+                const val = +satRange.value;
+                activeFilters.sat = val;
+                satVal.value = val >= 1600 ? 'All' : val.toString();
+                updateRangeFill(satRange);
+            });
+            satRange.addEventListener('change', applyRangeRender);
+
+            satVal.addEventListener('focus', () => satVal.select());
+            satVal.addEventListener('keydown', e => { if (e.key === 'Enter') satVal.blur(); });
+            satVal.addEventListener('change', () => {
+                const raw = satVal.value.trim();
+                const num = raw === '' || raw.toLowerCase() === 'all' ? 1600 : parseInt(raw, 10);
+                setSatValue(isNaN(num) ? 1600 : num);
+                applyRangeRender();
+            });
+            updateRangeFill(satRange);
+
+            const earnRange = document.getElementById('earn-range');
+            const earnVal   = document.getElementById('earn-val');
+
+            function fmtEarn(num) {
+                return num <= 0 ? 'All' : '≥$' + (num / 1000).toFixed(0) + 'k';
+            }
+
+            function setEarnValue(num) {
+                num = Math.max(0, Math.min(140000, Math.round(num / 5000) * 5000));
+                activeFilters.earnings = num;
+                earnRange.value = num;
+                earnVal.value   = fmtEarn(num);
+                updateRangeFill(earnRange);
+            }
+
+            earnRange.addEventListener('input', () => {
+                const val = +earnRange.value;
+                activeFilters.earnings = val;
+                earnVal.value = fmtEarn(val);
+                updateRangeFill(earnRange);
+            });
+            earnRange.addEventListener('change', applyRangeRender);
+
+            earnVal.addEventListener('focus', () => earnVal.select());
+            earnVal.addEventListener('keydown', e => { if (e.key === 'Enter') earnVal.blur(); });
+            earnVal.addEventListener('change', () => {
+                const raw = earnVal.value.replace(/[≥$k,\s]/g, '');
+                let num = parseFloat(raw);
+                if (!isNaN(num) && num < 1000) num *= 1000; // treat "80" as 80000
+                setEarnValue(isNaN(num) || raw === '' || earnVal.value.toLowerCase() === 'all' ? 0 : num);
+                applyRangeRender();
+            });
+            updateRangeFill(earnRange);
+
+            document.getElementById('reset-filters-btn').addEventListener('click', () => {
+                activeFilters.eaEd = 'all';
+                document.querySelectorAll('.filter-btn[data-filter="ea-ed"]').forEach(b => b.classList.remove('active'));
+                document.querySelector('.filter-btn[data-filter="ea-ed"][data-value="all"]').classList.add('active');
+                setSizeValue(40000);
+                setSelValue(100);
+                setTuitionValue(75000);
+                setSatValue(1600);
+                setEarnValue(0);
+                renderList(currentSort);
             });
 
         }
 
         init();
+
+        window.addEventListener('pageshow', () => { renderFavoritesBox(); renderHistory(); });
     </script>
 </body>
 </html>

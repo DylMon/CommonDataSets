@@ -1,0 +1,6142 @@
+{
+  "generated": "2026-08-05",
+  "cds_year": "2024-25",
+  "schools": [
+    {
+      "id": 16,
+      "slug": "princeton",
+      "name": "Princeton University",
+      "scorecard_id": 186131,
+      "us_news_rank": 1,
+      "us_news_rank_year": "2025",
+      "test_policy": "required",
+      "graduation_rate_4yr": 0.9735,
+      "graduation_rate_6yr": 0.9798,
+      "median_earnings_6yr": 87815,
+      "median_earnings_10yr": 110066,
+      "median_debt_graduates": 10320,
+      "median_debt_all": 7250,
+      "pct_borrowing": null,
+      "pell_grant_pct": 0.1924,
+      "avg_net_price_0_30k": null,
+      "avg_net_price_30_48k": null,
+      "avg_net_price_48_75k": null,
+      "avg_net_price_75_110k": null,
+      "avg_net_price_110k_plus": null,
+      "student_faculty_ratio": 5,
+      "pct_classes_under_20": null,
+      "pct_classes_50_plus": null,
+      "endowment_total": 34100000000,
+      "endowment_per_student": 3190000,
+      "updated_at": "2026-07-03T01:06:08.162+00:00",
+      "data_year": "2024-25",
+      "city": "Princeton",
+      "state": "NJ",
+      "location": "Princeton, NJ",
+      "school_type": "Private",
+      "website": "www.princeton.edu",
+      "applicants_total": 40468,
+      "applicants_men": 20563,
+      "applicants_women": 19883,
+      "admitted_total": 1868,
+      "admitted_men": 903,
+      "admitted_women": 965,
+      "enrolled_total": 1410,
+      "enrolled_men": 693,
+      "enrolled_women": 717,
+      "acceptance_rate": 0.0462,
+      "application_fee": 70,
+      "avg_gpa_weighted": 3.95,
+      "rd_deadline": "1/1",
+      "waitlist_offered": 1734,
+      "waitlist_accepted": 1396,
+      "waitlist_admitted": 40,
+      "ea_ed_type": "REA",
+      "ea_ed_deadline": "11/1",
+      "ea_ed_notification": "12/15",
+      "ea_apps_received": null,
+      "ea_apps_admitted": null,
+      "sat_submitted_pct": 0.56,
+      "sat_submitted_count": 783,
+      "act_submitted_pct": 0.21,
+      "act_submitted_count": 303,
+      "sat_composite_25": 1500,
+      "sat_composite_75": 1560,
+      "sat_reading_25": 740,
+      "sat_reading_75": 780,
+      "sat_math_25": 770,
+      "sat_math_75": 800,
+      "act_composite_25": 34,
+      "act_composite_75": 35,
+      "act_math_25": 32,
+      "act_math_75": 36,
+      "act_english_25": 35,
+      "act_english_75": 36,
+      "total_undergrads": 5813,
+      "undergrads_male": 2893,
+      "undergrads_female": 2918,
+      "retention_rate": 0.98,
+      "tuition": null,
+      "tuition_in_state": null,
+      "tuition_out_of_state": null,
+      "required_fees": null,
+      "room_and_board": null,
+      "books_supplies": null,
+      "other_expenses": null,
+      "pct_out_of_state": 0.84,
+      "pct_on_campus_housing": 1,
+      "applicant_pools": {
+        "ea": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "rd": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "waitlist": {
+          "offered": 1734,
+          "enrolled": 40,
+          "accepted_spots": 1396
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": 20563,
+          "female": 19883
+        },
+        "accepted": {
+          "male": 903,
+          "female": 965
+        },
+        "enrolled": {
+          "male": 693,
+          "female": 717
+        }
+      },
+      "demographics_detail": {
+        "undergrad": {
+          "asian": 1339,
+          "black": 499,
+          "total": 5709,
+          "white": 1921,
+          "unknown": 232,
+          "hispanic": 574,
+          "two_or_more": 411,
+          "american_indian": 9,
+          "pacific_islander": 3,
+          "nonresident_aliens": 721
+        },
+        "first_year": {
+          "asian": 334,
+          "black": 125,
+          "total": 1407,
+          "white": 441,
+          "unknown": 108,
+          "hispanic": 126,
+          "two_or_more": 101,
+          "american_indian": 1,
+          "pacific_islander": 0,
+          "nonresident_aliens": 171
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.84,
+        "international_pct": 0.1215
+      },
+      "sat_act_breakdown": {
+        "act_submitted_pct": 0.21,
+        "sat_submitted_pct": 0.56,
+        "act_submitted_count": 303,
+        "sat_submitted_count": 783
+      },
+      "class_rank": null,
+      "gpa_distribution": {
+        "4_0": 0.685,
+        "below_1_0": null,
+        "1_00_to_1_99": null,
+        "2_00_to_2_49": null,
+        "2_50_to_2_99": 0.002,
+        "3_00_to_3_24": 0.002,
+        "3_25_to_3_49": 0.012,
+        "3_50_to_3_74": 0.044,
+        "3_75_to_3_99": 0.255
+      },
+      "admission_factors": {
+        "essay": "very_important",
+        "rigor": "very_important",
+        "talent": "very_important",
+        "character": "very_important",
+        "first_gen": "considered",
+        "interview": "considered",
+        "religious": "not_considered",
+        "volunteer": "considered",
+        "class_rank": "very_important",
+        "test_scores": "very_important",
+        "academic_gpa": "very_important",
+        "geo_residence": "considered",
+        "racial_ethnic": null,
+        "alumni_relation": "considered",
+        "recommendations": "very_important",
+        "state_residence": "not_considered",
+        "work_experience": "considered",
+        "extracurriculars": "very_important",
+        "applicant_interest": "not_considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 1146,
+          "admitted": 27,
+          "enrolled": 25
+        },
+        "total": {
+          "applied": 1985,
+          "admitted": 38,
+          "enrolled": 36
+        },
+        "female": {
+          "applied": 836,
+          "admitted": 11,
+          "enrolled": 11
+        }
+      },
+      "sat_avg": 1530
+    },
+    {
+      "id": 12,
+      "slug": "mit",
+      "name": "Massachusetts Institute of Technology",
+      "scorecard_id": 166683,
+      "us_news_rank": 2,
+      "us_news_rank_year": "2025",
+      "test_policy": "required",
+      "graduation_rate_4yr": 0.9624,
+      "graduation_rate_6yr": 0.9642,
+      "median_earnings_6yr": 131633,
+      "median_earnings_10yr": 143372,
+      "median_debt_graduates": 14768,
+      "median_debt_all": 6490,
+      "pct_borrowing": null,
+      "pell_grant_pct": 0.1932,
+      "avg_net_price_0_30k": null,
+      "avg_net_price_30_48k": null,
+      "avg_net_price_48_75k": null,
+      "avg_net_price_75_110k": null,
+      "avg_net_price_110k_plus": null,
+      "student_faculty_ratio": 3,
+      "pct_classes_under_20": null,
+      "pct_classes_50_plus": null,
+      "endowment_total": 24600000000,
+      "endowment_per_student": 1130000,
+      "updated_at": "2026-07-03T01:06:07.53+00:00",
+      "data_year": "2024-25",
+      "city": "Cambridge",
+      "state": "MA",
+      "location": "Cambridge, MA",
+      "school_type": "Private",
+      "website": "mit.edu",
+      "applicants_total": 28232,
+      "applicants_men": 17210,
+      "applicants_women": 8975,
+      "admitted_total": 1284,
+      "admitted_men": 606,
+      "admitted_women": 612,
+      "enrolled_total": 1106,
+      "enrolled_men": 547,
+      "enrolled_women": 499,
+      "acceptance_rate": 0.0455,
+      "application_fee": 75,
+      "avg_gpa_weighted": null,
+      "rd_deadline": "1/1",
+      "waitlist_offered": 590,
+      "waitlist_accepted": 509,
+      "waitlist_admitted": 9,
+      "ea_ed_type": "EA",
+      "ea_ed_deadline": "11/1",
+      "ea_ed_notification": "12/20",
+      "ea_apps_received": null,
+      "ea_apps_admitted": null,
+      "sat_submitted_pct": 0.83,
+      "sat_submitted_count": 918,
+      "act_submitted_pct": 0.29,
+      "act_submitted_count": 323,
+      "sat_composite_25": 1520,
+      "sat_composite_75": 1570,
+      "sat_reading_25": 740,
+      "sat_reading_75": 780,
+      "sat_math_25": 780,
+      "sat_math_75": 800,
+      "act_composite_25": 34,
+      "act_composite_75": 36,
+      "act_math_25": 35,
+      "act_math_75": 36,
+      "act_english_25": 35,
+      "act_english_75": 36,
+      "total_undergrads": 4535,
+      "undergrads_male": 2351,
+      "undergrads_female": 2184,
+      "retention_rate": 0.99,
+      "tuition": 64310,
+      "tuition_in_state": null,
+      "tuition_out_of_state": null,
+      "required_fees": 420,
+      "room_and_board": 21264,
+      "books_supplies": 910,
+      "other_expenses": 2436,
+      "pct_out_of_state": 0.91,
+      "pct_on_campus_housing": 0.92,
+      "applicant_pools": {
+        "ea": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "rd": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "waitlist": {
+          "offered": 590,
+          "enrolled": 9,
+          "accepted_spots": 509
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": 17210,
+          "female": 8975
+        },
+        "accepted": {
+          "male": 606,
+          "female": 612
+        },
+        "enrolled": {
+          "male": 547,
+          "female": 499
+        }
+      },
+      "demographics_detail": {
+        "undergrad": {
+          "asian": 1595,
+          "black": 349,
+          "total": 4535,
+          "white": 964,
+          "unknown": 138,
+          "hispanic": 639,
+          "two_or_more": 310,
+          "american_indian": 9,
+          "pacific_islander": 2,
+          "nonresident_aliens": 529
+        },
+        "first_year": {
+          "asian": 462,
+          "black": 41,
+          "total": 1098,
+          "white": 263,
+          "unknown": 25,
+          "hispanic": 118,
+          "two_or_more": 60,
+          "american_indian": 3,
+          "pacific_islander": 1,
+          "nonresident_aliens": 125
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.91,
+        "international_pct": null
+      },
+      "sat_act_breakdown": {
+        "act_submitted_pct": 0.29,
+        "sat_submitted_pct": 0.83,
+        "act_submitted_count": 323,
+        "sat_submitted_count": 918
+      },
+      "class_rank": {
+        "top10": 0.96,
+        "top25": 0.99,
+        "top50": 1,
+        "bottom25": 0,
+        "bottom50": 0
+      },
+      "gpa_distribution": null,
+      "admission_factors": {
+        "essay": "very_important",
+        "rigor": "very_important",
+        "talent": "important",
+        "character": "very_important",
+        "first_gen": "considered",
+        "interview": "important",
+        "religious": "not_considered",
+        "volunteer": "considered",
+        "class_rank": "important",
+        "test_scores": "very_important",
+        "academic_gpa": "very_important",
+        "geo_residence": "considered",
+        "racial_ethnic": null,
+        "alumni_relation": "not_considered",
+        "recommendations": "very_important",
+        "state_residence": "not_considered",
+        "work_experience": "considered",
+        "extracurriculars": "important",
+        "applicant_interest": "not_considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 864,
+          "admitted": 22,
+          "enrolled": 18
+        },
+        "total": {
+          "applied": 1346,
+          "admitted": 32,
+          "enrolled": 28
+        },
+        "female": {
+          "applied": 330,
+          "admitted": 8,
+          "enrolled": 8
+        }
+      },
+      "sat_avg": 1545
+    },
+    {
+      "id": 10,
+      "slug": "harvard",
+      "name": "Harvard University",
+      "scorecard_id": 166027,
+      "us_news_rank": 3,
+      "us_news_rank_year": "2025",
+      "test_policy": "required",
+      "graduation_rate_4yr": 0.9745,
+      "graduation_rate_6yr": 0.9835,
+      "median_earnings_6yr": 99572,
+      "median_earnings_10yr": 101817,
+      "median_debt_graduates": 14000,
+      "median_debt_all": 11118,
+      "pct_borrowing": null,
+      "pell_grant_pct": 0.1643,
+      "avg_net_price_0_30k": null,
+      "avg_net_price_30_48k": null,
+      "avg_net_price_48_75k": null,
+      "avg_net_price_75_110k": null,
+      "avg_net_price_110k_plus": null,
+      "student_faculty_ratio": 7,
+      "pct_classes_under_20": null,
+      "pct_classes_50_plus": null,
+      "endowment_total": 50700000000,
+      "endowment_per_student": 2400000,
+      "updated_at": "2026-07-03T01:06:07.185+00:00",
+      "data_year": "2024-25",
+      "city": "Cambridge",
+      "state": "MA",
+      "location": "Cambridge, MA",
+      "school_type": "Private",
+      "website": "www.harvard.edu",
+      "applicants_total": 54008,
+      "applicants_men": 25613,
+      "applicants_women": 28372,
+      "admitted_total": 1970,
+      "admitted_men": 920,
+      "admitted_women": 1050,
+      "enrolled_total": 1647,
+      "enrolled_men": 767,
+      "enrolled_women": 880,
+      "acceptance_rate": 0.0365,
+      "application_fee": 85,
+      "avg_gpa_weighted": 4.21,
+      "rd_deadline": "1/1",
+      "waitlist_offered": null,
+      "waitlist_accepted": null,
+      "waitlist_admitted": null,
+      "ea_ed_type": "REA",
+      "ea_ed_deadline": "11/1",
+      "ea_ed_notification": "12/16",
+      "ea_apps_received": null,
+      "ea_apps_admitted": null,
+      "sat_submitted_pct": 0.54,
+      "sat_submitted_count": 892,
+      "act_submitted_pct": 0.19,
+      "act_submitted_count": 321,
+      "sat_composite_25": null,
+      "sat_composite_75": null,
+      "sat_reading_25": 740,
+      "sat_reading_75": 780,
+      "sat_math_25": 770,
+      "sat_math_75": 800,
+      "act_composite_25": 34,
+      "act_composite_75": 36,
+      "act_math_25": 32,
+      "act_math_75": 36,
+      "act_english_25": 35,
+      "act_english_75": 36,
+      "total_undergrads": 7038,
+      "undergrads_male": 3275,
+      "undergrads_female": 3763,
+      "retention_rate": 0.98,
+      "tuition": 59320,
+      "tuition_in_state": null,
+      "tuition_out_of_state": null,
+      "required_fees": 5476,
+      "room_and_board": 22130,
+      "books_supplies": 1000,
+      "other_expenses": 2500,
+      "pct_out_of_state": 0.86,
+      "pct_on_campus_housing": 1,
+      "applicant_pools": {
+        "ea": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "rd": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "waitlist": {
+          "offered": null,
+          "enrolled": null,
+          "accepted_spots": null
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": 25613,
+          "female": 28372
+        },
+        "accepted": {
+          "male": 920,
+          "female": 1050
+        },
+        "enrolled": {
+          "male": 767,
+          "female": 880
+        }
+      },
+      "demographics_detail": {
+        "undergrad": {
+          "asian": 1647,
+          "black": 628,
+          "total": 6979,
+          "white": 2088,
+          "unknown": 185,
+          "hispanic": 806,
+          "two_or_more": 542,
+          "american_indian": 24,
+          "pacific_islander": 11,
+          "nonresident_aliens": 1048
+        },
+        "first_year": {
+          "asian": 375,
+          "black": 112,
+          "total": 1641,
+          "white": 457,
+          "unknown": 117,
+          "hispanic": 183,
+          "two_or_more": 127,
+          "american_indian": 3,
+          "pacific_islander": 2,
+          "nonresident_aliens": 265
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.86,
+        "international_pct": 0.1791
+      },
+      "sat_act_breakdown": {
+        "act_submitted_pct": 0.19,
+        "sat_submitted_pct": 0.54,
+        "act_submitted_count": 321,
+        "sat_submitted_count": 892
+      },
+      "class_rank": {
+        "top10": 0.94,
+        "top25": 0.99,
+        "top50": 1,
+        "bottom25": 0,
+        "bottom50": 0
+      },
+      "gpa_distribution": {
+        "4_0": 0.7241,
+        "below_1_0": null,
+        "1_00_to_1_99": null,
+        "2_00_to_2_49": 0.0017,
+        "2_50_to_2_99": 0.0034,
+        "3_00_to_3_24": 0.0017,
+        "3_25_to_3_49": 0.006,
+        "3_50_to_3_74": 0.0411,
+        "3_75_to_3_99": 0.222
+      },
+      "admission_factors": {
+        "essay": "very_important",
+        "rigor": "very_important",
+        "talent": "very_important",
+        "character": "very_important",
+        "first_gen": "very_important",
+        "interview": "very_important",
+        "religious": "not_considered",
+        "volunteer": "very_important",
+        "class_rank": "important",
+        "test_scores": "very_important",
+        "academic_gpa": "very_important",
+        "geo_residence": "very_important",
+        "racial_ethnic": null,
+        "alumni_relation": "very_important",
+        "recommendations": "very_important",
+        "state_residence": "considered",
+        "work_experience": "very_important",
+        "extracurriculars": "very_important",
+        "applicant_interest": "considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 1246,
+          "admitted": 8,
+          "enrolled": 6
+        },
+        "total": {
+          "applied": 2256,
+          "admitted": 16,
+          "enrolled": 13
+        },
+        "female": {
+          "applied": 1005,
+          "admitted": 8,
+          "enrolled": 7
+        }
+      },
+      "sat_avg": null
+    },
+    {
+      "id": 18,
+      "slug": "stanford",
+      "name": "Stanford University",
+      "scorecard_id": 243744,
+      "us_news_rank": 4,
+      "us_news_rank_year": "2025",
+      "test_policy": "required",
+      "graduation_rate_4yr": 0.9237,
+      "graduation_rate_6yr": 0.9695,
+      "median_earnings_6yr": 102887,
+      "median_earnings_10yr": 124080,
+      "median_debt_graduates": 12000,
+      "median_debt_all": 6500,
+      "pct_borrowing": null,
+      "pell_grant_pct": 0.1916,
+      "avg_net_price_0_30k": null,
+      "avg_net_price_30_48k": null,
+      "avg_net_price_48_75k": null,
+      "avg_net_price_75_110k": null,
+      "avg_net_price_110k_plus": null,
+      "student_faculty_ratio": 6,
+      "pct_classes_under_20": null,
+      "pct_classes_50_plus": null,
+      "endowment_total": 36500000000,
+      "endowment_per_student": 1890000,
+      "updated_at": "2026-07-03T01:06:08.501+00:00",
+      "data_year": "2024-25",
+      "city": "Stanford",
+      "state": "CA",
+      "location": "Stanford, CA",
+      "school_type": "Private",
+      "website": "www.stanford.edu",
+      "applicants_total": 57326,
+      "applicants_men": 29602,
+      "applicants_women": 27724,
+      "admitted_total": 2067,
+      "admitted_men": 1015,
+      "admitted_women": 1052,
+      "enrolled_total": 1693,
+      "enrolled_men": 835,
+      "enrolled_women": 858,
+      "acceptance_rate": 0.0361,
+      "application_fee": 90,
+      "avg_gpa_weighted": 3.94,
+      "rd_deadline": "1/5",
+      "waitlist_offered": 483,
+      "waitlist_accepted": 414,
+      "waitlist_admitted": 25,
+      "ea_ed_type": "REA",
+      "ea_ed_deadline": "11/1",
+      "ea_ed_notification": "12/15",
+      "ea_apps_received": null,
+      "ea_apps_admitted": null,
+      "sat_submitted_pct": 0.503,
+      "sat_submitted_count": 857,
+      "act_submitted_pct": 0.19,
+      "act_submitted_count": 324,
+      "sat_composite_25": 1510,
+      "sat_composite_75": 1570,
+      "sat_reading_25": 740,
+      "sat_reading_75": 780,
+      "sat_math_25": 770,
+      "sat_math_75": 800,
+      "act_composite_25": 34,
+      "act_composite_75": 35,
+      "act_math_25": 33,
+      "act_math_75": 36,
+      "act_english_25": 35,
+      "act_english_75": 36,
+      "total_undergrads": 7904,
+      "undergrads_male": 3840,
+      "undergrads_female": 4064,
+      "retention_rate": 0.982,
+      "tuition": 67731,
+      "tuition_in_state": null,
+      "tuition_out_of_state": null,
+      "required_fees": 813,
+      "room_and_board": 22167,
+      "books_supplies": 840,
+      "other_expenses": 4962,
+      "pct_out_of_state": 0.571,
+      "pct_on_campus_housing": 0.96,
+      "applicant_pools": {
+        "ea": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "rd": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "waitlist": {
+          "offered": 483,
+          "enrolled": 25,
+          "accepted_spots": 414
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": 29602,
+          "female": 27724
+        },
+        "accepted": {
+          "male": 1015,
+          "female": 1052
+        },
+        "enrolled": {
+          "male": 835,
+          "female": 858
+        }
+      },
+      "demographics_detail": {
+        "undergrad": {
+          "asian": 2170,
+          "black": 560,
+          "total": 7554,
+          "white": 1737,
+          "unknown": 35,
+          "hispanic": 1289,
+          "two_or_more": 724,
+          "american_indian": 60,
+          "pacific_islander": 14,
+          "nonresident_aliens": 965
+        },
+        "first_year": {
+          "asian": 559,
+          "black": 76,
+          "total": 1693,
+          "white": 408,
+          "unknown": 5,
+          "hispanic": 248,
+          "two_or_more": 141,
+          "american_indian": 12,
+          "pacific_islander": 2,
+          "nonresident_aliens": 242
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.571,
+        "international_pct": 0.1277
+      },
+      "sat_act_breakdown": {
+        "act_submitted_pct": 0.19,
+        "sat_submitted_pct": 0.503,
+        "act_submitted_count": 324,
+        "sat_submitted_count": 857
+      },
+      "class_rank": {
+        "top10": 0.978,
+        "top25": 1,
+        "top50": 1,
+        "bottom25": 0,
+        "bottom50": 0
+      },
+      "gpa_distribution": {
+        "4_0": 0.733,
+        "below_1_0": null,
+        "1_00_to_1_99": null,
+        "2_00_to_2_49": null,
+        "2_50_to_2_99": 0.003,
+        "3_00_to_3_24": 0.003,
+        "3_25_to_3_49": 0.03,
+        "3_50_to_3_74": 0.067,
+        "3_75_to_3_99": 0.165
+      },
+      "admission_factors": {
+        "essay": "very_important",
+        "rigor": "very_important",
+        "talent": "very_important",
+        "character": "very_important",
+        "first_gen": "considered",
+        "interview": "considered",
+        "religious": "not_considered",
+        "volunteer": "considered",
+        "class_rank": "important",
+        "test_scores": "considered",
+        "academic_gpa": "very_important",
+        "geo_residence": "considered",
+        "racial_ethnic": null,
+        "alumni_relation": "considered",
+        "recommendations": "very_important",
+        "state_residence": "not_considered",
+        "work_experience": "considered",
+        "extracurriculars": "very_important",
+        "applicant_interest": "not_considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 2383,
+          "admitted": 40,
+          "enrolled": 32
+        },
+        "total": {
+          "applied": 4120,
+          "admitted": 65,
+          "enrolled": 56
+        },
+        "female": {
+          "applied": 1737,
+          "admitted": 25,
+          "enrolled": 24
+        }
+      },
+      "sat_avg": 1540
+    },
+    {
+      "id": 31,
+      "slug": "yale",
+      "name": "Yale University",
+      "scorecard_id": 130794,
+      "us_news_rank": 5,
+      "us_news_rank_year": "2025",
+      "test_policy": "required",
+      "graduation_rate_4yr": 0.9603,
+      "graduation_rate_6yr": 0.979,
+      "median_earnings_6yr": 81765,
+      "median_earnings_10yr": 100533,
+      "median_debt_graduates": 12975,
+      "median_debt_all": 7500,
+      "pct_borrowing": null,
+      "pell_grant_pct": 0.2039,
+      "avg_net_price_0_30k": null,
+      "avg_net_price_30_48k": null,
+      "avg_net_price_48_75k": null,
+      "avg_net_price_75_110k": null,
+      "avg_net_price_110k_plus": null,
+      "student_faculty_ratio": 5,
+      "pct_classes_under_20": null,
+      "pct_classes_50_plus": null,
+      "endowment_total": 40700000000,
+      "endowment_per_student": 2780000,
+      "updated_at": "2026-07-03T01:06:10.596+00:00",
+      "data_year": "2024-25",
+      "city": "New Haven",
+      "state": "CT",
+      "location": "New Haven, CT",
+      "school_type": "Private",
+      "website": "www.yale.edu",
+      "applicants_total": 57517,
+      "applicants_men": 24951,
+      "applicants_women": 32540,
+      "admitted_total": 2227,
+      "admitted_men": 1136,
+      "admitted_women": 1091,
+      "enrolled_total": 1554,
+      "enrolled_men": 782,
+      "enrolled_women": 772,
+      "acceptance_rate": 0.0387,
+      "application_fee": 80,
+      "avg_gpa_weighted": null,
+      "rd_deadline": "1/2",
+      "waitlist_offered": 773,
+      "waitlist_accepted": 565,
+      "waitlist_admitted": 23,
+      "ea_ed_type": "REA",
+      "ea_ed_deadline": "11/1",
+      "ea_ed_notification": "12/15",
+      "ea_apps_received": null,
+      "ea_apps_admitted": null,
+      "sat_submitted_pct": 0.61,
+      "sat_submitted_count": 950,
+      "act_submitted_pct": 0.25,
+      "act_submitted_count": 384,
+      "sat_composite_25": 1480,
+      "sat_composite_75": 1560,
+      "sat_reading_25": 730,
+      "sat_reading_75": 780,
+      "sat_math_25": 740,
+      "sat_math_75": 790,
+      "act_composite_25": 33,
+      "act_composite_75": 35,
+      "act_math_25": 31,
+      "act_math_75": 35,
+      "act_english_25": 34,
+      "act_english_75": 36,
+      "total_undergrads": 6814,
+      "undergrads_male": 3267,
+      "undergrads_female": 3450,
+      "retention_rate": 0.988,
+      "tuition": 69900,
+      "tuition_in_state": null,
+      "tuition_out_of_state": null,
+      "required_fees": null,
+      "room_and_board": 20650,
+      "books_supplies": 1000,
+      "other_expenses": 2700,
+      "pct_out_of_state": 0.93,
+      "pct_on_campus_housing": 1,
+      "applicant_pools": {
+        "ea": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "rd": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "waitlist": {
+          "offered": 773,
+          "enrolled": 23,
+          "accepted_spots": 565
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": 24951,
+          "female": 32540
+        },
+        "accepted": {
+          "male": 1136,
+          "female": 1091
+        },
+        "enrolled": {
+          "male": 782,
+          "female": 772
+        }
+      },
+      "demographics_detail": {
+        "undergrad": {
+          "asian": 1483,
+          "black": 628,
+          "total": 6758,
+          "white": 2110,
+          "unknown": 145,
+          "hispanic": 1121,
+          "two_or_more": 479,
+          "american_indian": 27,
+          "pacific_islander": 11,
+          "nonresident_aliens": 754
+        },
+        "first_year": {
+          "asian": 320,
+          "black": 149,
+          "total": 1554,
+          "white": 463,
+          "unknown": 55,
+          "hispanic": 289,
+          "two_or_more": 100,
+          "american_indian": 7,
+          "pacific_islander": 2,
+          "nonresident_aliens": 169
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.93,
+        "international_pct": 0.1087
+      },
+      "sat_act_breakdown": {
+        "act_submitted_pct": 0.25,
+        "sat_submitted_pct": 0.61,
+        "act_submitted_count": 384,
+        "sat_submitted_count": 950
+      },
+      "class_rank": {
+        "top10": 0.96,
+        "top25": 0.99,
+        "top50": 1,
+        "bottom25": 0,
+        "bottom50": 0
+      },
+      "gpa_distribution": null,
+      "admission_factors": {
+        "essay": "very_important",
+        "rigor": "very_important",
+        "talent": "very_important",
+        "character": "very_important",
+        "first_gen": "considered",
+        "interview": "considered",
+        "religious": "not_considered",
+        "volunteer": "considered",
+        "class_rank": "very_important",
+        "test_scores": "considered",
+        "academic_gpa": "very_important",
+        "geo_residence": "considered",
+        "racial_ethnic": null,
+        "alumni_relation": "considered",
+        "recommendations": "very_important",
+        "state_residence": "considered",
+        "work_experience": "considered",
+        "extracurriculars": "very_important",
+        "applicant_interest": "not_considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 1061,
+          "admitted": 15,
+          "enrolled": 11
+        },
+        "total": {
+          "applied": 2055,
+          "admitted": 30,
+          "enrolled": 23
+        },
+        "female": {
+          "applied": 988,
+          "admitted": 13,
+          "enrolled": 10
+        }
+      },
+      "sat_avg": 1520
+    },
+    {
+      "id": 13,
+      "slug": "northwestern",
+      "name": "Northwestern University",
+      "scorecard_id": 147767,
+      "us_news_rank": 6,
+      "us_news_rank_year": "2025",
+      "test_policy": "required",
+      "graduation_rate_4yr": 0.9551,
+      "graduation_rate_6yr": 0.9653,
+      "median_earnings_6yr": 76844,
+      "median_earnings_10yr": 89363,
+      "median_debt_graduates": 15000,
+      "median_debt_all": 9000,
+      "pct_borrowing": null,
+      "pell_grant_pct": 0.1855,
+      "avg_net_price_0_30k": null,
+      "avg_net_price_30_48k": null,
+      "avg_net_price_48_75k": null,
+      "avg_net_price_75_110k": null,
+      "avg_net_price_110k_plus": null,
+      "student_faculty_ratio": 6,
+      "pct_classes_under_20": null,
+      "pct_classes_50_plus": null,
+      "endowment_total": 14300000000,
+      "endowment_per_student": 688000,
+      "updated_at": "2026-07-03T01:06:07.684+00:00",
+      "data_year": "2024-25",
+      "city": "Evanston",
+      "state": "IL",
+      "location": "Evanston, IL",
+      "school_type": "Private",
+      "website": "www.northwestern.edu",
+      "applicants_total": 49474,
+      "applicants_men": 23774,
+      "applicants_women": 25686,
+      "admitted_total": 3806,
+      "admitted_men": 1735,
+      "admitted_women": 2070,
+      "enrolled_total": 2105,
+      "enrolled_men": 977,
+      "enrolled_women": 1127,
+      "acceptance_rate": 0.077,
+      "application_fee": 75,
+      "avg_gpa_weighted": null,
+      "rd_deadline": "1/1",
+      "waitlist_offered": null,
+      "waitlist_accepted": null,
+      "waitlist_admitted": 59,
+      "ea_ed_type": "ED",
+      "ea_ed_deadline": "11/1",
+      "ea_ed_notification": "12/15",
+      "ea_apps_received": 5154,
+      "ea_apps_admitted": 1186,
+      "sat_submitted_pct": 0.46,
+      "sat_submitted_count": 963,
+      "act_submitted_pct": 0.23,
+      "act_submitted_count": 488,
+      "sat_composite_25": 1510,
+      "sat_composite_75": 1560,
+      "sat_reading_25": 740,
+      "sat_reading_75": 770,
+      "sat_math_25": 770,
+      "sat_math_75": 800,
+      "act_composite_25": 34,
+      "act_composite_75": 35,
+      "act_math_25": 32,
+      "act_math_75": 35,
+      "act_english_25": 35,
+      "act_english_75": 36,
+      "total_undergrads": 9060,
+      "undergrads_male": null,
+      "undergrads_female": null,
+      "retention_rate": 0.98,
+      "tuition": 69375,
+      "tuition_in_state": null,
+      "tuition_out_of_state": null,
+      "required_fees": 1214,
+      "room_and_board": 21975,
+      "books_supplies": 1800,
+      "other_expenses": 1950,
+      "pct_out_of_state": 0.76,
+      "pct_on_campus_housing": 0.55,
+      "applicant_pools": {
+        "ea": {
+          "rate": 0.2301,
+          "applied": 5154,
+          "admitted": 1186
+        },
+        "rd": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "waitlist": {
+          "offered": null,
+          "enrolled": 59,
+          "accepted_spots": null
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": 23774,
+          "female": 25686
+        },
+        "accepted": {
+          "male": 1735,
+          "female": 2070
+        },
+        "enrolled": {
+          "male": 977,
+          "female": 1127
+        }
+      },
+      "demographics_detail": {
+        "undergrad": null,
+        "first_year": {
+          "asian": 415,
+          "black": 230,
+          "total": 2105,
+          "white": 528,
+          "unknown": 108,
+          "hispanic": 382,
+          "two_or_more": 158,
+          "american_indian": 7,
+          "pacific_islander": 2,
+          "nonresident_aliens": 275
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.76,
+        "international_pct": null
+      },
+      "sat_act_breakdown": {
+        "act_submitted_pct": 0.23,
+        "sat_submitted_pct": 0.46,
+        "act_submitted_count": 488,
+        "sat_submitted_count": 963
+      },
+      "class_rank": null,
+      "gpa_distribution": null,
+      "admission_factors": {
+        "essay": "very_important",
+        "rigor": "very_important",
+        "talent": "very_important",
+        "character": "very_important",
+        "first_gen": "considered",
+        "interview": "considered",
+        "religious": "not_considered",
+        "volunteer": "considered",
+        "class_rank": "very_important",
+        "test_scores": "considered",
+        "academic_gpa": "very_important",
+        "geo_residence": "considered",
+        "racial_ethnic": null,
+        "alumni_relation": "considered",
+        "recommendations": "very_important",
+        "state_residence": "not_considered",
+        "work_experience": "considered",
+        "extracurriculars": "very_important",
+        "applicant_interest": "considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 2244,
+          "admitted": 251,
+          "enrolled": 145
+        },
+        "total": {
+          "applied": 4045,
+          "admitted": 484,
+          "enrolled": 277
+        },
+        "female": {
+          "applied": 1795,
+          "admitted": 233,
+          "enrolled": 132
+        }
+      },
+      "sat_avg": 1535
+    },
+    {
+      "id": 2,
+      "slug": "caltech",
+      "name": "California Institute of Technology",
+      "scorecard_id": 110404,
+      "us_news_rank": 6,
+      "us_news_rank_year": "2025",
+      "test_policy": "required",
+      "graduation_rate_4yr": 0.9376,
+      "graduation_rate_6yr": 0.9505,
+      "median_earnings_6yr": 132140,
+      "median_earnings_10yr": 128566,
+      "median_debt_graduates": null,
+      "median_debt_all": null,
+      "pct_borrowing": null,
+      "pell_grant_pct": 0.1799,
+      "avg_net_price_0_30k": null,
+      "avg_net_price_30_48k": null,
+      "avg_net_price_48_75k": null,
+      "avg_net_price_75_110k": null,
+      "avg_net_price_110k_plus": null,
+      "student_faculty_ratio": 3,
+      "pct_classes_under_20": null,
+      "pct_classes_50_plus": null,
+      "endowment_total": 3800000000,
+      "endowment_per_student": 1040000,
+      "updated_at": "2026-07-03T01:06:05.236+00:00",
+      "data_year": "2024-25",
+      "city": "Pasadena",
+      "state": "CA",
+      "location": "Pasadena, CA",
+      "school_type": "Private",
+      "website": "caltech.edu",
+      "applicants_total": 13856,
+      "applicants_men": 9401,
+      "applicants_women": 4446,
+      "admitted_total": 356,
+      "admitted_men": 166,
+      "admitted_women": 190,
+      "enrolled_total": 218,
+      "enrolled_men": 107,
+      "enrolled_women": 111,
+      "acceptance_rate": 0.0257,
+      "application_fee": 75,
+      "avg_gpa_weighted": null,
+      "rd_deadline": "1/3",
+      "waitlist_offered": 206,
+      "waitlist_accepted": 171,
+      "waitlist_admitted": 41,
+      "ea_ed_type": "EA",
+      "ea_ed_deadline": "11/1",
+      "ea_ed_notification": "12/15",
+      "ea_apps_received": null,
+      "ea_apps_admitted": null,
+      "sat_submitted_pct": null,
+      "sat_submitted_count": null,
+      "act_submitted_pct": null,
+      "act_submitted_count": null,
+      "sat_composite_25": null,
+      "sat_composite_75": null,
+      "sat_reading_25": null,
+      "sat_reading_75": null,
+      "sat_math_25": null,
+      "sat_math_75": null,
+      "act_composite_25": null,
+      "act_composite_75": null,
+      "act_math_25": null,
+      "act_math_75": null,
+      "act_english_25": null,
+      "act_english_75": null,
+      "total_undergrads": 987,
+      "undergrads_male": 541,
+      "undergrads_female": 446,
+      "retention_rate": 0.974,
+      "tuition": 65622,
+      "tuition_in_state": null,
+      "tuition_out_of_state": null,
+      "required_fees": 3086,
+      "room_and_board": 20991,
+      "books_supplies": 1428,
+      "other_expenses": 3285,
+      "pct_out_of_state": 0.64,
+      "pct_on_campus_housing": 0.9,
+      "applicant_pools": {
+        "ea": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "rd": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "waitlist": {
+          "offered": 206,
+          "enrolled": 41,
+          "accepted_spots": 171
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": 9401,
+          "female": 4446
+        },
+        "accepted": {
+          "male": 166,
+          "female": 190
+        },
+        "enrolled": {
+          "male": 107,
+          "female": 111
+        }
+      },
+      "demographics_detail": {
+        "undergrad": {
+          "asian": 354,
+          "black": 46,
+          "total": 987,
+          "white": 185,
+          "unknown": 1,
+          "hispanic": 172,
+          "two_or_more": 88,
+          "american_indian": 1,
+          "pacific_islander": 1,
+          "nonresident_aliens": 139
+        },
+        "first_year": {
+          "asian": 90,
+          "black": 12,
+          "total": 218,
+          "white": 43,
+          "unknown": 0,
+          "hispanic": 22,
+          "two_or_more": 17,
+          "american_indian": 0,
+          "pacific_islander": 1,
+          "nonresident_aliens": 33
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.64,
+        "international_pct": null
+      },
+      "sat_act_breakdown": {
+        "act_submitted_pct": null,
+        "sat_submitted_pct": null,
+        "act_submitted_count": null,
+        "sat_submitted_count": null
+      },
+      "class_rank": {
+        "top10": 0.864,
+        "top25": 0.977,
+        "top50": 1,
+        "bottom25": null,
+        "bottom50": 0
+      },
+      "gpa_distribution": null,
+      "admission_factors": {
+        "essay": "very_important",
+        "rigor": "very_important",
+        "talent": "considered",
+        "character": "very_important",
+        "first_gen": "considered",
+        "interview": "not_considered",
+        "religious": "not_considered",
+        "volunteer": "considered",
+        "class_rank": "important",
+        "test_scores": "very_important",
+        "academic_gpa": "important",
+        "geo_residence": "considered",
+        "racial_ethnic": null,
+        "alumni_relation": "not_considered",
+        "recommendations": "very_important",
+        "state_residence": "not_considered",
+        "work_experience": "considered",
+        "extracurriculars": "important",
+        "applicant_interest": "not_considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 138,
+          "admitted": 7,
+          "enrolled": 6
+        },
+        "total": {
+          "applied": 178,
+          "admitted": 11,
+          "enrolled": 10
+        },
+        "female": {
+          "applied": 40,
+          "admitted": 4,
+          "enrolled": 4
+        }
+      },
+      "sat_avg": null
+    },
+    {
+      "id": 7,
+      "slug": "duke",
+      "name": "Duke University",
+      "scorecard_id": 198419,
+      "us_news_rank": 6,
+      "us_news_rank_year": "2025",
+      "test_policy": "required",
+      "graduation_rate_4yr": 0.963,
+      "graduation_rate_6yr": 0.9662,
+      "median_earnings_6yr": 85792,
+      "median_earnings_10yr": 97800,
+      "median_debt_graduates": 13000,
+      "median_debt_all": 5500,
+      "pct_borrowing": null,
+      "pell_grant_pct": 0.1403,
+      "avg_net_price_0_30k": null,
+      "avg_net_price_30_48k": null,
+      "avg_net_price_48_75k": null,
+      "avg_net_price_75_110k": null,
+      "avg_net_price_110k_plus": null,
+      "student_faculty_ratio": 5,
+      "pct_classes_under_20": null,
+      "pct_classes_50_plus": null,
+      "endowment_total": 12700000000,
+      "endowment_per_student": 714000,
+      "updated_at": "2026-07-03T01:06:06.722+00:00",
+      "data_year": "2024-25",
+      "city": "Durham",
+      "state": "NC",
+      "location": "Durham, NC",
+      "school_type": "Private",
+      "website": "www.duke.edu",
+      "applicants_total": 51795,
+      "applicants_men": 24298,
+      "applicants_women": 27497,
+      "admitted_total": 2957,
+      "admitted_men": 1388,
+      "admitted_women": 1569,
+      "enrolled_total": 1740,
+      "enrolled_men": 824,
+      "enrolled_women": 916,
+      "acceptance_rate": 0.0571,
+      "application_fee": null,
+      "avg_gpa_weighted": null,
+      "rd_deadline": "1/2",
+      "waitlist_offered": null,
+      "waitlist_accepted": null,
+      "waitlist_admitted": null,
+      "ea_ed_type": "ED",
+      "ea_ed_deadline": "11/1",
+      "ea_ed_notification": "12/15",
+      "ea_apps_received": 6013,
+      "ea_apps_admitted": 1042,
+      "sat_submitted_pct": 0.48,
+      "sat_submitted_count": 824,
+      "act_submitted_pct": 0.3,
+      "act_submitted_count": 526,
+      "sat_composite_25": null,
+      "sat_composite_75": null,
+      "sat_reading_25": 740,
+      "sat_reading_75": 770,
+      "sat_math_25": 760,
+      "sat_math_75": 800,
+      "act_composite_25": 34,
+      "act_composite_75": 35,
+      "act_math_25": 35,
+      "act_math_75": 36,
+      "act_english_25": 32,
+      "act_english_75": 35,
+      "total_undergrads": 6523,
+      "undergrads_male": 3017,
+      "undergrads_female": 3506,
+      "retention_rate": 0.98,
+      "tuition": 70265,
+      "tuition_in_state": null,
+      "tuition_out_of_state": null,
+      "required_fees": 2907,
+      "room_and_board": 19247,
+      "books_supplies": 536,
+      "other_expenses": 3274,
+      "pct_out_of_state": 0.83,
+      "pct_on_campus_housing": 0.84,
+      "applicant_pools": {
+        "ea": {
+          "rate": 0.1733,
+          "applied": 6013,
+          "admitted": 1042
+        },
+        "rd": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "waitlist": {
+          "offered": null,
+          "enrolled": null,
+          "accepted_spots": null
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": 24298,
+          "female": 27497
+        },
+        "accepted": {
+          "male": 1388,
+          "female": 1569
+        },
+        "enrolled": {
+          "male": 824,
+          "female": 916
+        }
+      },
+      "demographics_detail": {
+        "undergrad": {
+          "asian": 1403,
+          "black": 562,
+          "total": 6442,
+          "white": 2266,
+          "unknown": 348,
+          "hispanic": 691,
+          "two_or_more": 475,
+          "american_indian": 13,
+          "pacific_islander": 5,
+          "nonresident_aliens": 679
+        },
+        "first_year": {
+          "asian": 337,
+          "black": 154,
+          "total": 1740,
+          "white": 598,
+          "unknown": 185,
+          "hispanic": 179,
+          "two_or_more": 124,
+          "american_indian": 3,
+          "pacific_islander": 0,
+          "nonresident_aliens": 160
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.83,
+        "international_pct": 0.1054
+      },
+      "sat_act_breakdown": {
+        "act_submitted_pct": 0.3,
+        "sat_submitted_pct": 0.48,
+        "act_submitted_count": 526,
+        "sat_submitted_count": 824
+      },
+      "class_rank": {
+        "top10": 0.92,
+        "top25": 0.98,
+        "top50": 0.99,
+        "bottom25": 0,
+        "bottom50": 0.01
+      },
+      "gpa_distribution": null,
+      "admission_factors": {
+        "essay": "important",
+        "rigor": "very_important",
+        "talent": "very_important",
+        "character": "very_important",
+        "first_gen": "important",
+        "interview": "important",
+        "religious": "considered",
+        "volunteer": "important",
+        "class_rank": "very_important",
+        "test_scores": "important",
+        "academic_gpa": "very_important",
+        "geo_residence": "important",
+        "racial_ethnic": null,
+        "alumni_relation": "important",
+        "recommendations": "very_important",
+        "state_residence": "important",
+        "work_experience": "important",
+        "extracurriculars": "very_important",
+        "applicant_interest": "important"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 1278,
+          "admitted": 56,
+          "enrolled": 32
+        },
+        "total": {
+          "applied": 2285,
+          "admitted": 92,
+          "enrolled": 52
+        },
+        "female": {
+          "applied": 1007,
+          "admitted": 36,
+          "enrolled": 20
+        }
+      },
+      "sat_avg": null
+    },
+    {
+      "id": 11,
+      "slug": "jhu",
+      "name": "Johns Hopkins University",
+      "scorecard_id": 162928,
+      "us_news_rank": 6,
+      "us_news_rank_year": "2025",
+      "test_policy": "required",
+      "graduation_rate_4yr": 0.9421,
+      "graduation_rate_6yr": 0.9415,
+      "median_earnings_6yr": 86306,
+      "median_earnings_10yr": 87555,
+      "median_debt_graduates": 10250,
+      "median_debt_all": 5750,
+      "pct_borrowing": null,
+      "pell_grant_pct": 0.1949,
+      "avg_net_price_0_30k": null,
+      "avg_net_price_30_48k": null,
+      "avg_net_price_48_75k": null,
+      "avg_net_price_75_110k": null,
+      "avg_net_price_110k_plus": null,
+      "student_faculty_ratio": 6,
+      "pct_classes_under_20": null,
+      "pct_classes_50_plus": null,
+      "endowment_total": 10300000000,
+      "endowment_per_student": 617000,
+      "updated_at": "2026-07-03T01:06:07.352+00:00",
+      "data_year": "2024-25",
+      "city": "Baltimore",
+      "state": "MD",
+      "location": "Baltimore, MD",
+      "school_type": "Private",
+      "website": "www.jhu.edu",
+      "applicants_total": 45895,
+      "applicants_men": 20391,
+      "applicants_women": 25469,
+      "admitted_total": 2954,
+      "admitted_men": 1419,
+      "admitted_women": 1527,
+      "enrolled_total": 1389,
+      "enrolled_men": 625,
+      "enrolled_women": 762,
+      "acceptance_rate": 0.0644,
+      "application_fee": 70,
+      "avg_gpa_weighted": 3.93,
+      "rd_deadline": "1/3",
+      "waitlist_offered": 2374,
+      "waitlist_accepted": 1614,
+      "waitlist_admitted": 30,
+      "ea_ed_type": "ED I & II",
+      "ea_ed_deadline": "11/1",
+      "ea_ed_notification": "12/10",
+      "ea_apps_received": 7028,
+      "ea_apps_admitted": 825,
+      "sat_submitted_pct": 0.5,
+      "sat_submitted_count": 691,
+      "act_submitted_pct": 0.18,
+      "act_submitted_count": 254,
+      "sat_composite_25": 1530,
+      "sat_composite_75": 1560,
+      "sat_reading_25": 740,
+      "sat_reading_75": 770,
+      "sat_math_25": 780,
+      "sat_math_75": 800,
+      "act_composite_25": 34,
+      "act_composite_75": 36,
+      "act_math_25": 34,
+      "act_math_75": 36,
+      "act_english_25": 35,
+      "act_english_75": 36,
+      "total_undergrads": 6356,
+      "undergrads_male": 2745,
+      "undergrads_female": 3583,
+      "retention_rate": 0.9809,
+      "tuition": 66670,
+      "tuition_in_state": null,
+      "tuition_out_of_state": null,
+      "required_fees": 500,
+      "room_and_board": 21002,
+      "books_supplies": 1367,
+      "other_expenses": 1559,
+      "pct_out_of_state": 0.86,
+      "pct_on_campus_housing": 0.91,
+      "applicant_pools": {
+        "ea": {
+          "rate": 0.1174,
+          "applied": 7028,
+          "admitted": 825
+        },
+        "rd": {
+          "rate": 0.0548,
+          "applied": 38867,
+          "admitted": 2129
+        },
+        "waitlist": {
+          "offered": 2374,
+          "enrolled": 30,
+          "accepted_spots": 1614
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": 20391,
+          "female": 25469
+        },
+        "accepted": {
+          "male": 1419,
+          "female": 1527
+        },
+        "enrolled": {
+          "male": 625,
+          "female": 762
+        }
+      },
+      "demographics_detail": {
+        "undergrad": {
+          "asian": 1672,
+          "black": 474,
+          "total": 5693,
+          "white": 1110,
+          "unknown": 117,
+          "hispanic": 1063,
+          "two_or_more": 377,
+          "american_indian": 9,
+          "pacific_islander": 5,
+          "nonresident_aliens": 866
+        },
+        "first_year": {
+          "asian": 567,
+          "black": 48,
+          "total": 1389,
+          "white": 292,
+          "unknown": 42,
+          "hispanic": 148,
+          "two_or_more": 80,
+          "american_indian": 1,
+          "pacific_islander": 2,
+          "nonresident_aliens": 209
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.86,
+        "international_pct": 0.1699
+      },
+      "sat_act_breakdown": {
+        "act_submitted_pct": 0.18,
+        "sat_submitted_pct": 0.5,
+        "act_submitted_count": 254,
+        "sat_submitted_count": 691
+      },
+      "class_rank": {
+        "top10": 1,
+        "top25": 1,
+        "top50": 1,
+        "bottom25": null,
+        "bottom50": 0
+      },
+      "gpa_distribution": {
+        "4_0": 0.6497,
+        "below_1_0": null,
+        "1_00_to_1_99": null,
+        "2_00_to_2_49": null,
+        "2_50_to_2_99": 0.0039,
+        "3_00_to_3_24": 0.0085,
+        "3_25_to_3_49": 0.0162,
+        "3_50_to_3_74": 0.048,
+        "3_75_to_3_99": 0.2738
+      },
+      "admission_factors": {
+        "essay": "very_important",
+        "rigor": "very_important",
+        "talent": "important",
+        "character": "important",
+        "first_gen": "considered",
+        "interview": "considered",
+        "religious": "not_considered",
+        "volunteer": "important",
+        "class_rank": "very_important",
+        "test_scores": "considered",
+        "academic_gpa": "very_important",
+        "geo_residence": "considered",
+        "racial_ethnic": null,
+        "alumni_relation": "considered",
+        "recommendations": "very_important",
+        "state_residence": "not_considered",
+        "work_experience": "important",
+        "extracurriculars": "important",
+        "applicant_interest": "not_considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 1318,
+          "admitted": 60,
+          "enrolled": 36
+        },
+        "total": {
+          "applied": 2370,
+          "admitted": 125,
+          "enrolled": 69
+        },
+        "female": {
+          "applied": 1048,
+          "admitted": 65,
+          "enrolled": 33
+        }
+      },
+      "sat_avg": 1545
+    },
+    {
+      "id": 26,
+      "slug": "upenn",
+      "name": "University of Pennsylvania",
+      "scorecard_id": 215062,
+      "us_news_rank": 10,
+      "us_news_rank_year": "2025",
+      "test_policy": "required",
+      "graduation_rate_4yr": 0.9668,
+      "graduation_rate_6yr": 0.972,
+      "median_earnings_6yr": 90555,
+      "median_earnings_10yr": 111371,
+      "median_debt_graduates": 15715,
+      "median_debt_all": 12000,
+      "pct_borrowing": null,
+      "pell_grant_pct": 0.1653,
+      "avg_net_price_0_30k": null,
+      "avg_net_price_30_48k": null,
+      "avg_net_price_48_75k": null,
+      "avg_net_price_75_110k": null,
+      "avg_net_price_110k_plus": null,
+      "student_faculty_ratio": 8,
+      "pct_classes_under_20": null,
+      "pct_classes_50_plus": null,
+      "endowment_total": 20700000000,
+      "endowment_per_student": 635000,
+      "updated_at": "2026-07-03T01:06:09.757+00:00",
+      "data_year": "2024-25",
+      "city": "Philadelphia",
+      "state": "PA",
+      "location": "Philadelphia, PA",
+      "school_type": "Private",
+      "website": "www.upenn.edu",
+      "applicants_total": 65236,
+      "applicants_men": 30339,
+      "applicants_women": 34887,
+      "admitted_total": 3523,
+      "admitted_men": 1634,
+      "admitted_women": 1889,
+      "enrolled_total": 2395,
+      "enrolled_men": null,
+      "enrolled_women": null,
+      "acceptance_rate": 0.054,
+      "application_fee": 75,
+      "avg_gpa_weighted": 3.9,
+      "rd_deadline": "1/5",
+      "waitlist_offered": 2958,
+      "waitlist_accepted": 2288,
+      "waitlist_admitted": 66,
+      "ea_ed_type": "ED",
+      "ea_ed_deadline": "11/1",
+      "ea_ed_notification": "12/15",
+      "ea_apps_received": 8683,
+      "ea_apps_admitted": 1235,
+      "sat_submitted_pct": 0.5,
+      "sat_submitted_count": 1204,
+      "act_submitted_pct": 0.17,
+      "act_submitted_count": 416,
+      "sat_composite_25": 1510,
+      "sat_composite_75": 1570,
+      "sat_reading_25": 740,
+      "sat_reading_75": 770,
+      "sat_math_25": 770,
+      "sat_math_75": 800,
+      "act_composite_25": 34,
+      "act_composite_75": 36,
+      "act_math_25": 34,
+      "act_math_75": 36,
+      "act_english_25": 35,
+      "act_english_75": 36,
+      "total_undergrads": 10013,
+      "undergrads_male": null,
+      "undergrads_female": null,
+      "retention_rate": 0.988,
+      "tuition": 63204,
+      "tuition_in_state": null,
+      "tuition_out_of_state": null,
+      "required_fees": 8032,
+      "room_and_board": 19876,
+      "books_supplies": 1412,
+      "other_expenses": 2008,
+      "pct_out_of_state": 0.83,
+      "pct_on_campus_housing": 0.52,
+      "applicant_pools": {
+        "ea": {
+          "rate": 0.1423,
+          "applied": 8683,
+          "admitted": 1235
+        },
+        "rd": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "waitlist": {
+          "offered": 2958,
+          "enrolled": 66,
+          "accepted_spots": 2288
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": 30339,
+          "female": 34887
+        },
+        "accepted": {
+          "male": 1634,
+          "female": 1889
+        },
+        "enrolled": {
+          "male": null,
+          "female": null
+        }
+      },
+      "demographics_detail": {
+        "undergrad": null,
+        "first_year": {
+          "asian": 753,
+          "black": 206,
+          "total": 2393,
+          "white": 525,
+          "unknown": 194,
+          "hispanic": 271,
+          "two_or_more": 126,
+          "american_indian": 8,
+          "pacific_islander": 1,
+          "nonresident_aliens": 309
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.83,
+        "international_pct": null
+      },
+      "sat_act_breakdown": {
+        "act_submitted_pct": 0.17,
+        "sat_submitted_pct": 0.5,
+        "act_submitted_count": 416,
+        "sat_submitted_count": 1204
+      },
+      "class_rank": {
+        "top10": 0.91,
+        "top25": 0.99,
+        "top50": 1,
+        "bottom25": 0,
+        "bottom50": 0
+      },
+      "gpa_distribution": {
+        "4_0": 0.59,
+        "below_1_0": null,
+        "1_00_to_1_99": null,
+        "2_00_to_2_49": null,
+        "2_50_to_2_99": 0,
+        "3_00_to_3_24": 0,
+        "3_25_to_3_49": 0.05,
+        "3_50_to_3_74": 0.05,
+        "3_75_to_3_99": 0.31
+      },
+      "admission_factors": {
+        "essay": "very_important",
+        "rigor": "very_important",
+        "talent": "important",
+        "character": "very_important",
+        "first_gen": "considered",
+        "interview": "not_considered",
+        "religious": "not_considered",
+        "volunteer": "important",
+        "class_rank": "very_important",
+        "test_scores": "considered",
+        "academic_gpa": "very_important",
+        "geo_residence": "considered",
+        "racial_ethnic": null,
+        "alumni_relation": "considered",
+        "recommendations": "very_important",
+        "state_residence": "considered",
+        "work_experience": "important",
+        "extracurriculars": "important",
+        "applicant_interest": "not_considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 2509,
+          "admitted": 67,
+          "enrolled": 46
+        },
+        "total": {
+          "applied": 4521,
+          "admitted": 145,
+          "enrolled": 100
+        },
+        "female": {
+          "applied": 2007,
+          "admitted": 78,
+          "enrolled": 54
+        }
+      },
+      "sat_avg": 1540
+    },
+    {
+      "id": 5,
+      "slug": "cornell",
+      "name": "Cornell University",
+      "scorecard_id": 190415,
+      "us_news_rank": 11,
+      "us_news_rank_year": "2025",
+      "test_policy": "required",
+      "graduation_rate_4yr": 0.9526,
+      "graduation_rate_6yr": 0.9569,
+      "median_earnings_6yr": 87830,
+      "median_earnings_10yr": 104043,
+      "median_debt_graduates": 14000,
+      "median_debt_all": 6934,
+      "pct_borrowing": null,
+      "pell_grant_pct": 0.1841,
+      "avg_net_price_0_30k": null,
+      "avg_net_price_30_48k": null,
+      "avg_net_price_48_75k": null,
+      "avg_net_price_75_110k": null,
+      "avg_net_price_110k_plus": null,
+      "student_faculty_ratio": 9,
+      "pct_classes_under_20": null,
+      "pct_classes_50_plus": null,
+      "endowment_total": 10200000000,
+      "endowment_per_student": 235000,
+      "updated_at": "2026-07-03T01:06:06.117+00:00",
+      "data_year": "2024-25",
+      "city": "Ithaca",
+      "state": "NY",
+      "location": "Ithaca, NY",
+      "school_type": "Private",
+      "website": "cornell.edu",
+      "applicants_total": 65612,
+      "applicants_men": 33387,
+      "applicants_women": 32195,
+      "admitted_total": 5516,
+      "admitted_men": 2529,
+      "admitted_women": 2987,
+      "enrolled_total": 3525,
+      "enrolled_men": 1648,
+      "enrolled_women": 1877,
+      "acceptance_rate": 0.0841,
+      "application_fee": 80,
+      "avg_gpa_weighted": null,
+      "rd_deadline": "1/2",
+      "waitlist_offered": 8103,
+      "waitlist_accepted": 6190,
+      "waitlist_admitted": 388,
+      "ea_ed_type": "ED",
+      "ea_ed_deadline": "11/1",
+      "ea_ed_notification": "12/15",
+      "ea_apps_received": 9973,
+      "ea_apps_admitted": 1161,
+      "sat_submitted_pct": 0.449,
+      "sat_submitted_count": 1583,
+      "act_submitted_pct": 0.146,
+      "act_submitted_count": 513,
+      "sat_composite_25": 1510,
+      "sat_composite_75": 1560,
+      "sat_reading_25": 730,
+      "sat_reading_75": 770,
+      "sat_math_25": 770,
+      "sat_math_75": 800,
+      "act_composite_25": 33,
+      "act_composite_75": 35,
+      "act_math_25": null,
+      "act_math_75": null,
+      "act_english_25": null,
+      "act_english_75": null,
+      "total_undergrads": 15995,
+      "undergrads_male": null,
+      "undergrads_female": null,
+      "retention_rate": 0.981,
+      "tuition": null,
+      "tuition_in_state": null,
+      "tuition_out_of_state": null,
+      "required_fees": null,
+      "room_and_board": null,
+      "books_supplies": null,
+      "other_expenses": null,
+      "pct_out_of_state": 0.65,
+      "pct_on_campus_housing": null,
+      "applicant_pools": {
+        "ea": {
+          "rate": 0.1164,
+          "applied": 9973,
+          "admitted": 1161
+        },
+        "rd": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "waitlist": {
+          "offered": 8103,
+          "enrolled": 388,
+          "accepted_spots": 6190
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": 33387,
+          "female": 32195
+        },
+        "accepted": {
+          "male": 2529,
+          "female": 2987
+        },
+        "enrolled": {
+          "male": 1648,
+          "female": 1877
+        }
+      },
+      "demographics_detail": {
+        "undergrad": {
+          "asian": 4280,
+          "black": 1094,
+          "total": 15995,
+          "white": 4960,
+          "unknown": 1025,
+          "hispanic": 2105,
+          "two_or_more": 950,
+          "american_indian": 29,
+          "pacific_islander": 25,
+          "nonresident_aliens": 1527
+        },
+        "first_year": {
+          "asian": 1020,
+          "black": 150,
+          "total": 3525,
+          "white": 1130,
+          "unknown": 307,
+          "hispanic": 335,
+          "two_or_more": 221,
+          "american_indian": 2,
+          "pacific_islander": 5,
+          "nonresident_aliens": 355
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.65,
+        "international_pct": null
+      },
+      "sat_act_breakdown": {
+        "act_submitted_pct": 0.146,
+        "sat_submitted_pct": 0.449,
+        "act_submitted_count": 513,
+        "sat_submitted_count": 1583
+      },
+      "class_rank": {
+        "top10": 0.856,
+        "top25": 0.955,
+        "top50": 0.994,
+        "bottom25": 0,
+        "bottom50": 0.006
+      },
+      "gpa_distribution": null,
+      "admission_factors": {
+        "essay": "very_important",
+        "rigor": "very_important",
+        "talent": "very_important",
+        "character": "very_important",
+        "first_gen": "considered",
+        "interview": "considered",
+        "religious": "not_considered",
+        "volunteer": "considered",
+        "class_rank": "important",
+        "test_scores": "considered",
+        "academic_gpa": "important",
+        "geo_residence": "considered",
+        "racial_ethnic": null,
+        "alumni_relation": "considered",
+        "recommendations": "very_important",
+        "state_residence": "considered",
+        "work_experience": "considered",
+        "extracurriculars": "very_important",
+        "applicant_interest": "not_considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 4128,
+          "admitted": 289,
+          "enrolled": 215
+        },
+        "total": {
+          "applied": 7218,
+          "admitted": 670,
+          "enrolled": 503
+        },
+        "female": {
+          "applied": 3082,
+          "admitted": 381,
+          "enrolled": 288
+        }
+      },
+      "sat_avg": 1535
+    },
+    {
+      "id": 20,
+      "slug": "uchicago",
+      "name": "University of Chicago",
+      "scorecard_id": 144050,
+      "us_news_rank": 11,
+      "us_news_rank_year": "2025",
+      "test_policy": "required",
+      "graduation_rate_4yr": 0.9539,
+      "graduation_rate_6yr": 0.9616,
+      "median_earnings_6yr": 80870,
+      "median_earnings_10yr": 91885,
+      "median_debt_graduates": 15000,
+      "median_debt_all": 6500,
+      "pct_borrowing": null,
+      "pell_grant_pct": 0.1526,
+      "avg_net_price_0_30k": null,
+      "avg_net_price_30_48k": null,
+      "avg_net_price_48_75k": null,
+      "avg_net_price_75_110k": null,
+      "avg_net_price_110k_plus": null,
+      "student_faculty_ratio": 5,
+      "pct_classes_under_20": null,
+      "pct_classes_50_plus": null,
+      "endowment_total": 10400000000,
+      "endowment_per_student": 519000,
+      "updated_at": "2026-07-03T01:06:08.806+00:00",
+      "data_year": "2024-25",
+      "city": "Chicago",
+      "state": "IL",
+      "location": "Chicago, IL",
+      "school_type": "Private",
+      "website": "uchicago.edu",
+      "applicants_total": 43612,
+      "applicants_men": 19195,
+      "applicants_women": 23636,
+      "admitted_total": 1955,
+      "admitted_men": 1070,
+      "admitted_women": 885,
+      "enrolled_total": 1726,
+      "enrolled_men": 955,
+      "enrolled_women": 771,
+      "acceptance_rate": 0.0448,
+      "application_fee": 75,
+      "avg_gpa_weighted": 4.97,
+      "rd_deadline": null,
+      "waitlist_offered": null,
+      "waitlist_accepted": null,
+      "waitlist_admitted": null,
+      "ea_ed_type": "EA",
+      "ea_ed_deadline": null,
+      "ea_ed_notification": null,
+      "ea_apps_received": null,
+      "ea_apps_admitted": null,
+      "sat_submitted_pct": 0.49,
+      "sat_submitted_count": 850,
+      "act_submitted_pct": 0.27,
+      "act_submitted_count": 460,
+      "sat_composite_25": 1510,
+      "sat_composite_75": 1560,
+      "sat_reading_25": 740,
+      "sat_reading_75": 780,
+      "sat_math_25": 770,
+      "sat_math_75": 800,
+      "act_composite_25": 34,
+      "act_composite_75": 35,
+      "act_math_25": 33,
+      "act_math_75": 35,
+      "act_english_25": 34,
+      "act_english_75": 36,
+      "total_undergrads": 7519,
+      "undergrads_male": 4085,
+      "undergrads_female": 3434,
+      "retention_rate": 0.99,
+      "tuition": 71325,
+      "tuition_in_state": null,
+      "tuition_out_of_state": null,
+      "required_fees": 2637,
+      "room_and_board": 20835,
+      "books_supplies": 1800,
+      "other_expenses": 1950,
+      "pct_out_of_state": 0.85,
+      "pct_on_campus_housing": 0.58,
+      "applicant_pools": {
+        "ea": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "rd": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "waitlist": {
+          "offered": null,
+          "enrolled": null,
+          "accepted_spots": null
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": 19195,
+          "female": 23636
+        },
+        "accepted": {
+          "male": 1070,
+          "female": 885
+        },
+        "enrolled": {
+          "male": 955,
+          "female": 771
+        }
+      },
+      "demographics_detail": {
+        "undergrad": {
+          "asian": 1455,
+          "black": 514,
+          "total": 7503,
+          "white": 2214,
+          "unknown": 205,
+          "hispanic": 1265,
+          "two_or_more": 526,
+          "american_indian": 3,
+          "pacific_islander": 2,
+          "nonresident_aliens": 1319
+        },
+        "first_year": {
+          "asian": 364,
+          "black": 97,
+          "total": 1726,
+          "white": 529,
+          "unknown": 52,
+          "hispanic": 246,
+          "two_or_more": 117,
+          "american_indian": 2,
+          "pacific_islander": 1,
+          "nonresident_aliens": 318
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.85,
+        "international_pct": 0.176
+      },
+      "sat_act_breakdown": {
+        "act_submitted_pct": 0.27,
+        "sat_submitted_pct": 0.49,
+        "act_submitted_count": 460,
+        "sat_submitted_count": 850
+      },
+      "class_rank": {
+        "top10": 0.96,
+        "top25": 0.99,
+        "top50": 1,
+        "bottom25": 0,
+        "bottom50": 0
+      },
+      "gpa_distribution": {
+        "4_0": 0.5846,
+        "below_1_0": null,
+        "1_00_to_1_99": null,
+        "2_00_to_2_49": 0,
+        "2_50_to_2_99": 0.0009,
+        "3_00_to_3_24": 0.0278,
+        "3_25_to_3_49": 0.0176,
+        "3_50_to_3_74": 0.0685,
+        "3_75_to_3_99": 0.3007
+      },
+      "admission_factors": {
+        "essay": "very_important",
+        "rigor": "important",
+        "talent": "very_important",
+        "character": "important",
+        "first_gen": "important",
+        "interview": "considered",
+        "religious": "important",
+        "volunteer": "important",
+        "class_rank": "important",
+        "test_scores": "important",
+        "academic_gpa": "important",
+        "geo_residence": "important",
+        "racial_ethnic": null,
+        "alumni_relation": "important",
+        "recommendations": "very_important",
+        "state_residence": "important",
+        "work_experience": "important",
+        "extracurriculars": "very_important",
+        "applicant_interest": "considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 1591,
+          "admitted": 155,
+          "enrolled": 143
+        },
+        "total": {
+          "applied": 2884,
+          "admitted": 268,
+          "enrolled": 231
+        },
+        "female": {
+          "applied": 1154,
+          "admitted": 113,
+          "enrolled": 88
+        }
+      },
+      "sat_avg": 1535
+    },
+    {
+      "id": 1,
+      "slug": "brown",
+      "name": "Brown University",
+      "scorecard_id": 217156,
+      "us_news_rank": 13,
+      "us_news_rank_year": "2025",
+      "test_policy": "required",
+      "graduation_rate_4yr": 0.957,
+      "graduation_rate_6yr": 0.9642,
+      "median_earnings_6yr": 79131,
+      "median_earnings_10yr": 93487,
+      "median_debt_graduates": 11428,
+      "median_debt_all": 6500,
+      "pct_borrowing": null,
+      "pell_grant_pct": 0.1384,
+      "avg_net_price_0_30k": null,
+      "avg_net_price_30_48k": null,
+      "avg_net_price_48_75k": null,
+      "avg_net_price_75_110k": null,
+      "avg_net_price_110k_plus": null,
+      "student_faculty_ratio": 6,
+      "pct_classes_under_20": null,
+      "pct_classes_50_plus": null,
+      "endowment_total": 7200000000,
+      "endowment_per_student": 391000,
+      "updated_at": "2026-07-03T01:06:04.521+00:00",
+      "data_year": "2024-25",
+      "city": "Providence",
+      "state": "RI",
+      "location": "Providence, RI",
+      "school_type": "Private",
+      "website": "www.brown.edu",
+      "applicants_total": 48904,
+      "applicants_men": 18960,
+      "applicants_women": 29917,
+      "admitted_total": 2638,
+      "admitted_men": 1326,
+      "admitted_women": 1309,
+      "enrolled_total": 1719,
+      "enrolled_men": 855,
+      "enrolled_women": 863,
+      "acceptance_rate": 0.0539,
+      "application_fee": 75,
+      "avg_gpa_weighted": null,
+      "rd_deadline": "1/3",
+      "waitlist_offered": null,
+      "waitlist_accepted": null,
+      "waitlist_admitted": 118,
+      "ea_ed_type": "ED",
+      "ea_ed_deadline": "11/1",
+      "ea_ed_notification": "12/15",
+      "ea_apps_received": 6251,
+      "ea_apps_admitted": 898,
+      "sat_submitted_pct": 0.61,
+      "sat_submitted_count": 1046,
+      "act_submitted_pct": 0.24,
+      "act_submitted_count": 410,
+      "sat_composite_25": 1510,
+      "sat_composite_75": 1560,
+      "sat_reading_25": 740,
+      "sat_reading_75": 780,
+      "sat_math_25": 770,
+      "sat_math_75": 800,
+      "act_composite_25": 34,
+      "act_composite_75": 35,
+      "act_math_25": 32,
+      "act_math_75": 35,
+      "act_english_25": 35,
+      "act_english_75": 36,
+      "total_undergrads": 7910,
+      "undergrads_male": 3589,
+      "undergrads_female": 3602,
+      "retention_rate": 0.988,
+      "tuition": 71700,
+      "tuition_in_state": null,
+      "tuition_out_of_state": null,
+      "required_fees": 2850,
+      "room_and_board": 18514,
+      "books_supplies": 1300,
+      "other_expenses": 2820,
+      "pct_out_of_state": 0.94,
+      "pct_on_campus_housing": 0.75,
+      "applicant_pools": {
+        "ea": {
+          "rate": 0.1437,
+          "applied": 6251,
+          "admitted": 898
+        },
+        "rd": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "waitlist": {
+          "offered": null,
+          "enrolled": 118,
+          "accepted_spots": null
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": 18960,
+          "female": 29917
+        },
+        "accepted": {
+          "male": 1326,
+          "female": 1309
+        },
+        "enrolled": {
+          "male": 855,
+          "female": 863
+        }
+      },
+      "demographics_detail": {
+        "undergrad": {
+          "asian": 1653,
+          "black": 591,
+          "total": 7226,
+          "white": 2379,
+          "unknown": 213,
+          "hispanic": 876,
+          "two_or_more": 574,
+          "american_indian": 15,
+          "pacific_islander": 8,
+          "nonresident_aliens": 917
+        },
+        "first_year": {
+          "asian": 470,
+          "black": 94,
+          "total": 1719,
+          "white": 526,
+          "unknown": 94,
+          "hispanic": 173,
+          "two_or_more": 119,
+          "american_indian": 1,
+          "pacific_islander": 0,
+          "nonresident_aliens": 242
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.94,
+        "international_pct": 0.1408
+      },
+      "sat_act_breakdown": {
+        "act_submitted_pct": 0.24,
+        "sat_submitted_pct": 0.61,
+        "act_submitted_count": 410,
+        "sat_submitted_count": 1046
+      },
+      "class_rank": {
+        "top10": 0.89,
+        "top25": 0.98,
+        "top50": 1,
+        "bottom25": 0,
+        "bottom50": 0
+      },
+      "gpa_distribution": null,
+      "admission_factors": {
+        "essay": "very_important",
+        "rigor": "very_important",
+        "talent": "very_important",
+        "character": "very_important",
+        "first_gen": "considered",
+        "interview": "not_considered",
+        "religious": "not_considered",
+        "volunteer": "considered",
+        "class_rank": "very_important",
+        "test_scores": "very_important",
+        "academic_gpa": "very_important",
+        "geo_residence": "considered",
+        "racial_ethnic": null,
+        "alumni_relation": "considered",
+        "recommendations": "very_important",
+        "state_residence": "considered",
+        "work_experience": "considered",
+        "extracurriculars": "important",
+        "applicant_interest": "not_considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 1491,
+          "admitted": 116,
+          "enrolled": 85
+        },
+        "total": {
+          "applied": 2987,
+          "admitted": 215,
+          "enrolled": 145
+        },
+        "female": {
+          "applied": 1493,
+          "admitted": 99,
+          "enrolled": 60
+        }
+      },
+      "sat_avg": 1535
+    },
+    {
+      "id": 4,
+      "slug": "columbia",
+      "name": "Columbia University",
+      "scorecard_id": 190150,
+      "us_news_rank": 13,
+      "us_news_rank_year": "2025",
+      "test_policy": "required",
+      "graduation_rate_4yr": 0.9554,
+      "graduation_rate_6yr": 0.9305,
+      "median_earnings_6yr": 88535,
+      "median_earnings_10yr": 102491,
+      "median_debt_graduates": 21500,
+      "median_debt_all": 13275,
+      "pct_borrowing": null,
+      "pell_grant_pct": 0.2271,
+      "avg_net_price_0_30k": null,
+      "avg_net_price_30_48k": null,
+      "avg_net_price_48_75k": null,
+      "avg_net_price_75_110k": null,
+      "avg_net_price_110k_plus": null,
+      "student_faculty_ratio": 6,
+      "pct_classes_under_20": null,
+      "pct_classes_50_plus": null,
+      "endowment_total": 14300000000,
+      "endowment_per_student": 349000,
+      "updated_at": "2026-07-03T01:06:05.749+00:00",
+      "data_year": "2024-25",
+      "city": "New York",
+      "state": "NY",
+      "location": "New York, NY",
+      "school_type": "Private",
+      "website": "columbia.edu",
+      "applicants_total": 60247,
+      "applicants_men": 26575,
+      "applicants_women": 32668,
+      "admitted_total": 2325,
+      "admitted_men": 1082,
+      "admitted_women": 1191,
+      "enrolled_total": 1483,
+      "enrolled_men": 688,
+      "enrolled_women": 767,
+      "acceptance_rate": 0.0386,
+      "application_fee": 85,
+      "avg_gpa_weighted": null,
+      "rd_deadline": "1/1",
+      "waitlist_offered": null,
+      "waitlist_accepted": null,
+      "waitlist_admitted": null,
+      "ea_ed_type": "ED",
+      "ea_ed_deadline": "11/1",
+      "ea_ed_notification": "12/15",
+      "ea_apps_received": 6007,
+      "ea_apps_admitted": 795,
+      "sat_submitted_pct": 0.44,
+      "sat_submitted_count": 653,
+      "act_submitted_pct": 0.17,
+      "act_submitted_count": 257,
+      "sat_composite_25": 1510,
+      "sat_composite_75": 1560,
+      "sat_reading_25": 740,
+      "sat_reading_75": 780,
+      "sat_math_25": 770,
+      "sat_math_75": 800,
+      "act_composite_25": 34,
+      "act_composite_75": 36,
+      "act_math_25": 33,
+      "act_math_75": 36,
+      "act_english_25": 35,
+      "act_english_75": 36,
+      "total_undergrads": 6597,
+      "undergrads_male": 3224,
+      "undergrads_female": 3256,
+      "retention_rate": 0.98,
+      "tuition": 70170,
+      "tuition_in_state": null,
+      "tuition_out_of_state": null,
+      "required_fees": 3280,
+      "room_and_board": 20322,
+      "books_supplies": 1282,
+      "other_expenses": 1804,
+      "pct_out_of_state": 0.8,
+      "pct_on_campus_housing": 0.9,
+      "applicant_pools": {
+        "ea": {
+          "rate": 0.1323,
+          "applied": 6007,
+          "admitted": 795
+        },
+        "rd": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "waitlist": {
+          "offered": null,
+          "enrolled": null,
+          "accepted_spots": null
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": 26575,
+          "female": 32668
+        },
+        "accepted": {
+          "male": 1082,
+          "female": 1191
+        },
+        "enrolled": {
+          "male": 688,
+          "female": 767
+        }
+      },
+      "demographics_detail": {
+        "undergrad": {
+          "asian": 1429,
+          "black": 535,
+          "total": 6597,
+          "white": 1743,
+          "unknown": 199,
+          "hispanic": 1110,
+          "two_or_more": 468,
+          "american_indian": 22,
+          "pacific_islander": 14,
+          "nonresident_aliens": 1077
+        },
+        "first_year": {
+          "asian": 390,
+          "black": 92,
+          "total": 1483,
+          "white": 383,
+          "unknown": 26,
+          "hispanic": 237,
+          "two_or_more": 96,
+          "american_indian": 4,
+          "pacific_islander": 4,
+          "nonresident_aliens": 251
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.8,
+        "international_pct": null
+      },
+      "sat_act_breakdown": {
+        "act_submitted_pct": 0.17,
+        "sat_submitted_pct": 0.44,
+        "act_submitted_count": 257,
+        "sat_submitted_count": 653
+      },
+      "class_rank": {
+        "top10": 0.94,
+        "top25": 1,
+        "top50": 1,
+        "bottom25": 0,
+        "bottom50": 0
+      },
+      "gpa_distribution": null,
+      "admission_factors": {
+        "essay": "very_important",
+        "rigor": "very_important",
+        "talent": "important",
+        "character": "very_important",
+        "first_gen": "considered",
+        "interview": "not_considered",
+        "religious": "not_considered",
+        "volunteer": "considered",
+        "class_rank": "very_important",
+        "test_scores": "considered",
+        "academic_gpa": "very_important",
+        "geo_residence": "considered",
+        "racial_ethnic": null,
+        "alumni_relation": "considered",
+        "recommendations": "very_important",
+        "state_residence": "not_considered",
+        "work_experience": "considered",
+        "extracurriculars": "very_important",
+        "applicant_interest": "not_considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 2259,
+          "admitted": 221,
+          "enrolled": 182
+        },
+        "total": {
+          "applied": 4180,
+          "admitted": 375,
+          "enrolled": 298
+        },
+        "female": {
+          "applied": 1801,
+          "admitted": 140,
+          "enrolled": 103
+        }
+      },
+      "sat_avg": 1535
+    },
+    {
+      "id": 6,
+      "slug": "dartmouth",
+      "name": "Dartmouth College",
+      "scorecard_id": 182670,
+      "us_news_rank": 15,
+      "us_news_rank_year": "2025",
+      "test_policy": "required",
+      "graduation_rate_4yr": 0.9575,
+      "graduation_rate_6yr": 0.9528,
+      "median_earnings_6yr": 82541,
+      "median_earnings_10yr": 97434,
+      "median_debt_graduates": 17500,
+      "median_debt_all": 7537,
+      "pct_borrowing": null,
+      "pell_grant_pct": 0.1435,
+      "avg_net_price_0_30k": null,
+      "avg_net_price_30_48k": null,
+      "avg_net_price_48_75k": null,
+      "avg_net_price_75_110k": null,
+      "avg_net_price_110k_plus": null,
+      "student_faculty_ratio": 7,
+      "pct_classes_under_20": null,
+      "pct_classes_50_plus": null,
+      "endowment_total": 8500000000,
+      "endowment_per_student": 1090000,
+      "updated_at": "2026-07-03T01:06:06.424+00:00",
+      "data_year": "2024-25",
+      "city": "Hanover",
+      "state": "NH",
+      "location": "Hanover, NH",
+      "school_type": "Private",
+      "website": "www.dartmouth.edu",
+      "applicants_total": 31656,
+      "applicants_men": null,
+      "applicants_women": null,
+      "admitted_total": 1710,
+      "admitted_men": null,
+      "admitted_women": null,
+      "enrolled_total": 1182,
+      "enrolled_men": null,
+      "enrolled_women": null,
+      "acceptance_rate": 0.054,
+      "application_fee": null,
+      "avg_gpa_weighted": null,
+      "rd_deadline": "1/3",
+      "waitlist_offered": 2589,
+      "waitlist_accepted": 2189,
+      "waitlist_admitted": 29,
+      "ea_ed_type": "ED",
+      "ea_ed_deadline": "11/1",
+      "ea_ed_notification": "12/15",
+      "ea_apps_received": null,
+      "ea_apps_admitted": null,
+      "sat_submitted_pct": null,
+      "sat_submitted_count": null,
+      "act_submitted_pct": null,
+      "act_submitted_count": null,
+      "sat_composite_25": null,
+      "sat_composite_75": null,
+      "sat_reading_25": null,
+      "sat_reading_75": null,
+      "sat_math_25": null,
+      "sat_math_75": null,
+      "act_composite_25": null,
+      "act_composite_75": null,
+      "act_math_25": null,
+      "act_math_75": null,
+      "act_english_25": null,
+      "act_english_75": null,
+      "total_undergrads": 4570,
+      "undergrads_male": null,
+      "undergrads_female": null,
+      "retention_rate": 0.984,
+      "tuition": 66123,
+      "tuition_in_state": null,
+      "tuition_out_of_state": null,
+      "required_fees": 2145,
+      "room_and_board": 19999,
+      "books_supplies": 1005,
+      "other_expenses": 2040,
+      "pct_out_of_state": 0.98,
+      "pct_on_campus_housing": 0.85,
+      "applicant_pools": {
+        "ea": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "rd": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "waitlist": {
+          "offered": 2589,
+          "enrolled": 29,
+          "accepted_spots": 2189
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": null,
+          "female": null
+        },
+        "accepted": {
+          "male": null,
+          "female": null
+        },
+        "enrolled": {
+          "male": null,
+          "female": null
+        }
+      },
+      "demographics_detail": {
+        "undergrad": {
+          "asian": 590,
+          "black": 279,
+          "total": 4570,
+          "white": 1999,
+          "unknown": 153,
+          "hispanic": 447,
+          "two_or_more": 342,
+          "american_indian": 52,
+          "pacific_islander": 0,
+          "nonresident_aliens": 708
+        },
+        "first_year": {
+          "asian": 150,
+          "black": 70,
+          "total": 1182,
+          "white": 484,
+          "unknown": 67,
+          "hispanic": 130,
+          "two_or_more": 98,
+          "american_indian": 13,
+          "pacific_islander": 0,
+          "nonresident_aliens": 170
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.98,
+        "international_pct": 0.155
+      },
+      "sat_act_breakdown": {
+        "act_submitted_pct": null,
+        "sat_submitted_pct": null,
+        "act_submitted_count": null,
+        "sat_submitted_count": null
+      },
+      "class_rank": {
+        "top10": 0.93,
+        "top25": 0.99,
+        "top50": 1,
+        "bottom25": 0,
+        "bottom50": 0
+      },
+      "gpa_distribution": null,
+      "admission_factors": {
+        "essay": "very_important",
+        "rigor": "very_important",
+        "talent": "important",
+        "character": "very_important",
+        "first_gen": "important",
+        "interview": "important",
+        "religious": "considered",
+        "volunteer": "important",
+        "class_rank": "very_important",
+        "test_scores": "very_important",
+        "academic_gpa": "very_important",
+        "geo_residence": "important",
+        "racial_ethnic": null,
+        "alumni_relation": "important",
+        "recommendations": "very_important",
+        "state_residence": "considered",
+        "work_experience": "important",
+        "extracurriculars": "very_important",
+        "applicant_interest": "important"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 539,
+          "admitted": 37,
+          "enrolled": 17
+        },
+        "total": {
+          "applied": 932,
+          "admitted": 62,
+          "enrolled": 32
+        },
+        "female": {
+          "applied": 393,
+          "admitted": 25,
+          "enrolled": 15
+        }
+      },
+      "sat_avg": null
+    },
+    {
+      "id": 21,
+      "slug": "ucla",
+      "name": "University of California, Los Angeles",
+      "scorecard_id": 110662,
+      "us_news_rank": 15,
+      "us_news_rank_year": "2025",
+      "test_policy": "optional",
+      "graduation_rate_4yr": 0.9264,
+      "graduation_rate_6yr": 0.9344,
+      "median_earnings_6yr": 59063,
+      "median_earnings_10yr": 82511,
+      "median_debt_graduates": 14000,
+      "median_debt_all": 8804,
+      "pct_borrowing": null,
+      "pell_grant_pct": 0.2824,
+      "avg_net_price_0_30k": null,
+      "avg_net_price_30_48k": null,
+      "avg_net_price_48_75k": null,
+      "avg_net_price_75_110k": null,
+      "avg_net_price_110k_plus": null,
+      "student_faculty_ratio": 20,
+      "pct_classes_under_20": null,
+      "pct_classes_50_plus": null,
+      "endowment_total": 7100000000,
+      "endowment_per_student": 157000,
+      "updated_at": "2026-07-03T01:06:08.966+00:00",
+      "data_year": "2024-25",
+      "city": "Los Angeles",
+      "state": "CA",
+      "location": "Los Angeles, CA",
+      "school_type": "Public",
+      "website": "ucla.edu",
+      "applicants_total": 145086,
+      "applicants_men": 65079,
+      "applicants_women": 73508,
+      "admitted_total": 13659,
+      "admitted_men": 5546,
+      "admitted_women": 7274,
+      "enrolled_total": 6553,
+      "enrolled_men": 2547,
+      "enrolled_women": 3652,
+      "acceptance_rate": 0.0941,
+      "application_fee": 70,
+      "avg_gpa_weighted": 3.94,
+      "rd_deadline": "11/30",
+      "waitlist_offered": 20563,
+      "waitlist_accepted": 13612,
+      "waitlist_admitted": 1514,
+      "ea_ed_type": null,
+      "ea_ed_deadline": null,
+      "ea_ed_notification": null,
+      "ea_apps_received": null,
+      "ea_apps_admitted": null,
+      "sat_submitted_pct": null,
+      "sat_submitted_count": null,
+      "act_submitted_pct": null,
+      "act_submitted_count": null,
+      "sat_composite_25": null,
+      "sat_composite_75": null,
+      "sat_reading_25": null,
+      "sat_reading_75": null,
+      "sat_math_25": null,
+      "sat_math_75": null,
+      "act_composite_25": null,
+      "act_composite_75": null,
+      "act_math_25": null,
+      "act_math_75": null,
+      "act_english_25": null,
+      "act_english_75": null,
+      "total_undergrads": 33534,
+      "undergrads_male": 13479,
+      "undergrads_female": 19728,
+      "retention_rate": 0.97,
+      "tuition": null,
+      "tuition_in_state": null,
+      "tuition_out_of_state": null,
+      "required_fees": null,
+      "room_and_board": null,
+      "books_supplies": null,
+      "other_expenses": null,
+      "pct_out_of_state": 0.15,
+      "pct_on_campus_housing": 0.418,
+      "applicant_pools": {
+        "ea": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "rd": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "waitlist": {
+          "offered": 20563,
+          "enrolled": 1514,
+          "accepted_spots": 13612
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": 65079,
+          "female": 73508
+        },
+        "accepted": {
+          "male": 5546,
+          "female": 7274
+        },
+        "enrolled": {
+          "male": 2547,
+          "female": 3652
+        }
+      },
+      "demographics_detail": {
+        "undergrad": {
+          "asian": 10014,
+          "black": 1071,
+          "total": 33534,
+          "white": 7610,
+          "unknown": 1148,
+          "hispanic": 8299,
+          "two_or_more": 2671,
+          "american_indian": 41,
+          "pacific_islander": 53,
+          "nonresident_aliens": 2627
+        },
+        "first_year": {
+          "asian": 2005,
+          "black": 202,
+          "total": 6551,
+          "white": 1291,
+          "unknown": 313,
+          "hispanic": 1601,
+          "two_or_more": 576,
+          "american_indian": 8,
+          "pacific_islander": 6,
+          "nonresident_aliens": 549
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.15,
+        "international_pct": null
+      },
+      "sat_act_breakdown": {
+        "act_submitted_pct": null,
+        "sat_submitted_pct": null,
+        "act_submitted_count": null,
+        "sat_submitted_count": null
+      },
+      "class_rank": null,
+      "gpa_distribution": {
+        "4_0": 0.588,
+        "below_1_0": null,
+        "1_00_to_1_99": null,
+        "2_00_to_2_49": 0,
+        "2_50_to_2_99": 0.003,
+        "3_00_to_3_24": 0.004,
+        "3_25_to_3_49": 0.01,
+        "3_50_to_3_74": 0.049,
+        "3_75_to_3_99": 0.346
+      },
+      "admission_factors": {
+        "essay": "very_important",
+        "rigor": "very_important",
+        "talent": "important",
+        "character": "important",
+        "first_gen": "considered",
+        "interview": "not_considered",
+        "religious": "not_considered",
+        "volunteer": "important",
+        "class_rank": "not_considered",
+        "test_scores": "not_considered",
+        "academic_gpa": "very_important",
+        "geo_residence": "considered",
+        "racial_ethnic": null,
+        "alumni_relation": "not_considered",
+        "recommendations": "not_considered",
+        "state_residence": "considered",
+        "work_experience": "important",
+        "extracurriculars": "important",
+        "applicant_interest": "not_considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 14411,
+          "admitted": 3015,
+          "enrolled": 1727
+        },
+        "total": {
+          "applied": 28487,
+          "admitted": 6665,
+          "enrolled": 3933
+        },
+        "female": {
+          "applied": 12769,
+          "admitted": 3333,
+          "enrolled": 2034
+        }
+      },
+      "sat_avg": null
+    },
+    {
+      "id": 24,
+      "slug": "berkeley",
+      "name": "University of California, Berkeley",
+      "scorecard_id": 110635,
+      "us_news_rank": 17,
+      "us_news_rank_year": "2025",
+      "test_policy": "optional",
+      "graduation_rate_4yr": 0.9286,
+      "graduation_rate_6yr": 0.9428,
+      "median_earnings_6yr": 74919,
+      "median_earnings_10yr": 92446,
+      "median_debt_graduates": 13000,
+      "median_debt_all": 8250,
+      "pct_borrowing": null,
+      "pell_grant_pct": 0.2864,
+      "avg_net_price_0_30k": null,
+      "avg_net_price_30_48k": null,
+      "avg_net_price_48_75k": null,
+      "avg_net_price_75_110k": null,
+      "avg_net_price_110k_plus": null,
+      "student_faculty_ratio": 18,
+      "pct_classes_under_20": null,
+      "pct_classes_50_plus": null,
+      "endowment_total": 6200000000,
+      "endowment_per_student": 149000,
+      "updated_at": "2026-07-04T02:13:49.689+00:00",
+      "sat_avg": null
+    },
+    {
+      "id": 14,
+      "slug": "notre-dame",
+      "name": "University of Notre Dame",
+      "scorecard_id": 147244,
+      "us_news_rank": 18,
+      "us_news_rank_year": "2025",
+      "test_policy": "required",
+      "graduation_rate_4yr": 0.5702,
+      "graduation_rate_6yr": 0.6089,
+      "median_earnings_6yr": 43100,
+      "median_earnings_10yr": 51262,
+      "median_debt_graduates": 27000,
+      "median_debt_all": 8216,
+      "pct_borrowing": null,
+      "pell_grant_pct": 0.3757,
+      "avg_net_price_0_30k": null,
+      "avg_net_price_30_48k": null,
+      "avg_net_price_48_75k": null,
+      "avg_net_price_75_110k": null,
+      "avg_net_price_110k_plus": null,
+      "student_faculty_ratio": 10,
+      "pct_classes_under_20": null,
+      "pct_classes_50_plus": null,
+      "endowment_total": 18900000000,
+      "endowment_per_student": 1000000,
+      "updated_at": "2026-07-03T01:06:07.869+00:00",
+      "data_year": "2024-25",
+      "city": "Notre Dame",
+      "state": "IN",
+      "location": "Notre Dame, IN",
+      "school_type": "Private",
+      "website": "nd.edu",
+      "applicants_total": 29942,
+      "applicants_men": 14922,
+      "applicants_women": 15020,
+      "admitted_total": 3374,
+      "admitted_men": 1736,
+      "admitted_women": 1638,
+      "enrolled_total": 2082,
+      "enrolled_men": 1059,
+      "enrolled_women": 1023,
+      "acceptance_rate": 0.1127,
+      "application_fee": 75,
+      "avg_gpa_weighted": null,
+      "rd_deadline": "1/1",
+      "waitlist_offered": 2206,
+      "waitlist_accepted": 1385,
+      "waitlist_admitted": 42,
+      "ea_ed_type": "EA",
+      "ea_ed_deadline": "11/1",
+      "ea_ed_notification": "12/15",
+      "ea_apps_received": null,
+      "ea_apps_admitted": null,
+      "sat_submitted_pct": 0.33,
+      "sat_submitted_count": 684,
+      "act_submitted_pct": 0.26,
+      "act_submitted_count": 541,
+      "sat_composite_25": 1470,
+      "sat_composite_75": 1540,
+      "sat_reading_25": 720,
+      "sat_reading_75": 770,
+      "sat_math_25": 735,
+      "sat_math_75": 790,
+      "act_composite_25": 33,
+      "act_composite_75": 35,
+      "act_math_25": null,
+      "act_math_75": null,
+      "act_english_25": null,
+      "act_english_75": null,
+      "total_undergrads": 8880,
+      "undergrads_male": 4551,
+      "undergrads_female": 4329,
+      "retention_rate": 0.99,
+      "tuition": 67100,
+      "tuition_in_state": null,
+      "tuition_out_of_state": null,
+      "required_fees": 507,
+      "room_and_board": 18438,
+      "books_supplies": 1250,
+      "other_expenses": 1200,
+      "pct_out_of_state": 0.91,
+      "pct_on_campus_housing": null,
+      "applicant_pools": {
+        "ea": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "rd": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "waitlist": {
+          "offered": 2206,
+          "enrolled": 42,
+          "accepted_spots": 1385
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": 14922,
+          "female": 15020
+        },
+        "accepted": {
+          "male": 1736,
+          "female": 1638
+        },
+        "enrolled": {
+          "male": 1059,
+          "female": 1023
+        }
+      },
+      "demographics_detail": null,
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.91,
+        "international_pct": null
+      },
+      "sat_act_breakdown": {
+        "act_submitted_pct": 0.26,
+        "sat_submitted_pct": 0.33,
+        "act_submitted_count": 541,
+        "sat_submitted_count": 684
+      },
+      "class_rank": {
+        "top10": 0.92,
+        "top25": 0.98,
+        "top50": 1,
+        "bottom25": 0,
+        "bottom50": 0
+      },
+      "gpa_distribution": null,
+      "admission_factors": {
+        "essay": "very_important",
+        "rigor": "important",
+        "talent": "very_important",
+        "character": "very_important",
+        "first_gen": "very_important",
+        "interview": "considered",
+        "religious": "important",
+        "volunteer": "very_important",
+        "class_rank": "very_important",
+        "test_scores": "important",
+        "academic_gpa": "very_important",
+        "geo_residence": "important",
+        "racial_ethnic": null,
+        "alumni_relation": "important",
+        "recommendations": "very_important",
+        "state_residence": "important",
+        "work_experience": "important",
+        "extracurriculars": "very_important",
+        "applicant_interest": "considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 639,
+          "admitted": 144,
+          "enrolled": 105
+        },
+        "total": {
+          "applied": 1064,
+          "admitted": 267,
+          "enrolled": 203
+        },
+        "female": {
+          "applied": 425,
+          "admitted": 123,
+          "enrolled": 98
+        }
+      },
+      "sat_avg": 1505
+    },
+    {
+      "id": 17,
+      "slug": "rice",
+      "name": "Rice University",
+      "scorecard_id": 227757,
+      "us_news_rank": 18,
+      "us_news_rank_year": "2025",
+      "test_policy": "required",
+      "graduation_rate_4yr": 0.9519,
+      "graduation_rate_6yr": 0.9356,
+      "median_earnings_6yr": 79751,
+      "median_earnings_10yr": 89718,
+      "median_debt_graduates": 11000,
+      "median_debt_all": 5784,
+      "pct_borrowing": null,
+      "pell_grant_pct": 0.1703,
+      "avg_net_price_0_30k": null,
+      "avg_net_price_30_48k": null,
+      "avg_net_price_48_75k": null,
+      "avg_net_price_75_110k": null,
+      "avg_net_price_110k_plus": null,
+      "student_faculty_ratio": 6,
+      "pct_classes_under_20": null,
+      "pct_classes_50_plus": null,
+      "endowment_total": 8200000000,
+      "endowment_per_student": 963000,
+      "updated_at": "2026-07-03T01:06:08.328+00:00",
+      "data_year": "2024-25",
+      "city": "Houston",
+      "state": "TX",
+      "location": "Houston, TX",
+      "school_type": "Private",
+      "website": "rice.edu",
+      "applicants_total": 32473,
+      "applicants_men": 17033,
+      "applicants_women": 15436,
+      "admitted_total": 2597,
+      "admitted_men": 1330,
+      "admitted_women": 1267,
+      "enrolled_total": 1148,
+      "enrolled_men": 586,
+      "enrolled_women": 561,
+      "acceptance_rate": 0.08,
+      "application_fee": 75,
+      "avg_gpa_weighted": null,
+      "rd_deadline": "1/4",
+      "waitlist_offered": 3920,
+      "waitlist_accepted": 2794,
+      "waitlist_admitted": 122,
+      "ea_ed_type": "ED",
+      "ea_ed_deadline": "11/1",
+      "ea_ed_notification": "12/15",
+      "ea_apps_received": 3087,
+      "ea_apps_admitted": 519,
+      "sat_submitted_pct": 0.48,
+      "sat_submitted_count": 546,
+      "act_submitted_pct": 0.22,
+      "act_submitted_count": 248,
+      "sat_composite_25": 1510,
+      "sat_composite_75": 1560,
+      "sat_reading_25": 740,
+      "sat_reading_75": 770,
+      "sat_math_25": 770,
+      "sat_math_75": 800,
+      "act_composite_25": 34,
+      "act_composite_75": 35,
+      "act_math_25": 33,
+      "act_math_75": 36,
+      "act_english_25": 35,
+      "act_english_75": 36,
+      "total_undergrads": 4789,
+      "undergrads_male": 2412,
+      "undergrads_female": 2376,
+      "retention_rate": 0.9741,
+      "tuition": 66540,
+      "tuition_in_state": null,
+      "tuition_out_of_state": null,
+      "required_fees": 957,
+      "room_and_board": 19550,
+      "books_supplies": 1490,
+      "other_expenses": 3025,
+      "pct_out_of_state": 0.57,
+      "pct_on_campus_housing": 0.59,
+      "applicant_pools": {
+        "ea": {
+          "rate": 0.1681,
+          "applied": 3087,
+          "admitted": 519
+        },
+        "rd": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "waitlist": {
+          "offered": 3920,
+          "enrolled": 122,
+          "accepted_spots": 2794
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": 17033,
+          "female": 15436
+        },
+        "accepted": {
+          "male": 1330,
+          "female": 1267
+        },
+        "enrolled": {
+          "male": 586,
+          "female": 561
+        }
+      },
+      "demographics_detail": {
+        "undergrad": {
+          "asian": 1390,
+          "black": 377,
+          "total": 4789,
+          "white": 1223,
+          "unknown": 105,
+          "hispanic": 797,
+          "two_or_more": 265,
+          "american_indian": 7,
+          "pacific_islander": 3,
+          "nonresident_aliens": 622
+        },
+        "first_year": {
+          "asian": 333,
+          "black": 67,
+          "total": 1147,
+          "white": 294,
+          "unknown": 34,
+          "hispanic": 192,
+          "two_or_more": 69,
+          "american_indian": 1,
+          "pacific_islander": 1,
+          "nonresident_aliens": 156
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.57,
+        "international_pct": 0.13
+      },
+      "sat_act_breakdown": {
+        "act_submitted_pct": 0.22,
+        "sat_submitted_pct": 0.48,
+        "act_submitted_count": 248,
+        "sat_submitted_count": 546
+      },
+      "class_rank": {
+        "top10": 0.89,
+        "top25": 0.96,
+        "top50": 1,
+        "bottom25": 0,
+        "bottom50": 0
+      },
+      "gpa_distribution": null,
+      "admission_factors": {
+        "essay": "very_important",
+        "rigor": "very_important",
+        "talent": "very_important",
+        "character": "very_important",
+        "first_gen": "important",
+        "interview": "important",
+        "religious": "considered",
+        "volunteer": "important",
+        "class_rank": "very_important",
+        "test_scores": "very_important",
+        "academic_gpa": "very_important",
+        "geo_residence": "important",
+        "racial_ethnic": null,
+        "alumni_relation": "considered",
+        "recommendations": "very_important",
+        "state_residence": "important",
+        "work_experience": "important",
+        "extracurriculars": "very_important",
+        "applicant_interest": "important"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 868,
+          "admitted": 58,
+          "enrolled": 35
+        },
+        "total": {
+          "applied": 1473,
+          "admitted": 102,
+          "enrolled": 60
+        },
+        "female": {
+          "applied": 605,
+          "admitted": 44,
+          "enrolled": 25
+        }
+      },
+      "sat_avg": 1535
+    },
+    {
+      "id": 15,
+      "slug": "vanderbilt",
+      "name": "Vanderbilt University",
+      "scorecard_id": 221999,
+      "us_news_rank": 18,
+      "us_news_rank_year": "2025",
+      "test_policy": "required",
+      "graduation_rate_4yr": 0.9311,
+      "graduation_rate_6yr": 0.9336,
+      "median_earnings_6yr": 73909,
+      "median_earnings_10yr": 91565,
+      "median_debt_graduates": 14000,
+      "median_debt_all": 7811,
+      "pct_borrowing": null,
+      "pell_grant_pct": 0.2022,
+      "avg_net_price_0_30k": null,
+      "avg_net_price_30_48k": null,
+      "avg_net_price_48_75k": null,
+      "avg_net_price_75_110k": null,
+      "avg_net_price_110k_plus": null,
+      "student_faculty_ratio": 8,
+      "pct_classes_under_20": null,
+      "pct_classes_50_plus": null,
+      "endowment_total": 12100000000,
+      "endowment_per_student": 739000,
+      "updated_at": "2026-07-04T02:13:45.416+00:00",
+      "sat_avg": null
+    },
+    {
+      "id": 24,
+      "slug": "umich",
+      "name": "University of Michigan",
+      "scorecard_id": 170976,
+      "us_news_rank": 21,
+      "us_news_rank_year": "2025",
+      "test_policy": "optional",
+      "graduation_rate_4yr": 0.9321,
+      "graduation_rate_6yr": 0.9366,
+      "median_earnings_6yr": 73762,
+      "median_earnings_10yr": 83648,
+      "median_debt_graduates": 19500,
+      "median_debt_all": 9110,
+      "pct_borrowing": null,
+      "pell_grant_pct": 0.1813,
+      "avg_net_price_0_30k": null,
+      "avg_net_price_30_48k": null,
+      "avg_net_price_48_75k": null,
+      "avg_net_price_75_110k": null,
+      "avg_net_price_110k_plus": null,
+      "student_faculty_ratio": 11,
+      "pct_classes_under_20": null,
+      "pct_classes_50_plus": null,
+      "endowment_total": 17800000000,
+      "endowment_per_student": 285000,
+      "updated_at": "2026-07-03T01:06:09.455+00:00",
+      "data_year": "2024-25",
+      "city": "Ann Arbor",
+      "state": "MI",
+      "location": "Ann Arbor, MI",
+      "school_type": "Public",
+      "website": "umich.edu",
+      "applicants_total": 98310,
+      "applicants_men": 48101,
+      "applicants_women": 50209,
+      "admitted_total": 15373,
+      "admitted_men": 6684,
+      "admitted_women": 8689,
+      "enrolled_total": 7278,
+      "enrolled_men": 3199,
+      "enrolled_women": 4079,
+      "acceptance_rate": 0.1564,
+      "application_fee": 75,
+      "avg_gpa_weighted": 3.9,
+      "rd_deadline": "2/1",
+      "waitlist_offered": 24804,
+      "waitlist_accepted": 18793,
+      "waitlist_admitted": 973,
+      "ea_ed_type": "EA",
+      "ea_ed_deadline": "11/1",
+      "ea_ed_notification": "1/31",
+      "ea_apps_received": null,
+      "ea_apps_admitted": null,
+      "sat_submitted_pct": 0.51,
+      "sat_submitted_count": 3697,
+      "act_submitted_pct": 0.18,
+      "act_submitted_count": 1274,
+      "sat_composite_25": 1360,
+      "sat_composite_75": 1530,
+      "sat_reading_25": 680,
+      "sat_reading_75": 750,
+      "sat_math_25": 680,
+      "sat_math_75": 780,
+      "act_composite_25": 31,
+      "act_composite_75": 34,
+      "act_math_25": 30,
+      "act_math_75": 35,
+      "act_english_25": 33,
+      "act_english_75": 35,
+      "total_undergrads": 34454,
+      "undergrads_male": null,
+      "undergrads_female": null,
+      "retention_rate": 0.97,
+      "tuition": null,
+      "tuition_in_state": 17404,
+      "tuition_out_of_state": 60614,
+      "required_fees": 332,
+      "room_and_board": 15328,
+      "books_supplies": 1158,
+      "other_expenses": 2310,
+      "pct_out_of_state": 0.45,
+      "pct_on_campus_housing": null,
+      "applicant_pools": {
+        "ea": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "rd": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "waitlist": {
+          "offered": 24804,
+          "enrolled": 973,
+          "accepted_spots": 18793
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": 48101,
+          "female": 50209
+        },
+        "accepted": {
+          "male": 6684,
+          "female": 8689
+        },
+        "enrolled": {
+          "male": 3199,
+          "female": 4079
+        }
+      },
+      "demographics_detail": null,
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.45,
+        "international_pct": null
+      },
+      "sat_act_breakdown": {
+        "act_submitted_pct": 0.18,
+        "sat_submitted_pct": 0.51,
+        "act_submitted_count": 1274,
+        "sat_submitted_count": 3697
+      },
+      "class_rank": null,
+      "gpa_distribution": {
+        "4_0": 0.388,
+        "below_1_0": null,
+        "1_00_to_1_99": null,
+        "2_00_to_2_49": 0,
+        "2_50_to_2_99": 0,
+        "3_00_to_3_24": 0.004,
+        "3_25_to_3_49": 0.009,
+        "3_50_to_3_74": 0.057,
+        "3_75_to_3_99": 0.54
+      },
+      "admission_factors": {
+        "essay": "important",
+        "rigor": "very_important",
+        "talent": "considered",
+        "character": "important",
+        "first_gen": "important",
+        "interview": "not_considered",
+        "religious": "not_considered",
+        "volunteer": "considered",
+        "class_rank": "not_considered",
+        "test_scores": "important",
+        "academic_gpa": "very_important",
+        "geo_residence": "considered",
+        "racial_ethnic": null,
+        "alumni_relation": "not_considered",
+        "recommendations": "important",
+        "state_residence": "considered",
+        "work_experience": "considered",
+        "extracurriculars": "considered",
+        "applicant_interest": "considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": null,
+          "admitted": null,
+          "enrolled": null
+        },
+        "total": {
+          "applied": 6832,
+          "admitted": 2385,
+          "enrolled": 1580
+        },
+        "female": {
+          "applied": null,
+          "admitted": null,
+          "enrolled": null
+        }
+      },
+      "sat_avg": 1445
+    },
+    {
+      "id": 3,
+      "slug": "cmu",
+      "name": "Carnegie Mellon University",
+      "scorecard_id": 211440,
+      "us_news_rank": 21,
+      "us_news_rank_year": "2025",
+      "test_policy": "required",
+      "graduation_rate_4yr": 0.933,
+      "graduation_rate_6yr": 0.9013,
+      "median_earnings_6yr": 105360,
+      "median_earnings_10yr": 114862,
+      "median_debt_graduates": 21750,
+      "median_debt_all": 15097,
+      "pct_borrowing": null,
+      "pell_grant_pct": 0.1604,
+      "avg_net_price_0_30k": null,
+      "avg_net_price_30_48k": null,
+      "avg_net_price_48_75k": null,
+      "avg_net_price_75_110k": null,
+      "avg_net_price_110k_plus": null,
+      "student_faculty_ratio": 5,
+      "pct_classes_under_20": null,
+      "pct_classes_50_plus": null,
+      "endowment_total": 10300000000,
+      "endowment_per_student": 596000,
+      "updated_at": "2026-07-03T01:06:05.585+00:00",
+      "data_year": "2024-25",
+      "city": "Pittsburgh",
+      "state": "PA",
+      "location": "Pittsburgh, PA",
+      "school_type": "Private",
+      "website": "cmu.edu",
+      "applicants_total": 33941,
+      "applicants_men": 20143,
+      "applicants_women": 12735,
+      "admitted_total": 3959,
+      "admitted_men": 1973,
+      "admitted_women": 1870,
+      "enrolled_total": 1808,
+      "enrolled_men": 973,
+      "enrolled_women": 780,
+      "acceptance_rate": 0.1166,
+      "application_fee": 75,
+      "avg_gpa_weighted": 3.89,
+      "rd_deadline": "1/1",
+      "waitlist_offered": 16484,
+      "waitlist_accepted": 10062,
+      "waitlist_admitted": 32,
+      "ea_ed_type": "ED",
+      "ea_ed_deadline": "11/1",
+      "ea_ed_notification": "12/15",
+      "ea_apps_received": 4423,
+      "ea_apps_admitted": 612,
+      "sat_submitted_pct": 0.526,
+      "sat_submitted_count": 951,
+      "act_submitted_pct": 0.224,
+      "act_submitted_count": 405,
+      "sat_composite_25": 1510,
+      "sat_composite_75": 1560,
+      "sat_reading_25": 730,
+      "sat_reading_75": 770,
+      "sat_math_25": 770,
+      "sat_math_75": 800,
+      "act_composite_25": 34,
+      "act_composite_75": 35,
+      "act_math_25": 34,
+      "act_math_75": 36,
+      "act_english_25": 33,
+      "act_english_75": 36,
+      "total_undergrads": 7824,
+      "undergrads_male": null,
+      "undergrads_female": null,
+      "retention_rate": 0.98,
+      "tuition": 67020,
+      "tuition_in_state": null,
+      "tuition_out_of_state": null,
+      "required_fees": 1756,
+      "room_and_board": 18894,
+      "books_supplies": 1000,
+      "other_expenses": 1400,
+      "pct_out_of_state": 0.884,
+      "pct_on_campus_housing": 0.999,
+      "applicant_pools": {
+        "ea": {
+          "rate": 0.1384,
+          "applied": 4423,
+          "admitted": 612
+        },
+        "rd": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "waitlist": {
+          "offered": 16484,
+          "enrolled": 32,
+          "accepted_spots": 10062
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": 20143,
+          "female": 12735
+        },
+        "accepted": {
+          "male": 1973,
+          "female": 1870
+        },
+        "enrolled": {
+          "male": 973,
+          "female": 780
+        }
+      },
+      "demographics_detail": {
+        "undergrad": {
+          "asian": 2530,
+          "black": 298,
+          "total": 7824,
+          "white": 1607,
+          "unknown": 434,
+          "hispanic": 735,
+          "two_or_more": 394,
+          "american_indian": 1,
+          "pacific_islander": 2,
+          "nonresident_aliens": 1823
+        },
+        "first_year": {
+          "asian": 711,
+          "black": 39,
+          "total": 1808,
+          "white": 379,
+          "unknown": 127,
+          "hispanic": 115,
+          "two_or_more": 75,
+          "american_indian": 0,
+          "pacific_islander": 0,
+          "nonresident_aliens": 362
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.884,
+        "international_pct": null
+      },
+      "sat_act_breakdown": {
+        "act_submitted_pct": 0.224,
+        "sat_submitted_pct": 0.526,
+        "act_submitted_count": 405,
+        "sat_submitted_count": 951
+      },
+      "class_rank": {
+        "top10": 0.968,
+        "top25": 0.998,
+        "top50": 0.998,
+        "bottom25": 0.001,
+        "bottom50": 0.002
+      },
+      "gpa_distribution": {
+        "4_0": 0.469,
+        "below_1_0": null,
+        "1_00_to_1_99": 0.0006,
+        "2_00_to_2_49": 0.0006,
+        "2_50_to_2_99": 0.004,
+        "3_00_to_3_24": 0.003,
+        "3_25_to_3_49": 0.026,
+        "3_50_to_3_74": 0.113,
+        "3_75_to_3_99": 0.383
+      },
+      "admission_factors": {
+        "essay": "important",
+        "rigor": "very_important",
+        "talent": "important",
+        "character": "very_important",
+        "first_gen": "important",
+        "interview": "not_considered",
+        "religious": "not_considered",
+        "volunteer": "very_important",
+        "class_rank": "very_important",
+        "test_scores": "considered",
+        "academic_gpa": "very_important",
+        "geo_residence": "considered",
+        "racial_ethnic": null,
+        "alumni_relation": "not_considered",
+        "recommendations": "important",
+        "state_residence": "not_considered",
+        "work_experience": "considered",
+        "extracurriculars": "very_important",
+        "applicant_interest": "not_considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 1084,
+          "admitted": 52,
+          "enrolled": 21
+        },
+        "total": {
+          "applied": 1688,
+          "admitted": 94,
+          "enrolled": 37
+        },
+        "female": {
+          "applied": 540,
+          "admitted": 41,
+          "enrolled": 15
+        }
+      },
+      "sat_avg": 1535
+    },
+    {
+      "id": 30,
+      "slug": "washu",
+      "name": "Washington University in St. Louis",
+      "scorecard_id": 179867,
+      "us_news_rank": 21,
+      "us_news_rank_year": "2025",
+      "test_policy": "optional",
+      "graduation_rate_4yr": 0.9435,
+      "graduation_rate_6yr": 0.9276,
+      "median_earnings_6yr": 78073,
+      "median_earnings_10yr": 86182,
+      "median_debt_graduates": 17500,
+      "median_debt_all": 8750,
+      "pct_borrowing": null,
+      "pell_grant_pct": 0.1775,
+      "avg_net_price_0_30k": null,
+      "avg_net_price_30_48k": null,
+      "avg_net_price_48_75k": null,
+      "avg_net_price_75_110k": null,
+      "avg_net_price_110k_plus": null,
+      "student_faculty_ratio": 7,
+      "pct_classes_under_20": null,
+      "pct_classes_50_plus": null,
+      "endowment_total": 11700000000,
+      "endowment_per_student": 800000,
+      "updated_at": "2026-07-03T01:06:10.418+00:00",
+      "data_year": "2024-25",
+      "city": "St. Louis",
+      "state": "MO",
+      "location": "St. Louis, MO",
+      "school_type": "Private",
+      "website": "washu.edu",
+      "applicants_total": 32754,
+      "applicants_men": 15330,
+      "applicants_women": 17411,
+      "admitted_total": 3951,
+      "admitted_men": 1920,
+      "admitted_women": 2030,
+      "enrolled_total": 1847,
+      "enrolled_men": 862,
+      "enrolled_women": 984,
+      "acceptance_rate": 0.1207,
+      "application_fee": 75,
+      "avg_gpa_weighted": 4.19,
+      "rd_deadline": "1/2",
+      "waitlist_offered": null,
+      "waitlist_accepted": 2658,
+      "waitlist_admitted": 210,
+      "ea_ed_type": "ED",
+      "ea_ed_deadline": "11/3",
+      "ea_ed_notification": "12/12",
+      "ea_apps_received": 4817,
+      "ea_apps_admitted": 1217,
+      "sat_submitted_pct": 0.29,
+      "sat_submitted_count": 538,
+      "act_submitted_pct": 0.28,
+      "act_submitted_count": 517,
+      "sat_composite_25": 1500,
+      "sat_composite_75": 1570,
+      "sat_reading_25": 730,
+      "sat_reading_75": 770,
+      "sat_math_25": 770,
+      "sat_math_75": 800,
+      "act_composite_25": 33,
+      "act_composite_75": 35,
+      "act_math_25": 31,
+      "act_math_75": 35,
+      "act_english_25": 34,
+      "act_english_75": 35,
+      "total_undergrads": 8220,
+      "undergrads_male": 3674,
+      "undergrads_female": 4545,
+      "retention_rate": 0.95,
+      "tuition": 68240,
+      "tuition_in_state": null,
+      "tuition_out_of_state": null,
+      "required_fees": 1354,
+      "room_and_board": 23338,
+      "books_supplies": 1357,
+      "other_expenses": 2695,
+      "pct_out_of_state": 0.84,
+      "pct_on_campus_housing": 0.69,
+      "applicant_pools": {
+        "ea": {
+          "rate": 0.2526,
+          "applied": 4817,
+          "admitted": 1217
+        },
+        "rd": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "waitlist": {
+          "offered": null,
+          "enrolled": 210,
+          "accepted_spots": 2658
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": 15330,
+          "female": 17411
+        },
+        "accepted": {
+          "male": 1920,
+          "female": 2030
+        },
+        "enrolled": {
+          "male": 862,
+          "female": 984
+        }
+      },
+      "demographics_detail": {
+        "undergrad": {
+          "asian": 1665,
+          "black": 762,
+          "total": 8220,
+          "white": 3258,
+          "unknown": 193,
+          "hispanic": 1059,
+          "two_or_more": 497,
+          "american_indian": 8,
+          "pacific_islander": 4,
+          "nonresident_aliens": 774
+        },
+        "first_year": {
+          "asian": 412,
+          "black": 106,
+          "total": 1847,
+          "white": 686,
+          "unknown": 96,
+          "hispanic": 239,
+          "two_or_more": 93,
+          "american_indian": 5,
+          "pacific_islander": 0,
+          "nonresident_aliens": 210
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.84,
+        "international_pct": null
+      },
+      "sat_act_breakdown": {
+        "act_submitted_pct": 0.28,
+        "sat_submitted_pct": 0.29,
+        "act_submitted_count": 517,
+        "sat_submitted_count": 538
+      },
+      "class_rank": {
+        "top10": 0.86,
+        "top25": 0.98,
+        "top50": 1,
+        "bottom25": 0,
+        "bottom50": 0
+      },
+      "gpa_distribution": {
+        "4_0": 0.65,
+        "below_1_0": null,
+        "1_00_to_1_99": null,
+        "2_00_to_2_49": null,
+        "2_50_to_2_99": 0,
+        "3_00_to_3_24": 0,
+        "3_25_to_3_49": 0.04,
+        "3_50_to_3_74": 0.07,
+        "3_75_to_3_99": 0.24
+      },
+      "admission_factors": {
+        "essay": "very_important",
+        "rigor": "very_important",
+        "talent": "very_important",
+        "character": "very_important",
+        "first_gen": "very_important",
+        "interview": "not_considered",
+        "religious": "considered",
+        "volunteer": "very_important",
+        "class_rank": "very_important",
+        "test_scores": "very_important",
+        "academic_gpa": "very_important",
+        "geo_residence": "important",
+        "racial_ethnic": null,
+        "alumni_relation": "important",
+        "recommendations": "very_important",
+        "state_residence": "considered",
+        "work_experience": "very_important",
+        "extracurriculars": "very_important",
+        "applicant_interest": "important"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 931,
+          "admitted": 145,
+          "enrolled": 53
+        },
+        "total": {
+          "applied": 1706,
+          "admitted": 239,
+          "enrolled": 99
+        },
+        "female": {
+          "applied": 770,
+          "admitted": 89,
+          "enrolled": 46
+        }
+      },
+      "sat_avg": 1535
+    },
+    {
+      "id": 28,
+      "slug": "uva",
+      "name": "University of Virginia",
+      "scorecard_id": 234076,
+      "us_news_rank": 24,
+      "us_news_rank_year": "2025",
+      "test_policy": "optional",
+      "graduation_rate_4yr": 0.9545,
+      "graduation_rate_6yr": 0.9389,
+      "median_earnings_6yr": 72359,
+      "median_earnings_10yr": 86863,
+      "median_debt_graduates": 17500,
+      "median_debt_all": 7500,
+      "pct_borrowing": null,
+      "pell_grant_pct": 0.1555,
+      "avg_net_price_0_30k": null,
+      "avg_net_price_30_48k": null,
+      "avg_net_price_48_75k": null,
+      "avg_net_price_75_110k": null,
+      "avg_net_price_110k_plus": null,
+      "student_faculty_ratio": 15,
+      "pct_classes_under_20": null,
+      "pct_classes_50_plus": null,
+      "endowment_total": 14400000000,
+      "endowment_per_student": 628000,
+      "updated_at": "2026-07-03T01:06:10.082+00:00",
+      "data_year": "2024-25",
+      "city": "Charlottesville",
+      "state": "VA",
+      "location": "Charlottesville, VA",
+      "school_type": "Public",
+      "website": "virginia.edu",
+      "applicants_total": 58951,
+      "applicants_men": 27252,
+      "applicants_women": 31685,
+      "admitted_total": 9909,
+      "admitted_men": 4382,
+      "admitted_women": 5527,
+      "enrolled_total": 3961,
+      "enrolled_men": null,
+      "enrolled_women": null,
+      "acceptance_rate": 0.1681,
+      "application_fee": 75,
+      "avg_gpa_weighted": null,
+      "rd_deadline": "1/1",
+      "waitlist_offered": 10470,
+      "waitlist_accepted": 6759,
+      "waitlist_admitted": 242,
+      "ea_ed_type": "EA",
+      "ea_ed_deadline": "10/15",
+      "ea_ed_notification": "1/31",
+      "ea_apps_received": null,
+      "ea_apps_admitted": null,
+      "sat_submitted_pct": 0.456,
+      "sat_submitted_count": 1805,
+      "act_submitted_pct": 0.138,
+      "act_submitted_count": 547,
+      "sat_composite_25": 1410,
+      "sat_composite_75": 1520,
+      "sat_reading_25": 700,
+      "sat_reading_75": 760,
+      "sat_math_25": 710,
+      "sat_math_75": 780,
+      "act_composite_25": 32,
+      "act_composite_75": 35,
+      "act_math_25": 30,
+      "act_math_75": 35,
+      "act_english_25": 34,
+      "act_english_75": 35,
+      "total_undergrads": 17901,
+      "undergrads_male": null,
+      "undergrads_female": null,
+      "retention_rate": 0.979,
+      "tuition": null,
+      "tuition_in_state": 18613,
+      "tuition_out_of_state": 56994,
+      "required_fees": 3793,
+      "room_and_board": 15300,
+      "books_supplies": 1520,
+      "other_expenses": 3530,
+      "pct_out_of_state": 0.31,
+      "pct_on_campus_housing": null,
+      "applicant_pools": {
+        "ea": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "rd": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "waitlist": {
+          "offered": 10470,
+          "enrolled": 242,
+          "accepted_spots": 6759
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": 27252,
+          "female": 31685
+        },
+        "accepted": {
+          "male": 4382,
+          "female": 5527
+        },
+        "enrolled": {
+          "male": null,
+          "female": null
+        }
+      },
+      "demographics_detail": null,
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.31,
+        "international_pct": null
+      },
+      "sat_act_breakdown": {
+        "act_submitted_pct": 0.138,
+        "sat_submitted_pct": 0.456,
+        "act_submitted_count": 547,
+        "sat_submitted_count": 1805
+      },
+      "class_rank": {
+        "top10": 0.84,
+        "top25": 0.97,
+        "top50": 0.99,
+        "bottom25": null,
+        "bottom50": 0.01
+      },
+      "gpa_distribution": {
+        "4_0": 0.905,
+        "below_1_0": null,
+        "1_00_to_1_99": null,
+        "2_00_to_2_49": null,
+        "2_50_to_2_99": 0.002,
+        "3_00_to_3_24": 0.001,
+        "3_25_to_3_49": 0.003,
+        "3_50_to_3_74": 0.021,
+        "3_75_to_3_99": 0.068
+      },
+      "admission_factors": {
+        "essay": "very_important",
+        "rigor": "important",
+        "talent": "very_important",
+        "character": "important",
+        "first_gen": "very_important",
+        "interview": "important",
+        "religious": "important",
+        "volunteer": "very_important",
+        "class_rank": "very_important",
+        "test_scores": "important",
+        "academic_gpa": "very_important",
+        "geo_residence": "very_important",
+        "racial_ethnic": null,
+        "alumni_relation": "important",
+        "recommendations": "very_important",
+        "state_residence": "very_important",
+        "work_experience": "very_important",
+        "extracurriculars": "important",
+        "applicant_interest": "important"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 2360,
+          "admitted": 696,
+          "enrolled": 450
+        },
+        "total": {
+          "applied": 4245,
+          "admitted": 1357,
+          "enrolled": 851
+        },
+        "female": {
+          "applied": 1884,
+          "admitted": 661,
+          "enrolled": 401
+        }
+      },
+      "sat_avg": 1465
+    },
+    {
+      "id": 8,
+      "slug": "emory",
+      "name": "Emory University",
+      "scorecard_id": 139658,
+      "us_news_rank": 24,
+      "us_news_rank_year": "2025",
+      "test_policy": "optional",
+      "graduation_rate_4yr": 0.9142,
+      "graduation_rate_6yr": 0.9218,
+      "median_earnings_6yr": 74980,
+      "median_earnings_10yr": 80137,
+      "median_debt_graduates": 18250,
+      "median_debt_all": 7500,
+      "pct_borrowing": null,
+      "pell_grant_pct": 0.1821,
+      "avg_net_price_0_30k": null,
+      "avg_net_price_30_48k": null,
+      "avg_net_price_48_75k": null,
+      "avg_net_price_75_110k": null,
+      "avg_net_price_110k_plus": null,
+      "student_faculty_ratio": 10,
+      "pct_classes_under_20": null,
+      "pct_classes_50_plus": null,
+      "endowment_total": 11100000000,
+      "endowment_per_student": 824000,
+      "updated_at": "2026-07-03T01:06:06.868+00:00",
+      "data_year": "2024-25",
+      "city": "Atlanta",
+      "state": "GA",
+      "location": "Atlanta, GA",
+      "school_type": "Private",
+      "website": "emory.edu",
+      "applicants_total": 34614,
+      "applicants_men": 13792,
+      "applicants_women": 20814,
+      "admitted_total": 3562,
+      "admitted_men": 1558,
+      "admitted_women": 2004,
+      "enrolled_total": 1438,
+      "enrolled_men": 631,
+      "enrolled_women": 807,
+      "acceptance_rate": 0.1029,
+      "application_fee": 75,
+      "avg_gpa_weighted": 3.84,
+      "rd_deadline": "1/1",
+      "waitlist_offered": 6098,
+      "waitlist_accepted": 3355,
+      "waitlist_admitted": 109,
+      "ea_ed_type": "ED",
+      "ea_ed_deadline": "11/1",
+      "ea_ed_notification": "12/15",
+      "ea_apps_received": 4193,
+      "ea_apps_admitted": 974,
+      "sat_submitted_pct": 0.43,
+      "sat_submitted_count": 623,
+      "act_submitted_pct": 0.2,
+      "act_submitted_count": 286,
+      "sat_composite_25": 1480,
+      "sat_composite_75": 1540,
+      "sat_reading_25": 720,
+      "sat_reading_75": 760,
+      "sat_math_25": 750,
+      "sat_math_75": 790,
+      "act_composite_25": 32,
+      "act_composite_75": 35,
+      "act_math_25": null,
+      "act_math_75": null,
+      "act_english_25": null,
+      "act_english_75": null,
+      "total_undergrads": 7407,
+      "undergrads_male": 3203,
+      "undergrads_female": 4204,
+      "retention_rate": 0.96,
+      "tuition": 67080,
+      "tuition_in_state": null,
+      "tuition_out_of_state": null,
+      "required_fees": 976,
+      "room_and_board": 21244,
+      "books_supplies": null,
+      "other_expenses": null,
+      "pct_out_of_state": 0.82,
+      "pct_on_campus_housing": 0.57,
+      "applicant_pools": {
+        "ea": {
+          "rate": 0.2323,
+          "applied": 4193,
+          "admitted": 974
+        },
+        "rd": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "waitlist": {
+          "offered": 6098,
+          "enrolled": 109,
+          "accepted_spots": 3355
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": 13792,
+          "female": 20814
+        },
+        "accepted": {
+          "male": 1558,
+          "female": 2004
+        },
+        "enrolled": {
+          "male": 631,
+          "female": 807
+        }
+      },
+      "demographics_detail": {
+        "undergrad": {
+          "asian": 1834,
+          "black": 762,
+          "total": 7407,
+          "white": 2196,
+          "unknown": 181,
+          "hispanic": 885,
+          "two_or_more": 306,
+          "american_indian": 4,
+          "pacific_islander": 1,
+          "nonresident_aliens": 1238
+        },
+        "first_year": {
+          "asian": 351,
+          "black": 143,
+          "total": 1438,
+          "white": 400,
+          "unknown": 81,
+          "hispanic": 173,
+          "two_or_more": 50,
+          "american_indian": 2,
+          "pacific_islander": 0,
+          "nonresident_aliens": 238
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.82,
+        "international_pct": 0.167
+      },
+      "sat_act_breakdown": {
+        "act_submitted_pct": 0.2,
+        "sat_submitted_pct": 0.43,
+        "act_submitted_count": 286,
+        "sat_submitted_count": 623
+      },
+      "class_rank": {
+        "top10": 0.8,
+        "top25": 0.97,
+        "top50": 1,
+        "bottom25": 0,
+        "bottom50": 0
+      },
+      "gpa_distribution": {
+        "4_0": 0.1741,
+        "below_1_0": null,
+        "1_00_to_1_99": null,
+        "2_00_to_2_49": 0,
+        "2_50_to_2_99": 0,
+        "3_00_to_3_24": 0.0044,
+        "3_25_to_3_49": 0.0253,
+        "3_50_to_3_74": 0.2124,
+        "3_75_to_3_99": 0.5838
+      },
+      "admission_factors": {
+        "essay": "important",
+        "rigor": "very_important",
+        "talent": "very_important",
+        "character": "very_important",
+        "first_gen": "considered",
+        "interview": "considered",
+        "religious": "not_considered",
+        "volunteer": "important",
+        "class_rank": "considered",
+        "test_scores": "important",
+        "academic_gpa": "very_important",
+        "geo_residence": "considered",
+        "racial_ethnic": null,
+        "alumni_relation": "considered",
+        "recommendations": "very_important",
+        "state_residence": "considered",
+        "work_experience": "considered",
+        "extracurriculars": "very_important",
+        "applicant_interest": "not_considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 1231,
+          "admitted": 201,
+          "enrolled": 76
+        },
+        "total": {
+          "applied": 2445,
+          "admitted": 396,
+          "enrolled": 141
+        },
+        "female": {
+          "applied": 1213,
+          "admitted": 195,
+          "enrolled": 65
+        }
+      },
+      "sat_avg": 1510
+    },
+    {
+      "id": 9,
+      "slug": "georgetown",
+      "name": "Georgetown University",
+      "scorecard_id": 131496,
+      "us_news_rank": 24,
+      "us_news_rank_year": "2025",
+      "test_policy": "optional",
+      "graduation_rate_4yr": 0.9455,
+      "graduation_rate_6yr": 0.9493,
+      "median_earnings_6yr": 83222,
+      "median_earnings_10yr": 103494,
+      "median_debt_graduates": 15500,
+      "median_debt_all": 8000,
+      "pct_borrowing": null,
+      "pell_grant_pct": 0.1012,
+      "avg_net_price_0_30k": null,
+      "avg_net_price_30_48k": null,
+      "avg_net_price_48_75k": null,
+      "avg_net_price_75_110k": null,
+      "avg_net_price_110k_plus": null,
+      "student_faculty_ratio": 11,
+      "pct_classes_under_20": null,
+      "pct_classes_50_plus": null,
+      "endowment_total": 2900000000,
+      "endowment_per_student": 82000,
+      "updated_at": "2026-07-03T01:06:07.045+00:00",
+      "data_year": "2024-25",
+      "city": "Washington",
+      "state": "DC",
+      "location": "Washington, DC",
+      "school_type": "Private",
+      "website": "georgetown.edu",
+      "applicants_total": 26131,
+      "applicants_men": 10768,
+      "applicants_women": 15102,
+      "admitted_total": 3374,
+      "admitted_men": 1393,
+      "admitted_women": 1953,
+      "enrolled_total": 1575,
+      "enrolled_men": 661,
+      "enrolled_women": 900,
+      "acceptance_rate": 0.1291,
+      "application_fee": 75,
+      "avg_gpa_weighted": null,
+      "rd_deadline": "1/10",
+      "waitlist_offered": 2690,
+      "waitlist_accepted": 2023,
+      "waitlist_admitted": 163,
+      "ea_ed_type": "EA",
+      "ea_ed_deadline": "11/1",
+      "ea_ed_notification": "12/15",
+      "ea_apps_received": null,
+      "ea_apps_admitted": null,
+      "sat_submitted_pct": 0.78,
+      "sat_submitted_count": 1232,
+      "act_submitted_pct": 0.3,
+      "act_submitted_count": 480,
+      "sat_composite_25": 1400,
+      "sat_composite_75": 1540,
+      "sat_reading_25": 700,
+      "sat_reading_75": 770,
+      "sat_math_25": 690,
+      "sat_math_75": 780,
+      "act_composite_25": 31,
+      "act_composite_75": 35,
+      "act_math_25": 29,
+      "act_math_75": 34,
+      "act_english_25": 34,
+      "act_english_75": 36,
+      "total_undergrads": 7833,
+      "undergrads_male": 3178,
+      "undergrads_female": 4598,
+      "retention_rate": 0.9699,
+      "tuition": 71136,
+      "tuition_in_state": null,
+      "tuition_out_of_state": null,
+      "required_fees": 202,
+      "room_and_board": 21202,
+      "books_supplies": null,
+      "other_expenses": 3172,
+      "pct_out_of_state": 0.98,
+      "pct_on_campus_housing": 0.69,
+      "applicant_pools": {
+        "ea": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "rd": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "waitlist": {
+          "offered": 2690,
+          "enrolled": 163,
+          "accepted_spots": 2023
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": 10768,
+          "female": 15102
+        },
+        "accepted": {
+          "male": 1393,
+          "female": 1953
+        },
+        "enrolled": {
+          "male": 661,
+          "female": 900
+        }
+      },
+      "demographics_detail": {
+        "undergrad": {
+          "asian": 1171,
+          "black": 375,
+          "total": 7833,
+          "white": 3533,
+          "unknown": 679,
+          "hispanic": 448,
+          "two_or_more": 488,
+          "american_indian": 7,
+          "pacific_islander": 11,
+          "nonresident_aliens": 1121
+        },
+        "first_year": {
+          "asian": 276,
+          "black": 87,
+          "total": 1575,
+          "white": 751,
+          "unknown": 150,
+          "hispanic": 60,
+          "two_or_more": 140,
+          "american_indian": 0,
+          "pacific_islander": 0,
+          "nonresident_aliens": 111
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.98,
+        "international_pct": 0.143
+      },
+      "sat_act_breakdown": {
+        "act_submitted_pct": 0.3,
+        "sat_submitted_pct": 0.78,
+        "act_submitted_count": 480,
+        "sat_submitted_count": 1232
+      },
+      "class_rank": {
+        "top10": 0.85,
+        "top25": 0.95,
+        "top50": 0.98,
+        "bottom25": 0,
+        "bottom50": 0.02
+      },
+      "gpa_distribution": null,
+      "admission_factors": {
+        "essay": "very_important",
+        "rigor": "important",
+        "talent": "very_important",
+        "character": "very_important",
+        "first_gen": "important",
+        "interview": "very_important",
+        "religious": "considered",
+        "volunteer": "important",
+        "class_rank": "very_important",
+        "test_scores": "very_important",
+        "academic_gpa": "very_important",
+        "geo_residence": "important",
+        "racial_ethnic": null,
+        "alumni_relation": "important",
+        "recommendations": "very_important",
+        "state_residence": "important",
+        "work_experience": "important",
+        "extracurriculars": "very_important",
+        "applicant_interest": "considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 1124,
+          "admitted": 66,
+          "enrolled": 41
+        },
+        "total": {
+          "applied": 2278,
+          "admitted": 135,
+          "enrolled": 85
+        },
+        "female": {
+          "applied": 1154,
+          "admitted": 69,
+          "enrolled": 44
+        }
+      },
+      "sat_avg": 1470
+    },
+    {
+      "id": 27,
+      "slug": "usc",
+      "name": "University of Southern California",
+      "scorecard_id": 123961,
+      "us_news_rank": 27,
+      "us_news_rank_year": "2025",
+      "test_policy": "optional",
+      "graduation_rate_4yr": 0.9191,
+      "graduation_rate_6yr": 0.9327,
+      "median_earnings_6yr": 74461,
+      "median_earnings_10yr": 92498,
+      "median_debt_graduates": 18000,
+      "median_debt_all": 9927,
+      "pct_borrowing": null,
+      "pell_grant_pct": 0.2224,
+      "avg_net_price_0_30k": null,
+      "avg_net_price_30_48k": null,
+      "avg_net_price_48_75k": null,
+      "avg_net_price_75_110k": null,
+      "avg_net_price_110k_plus": null,
+      "student_faculty_ratio": 9,
+      "pct_classes_under_20": null,
+      "pct_classes_50_plus": null,
+      "endowment_total": 8900000000,
+      "endowment_per_student": 207000,
+      "updated_at": "2026-07-03T01:06:09.926+00:00",
+      "data_year": "2024-25",
+      "city": "Los Angeles",
+      "state": "CA",
+      "location": "Los Angeles, CA",
+      "school_type": "Private",
+      "website": "usc.edu",
+      "applicants_total": 82027,
+      "applicants_men": null,
+      "applicants_women": null,
+      "admitted_total": 8050,
+      "admitted_men": null,
+      "admitted_women": null,
+      "enrolled_total": 3489,
+      "enrolled_men": null,
+      "enrolled_women": null,
+      "acceptance_rate": 0.0981,
+      "application_fee": 85,
+      "avg_gpa_weighted": 3.8,
+      "rd_deadline": "1/15",
+      "waitlist_offered": null,
+      "waitlist_accepted": null,
+      "waitlist_admitted": null,
+      "ea_ed_type": "ED",
+      "ea_ed_deadline": "11/1",
+      "ea_ed_notification": "12/15",
+      "ea_apps_received": 4461,
+      "ea_apps_admitted": 1245,
+      "sat_submitted_pct": 0.3,
+      "sat_submitted_count": 1044,
+      "act_submitted_pct": 0.12,
+      "act_submitted_count": 426,
+      "sat_composite_25": null,
+      "sat_composite_75": null,
+      "sat_reading_25": 710,
+      "sat_reading_75": 760,
+      "sat_math_25": 740,
+      "sat_math_75": 790,
+      "act_composite_25": 32,
+      "act_composite_75": 35,
+      "act_math_25": 29,
+      "act_math_75": 35,
+      "act_english_25": 33,
+      "act_english_75": 35,
+      "total_undergrads": 20630,
+      "undergrads_male": null,
+      "undergrads_female": null,
+      "retention_rate": 0.956,
+      "tuition": 66640,
+      "tuition_in_state": null,
+      "tuition_out_of_state": null,
+      "required_fees": 2047,
+      "room_and_board": 19200,
+      "books_supplies": 1200,
+      "other_expenses": 1820,
+      "pct_out_of_state": 0.46,
+      "pct_on_campus_housing": null,
+      "applicant_pools": {
+        "ea": {
+          "rate": 0.279,
+          "applied": 4461,
+          "admitted": 1245
+        },
+        "rd": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "waitlist": {
+          "offered": null,
+          "enrolled": null,
+          "accepted_spots": null
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": null,
+          "female": null
+        },
+        "accepted": {
+          "male": null,
+          "female": null
+        },
+        "enrolled": {
+          "male": null,
+          "female": null
+        }
+      },
+      "demographics_detail": null,
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.46,
+        "international_pct": null
+      },
+      "sat_act_breakdown": {
+        "act_submitted_pct": 0.12,
+        "sat_submitted_pct": 0.3,
+        "act_submitted_count": 426,
+        "sat_submitted_count": 1044
+      },
+      "class_rank": {
+        "top10": 0.73,
+        "top25": 0.94,
+        "top50": 0.99,
+        "bottom25": 0,
+        "bottom50": 0.01
+      },
+      "gpa_distribution": {
+        "4_0": 0.271,
+        "below_1_0": null,
+        "1_00_to_1_99": null,
+        "2_00_to_2_49": 0.003,
+        "2_50_to_2_99": 0.007,
+        "3_00_to_3_24": 0.016,
+        "3_25_to_3_49": 0.04,
+        "3_50_to_3_74": 0.153,
+        "3_75_to_3_99": 0.51
+      },
+      "admission_factors": {
+        "essay": "very_important",
+        "rigor": "important",
+        "talent": "very_important",
+        "character": "very_important",
+        "first_gen": "important",
+        "interview": "considered",
+        "religious": "considered",
+        "volunteer": "important",
+        "class_rank": "considered",
+        "test_scores": "very_important",
+        "academic_gpa": "very_important",
+        "geo_residence": "considered",
+        "racial_ethnic": null,
+        "alumni_relation": "important",
+        "recommendations": "very_important",
+        "state_residence": "considered",
+        "work_experience": "important",
+        "extracurriculars": "very_important",
+        "applicant_interest": "considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 5608,
+          "admitted": 1143,
+          "enrolled": 667
+        },
+        "total": {
+          "applied": 11019,
+          "admitted": 2381,
+          "enrolled": 1339
+        },
+        "female": {
+          "applied": 5398,
+          "admitted": 1238,
+          "enrolled": 672
+        }
+      },
+      "sat_avg": null
+    },
+    {
+      "id": 25,
+      "slug": "unc",
+      "name": "University of North Carolina at Chapel Hill",
+      "scorecard_id": 199120,
+      "us_news_rank": 27,
+      "us_news_rank_year": "2025",
+      "test_policy": "optional",
+      "graduation_rate_4yr": 0.9162,
+      "graduation_rate_6yr": 0.9124,
+      "median_earnings_6yr": 57057,
+      "median_earnings_10yr": 72200,
+      "median_debt_graduates": 14000,
+      "median_debt_all": 7470,
+      "pct_borrowing": null,
+      "pell_grant_pct": 0.2004,
+      "avg_net_price_0_30k": null,
+      "avg_net_price_30_48k": null,
+      "avg_net_price_48_75k": null,
+      "avg_net_price_75_110k": null,
+      "avg_net_price_110k_plus": null,
+      "student_faculty_ratio": 15,
+      "pct_classes_under_20": null,
+      "pct_classes_50_plus": null,
+      "endowment_total": 5000000000,
+      "endowment_per_student": 152000,
+      "updated_at": "2026-07-03T01:06:09.606+00:00",
+      "data_year": "2024-25",
+      "city": "Chapel Hill",
+      "state": "NC",
+      "location": "Chapel Hill, NC",
+      "school_type": "Public",
+      "website": "unc.edu",
+      "applicants_total": 66535,
+      "applicants_men": 27899,
+      "applicants_women": 38636,
+      "admitted_total": 10209,
+      "admitted_men": null,
+      "admitted_women": null,
+      "enrolled_total": 4640,
+      "enrolled_men": null,
+      "enrolled_women": null,
+      "acceptance_rate": 0.1534,
+      "application_fee": 85,
+      "avg_gpa_weighted": 4.49,
+      "rd_deadline": "1/15",
+      "waitlist_offered": 6120,
+      "waitlist_accepted": 4084,
+      "waitlist_admitted": 295,
+      "ea_ed_type": "EA",
+      "ea_ed_deadline": "10/15",
+      "ea_ed_notification": "1/31",
+      "ea_apps_received": null,
+      "ea_apps_admitted": null,
+      "sat_submitted_pct": 0.28,
+      "sat_submitted_count": 1320,
+      "act_submitted_pct": 0.41,
+      "act_submitted_count": 1896,
+      "sat_composite_25": 1400,
+      "sat_composite_75": 1530,
+      "sat_reading_25": 690,
+      "sat_reading_75": 750,
+      "sat_math_25": 700,
+      "sat_math_75": 780,
+      "act_composite_25": 28,
+      "act_composite_75": 34,
+      "act_math_25": 26,
+      "act_math_75": 33,
+      "act_english_25": 27,
+      "act_english_75": 35,
+      "total_undergrads": 21075,
+      "undergrads_male": null,
+      "undergrads_female": null,
+      "retention_rate": 0.966,
+      "tuition": null,
+      "tuition_in_state": 7020,
+      "tuition_out_of_state": 43152,
+      "required_fees": 2076,
+      "room_and_board": 15038,
+      "books_supplies": 622,
+      "other_expenses": 3010,
+      "pct_out_of_state": 0.168,
+      "pct_on_campus_housing": null,
+      "applicant_pools": {
+        "ea": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "rd": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "waitlist": {
+          "offered": 6120,
+          "enrolled": 295,
+          "accepted_spots": 4084
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": 27899,
+          "female": 38636
+        },
+        "accepted": {
+          "male": null,
+          "female": null
+        },
+        "enrolled": {
+          "male": null,
+          "female": null
+        }
+      },
+      "demographics_detail": null,
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.168,
+        "international_pct": null
+      },
+      "sat_act_breakdown": {
+        "act_submitted_pct": 0.41,
+        "sat_submitted_pct": 0.28,
+        "act_submitted_count": 1896,
+        "sat_submitted_count": 1320
+      },
+      "class_rank": {
+        "top10": 0.77,
+        "top25": 0.97,
+        "top50": 1,
+        "bottom25": 0,
+        "bottom50": 0
+      },
+      "gpa_distribution": {
+        "4_0": 0.97,
+        "below_1_0": null,
+        "1_00_to_1_99": null,
+        "2_00_to_2_49": null,
+        "2_50_to_2_99": null,
+        "3_00_to_3_24": null,
+        "3_25_to_3_49": null,
+        "3_50_to_3_74": 0.01,
+        "3_75_to_3_99": 0.02
+      },
+      "admission_factors": {
+        "essay": "important",
+        "rigor": "very_important",
+        "talent": "important",
+        "character": "important",
+        "first_gen": "considered",
+        "interview": "not_considered",
+        "religious": "not_considered",
+        "volunteer": "important",
+        "class_rank": "important",
+        "test_scores": "considered",
+        "academic_gpa": "important",
+        "geo_residence": "not_considered",
+        "racial_ethnic": null,
+        "alumni_relation": "considered",
+        "recommendations": "important",
+        "state_residence": "important",
+        "work_experience": "important",
+        "extracurriculars": "important",
+        "applicant_interest": "not_considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 2325,
+          "admitted": 795,
+          "enrolled": 441
+        },
+        "total": {
+          "applied": 4692,
+          "admitted": 1713,
+          "enrolled": 980
+        },
+        "female": {
+          "applied": 2367,
+          "admitted": 918,
+          "enrolled": 539
+        }
+      },
+      "sat_avg": 1465
+    },
+    {
+      "id": 15,
+      "slug": "nyu",
+      "name": "New York University",
+      "scorecard_id": 193900,
+      "us_news_rank": 30,
+      "us_news_rank_year": "2025",
+      "test_policy": "optional",
+      "graduation_rate_4yr": 0.8801,
+      "graduation_rate_6yr": 0.8767,
+      "median_earnings_6yr": 64543,
+      "median_earnings_10yr": 82509,
+      "median_debt_graduates": 20500,
+      "median_debt_all": 11000,
+      "pct_borrowing": null,
+      "pell_grant_pct": 0.1788,
+      "avg_net_price_0_30k": null,
+      "avg_net_price_30_48k": null,
+      "avg_net_price_48_75k": null,
+      "avg_net_price_75_110k": null,
+      "avg_net_price_110k_plus": null,
+      "student_faculty_ratio": 8,
+      "pct_classes_under_20": null,
+      "pct_classes_50_plus": null,
+      "endowment_total": 5900000000,
+      "endowment_per_student": 65000,
+      "updated_at": "2026-07-03T01:06:08.008+00:00",
+      "data_year": "2024-25",
+      "city": "New York",
+      "state": "NY",
+      "location": "New York, NY",
+      "school_type": "Private",
+      "website": "nyu.edu",
+      "applicants_total": 110807,
+      "applicants_men": 45100,
+      "applicants_women": 65707,
+      "admitted_total": 10232,
+      "admitted_men": 4097,
+      "admitted_women": 6135,
+      "enrolled_total": 5666,
+      "enrolled_men": 2353,
+      "enrolled_women": 3313,
+      "acceptance_rate": 0.0923,
+      "application_fee": 85,
+      "avg_gpa_weighted": 3.81,
+      "rd_deadline": "1/5",
+      "waitlist_offered": null,
+      "waitlist_accepted": null,
+      "waitlist_admitted": null,
+      "ea_ed_type": "ED",
+      "ea_ed_deadline": "11/1",
+      "ea_ed_notification": "12/15",
+      "ea_apps_received": null,
+      "ea_apps_admitted": null,
+      "sat_submitted_pct": 0.28,
+      "sat_submitted_count": 1598,
+      "act_submitted_pct": 0.1,
+      "act_submitted_count": 583,
+      "sat_composite_25": 1480,
+      "sat_composite_75": 1550,
+      "sat_reading_25": 720,
+      "sat_reading_75": 760,
+      "sat_math_25": 760,
+      "sat_math_75": 800,
+      "act_composite_25": 34,
+      "act_composite_75": 35,
+      "act_math_25": null,
+      "act_math_75": null,
+      "act_english_25": null,
+      "act_english_75": null,
+      "total_undergrads": 29060,
+      "undergrads_male": 11827,
+      "undergrads_female": 17233,
+      "retention_rate": 0.96,
+      "tuition": null,
+      "tuition_in_state": null,
+      "tuition_out_of_state": null,
+      "required_fees": null,
+      "room_and_board": null,
+      "books_supplies": null,
+      "other_expenses": null,
+      "pct_out_of_state": 0.69,
+      "pct_on_campus_housing": 0.38,
+      "applicant_pools": {
+        "ea": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "rd": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "waitlist": {
+          "offered": null,
+          "enrolled": null,
+          "accepted_spots": null
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": 45100,
+          "female": 65707
+        },
+        "accepted": {
+          "male": 4097,
+          "female": 6135
+        },
+        "enrolled": {
+          "male": 2353,
+          "female": 3313
+        }
+      },
+      "demographics_detail": {
+        "undergrad": {
+          "asian": 6408,
+          "black": 1988,
+          "total": 29060,
+          "white": 6395,
+          "unknown": 1168,
+          "hispanic": 4164,
+          "two_or_more": 1258,
+          "american_indian": 48,
+          "pacific_islander": 20,
+          "nonresident_aliens": 7611
+        },
+        "first_year": {
+          "asian": 1511,
+          "black": 237,
+          "total": 5641,
+          "white": 1317,
+          "unknown": 292,
+          "hispanic": 552,
+          "two_or_more": 293,
+          "american_indian": 8,
+          "pacific_islander": 1,
+          "nonresident_aliens": 1430
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.69,
+        "international_pct": 0.262
+      },
+      "sat_act_breakdown": {
+        "act_submitted_pct": 0.1,
+        "sat_submitted_pct": 0.28,
+        "act_submitted_count": 583,
+        "sat_submitted_count": 1598
+      },
+      "class_rank": null,
+      "gpa_distribution": {
+        "4_0": 0.18,
+        "below_1_0": null,
+        "1_00_to_1_99": null,
+        "2_00_to_2_49": 0,
+        "2_50_to_2_99": 0,
+        "3_00_to_3_24": 0.01,
+        "3_25_to_3_49": 0.05,
+        "3_50_to_3_74": 0.22,
+        "3_75_to_3_99": 0.54
+      },
+      "admission_factors": {
+        "essay": "very_important",
+        "rigor": "important",
+        "talent": "important",
+        "character": "very_important",
+        "first_gen": "important",
+        "interview": "considered",
+        "religious": "considered",
+        "volunteer": "important",
+        "class_rank": "considered",
+        "test_scores": "very_important",
+        "academic_gpa": "very_important",
+        "geo_residence": "important",
+        "racial_ethnic": null,
+        "alumni_relation": "considered",
+        "recommendations": "very_important",
+        "state_residence": "considered",
+        "work_experience": "important",
+        "extracurriculars": "important",
+        "applicant_interest": "important"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 4566,
+          "admitted": 786,
+          "enrolled": 631
+        },
+        "total": {
+          "applied": 10155,
+          "admitted": 2243,
+          "enrolled": 989
+        },
+        "female": {
+          "applied": 5589,
+          "admitted": 1457,
+          "enrolled": 358
+        }
+      },
+      "sat_avg": 1515
+    },
+    {
+      "id": 23,
+      "slug": "uf",
+      "name": "University of Florida",
+      "scorecard_id": 134130,
+      "us_news_rank": 30,
+      "us_news_rank_year": "2025",
+      "test_policy": "optional",
+      "graduation_rate_4yr": 0.9131,
+      "graduation_rate_6yr": 0.8945,
+      "median_earnings_6yr": 56398,
+      "median_earnings_10yr": 71588,
+      "median_debt_graduates": 15000,
+      "median_debt_all": 9000,
+      "pct_borrowing": null,
+      "pell_grant_pct": 0.2166,
+      "avg_net_price_0_30k": null,
+      "avg_net_price_30_48k": null,
+      "avg_net_price_48_75k": null,
+      "avg_net_price_75_110k": null,
+      "avg_net_price_110k_plus": null,
+      "student_faculty_ratio": 16,
+      "pct_classes_under_20": null,
+      "pct_classes_50_plus": null,
+      "endowment_total": 3400000000,
+      "endowment_per_student": 63000,
+      "updated_at": "2026-07-03T01:06:09.319+00:00",
+      "data_year": "2024-25",
+      "city": "Gainesville",
+      "state": "FL",
+      "location": "Gainesville, FL",
+      "school_type": "Public",
+      "website": "ufl.edu",
+      "applicants_total": 73557,
+      "applicants_men": null,
+      "applicants_women": null,
+      "admitted_total": 17804,
+      "admitted_men": null,
+      "admitted_women": null,
+      "enrolled_total": 7513,
+      "enrolled_men": null,
+      "enrolled_women": null,
+      "acceptance_rate": 0.242,
+      "application_fee": 30,
+      "avg_gpa_weighted": 3.92,
+      "rd_deadline": "3/1",
+      "waitlist_offered": null,
+      "waitlist_accepted": null,
+      "waitlist_admitted": null,
+      "ea_ed_type": "EA",
+      "ea_ed_deadline": "11/1",
+      "ea_ed_notification": "1/23",
+      "ea_apps_received": null,
+      "ea_apps_admitted": null,
+      "sat_submitted_pct": 0.8,
+      "sat_submitted_count": 5908,
+      "act_submitted_pct": 0.4,
+      "act_submitted_count": 2952,
+      "sat_composite_25": 1330,
+      "sat_composite_75": 1470,
+      "sat_reading_25": 660,
+      "sat_reading_75": 730,
+      "sat_math_25": 660,
+      "sat_math_75": 750,
+      "act_composite_25": 29,
+      "act_composite_75": 33,
+      "act_math_25": 26,
+      "act_math_75": 32,
+      "act_english_25": 28,
+      "act_english_75": 35,
+      "total_undergrads": 36573,
+      "undergrads_male": null,
+      "undergrads_female": null,
+      "retention_rate": 0.98,
+      "tuition": null,
+      "tuition_in_state": 4477,
+      "tuition_out_of_state": 27815,
+      "required_fees": 1904,
+      "room_and_board": 12615,
+      "books_supplies": 826,
+      "other_expenses": 4359,
+      "pct_out_of_state": 0.1982,
+      "pct_on_campus_housing": 0.7476,
+      "applicant_pools": {
+        "ea": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "rd": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "waitlist": {
+          "offered": null,
+          "enrolled": null,
+          "accepted_spots": null
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": null,
+          "female": null
+        },
+        "accepted": {
+          "male": null,
+          "female": null
+        },
+        "enrolled": {
+          "male": null,
+          "female": null
+        }
+      },
+      "demographics_detail": {
+        "undergrad": null,
+        "first_year": null
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.1982,
+        "international_pct": null
+      },
+      "sat_act_breakdown": {
+        "act_submitted_pct": 0.4,
+        "sat_submitted_pct": 0.8,
+        "act_submitted_count": 2952,
+        "sat_submitted_count": 5908
+      },
+      "class_rank": {
+        "top10": 0.84,
+        "top25": 0.98,
+        "top50": 1,
+        "bottom25": null,
+        "bottom50": 0
+      },
+      "gpa_distribution": {
+        "4_0": 0.53,
+        "below_1_0": null,
+        "1_00_to_1_99": null,
+        "2_00_to_2_49": null,
+        "2_50_to_2_99": null,
+        "3_00_to_3_24": null,
+        "3_25_to_3_49": null,
+        "3_50_to_3_74": 0.06,
+        "3_75_to_3_99": 0.41
+      },
+      "admission_factors": {
+        "essay": "important",
+        "rigor": "very_important",
+        "talent": "very_important",
+        "character": "important",
+        "first_gen": "considered",
+        "interview": "considered",
+        "religious": "considered",
+        "volunteer": "important",
+        "class_rank": "considered",
+        "test_scores": "important",
+        "academic_gpa": "very_important",
+        "geo_residence": "important",
+        "racial_ethnic": null,
+        "alumni_relation": "considered",
+        "recommendations": "considered",
+        "state_residence": "important",
+        "work_experience": "important",
+        "extracurriculars": "very_important",
+        "applicant_interest": "considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 2905,
+          "admitted": 1264,
+          "enrolled": 1033
+        },
+        "total": {
+          "applied": 5870,
+          "admitted": 2633,
+          "enrolled": 2124
+        },
+        "female": {
+          "applied": 2965,
+          "admitted": 1369,
+          "enrolled": 1091
+        }
+      },
+      "sat_avg": 1400
+    },
+    {
+      "id": 19,
+      "slug": "tufts",
+      "name": "Tufts University",
+      "scorecard_id": 168148,
+      "us_news_rank": 37,
+      "us_news_rank_year": "2025",
+      "test_policy": "optional",
+      "graduation_rate_4yr": 0.9342,
+      "graduation_rate_6yr": 0.9417,
+      "median_earnings_6yr": 68337,
+      "median_earnings_10yr": 83214,
+      "median_debt_graduates": 16250,
+      "median_debt_all": 7125,
+      "pct_borrowing": null,
+      "pell_grant_pct": 0.1204,
+      "avg_net_price_0_30k": null,
+      "avg_net_price_30_48k": null,
+      "avg_net_price_48_75k": null,
+      "avg_net_price_75_110k": null,
+      "avg_net_price_110k_plus": null,
+      "student_faculty_ratio": 10,
+      "pct_classes_under_20": null,
+      "pct_classes_50_plus": null,
+      "endowment_total": 2600000000,
+      "endowment_per_student": 193000,
+      "updated_at": "2026-07-03T01:06:08.653+00:00",
+      "data_year": "2024-25",
+      "city": "Medford",
+      "state": "MA",
+      "location": "Medford, MA",
+      "school_type": "Private",
+      "website": "tufts.edu",
+      "applicants_total": 34330,
+      "applicants_men": 14314,
+      "applicants_women": 18839,
+      "admitted_total": 3957,
+      "admitted_men": 1633,
+      "admitted_women": 2189,
+      "enrolled_total": 1801,
+      "enrolled_men": 745,
+      "enrolled_women": 1013,
+      "acceptance_rate": 0.1153,
+      "application_fee": null,
+      "avg_gpa_weighted": null,
+      "rd_deadline": "1/6",
+      "waitlist_offered": 2800,
+      "waitlist_accepted": 991,
+      "waitlist_admitted": 354,
+      "ea_ed_type": "ED",
+      "ea_ed_deadline": "11/4",
+      "ea_ed_notification": "12/15",
+      "ea_apps_received": null,
+      "ea_apps_admitted": null,
+      "sat_submitted_pct": 0.38,
+      "sat_submitted_count": 687,
+      "act_submitted_pct": 0.18,
+      "act_submitted_count": 318,
+      "sat_composite_25": 1480,
+      "sat_composite_75": 1540,
+      "sat_reading_25": 720,
+      "sat_reading_75": 770,
+      "sat_math_25": 750,
+      "sat_math_75": 790,
+      "act_composite_25": 33,
+      "act_composite_75": 35,
+      "act_math_25": null,
+      "act_math_75": null,
+      "act_english_25": null,
+      "act_english_75": null,
+      "total_undergrads": 7126,
+      "undergrads_male": 3032,
+      "undergrads_female": 3940,
+      "retention_rate": 0.955,
+      "tuition": null,
+      "tuition_in_state": null,
+      "tuition_out_of_state": null,
+      "required_fees": null,
+      "room_and_board": null,
+      "books_supplies": null,
+      "other_expenses": null,
+      "pct_out_of_state": 0.76,
+      "pct_on_campus_housing": 0.59,
+      "applicant_pools": {
+        "ea": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "rd": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "waitlist": {
+          "offered": 2800,
+          "enrolled": 354,
+          "accepted_spots": 991
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": 14314,
+          "female": 18839
+        },
+        "accepted": {
+          "male": 1633,
+          "female": 2189
+        },
+        "enrolled": {
+          "male": 745,
+          "female": 1013
+        }
+      },
+      "demographics_detail": {
+        "undergrad": {
+          "asian": 1192,
+          "black": 438,
+          "total": 7126,
+          "white": 2890,
+          "unknown": 428,
+          "hispanic": 724,
+          "two_or_more": 553,
+          "american_indian": 3,
+          "pacific_islander": 8,
+          "nonresident_aliens": 890
+        },
+        "first_year": {
+          "asian": 312,
+          "black": 73,
+          "total": 1799,
+          "white": 751,
+          "unknown": 123,
+          "hispanic": 181,
+          "two_or_more": 121,
+          "american_indian": 0,
+          "pacific_islander": 0,
+          "nonresident_aliens": 238
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.76,
+        "international_pct": 0.125
+      },
+      "sat_act_breakdown": {
+        "act_submitted_pct": 0.18,
+        "sat_submitted_pct": 0.38,
+        "act_submitted_count": 318,
+        "sat_submitted_count": 687
+      },
+      "class_rank": {
+        "top10": 0.79,
+        "top25": 0.93,
+        "top50": 0.99,
+        "bottom25": 0,
+        "bottom50": 0.01
+      },
+      "gpa_distribution": null,
+      "admission_factors": {
+        "essay": "very_important",
+        "rigor": "very_important",
+        "talent": "very_important",
+        "character": "very_important",
+        "first_gen": "important",
+        "interview": "important",
+        "religious": "considered",
+        "volunteer": "important",
+        "class_rank": "very_important",
+        "test_scores": "important",
+        "academic_gpa": "very_important",
+        "geo_residence": "important",
+        "racial_ethnic": null,
+        "alumni_relation": "important",
+        "recommendations": "very_important",
+        "state_residence": "considered",
+        "work_experience": "important",
+        "extracurriculars": "very_important",
+        "applicant_interest": "important"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 708,
+          "admitted": 135,
+          "enrolled": 53
+        },
+        "total": {
+          "applied": 1610,
+          "admitted": 342,
+          "enrolled": 118
+        },
+        "female": {
+          "applied": 820,
+          "admitted": 192,
+          "enrolled": 59
+        }
+      },
+      "sat_avg": 1510
+    },
+    {
+      "id": 22,
+      "slug": "ucsb",
+      "name": "University of California, Santa Barbara",
+      "scorecard_id": 110680,
+      "us_news_rank": 39,
+      "us_news_rank_year": "2025",
+      "test_policy": "optional",
+      "graduation_rate_4yr": 0.8677,
+      "graduation_rate_6yr": 0.896,
+      "median_earnings_6yr": 65669,
+      "median_earnings_10yr": 84943,
+      "median_debt_graduates": 15500,
+      "median_debt_all": 10924,
+      "pct_borrowing": null,
+      "pell_grant_pct": 0.342,
+      "avg_net_price_0_30k": null,
+      "avg_net_price_30_48k": null,
+      "avg_net_price_48_75k": null,
+      "avg_net_price_75_110k": null,
+      "avg_net_price_110k_plus": null,
+      "student_faculty_ratio": 19,
+      "pct_classes_under_20": null,
+      "pct_classes_50_plus": null,
+      "endowment_total": 700000000,
+      "endowment_per_student": 20000,
+      "updated_at": "2026-07-03T01:06:09.146+00:00",
+      "data_year": "2024-25",
+      "city": "Santa Barbara",
+      "state": "CA",
+      "location": "Santa Barbara, CA",
+      "school_type": "Public",
+      "website": "ucsb.edu",
+      "applicants_total": 110266,
+      "applicants_men": null,
+      "applicants_women": null,
+      "admitted_total": 36347,
+      "admitted_men": null,
+      "admitted_women": null,
+      "enrolled_total": 5008,
+      "enrolled_men": null,
+      "enrolled_women": null,
+      "acceptance_rate": 0.3297,
+      "application_fee": 80,
+      "avg_gpa_weighted": 4.3,
+      "rd_deadline": "11/30",
+      "waitlist_offered": 15958,
+      "waitlist_accepted": 10641,
+      "waitlist_admitted": 8715,
+      "ea_ed_type": null,
+      "ea_ed_deadline": null,
+      "ea_ed_notification": null,
+      "ea_apps_received": null,
+      "ea_apps_admitted": null,
+      "sat_submitted_pct": null,
+      "sat_submitted_count": null,
+      "act_submitted_pct": null,
+      "act_submitted_count": null,
+      "sat_composite_25": null,
+      "sat_composite_75": null,
+      "sat_reading_25": null,
+      "sat_reading_75": null,
+      "sat_math_25": null,
+      "sat_math_75": null,
+      "act_composite_25": null,
+      "act_composite_75": null,
+      "act_math_25": null,
+      "act_math_75": null,
+      "act_english_25": null,
+      "act_english_75": null,
+      "total_undergrads": 23181,
+      "undergrads_male": null,
+      "undergrads_female": null,
+      "retention_rate": 0.9326,
+      "tuition": null,
+      "tuition_in_state": null,
+      "tuition_out_of_state": null,
+      "required_fees": null,
+      "room_and_board": null,
+      "books_supplies": null,
+      "other_expenses": null,
+      "pct_out_of_state": 0.1,
+      "pct_on_campus_housing": 0.95,
+      "applicant_pools": {
+        "ea": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "rd": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "waitlist": {
+          "offered": 15958,
+          "enrolled": 8715,
+          "accepted_spots": 10641
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": null,
+          "female": null
+        },
+        "accepted": {
+          "male": null,
+          "female": null
+        },
+        "enrolled": {
+          "male": null,
+          "female": null
+        }
+      },
+      "demographics_detail": null,
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.1,
+        "international_pct": null
+      },
+      "sat_act_breakdown": {
+        "act_submitted_pct": null,
+        "sat_submitted_pct": null,
+        "act_submitted_count": null,
+        "sat_submitted_count": null
+      },
+      "class_rank": null,
+      "gpa_distribution": {
+        "4_0": 0.9036,
+        "below_1_0": null,
+        "1_00_to_1_99": null,
+        "2_00_to_2_49": null,
+        "2_50_to_2_99": 0.0004,
+        "3_00_to_3_24": 0.0016,
+        "3_25_to_3_49": 0.0043,
+        "3_50_to_3_74": 0.0286,
+        "3_75_to_3_99": 0.0614
+      },
+      "admission_factors": {
+        "essay": "very_important",
+        "rigor": "important",
+        "talent": "considered",
+        "character": "considered",
+        "first_gen": "considered",
+        "interview": "not_considered",
+        "religious": "not_considered",
+        "volunteer": "considered",
+        "class_rank": "not_considered",
+        "test_scores": "not_considered",
+        "academic_gpa": "very_important",
+        "geo_residence": "considered",
+        "racial_ethnic": null,
+        "alumni_relation": "not_considered",
+        "recommendations": "not_considered",
+        "state_residence": "considered",
+        "work_experience": "considered",
+        "extracurriculars": "considered",
+        "applicant_interest": "not_considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 9374,
+          "admitted": 5439,
+          "enrolled": 1065
+        },
+        "total": {
+          "applied": 18440,
+          "admitted": 11369,
+          "enrolled": 2109
+        },
+        "female": {
+          "applied": 8149,
+          "admitted": 5383,
+          "enrolled": 969
+        }
+      },
+      "sat_avg": null
+    },
+    {
+      "id": 29,
+      "slug": "wake-forest",
+      "name": "Wake Forest University",
+      "scorecard_id": 200217,
+      "us_news_rank": 46,
+      "us_news_rank_year": "2025",
+      "test_policy": "optional",
+      "graduation_rate_4yr": 0.6732,
+      "graduation_rate_6yr": 0.6047,
+      "median_earnings_6yr": 50191,
+      "median_earnings_10yr": 60909,
+      "median_debt_graduates": 24000,
+      "median_debt_all": 8750,
+      "pct_borrowing": null,
+      "pell_grant_pct": 0.209,
+      "avg_net_price_0_30k": null,
+      "avg_net_price_30_48k": null,
+      "avg_net_price_48_75k": null,
+      "avg_net_price_75_110k": null,
+      "avg_net_price_110k_plus": null,
+      "student_faculty_ratio": 14,
+      "pct_classes_under_20": null,
+      "pct_classes_50_plus": null,
+      "endowment_total": 2200000000,
+      "endowment_per_student": 208000,
+      "updated_at": "2026-07-03T01:06:10.256+00:00",
+      "data_year": "2024-25",
+      "city": "Winston-Salem",
+      "state": "NC",
+      "location": "Winston-Salem, NC",
+      "school_type": "Private",
+      "website": "wfu.edu",
+      "applicants_total": 18727,
+      "applicants_men": 8224,
+      "applicants_women": 10498,
+      "admitted_total": 4058,
+      "admitted_men": 1919,
+      "admitted_women": 2137,
+      "enrolled_total": 1466,
+      "enrolled_men": 672,
+      "enrolled_women": 794,
+      "acceptance_rate": 0.2167,
+      "application_fee": 85,
+      "avg_gpa_weighted": null,
+      "rd_deadline": "1/1",
+      "waitlist_offered": null,
+      "waitlist_accepted": null,
+      "waitlist_admitted": null,
+      "ea_ed_type": "ED",
+      "ea_ed_deadline": "11/15",
+      "ea_ed_notification": null,
+      "ea_apps_received": null,
+      "ea_apps_admitted": null,
+      "sat_submitted_pct": 0.222,
+      "sat_submitted_count": 325,
+      "act_submitted_pct": 0.257,
+      "act_submitted_count": 376,
+      "sat_composite_25": 1420,
+      "sat_composite_75": 1500,
+      "sat_reading_25": 700,
+      "sat_reading_75": 750,
+      "sat_math_25": 710,
+      "sat_math_75": 770,
+      "act_composite_25": 32,
+      "act_composite_75": 34,
+      "act_math_25": 29,
+      "act_math_75": 34,
+      "act_english_25": 34,
+      "act_english_75": 35,
+      "total_undergrads": 5490,
+      "undergrads_male": 2461,
+      "undergrads_female": 3027,
+      "retention_rate": 0.926,
+      "tuition": 69130,
+      "tuition_in_state": null,
+      "tuition_out_of_state": null,
+      "required_fees": 1202,
+      "room_and_board": 22104,
+      "books_supplies": 1718,
+      "other_expenses": 1880,
+      "pct_out_of_state": 0.873,
+      "pct_on_campus_housing": 0.75,
+      "applicant_pools": {
+        "ea": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "rd": {
+          "rate": null,
+          "applied": null,
+          "admitted": null
+        },
+        "waitlist": {
+          "offered": null,
+          "enrolled": null,
+          "accepted_spots": null
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": 8224,
+          "female": 10498
+        },
+        "accepted": {
+          "male": 1919,
+          "female": 2137
+        },
+        "enrolled": {
+          "male": 672,
+          "female": 794
+        }
+      },
+      "demographics_detail": {
+        "undergrad": {
+          "asian": 289,
+          "black": 353,
+          "total": 5485,
+          "white": 3572,
+          "unknown": 158,
+          "hispanic": 531,
+          "two_or_more": 253,
+          "american_indian": 4,
+          "pacific_islander": 8,
+          "nonresident_aliens": 317
+        },
+        "first_year": {
+          "asian": 52,
+          "black": 66,
+          "total": 1464,
+          "white": 1020,
+          "unknown": 89,
+          "hispanic": 135,
+          "two_or_more": 57,
+          "american_indian": 2,
+          "pacific_islander": 0,
+          "nonresident_aliens": 43
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.873,
+        "international_pct": null
+      },
+      "sat_act_breakdown": {
+        "act_submitted_pct": 0.257,
+        "sat_submitted_pct": 0.222,
+        "act_submitted_count": 376,
+        "sat_submitted_count": 325
+      },
+      "class_rank": {
+        "top10": 0.642,
+        "top25": 0.918,
+        "top50": 0.985,
+        "bottom25": null,
+        "bottom50": 0.015
+      },
+      "gpa_distribution": null,
+      "admission_factors": {
+        "essay": "very_important",
+        "rigor": "very_important",
+        "talent": "important",
+        "character": "very_important",
+        "first_gen": "considered",
+        "interview": "important",
+        "religious": "considered",
+        "volunteer": "considered",
+        "class_rank": "very_important",
+        "test_scores": "considered",
+        "academic_gpa": "very_important",
+        "geo_residence": "considered",
+        "racial_ethnic": null,
+        "alumni_relation": "considered",
+        "recommendations": "important",
+        "state_residence": "considered",
+        "work_experience": "considered",
+        "extracurriculars": "important",
+        "applicant_interest": "considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 220,
+          "admitted": 75,
+          "enrolled": 29
+        },
+        "total": {
+          "applied": 421,
+          "admitted": 151,
+          "enrolled": 49
+        },
+        "female": {
+          "applied": 201,
+          "admitted": 76,
+          "enrolled": 20
+        }
+      },
+      "sat_avg": 1460
+    }
+  ]
+}

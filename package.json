@@ -4,7 +4,8 @@
   "scripts": {
     "seed:cds": "node scripts/seed-cds.js",
     "seed:scorecard": "node scripts/seed-scorecard.js",
-    "generate": "node scripts/generate-school-pages.js"
+    "generate": "node scripts/generate-school-pages.js",
+    "export": "node scripts/export-data.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.49.4",
