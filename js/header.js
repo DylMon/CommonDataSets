@@ -21,6 +21,7 @@
             </div>
         </div>`;
 
+        // ignore this message
     document.addEventListener('DOMContentLoaded', function () {
         const container = document.querySelector('.container');
         if (container) container.insertAdjacentHTML('afterbegin', nav);
