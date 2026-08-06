@@ -23,6 +23,12 @@
 
         // ignore this message
     document.addEventListener('DOMContentLoaded', function () {
+        const link = document.createElement('link');
+        link.rel = 'icon';
+        link.type = 'image/png';
+        link.href = root + 'favicon.png';
+        document.head.appendChild(link);
+
         const container = document.querySelector('.container');
         if (container) container.insertAdjacentHTML('afterbegin', nav);
     });
