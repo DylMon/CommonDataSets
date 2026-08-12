@@ -17,10 +17,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/base.css?v=2">
+    <link rel="stylesheet" href="css/school-template.css?v=2">
     <link rel="stylesheet" href="css/compare.css?v=2">
     <script src="js/header.js?v=2" defer></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2245119166025427"
      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js" defer></script>
 </head>
 <body>
     <div class="container">
@@ -52,20 +54,18 @@
                 <div class="compare-result" id="compare-result-2"></div>
             </div>
         </div>
+        <div id="compare-sections"></div>
     </div>
 
     <script type="module">
+        import { renderGpaComparisonChart } from './js/charts.js';
 
-        const SCHOOL_COLORS = {
-            'mit': '#a41931', 'harvard': '#a6152c', 'stanford': '#8c1515', 'princeton': '#ed6d0b',
-            'yale': '#00356b', 'columbia': '#6dabe4', 'upenn': '#00144d', 'caltech': '#ff6e1e',
-            'duke': '#004c97', 'jhu': '#002d72', 'northwestern': '#4e2686', 'dartmouth': '#00693e',
-            'brown': '#ed1e25', 'vanderbilt': '#dcb163', 'rice': '#002169', 'washu': '#a60c10',
-            'notre-dame': '#0c2340', 'cornell': '#b31b1b', 'uchicago': '#a6152c', 'cmu': '#c41230',
-            'georgetown': '#041e42', 'emory': '#002878', 'wake-forest': '#1a1a1a', 'tufts': '#3172ae',
-            'ucla': '#017dc3', 'berkeley': '#193460', 'ucsb': '#003660', 'uva': '#232d4b',
-            'umich': '#00274c', 'unc': '#4b9cd3', 'uf': '#fa4616', 'usc': '#990000', 'nyu': '#58078d',
-        };
+        // Fixed per-slot colors rather than each school's own brand color —
+        // brand hexes are arbitrary and sometimes literally identical
+        // (Harvard and UChicago are both #a6152c), which made it hard to
+        // tell "School 1" from "School 2" apart in the comparison charts.
+        // Slot identity is what matters here, not brand identity.
+        const COMPARE_COLORS = { 1: '#0d9488', 2: '#7c3aed' };
 
         const LOGOS = {
             'mit': 'MITlogo.png', 'harvard': 'harvardlogo.png', 'stanford': 'stanfordlogo.png',
@@ -94,6 +94,65 @@
 
         function fmtGpa(val) {
             return val != null ? parseFloat(val).toFixed(2) : '—';
+        }
+
+        function fmtNum(val) {
+            return val != null ? val.toLocaleString() : '—';
+        }
+
+        const FACTOR_LABELS = {
+            rigor: 'Rigor of Secondary School Record', class_rank: 'Class Rank',
+            academic_gpa: 'Academic GPA', test_scores: 'Standardized Test Scores',
+            essay: 'Application Essay', recommendations: 'Recommendations',
+            interview: 'Interview', extracurriculars: 'Extracurricular Activities',
+            talent: 'Talent / Ability', character: 'Character / Personal Qualities',
+            first_gen: 'First Generation', alumni_relation: 'Alumni/ae Relation',
+            geo_residence: 'Geographical Residence', state_residence: 'State Residence',
+            religious: 'Religious Affiliation', racial_ethnic: 'Racial / Ethnic Status',
+            volunteer: 'Volunteer Work', work_experience: 'Work Experience',
+            applicant_interest: "Level of Applicant's Interest",
+        };
+
+        const RATING_LABELS = {
+            very_important: 'Very Important', important: 'Important',
+            considered: 'Considered', not_considered: 'Not Considered',
+        };
+
+        const RACE_LABELS = [
+            ['asian', 'Asian'], ['white', 'White'], ['hispanic', 'Hispanic / Latino'],
+            ['black', 'Black / African American'], ['two_or_more', 'Two or More Races'],
+            ['nonresident_aliens', 'Nonresident Aliens'], ['american_indian', 'American Indian / Alaska Native'],
+            ['pacific_islander', 'Native Hawaiian / Pac. Islander'], ['unknown', 'Unknown'],
+        ];
+
+        function tableHtml(headers, rows) {
+            const th = headers.map(h => `<th>${h}</th>`).join('');
+            const tbody = rows.map(r => `<tr>${r.map(c => `<td>${c}</td>`).join('')}</tr>`).join('');
+            return `<div class="tbl-wrap"><table class="tbl"><thead><tr>${th}</tr></thead><tbody>${tbody}</tbody></table></div>`;
+        }
+
+        function sectionHtml(title, body) {
+            return `<section class="school-section"><h2 class="section-title">${title}</h2>${body}</section>`;
+        }
+
+        // Direction-aware "which side wins" coloring, reusing the same
+        // .stat-higher/.stat-lower (green/red) classes as the summary cards
+        // above. lowerIsBetter flips the direction for cost/debt-type stats,
+        // where a bigger number is worse, not better.
+        function cmpClass(valA, valB, lowerIsBetter) {
+            if (valA == null || valB == null || valA === valB) return ['', ''];
+            const aWins = lowerIsBetter ? valA < valB : valA > valB;
+            return aWins ? ['stat-higher', 'stat-lower'] : ['stat-lower', 'stat-higher'];
+        }
+
+        function cmpRow(label, valA, valB, fmtFn, opts = {}) {
+            const [clsA, clsB] = opts.noColor ? ['', ''] : cmpClass(valA, valB, !!opts.lowerIsBetter);
+            const wrap = s => opts.strong ? `<strong>${s}</strong>` : s;
+            return [
+                label,
+                wrap(`<span class="${clsA}">${fmtFn(valA)}</span>`),
+                wrap(`<span class="${clsB}">${fmtFn(valB)}</span>`),
+            ];
         }
 
         function matches(school, query) {
@@ -163,7 +222,7 @@
                 return;
             }
             const actRange = s.act_composite_25 != null && s.act_composite_75 != null ? `${s.act_composite_25}–${s.act_composite_75}` : '—';
-            const color = SCHOOL_COLORS[s.slug] ?? '#ccc';
+            const color = COMPARE_COLORS[slot];
 
             el.innerHTML = `
                 <div class="compare-card" style="border-top-color:${color}">
@@ -197,7 +256,7 @@
                                 <div class="stat-label">Avg GPA</div>
                             </div>
                             <div class="stat-item">
-                                <div class="stat-val" data-stat="tuition">${fmtMoney(s.tuition_out_of_state)}</div>
+                                <div class="stat-val" data-stat="tuition">${fmtMoney(s.tuition_out_of_state ?? s.tuition)}</div>
                                 <div class="stat-label">Tuition (OOS)</div>
                             </div>
                         </div>
@@ -217,15 +276,10 @@
             if (el) el.classList.add(cls);
         }
 
-        function compareStat(stat, valA, valB) {
-            if (valA == null || valB == null || valA === valB) return;
-            if (valA > valB) {
-                colorStat(1, stat, 'stat-higher');
-                colorStat(2, stat, 'stat-lower');
-            } else {
-                colorStat(2, stat, 'stat-higher');
-                colorStat(1, stat, 'stat-lower');
-            }
+        function compareStat(stat, valA, valB, lowerIsBetter = false) {
+            const [clsA, clsB] = cmpClass(valA, valB, lowerIsBetter);
+            if (clsA) colorStat(1, stat, clsA);
+            if (clsB) colorStat(2, stat, clsB);
         }
 
         function actMid(s) {
@@ -235,6 +289,7 @@
         function compareStats() {
             clearColors();
             const a = selected[1], b = selected[2];
+            renderExpandedSections(a, b);
             if (!a || !b) return;
 
             compareStat('acceptance', a.acceptance_rate, b.acceptance_rate);
@@ -242,7 +297,198 @@
             compareStat('act', actMid(a), actMid(b));
             compareStat('undergrads', a.total_undergrads, b.total_undergrads);
             compareStat('gpa', a.avg_gpa_weighted, b.avg_gpa_weighted);
-            compareStat('tuition', a.tuition_out_of_state, b.tuition_out_of_state);
+            // lower tuition is the better outcome for an applicant — a higher
+            // number here is a cost, not an achievement, so it must NOT get
+            // the same "higher = green" treatment as SAT/GPA above.
+            compareStat('tuition', a.tuition_out_of_state ?? a.tuition, b.tuition_out_of_state ?? b.tuition, true);
+        }
+
+        // ── Expanded comparison sections ────────────────────────────────
+        // Reuse the per-school detail-page data (GPA distribution, admission
+        // factors, cost breakdown, demographics) instead of the six summary
+        // stats above, once both slots are filled.
+
+        function legendHtml(a, b) {
+            const colorA = COMPARE_COLORS[1];
+            const colorB = COMPARE_COLORS[2];
+            return `<div class="cmp-legend">
+                <span class="cmp-legend-item"><span class="cmp-legend-dot" style="background:${colorA}"></span>${a.name}</span>
+                <span class="cmp-legend-item"><span class="cmp-legend-dot" style="background:${colorB}"></span>${b.name}</span>
+            </div>`;
+        }
+
+        function renderFunnelCompare(a, b) {
+            const rows = [
+                cmpRow('Applied',  a.applicants_total, b.applicants_total, fmtNum, { noColor: true }),
+                cmpRow('Admitted', a.admitted_total,   b.admitted_total,   fmtNum, { noColor: true }),
+                cmpRow('Enrolled', a.enrolled_total,   b.enrolled_total,   fmtNum, { noColor: true }),
+            ];
+            return sectionHtml('Applicant Funnel', tableHtml(['', a.name, b.name], rows));
+        }
+
+        function scoreCompareRow(label, aLo, aHi, bLo, bHi, min, max, colorA, colorB) {
+            const bar = (lo, hi, color) => {
+                if (lo == null || hi == null) {
+                    return `<div class="score-bar-wrap"><span class="score-na-text">Not reported</span></div>`;
+                }
+                const left = ((lo - min) / (max - min) * 100).toFixed(1);
+                const width = ((hi - lo) / (max - min) * 100).toFixed(1);
+                return `<div class="score-bar-wrap">
+                    <div class="score-bar-track"><div class="score-bar-fill" style="left:${left}%;width:${width}%;background:${color}"></div></div>
+                    <div class="score-bar-vals">${lo}–${hi}</div>
+                </div>`;
+            };
+            return `<div class="score-row cmp-score-row">
+                <div class="score-row-label">${label}</div>
+                <div class="cmp-score-bars">
+                    ${bar(aLo, aHi, colorA)}
+                    ${bar(bLo, bHi, colorB)}
+                </div>
+            </div>`;
+        }
+
+        function renderTestScoresCompare(a, b) {
+            const colorA = COMPARE_COLORS[1];
+            const colorB = COMPARE_COLORS[2];
+            const satRows = [
+                scoreCompareRow('Composite', a.sat_composite_25, a.sat_composite_75, b.sat_composite_25, b.sat_composite_75, 400, 1600, colorA, colorB),
+                scoreCompareRow('Reading & Writing', a.sat_reading_25, a.sat_reading_75, b.sat_reading_25, b.sat_reading_75, 200, 800, colorA, colorB),
+                scoreCompareRow('Math', a.sat_math_25, a.sat_math_75, b.sat_math_25, b.sat_math_75, 200, 800, colorA, colorB),
+            ].join('');
+            const actRows = [
+                scoreCompareRow('Composite', a.act_composite_25, a.act_composite_75, b.act_composite_25, b.act_composite_75, 1, 36, colorA, colorB),
+                scoreCompareRow('Math', a.act_math_25, a.act_math_75, b.act_math_25, b.act_math_75, 1, 36, colorA, colorB),
+                scoreCompareRow('English', a.act_english_25, a.act_english_75, b.act_english_25, b.act_english_75, 1, 36, colorA, colorB),
+            ].join('');
+
+            return sectionHtml('Test Scores', `
+                <h3 class="subsection-title">SAT — 25th to 75th Percentile</h3>
+                <div class="score-rows">${satRows}</div>
+                <h3 class="subsection-title">ACT — 25th to 75th Percentile</h3>
+                <div class="score-rows">${actRows}</div>`);
+        }
+
+        function hasGpaData(s) {
+            return s.gpa_distribution && Object.values(s.gpa_distribution).some(v => v != null);
+        }
+
+        function renderGpaCompareSection(a, b) {
+            if (!hasGpaData(a) && !hasGpaData(b)) return '';
+            return sectionHtml('GPA Distribution', `
+                <div class="gpa-chart-wrap" style="height:300px"><canvas id="cmp-gpa-chart"></canvas></div>
+                <p class="chart-caption">GPA bands aren't evenly sized, and schools often don't report bands below 3.0 — read this as a shape, not a precise curve.</p>`);
+        }
+
+        function renderAdmissionFactorsCompare(a, b) {
+            if (!a.admission_factors && !b.admission_factors) return '';
+            const rows = Object.entries(FACTOR_LABELS).map(([key, label]) => [
+                label,
+                RATING_LABELS[a.admission_factors?.[key]] ?? '—',
+                RATING_LABELS[b.admission_factors?.[key]] ?? '—',
+            ]);
+            return sectionHtml('Admission Factors', tableHtml(['Factor', a.name, b.name], rows));
+        }
+
+        function totalCOA(s, variant) {
+            const tuition = variant === 'in'
+                ? (s.tuition_in_state ?? s.tuition)
+                : (s.tuition_out_of_state ?? s.tuition);
+            const total = [tuition, s.room_and_board, s.books_supplies, s.required_fees, s.other_expenses]
+                .reduce((sum, v) => sum + (v || 0), 0);
+            return total > 0 ? total : null;
+        }
+
+        function renderCostCompare(a, b) {
+            const rows = [
+                cmpRow('Tuition (In-State)',     a.tuition_in_state ?? a.tuition,     b.tuition_in_state ?? b.tuition,     fmtMoney, { lowerIsBetter: true }),
+                cmpRow('Tuition (Out-of-State)',  a.tuition_out_of_state ?? a.tuition, b.tuition_out_of_state ?? b.tuition, fmtMoney, { lowerIsBetter: true }),
+                cmpRow('Room & Board',            a.room_and_board,  b.room_and_board,  fmtMoney, { lowerIsBetter: true }),
+                cmpRow('Books & Supplies',        a.books_supplies,  b.books_supplies,  fmtMoney, { lowerIsBetter: true }),
+                cmpRow('Required Fees',           a.required_fees,   b.required_fees,   fmtMoney, { lowerIsBetter: true }),
+                cmpRow('Other Expenses',          a.other_expenses,  b.other_expenses,  fmtMoney, { lowerIsBetter: true }),
+                cmpRow('Total Cost (In-State)',     totalCOA(a, 'in'),  totalCOA(b, 'in'),  fmtMoney, { lowerIsBetter: true, strong: true }),
+                cmpRow('Total Cost (Out-of-State)', totalCOA(a, 'out'), totalCOA(b, 'out'), fmtMoney, { lowerIsBetter: true, strong: true }),
+                cmpRow('Application Fee',         a.application_fee, b.application_fee, fmtMoney, { lowerIsBetter: true }),
+            ];
+            return sectionHtml('Cost & Financial Aid', tableHtml(['', a.name, b.name], rows));
+        }
+
+        function renderOutcomesCompare(a, b) {
+            const rows = [
+                cmpRow('Graduation Rate (4-Year)', a.graduation_rate_4yr, b.graduation_rate_4yr, fmtPct),
+                cmpRow('Graduation Rate (6-Year)', a.graduation_rate_6yr, b.graduation_rate_6yr, fmtPct),
+                cmpRow('Retention Rate',           a.retention_rate,      b.retention_rate,      fmtPct),
+                cmpRow('Median Earnings (6 Yrs Out)',  a.median_earnings_6yr,  b.median_earnings_6yr,  fmtMoney),
+                cmpRow('Median Earnings (10 Yrs Out)', a.median_earnings_10yr, b.median_earnings_10yr, fmtMoney),
+                cmpRow('Median Debt (Graduates)',  a.median_debt_graduates, b.median_debt_graduates, fmtMoney, { lowerIsBetter: true }),
+                cmpRow('% Borrowing',              a.pct_borrowing, b.pct_borrowing, fmtPct, { lowerIsBetter: true }),
+            ];
+            return sectionHtml('Outcomes', tableHtml(['', a.name, b.name], rows));
+        }
+
+        function racePct(s, key) {
+            const d = s.demographics_detail?.undergrad;
+            if (!d || !d.total || d[key] == null) return null;
+            return d[key] / d.total;
+        }
+
+        function renderDemographicsCompare(a, b) {
+            const undergradRow = cmpRow('Total Undergraduates', a.total_undergrads, b.total_undergrads, fmtNum, { noColor: true });
+
+            const hasGender = (a.total_undergrads && a.undergrads_male != null) || (b.total_undergrads && b.undergrads_male != null);
+            const genderPct = (s, male) => (s.total_undergrads && s[male ? 'undergrads_male' : 'undergrads_female'] != null)
+                ? s[male ? 'undergrads_male' : 'undergrads_female'] / s.total_undergrads
+                : null;
+            const genderRows = [
+                cmpRow('Men',   genderPct(a, true),  genderPct(b, true),  fmtPct, { noColor: true }),
+                cmpRow('Women', genderPct(a, false), genderPct(b, false), fmtPct, { noColor: true }),
+            ];
+
+            const geoRows = [
+                cmpRow('In-State',     a.pct_out_of_state != null ? 1 - a.pct_out_of_state : null, b.pct_out_of_state != null ? 1 - b.pct_out_of_state : null, fmtPct, { noColor: true }),
+                cmpRow('Out-of-State', a.pct_out_of_state, b.pct_out_of_state, fmtPct, { noColor: true }),
+            ];
+
+            const raceRows = RACE_LABELS
+                .filter(([key]) => racePct(a, key) != null || racePct(b, key) != null)
+                .map(([key, label]) => cmpRow(label, racePct(a, key), racePct(b, key), fmtPct, { noColor: true }));
+
+            return sectionHtml('Demographics', `
+                ${tableHtml(['', a.name, b.name], [undergradRow])}
+                ${hasGender ? `<h3 class="subsection-title">Gender</h3>${tableHtml(['', a.name, b.name], genderRows)}` : ''}
+                <h3 class="subsection-title">Geographic Origin</h3>
+                ${tableHtml(['', a.name, b.name], geoRows)}
+                ${raceRows.length ? `<h3 class="subsection-title">Race / Ethnicity</h3>${tableHtml(['', a.name, b.name], raceRows)}` : ''}
+            `);
+        }
+
+        function renderExpandedSections(a, b) {
+            const container = document.getElementById('compare-sections');
+            if (!a || !b) {
+                container.innerHTML = '';
+                return;
+            }
+
+            container.innerHTML = `
+                ${legendHtml(a, b)}
+                ${renderFunnelCompare(a, b)}
+                ${renderTestScoresCompare(a, b)}
+                ${renderGpaCompareSection(a, b)}
+                ${renderAdmissionFactorsCompare(a, b)}
+                ${renderCostCompare(a, b)}
+                ${renderOutcomesCompare(a, b)}
+                ${renderDemographicsCompare(a, b)}
+            `;
+
+            const colorA = COMPARE_COLORS[1];
+            const colorB = COMPARE_COLORS[2];
+            const gpaCanvas = document.getElementById('cmp-gpa-chart');
+            if (gpaCanvas) {
+                renderGpaComparisonChart(gpaCanvas, [
+                    { distribution: a.gpa_distribution, color: colorA, name: a.name },
+                    { distribution: b.gpa_distribution, color: colorB, name: b.name },
+                ]);
+            }
         }
 
         function wireSlot(slot) {

@@ -74,6 +74,7 @@ function pageHtml(slug, name, description) {
   <script>var SCHOOL_SLUG = '${slug}';</script>
   <script src="../js/header.js?v=2" defer></script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2245119166025427" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js" defer></script>
   <script type="module" src="../js/school.js?v=2"></script>
 </head>
 <body>

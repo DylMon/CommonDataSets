@@ -1,3 +1,5 @@
+import { GPA_BUCKETS, renderGpaHistogram } from './charts.js';
+
 const SCHOOL_META = {
   'mit':          { color: '#a41931', banner: 'bannerMIT.png' },
   'harvard':      { color: '#a6152c', banner: 'bannerharvard.png' },
@@ -282,21 +284,26 @@ function renderAdmissionsSection(s) {
     );
   }
 
-  let gpaDistHtml = '<p class="no-data">Data not yet available.</p>';
+  let gpaSectionHtml = '<p class="no-data">Data not yet available.</p>';
   if (s.gpa_distribution) {
     const g = s.gpa_distribution;
-    const rows = [
-      ['4.0',       g['4_0']],
-      ['3.75–3.99', g['3_75_to_3_99']],
-      ['3.50–3.74', g['3_50_to_3_74']],
-      ['3.25–3.49', g['3_25_to_3_49']],
-      ['3.00–3.24', g['3_00_to_3_24']],
-      ['2.50–2.99', g['2_50_to_2_99']],
-      ['2.00–2.49', g['2_00_to_2_49']],
-      ['1.00–1.99', g['1_00_to_1_99']],
-      ['Below 1.0', g['below_1_0']],
-    ].map(([label, val]) => [label, val != null ? (val * 100).toFixed(0) + '%' : '—']);
-    gpaDistHtml = tableHtml(['GPA Range', '% of Enrolled Students'], rows);
+    const rows = GPA_BUCKETS.slice().reverse().map(([key, label]) =>
+      [label, g[key] != null ? (g[key] * 100).toFixed(0) + '%' : '—']);
+    const gpaDistHtml = tableHtml(['GPA Range', '% of Enrolled Students'], rows);
+
+    const chartPoints = GPA_BUCKETS
+      .map(([key, label]) => ({ label, value: g[key] }))
+      .filter(p => p.value != null);
+    if (chartPoints.length >= 2) {
+      gpaSectionHtml = `
+        <div class="gpa-flex-row">
+          <div class="gpa-chart-wrap"><canvas id="gpa-chart"></canvas></div>
+          <div class="gpa-table-col">${gpaDistHtml}</div>
+        </div>
+        <p class="chart-caption">GPA bands aren't evenly sized (the top band is a single value, 4.0, while others span up to a full point), and schools often don't report bands below 3.0 — read this as a shape, not a precise curve.</p>`;
+    } else {
+      gpaSectionHtml = gpaDistHtml;
+    }
   }
 
   let factorsHtml = '<p class="no-data">Data not yet available.</p>';
@@ -332,7 +339,7 @@ function renderAdmissionsSection(s) {
       <h3 class="subsection-title">Class Rank of Enrolled Students</h3>
       ${classRankHtml}
       <h3 class="subsection-title">GPA Distribution of Enrolled Students</h3>
-      ${gpaDistHtml}
+      ${gpaSectionHtml}
       <h3 class="subsection-title">Admission Factors</h3>
       ${factorsHtml}
     </section>`;
@@ -572,6 +579,8 @@ async function init() {
     renderTestScoresSection(s) +
     renderCostSection(s) +
     renderStudentBodySection(s);
+
+  renderGpaHistogram(document.getElementById('gpa-chart'), s.gpa_distribution, meta.color);
 
   // Inject right sidebar alongside school-sections
   const sectionsEl = document.getElementById('school-sections');

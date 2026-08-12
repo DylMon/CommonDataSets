@@ -193,8 +193,8 @@
     gap: 28px;
 }
 
-.stat-val.stat-higher { color: #1e8449; }
-.stat-val.stat-lower { color: #c0392b; }
+.stat-val.stat-higher, .stat-higher { color: #1e8449; }
+.stat-val.stat-lower, .stat-lower { color: #c0392b; }
 
 .compare-placeholder {
     text-align: center;
@@ -203,10 +203,53 @@
     padding: 20px;
 }
 
+/* ── Expanded comparison sections ── */
+#compare-sections {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 24px 72px;
+    width: 100%;
+}
+
+.cmp-legend {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    margin: 40px 0 0;
+}
+
+.cmp-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85em;
+    font-weight: 400;
+    color: #444;
+}
+
+.cmp-legend-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* Two stacked score bars (one per school) inside a single row */
+.cmp-score-row { align-items: flex-start; }
+
+.cmp-score-bars {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+
 @media (max-width: 540px) {
     .compare-wrapper { margin-top: 16px; padding: 0 12px; }
     .compare-card { padding: 14px 16px; gap: 12px; }
     .compare-card-logo { height: 34px; width: 52px; }
     .compare-card-name { font-size: 0.95em; }
     .compare-card-stats { gap: 16px; width: 100%; justify-content: space-around; }
+    #compare-sections { padding: 0 16px 56px; }
 }
