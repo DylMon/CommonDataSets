@@ -27,34 +27,72 @@
 <body>
     <div class="container">
         <div class="site-hero">
-            <h1 class="site-hero-title">CommonDataSets</h1>
+            <h1 class="site-hero-title">School Comparison Tool</h1>
             <p class="site-hero-sub">Admissions data for top US universities · 2024–2025</p>
-            <p class="site-hero-desc">CommonDataSets compiles official Common Data Set submissions directly from 33 top US universities, giving students and families one place to compare verified admissions statistics, test score ranges, cost of attendance, and enrollment data without the noise.</p>
+            <p class="site-hero-desc">Pick two to four schools to compare their data side by side. </p>
         </div>
-        <div class="compare-wrapper">
-            <div class="compare-slot" data-slot="1">
-                <label class="compare-label">School 1</label>
-                <div class="compare-search">
-                    <input type="text" class="compare-input" data-slot="1" placeholder="Search schools…" autocomplete="off">
-                    <button class="compare-clear" data-slot="1" aria-label="Clear">&times;</button>
-                    <div class="compare-dropdown" data-slot="1"></div>
-                </div>
-                <div class="compare-result" id="compare-result-1"></div>
-            </div>
+        <div class="compare-layout">
+            <aside class="compare-sidebar">
+                <div class="compare-wrapper">
+                    <div class="compare-slot" data-slot="1">
+                        <label class="compare-label">School 1</label>
+                        <div class="compare-search">
+                            <input type="text" class="compare-input" data-slot="1" placeholder="Search schools…" autocomplete="off">
+                            <button class="compare-clear" data-slot="1" aria-label="Clear">&times;</button>
+                            <div class="compare-dropdown" data-slot="1"></div>
+                        </div>
+                    </div>
 
-            <div class="compare-divider"><span class="compare-divider-label">VS</span></div>
+                    <div class="compare-divider"><span class="compare-divider-label">VS</span></div>
 
-            <div class="compare-slot" data-slot="2">
-                <label class="compare-label">School 2</label>
-                <div class="compare-search">
-                    <input type="text" class="compare-input" data-slot="2" placeholder="Search schools…" autocomplete="off">
-                    <button class="compare-clear" data-slot="2" aria-label="Clear">&times;</button>
-                    <div class="compare-dropdown" data-slot="2"></div>
+                    <div class="compare-slot" data-slot="2">
+                        <label class="compare-label">School 2</label>
+                        <div class="compare-search">
+                            <input type="text" class="compare-input" data-slot="2" placeholder="Search schools…" autocomplete="off">
+                            <button class="compare-clear" data-slot="2" aria-label="Clear">&times;</button>
+                            <div class="compare-dropdown" data-slot="2"></div>
+                        </div>
+                    </div>
+
+                    <div class="compare-slot compare-slot-extra" data-slot="3" hidden>
+                        <div class="compare-slot-head">
+                            <label class="compare-label">School 3</label>
+                            <button class="compare-remove-slot" data-slot="3" type="button">Remove</button>
+                        </div>
+                        <div class="compare-search">
+                            <input type="text" class="compare-input" data-slot="3" placeholder="Search schools…" autocomplete="off">
+                            <button class="compare-clear" data-slot="3" aria-label="Clear">&times;</button>
+                            <div class="compare-dropdown" data-slot="3"></div>
+                        </div>
+                    </div>
+
+                    <div class="compare-slot compare-slot-extra" data-slot="4" hidden>
+                        <div class="compare-slot-head">
+                            <label class="compare-label">School 4</label>
+                            <button class="compare-remove-slot" data-slot="4" type="button">Remove</button>
+                        </div>
+                        <div class="compare-search">
+                            <input type="text" class="compare-input" data-slot="4" placeholder="Search schools…" autocomplete="off">
+                            <button class="compare-clear" data-slot="4" aria-label="Clear">&times;</button>
+                            <div class="compare-dropdown" data-slot="4"></div>
+                        </div>
+                    </div>
+
+                    <button class="compare-add-school" id="compare-add-school" type="button">+ Add School</button>
                 </div>
-                <div class="compare-result" id="compare-result-2"></div>
+            </aside>
+            <div class="compare-main">
+                <div class="compare-cards-row" id="compare-cards-row">
+                    <div class="compare-result" id="compare-result-1"></div>
+                    <div class="compare-result" id="compare-result-2"></div>
+                    <div class="compare-result" id="compare-result-3"></div>
+                    <div class="compare-result" id="compare-result-4"></div>
+                </div>
+                <div id="compare-sections">
+                    <p class="compare-placeholder">Select at least two schools to see the full comparison.</p>
+                </div>
             </div>
         </div>
-        <div id="compare-sections"></div>
     </div>
 
     <script type="module">
@@ -63,9 +101,12 @@
         // Fixed per-slot colors rather than each school's own brand color —
         // brand hexes are arbitrary and sometimes literally identical
         // (Harvard and UChicago are both #a6152c), which made it hard to
-        // tell "School 1" from "School 2" apart in the comparison charts.
-        // Slot identity is what matters here, not brand identity.
-        const COMPARE_COLORS = { 1: '#0d9488', 2: '#7c3aed' };
+        // tell schools apart in the comparison charts. Slot identity is
+        // what matters here, not brand identity. Validated as a categorical
+        // set (dataviz skill's adjacent-pair check) against a white surface.
+        const SLOT_COLORS = { 1: '#0d9488', 2: '#7c3aed', 3: '#d97706', 4: '#db2777' };
+        const MAX_SLOTS = 4;
+        let activeSlots = [1, 2];
 
         const LOGOS = {
             'mit': 'MITlogo.png', 'harvard': 'harvardlogo.png', 'stanford': 'stanfordlogo.png',
@@ -82,7 +123,7 @@
         };
 
         let allSchools = [];
-        const selected = { 1: null, 2: null };
+        const selected = { 1: null, 2: null, 3: null, 4: null };
 
         function fmtPct(val) {
             return val != null ? (val * 100).toFixed(1) + '%' : '—';
@@ -132,27 +173,85 @@
         }
 
         function sectionHtml(title, body) {
-            return `<section class="school-section"><h2 class="section-title">${title}</h2>${body}</section>`;
+            const id = title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+            return `<section class="school-section" data-section-id="${id}">
+                <h2 class="section-title cmp-section-toggle" role="button" tabindex="0" aria-expanded="true">
+                    <span class="cmp-section-chevron" aria-hidden="true">&#9662;</span>${title}
+                </h2>
+                <div class="cmp-section-body">${body}</div>
+            </section>`;
         }
 
-        // Direction-aware "which side wins" coloring, reusing the same
-        // .stat-higher/.stat-lower (green/red) classes as the summary cards
-        // above. lowerIsBetter flips the direction for cost/debt-type stats,
-        // where a bigger number is worse, not better.
-        function cmpClass(valA, valB, lowerIsBetter) {
-            if (valA == null || valB == null || valA === valB) return ['', ''];
-            const aWins = lowerIsBetter ? valA < valB : valA > valB;
-            return aWins ? ['stat-higher', 'stat-lower'] : ['stat-lower', 'stat-higher'];
+        // Collapsed state lives outside the render cycle so it survives the
+        // full innerHTML re-render that happens every time a slot changes.
+        const collapsedSections = new Set();
+
+        function applyCollapsedState(container) {
+            container.querySelectorAll('.school-section[data-section-id]').forEach(sec => {
+                const collapsed = collapsedSections.has(sec.dataset.sectionId);
+                sec.classList.toggle('is-collapsed', collapsed);
+                const title = sec.querySelector('.section-title');
+                if (title) title.setAttribute('aria-expanded', String(!collapsed));
+            });
         }
 
-        function cmpRow(label, valA, valB, fmtFn, opts = {}) {
-            const [clsA, clsB] = opts.noColor ? ['', ''] : cmpClass(valA, valB, !!opts.lowerIsBetter);
+        function toggleSection(id) {
+            if (collapsedSections.has(id)) collapsedSections.delete(id);
+            else collapsedSections.add(id);
+            applyCollapsedState(document.getElementById('compare-sections'));
+        }
+
+        function wireSectionToggles() {
+            const container = document.getElementById('compare-sections');
+            const handleToggle = (target) => {
+                const title = target.closest('.section-title');
+                if (!title) return;
+                const section = title.closest('.school-section[data-section-id]');
+                if (section) toggleSection(section.dataset.sectionId);
+            };
+            container.addEventListener('click', (e) => handleToggle(e.target));
+            container.addEventListener('keydown', (e) => {
+                if (e.key !== 'Enter' && e.key !== ' ') return;
+                if (!e.target.closest('.section-title')) return;
+                e.preventDefault();
+                handleToggle(e.target);
+            });
+        }
+
+        // Direction-aware "which of the active schools wins this stat"
+        // coloring, reusing the same .stat-higher/.stat-lower (green/red)
+        // classes as the summary cards above. Generalizes the old pairwise
+        // A-vs-B comparison to 2–4 active schools: the best value among the
+        // non-null entries is colored green, the worst red, and anything in
+        // between (in a 3- or 4-way comparison) is left neutral. lowerIsBetter
+        // flips the direction for cost/debt-type stats, where a bigger number
+        // is worse, not better. Keyed by slot so callers can look up a
+        // specific school's class by its slot number.
+        function bestWorstClasses(items, lowerIsBetter) {
+            const withVal = items.filter(i => i.value != null);
+            if (withVal.length < 2) return {};
+            const values = withVal.map(i => i.value);
+            const best = lowerIsBetter ? Math.min(...values) : Math.max(...values);
+            const worst = lowerIsBetter ? Math.max(...values) : Math.min(...values);
+            if (best === worst) return {};
+            const classes = {};
+            withVal.forEach(i => {
+                if (i.value === best) classes[i.slot] = 'stat-higher';
+                else if (i.value === worst) classes[i.slot] = 'stat-lower';
+            });
+            return classes;
+        }
+
+        function headerRow(schools, first = '') {
+            return [first, ...schools.map(({ school }) => school.name)];
+        }
+
+        function multiRow(label, schools, valueFn, fmtFn, opts = {}) {
+            const items = schools.map(({ slot, school }) => ({ slot, value: valueFn(school) }));
+            const classes = opts.noColor ? {} : bestWorstClasses(items, !!opts.lowerIsBetter);
             const wrap = s => opts.strong ? `<strong>${s}</strong>` : s;
-            return [
-                label,
-                wrap(`<span class="${clsA}">${fmtFn(valA)}</span>`),
-                wrap(`<span class="${clsB}">${fmtFn(valB)}</span>`),
-            ];
+            const cells = items.map(i => wrap(`<span class="${classes[i.slot] || ''}">${fmtFn(i.value)}</span>`));
+            return [label, ...cells];
         }
 
         function matches(school, query) {
@@ -163,10 +262,15 @@
             const input = document.querySelector(`.compare-input[data-slot="${slot}"]`);
             const dropdown = document.querySelector(`.compare-dropdown[data-slot="${slot}"]`);
             const query = input.value.trim();
-            const otherSlot = slot === 1 ? 2 : 1;
+
+            const chosenElsewhere = new Set(
+                Object.entries(selected)
+                    .filter(([s, school]) => Number(s) !== slot && school)
+                    .map(([, school]) => school.slug)
+            );
 
             const results = allSchools
-                .filter(s => s.slug !== selected[otherSlot]?.slug)
+                .filter(s => !chosenElsewhere.has(s.slug))
                 .filter(s => query === '' || matches(s, query))
                 .sort((a, b) => a.name.localeCompare(b.name));
 
@@ -222,43 +326,41 @@
                 return;
             }
             const actRange = s.act_composite_25 != null && s.act_composite_75 != null ? `${s.act_composite_25}–${s.act_composite_75}` : '—';
-            const color = COMPARE_COLORS[slot];
+            const color = SLOT_COLORS[slot];
 
             el.innerHTML = `
                 <div class="compare-card" style="border-top-color:${color}">
-                    <img class="compare-card-logo" src="images/logos/${LOGOS[s.slug]}" alt="${s.name}">
-                    <div class="compare-card-body">
-                        <div class="compare-card-name">${s.name}</div>
-                        <a class="compare-card-link" href="schools/${s.slug}.html">View Full Profile →</a>
-                    </div>
-                    <div class="compare-card-stats-wrap">
-                        <div class="compare-card-stats">
-                            <div class="stat-item">
-                                <div class="stat-val" data-stat="acceptance">${fmtPct(s.acceptance_rate)}</div>
-                                <div class="stat-label">Acceptance</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-val" data-stat="sat">${s.sat_avg != null ? s.sat_avg : '—'}</div>
-                                <div class="stat-label">SAT Avg</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-val" data-stat="act">${actRange}</div>
-                                <div class="stat-label">ACT Range</div>
-                            </div>
+                    <div class="compare-card-header">
+                        <img class="compare-card-logo" src="images/logos/${LOGOS[s.slug]}" alt="${s.name}">
+                        <div class="compare-card-body">
+                            <div class="compare-card-name">${s.name}</div>
+                            <a class="compare-card-link" href="schools/${s.slug}.html">View Full Profile →</a>
                         </div>
-                        <div class="compare-card-stats">
-                            <div class="stat-item">
-                                <div class="stat-val" data-stat="undergrads">${s.total_undergrads != null ? s.total_undergrads.toLocaleString() : '—'}</div>
-                                <div class="stat-label">Undergrads</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-val" data-stat="gpa">${fmtGpa(s.avg_gpa_weighted)}</div>
-                                <div class="stat-label">Avg GPA</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-val" data-stat="tuition">${fmtMoney(s.tuition_out_of_state ?? s.tuition)}</div>
-                                <div class="stat-label">Tuition (OOS)</div>
-                            </div>
+                    </div>
+                    <div class="compare-card-stats">
+                        <div class="stat-item">
+                            <div class="stat-val" data-stat="acceptance">${fmtPct(s.acceptance_rate)}</div>
+                            <div class="stat-label">Acceptance</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-val" data-stat="sat">${s.sat_avg != null ? s.sat_avg : '—'}</div>
+                            <div class="stat-label">SAT Avg</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-val" data-stat="act">${actRange}</div>
+                            <div class="stat-label">ACT Range</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-val" data-stat="undergrads">${s.total_undergrads != null ? s.total_undergrads.toLocaleString() : '—'}</div>
+                            <div class="stat-label">Undergrads</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-val" data-stat="gpa">${fmtGpa(s.avg_gpa_weighted)}</div>
+                            <div class="stat-label">Avg GPA</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-val" data-stat="tuition">${fmtMoney(s.tuition_out_of_state ?? s.tuition)}</div>
+                            <div class="stat-label">Tuition (OOS)</div>
                         </div>
                     </div>
                 </div>`;
@@ -276,31 +378,37 @@
             if (el) el.classList.add(cls);
         }
 
-        function compareStat(stat, valA, valB, lowerIsBetter = false) {
-            const [clsA, clsB] = cmpClass(valA, valB, lowerIsBetter);
-            if (clsA) colorStat(1, stat, clsA);
-            if (clsB) colorStat(2, stat, clsB);
+        function compareStat(stat, valueFn, schools, lowerIsBetter = false) {
+            const items = schools.map(({ slot, school }) => ({ slot, value: valueFn(school) }));
+            const classes = bestWorstClasses(items, lowerIsBetter);
+            Object.entries(classes).forEach(([slot, cls]) => colorStat(Number(slot), stat, cls));
         }
 
         function actMid(s) {
             return s.act_composite_25 != null && s.act_composite_75 != null ? (s.act_composite_25 + s.act_composite_75) / 2 : null;
         }
 
+        function activeSchoolEntries() {
+            return activeSlots
+                .map(slot => selected[slot] ? { slot, school: selected[slot], color: SLOT_COLORS[slot] } : null)
+                .filter(Boolean);
+        }
+
         function compareStats() {
             clearColors();
-            const a = selected[1], b = selected[2];
-            renderExpandedSections(a, b);
-            if (!a || !b) return;
+            const schools = activeSchoolEntries();
+            renderExpandedSections(schools);
+            if (schools.length < 2) return;
 
-            compareStat('acceptance', a.acceptance_rate, b.acceptance_rate);
-            compareStat('sat', a.sat_avg, b.sat_avg);
-            compareStat('act', actMid(a), actMid(b));
-            compareStat('undergrads', a.total_undergrads, b.total_undergrads);
-            compareStat('gpa', a.avg_gpa_weighted, b.avg_gpa_weighted);
+            compareStat('acceptance', s => s.acceptance_rate, schools);
+            compareStat('sat', s => s.sat_avg, schools);
+            compareStat('act', s => actMid(s), schools);
+            compareStat('undergrads', s => s.total_undergrads, schools);
+            compareStat('gpa', s => s.avg_gpa_weighted, schools);
             // lower tuition is the better outcome for an applicant — a higher
             // number here is a cost, not an achievement, so it must NOT get
             // the same "higher = green" treatment as SAT/GPA above.
-            compareStat('tuition', a.tuition_out_of_state ?? a.tuition, b.tuition_out_of_state ?? b.tuition, true);
+            compareStat('tuition', s => s.tuition_out_of_state ?? s.tuition, schools, true);
         }
 
         // ── Expanded comparison sections ────────────────────────────────
@@ -308,25 +416,22 @@
         // factors, cost breakdown, demographics) instead of the six summary
         // stats above, once both slots are filled.
 
-        function legendHtml(a, b) {
-            const colorA = COMPARE_COLORS[1];
-            const colorB = COMPARE_COLORS[2];
-            return `<div class="cmp-legend">
-                <span class="cmp-legend-item"><span class="cmp-legend-dot" style="background:${colorA}"></span>${a.name}</span>
-                <span class="cmp-legend-item"><span class="cmp-legend-dot" style="background:${colorB}"></span>${b.name}</span>
-            </div>`;
+        function legendHtml(schools) {
+            return `<div class="cmp-legend">${schools.map(({ school, color }) =>
+                `<span class="cmp-legend-item"><span class="cmp-legend-dot" style="background:${color}"></span>${school.name}</span>`
+            ).join('')}</div>`;
         }
 
-        function renderFunnelCompare(a, b) {
+        function renderFunnelCompare(schools) {
             const rows = [
-                cmpRow('Applied',  a.applicants_total, b.applicants_total, fmtNum, { noColor: true }),
-                cmpRow('Admitted', a.admitted_total,   b.admitted_total,   fmtNum, { noColor: true }),
-                cmpRow('Enrolled', a.enrolled_total,   b.enrolled_total,   fmtNum, { noColor: true }),
+                multiRow('Applied',  schools, s => s.applicants_total, fmtNum, { noColor: true }),
+                multiRow('Admitted', schools, s => s.admitted_total,   fmtNum, { noColor: true }),
+                multiRow('Enrolled', schools, s => s.enrolled_total,   fmtNum, { noColor: true }),
             ];
-            return sectionHtml('Applicant Funnel', tableHtml(['', a.name, b.name], rows));
+            return sectionHtml('Applicant Funnel', tableHtml(headerRow(schools), rows));
         }
 
-        function scoreCompareRow(label, aLo, aHi, bLo, bHi, min, max, colorA, colorB) {
+        function scoreCompareRow(label, schools, loKey, hiKey, min, max) {
             const bar = (lo, hi, color) => {
                 if (lo == null || hi == null) {
                     return `<div class="score-bar-wrap"><span class="score-na-text">Not reported</span></div>`;
@@ -341,24 +446,21 @@
             return `<div class="score-row cmp-score-row">
                 <div class="score-row-label">${label}</div>
                 <div class="cmp-score-bars">
-                    ${bar(aLo, aHi, colorA)}
-                    ${bar(bLo, bHi, colorB)}
+                    ${schools.map(({ school, color }) => bar(school[loKey], school[hiKey], color)).join('')}
                 </div>
             </div>`;
         }
 
-        function renderTestScoresCompare(a, b) {
-            const colorA = COMPARE_COLORS[1];
-            const colorB = COMPARE_COLORS[2];
+        function renderTestScoresCompare(schools) {
             const satRows = [
-                scoreCompareRow('Composite', a.sat_composite_25, a.sat_composite_75, b.sat_composite_25, b.sat_composite_75, 400, 1600, colorA, colorB),
-                scoreCompareRow('Reading & Writing', a.sat_reading_25, a.sat_reading_75, b.sat_reading_25, b.sat_reading_75, 200, 800, colorA, colorB),
-                scoreCompareRow('Math', a.sat_math_25, a.sat_math_75, b.sat_math_25, b.sat_math_75, 200, 800, colorA, colorB),
+                scoreCompareRow('Composite', schools, 'sat_composite_25', 'sat_composite_75', 400, 1600),
+                scoreCompareRow('Reading & Writing', schools, 'sat_reading_25', 'sat_reading_75', 200, 800),
+                scoreCompareRow('Math', schools, 'sat_math_25', 'sat_math_75', 200, 800),
             ].join('');
             const actRows = [
-                scoreCompareRow('Composite', a.act_composite_25, a.act_composite_75, b.act_composite_25, b.act_composite_75, 1, 36, colorA, colorB),
-                scoreCompareRow('Math', a.act_math_25, a.act_math_75, b.act_math_25, b.act_math_75, 1, 36, colorA, colorB),
-                scoreCompareRow('English', a.act_english_25, a.act_english_75, b.act_english_25, b.act_english_75, 1, 36, colorA, colorB),
+                scoreCompareRow('Composite', schools, 'act_composite_25', 'act_composite_75', 1, 36),
+                scoreCompareRow('Math', schools, 'act_math_25', 'act_math_75', 1, 36),
+                scoreCompareRow('English', schools, 'act_english_25', 'act_english_75', 1, 36),
             ].join('');
 
             return sectionHtml('Test Scores', `
@@ -368,25 +470,33 @@
                 <div class="score-rows">${actRows}</div>`);
         }
 
+        // A section never disappears just because a school's Common Data
+        // Set submission is missing a piece — it still gets rendered with
+        // an explicit "not provided" note instead of vanishing silently.
+        function noDataHtml(msg) {
+            return `<p class="no-data">${msg}</p>`;
+        }
+
         function hasGpaData(s) {
             return s.gpa_distribution && Object.values(s.gpa_distribution).some(v => v != null);
         }
 
-        function renderGpaCompareSection(a, b) {
-            if (!hasGpaData(a) && !hasGpaData(b)) return '';
-            return sectionHtml('GPA Distribution', `
-                <div class="gpa-chart-wrap" style="height:300px"><canvas id="cmp-gpa-chart"></canvas></div>
-                <p class="chart-caption">GPA bands aren't evenly sized, and schools often don't report bands below 3.0 — read this as a shape, not a precise curve.</p>`);
+        function renderGpaCompareSection(schools) {
+            const body = schools.some(({ school }) => hasGpaData(school))
+                ? `<div class="gpa-chart-wrap" style="height:300px"><canvas id="cmp-gpa-chart"></canvas></div>
+                   <p class="chart-caption">GPA bands aren't evenly sized, and schools often don't report bands below 3.0 — read this as a shape, not a precise curve.</p>`
+                : noDataHtml('GPA distribution not provided by any selected institution.');
+            return sectionHtml('GPA Distribution', body);
         }
 
-        function renderAdmissionFactorsCompare(a, b) {
-            if (!a.admission_factors && !b.admission_factors) return '';
-            const rows = Object.entries(FACTOR_LABELS).map(([key, label]) => [
-                label,
-                RATING_LABELS[a.admission_factors?.[key]] ?? '—',
-                RATING_LABELS[b.admission_factors?.[key]] ?? '—',
-            ]);
-            return sectionHtml('Admission Factors', tableHtml(['Factor', a.name, b.name], rows));
+        function renderAdmissionFactorsCompare(schools) {
+            const body = schools.some(({ school }) => school.admission_factors)
+                ? tableHtml(headerRow(schools, 'Factor'), Object.entries(FACTOR_LABELS).map(([key, label]) => [
+                    label,
+                    ...schools.map(({ school }) => RATING_LABELS[school.admission_factors?.[key]] ?? '—'),
+                ]))
+                : noDataHtml('Admission factors not provided by any selected institution.');
+            return sectionHtml('Admission Factors', body);
         }
 
         function totalCOA(s, variant) {
@@ -398,32 +508,32 @@
             return total > 0 ? total : null;
         }
 
-        function renderCostCompare(a, b) {
+        function renderCostCompare(schools) {
             const rows = [
-                cmpRow('Tuition (In-State)',     a.tuition_in_state ?? a.tuition,     b.tuition_in_state ?? b.tuition,     fmtMoney, { lowerIsBetter: true }),
-                cmpRow('Tuition (Out-of-State)',  a.tuition_out_of_state ?? a.tuition, b.tuition_out_of_state ?? b.tuition, fmtMoney, { lowerIsBetter: true }),
-                cmpRow('Room & Board',            a.room_and_board,  b.room_and_board,  fmtMoney, { lowerIsBetter: true }),
-                cmpRow('Books & Supplies',        a.books_supplies,  b.books_supplies,  fmtMoney, { lowerIsBetter: true }),
-                cmpRow('Required Fees',           a.required_fees,   b.required_fees,   fmtMoney, { lowerIsBetter: true }),
-                cmpRow('Other Expenses',          a.other_expenses,  b.other_expenses,  fmtMoney, { lowerIsBetter: true }),
-                cmpRow('Total Cost (In-State)',     totalCOA(a, 'in'),  totalCOA(b, 'in'),  fmtMoney, { lowerIsBetter: true, strong: true }),
-                cmpRow('Total Cost (Out-of-State)', totalCOA(a, 'out'), totalCOA(b, 'out'), fmtMoney, { lowerIsBetter: true, strong: true }),
-                cmpRow('Application Fee',         a.application_fee, b.application_fee, fmtMoney, { lowerIsBetter: true }),
+                multiRow('Tuition (In-State)',     schools, s => s.tuition_in_state ?? s.tuition,     fmtMoney, { lowerIsBetter: true }),
+                multiRow('Tuition (Out-of-State)',  schools, s => s.tuition_out_of_state ?? s.tuition, fmtMoney, { lowerIsBetter: true }),
+                multiRow('Room & Board',            schools, s => s.room_and_board,  fmtMoney, { lowerIsBetter: true }),
+                multiRow('Books & Supplies',        schools, s => s.books_supplies,  fmtMoney, { lowerIsBetter: true }),
+                multiRow('Required Fees',           schools, s => s.required_fees,   fmtMoney, { lowerIsBetter: true }),
+                multiRow('Other Expenses',          schools, s => s.other_expenses,  fmtMoney, { lowerIsBetter: true }),
+                multiRow('Total Cost (In-State)',     schools, s => totalCOA(s, 'in'),  fmtMoney, { lowerIsBetter: true, strong: true }),
+                multiRow('Total Cost (Out-of-State)', schools, s => totalCOA(s, 'out'), fmtMoney, { lowerIsBetter: true, strong: true }),
+                multiRow('Application Fee',         schools, s => s.application_fee, fmtMoney, { lowerIsBetter: true }),
             ];
-            return sectionHtml('Cost & Financial Aid', tableHtml(['', a.name, b.name], rows));
+            return sectionHtml('Cost & Financial Aid', tableHtml(headerRow(schools), rows));
         }
 
-        function renderOutcomesCompare(a, b) {
+        function renderOutcomesCompare(schools) {
             const rows = [
-                cmpRow('Graduation Rate (4-Year)', a.graduation_rate_4yr, b.graduation_rate_4yr, fmtPct),
-                cmpRow('Graduation Rate (6-Year)', a.graduation_rate_6yr, b.graduation_rate_6yr, fmtPct),
-                cmpRow('Retention Rate',           a.retention_rate,      b.retention_rate,      fmtPct),
-                cmpRow('Median Earnings (6 Yrs Out)',  a.median_earnings_6yr,  b.median_earnings_6yr,  fmtMoney),
-                cmpRow('Median Earnings (10 Yrs Out)', a.median_earnings_10yr, b.median_earnings_10yr, fmtMoney),
-                cmpRow('Median Debt (Graduates)',  a.median_debt_graduates, b.median_debt_graduates, fmtMoney, { lowerIsBetter: true }),
-                cmpRow('% Borrowing',              a.pct_borrowing, b.pct_borrowing, fmtPct, { lowerIsBetter: true }),
+                multiRow('Graduation Rate (4-Year)', schools, s => s.graduation_rate_4yr, fmtPct),
+                multiRow('Graduation Rate (6-Year)', schools, s => s.graduation_rate_6yr, fmtPct),
+                multiRow('Retention Rate',           schools, s => s.retention_rate,      fmtPct),
+                multiRow('Median Earnings (6 Yrs Out)',  schools, s => s.median_earnings_6yr,  fmtMoney),
+                multiRow('Median Earnings (10 Yrs Out)', schools, s => s.median_earnings_10yr, fmtMoney),
+                multiRow('Median Debt (Graduates)',  schools, s => s.median_debt_graduates, fmtMoney, { lowerIsBetter: true }),
+                multiRow('% Borrowing',              schools, s => s.pct_borrowing, fmtPct, { lowerIsBetter: true }),
             ];
-            return sectionHtml('Outcomes', tableHtml(['', a.name, b.name], rows));
+            return sectionHtml('Outcomes', tableHtml(headerRow(schools), rows));
         }
 
         function racePct(s, key) {
@@ -432,63 +542,71 @@
             return d[key] / d.total;
         }
 
-        function renderDemographicsCompare(a, b) {
-            const undergradRow = cmpRow('Total Undergraduates', a.total_undergrads, b.total_undergrads, fmtNum, { noColor: true });
+        function renderDemographicsCompare(schools) {
+            const undergradRow = multiRow('Total Undergraduates', schools, s => s.total_undergrads, fmtNum, { noColor: true });
 
-            const hasGender = (a.total_undergrads && a.undergrads_male != null) || (b.total_undergrads && b.undergrads_male != null);
-            const genderPct = (s, male) => (s.total_undergrads && s[male ? 'undergrads_male' : 'undergrads_female'] != null)
-                ? s[male ? 'undergrads_male' : 'undergrads_female'] / s.total_undergrads
+            const hasGender = schools.some(({ school }) => school.total_undergrads && school.undergrads_male != null);
+            const genderPct = (school, male) => (school.total_undergrads && school[male ? 'undergrads_male' : 'undergrads_female'] != null)
+                ? school[male ? 'undergrads_male' : 'undergrads_female'] / school.total_undergrads
                 : null;
             const genderRows = [
-                cmpRow('Men',   genderPct(a, true),  genderPct(b, true),  fmtPct, { noColor: true }),
-                cmpRow('Women', genderPct(a, false), genderPct(b, false), fmtPct, { noColor: true }),
+                multiRow('Men',   schools, s => genderPct(s, true),  fmtPct, { noColor: true }),
+                multiRow('Women', schools, s => genderPct(s, false), fmtPct, { noColor: true }),
             ];
 
             const geoRows = [
-                cmpRow('In-State',     a.pct_out_of_state != null ? 1 - a.pct_out_of_state : null, b.pct_out_of_state != null ? 1 - b.pct_out_of_state : null, fmtPct, { noColor: true }),
-                cmpRow('Out-of-State', a.pct_out_of_state, b.pct_out_of_state, fmtPct, { noColor: true }),
+                multiRow('In-State',     schools, s => s.pct_out_of_state != null ? 1 - s.pct_out_of_state : null, fmtPct, { noColor: true }),
+                multiRow('Out-of-State', schools, s => s.pct_out_of_state, fmtPct, { noColor: true }),
             ];
 
             const raceRows = RACE_LABELS
-                .filter(([key]) => racePct(a, key) != null || racePct(b, key) != null)
-                .map(([key, label]) => cmpRow(label, racePct(a, key), racePct(b, key), fmtPct, { noColor: true }));
+                .filter(([key]) => schools.some(({ school }) => racePct(school, key) != null))
+                .map(([key, label]) => multiRow(label, schools, s => racePct(s, key), fmtPct, { noColor: true }));
+
+            const genderBody = hasGender
+                ? tableHtml(headerRow(schools), genderRows)
+                : noDataHtml('Gender breakdown not provided by any selected institution.');
+
+            const raceBody = raceRows.length
+                ? tableHtml(headerRow(schools), raceRows)
+                : noDataHtml('Race / ethnicity breakdown not provided by any selected institution.');
 
             return sectionHtml('Demographics', `
-                ${tableHtml(['', a.name, b.name], [undergradRow])}
-                ${hasGender ? `<h3 class="subsection-title">Gender</h3>${tableHtml(['', a.name, b.name], genderRows)}` : ''}
+                ${tableHtml(headerRow(schools), [undergradRow])}
+                <h3 class="subsection-title">Gender</h3>
+                ${genderBody}
                 <h3 class="subsection-title">Geographic Origin</h3>
-                ${tableHtml(['', a.name, b.name], geoRows)}
-                ${raceRows.length ? `<h3 class="subsection-title">Race / Ethnicity</h3>${tableHtml(['', a.name, b.name], raceRows)}` : ''}
+                ${tableHtml(headerRow(schools), geoRows)}
+                <h3 class="subsection-title">Race / Ethnicity</h3>
+                ${raceBody}
             `);
         }
 
-        function renderExpandedSections(a, b) {
+        function renderExpandedSections(schools) {
             const container = document.getElementById('compare-sections');
-            if (!a || !b) {
-                container.innerHTML = '';
+            if (schools.length < 2) {
+                container.innerHTML = '<p class="compare-placeholder">Select at least two schools to see the full comparison.</p>';
                 return;
             }
 
             container.innerHTML = `
-                ${legendHtml(a, b)}
-                ${renderFunnelCompare(a, b)}
-                ${renderTestScoresCompare(a, b)}
-                ${renderGpaCompareSection(a, b)}
-                ${renderAdmissionFactorsCompare(a, b)}
-                ${renderCostCompare(a, b)}
-                ${renderOutcomesCompare(a, b)}
-                ${renderDemographicsCompare(a, b)}
+                ${legendHtml(schools)}
+                ${renderFunnelCompare(schools)}
+                ${renderTestScoresCompare(schools)}
+                ${renderGpaCompareSection(schools)}
+                ${renderAdmissionFactorsCompare(schools)}
+                ${renderCostCompare(schools)}
+                ${renderOutcomesCompare(schools)}
+                ${renderDemographicsCompare(schools)}
             `;
 
-            const colorA = COMPARE_COLORS[1];
-            const colorB = COMPARE_COLORS[2];
             const gpaCanvas = document.getElementById('cmp-gpa-chart');
             if (gpaCanvas) {
-                renderGpaComparisonChart(gpaCanvas, [
-                    { distribution: a.gpa_distribution, color: colorA, name: a.name },
-                    { distribution: b.gpa_distribution, color: colorB, name: b.name },
-                ]);
+                renderGpaComparisonChart(gpaCanvas, schools.map(({ school, color }) => ({
+                    distribution: school.gpa_distribution, color, name: school.name,
+                })));
             }
+            applyCollapsedState(container);
         }
 
         function wireSlot(slot) {
@@ -518,13 +636,61 @@
             });
         }
 
+        // Slots are always added/removed sequentially from the end (3, then
+        // 4) rather than at arbitrary positions — matches the "optionally
+        // add a third, then optionally a fourth" flow, and keeps the "which
+        // slot can still be removed" question unambiguous (always the last
+        // one, never a gap in the middle).
+        function updateAddRemoveUI() {
+            document.getElementById('compare-add-school').hidden = activeSlots.length >= MAX_SLOTS;
+            document.querySelectorAll('.compare-remove-slot').forEach(btn => {
+                const slot = Number(btn.dataset.slot);
+                btn.hidden = !(activeSlots.length > 2 && slot === activeSlots[activeSlots.length - 1]);
+            });
+        }
+
+        function addSlot() {
+            if (activeSlots.length >= MAX_SLOTS) return;
+            const next = activeSlots.length + 1;
+            activeSlots.push(next);
+            document.querySelector(`.compare-slot[data-slot="${next}"]`).hidden = false;
+            updateAddRemoveUI();
+            // Deferred to the next frame: focusing an input in the same tick
+            // it's un-hidden lands document.activeElement on it but doesn't
+            // reliably fire the 'focus' event (the browser hasn't laid out
+            // the now-visible element yet), which would silently leave the
+            // dropdown closed. Calling renderDropdown directly sidesteps
+            // that timing quirk instead of depending on the event firing.
+            requestAnimationFrame(() => {
+                const input = document.querySelector(`.compare-input[data-slot="${next}"]`);
+                input.focus();
+                renderDropdown(next);
+            });
+        }
+
+        function removeSlot(slot) {
+            if (activeSlots[activeSlots.length - 1] !== slot) return;
+            activeSlots.pop();
+            selected[slot] = null;
+            document.querySelector(`.compare-input[data-slot="${slot}"]`).value = '';
+            document.querySelector(`.compare-clear[data-slot="${slot}"]`).classList.remove('visible');
+            document.getElementById(`compare-result-${slot}`).innerHTML = '';
+            document.querySelector(`.compare-slot[data-slot="${slot}"]`).hidden = true;
+            updateAddRemoveUI();
+            compareStats();
+        }
+
         async function init() {
             const res = await fetch('data/schools.json');
             if (!res.ok) return;
             const { schools } = await res.json();
             allSchools = schools;
-            wireSlot(1);
-            wireSlot(2);
+            [1, 2, 3, 4].forEach(wireSlot);
+            document.getElementById('compare-add-school').addEventListener('click', addSlot);
+            document.querySelectorAll('.compare-remove-slot').forEach(btn =>
+                btn.addEventListener('click', () => removeSlot(Number(btn.dataset.slot))));
+            updateAddRemoveUI();
+            wireSectionToggles();
         }
 
         init();

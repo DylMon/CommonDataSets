@@ -1,9 +1,31 @@
 /* Compare page */
 
+/* ── Two-column layout: school pickers on the left, full comparison
+   on the right ── */
+.compare-layout {
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
+    max-width: 1320px;
+    margin: 32px auto 0;
+    padding: 0 24px;
+    width: 100%;
+}
+
+.compare-sidebar {
+    flex: 0 0 30%;
+    min-width: 260px;
+    max-width: 360px;
+    position: sticky;
+    top: 24px;
+}
+
+.compare-main {
+    flex: 1;
+    min-width: 0;
+}
+
 .compare-wrapper {
-    max-width: 640px;
-    margin: 32px auto;
-    padding: 0 20px;
     width: 100%;
 }
 
@@ -17,6 +39,65 @@
 
 .compare-slot {
     position: relative;
+}
+
+.compare-slot-extra {
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid #eee;
+}
+
+.compare-slot-extra[hidden] {
+    display: none;
+}
+
+.compare-slot-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.compare-remove-slot {
+    border: none;
+    background: none;
+    padding: 0;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.7em;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #bbb;
+    cursor: pointer;
+}
+
+.compare-remove-slot:hover { color: #c0392b; }
+
+.compare-add-school {
+    display: block;
+    width: 100%;
+    margin-top: 18px;
+    margin-bottom: 40px;
+    padding: 12px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.8em;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #666;
+    background: white;
+    border: 1px dashed #ccc;
+    cursor: pointer;
+    transition: border-color 0.15s, color 0.15s;
+}
+
+.compare-add-school:hover {
+    border-color: #999;
+    color: #333;
+}
+
+.compare-add-school[hidden] {
+    display: none;
 }
 
 .compare-label {
@@ -140,35 +221,58 @@
     letter-spacing: 0.08em;
 }
 
-/* Result card */
+/* Result cards row — one card per selected school, first row of the
+   right column, laid out left to right in slot order. An empty
+   .compare-result (no school chosen for that slot yet) collapses out of
+   the row entirely rather than reserving blank space. */
+.compare-cards-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.compare-result {
+    min-width: 0;
+}
+
+.compare-result:empty {
+    display: none;
+}
+
 .compare-card {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     gap: 16px;
+    height: 100%;
     background: white;
     border: 1px solid #e8e8e8;
     border-top: 4px solid #ccc;
     border-radius: 0;
     padding: 18px 20px;
-    margin-top: 14px;
-    flex-wrap: wrap;
+}
+
+.compare-card-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
 }
 
 .compare-card-logo {
-    height: 44px;
-    width: 70px;
+    height: 40px;
+    width: 62px;
     object-fit: contain;
     flex-shrink: 0;
 }
 
 .compare-card-body {
-    flex: 1;
-    min-width: 140px;
+    min-width: 0;
 }
 
 .compare-card-name {
-    font-size: 1.1em;
+    font-size: 1.05em;
     font-weight: 400;
+    line-height: 1.25;
 }
 
 .compare-card-link {
@@ -181,16 +285,18 @@
 
 .compare-card-link:hover { color: #444; }
 
-.compare-card-stats-wrap {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    flex-shrink: 0;
+/* Grid rather than flex-with-fixed-gap: cards in this row can be as
+   narrow as ~200px (4-up) or as wide as ~450px (2-up), and a grid's
+   columns size themselves to whatever's available instead of overflowing
+   at the narrow end. */
+.compare-card-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px 8px;
 }
 
-.compare-card-stats {
-    display: flex;
-    gap: 28px;
+.compare-card-stats .stat-item {
+    min-width: 0;
 }
 
 .stat-val.stat-higher, .stat-higher { color: #1e8449; }
@@ -205,10 +311,42 @@
 
 /* ── Expanded comparison sections ── */
 #compare-sections {
-    max-width: 920px;
-    margin: 0 auto;
-    padding: 0 24px 72px;
     width: 100%;
+    padding: 0 0 72px;
+}
+
+#compare-sections .section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+#compare-sections .section-title:hover { opacity: 0.75; }
+
+#compare-sections .cmp-section-chevron {
+    display: inline-block;
+    font-size: 0.7em;
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+}
+
+#compare-sections .school-section.is-collapsed .cmp-section-chevron {
+    transform: rotate(-90deg);
+}
+
+#compare-sections .cmp-section-body {
+    overflow: hidden;
+    max-height: 6000px;
+    opacity: 1;
+    transition: max-height 0.3s ease, opacity 0.2s ease;
+}
+
+#compare-sections .school-section.is-collapsed .cmp-section-body {
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.3s ease, opacity 0.15s ease;
 }
 
 .cmp-legend {
@@ -245,11 +383,28 @@
     min-width: 0;
 }
 
+/* Sidebar/main split only has room to breathe above tablet width —
+   stack the school pickers back above the comparison content below it. */
+@media (max-width: 900px) {
+    .compare-layout { flex-direction: column; gap: 0; }
+    .compare-sidebar {
+        position: static;
+        flex-basis: auto;
+        width: 100%;
+        max-width: 640px;
+        min-width: 0;
+        margin: 0 auto;
+    }
+    .compare-main { width: 100%; }
+    #compare-sections { padding-top: 32px; }
+}
+
 @media (max-width: 540px) {
-    .compare-wrapper { margin-top: 16px; padding: 0 12px; }
+    .compare-layout { padding: 0 12px; }
+    .compare-wrapper { margin-top: 16px; }
+    .compare-cards-row { grid-template-columns: 1fr; gap: 12px; }
     .compare-card { padding: 14px 16px; gap: 12px; }
     .compare-card-logo { height: 34px; width: 52px; }
     .compare-card-name { font-size: 0.95em; }
-    .compare-card-stats { gap: 16px; width: 100%; justify-content: space-around; }
-    #compare-sections { padding: 0 16px 56px; }
+    #compare-sections { padding: 32px 0 56px; }
 }

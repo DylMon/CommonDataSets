@@ -19,6 +19,7 @@
                 ${navLink('compare.html', 'Compare', 'compare')}
                 ${navLink('info.html', 'Info', 'info')}
             </div>
+            <div class="nav-brand">CommonDataSets</div>
         </div>`;
 
         // ignore this message
