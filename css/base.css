@@ -29,8 +29,8 @@ body {
     align-items: center;
     padding: 28px 38px;
     position: relative;
-    background: white;
-    border-bottom: 1px solid #eee;
+    background: #3d5a80;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
     width: 100%;
 }
 
@@ -41,51 +41,55 @@ body {
     font-weight: 600;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: #222;
+    color: white;
     text-align: center;
     white-space: nowrap;
 }
 
-/* Site hero */
-.site-hero {
-    background: #3d5a80;
-    color: white;
+.legal-notice {
+    grid-column: 1 / -1;
     text-align: center;
-    padding: 48px 20px;
+    font-size: 0.7em;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.02em;
+    margin-top: 10px;
 }
 
-/* Per-page hero label — e.g. "School Comparison Tool" on compare.html.
-   Smaller than the old site-wide brand title used to be, since brand
-   identity now lives in the header (.nav-brand); this just names the
-   page. Not every page uses it. */
-.site-hero-title {
+/* Page intro — was a colored hero banner; now plain text sitting on the
+   page itself: a blue title followed by left-aligned body text, sharing
+   content-wrapper's max-width/padding so it lines up with the page
+   content below it. */
+.page-intro {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 32px 20px 0;
+    text-align: center;
+}
+
+.page-intro-title {
     font-family: 'Oswald', sans-serif;
     font-size: 1.6em;
-    font-weight: 600;
+    font-weight: 400;
     letter-spacing: 0.05em;
     text-transform: uppercase;
+    color: #3d5a80;
     margin: 0 0 14px;
 }
 
-.site-hero-sub {
+.page-intro-desc {
     font-family: 'Oswald', sans-serif;
-    font-size: 0.9em;
+    font-size: 0.95em;
     font-weight: 300;
-    color: rgba(255, 255, 255, 0.7);
-    letter-spacing: 0.05em;
-    margin: 0 0 20px;
-}
-
-.site-hero-desc {
-    font-family: 'Oswald', sans-serif;
-    font-size: 0.85em;
-    font-weight: 300;
-    color: rgba(255, 255, 255, 0.6);
-    max-width: 580px;
+    color: #444;
+    max-width: 680px;
     margin: 0 auto;
     line-height: 1.7;
     letter-spacing: 0.02em;
-    text-align: left;
+}
+
+.page-intro-desc + .page-intro-desc {
+    margin-top: 12px;
 }
 
 .left-side {
@@ -97,15 +101,15 @@ body {
 }
 
 .nav-link-wrapper a {
-    color: #aaa;
+    color: rgba(255, 255, 255, 0.6);
     text-decoration: none;
     text-transform: uppercase;
     font-size: 0.9em;
     transition: color 0.3s;
 }
 
-.nav-link-wrapper a:hover { color: #555; }
-.active-nav-link a { color: #000; }
+.nav-link-wrapper a:hover { color: rgba(255, 255, 255, 0.85); }
+.active-nav-link a { color: white; }
 
 /* Search bar */
 .search-bar {
@@ -757,8 +761,10 @@ body {
     color: white;
     padding: 28px 40px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    gap: 12px 24px;
     margin-top: auto;
 }
 
@@ -771,7 +777,8 @@ body {
 
 .footer-nav {
     display: flex;
-    gap: 28px;
+    flex-wrap: wrap;
+    gap: 10px 28px;
 }
 
 .footer-nav a {
@@ -789,13 +796,33 @@ body {
 }
 
 /* Info page */
-.info-heading {
-    font-size: 1.1em;
+.info-box {
+    background: white;
+    border: 1px solid #e8e8e8;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    padding: 32px;
+}
+
+.info-updated {
+    font-size: 0.78em;
+    font-weight: 300;
+    font-style: italic;
+    color: #999;
+    margin: 0 0 20px;
+}
+
+.info-subheading {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1em;
     font-weight: 600;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     color: #3d5a80;
-    margin: 0 0 14px;
+    margin: 28px 0 10px;
+}
+
+.info-subheading:first-child {
+    margin-top: 0;
 }
 
 .info-text {
@@ -803,7 +830,48 @@ body {
     font-weight: 300;
     color: #555;
     line-height: 1.8;
-    margin: 0;
+    margin: 0 0 16px;
+}
+
+.info-text:last-child {
+    margin-bottom: 0;
+}
+
+.info-box ul {
+    margin: 0 0 16px;
+    padding-left: 22px;
+}
+
+.info-box li {
+    font-size: 0.88em;
+    font-weight: 300;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 6px;
+}
+
+.info-box strong {
+    color: #333;
+    font-weight: 600;
+}
+
+.info-link {
+    color: #3d5a80;
+    text-decoration: underline;
+}
+
+.info-link:hover {
+    color: #2c4260;
+}
+
+/* Flags a value the site operator still needs to fill in (contact email,
+   jurisdiction) before these pages go live — not meant to ship as-is. */
+.info-placeholder {
+    color: #b3261e;
+    background: #fdecea;
+    padding: 1px 6px;
+    border-radius: 2px;
+    font-style: italic;
 }
 
 /* Floating back button (mobile only) */
@@ -894,6 +962,16 @@ body {
 }
 
 @media (max-width: 540px) {
+    .site-footer {
+        flex-direction: column;
+        text-align: center;
+        padding: 24px 16px;
+    }
+
+    .footer-nav {
+        justify-content: center;
+    }
+
     .nav-wrapper {
         grid-template-columns: 1fr;
         justify-items: center;
@@ -909,11 +987,20 @@ body {
 
     .left-side { justify-content: center; }
 
-    .site-hero {
-        padding: 32px 16px;
+    .legal-notice {
+        font-size: 0.65em;
+        margin-top: 6px;
     }
 
-    .site-hero-title { font-size: 1.3em; }
+    .page-intro {
+        padding: 20px 16px 0;
+    }
+
+    .page-intro-title { font-size: 1.3em; }
+
+    .info-box {
+        padding: 20px;
+    }
 
     .content-wrapper {
         margin-top: 16px;

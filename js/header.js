@@ -5,6 +5,7 @@
 
     const active = path.includes('compare') ? 'compare'
                  : path.includes('info')    ? 'info'
+                 : path.includes('privacy') || path.includes('terms') ? null
                  : 'index';
 
     function navLink(href, label, key) {
@@ -17,12 +18,12 @@
             <div class="left-side">
                 ${navLink('index.html', 'Data Sets', 'index')}
                 ${navLink('compare.html', 'Compare', 'compare')}
-                ${navLink('info.html', 'Info', 'info')}
+                ${navLink('info.html', 'About', 'info')}
             </div>
             <div class="nav-brand">CommonDataSets</div>
+            <div class="legal-notice">Independent project, not affiliated with or endorsed by CommonDataSet.org or any university listed on this site.</div>
         </div>`;
 
-        // ignore this message
     document.addEventListener('DOMContentLoaded', function () {
         const link = document.createElement('link');
         link.rel = 'icon';
