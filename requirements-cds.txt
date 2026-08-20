@@ -1,3 +1,2 @@
-pdfplumber>=0.11
-anthropic>=0.40
+anthropic>=0.40  # run `pip install -U anthropic` for structured-outputs support if extraction fails
 python-dotenv>=1.0

@@ -1,25 +1,54 @@
 #!/usr/bin/env python3
 """
-parse-cds-batch.py — Run parse-cds.py for all PDFs not yet parsed.
+parse-cds-batch.py — Parse all not-yet-parsed CDS PDFs in one Message Batch.
+
+Submits every unparsed PDF in data/cds-pdfs/ as a single Anthropic Message
+Batch request (50% cheaper than sequential calls, no per-request rate-limit
+pressure — a good fit since this isn't latency-sensitive). Polls until the
+batch finishes, then writes data/cds/{slug}.json for each school and prints
+a completion summary grouped by data richness.
 
 Usage:
     python scripts/parse-cds-batch.py [--force]
 
     --force  Re-parse schools that already have a JSON output.
 
-Skips schools whose slug.json already exists in data/cds/ unless --force is passed.
-Prints a completion summary grouped by data richness at the end.
+Requirements:
+    pip install -r requirements-cds.txt
+    ANTHROPIC_API_KEY must be set in .env or the environment
 """
 
 import sys
 import json
-import subprocess
+import time
 from pathlib import Path
 
+try:
+    import anthropic
+except ImportError:
+    sys.exit("Missing dependency: pip install anthropic")
+
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass  # dotenv optional; key can be set directly in environment
+
+import importlib.util
+
+_spec = importlib.util.spec_from_file_location(
+    "parse_cds", Path(__file__).resolve().parent / "parse-cds.py"
+)
+_parse_cds = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(_parse_cds)
+build_request_params = _parse_cds.build_request_params
+extract_json = _parse_cds.extract_json
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
-PDF_DIR    = REPO_ROOT / "data" / "cds-pdfs"
+PDF_DIR = REPO_ROOT / "data" / "cds-pdfs"
 OUTPUT_DIR = REPO_ROOT / "data" / "cds"
-SCRIPT     = REPO_ROOT / "scripts" / "parse-cds.py"
+
+POLL_INTERVAL_SECONDS = 30
 
 CORE_ADMISSIONS_FIELDS = [
     "applicants_total", "admitted_total", "enrolled_total",
@@ -33,23 +62,20 @@ RICH_FIELDS = [
 ]
 
 
-def score_completeness(data: dict) -> tuple[int, list[str], list[str]]:
-    """Return (score 0-10, present_key_fields, missing_key_fields)."""
-    present, missing = [], []
-    for f in CORE_ADMISSIONS_FIELDS:
-        val = data.get(f)
-        if val is not None:
-            present.append(f)
-        else:
-            missing.append(f)
+def score_completeness(data: dict) -> int:
+    present = sum(1 for f in CORE_ADMISSIONS_FIELDS if data.get(f) is not None)
+    rich = sum(1 for f in RICH_FIELDS if data.get(f) is not None and data[f] != {})
+    return present + rich
 
-    rich_count = sum(
-        1 for f in RICH_FIELDS
-        if data.get(f) is not None and data[f] != {}
-    )
 
-    score = len(present) + rich_count
-    return score, present, missing
+def show_group(label: str, group: list[tuple[str, int, dict]]) -> None:
+    print(f"\n── {label} ({len(group)} schools) ──")
+    for slug, score, data in sorted(group, key=lambda x: -x[1]):
+        name = data.get("name") or slug
+        core = sum(1 for f in CORE_ADMISSIONS_FIELDS if data.get(f) is not None)
+        rich = sum(1 for f in RICH_FIELDS if data.get(f) is not None and data[f] != {})
+        print(f"  {slug:20s}  score={score:2d}  core={core}/{len(CORE_ADMISSIONS_FIELDS)}  "
+              f"rich={rich}/{len(RICH_FIELDS)}  ({name})")
 
 
 def main():
@@ -61,76 +87,81 @@ def main():
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-    results = []   # (slug, score, data, skipped_reason)
-    errors  = []   # (slug, error_msg)
-
-    total = len(pdfs)
-    for i, pdf in enumerate(pdfs, 1):
+    already_done = []  # (slug, score, data)
+    to_parse = []       # (slug, pdf_path)
+    for pdf in pdfs:
         slug = pdf.stem
-        out  = OUTPUT_DIR / f"{slug}.json"
-
+        out = OUTPUT_DIR / f"{slug}.json"
         if out.exists() and not force:
-            print(f"[{i}/{total}] {slug}: skipping (already parsed)")
             with open(out, encoding="utf-8") as f:
                 data = json.load(f)
-            score, _, _ = score_completeness(data)
-            results.append((slug, score, data, "already_done"))
-            continue
+            already_done.append((slug, score_completeness(data), data))
+        else:
+            to_parse.append((slug, pdf))
 
-        print(f"\n[{i}/{total}] Parsing {slug}...")
-        proc = subprocess.run(
-            [sys.executable, str(SCRIPT), str(pdf), slug],
-            capture_output=False,
-        )
+    print(f"Already parsed: {len(already_done)}  |  To parse: {len(to_parse)}")
+    if not to_parse:
+        print("Nothing to do — pass --force to re-parse existing schools.")
+    else:
+        client = anthropic.Anthropic()
 
-        if proc.returncode != 0:
-            print(f"  ERROR: parse-cds.py exited {proc.returncode} for {slug}")
-            errors.append((slug, f"exit code {proc.returncode}"))
-            continue
+        print(f"\nBuilding batch of {len(to_parse)} request(s)...")
+        requests = [
+            {"custom_id": slug, "params": build_request_params(pdf)}
+            for slug, pdf in to_parse
+        ]
 
-        if not out.exists():
-            errors.append((slug, "output JSON not created"))
-            continue
+        batch = client.messages.batches.create(requests=requests)
+        print(f"Batch submitted: {batch.id}")
 
-        with open(out, encoding="utf-8") as f:
-            data = json.load(f)
+        while batch.processing_status != "ended":
+            time.sleep(POLL_INTERVAL_SECONDS)
+            batch = client.messages.batches.retrieve(batch.id)
+            counts = batch.request_counts
+            print(f"  status={batch.processing_status}  "
+                  f"processing={counts.processing} succeeded={counts.succeeded} "
+                  f"errored={counts.errored} expired={counts.expired} canceled={counts.canceled}")
 
-        score, _, _ = score_completeness(data)
-        results.append((slug, score, data, None))
+        print("\nBatch finished. Writing results...")
+        errors = []
+        newly_parsed = []  # (slug, score, data)
+        for result in client.messages.batches.results(batch.id):
+            slug = result.custom_id
+            if result.result.type != "succeeded":
+                detail = getattr(result.result, "error", None)
+                errors.append((slug, f"{result.result.type}: {detail}"))
+                continue
+            try:
+                data = extract_json(result.result.message.content)
+            except (ValueError, json.JSONDecodeError) as e:
+                errors.append((slug, f"could not parse response JSON: {e}"))
+                continue
+            data["slug"] = slug
+            out = OUTPUT_DIR / f"{slug}.json"
+            with open(out, "w", encoding="utf-8") as f:
+                json.dump(data, f, indent=2)
+            newly_parsed.append((slug, score_completeness(data), data))
 
-    # ── Summary ────────────────────────────────────────────────────────────
+        print("\n" + "=" * 60)
+        print("BATCH COMPLETE")
+        print("=" * 60)
 
-    print("\n" + "=" * 60)
-    print("BATCH COMPLETE")
-    print("=" * 60)
+        if errors:
+            print(f"\nFailed ({len(errors)}):")
+            for slug, msg in errors:
+                print(f"  x {slug}: {msg}")
 
-    if errors:
-        print(f"\nFailed ({len(errors)}):")
-        for slug, msg in errors:
-            print(f"  ✗ {slug}: {msg}")
+        all_results = already_done + newly_parsed
+        rich = [(s, sc, d) for s, sc, d in all_results if sc >= 12]
+        partial = [(s, sc, d) for s, sc, d in all_results if 6 <= sc < 12]
+        sparse = [(s, sc, d) for s, sc, d in all_results if sc < 6]
 
-    # Group by richness tier
-    rich    = [(s, sc, d) for s, sc, d, _ in results if sc >= 12]
-    partial = [(s, sc, d) for s, sc, d, _ in results if 6 <= sc < 12]
-    sparse  = [(s, sc, d) for s, sc, d, _ in results if sc < 6]
+        show_group("RICH — full CDS data", rich)
+        show_group("PARTIAL — some sections missing", partial)
+        show_group("SPARSE — minimal data (Section A only or parse failure)", sparse)
 
-    def show_group(label, group):
-        print(f"\n── {label} ({len(group)} schools) ──")
-        for slug, score, data in sorted(group, key=lambda x: -x[1]):
-            name = data.get("name") or slug
-            core = [f for f in CORE_ADMISSIONS_FIELDS if data.get(f) is not None]
-            rich_present = [f for f in RICH_FIELDS
-                            if data.get(f) is not None and data[f] != {}]
-            print(f"  {slug:20s}  score={score:2d}  "
-                  f"core={len(core)}/{len(CORE_ADMISSIONS_FIELDS)}  "
-                  f"rich={len(rich_present)}/{len(RICH_FIELDS)}  "
-                  f"({name})")
-
-    show_group("RICH — full CDS data", rich)
-    show_group("PARTIAL — some sections missing", partial)
-    show_group("SPARSE — minimal data (Section A only or parse failure)", sparse)
-
-    print(f"\nTotal parsed: {len(results)}  |  Errors: {len(errors)}\n")
+        print(f"\nNewly parsed: {len(newly_parsed)}  |  Errors: {len(errors)}  |  "
+              f"Total on disk: {len(all_results)}\n")
 
 
 if __name__ == "__main__":
