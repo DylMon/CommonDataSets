@@ -219,9 +219,9 @@ function renderStatsStrip(s) {
   ).join('');
 }
 
-// ── Render: Admissions section ──────────────────────────────────────────
+// ── Render: Admissions summary (paired side-by-side with Cost) ─────────
 
-function renderAdmissionsSection(s) {
+function renderAdmissionsSummary(s) {
   function kv(label, val) {
     return `<div class="kv-label">${label}</div><div class="kv-val">${val ?? '—'}</div>`;
   }
@@ -235,6 +235,16 @@ function renderAdmissionsSection(s) {
     ${kv('Application Fee',           s.application_fee != null ? '$' + s.application_fee : null)}
   </div>`;
 
+  return `
+    <section class="school-section">
+      <h2 class="section-title">Admissions</h2>
+      ${kvGrid}
+    </section>`;
+}
+
+// ── Render: Admissions detail (funnel, pools, class rank, GPA, factors) ──
+
+function renderAdmissionsDetails(s) {
   const ratePct = s.acceptance_rate != null ? (s.acceptance_rate * 100).toFixed(1) + '%' : null;
   const funnel = `<div class="funnel">
     <div class="funnel-step">
@@ -269,21 +279,6 @@ function renderAdmissionsSection(s) {
     );
   }
 
-  let classRankHtml = '<p class="no-data">Data not yet available.</p>';
-  if (s.class_rank) {
-    const r = s.class_rank;
-    classRankHtml = tableHtml(
-      ['Rank Tier', '% of Enrolled Students'],
-      [
-        ['Top 10%',    r.top10    != null ? (r.top10    * 100).toFixed(0) + '%' : '—'],
-        ['Top 25%',    r.top25    != null ? (r.top25    * 100).toFixed(0) + '%' : '—'],
-        ['Top 50%',    r.top50    != null ? (r.top50    * 100).toFixed(0) + '%' : '—'],
-        ['Bottom 50%', r.bottom50 != null ? (r.bottom50 * 100).toFixed(0) + '%' : '—'],
-        ['Bottom 25%', r.bottom25 != null ? (r.bottom25 * 100).toFixed(0) + '%' : '—'],
-      ]
-    );
-  }
-
   let gpaSectionHtml = '<p class="no-data">Data not yet available.</p>';
   if (s.gpa_distribution) {
     const g = s.gpa_distribution;
@@ -306,6 +301,20 @@ function renderAdmissionsSection(s) {
     }
   }
 
+  return `
+    <section class="school-section">
+      <h3 class="subsection-title">Applicant Funnel</h3>
+      ${funnel}
+      <h3 class="subsection-title">Applicant Pools (EA vs RD)</h3>
+      ${poolsHtml}
+      <h3 class="subsection-title">GPA Distribution of Enrolled Students</h3>
+      ${gpaSectionHtml}
+    </section>`;
+}
+
+// ── Render: Admission Factors ───────────────────────────────────────────
+
+function renderAdmissionFactorsSection(s) {
   let factorsHtml = '<p class="no-data">Data not yet available.</p>';
   if (s.admission_factors) {
     const FACTOR_LABELS = {
@@ -330,17 +339,7 @@ function renderAdmissionsSection(s) {
 
   return `
     <section class="school-section">
-      <h2 class="section-title">Admissions</h2>
-      ${kvGrid}
-      <h3 class="subsection-title">Applicant Funnel</h3>
-      ${funnel}
-      <h3 class="subsection-title">Applicant Pools (EA vs RD)</h3>
-      ${poolsHtml}
-      <h3 class="subsection-title">Class Rank of Enrolled Students</h3>
-      ${classRankHtml}
-      <h3 class="subsection-title">GPA Distribution of Enrolled Students</h3>
-      ${gpaSectionHtml}
-      <h3 class="subsection-title">Admission Factors</h3>
+      <h2 class="section-title">Admission Factors</h2>
       ${factorsHtml}
     </section>`;
 }
@@ -575,9 +574,13 @@ async function init() {
 
   document.getElementById('stats-strip').innerHTML = renderStatsStrip(s);
   document.getElementById('school-sections').innerHTML =
-    renderAdmissionsSection(s) +
+    `<div class="school-section-row">
+      ${renderAdmissionsSummary(s)}
+      ${renderCostSection(s)}
+    </div>` +
+    renderAdmissionsDetails(s) +
     renderTestScoresSection(s) +
-    renderCostSection(s) +
+    renderAdmissionFactorsSection(s) +
     renderStudentBodySection(s);
 
   renderGpaHistogram(document.getElementById('gpa-chart'), s.gpa_distribution, meta.color);
