@@ -14,7 +14,7 @@
     background: #eaf0f7;
     border: 1px solid #d5e2ee;
     color: #ed6d0b;
-    font-size: 0.78em;
+    font-size: 0.93em;
     font-weight: 300;
     letter-spacing: 0.02em;
     padding: 12px 16px;
@@ -34,7 +34,7 @@
 }
 
 .cm-section-title {
-    font-size: 1em;
+    font-size: 1.15em;
     font-weight: 600;
     letter-spacing: 0.05em;
     text-transform: uppercase;
@@ -43,7 +43,7 @@
 }
 
 .cm-section-hint {
-    font-size: 0.78em;
+    font-size: 0.93em;
     font-weight: 300;
     color: #000;
     margin: 0 0 18px;
@@ -65,7 +65,7 @@
 .cm-field.cm-span-2 { grid-column: span 2; }
 
 .cm-label {
-    font-size: 0.72em;
+    font-size: 0.87em;
     font-weight: 400;
     color: #000;
     text-transform: uppercase;
@@ -83,7 +83,7 @@
 .cm-select,
 .cm-textarea {
     font-family: 'Oswald', sans-serif;
-    font-size: 0.92em;
+    font-size: 1.07em;
     font-weight: 400;
     padding: 10px 12px;
     border: 1px solid #ddd;
@@ -118,7 +118,7 @@
     flex: 1;
     min-width: 34px;
     font-family: 'Oswald', sans-serif;
-    font-size: 0.8em;
+    font-size: 0.95em;
     font-weight: 600;
     padding: 8px 4px;
     border: 1px solid #ddd;
@@ -138,7 +138,7 @@
 }
 
 .cm-scale-caption {
-    font-size: 0.75em;
+    font-size: 0.9em;
     font-weight: 300;
     color: #ed6d0b;
     min-height: 16px;
@@ -170,13 +170,13 @@
 }
 
 .cm-list-item-title {
-    font-size: 0.9em;
+    font-size: 1.05em;
     font-weight: 600;
     color: #000;
 }
 
 .cm-list-item-sub {
-    font-size: 0.78em;
+    font-size: 0.93em;
     font-weight: 300;
     color: #000;
     line-height: 1.5;
@@ -187,7 +187,7 @@
     border: none;
     background: none;
     color: #000;
-    font-size: 1.1em;
+    font-size: 1.25em;
     line-height: 1;
     cursor: pointer;
     padding: 2px 4px;
@@ -196,7 +196,7 @@
 .cm-list-remove:hover { color: #c0392b; }
 
 .cm-list-empty {
-    font-size: 0.8em;
+    font-size: 0.95em;
     color: #000;
     font-weight: 300;
     padding: 4px 0;
@@ -214,7 +214,7 @@
 .cm-add-btn {
     align-self: flex-start;
     font-family: 'Oswald', sans-serif;
-    font-size: 0.75em;
+    font-size: 0.9em;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -243,13 +243,13 @@
 }
 
 .cm-list-count {
-    font-size: 0.75em;
+    font-size: 0.9em;
     color: #000;
     font-weight: 300;
 }
 
 .cm-yeargrid-label {
-    font-size: 0.7em;
+    font-size: 0.85em;
     font-weight: 400;
     color: #000;
     text-transform: uppercase;
@@ -296,7 +296,7 @@
     flex-shrink: 0;
 }
 
-.cm-school-option-name { font-size: 0.9em; }
+.cm-school-option-name { font-size: 1.05em; }
 
 /* GPA-by-year mini grid */
 .cm-subgrid-4 {
@@ -338,13 +338,13 @@
 
 .cm-target-card-name {
     flex: 1;
-    font-size: 0.95em;
+    font-size: 1.1em;
     font-weight: 600;
     color: #000;
 }
 
 .cm-target-remove {
-    font-size: 1.3em;
+    font-size: 1.45em;
 }
 
 .cm-target-card-body {
@@ -359,7 +359,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 0.82em;
+    font-size: 0.97em;
     color: #000;
     font-weight: 300;
     cursor: pointer;
@@ -378,7 +378,7 @@
 
 .cm-submit-btn {
     font-family: 'Oswald', sans-serif;
-    font-size: 0.95em;
+    font-size: 1.1em;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.06em;
@@ -394,7 +394,7 @@
 .cm-submit-btn:disabled { background: #ccc; cursor: not-allowed; }
 
 .cm-form-error {
-    font-size: 0.8em;
+    font-size: 0.95em;
     color: #c0392b;
     text-align: center;
 }
@@ -405,7 +405,7 @@
 }
 
 .cm-results-title {
-    font-size: 1.3em;
+    font-size: 1.45em;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.04em;
@@ -416,7 +416,7 @@
 
 .cm-results-sub {
     text-align: center;
-    font-size: 0.8em;
+    font-size: 0.95em;
     font-weight: 300;
     color: #000;
     margin-bottom: 22px;
@@ -444,13 +444,13 @@
 .cm-result-body { flex: 1; min-width: 180px; }
 
 .cm-result-name {
-    font-size: 1.05em;
+    font-size: 1.2em;
     font-weight: 400;
     margin-bottom: 2px;
 }
 
 .cm-result-meta {
-    font-size: 0.75em;
+    font-size: 0.9em;
     color: #000;
     font-weight: 300;
 }
@@ -462,7 +462,7 @@
 
 .cm-tier-badge {
     display: inline-block;
-    font-size: 0.78em;
+    font-size: 0.93em;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.04em;
@@ -471,7 +471,7 @@
 }
 
 .cm-result-pct {
-    font-size: 0.7em;
+    font-size: 0.85em;
     color: #000;
     margin-top: 4px;
 }
@@ -488,7 +488,7 @@
     background: none;
     border: none;
     color: #000;
-    font-size: 0.72em;
+    font-size: 0.87em;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     cursor: pointer;
@@ -500,7 +500,7 @@
     width: 100%;
     display: none;
     padding-top: 10px;
-    font-size: 0.8em;
+    font-size: 0.95em;
     color: #000;
     font-weight: 300;
     line-height: 1.8;
@@ -519,7 +519,7 @@
 
 .cm-detail-note {
     margin-top: 8px;
-    font-size: 0.9em;
+    font-size: 1.05em;
     color: #000;
     font-style: italic;
 }
@@ -546,7 +546,7 @@
     background: #f8f9fb;
     border: 1px solid #eee;
     padding: 16px 20px;
-    font-size: 0.78em;
+    font-size: 0.93em;
     font-weight: 300;
     color: #000;
     line-height: 1.8;
@@ -558,7 +558,7 @@
     color: #ed6d0b;
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    font-size: 0.95em;
+    font-size: 1.1em;
 }
 
 .cm-methodology ul { margin: 10px 0 0; padding-left: 18px; }
