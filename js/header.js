@@ -3,8 +3,9 @@
     const inSubdir = path.includes('/schools/');
     const root = inSubdir ? '../' : '';
 
-    const active = path.includes('compare') ? 'compare'
-                 : path.includes('info')    ? 'info'
+    const active = path.includes('compare')  ? 'compare'
+                 : path.includes('chanceme') ? 'chanceme'
+                 : path.includes('info')     ? 'info'
                  : path.includes('privacy') || path.includes('terms') ? null
                  : 'index';
 
@@ -18,6 +19,7 @@
             <div class="left-side">
                 ${navLink('index.html', 'Data Sets', 'index')}
                 ${navLink('compare.html', 'Compare', 'compare')}
+                ${navLink('chanceme.html', 'Chance Me', 'chanceme')}
                 ${navLink('info.html', 'About', 'info')}
             </div>
             <div class="nav-brand">CommonDataSets</div>

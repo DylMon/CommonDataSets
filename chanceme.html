@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LT7RKZPR5H"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LT7RKZPR5H');
+    </script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chance Me — CommonDataSets</title>
+    <meta name="description" content="Estimate your admission chances at top US universities using a transparent, formula-based model built on real Common Data Set statistics — no AI black box.">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css?v=2">
+    <link rel="stylesheet" href="css/chanceme.css?v=3">
+    <script src="js/header.js?v=2" defer></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2245119166025427"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="page-intro">
+            <h1 class="page-intro-title">Chance Me</h1>
+            <p class="page-intro-desc">Chance Me estimates your admission odds at each school using a transparent formula built from official Common Data Set statistics — your academic profile and activities weighed exactly the way each school says it weighs them. No AI, no guesswork, and nothing you type here ever leaves your browser.</p>
+        </div>
+
+        <div class="cm-wrapper">
+            <div class="cm-privacy-note">
+                <span>🔒</span>
+                <span><strong>Everything below stays on your device.</strong> This page runs entirely in your browser — nothing you enter is sent to a server or saved anywhere but your own computer.</span>
+            </div>
+
+            <form id="cm-form">
+
+                <!-- Academics -->
+                <section class="cm-section">
+                    <h2 class="cm-section-title">Academics</h2>
+                    <p class="cm-section-hint">Used to estimate where you'd rank academically among each school's admitted class.</p>
+                    <div class="cm-grid">
+                        <div class="cm-field cm-span-2">
+                            <label class="cm-label" for="cm-hs">High School Attended <span class="cm-optional">(optional, for your reference only)</span></label>
+                            <input class="cm-input" id="cm-hs" type="text" placeholder="e.g. Lincoln High School" autocomplete="off">
+                        </div>
+                        <div class="cm-field">
+                            <label class="cm-label" for="cm-gpa-unweighted">Unweighted GPA (4.0 scale)</label>
+                            <input class="cm-input" id="cm-gpa-unweighted" type="number" min="0" max="4.0" step="0.01" placeholder="e.g. 3.85">
+                        </div>
+                        <div class="cm-field">
+                            <label class="cm-label" for="cm-gpa-weighted">Weighted GPA</label>
+                            <input class="cm-input" id="cm-gpa-weighted" type="number" min="0" max="8.0" step="0.01" placeholder="e.g. 4.40">
+                        </div>
+                        <div class="cm-field cm-span-2">
+                            <label class="cm-label" for="cm-gpa-max-weighted">Maximum Possible Weighted GPA At Your School <span class="cm-optional">(so we can normalize it — schools cap this differently)</span></label>
+                            <input class="cm-input" id="cm-gpa-max-weighted" type="number" min="4.0" max="10.0" step="0.01" placeholder="e.g. 5.00">
+                        </div>
+
+                        <div class="cm-field cm-span-2">
+                            <label class="cm-label">GPA By Year <span class="cm-optional">(optional — if you fill in 2 or more of either row, we use those instead of the overall GPA fields above, since junior/senior year typically carry more weight)</span></label>
+                            <div class="cm-yeargrid-label">Unweighted</div>
+                            <div class="cm-subgrid-4">
+                                <input class="cm-input" id="cm-gpa-y9" type="number" min="0" max="4.0" step="0.01" placeholder="9th">
+                                <input class="cm-input" id="cm-gpa-y10" type="number" min="0" max="4.0" step="0.01" placeholder="10th">
+                                <input class="cm-input" id="cm-gpa-y11" type="number" min="0" max="4.0" step="0.01" placeholder="11th">
+                                <input class="cm-input" id="cm-gpa-y12" type="number" min="0" max="4.0" step="0.01" placeholder="12th">
+                            </div>
+                            <div class="cm-yeargrid-label">Weighted</div>
+                            <div class="cm-subgrid-4">
+                                <input class="cm-input" id="cm-gpa-y9w" type="number" min="0" max="8.0" step="0.01" placeholder="9th">
+                                <input class="cm-input" id="cm-gpa-y10w" type="number" min="0" max="8.0" step="0.01" placeholder="10th">
+                                <input class="cm-input" id="cm-gpa-y11w" type="number" min="0" max="8.0" step="0.01" placeholder="11th">
+                                <input class="cm-input" id="cm-gpa-y12w" type="number" min="0" max="8.0" step="0.01" placeholder="12th">
+                            </div>
+                        </div>
+
+                        <div class="cm-field">
+                            <label class="cm-label" for="cm-class-rank">Class Rank <span class="cm-optional">(optional)</span></label>
+                            <input class="cm-input" id="cm-class-rank" type="number" min="1" step="1" placeholder="e.g. 15">
+                        </div>
+                        <div class="cm-field">
+                            <label class="cm-label" for="cm-class-size">Class Size <span class="cm-optional">(optional)</span></label>
+                            <input class="cm-input" id="cm-class-size" type="number" min="1" step="1" placeholder="e.g. 412">
+                        </div>
+
+                        <div class="cm-field">
+                            <label class="cm-label" for="cm-ap-count">AP / IB / Dual-Enrollment Classes <span class="cm-optional">(count)</span></label>
+                            <input class="cm-input" id="cm-ap-count" type="number" min="0" max="30" step="1" placeholder="e.g. 8">
+                        </div>
+                        <div class="cm-field">
+                            <label class="cm-label" for="cm-ap-avg">Average Score <span class="cm-optional">(AP: 1–5, IB: 1–7 → enter AP-equivalent)</span></label>
+                            <input class="cm-input" id="cm-ap-avg" type="number" min="0" max="5" step="0.1" placeholder="e.g. 4.5">
+                        </div>
+                        <div class="cm-field">
+                            <label class="cm-label" for="cm-courses-failed">Courses Failed <span class="cm-optional">(optional)</span></label>
+                            <input class="cm-input" id="cm-courses-failed" type="number" min="0" max="20" step="1" placeholder="0">
+                        </div>
+
+                        <div class="cm-field">
+                            <label class="cm-label" for="cm-sat">SAT Composite <span class="cm-optional">(optional)</span></label>
+                            <input class="cm-input" id="cm-sat" type="number" min="400" max="1600" step="10" placeholder="e.g. 1480">
+                        </div>
+                        <div class="cm-field">
+                            <label class="cm-label" for="cm-act">ACT Composite <span class="cm-optional">(optional)</span></label>
+                            <input class="cm-input" id="cm-act" type="number" min="1" max="36" step="1" placeholder="e.g. 33">
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Background -->
+                <section class="cm-section">
+                    <h2 class="cm-section-title">Background</h2>
+                    <p class="cm-section-hint">Residency is determined per-school automatically — a California school only gets an in-state bump if you're from California, not just because you picked "in-state" once. Demographic data is collected for your own context only — race is not used in the formula, since it is no longer a permitted admissions factor at U.S. institutions following <em>SFFA v. Harvard</em> (2023). First-gen status and income <em>are</em> used: first-gen ties to each school's own reported "first generation" admission factor, and income has a small effect only for international applicants (see Results).</p>
+                    <div class="cm-grid">
+                        <div class="cm-field">
+                            <label class="cm-label" for="cm-country">Country</label>
+                            <select class="cm-select" id="cm-country">
+                                <option value="usa">United States</option>
+                                <option value="international">International</option>
+                            </select>
+                        </div>
+                        <div class="cm-field" id="cm-state-field">
+                            <label class="cm-label" for="cm-state">Home State</label>
+                            <select class="cm-select" id="cm-state"></select>
+                        </div>
+                        <div class="cm-field">
+                            <label class="cm-label" for="cm-demographic">Demographic <span class="cm-optional">(not scored)</span></label>
+                            <select class="cm-select" id="cm-demographic">
+                                <option value="">Prefer not to say</option>
+                                <option value="asian">Asian</option>
+                                <option value="black">Black / African American</option>
+                                <option value="hispanic">Hispanic / Latino</option>
+                                <option value="white">White</option>
+                                <option value="native">American Indian / Alaska Native</option>
+                                <option value="pacific">Native Hawaiian / Pacific Islander</option>
+                                <option value="two-or-more">Two or More Races</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="cm-field">
+                            <label class="cm-label" for="cm-first-gen">First-Generation College Student</label>
+                            <select class="cm-select" id="cm-first-gen">
+                                <option value="">Prefer not to say</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        <div class="cm-field cm-span-2">
+                            <label class="cm-label" for="cm-income">Parental / Household Income</label>
+                            <select class="cm-select" id="cm-income">
+                                <option value="">Prefer not to say</option>
+                                <option value="under-30k">Under $30,000</option>
+                                <option value="30-65k">$30,000 – $65,000</option>
+                                <option value="65-110k">$65,000 – $110,000</option>
+                                <option value="110-200k">$110,000 – $200,000</option>
+                                <option value="200k-plus">$200,000+ / Full-pay</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Activities -->
+                <section class="cm-section">
+                    <h2 class="cm-section-title">Extracurriculars, Activities, Research &amp; Community Service</h2>
+                    <p class="cm-section-hint">Structured fields, no descriptions to write or interpret — role, category, and time commitment scale each entry directly. Up to 10 entries.</p>
+                    <div id="cm-activity-list" class="cm-list"></div>
+                    <div class="cm-add-row cm-activity-add-row">
+                        <input class="cm-input" id="cm-activity-org" type="text" placeholder="Organization (required)">
+                        <select class="cm-select" id="cm-activity-category"></select>
+                        <select class="cm-select" id="cm-activity-role"></select>
+                        <input class="cm-input" id="cm-activity-hours" type="number" min="0" max="40" step="1" placeholder="Hrs / week">
+                        <input class="cm-input" id="cm-activity-years" type="number" min="0" max="4" step="1" placeholder="Years committed">
+                        <input class="cm-input" id="cm-activity-months" type="number" min="1" max="12" step="1" placeholder="Months / year">
+                    </div>
+                    <div class="cm-list-row-end">
+                        <button type="button" class="cm-add-btn" id="cm-add-activity">+ Add Activity</button>
+                        <span class="cm-list-count" id="cm-activity-count"></span>
+                    </div>
+
+                    <label class="cm-label" style="margin-top:18px;display:block">Overall Strength of Activities <span class="cm-optional">(optional — blended 50/50 with the structured entries above)</span></label>
+                    <div class="cm-scale" id="cm-scale-activities" data-max="7"></div>
+                    <div class="cm-scale-caption" id="cm-scale-activities-caption"></div>
+                </section>
+
+                <!-- Awards -->
+                <section class="cm-section">
+                    <h2 class="cm-section-title">Awards &amp; Honors</h2>
+                    <p class="cm-section-hint">List your awards for your own reference, then rate their overall impressiveness below — that rating (not the list) drives the formula. Up to 6 entries.</p>
+                    <div id="cm-award-list" class="cm-list"></div>
+                    <div class="cm-add-row">
+                        <input class="cm-input cm-span-2" id="cm-award-title" type="text" placeholder="Award / honor name">
+                        <select class="cm-select cm-span-2" id="cm-award-level">
+                            <option value="">Level (optional)</option>
+                            <option value="school">School</option>
+                            <option value="regional">Regional</option>
+                            <option value="state">State</option>
+                            <option value="national">National</option>
+                            <option value="international">International</option>
+                        </select>
+                    </div>
+                    <div class="cm-list-row-end">
+                        <button type="button" class="cm-add-btn" id="cm-add-award">+ Add Award</button>
+                        <span class="cm-list-count" id="cm-award-count"></span>
+                    </div>
+
+                    <label class="cm-label" style="margin-top:18px;display:block">Overall Impressiveness of Awards</label>
+                    <div class="cm-scale" id="cm-scale-awards" data-max="7"></div>
+                    <div class="cm-scale-caption" id="cm-scale-awards-caption"></div>
+                </section>
+
+                <!-- Essay -->
+                <section class="cm-section">
+                    <h2 class="cm-section-title">Personal Essay</h2>
+                    <p class="cm-section-hint">Rate your own personal statement honestly — be as objective as you can.</p>
+                    <div class="cm-scale" id="cm-scale-essay" data-max="7"></div>
+                    <div class="cm-scale-caption" id="cm-scale-essay-caption"></div>
+                </section>
+
+                <!-- Letters of Recommendation -->
+                <section class="cm-section">
+                    <h2 class="cm-section-title">Letters of Recommendation</h2>
+                    <p class="cm-section-hint">How confident are you that your recommenders will write strong, specific letters?</p>
+                    <div class="cm-scale" id="cm-scale-lor" data-max="7"></div>
+                    <div class="cm-scale-caption" id="cm-scale-lor-caption"></div>
+                </section>
+
+                <!-- Hardships -->
+                <section class="cm-section">
+                    <h2 class="cm-section-title">Hardships</h2>
+                    <p class="cm-section-hint">Optional. Life circumstances you've had to work through — financial, medical, family, or otherwise. This is context for holistic review, not a requirement. The description below is for your own reference only — the severity rating is what drives the formula.</p>
+                    <div class="cm-field">
+                        <textarea class="cm-textarea" id="cm-hardship-desc" placeholder="Briefly describe (optional, stays in your browser only)…"></textarea>
+                    </div>
+                    <label class="cm-label" style="margin-top:14px;display:block">Severity / Impact <span class="cm-optional">(leave unset if not applicable)</span></label>
+                    <div class="cm-scale" id="cm-scale-hardship" data-max="7"></div>
+                    <div class="cm-scale-caption" id="cm-scale-hardship-caption"></div>
+                </section>
+
+                <!-- Target schools -->
+                <section class="cm-section">
+                    <h2 class="cm-section-title">Target Schools</h2>
+                    <p class="cm-section-hint">Pick from the 33 schools we track Common Data Set statistics for. For each one, set your application plan, whether you're a legacy applicant, and whether your intended major is competitive there — all three affect that school's estimate.</p>
+                    <div class="cm-school-search">
+                        <input class="cm-input" id="cm-school-input" type="text" placeholder="Search schools…" autocomplete="off">
+                        <div class="cm-school-dropdown" id="cm-school-dropdown"></div>
+                    </div>
+                    <div id="cm-target-schools" class="cm-target-list"></div>
+                </section>
+
+                <div class="cm-submit-row">
+                    <button type="submit" class="cm-submit-btn" id="cm-submit-btn">Get My Chances</button>
+                    <div class="cm-form-error" id="cm-form-error"></div>
+                </div>
+            </form>
+
+            <div class="cm-results" id="cm-results" style="display:none">
+                <div class="cm-results-title">Your Chances</div>
+                <div class="cm-results-sub">Estimates only — see methodology below for how these are calculated.</div>
+                <div id="cm-results-list"></div>
+
+                <details class="cm-methodology">
+                    <summary>How this is calculated</summary>
+                    <p>Every self-rating on this page (Activities, Awards, Essay, Letters of Recommendation, Hardships) uses the same 1–7 scale: Extremely Weak, Weak, Below Average, Average, Above Average, Great, Excellent. Leaving a category unrated (or, for Activities/Awards, leaving the list empty) never counts against you — it's treated as neutral, not weak.</p>
+                    <p>Each school gets an <strong>Academic Index</strong> (GPA percentile within that school's own reported GPA distribution — weighted by year if you gave a breakdown of either weighted or unweighted GPA — class-rank percentile against its reported rank bands, SAT/ACT composite percentile against its 25th–75th range, course rigor from your AP/IB load and weighted-GPA strength, minus a small penalty for failed courses) and a <strong>Holistic Index</strong> (your activities — structured entries blended 50/50 with your self-rating — awards — level blended 50/50 with your self-rating — essay, letters-of-recommendation confidence, and hardships). If a school doesn't report a GPA distribution or test-score range at all, we fall back to a rough generic estimate rather than dropping that factor entirely — noted per-school below when it happens.</p>
+                    <p>The two are blended using weights derived from that school's own Common Data Set "Admission Factors" table — a school that marks test scores "Very Important" and essays "Considered" leans more on your Academic Index; a school that rates both "Very Important" blends them evenly.</p>
+                    <p>That blended score is compared against a base acceptance rate using a logistic model to produce a probability, then mapped to one of seven tiers. The base rate uses that school's own <em>reported</em> Early Action/Early Decision or Regular Decision rate when available (about a third of tracked schools report this split); otherwise it falls back to the school's overall rate adjusted by a disclosed, generic industry-wide early-round boost. If you flagged a competitive major, that rate is further reduced by a disclosed generic multiplier — we don't have real per-major CDS data, so this isn't school-specific. We also apply a small upward calibration shift throughout: a Common Data Set distribution describes the admitted class, not the full applicant pool (which includes many unrealistic "reach" applications that drag the raw acceptance rate down) — so a profile that matches the admitted-class median is treated as better odds than the bare acceptance rate would suggest.</p>
+                    <p>Small additive adjustments apply for: in-state residency at public schools (scaled by how much that school says it considers residency — different for every target school, so a CA school and an NY school are judged independently), legacy status (scaled by that school's "alumni relation" importance), first-generation status (scaled by that school's "first generation" importance), community-service/work activities (scaled by that school's "volunteer"/"work experience" importance), and international applicants at need-aware schools.</p>
+                    <ul>
+                        <li>This is a statistical estimate, not a prediction — admissions decisions involve factors this form can't capture.</li>
+                        <li>Race/ethnicity is not used in scoring.</li>
+                        <li>Activity role weights, the research bonus, and the competitive-major adjustment are general heuristics, not school-specific CDS data.</li>
+                        <li>Schools with incomplete Common Data Set submissions fall back to a generic 55/45 academic/holistic weighting, noted per-school below.</li>
+                    </ul>
+                </details>
+            </div>
+        </div>
+
+        <footer class="site-footer">
+            <div class="footer-brand">CommonDataSets</div>
+            <nav class="footer-nav">
+                <a href="index.html">Data Sets</a>
+                <a href="compare.html">Compare</a>
+                <a href="chanceme.html">Chance Me</a>
+                <a href="info.html">About</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms &amp; Conditions</a>
+            </nav>
+        </footer>
+    </div>
+
+    <script type="module" src="js/chanceme.js?v=3"></script>
+</body>
+</html>
