@@ -48,13 +48,13 @@
 
 .hero-meta {
   margin: 0;
-  color: rgba(255,255,255,0.72);
+  color: #fff;
   font-size: 0.72em;
   font-weight: 300;
 }
 
 .hero-site-link {
-  color: rgba(255,255,255,0.85);
+  color: #fff;
   text-decoration: underline;
   transition: color 0.2s;
 }
@@ -83,7 +83,7 @@
 .stat-chip-val {
   font-size: 1.55em;
   font-weight: 600;
-  color: #111;
+  color: #000;
   line-height: 1;
 }
 
@@ -91,7 +91,7 @@
   font-size: 0.68em;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: #999;
+  color: #000;
   white-space: nowrap;
 }
 
@@ -121,7 +121,7 @@
   margin: 0 0 20px;
   padding-bottom: 10px;
   border-bottom: 3px solid var(--brand);
-  color: #111;
+  color: #000;
 }
 
 .subsection-title {
@@ -129,17 +129,17 @@
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #bbb;
+  color: #000;
   margin: 30px 0 10px;
 }
 
 .section-note {
   font-size: 0.9em;
-  color: #666;
+  color: #000;
   margin: 0 0 16px;
   font-weight: 300;
 }
-.section-note strong { font-weight: 600; color: #111; }
+.section-note strong { font-weight: 600; color: #000; }
 
 /* ── KV info grid ── */
 .kv-grid {
@@ -156,12 +156,12 @@
 }
 
 .kv-label {
-  color: #999;
+  color: #000;
   font-weight: 300;
   padding-right: 20px;
 }
 
-.kv-val { color: #111; font-weight: 400; }
+.kv-val { color: #000; font-weight: 400; }
 
 /* ── Applicant funnel ── */
 .funnel {
@@ -185,7 +185,7 @@
 .funnel-val {
   font-size: 1.5em;
   font-weight: 600;
-  color: #111;
+  color: #000;
   line-height: 1;
 }
 
@@ -193,7 +193,7 @@
   font-size: 0.68em;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: #999;
+  color: #000;
   margin-top: 6px;
 }
 
@@ -205,7 +205,7 @@
   margin-top: 4px;
 }
 
-.funnel-arrow { color: #ccc; font-size: 1.3em; flex-shrink: 0; }
+.funnel-arrow { color: #000; font-size: 1.3em; flex-shrink: 0; }
 
 /* ── Tables ── */
 .tbl-wrap {
@@ -218,7 +218,7 @@
   border-collapse: collapse;
   font-size: 0.88em;
   width: 100%;
-  box-shadow: 0 1px 12px rgba(0,0,0,0.07);
+  box-shadow: 0 1px 12px rgba(0,0,0,0.12);
   border-radius: 6px;
   overflow: hidden;
 }
@@ -243,7 +243,7 @@
   width: 160px;
   flex-shrink: 0;
   font-size: 0.88em;
-  color: #555;
+  color: #000;
   font-weight: 300;
 }
 
@@ -278,11 +278,11 @@
   flex-shrink: 0;
   font-size: 0.88em;
   font-weight: 600;
-  color: #111;
+  color: #000;
   white-space: nowrap;
 }
 
-.score-na-text { color: #ccc; font-style: italic; font-size: 0.85em; }
+.score-na-text { color: #000; font-style: italic; font-size: 0.85em; }
 
 /* ── Demo / geo bars ── */
 .demo-bars { display: flex; flex-direction: column; gap: 10px; margin: 4px 0; }
@@ -293,7 +293,7 @@
   width: 230px;
   flex-shrink: 0;
   font-size: 0.85em;
-  color: #555;
+  color: #000;
   font-weight: 300;
 }
 
@@ -319,11 +319,11 @@
   text-align: right;
   font-size: 0.82em;
   font-weight: 600;
-  color: #333;
+  color: #000;
 }
 
 /* ── No-data placeholder ── */
-.no-data { color: #ccc; font-style: italic; font-size: 0.88em; margin: 8px 0; }
+.no-data { color: #000; font-style: italic; font-size: 0.88em; margin: 8px 0; }
 
 /* ── GPA distribution chart ── */
 .gpa-flex-row {
@@ -346,7 +346,7 @@
 .gpa-table-col .tbl-wrap { margin: 0; height: 100%; }
 
 .chart-caption {
-  color: #999;
+  color: #000;
   font-style: italic;
   font-size: 0.78em;
   margin: 0 0 16px;

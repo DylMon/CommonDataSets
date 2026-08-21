@@ -17,6 +17,7 @@
     const nav = `
         <div class="nav-wrapper">
             <div class="left-side">
+                <img class="nav-logo" src="${root}favicon.png" alt="CommonDataSets">
                 ${navLink('index.html', 'Data Sets', 'index')}
                 ${navLink('compare.html', 'Compare', 'compare')}
                 ${navLink('chanceme.html', 'Chance Me', 'chanceme')}

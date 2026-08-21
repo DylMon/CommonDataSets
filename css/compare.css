@@ -67,7 +67,7 @@
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    color: #bbb;
+    color: #000;
     cursor: pointer;
 }
 
@@ -84,7 +84,7 @@
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: #666;
+    color: #000;
     background: white;
     border: 1px dashed #ccc;
     cursor: pointer;
@@ -93,7 +93,7 @@
 
 .compare-add-school:hover {
     border-color: #999;
-    color: #333;
+    color: #000;
 }
 
 .compare-add-school[hidden] {
@@ -104,7 +104,7 @@
     display: block;
     font-size: 0.75em;
     font-weight: 300;
-    color: #aaa;
+    color: #000;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     margin-bottom: 6px;
@@ -123,7 +123,7 @@
     border: 1px solid #ddd;
     border-radius: 0;
     background: white;
-    color: #222;
+    color: #000;
     outline: none;
     transition: border-color 0.15s;
 }
@@ -141,14 +141,14 @@
     height: 26px;
     border: none;
     background: none;
-    color: #bbb;
+    color: #000;
     font-size: 1.1em;
     line-height: 1;
     cursor: pointer;
     display: none;
 }
 
-.compare-clear:hover { color: #666; }
+.compare-clear:hover { color: #000; }
 .compare-clear.visible { display: block; }
 
 .compare-dropdown {
@@ -159,7 +159,7 @@
     background: white;
     border: 1px solid #e8e8e8;
     border-radius: 0;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
     max-height: 400px;
     overflow-y: auto;
     z-index: 20;
@@ -193,7 +193,7 @@
 
 .compare-empty {
     padding: 14px 16px;
-    color: #aaa;
+    color: #000;
     font-size: 0.85em;
 }
 
@@ -217,7 +217,7 @@
 .compare-divider-label {
     font-size: 0.75em;
     font-weight: 600;
-    color: #bbb;
+    color: #000;
     letter-spacing: 0.08em;
 }
 
@@ -277,13 +277,13 @@
 
 .compare-card-link {
     font-size: 0.75em;
-    color: #888;
+    color: #000;
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.03em;
 }
 
-.compare-card-link:hover { color: #444; }
+.compare-card-link:hover { color: #000; }
 
 /* Grid rather than flex-with-fixed-gap: cards in this row can be as
    narrow as ~200px (4-up) or as wide as ~450px (2-up), and a grid's
@@ -304,7 +304,7 @@
 
 .compare-placeholder {
     text-align: center;
-    color: #bbb;
+    color: #000;
     font-size: 0.85em;
     padding: 20px;
 }
@@ -362,7 +362,7 @@
     gap: 8px;
     font-size: 0.85em;
     font-weight: 400;
-    color: #444;
+    color: #000;
 }
 
 .cmp-legend-dot {

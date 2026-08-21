@@ -13,7 +13,7 @@
     gap: 10px;
     background: #eaf0f7;
     border: 1px solid #d5e2ee;
-    color: #3d5a80;
+    color: #ed6d0b;
     font-size: 0.78em;
     font-weight: 300;
     letter-spacing: 0.02em;
@@ -38,14 +38,14 @@
     font-weight: 600;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: #3d5a80;
+    color: #ed6d0b;
     margin: 0 0 4px;
 }
 
 .cm-section-hint {
     font-size: 0.78em;
     font-weight: 300;
-    color: #999;
+    color: #000;
     margin: 0 0 18px;
     line-height: 1.6;
 }
@@ -67,13 +67,13 @@
 .cm-label {
     font-size: 0.72em;
     font-weight: 400;
-    color: #888;
+    color: #000;
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
 
 .cm-label .cm-optional {
-    color: #bbb;
+    color: #000;
     text-transform: none;
     letter-spacing: 0;
     font-weight: 300;
@@ -89,7 +89,7 @@
     border: 1px solid #ddd;
     border-radius: 0;
     background: white;
-    color: #222;
+    color: #000;
     outline: none;
     transition: border-color 0.15s;
     width: 100%;
@@ -98,7 +98,7 @@
 .cm-input:focus,
 .cm-select:focus,
 .cm-textarea:focus {
-    border-color: #3d5a80;
+    border-color: #ed6d0b;
 }
 
 .cm-textarea {
@@ -123,24 +123,24 @@
     padding: 8px 4px;
     border: 1px solid #ddd;
     background: white;
-    color: #888;
+    color: #000;
     cursor: pointer;
     transition: all 0.15s;
     text-align: center;
 }
 
-.cm-scale-btn:hover { border-color: #3d5a80; color: #3d5a80; }
+.cm-scale-btn:hover { border-color: #ed6d0b; color: #ed6d0b; }
 
 .cm-scale-btn.active {
-    background: #3d5a80;
-    border-color: #3d5a80;
+    background: #ed6d0b;
+    border-color: #ed6d0b;
     color: white;
 }
 
 .cm-scale-caption {
     font-size: 0.75em;
     font-weight: 300;
-    color: #3d5a80;
+    color: #ed6d0b;
     min-height: 16px;
     margin-top: 2px;
 }
@@ -172,13 +172,13 @@
 .cm-list-item-title {
     font-size: 0.9em;
     font-weight: 600;
-    color: #222;
+    color: #000;
 }
 
 .cm-list-item-sub {
     font-size: 0.78em;
     font-weight: 300;
-    color: #777;
+    color: #000;
     line-height: 1.5;
 }
 
@@ -186,7 +186,7 @@
     flex-shrink: 0;
     border: none;
     background: none;
-    color: #bbb;
+    color: #000;
     font-size: 1.1em;
     line-height: 1;
     cursor: pointer;
@@ -197,7 +197,7 @@
 
 .cm-list-empty {
     font-size: 0.8em;
-    color: #bbb;
+    color: #000;
     font-weight: 300;
     padding: 4px 0;
 }
@@ -219,21 +219,21 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
     padding: 9px 16px;
-    border: 1px solid #3d5a80;
+    border: 1px solid #ed6d0b;
     background: white;
-    color: #3d5a80;
+    color: #ed6d0b;
     cursor: pointer;
     transition: all 0.15s;
 }
 
-.cm-add-btn:hover { background: #3d5a80; color: white; }
+.cm-add-btn:hover { background: #ed6d0b; color: white; }
 .cm-add-btn:disabled {
     border-color: #ddd;
-    color: #bbb;
+    color: #000;
     cursor: not-allowed;
     background: #f5f5f5;
 }
-.cm-add-btn:disabled:hover { background: #f5f5f5; color: #bbb; }
+.cm-add-btn:disabled:hover { background: #f5f5f5; color: #000; }
 
 .cm-list-row-end {
     display: flex;
@@ -244,14 +244,14 @@
 
 .cm-list-count {
     font-size: 0.75em;
-    color: #aaa;
+    color: #000;
     font-weight: 300;
 }
 
 .cm-yeargrid-label {
     font-size: 0.7em;
     font-weight: 400;
-    color: #aaa;
+    color: #000;
     text-transform: uppercase;
     letter-spacing: 0.04em;
     margin: 8px 0 4px;
@@ -269,7 +269,7 @@
     right: 0;
     background: white;
     border: 1px solid #e8e8e8;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
     max-height: 320px;
     overflow-y: auto;
     z-index: 20;
@@ -340,7 +340,7 @@
     flex: 1;
     font-size: 0.95em;
     font-weight: 600;
-    color: #222;
+    color: #000;
 }
 
 .cm-target-remove {
@@ -360,7 +360,7 @@
     align-items: center;
     gap: 8px;
     font-size: 0.82em;
-    color: #555;
+    color: #000;
     font-weight: 300;
     cursor: pointer;
 }
@@ -384,13 +384,13 @@
     letter-spacing: 0.06em;
     padding: 14px 36px;
     border: none;
-    background: #3d5a80;
+    background: #ed6d0b;
     color: white;
     cursor: pointer;
     transition: background 0.15s;
 }
 
-.cm-submit-btn:hover { background: #2e4666; }
+.cm-submit-btn:hover { background: #b95509; }
 .cm-submit-btn:disabled { background: #ccc; cursor: not-allowed; }
 
 .cm-form-error {
@@ -409,7 +409,7 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    color: #222;
+    color: #000;
     text-align: center;
     margin-bottom: 6px;
 }
@@ -418,7 +418,7 @@
     text-align: center;
     font-size: 0.8em;
     font-weight: 300;
-    color: #999;
+    color: #000;
     margin-bottom: 22px;
 }
 
@@ -451,7 +451,7 @@
 
 .cm-result-meta {
     font-size: 0.75em;
-    color: #aaa;
+    color: #000;
     font-weight: 300;
 }
 
@@ -472,7 +472,7 @@
 
 .cm-result-pct {
     font-size: 0.7em;
-    color: #aaa;
+    color: #000;
     margin-top: 4px;
 }
 
@@ -487,21 +487,21 @@
 .cm-result-toggle button {
     background: none;
     border: none;
-    color: #999;
+    color: #000;
     font-size: 0.72em;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     cursor: pointer;
 }
 
-.cm-result-toggle button:hover { color: #3d5a80; }
+.cm-result-toggle button:hover { color: #ed6d0b; }
 
 .cm-result-detail {
     width: 100%;
     display: none;
     padding-top: 10px;
     font-size: 0.8em;
-    color: #666;
+    color: #000;
     font-weight: 300;
     line-height: 1.8;
 }
@@ -515,12 +515,12 @@
     padding: 3px 0;
 }
 
-.cm-result-detail .cm-detail-row span:last-child { font-weight: 600; color: #333; }
+.cm-result-detail .cm-detail-row span:last-child { font-weight: 600; color: #000; }
 
 .cm-detail-note {
     margin-top: 8px;
     font-size: 0.9em;
-    color: #aaa;
+    color: #000;
     font-style: italic;
 }
 
@@ -548,14 +548,14 @@
     padding: 16px 20px;
     font-size: 0.78em;
     font-weight: 300;
-    color: #777;
+    color: #000;
     line-height: 1.8;
 }
 
 .cm-methodology summary {
     cursor: pointer;
     font-weight: 600;
-    color: #3d5a80;
+    color: #ed6d0b;
     text-transform: uppercase;
     letter-spacing: 0.04em;
     font-size: 0.95em;
