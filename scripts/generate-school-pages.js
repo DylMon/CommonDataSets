@@ -111,6 +111,12 @@ function sitemapXml(slugs) {
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
+
+  <url>
+    <loc>https://commondatasets.com/chanceme.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
 ${schoolUrls}
 </urlset>
 `;
