@@ -265,6 +265,16 @@ body {
     text-overflow: ellipsis;
 }
 
+/* Year toggle */
+.year-toggle-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
 /* Sort bar */
 .sort-bar {
     padding-bottom: 12px;

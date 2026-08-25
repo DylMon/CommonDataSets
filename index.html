@@ -25,7 +25,7 @@
     <div class="container">
         <div class="page-intro">
             <h1 class="page-intro-title">Data Sets</h1>
-            <p class="page-intro-desc">CommonDataSets compiles official Common Data Set submissions directly from 33 top US universities, giving students and families one place to compare verified admissions statistics, test score ranges, cost of attendance, and enrollment data without the noise. Data covers the 2024–2025 admissions cycle.</p>
+            <p class="page-intro-desc" id="page-intro-desc">CommonDataSets compiles official Common Data Set submissions directly from top US universities, giving students and families one place to compare verified admissions statistics, test score ranges, cost of attendance, and enrollment data without the noise.</p>
         </div>
         <div class="content-wrapper">
             <div class="search-bar">
@@ -40,6 +40,19 @@
             <div class="page-layout">
             <div class="sidebar">
             <div class="controls-container">
+            <div class="year-toggle-bar">
+                <span class="sort-label">Data Year</span>
+                <div class="sort-dropdown" id="year-dropdown">
+                    <button class="sort-dropdown-btn" id="year-dropdown-btn">
+                        <span id="year-label-text">2025–26</span>
+                        <svg class="sort-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="sort-dropdown-menu" id="year-dropdown-menu">
+                        <button class="sort-option active" data-year="2025-2026">2025–26</button>
+                        <button class="sort-option" data-year="2024-2025">2024–25</button>
+                    </div>
+                </div>
+            </div>
             <div class="sort-bar">
                 <span class="sort-label">Sort by</span>
                 <div class="sort-dropdown" id="sort-dropdown">
@@ -213,6 +226,16 @@
         let allSchools = [];
         let searchQuery = '';
         let currentSort = 'us-news';
+        let currentYear = localStorage.getItem('cds_data_year') || '2025-2026';
+        const schoolsCache = {};
+        const YEAR_FILES = {
+            '2025-2026': 'data/schools-2025-2026.json',
+            '2024-2025': 'data/schools-2024-2025.json',
+        };
+        const YEAR_LABELS = {
+            '2025-2026': '2025–2026',
+            '2024-2025': '2024–2025',
+        };
 
         function renderFavoritesBox() {
             const slugs = [...favorites];
@@ -324,17 +347,46 @@
             }).join('');
         }
 
-        async function init() {
-            const res = await fetch('data/schools-2025-2026.json');
-            if (!res.ok) {
-                document.getElementById('school-list').innerHTML = '<p class="loading">Failed to load schools.</p>';
-                return;
+        async function loadYear(year) {
+            if (!schoolsCache[year]) {
+                const res = await fetch(YEAR_FILES[year]);
+                if (!res.ok) {
+                    document.getElementById('school-list').innerHTML = '<p class="loading">Failed to load schools.</p>';
+                    return;
+                }
+                const { schools } = await res.json();
+                schoolsCache[year] = schools;
             }
-            const { schools } = await res.json();
-            allSchools = schools;
-            renderList('us-news');
+            currentYear = year;
+            allSchools = schoolsCache[year];
+            localStorage.setItem('cds_data_year', year);
+            document.getElementById('page-intro-desc').textContent =
+                `CommonDataSets compiles official Common Data Set submissions directly from ${allSchools.length} top US universities, giving students and families one place to compare verified admissions statistics, test score ranges, cost of attendance, and enrollment data without the noise. Data covers the ${YEAR_LABELS[year]} admissions cycle.`;
+            renderList(currentSort);
             renderFavoritesBox();
             renderHistory();
+        }
+
+        async function init() {
+            const yearDropdown = document.getElementById('year-dropdown');
+            document.getElementById('year-dropdown-btn').addEventListener('click', () => {
+                yearDropdown.classList.toggle('open');
+            });
+            document.addEventListener('click', e => {
+                if (!e.target.closest('#year-dropdown')) yearDropdown.classList.remove('open');
+            });
+            document.querySelectorAll('#year-dropdown-menu .sort-option').forEach(opt => {
+                opt.classList.toggle('active', opt.dataset.year === currentYear);
+                opt.addEventListener('click', () => {
+                    document.querySelectorAll('#year-dropdown-menu .sort-option').forEach(o => o.classList.remove('active'));
+                    opt.classList.add('active');
+                    document.getElementById('year-label-text').textContent = opt.textContent;
+                    yearDropdown.classList.remove('open');
+                    if (opt.dataset.year !== currentYear) loadYear(opt.dataset.year);
+                });
+            });
+
+            await loadYear(currentYear);
 
             document.getElementById('school-search').addEventListener('input', e => {
                 searchQuery = e.target.value.trim();
@@ -348,9 +400,9 @@
             document.addEventListener('click', e => {
                 if (!e.target.closest('#sort-dropdown')) sortDropdown.classList.remove('open');
             });
-            document.querySelectorAll('.sort-option').forEach(opt => {
+            document.querySelectorAll('#sort-dropdown-menu .sort-option').forEach(opt => {
                 opt.addEventListener('click', () => {
-                    document.querySelectorAll('.sort-option').forEach(o => o.classList.remove('active'));
+                    document.querySelectorAll('#sort-dropdown-menu .sort-option').forEach(o => o.classList.remove('active'));
                     opt.classList.add('active');
                     currentSort = opt.dataset.sort;
                     document.getElementById('sort-label-text').textContent = opt.textContent;
