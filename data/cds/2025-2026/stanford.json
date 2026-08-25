@@ -1,0 +1,174 @@
+{
+  "name": "Stanford University",
+  "data_year": "2025-26",
+  "city": "Stanford",
+  "state": "CA",
+  "location": "Stanford, CA",
+  "school_type": "Private",
+  "website": "www.stanford.edu",
+  "applicants_total": 60646,
+  "applicants_men": 31609,
+  "applicants_women": 29011,
+  "admitted_total": 2302,
+  "admitted_men": 1162,
+  "admitted_women": 1140,
+  "enrolled_total": 1839,
+  "enrolled_men": 945,
+  "enrolled_women": 894,
+  "acceptance_rate": 0.038,
+  "application_fee": 100,
+  "avg_gpa_weighted": 3.94,
+  "rd_deadline": "1/5",
+  "waitlist_offered": 669,
+  "waitlist_accepted": 573,
+  "waitlist_admitted": 57,
+  "ea_ed_type": "REA",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.5557,
+  "sat_submitted_count": 1022,
+  "act_submitted_pct": 0.2094,
+  "act_submitted_count": 385,
+  "sat_composite_25": 1520,
+  "sat_composite_75": 1570,
+  "sat_reading_25": 750,
+  "sat_reading_75": 780,
+  "sat_math_25": 770,
+  "sat_math_75": 800,
+  "act_composite_25": 34,
+  "act_composite_75": 36,
+  "act_math_25": 33,
+  "act_math_75": 36,
+  "act_english_25": 35,
+  "act_english_75": 36,
+  "total_undergrads": 7346,
+  "undergrads_male": 3604,
+  "undergrads_female": 3742,
+  "retention_rate": 0.9746,
+  "tuition": 67731,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 843,
+  "room_and_board": 22944,
+  "books_supplies": 855,
+  "other_expenses": 5172,
+  "pct_out_of_state": 0.56,
+  "pct_on_campus_housing": 1.0,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 669,
+      "accepted_spots": 573,
+      "enrolled": 57
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 31609,
+      "female": 29011
+    },
+    "accepted": {
+      "male": 1162,
+      "female": 1140
+    },
+    "enrolled": {
+      "male": 945,
+      "female": 894
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 237,
+      "hispanic": 232,
+      "black": 68,
+      "white": 466,
+      "american_indian": 7,
+      "asian": 657,
+      "pacific_islander": 3,
+      "two_or_more": 183,
+      "unknown": 13,
+      "total": 1866
+    },
+    "undergrad": {
+      "nonresident_aliens": 965,
+      "hispanic": 1155,
+      "black": 477,
+      "white": 1737,
+      "american_indian": 57,
+      "asian": 2236,
+      "pacific_islander": 14,
+      "two_or_more": 659,
+      "unknown": 46,
+      "total": 7346
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.56,
+    "international_pct": 0.127
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 1022,
+    "sat_submitted_pct": 0.5557,
+    "act_submitted_count": 385,
+    "act_submitted_pct": 0.2094
+  },
+  "class_rank": {
+    "top10": 0.97,
+    "top25": 1.0,
+    "top50": 1.0,
+    "bottom50": null,
+    "bottom25": null
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.7297,
+    "gpa_375_399": 0.1617,
+    "gpa_350_374": 0.0789,
+    "gpa_325_349": 0.0289,
+    "gpa_300_324": 0.0008,
+    "gpa_250_299": null,
+    "gpa_200_249": null,
+    "gpa_100_199": null
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "very_important",
+    "academic_gpa": "very_important",
+    "test_scores": "very_important",
+    "essay": "very_important",
+    "recommendations": "very_important",
+    "interview": "considered",
+    "extracurriculars": "very_important",
+    "talent": "very_important",
+    "character": "very_important",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 2720,
+      "admitted": 64,
+      "enrolled": 55
+    },
+    "female": {
+      "applied": 1804,
+      "admitted": 38,
+      "enrolled": 34
+    },
+    "total": {
+      "applied": 4532,
+      "admitted": 102,
+      "enrolled": 89
+    }
+  },
+  "slug": "stanford"
+}

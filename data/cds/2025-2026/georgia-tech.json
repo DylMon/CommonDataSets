@@ -1,0 +1,174 @@
+{
+  "name": "Georgia Institute of Technology",
+  "data_year": "2025-26",
+  "city": "Atlanta",
+  "state": "GA",
+  "location": "Atlanta, GA",
+  "school_type": "Public",
+  "website": "www.gatech.edu",
+  "applicants_total": 66881,
+  "applicants_men": 44517,
+  "applicants_women": 22363,
+  "admitted_total": 8921,
+  "admitted_men": 4937,
+  "admitted_women": 3983,
+  "enrolled_total": 4071,
+  "enrolled_men": 2340,
+  "enrolled_women": 1730,
+  "acceptance_rate": 0.1334,
+  "application_fee": 75,
+  "avg_gpa_weighted": 4.17,
+  "rd_deadline": "1/5",
+  "waitlist_offered": 7651,
+  "waitlist_accepted": 4875,
+  "waitlist_admitted": 653,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "1/31",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.78,
+  "sat_submitted_count": 3181,
+  "act_submitted_pct": 0.33,
+  "act_submitted_count": 1348,
+  "sat_composite_25": 1370,
+  "sat_composite_75": 1530,
+  "sat_reading_25": 680,
+  "sat_reading_75": 760,
+  "sat_math_25": 700,
+  "sat_math_75": 790,
+  "act_composite_25": 31,
+  "act_composite_75": 35,
+  "act_math_25": 29,
+  "act_math_75": 35,
+  "act_english_25": 31,
+  "act_english_75": 35,
+  "total_undergrads": 21028,
+  "undergrads_male": 12659,
+  "undergrads_female": 8369,
+  "retention_rate": 0.973,
+  "tuition": null,
+  "tuition_in_state": 10618,
+  "tuition_out_of_state": 34604,
+  "required_fees": 1516,
+  "room_and_board": 14628,
+  "books_supplies": 800,
+  "other_expenses": 2800,
+  "pct_out_of_state": 0.36,
+  "pct_on_campus_housing": 0.92,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 7651,
+      "accepted_spots": 4875,
+      "enrolled": 653
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 44517,
+      "female": 22363
+    },
+    "accepted": {
+      "male": 4937,
+      "female": 3983
+    },
+    "enrolled": {
+      "male": 2340,
+      "female": 1730
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 310,
+      "hispanic": 339,
+      "black": 285,
+      "white": 1429,
+      "american_indian": null,
+      "asian": 1404,
+      "pacific_islander": 2,
+      "two_or_more": 230,
+      "unknown": 60,
+      "total": 4059
+    },
+    "undergrad": {
+      "nonresident_aliens": 1589,
+      "hispanic": 1834,
+      "black": 1729,
+      "white": 6756,
+      "american_indian": null,
+      "asian": 7793,
+      "pacific_islander": 8,
+      "two_or_more": 1062,
+      "unknown": 257,
+      "total": 21028
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.36,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 3181,
+    "sat_submitted_pct": 0.78,
+    "act_submitted_count": 1348,
+    "act_submitted_pct": 0.33
+  },
+  "class_rank": {
+    "top10": 0.8869,
+    "top25": 0.9793,
+    "top50": 0.9909,
+    "bottom50": 0.0091,
+    "bottom25": 0.003
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.9585,
+    "gpa_375_399": 0.0325,
+    "gpa_350_374": 0.0039,
+    "gpa_325_349": 0.001,
+    "gpa_300_324": 0.0023,
+    "gpa_250_299": 0.0018,
+    "gpa_200_249": 0.0,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "important",
+    "talent": "considered",
+    "character": "very_important",
+    "first_gen": "not_considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "very_important",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 2774,
+      "admitted": 524,
+      "enrolled": 442
+    },
+    "female": {
+      "applied": 1165,
+      "admitted": 265,
+      "enrolled": 221
+    },
+    "total": {
+      "applied": 3939,
+      "admitted": 789,
+      "enrolled": 663
+    }
+  },
+  "slug": "georgia-tech"
+}

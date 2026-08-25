@@ -1,60 +1,34 @@
-import { createClient } from '@supabase/supabase-js';
-import WebSocket from 'ws';
-import { writeFileSync } from 'fs';
+// scripts/generate-school-pages.js
+//
+// Generates the thin static SEO shell at schools/{slug}.html for any school
+// in data/schools-2025-2026.json that doesn't already have one, and rewrites
+// sitemap.xml to cover every school currently on disk. Actual page content
+// (hero, stats, tables, charts) is rendered client-side by js/school.js from
+// SCHOOL_SLUG — these shells only carry the <title>/<meta description> baked
+// in at generation time for SEO.
+//
+// No longer reads from Supabase — pulls straight from the local JSON file
+// that's already the site's live data source.
+//
+// Run:  node scripts/generate-school-pages.js
+// Only writes pages that don't already exist; existing pages (including the
+// original 33, which may have hand-tuned descriptions) are left untouched.
+
+import { readFileSync, writeFileSync, existsSync, readdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import 'dotenv/config';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
-
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_KEY,
-  { realtime: { transport: WebSocket } }
-);
-
-const SCHOOL_NAMES = {
-  'mit':          'MIT',
-  'harvard':      'Harvard University',
-  'stanford':     'Stanford University',
-  'princeton':    'Princeton University',
-  'yale':         'Yale University',
-  'columbia':     'Columbia University',
-  'upenn':        'University of Pennsylvania',
-  'caltech':      'Caltech',
-  'duke':         'Duke University',
-  'jhu':          'Johns Hopkins University',
-  'northwestern': 'Northwestern University',
-  'dartmouth':    'Dartmouth College',
-  'brown':        'Brown University',
-  'vanderbilt':   'Vanderbilt University',
-  'rice':         'Rice University',
-  'washu':        'Washington University in St. Louis',
-  'notre-dame':   'University of Notre Dame',
-  'cornell':      'Cornell University',
-  'uchicago':     'University of Chicago',
-  'cmu':          'Carnegie Mellon University',
-  'georgetown':   'Georgetown University',
-  'emory':        'Emory University',
-  'wake-forest':  'Wake Forest University',
-  'tufts':        'Tufts University',
-  'ucla':         'UCLA',
-  'berkeley':     'UC Berkeley',
-  'ucsb':         'UC Santa Barbara',
-  'uva':          'University of Virginia',
-  'umich':        'University of Michigan',
-  'unc':          'UNC Chapel Hill',
-  'uf':           'University of Florida',
-  'usc':          'University of Southern California',
-  'nyu':          'New York University',
-};
+const SCHOOLS_DATA_PATH = join(ROOT, 'data', 'schools-2025-2026.json');
+const SCHOOLS_DIR = join(ROOT, 'schools');
 
 function buildDescription(s) {
-  const parts = [`${s.name} admissions data for 2023–24`];
+  const parts = [`${s.name} admissions data for ${s.data_year || '2025-26'}`];
   if (s.acceptance_rate != null) parts.push(`${(s.acceptance_rate * 100).toFixed(1)}% acceptance rate`);
-  if (s.sat_avg)                 parts.push(`${s.sat_avg} SAT average`);
-  if (s.location)                parts.push(s.location);
+  const sat25 = s.sat_composite_25, sat75 = s.sat_composite_75;
+  if (sat25 != null && sat75 != null) parts.push(`${Math.round((sat25 + sat75) / 2)} SAT average`);
+  if (s.location) parts.push(s.location);
   parts.push('SAT/ACT scores, GPA, tuition, and student demographics.');
   return parts.join(' · ');
 }
@@ -123,41 +97,36 @@ ${schoolUrls}
 `;
 }
 
-async function main() {
-  console.log('Fetching school data from Supabase…');
-  const { data: schools, error } = await supabase
-    .from('schools')
-    .select('slug, name, acceptance_rate, sat_avg, location')
-    .eq('data_year', '2023-24');
+function main() {
+  const { schools } = JSON.parse(readFileSync(SCHOOLS_DATA_PATH, 'utf8'));
 
-  if (error) {
-    console.error('Supabase error:', error.message);
-    process.exit(1);
-  }
+  const existingSlugs = new Set(
+    readdirSync(SCHOOLS_DIR)
+      .filter(f => f.endsWith('.html') && f !== 'school.html')
+      .map(f => f.slice(0, -'.html'.length))
+  );
 
-  const bySlug = Object.fromEntries(schools.map(s => [s.slug, s]));
-  const slugs = Object.keys(SCHOOL_NAMES);
-  const generated = [];
+  const created = [];
+  const skipped = [];
 
-  for (const slug of slugs) {
-    const s = bySlug[slug];
-    if (!s) {
-      console.warn(`  SKIP ${slug} — not found in DB`);
+  for (const s of schools) {
+    const outPath = join(SCHOOLS_DIR, `${s.slug}.html`);
+    if (existsSync(outPath)) {
+      skipped.push(s.slug);
       continue;
     }
-    const name = s.name || SCHOOL_NAMES[slug];
     const description = buildDescription(s);
-    const html = pageHtml(slug, name, description);
-    const outPath = join(ROOT, 'schools', `${slug}.html`);
-    writeFileSync(outPath, html, 'utf8');
-    generated.push(slug);
-    console.log(`  ✓ schools/${slug}.html`);
+    writeFileSync(outPath, pageHtml(s.slug, s.name, description), 'utf8');
+    created.push(s.slug);
+    console.log(`  + schools/${s.slug}.html`);
   }
 
-  const sitemapPath = join(ROOT, 'sitemap.xml');
-  writeFileSync(sitemapPath, sitemapXml(generated), 'utf8');
-  console.log(`\nWrote sitemap.xml with ${generated.length} school URLs.`);
-  console.log(`Generated ${generated.length} pages.`);
+  console.log(`\nCreated ${created.length} new page(s). Skipped ${skipped.length} already present.`);
+
+  // Sitemap covers every school currently on disk, not just the ones created this run.
+  const allSlugs = [...existingSlugs, ...created].sort();
+  writeFileSync(join(ROOT, 'sitemap.xml'), sitemapXml(allSlugs), 'utf8');
+  console.log(`Wrote sitemap.xml with ${allSlugs.length} school URLs.`);
 }
 
 main();

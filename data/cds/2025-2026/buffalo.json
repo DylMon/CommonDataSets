@@ -1,0 +1,174 @@
+{
+  "name": "University at Buffalo",
+  "data_year": "2025-2026",
+  "city": "Buffalo",
+  "state": "NY",
+  "location": "Buffalo, NY",
+  "school_type": "Public",
+  "website": "buffalo.edu",
+  "applicants_total": 45637,
+  "applicants_men": 22006,
+  "applicants_women": 23601,
+  "admitted_total": 36780,
+  "admitted_men": 17557,
+  "admitted_women": 19201,
+  "enrolled_total": 5155,
+  "enrolled_men": 2756,
+  "enrolled_women": 2396,
+  "acceptance_rate": 0.806,
+  "application_fee": 50,
+  "avg_gpa_weighted": 91.6,
+  "rd_deadline": null,
+  "waitlist_offered": 2355,
+  "waitlist_accepted": 857,
+  "waitlist_admitted": 106,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "Ongoing basis",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.267,
+  "sat_submitted_count": 1340,
+  "act_submitted_pct": 0.019,
+  "act_submitted_count": 97,
+  "sat_composite_25": null,
+  "sat_composite_75": null,
+  "sat_reading_25": 610,
+  "sat_reading_75": 690,
+  "sat_math_25": 610,
+  "sat_math_75": 700,
+  "act_composite_25": 27,
+  "act_composite_75": 31,
+  "act_math_25": null,
+  "act_math_75": null,
+  "act_english_25": null,
+  "act_english_75": null,
+  "total_undergrads": 21192,
+  "undergrads_male": 11399,
+  "undergrads_female": 9782,
+  "retention_rate": 0.85,
+  "tuition": null,
+  "tuition_in_state": 7070,
+  "tuition_out_of_state": 28500,
+  "required_fees": 3966,
+  "room_and_board": 18063,
+  "books_supplies": 1500,
+  "other_expenses": 5250,
+  "pct_out_of_state": 0.04,
+  "pct_on_campus_housing": 0.67,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 2355,
+      "accepted_spots": 857,
+      "enrolled": 106
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 22006,
+      "female": 23601
+    },
+    "accepted": {
+      "male": 17557,
+      "female": 19201
+    },
+    "enrolled": {
+      "male": 2756,
+      "female": 2396
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 433,
+      "hispanic": 663,
+      "black": 555,
+      "white": 2030,
+      "american_indian": 9,
+      "asian": 1065,
+      "pacific_islander": 1,
+      "two_or_more": 247,
+      "unknown": 152,
+      "total": 5155
+    },
+    "undergrad": {
+      "nonresident_aliens": 2359,
+      "hispanic": 2143,
+      "black": 2099,
+      "white": 8969,
+      "american_indian": 45,
+      "asian": 3922,
+      "pacific_islander": 5,
+      "two_or_more": 910,
+      "unknown": 740,
+      "total": 21192
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.04,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 1340,
+    "sat_submitted_pct": 0.267,
+    "act_submitted_count": 97,
+    "act_submitted_pct": 0.019
+  },
+  "class_rank": {
+    "top10": 0.27,
+    "top25": 0.56,
+    "top50": 0.87,
+    "bottom50": 0.13,
+    "bottom25": 0.02
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.32,
+    "gpa_375_399": 0.14,
+    "gpa_350_374": 0.2,
+    "gpa_325_349": 0.11,
+    "gpa_300_324": 0.13,
+    "gpa_250_299": 0.09,
+    "gpa_200_249": 0.01,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "important",
+    "academic_gpa": "very_important",
+    "test_scores": "very_important",
+    "essay": "considered",
+    "recommendations": "important",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": "considered",
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 2349,
+      "admitted": 1598,
+      "enrolled": 734
+    },
+    "female": {
+      "applied": 2309,
+      "admitted": 1451,
+      "enrolled": 758
+    },
+    "total": {
+      "applied": 4663,
+      "admitted": 3052,
+      "enrolled": 1493
+    }
+  },
+  "slug": "buffalo"
+}

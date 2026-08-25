@@ -1,0 +1,174 @@
+{
+  "name": "North Carolina State University",
+  "data_year": "2025-26",
+  "city": "Raleigh",
+  "state": "NC",
+  "location": "Raleigh, NC",
+  "school_type": "Public",
+  "website": "www.ncsu.edu",
+  "applicants_total": 49351,
+  "applicants_men": 24222,
+  "applicants_women": 25129,
+  "admitted_total": 19514,
+  "admitted_men": 8754,
+  "admitted_women": 10760,
+  "enrolled_total": 5906,
+  "enrolled_men": 2933,
+  "enrolled_women": 2973,
+  "acceptance_rate": 0.3954,
+  "application_fee": 85.0,
+  "avg_gpa_weighted": 3.82,
+  "rd_deadline": "6/1",
+  "waitlist_offered": 10710,
+  "waitlist_accepted": 4311,
+  "waitlist_admitted": 476,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "1/30",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.11,
+  "sat_submitted_count": 667,
+  "act_submitted_pct": 0.29,
+  "act_submitted_count": 1716,
+  "sat_composite_25": 1310,
+  "sat_composite_75": 1440,
+  "sat_reading_25": 650,
+  "sat_reading_75": 720,
+  "sat_math_25": 660,
+  "sat_math_75": 730,
+  "act_composite_25": 28,
+  "act_composite_75": 32,
+  "act_math_25": 26,
+  "act_math_75": 32,
+  "act_english_25": 26,
+  "act_english_75": 33,
+  "total_undergrads": 29340,
+  "undergrads_male": 14922,
+  "undergrads_female": 14418,
+  "retention_rate": 0.94,
+  "tuition": null,
+  "tuition_in_state": 6535.0,
+  "tuition_out_of_state": 31500.0,
+  "required_fees": 2493.0,
+  "room_and_board": 14741.0,
+  "books_supplies": 624.0,
+  "other_expenses": null,
+  "pct_out_of_state": 0.12,
+  "pct_on_campus_housing": 0.97,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 10710,
+      "accepted_spots": 4311,
+      "enrolled": 476
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 24222,
+      "female": 25129
+    },
+    "accepted": {
+      "male": 8754,
+      "female": 10760
+    },
+    "enrolled": {
+      "male": 2933,
+      "female": 2973
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 166,
+      "hispanic": 607,
+      "black": 291,
+      "white": 3857,
+      "american_indian": 19,
+      "asian": 621,
+      "pacific_islander": 2,
+      "two_or_more": 299,
+      "unknown": 44,
+      "total": 5906
+    },
+    "undergrad": {
+      "nonresident_aliens": 766,
+      "hispanic": 2945,
+      "black": 1716,
+      "white": 18840,
+      "american_indian": 88,
+      "asian": 2998,
+      "pacific_islander": 17,
+      "two_or_more": 1504,
+      "unknown": 466,
+      "total": 29340
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.12,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 667,
+    "sat_submitted_pct": 0.11,
+    "act_submitted_count": 1716,
+    "act_submitted_pct": 0.29
+  },
+  "class_rank": {
+    "top10": 0.4,
+    "top25": 0.77,
+    "top50": 0.96,
+    "bottom50": 0.04,
+    "bottom25": 0.01
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.195,
+    "gpa_375_399": 0.572,
+    "gpa_350_374": 0.1873,
+    "gpa_325_349": 0.0266,
+    "gpa_300_324": 0.0085,
+    "gpa_250_299": 0.0078,
+    "gpa_200_249": 0.0028,
+    "gpa_100_199": null
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "important",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "considered",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 3070,
+      "admitted": 1347,
+      "enrolled": 991
+    },
+    "female": {
+      "applied": 2360,
+      "admitted": 1106,
+      "enrolled": 742
+    },
+    "total": {
+      "applied": 5430,
+      "admitted": 2453,
+      "enrolled": 1733
+    }
+  },
+  "slug": "nc-state"
+}

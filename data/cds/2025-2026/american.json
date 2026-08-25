@@ -1,0 +1,151 @@
+{
+  "name": "American University",
+  "data_year": "2025-26",
+  "city": "Washington",
+  "state": "DC",
+  "location": "Washington, DC",
+  "school_type": "Private",
+  "website": "www.american.edu",
+  "applicants_total": 20960,
+  "applicants_men": 7241,
+  "applicants_women": 13697,
+  "admitted_total": 13741,
+  "admitted_men": 4605,
+  "admitted_women": 9129,
+  "enrolled_total": 1545,
+  "enrolled_men": 592,
+  "enrolled_women": 953,
+  "acceptance_rate": 0.6555,
+  "application_fee": 75,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "1/15",
+  "waitlist_offered": 4928,
+  "waitlist_accepted": 1785,
+  "waitlist_admitted": 1182,
+  "ea_ed_type": "ED I & II",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/31",
+  "ea_apps_received": 392,
+  "ea_apps_admitted": 316,
+  "sat_submitted_pct": 0.1592,
+  "sat_submitted_count": 246,
+  "act_submitted_pct": 0.0608,
+  "act_submitted_count": 94,
+  "sat_composite_25": 1320,
+  "sat_composite_75": 1440,
+  "sat_reading_25": 630,
+  "sat_reading_75": 710,
+  "sat_math_25": 680,
+  "sat_math_75": 740,
+  "act_composite_25": 30,
+  "act_composite_75": 33,
+  "act_math_25": 26,
+  "act_math_75": 30,
+  "act_english_25": 31,
+  "act_english_75": 35,
+  "total_undergrads": 6730,
+  "undergrads_male": 2581,
+  "undergrads_female": 4149,
+  "retention_rate": 0.87,
+  "tuition": 62680,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 1972,
+  "room_and_board": 19696,
+  "books_supplies": 1200,
+  "other_expenses": 1148,
+  "pct_out_of_state": 0.98,
+  "pct_on_campus_housing": 0.95,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 7241,
+      "female": 13697
+    },
+    "accepted": {
+      "male": 4605,
+      "female": 9129
+    },
+    "enrolled": {
+      "male": 592,
+      "female": 953
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 36,
+      "hispanic": 301,
+      "black": 207,
+      "white": 749,
+      "american_indian": 2,
+      "asian": 111,
+      "pacific_islander": 1,
+      "two_or_more": 93,
+      "unknown": 45,
+      "total": 1545
+    },
+    "undergrad": {
+      "nonresident_aliens": 378,
+      "hispanic": 1069,
+      "black": 664,
+      "white": 3467,
+      "american_indian": 7,
+      "asian": 497,
+      "pacific_islander": 4,
+      "two_or_more": 407,
+      "unknown": 237,
+      "total": 6730
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.98,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 246,
+    "sat_submitted_pct": 0.1592,
+    "act_submitted_count": 94,
+    "act_submitted_pct": 0.0608
+  },
+  "class_rank": null,
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "important",
+    "interview": "not_considered",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "important",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "considered",
+    "applicant_interest": "very_important"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 301,
+      "admitted": 273,
+      "enrolled": 54
+    },
+    "female": {
+      "applied": 412,
+      "admitted": 381,
+      "enrolled": 73
+    },
+    "total": {
+      "applied": 713,
+      "admitted": 654,
+      "enrolled": 127
+    }
+  },
+  "slug": "american"
+}

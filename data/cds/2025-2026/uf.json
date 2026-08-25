@@ -1,0 +1,174 @@
+{
+  "name": "University of Florida",
+  "data_year": "2025-2026",
+  "city": "Gainesville",
+  "state": "FL",
+  "location": "Gainesville, FL",
+  "school_type": "Public",
+  "website": "www.ufl.edu",
+  "applicants_total": 90523,
+  "applicants_men": 40876,
+  "applicants_women": 49647,
+  "admitted_total": 18403,
+  "admitted_men": 8725,
+  "admitted_women": 9678,
+  "enrolled_total": 7619,
+  "enrolled_men": 3526,
+  "enrolled_women": 4093,
+  "acceptance_rate": 0.2034,
+  "application_fee": 30,
+  "avg_gpa_weighted": 3.9,
+  "rd_deadline": "1/15",
+  "waitlist_offered": 3196,
+  "waitlist_accepted": 2737,
+  "waitlist_admitted": 1,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "1/23",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.78,
+  "sat_submitted_count": 5839,
+  "act_submitted_pct": 0.39,
+  "act_submitted_count": 2919,
+  "sat_composite_25": 1330,
+  "sat_composite_75": 1490,
+  "sat_reading_25": 670,
+  "sat_reading_75": 740,
+  "sat_math_25": 660,
+  "sat_math_75": 750,
+  "act_composite_25": 29,
+  "act_composite_75": 33,
+  "act_math_25": 27,
+  "act_math_75": 32,
+  "act_english_25": 28,
+  "act_english_75": 35,
+  "total_undergrads": 37283,
+  "undergrads_male": 17007,
+  "undergrads_female": 20276,
+  "retention_rate": 0.97,
+  "tuition": null,
+  "tuition_in_state": 4477,
+  "tuition_out_of_state": 31316,
+  "required_fees": 1959,
+  "room_and_board": 14190,
+  "books_supplies": 810,
+  "other_expenses": 2680,
+  "pct_out_of_state": 0.21,
+  "pct_on_campus_housing": 0.69,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 3196,
+      "accepted_spots": 2737,
+      "enrolled": 1
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 40876,
+      "female": 49647
+    },
+    "accepted": {
+      "male": 8725,
+      "female": 9678
+    },
+    "enrolled": {
+      "male": 3526,
+      "female": 4093
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 178,
+      "hispanic": 1855,
+      "black": 279,
+      "white": 3625,
+      "american_indian": 6,
+      "asian": 1146,
+      "pacific_islander": 3,
+      "two_or_more": 428,
+      "unknown": 99,
+      "total": 7619
+    },
+    "undergrad": {
+      "nonresident_aliens": 1067,
+      "hispanic": 9399,
+      "black": 1722,
+      "white": 17826,
+      "american_indian": 26,
+      "asian": 4749,
+      "pacific_islander": 20,
+      "two_or_more": 1885,
+      "unknown": 589,
+      "total": 37283
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.21,
+    "international_pct": 0.02
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 5839,
+    "sat_submitted_pct": 0.78,
+    "act_submitted_count": 2919,
+    "act_submitted_pct": 0.39
+  },
+  "class_rank": {
+    "top10": 0.85,
+    "top25": 0.98,
+    "top50": 1.0,
+    "bottom50": 0.0,
+    "bottom25": 0.0
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.58,
+    "gpa_375_399": 0.38,
+    "gpa_350_374": 0.04,
+    "gpa_325_349": 0.01,
+    "gpa_300_324": 0.01,
+    "gpa_250_299": 0.01,
+    "gpa_200_249": 0.0,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "important",
+    "essay": "important",
+    "recommendations": "not_considered",
+    "interview": "not_considered",
+    "extracurriculars": "very_important",
+    "talent": "very_important",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "important",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 3339,
+      "admitted": 1274,
+      "enrolled": 796
+    },
+    "female": {
+      "applied": 3370,
+      "admitted": 1444,
+      "enrolled": 966
+    },
+    "total": {
+      "applied": 6709,
+      "admitted": 2718,
+      "enrolled": 1762
+    }
+  },
+  "slug": "uf"
+}

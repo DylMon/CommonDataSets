@@ -1,0 +1,167 @@
+{
+  "name": "University of California, Santa Barbara",
+  "data_year": "2025-26",
+  "city": "Santa Barbara",
+  "state": "CA",
+  "location": "Santa Barbara, CA",
+  "school_type": "Public",
+  "website": "www.ucsb.edu",
+  "applicants_total": 110187,
+  "applicants_men": 48509,
+  "applicants_women": 58374,
+  "admitted_total": 42093,
+  "admitted_men": 16945,
+  "admitted_women": 23627,
+  "enrolled_total": 5081,
+  "enrolled_men": 1982,
+  "enrolled_women": 3052,
+  "acceptance_rate": 0.3821,
+  "application_fee": "$80 (U.S. residents), $95 (international)",
+  "avg_gpa_weighted": 4.29,
+  "rd_deadline": "11/30",
+  "waitlist_offered": 25713,
+  "waitlist_accepted": 18022,
+  "waitlist_admitted": 9603,
+  "ea_ed_type": "None",
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": null,
+  "sat_submitted_count": null,
+  "act_submitted_pct": null,
+  "act_submitted_count": null,
+  "sat_composite_25": null,
+  "sat_composite_75": null,
+  "sat_reading_25": null,
+  "sat_reading_75": null,
+  "sat_math_25": null,
+  "sat_math_75": null,
+  "act_composite_25": null,
+  "act_composite_75": null,
+  "act_math_25": null,
+  "act_math_75": null,
+  "act_english_25": null,
+  "act_english_75": null,
+  "total_undergrads": 23091,
+  "undergrads_male": 9647,
+  "undergrads_female": 13227,
+  "retention_rate": 0.9348,
+  "tuition": null,
+  "tuition_in_state": 14202,
+  "tuition_out_of_state": 53472,
+  "required_fees": 3441,
+  "room_and_board": 23974,
+  "books_supplies": 1478,
+  "other_expenses": 2579,
+  "pct_out_of_state": 0.15,
+  "pct_on_campus_housing": 0.94,
+  "applicant_pools": {
+    "ea": null,
+    "rd": {
+      "applied": 110187,
+      "admitted": 42093,
+      "rate": 0.3821
+    },
+    "waitlist": {
+      "offered": 25713,
+      "accepted_spots": 18022,
+      "enrolled": 9603
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 48509,
+      "female": 58374
+    },
+    "accepted": {
+      "male": 16945,
+      "female": 23627
+    },
+    "enrolled": {
+      "male": 1982,
+      "female": 3052
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 630,
+      "hispanic": 1446,
+      "black": 56,
+      "white": 1559,
+      "american_indian": 3,
+      "asian": 822,
+      "pacific_islander": 7,
+      "two_or_more": 407,
+      "unknown": 152,
+      "total": 5082
+    },
+    "undergrad": {
+      "nonresident_aliens": 1963,
+      "hispanic": 6630,
+      "black": 377,
+      "white": 7235,
+      "american_indian": 28,
+      "asian": 4368,
+      "pacific_islander": 17,
+      "two_or_more": 1879,
+      "unknown": 594,
+      "total": 23091
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.15,
+    "international_pct": null
+  },
+  "sat_act_breakdown": null,
+  "class_rank": null,
+  "gpa_distribution": {
+    "gpa_40": 0.8781,
+    "gpa_375_399": 0.0902,
+    "gpa_350_374": 0.0258,
+    "gpa_325_349": 0.003,
+    "gpa_300_324": 0.0022,
+    "gpa_250_299": 0.0006,
+    "gpa_200_249": null,
+    "gpa_100_199": null
+  },
+  "admission_factors": {
+    "rigor": "important",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "not_considered",
+    "essay": "very_important",
+    "recommendations": "not_considered",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "important",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 10001,
+      "admitted": 5625,
+      "enrolled": 1047
+    },
+    "female": {
+      "applied": 8424,
+      "admitted": 5246,
+      "enrolled": 965
+    },
+    "total": {
+      "applied": 18872,
+      "admitted": 11139,
+      "enrolled": 2036
+    }
+  },
+  "slug": "ucsb"
+}

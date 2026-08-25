@@ -524,7 +524,7 @@ async function init() {
   recentHistory = [slug, ...recentHistory.filter(s => s !== slug)].slice(0, 5);
   localStorage.setItem(historyKey, JSON.stringify(recentHistory));
 
-  const res = await fetch('../data/schools.json');
+  const res = await fetch('../data/schools-2025-2026.json');
   if (!res.ok) {
     document.getElementById('school-sections').innerHTML =
       '<p class="loading">Failed to load school data.</p>';

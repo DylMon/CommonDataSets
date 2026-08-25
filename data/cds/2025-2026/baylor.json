@@ -1,0 +1,165 @@
+{
+  "name": "Baylor University",
+  "data_year": "2025-2026",
+  "city": "Waco",
+  "state": "TX",
+  "location": "Waco, TX",
+  "school_type": "Private",
+  "website": "www.baylor.edu",
+  "applicants_total": 44924,
+  "applicants_men": 16836,
+  "applicants_women": 28080,
+  "admitted_total": 23459,
+  "admitted_men": 9426,
+  "admitted_women": 14031,
+  "enrolled_total": 3552,
+  "enrolled_men": 1355,
+  "enrolled_women": 2197,
+  "acceptance_rate": 0.522,
+  "application_fee": null,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "2/1",
+  "waitlist_offered": 3832,
+  "waitlist_accepted": 916,
+  "waitlist_admitted": 19,
+  "ea_ed_type": "ED",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": 566,
+  "ea_apps_admitted": 453,
+  "sat_submitted_pct": 0.47,
+  "sat_submitted_count": 1679,
+  "act_submitted_pct": 0.22,
+  "act_submitted_count": 799,
+  "sat_composite_25": 1190,
+  "sat_composite_75": 1370,
+  "sat_reading_25": 600,
+  "sat_reading_75": 690,
+  "sat_math_25": 590,
+  "sat_math_75": 690,
+  "act_composite_25": 26,
+  "act_composite_75": 32,
+  "act_math_25": 24,
+  "act_math_75": 30,
+  "act_english_25": 25,
+  "act_english_75": 34,
+  "total_undergrads": 14183,
+  "undergrads_male": 5713,
+  "undergrads_female": 8470,
+  "retention_rate": 0.8929,
+  "tuition": 67756,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": null,
+  "room_and_board": 17222,
+  "books_supplies": 1572,
+  "other_expenses": 2466,
+  "pct_out_of_state": 0.32,
+  "pct_on_campus_housing": 0.98,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 3832,
+      "accepted_spots": 916,
+      "enrolled": 19
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 16836,
+      "female": 28080
+    },
+    "accepted": {
+      "male": 9426,
+      "female": 14031
+    },
+    "enrolled": {
+      "male": 1355,
+      "female": 2197
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 130,
+      "hispanic": 753,
+      "black": 229,
+      "white": 1878,
+      "american_indian": 13,
+      "asian": 323,
+      "pacific_islander": 6,
+      "two_or_more": 196,
+      "unknown": 24,
+      "total": 3552
+    },
+    "undergrad": {
+      "nonresident_aliens": 406,
+      "hispanic": 2685,
+      "black": 866,
+      "white": 8015,
+      "american_indian": 41,
+      "asian": 1212,
+      "pacific_islander": 24,
+      "two_or_more": 735,
+      "unknown": 105,
+      "total": 14089
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.32,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 1679,
+    "sat_submitted_pct": 0.47,
+    "act_submitted_count": 799,
+    "act_submitted_pct": 0.22
+  },
+  "class_rank": {
+    "top10": 0.42,
+    "top25": 0.76,
+    "top50": 0.95,
+    "bottom50": 0.05,
+    "bottom25": 0.02
+  },
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "very_important",
+    "essay": "important",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 755,
+      "admitted": 676,
+      "enrolled": 177
+    },
+    "female": {
+      "applied": 923,
+      "admitted": 838,
+      "enrolled": 178
+    },
+    "total": {
+      "applied": 1678,
+      "admitted": 1514,
+      "enrolled": 355
+    }
+  },
+  "slug": "baylor"
+}

@@ -1,0 +1,165 @@
+{
+  "name": "Lehigh University",
+  "data_year": "2025-26",
+  "city": "Bethlehem",
+  "state": "PA",
+  "location": "Bethlehem, PA",
+  "school_type": "Private",
+  "website": "www2.lehigh.edu",
+  "applicants_total": 19342,
+  "applicants_men": 9791,
+  "applicants_women": 9542,
+  "admitted_total": 5601,
+  "admitted_men": 2690,
+  "admitted_women": 2911,
+  "enrolled_total": 1535,
+  "enrolled_men": 756,
+  "enrolled_women": 779,
+  "acceptance_rate": 0.2896,
+  "application_fee": 75,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "1/1",
+  "waitlist_offered": 4083,
+  "waitlist_accepted": 1988,
+  "waitlist_admitted": 80,
+  "ea_ed_type": "ED I & II",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/5",
+  "ea_apps_received": 2040,
+  "ea_apps_admitted": 966,
+  "sat_submitted_pct": 0.3303,
+  "sat_submitted_count": 507,
+  "act_submitted_pct": 0.1029,
+  "act_submitted_count": 158,
+  "sat_composite_25": 1380,
+  "sat_composite_75": 1480,
+  "sat_reading_25": 680,
+  "sat_reading_75": 740,
+  "sat_math_25": 690,
+  "sat_math_75": 760,
+  "act_composite_25": 31,
+  "act_composite_75": 34,
+  "act_math_25": 29,
+  "act_math_75": 33,
+  "act_english_25": 31,
+  "act_english_75": 35,
+  "total_undergrads": 5986,
+  "undergrads_male": 3057,
+  "undergrads_female": 2929,
+  "retention_rate": 0.9433,
+  "tuition": 69420,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 1170,
+  "room_and_board": 19230,
+  "books_supplies": 1000,
+  "other_expenses": 1500,
+  "pct_out_of_state": 0.7582,
+  "pct_on_campus_housing": 0.9726,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 4083,
+      "accepted_spots": 1988,
+      "enrolled": 80
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 9791,
+      "female": 9542
+    },
+    "accepted": {
+      "male": 2690,
+      "female": 2911
+    },
+    "enrolled": {
+      "male": 756,
+      "female": 779
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 71,
+      "hispanic": 194,
+      "black": 48,
+      "white": 943,
+      "american_indian": 1,
+      "asian": 159,
+      "pacific_islander": 2,
+      "two_or_more": 73,
+      "unknown": 44,
+      "total": 1535
+    },
+    "undergrad": {
+      "nonresident_aliens": 370,
+      "hispanic": 693,
+      "black": 254,
+      "white": 3585,
+      "american_indian": 3,
+      "asian": 653,
+      "pacific_islander": 7,
+      "two_or_more": 278,
+      "unknown": 143,
+      "total": 5986
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.7582,
+    "international_pct": 0.0463
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 507,
+    "sat_submitted_pct": 0.3303,
+    "act_submitted_count": 158,
+    "act_submitted_pct": 0.1029
+  },
+  "class_rank": {
+    "top10": 0.6,
+    "top25": 0.8676,
+    "top50": 0.9831,
+    "bottom50": 0.0169,
+    "bottom25": 0.0028
+  },
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "important",
+    "academic_gpa": "very_important",
+    "test_scores": "important",
+    "essay": "important",
+    "recommendations": "important",
+    "interview": "not_considered",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "important",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "considered",
+    "applicant_interest": "important"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 452,
+      "admitted": 104,
+      "enrolled": 35
+    },
+    "female": {
+      "applied": 352,
+      "admitted": 91,
+      "enrolled": 25
+    },
+    "total": {
+      "applied": 804,
+      "admitted": 195,
+      "enrolled": 60
+    }
+  },
+  "slug": "lehigh"
+}

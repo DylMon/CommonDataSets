@@ -1,0 +1,166 @@
+{
+  "name": "University of Southern California",
+  "data_year": "2025-26",
+  "city": "Los Angeles",
+  "state": "CA",
+  "location": "Los Angeles, CA",
+  "school_type": "Public",
+  "website": null,
+  "applicants_total": 83488,
+  "applicants_men": 37036,
+  "applicants_women": 46419,
+  "admitted_total": 9345,
+  "admitted_men": 4580,
+  "admitted_women": 4759,
+  "enrolled_total": 3759,
+  "enrolled_men": 1745,
+  "enrolled_women": 2013,
+  "acceptance_rate": 0.1119,
+  "application_fee": 85,
+  "avg_gpa_weighted": 3.85,
+  "rd_deadline": "1/10",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.33,
+  "sat_submitted_count": 1243,
+  "act_submitted_pct": 0.12,
+  "act_submitted_count": 453,
+  "sat_composite_25": 1470,
+  "sat_composite_75": 1540,
+  "sat_reading_25": 720,
+  "sat_reading_75": 760,
+  "sat_math_25": 740,
+  "sat_math_75": 790,
+  "act_composite_25": 32,
+  "act_composite_75": 35,
+  "act_math_25": 30,
+  "act_math_75": 35,
+  "act_english_25": 33,
+  "act_english_75": 35,
+  "total_undergrads": 20768,
+  "undergrads_male": 9920,
+  "undergrads_female": 10848,
+  "retention_rate": 0.9518,
+  "tuition": 66640,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 2047,
+  "room_and_board": 19200,
+  "books_supplies": 1200,
+  "other_expenses": 1820,
+  "pct_out_of_state": 0.39,
+  "pct_on_campus_housing": 0.97,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 37036,
+      "female": 46419
+    },
+    "accepted": {
+      "male": 4580,
+      "female": 4759
+    },
+    "enrolled": {
+      "male": 1745,
+      "female": 2013
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 765,
+      "hispanic": 647,
+      "black": 215,
+      "white": 847,
+      "american_indian": 5,
+      "asian": 896,
+      "pacific_islander": 6,
+      "two_or_more": 240,
+      "unknown": 138,
+      "total": 3759
+    },
+    "undergrad": {
+      "nonresident_aliens": 3068,
+      "hispanic": 4032,
+      "black": 1364,
+      "white": 4959,
+      "american_indian": 32,
+      "asian": 4792,
+      "pacific_islander": 43,
+      "two_or_more": 1340,
+      "unknown": 979,
+      "total": 20609
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.39,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 1243,
+    "sat_submitted_pct": 0.33,
+    "act_submitted_count": 453,
+    "act_submitted_pct": 0.12
+  },
+  "class_rank": {
+    "top10": 0.69,
+    "top25": 0.89,
+    "top50": 0.98,
+    "bottom50": 0.02,
+    "bottom25": 0.0
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.282,
+    "gpa_375_399": 0.52,
+    "gpa_350_374": 0.143,
+    "gpa_325_349": 0.035,
+    "gpa_300_324": 0.011,
+    "gpa_250_299": 0.007,
+    "gpa_200_249": 0.002,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "important",
+    "interview": "not_considered",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "very_important",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 5823,
+      "admitted": 1516,
+      "enrolled": 818
+    },
+    "female": {
+      "applied": 4986,
+      "admitted": 1412,
+      "enrolled": 726
+    },
+    "total": {
+      "applied": 10827,
+      "admitted": 2929,
+      "enrolled": 1544
+    }
+  },
+  "slug": "usc"
+}

@@ -1,0 +1,174 @@
+{
+  "name": "New Jersey Institute of Technology",
+  "data_year": "2025-2026",
+  "city": "Newark",
+  "state": "NJ",
+  "location": "Newark, NJ",
+  "school_type": "Public",
+  "website": "www.njit.edu",
+  "applicants_total": 18170,
+  "applicants_men": 11321,
+  "applicants_women": 6849,
+  "admitted_total": 12242,
+  "admitted_men": 7527,
+  "admitted_women": 4715,
+  "enrolled_total": 1832,
+  "enrolled_men": 1241,
+  "enrolled_women": 591,
+  "acceptance_rate": 0.6737,
+  "application_fee": 75,
+  "avg_gpa_weighted": 3.66,
+  "rd_deadline": "3/1",
+  "waitlist_offered": 4405,
+  "waitlist_accepted": 4405,
+  "waitlist_admitted": 493,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/15",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.44,
+  "sat_submitted_count": 812,
+  "act_submitted_pct": 0.04,
+  "act_submitted_count": 66,
+  "sat_composite_25": 1220,
+  "sat_composite_75": 1430,
+  "sat_reading_25": 598,
+  "sat_reading_75": 710,
+  "sat_math_25": 620,
+  "sat_math_75": 730,
+  "act_composite_25": 28,
+  "act_composite_75": 34,
+  "act_math_25": 27,
+  "act_math_75": 34,
+  "act_english_25": 24,
+  "act_english_75": 35,
+  "total_undergrads": 9827,
+  "undergrads_male": 6870,
+  "undergrads_female": 2957,
+  "retention_rate": 0.89,
+  "tuition": null,
+  "tuition_in_state": 18352,
+  "tuition_out_of_state": 38226,
+  "required_fees": 4074,
+  "room_and_board": 18900,
+  "books_supplies": 2900,
+  "other_expenses": null,
+  "pct_out_of_state": 0.05,
+  "pct_on_campus_housing": 0.39,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 4405,
+      "accepted_spots": 4405,
+      "enrolled": 493
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 11321,
+      "female": 6849
+    },
+    "accepted": {
+      "male": 7527,
+      "female": 4715
+    },
+    "enrolled": {
+      "male": 1241,
+      "female": 591
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 161,
+      "hispanic": 514,
+      "black": 173,
+      "white": 426,
+      "american_indian": 3,
+      "asian": 311,
+      "pacific_islander": 0,
+      "two_or_more": 60,
+      "unknown": 46,
+      "total": 1694
+    },
+    "undergrad": {
+      "nonresident_aliens": 709,
+      "hispanic": 2936,
+      "black": 1041,
+      "white": 2633,
+      "american_indian": 11,
+      "asian": 1884,
+      "pacific_islander": 2,
+      "two_or_more": 327,
+      "unknown": 284,
+      "total": 9827
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.05,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 812,
+    "sat_submitted_pct": 0.44,
+    "act_submitted_count": 66,
+    "act_submitted_pct": 0.04
+  },
+  "class_rank": {
+    "top10": 0.3,
+    "top25": 0.58,
+    "top50": 0.87,
+    "bottom50": 0.13,
+    "bottom25": 0.03
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.2419,
+    "gpa_375_399": 0.2354,
+    "gpa_350_374": 0.2361,
+    "gpa_325_349": 0.1604,
+    "gpa_300_324": 0.0834,
+    "gpa_250_299": 0.0382,
+    "gpa_200_249": 0.0039,
+    "gpa_100_199": null
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "important",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "considered",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "not_considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "not_considered",
+    "work_experience": "not_considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1534,
+      "admitted": 1053,
+      "enrolled": 517
+    },
+    "female": {
+      "applied": 697,
+      "admitted": 463,
+      "enrolled": 187
+    },
+    "total": {
+      "applied": 2231,
+      "admitted": 1516,
+      "enrolled": 704
+    }
+  },
+  "slug": "njit"
+}

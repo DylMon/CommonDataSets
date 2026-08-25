@@ -1,0 +1,166 @@
+{
+  "name": "University of Illinois Chicago",
+  "data_year": "2025-26",
+  "city": "Chicago",
+  "state": "IL",
+  "location": "Chicago, IL",
+  "school_type": "Public",
+  "website": "www.uic.edu",
+  "applicants_total": 29929,
+  "applicants_men": 12719,
+  "applicants_women": 17210,
+  "admitted_total": 22674,
+  "admitted_men": 9385,
+  "admitted_women": 13289,
+  "enrolled_total": 5405,
+  "enrolled_men": 2524,
+  "enrolled_women": 2881,
+  "acceptance_rate": 0.7576,
+  "application_fee": 70,
+  "avg_gpa_weighted": 3.45,
+  "rd_deadline": "2/15",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/1",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.47,
+  "sat_submitted_count": 2518,
+  "act_submitted_pct": 0.04,
+  "act_submitted_count": 226,
+  "sat_composite_25": 1030,
+  "sat_composite_75": 1300,
+  "sat_reading_25": 520,
+  "sat_reading_75": 660,
+  "sat_math_25": 500,
+  "sat_math_75": 650,
+  "act_composite_25": 24,
+  "act_composite_75": 31,
+  "act_math_25": 23,
+  "act_math_75": 30,
+  "act_english_25": 22,
+  "act_english_75": 32,
+  "total_undergrads": 24260,
+  "undergrads_male": 11412,
+  "undergrads_female": 12848,
+  "retention_rate": 0.83,
+  "tuition": null,
+  "tuition_in_state": 11652,
+  "tuition_out_of_state": 28352,
+  "required_fees": 3294,
+  "room_and_board": 17100,
+  "books_supplies": 1400,
+  "other_expenses": 4500,
+  "pct_out_of_state": 0.0396,
+  "pct_on_campus_housing": 0.2649,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 12719,
+      "female": 17210
+    },
+    "accepted": {
+      "male": 9385,
+      "female": 13289
+    },
+    "enrolled": {
+      "male": 2524,
+      "female": 2881
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 256,
+      "hispanic": 2267,
+      "black": 560,
+      "white": 941,
+      "american_indian": 2,
+      "asian": 1084,
+      "pacific_islander": 1,
+      "two_or_more": 165,
+      "unknown": 129,
+      "total": 5405
+    },
+    "undergrad": {
+      "nonresident_aliens": 1825,
+      "hispanic": 8844,
+      "black": 2141,
+      "white": 5300,
+      "american_indian": 13,
+      "asian": 4885,
+      "pacific_islander": 6,
+      "two_or_more": 735,
+      "unknown": 511,
+      "total": 24260
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.0396,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 2518,
+    "sat_submitted_pct": 0.47,
+    "act_submitted_count": 226,
+    "act_submitted_pct": 0.04
+  },
+  "class_rank": {
+    "top10": 0.23,
+    "top25": 0.52,
+    "top50": 0.88,
+    "bottom50": 0.12,
+    "bottom25": 0.01
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.0375,
+    "gpa_375_399": 0.2103,
+    "gpa_350_374": 0.2373,
+    "gpa_325_349": 0.2208,
+    "gpa_300_324": 0.1849,
+    "gpa_250_299": 0.1069,
+    "gpa_200_249": 0.0019,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "very_important",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "not_considered",
+    "first_gen": "not_considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "not_considered",
+    "work_experience": "not_considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 3170,
+      "admitted": 1791,
+      "enrolled": 1168
+    },
+    "female": {
+      "applied": 3939,
+      "admitted": 2132,
+      "enrolled": 1282
+    },
+    "total": {
+      "applied": 7109,
+      "admitted": 3923,
+      "enrolled": 2450
+    }
+  },
+  "slug": "uic"
+}

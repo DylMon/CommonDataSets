@@ -1,0 +1,165 @@
+{
+  "name": "University of Connecticut",
+  "data_year": "2025-26",
+  "city": "Storrs",
+  "state": "CT",
+  "location": "Storrs, CT",
+  "school_type": "Public",
+  "website": "uconn.edu",
+  "applicants_total": 59553,
+  "applicants_men": 24845,
+  "applicants_women": 34687,
+  "admitted_total": 32369,
+  "admitted_men": 12359,
+  "admitted_women": 19996,
+  "enrolled_total": 4663,
+  "enrolled_men": 1923,
+  "enrolled_women": 2739,
+  "acceptance_rate": 0.544,
+  "application_fee": 80,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "7/31",
+  "waitlist_offered": 4365,
+  "waitlist_accepted": 1158,
+  "waitlist_admitted": 85,
+  "ea_ed_type": "ED",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/20",
+  "ea_apps_received": 1442,
+  "ea_apps_admitted": 672,
+  "sat_submitted_pct": 0.35,
+  "sat_submitted_count": 1635,
+  "act_submitted_pct": 0.04,
+  "act_submitted_count": 207,
+  "sat_composite_25": 1260,
+  "sat_composite_75": 1420,
+  "sat_reading_25": 630,
+  "sat_reading_75": 720,
+  "sat_math_25": 620,
+  "sat_math_75": 720,
+  "act_composite_25": 29,
+  "act_composite_75": 32,
+  "act_math_25": 27,
+  "act_math_75": 32,
+  "act_english_25": 27,
+  "act_english_75": 34,
+  "total_undergrads": 21042,
+  "undergrads_male": 9315,
+  "undergrads_female": 11727,
+  "retention_rate": 0.92,
+  "tuition": null,
+  "tuition_in_state": 17010,
+  "tuition_out_of_state": 39678,
+  "required_fees": 4564,
+  "room_and_board": 15184,
+  "books_supplies": 1020,
+  "other_expenses": 2060,
+  "pct_out_of_state": 0.44,
+  "pct_on_campus_housing": 0.96,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 4365,
+      "accepted_spots": 1158,
+      "enrolled": 85
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 24845,
+      "female": 34687
+    },
+    "accepted": {
+      "male": 12359,
+      "female": 19996
+    },
+    "enrolled": {
+      "male": 1923,
+      "female": 2739
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 260,
+      "hispanic": 1010,
+      "black": 343,
+      "white": 2192,
+      "american_indian": 6,
+      "asian": 593,
+      "pacific_islander": 2,
+      "two_or_more": 217,
+      "unknown": 40,
+      "total": 4663
+    },
+    "undergrad": {
+      "nonresident_aliens": 1304,
+      "hispanic": 3788,
+      "black": 1614,
+      "white": 10315,
+      "american_indian": 29,
+      "asian": 2594,
+      "pacific_islander": 6,
+      "two_or_more": 1014,
+      "unknown": 170,
+      "total": 20834
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.44,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 1635,
+    "sat_submitted_pct": 0.35,
+    "act_submitted_count": 207,
+    "act_submitted_pct": 0.04
+  },
+  "class_rank": {
+    "top10": 0.45,
+    "top25": 0.81,
+    "top50": 0.97,
+    "bottom50": 0.03,
+    "bottom25": 0.01
+  },
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "considered",
+    "class_rank": "considered",
+    "academic_gpa": "considered",
+    "test_scores": "considered",
+    "essay": "considered",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1199,
+      "admitted": 827,
+      "enrolled": 401
+    },
+    "female": {
+      "applied": 1297,
+      "admitted": 862,
+      "enrolled": 369
+    },
+    "total": {
+      "applied": 2496,
+      "admitted": 1689,
+      "enrolled": 770
+    }
+  },
+  "slug": "uconn"
+}

@@ -1,0 +1,174 @@
+{
+  "name": "Marquette University",
+  "data_year": "2025-2026",
+  "city": "Milwaukee",
+  "state": "WI",
+  "location": "Milwaukee, WI",
+  "school_type": "Private",
+  "website": "www.marquette.edu/explore/apply-today.php",
+  "applicants_total": 20002,
+  "applicants_men": 8634,
+  "applicants_women": 11366,
+  "admitted_total": 15606,
+  "admitted_men": 6552,
+  "admitted_women": 9052,
+  "enrolled_total": 1913,
+  "enrolled_men": 825,
+  "enrolled_women": 1088,
+  "acceptance_rate": 0.7803,
+  "application_fee": null,
+  "avg_gpa_weighted": 3.6,
+  "rd_deadline": "8/10",
+  "waitlist_offered": 1397,
+  "waitlist_accepted": 1397,
+  "waitlist_admitted": 183,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/15",
+  "ea_ed_notification": "12/20",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.15,
+  "sat_submitted_count": 292,
+  "act_submitted_pct": 0.26,
+  "act_submitted_count": 502,
+  "sat_composite_25": 1230,
+  "sat_composite_75": 1360,
+  "sat_reading_25": 610,
+  "sat_reading_75": 700,
+  "sat_math_25": 600,
+  "sat_math_75": 680,
+  "act_composite_25": 26,
+  "act_composite_75": 30,
+  "act_math_25": 25,
+  "act_math_75": 29,
+  "act_english_25": 25,
+  "act_english_75": 32,
+  "total_undergrads": 8206,
+  "undergrads_male": 3652,
+  "undergrads_female": 4554,
+  "retention_rate": 0.93,
+  "tuition": 53890.0,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 1200.0,
+  "room_and_board": 17480.0,
+  "books_supplies": 720.0,
+  "other_expenses": 2950.0,
+  "pct_out_of_state": 0.62,
+  "pct_on_campus_housing": 0.89,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 1397,
+      "accepted_spots": 1397,
+      "enrolled": 183
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 8634,
+      "female": 11366
+    },
+    "accepted": {
+      "male": 6552,
+      "female": 9052
+    },
+    "enrolled": {
+      "male": 825,
+      "female": 1088
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 15,
+      "hispanic": 329,
+      "black": 85,
+      "white": 1245,
+      "american_indian": 1,
+      "asian": 126,
+      "pacific_islander": 4,
+      "two_or_more": 85,
+      "unknown": 23,
+      "total": 1913
+    },
+    "undergrad": {
+      "nonresident_aliens": 108,
+      "hispanic": 1316,
+      "black": 453,
+      "white": 5413,
+      "american_indian": 10,
+      "asian": 521,
+      "pacific_islander": 11,
+      "two_or_more": 291,
+      "unknown": 83,
+      "total": 8206
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.62,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 292,
+    "sat_submitted_pct": 0.15,
+    "act_submitted_count": 502,
+    "act_submitted_pct": 0.26
+  },
+  "class_rank": {
+    "top10": 0.28,
+    "top25": 0.64,
+    "top50": 0.95,
+    "bottom50": 0.05,
+    "bottom25": 0.01
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.07,
+    "gpa_375_399": 0.32,
+    "gpa_350_374": 0.29,
+    "gpa_325_349": 0.18,
+    "gpa_300_324": 0.1,
+    "gpa_250_299": 0.04,
+    "gpa_200_249": 0.0,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "important",
+    "essay": "important",
+    "recommendations": "considered",
+    "interview": "considered",
+    "extracurriculars": "important",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 297,
+      "admitted": 184,
+      "enrolled": 67
+    },
+    "female": {
+      "applied": 327,
+      "admitted": 217,
+      "enrolled": 67
+    },
+    "total": {
+      "applied": 624,
+      "admitted": 401,
+      "enrolled": 134
+    }
+  },
+  "slug": "marquette"
+}

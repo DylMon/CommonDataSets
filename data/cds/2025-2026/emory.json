@@ -1,0 +1,174 @@
+{
+  "name": "Emory University",
+  "data_year": "2025-26",
+  "city": "Atlanta",
+  "state": "GA",
+  "location": "Atlanta, GA",
+  "school_type": "Private",
+  "website": "emory.edu",
+  "applicants_total": 37561,
+  "applicants_men": 14990,
+  "applicants_women": 22566,
+  "admitted_total": 3869,
+  "admitted_men": 1764,
+  "admitted_women": 2105,
+  "enrolled_total": 1443,
+  "enrolled_men": 624,
+  "enrolled_women": 819,
+  "acceptance_rate": 0.103,
+  "application_fee": 75,
+  "avg_gpa_weighted": 3.8,
+  "rd_deadline": "1/1",
+  "waitlist_offered": 7608,
+  "waitlist_accepted": 6422,
+  "waitlist_admitted": 274,
+  "ea_ed_type": "ED I & II",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": 4728,
+  "ea_apps_admitted": 1049,
+  "sat_submitted_pct": 0.47,
+  "sat_submitted_count": 671,
+  "act_submitted_pct": 0.21,
+  "act_submitted_count": 302,
+  "sat_composite_25": 1480,
+  "sat_composite_75": 1540,
+  "sat_reading_25": 720,
+  "sat_reading_75": 760,
+  "sat_math_25": 740,
+  "sat_math_75": 790,
+  "act_composite_25": 33,
+  "act_composite_75": 35,
+  "act_math_25": null,
+  "act_math_75": null,
+  "act_english_25": null,
+  "act_english_75": null,
+  "total_undergrads": 7320,
+  "undergrads_male": 3202,
+  "undergrads_female": 4118,
+  "retention_rate": 0.95,
+  "tuition": 70300,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 1148,
+  "room_and_board": 22406,
+  "books_supplies": 1286,
+  "other_expenses": 1620,
+  "pct_out_of_state": 0.84,
+  "pct_on_campus_housing": 0.98,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 7608,
+      "accepted_spots": 6422,
+      "enrolled": 274
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 14990,
+      "female": 22566
+    },
+    "accepted": {
+      "male": 1764,
+      "female": 2105
+    },
+    "enrolled": {
+      "male": 624,
+      "female": 819
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 198,
+      "hispanic": 157,
+      "black": 126,
+      "white": 378,
+      "american_indian": 0,
+      "asian": 424,
+      "pacific_islander": 0,
+      "two_or_more": 74,
+      "unknown": 86,
+      "total": 1443
+    },
+    "undergrad": {
+      "nonresident_aliens": 1098,
+      "hispanic": 864,
+      "black": 745,
+      "white": 2030,
+      "american_indian": 4,
+      "asian": 1901,
+      "pacific_islander": 1,
+      "two_or_more": 311,
+      "unknown": 231,
+      "total": 7185
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.84,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 671,
+    "sat_submitted_pct": 0.47,
+    "act_submitted_count": 302,
+    "act_submitted_pct": 0.21
+  },
+  "class_rank": {
+    "top10": 0.76,
+    "top25": 0.97,
+    "top50": 0.99,
+    "bottom50": 0.01,
+    "bottom25": null
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.14,
+    "gpa_375_399": 0.63,
+    "gpa_350_374": 0.21,
+    "gpa_325_349": 0.02,
+    "gpa_300_324": null,
+    "gpa_250_299": null,
+    "gpa_200_249": null,
+    "gpa_100_199": null
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "very_important",
+    "essay": "important",
+    "recommendations": "important",
+    "interview": "not_considered",
+    "extracurriculars": "very_important",
+    "talent": "very_important",
+    "character": "very_important",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1279,
+      "admitted": 286,
+      "enrolled": 98
+    },
+    "female": {
+      "applied": 1117,
+      "admitted": 258,
+      "enrolled": 75
+    },
+    "total": {
+      "applied": 2399,
+      "admitted": 544,
+      "enrolled": 173
+    }
+  },
+  "slug": "emory"
+}

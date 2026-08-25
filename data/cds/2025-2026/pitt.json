@@ -1,0 +1,178 @@
+{
+  "name": "University of Pittsburgh",
+  "data_year": "2025-26",
+  "city": "Pittsburgh",
+  "state": "PA",
+  "location": "Pittsburgh, PA",
+  "school_type": "Public",
+  "website": "www.pitt.edu",
+  "applicants_total": 64724,
+  "applicants_men": 27732,
+  "applicants_women": 36992,
+  "admitted_total": 38477,
+  "admitted_men": 15646,
+  "admitted_women": 22831,
+  "enrolled_total": 5876,
+  "enrolled_men": 2335,
+  "enrolled_women": 3541,
+  "acceptance_rate": 0.5945,
+  "application_fee": 55,
+  "avg_gpa_weighted": 4.06,
+  "rd_deadline": "7/30",
+  "waitlist_offered": 6245,
+  "waitlist_accepted": 3198,
+  "waitlist_admitted": 84,
+  "ea_ed_type": "None",
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.403,
+  "sat_submitted_count": 2368,
+  "act_submitted_pct": 0.083,
+  "act_submitted_count": 490,
+  "sat_composite_25": 1280,
+  "sat_composite_75": 1450,
+  "sat_reading_25": 650,
+  "sat_reading_75": 720,
+  "sat_math_25": 630,
+  "sat_math_75": 730,
+  "act_composite_25": 29,
+  "act_composite_75": 33,
+  "act_math_25": 26,
+  "act_math_75": 31,
+  "act_english_25": 27,
+  "act_english_75": 35,
+  "total_undergrads": 21388,
+  "undergrads_male": 8888,
+  "undergrads_female": 12500,
+  "retention_rate": 0.925,
+  "tuition": null,
+  "tuition_in_state": 21594,
+  "tuition_out_of_state": 43328,
+  "required_fees": 2152,
+  "room_and_board": 15430,
+  "books_supplies": 596,
+  "other_expenses": 2478,
+  "pct_out_of_state": 0.37,
+  "pct_on_campus_housing": 0.95,
+  "applicant_pools": {
+    "ea": null,
+    "rd": {
+      "applied": 64724,
+      "admitted": 38477,
+      "rate": 0.5945
+    },
+    "waitlist": {
+      "offered": 6245,
+      "accepted_spots": 3198,
+      "enrolled": 84
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 27732,
+      "female": 36992
+    },
+    "accepted": {
+      "male": 15646,
+      "female": 22831
+    },
+    "enrolled": {
+      "male": 2335,
+      "female": 3541
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 152,
+      "hispanic": 480,
+      "black": 298,
+      "white": 3345,
+      "american_indian": 4,
+      "asian": 991,
+      "pacific_islander": 3,
+      "two_or_more": 322,
+      "unknown": 281,
+      "total": 5876
+    },
+    "undergrad": {
+      "nonresident_aliens": 808,
+      "hispanic": 1541,
+      "black": 1111,
+      "white": 12818,
+      "american_indian": 6,
+      "asian": 3240,
+      "pacific_islander": 7,
+      "two_or_more": 1060,
+      "unknown": 631,
+      "total": 21222
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.37,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 2368,
+    "sat_submitted_pct": 0.403,
+    "act_submitted_count": 490,
+    "act_submitted_pct": 0.083
+  },
+  "class_rank": {
+    "top10": 0.4,
+    "top25": 0.73,
+    "top50": 0.96,
+    "bottom50": 0.04,
+    "bottom25": 0.0
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.59,
+    "gpa_375_399": 0.19,
+    "gpa_350_374": 0.14,
+    "gpa_325_349": 0.06,
+    "gpa_300_324": 0.01,
+    "gpa_250_299": 0.0,
+    "gpa_200_249": 0.0,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "very_important",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "important",
+    "character": "important",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "important",
+    "applicant_interest": "important"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1348,
+      "admitted": 722,
+      "enrolled": 421
+    },
+    "female": {
+      "applied": 1297,
+      "admitted": 691,
+      "enrolled": 350
+    },
+    "total": {
+      "applied": 2645,
+      "admitted": 1413,
+      "enrolled": 771
+    }
+  },
+  "slug": "pitt"
+}

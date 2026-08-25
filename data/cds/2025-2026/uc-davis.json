@@ -1,0 +1,167 @@
+{
+  "name": "University of California - Davis",
+  "data_year": "2025-2026",
+  "city": "Davis",
+  "state": "CA",
+  "location": "Davis, CA",
+  "school_type": "Public",
+  "website": "www.ucdavis.edu/",
+  "applicants_total": 102988,
+  "applicants_men": 46871,
+  "applicants_women": 52616,
+  "admitted_total": 45674,
+  "admitted_men": 18878,
+  "admitted_women": 25103,
+  "enrolled_total": 6810,
+  "enrolled_men": 2685,
+  "enrolled_women": 3952,
+  "acceptance_rate": 0.4435,
+  "application_fee": "$80 domestic/$95 international",
+  "avg_gpa_weighted": 4.03,
+  "rd_deadline": "11/30",
+  "waitlist_offered": 17582,
+  "waitlist_accepted": 9747,
+  "waitlist_admitted": 3758,
+  "ea_ed_type": "None",
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": null,
+  "sat_submitted_count": null,
+  "act_submitted_pct": null,
+  "act_submitted_count": null,
+  "sat_composite_25": null,
+  "sat_composite_75": null,
+  "sat_reading_25": null,
+  "sat_reading_75": null,
+  "sat_math_25": null,
+  "sat_math_75": null,
+  "act_composite_25": null,
+  "act_composite_75": null,
+  "act_math_25": null,
+  "act_math_75": null,
+  "act_english_25": null,
+  "act_english_75": null,
+  "total_undergrads": 31695,
+  "undergrads_male": 12516,
+  "undergrads_female": 17835,
+  "retention_rate": 0.929,
+  "tuition": null,
+  "tuition_in_state": 14202,
+  "tuition_out_of_state": 53472,
+  "required_fees": 3798,
+  "room_and_board": 22125,
+  "books_supplies": 1209,
+  "other_expenses": 2656,
+  "pct_out_of_state": 0.071,
+  "pct_on_campus_housing": 0.903,
+  "applicant_pools": {
+    "ea": null,
+    "rd": {
+      "applied": 102988,
+      "admitted": 45674,
+      "rate": 0.4435
+    },
+    "waitlist": {
+      "offered": 17582,
+      "accepted_spots": 9747,
+      "enrolled": 3758
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 46871,
+      "female": 52616
+    },
+    "accepted": {
+      "male": 18878,
+      "female": 25103
+    },
+    "enrolled": {
+      "male": 2685,
+      "female": 3952
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 948,
+      "hispanic": 1931,
+      "black": 141,
+      "white": 1201,
+      "american_indian": 3,
+      "asian": 2008,
+      "pacific_islander": 13,
+      "two_or_more": 415,
+      "unknown": 164,
+      "total": 6824
+    },
+    "undergrad": {
+      "nonresident_aliens": 3819,
+      "hispanic": 8354,
+      "black": 587,
+      "white": 6180,
+      "american_indian": 27,
+      "asian": 9837,
+      "pacific_islander": 56,
+      "two_or_more": 2136,
+      "unknown": 699,
+      "total": 31695
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.071,
+    "international_pct": null
+  },
+  "sat_act_breakdown": null,
+  "class_rank": null,
+  "gpa_distribution": {
+    "gpa_40": 0.6614,
+    "gpa_375_399": 0.2308,
+    "gpa_350_374": 0.084,
+    "gpa_325_349": 0.0191,
+    "gpa_300_324": 0.0043,
+    "gpa_250_299": 0.0004,
+    "gpa_200_249": null,
+    "gpa_100_199": null
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "not_considered",
+    "essay": "important",
+    "recommendations": "not_considered",
+    "interview": "not_considered",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "important",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 8943,
+      "admitted": 4743,
+      "enrolled": 1191
+    },
+    "female": {
+      "applied": 7880,
+      "admitted": 4711,
+      "enrolled": 1377
+    },
+    "total": {
+      "applied": 17211,
+      "admitted": 9684,
+      "enrolled": 2614
+    }
+  },
+  "slug": "uc-davis"
+}

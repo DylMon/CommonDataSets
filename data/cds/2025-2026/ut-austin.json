@@ -1,0 +1,154 @@
+{
+  "name": "The University of Texas at Austin",
+  "data_year": "2025-26",
+  "city": "Austin",
+  "state": "TX",
+  "location": "Austin, TX",
+  "school_type": "Public",
+  "website": "www.utexas.edu",
+  "applicants_total": 90690,
+  "applicants_men": 45923,
+  "applicants_women": 44735,
+  "admitted_total": 20154,
+  "admitted_men": 8704,
+  "admitted_women": 11449,
+  "enrolled_total": 9900,
+  "enrolled_men": 4097,
+  "enrolled_women": 5803,
+  "acceptance_rate": 0.2222,
+  "application_fee": 75,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "12/1",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "None",
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": null,
+  "sat_submitted_count": null,
+  "act_submitted_pct": null,
+  "act_submitted_count": null,
+  "sat_composite_25": null,
+  "sat_composite_75": null,
+  "sat_reading_25": null,
+  "sat_reading_75": null,
+  "sat_math_25": null,
+  "sat_math_75": null,
+  "act_composite_25": null,
+  "act_composite_75": null,
+  "act_math_25": null,
+  "act_math_75": null,
+  "act_english_25": null,
+  "act_english_75": null,
+  "total_undergrads": 44314,
+  "undergrads_male": 18819,
+  "undergrads_female": 25448,
+  "retention_rate": 0.971,
+  "tuition": null,
+  "tuition_in_state": 11656,
+  "tuition_out_of_state": 44816,
+  "required_fees": null,
+  "room_and_board": 15420,
+  "books_supplies": 724,
+  "other_expenses": 3666,
+  "pct_out_of_state": 0.08,
+  "pct_on_campus_housing": 0.61,
+  "applicant_pools": {
+    "ea": null,
+    "rd": {
+      "applied": 90690,
+      "admitted": 20154,
+      "rate": 0.2222
+    },
+    "waitlist": null
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 45923,
+      "female": 44735
+    },
+    "accepted": {
+      "male": 8704,
+      "female": 11449
+    },
+    "enrolled": {
+      "male": 4097,
+      "female": 5803
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 379,
+      "hispanic": 2731,
+      "black": 422,
+      "white": 2708,
+      "american_indian": 8,
+      "asian": 2787,
+      "pacific_islander": 12,
+      "two_or_more": 388,
+      "unknown": 465,
+      "total": 9900
+    },
+    "undergrad": {
+      "nonresident_aliens": 1925,
+      "hispanic": 12567,
+      "black": 2033,
+      "white": 12966,
+      "american_indian": 59,
+      "asian": 11515,
+      "pacific_islander": 44,
+      "two_or_more": 1801,
+      "unknown": 1404,
+      "total": 44314
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.08,
+    "international_pct": null
+  },
+  "sat_act_breakdown": null,
+  "class_rank": null,
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "considered",
+    "class_rank": "considered",
+    "academic_gpa": "considered",
+    "test_scores": "considered",
+    "essay": "considered",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 6719,
+      "admitted": 1307,
+      "enrolled": 962
+    },
+    "female": {
+      "applied": 5431,
+      "admitted": 1361,
+      "enrolled": 1061
+    },
+    "total": {
+      "applied": 12168,
+      "admitted": 2672,
+      "enrolled": 2026
+    }
+  },
+  "slug": "ut-austin"
+}

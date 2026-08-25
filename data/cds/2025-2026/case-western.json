@@ -1,0 +1,174 @@
+{
+  "name": "Case Western Reserve University",
+  "data_year": "2025-26",
+  "city": "Cleveland",
+  "state": "OH",
+  "location": "Cleveland, OH",
+  "school_type": "Private",
+  "website": "www.case.edu",
+  "applicants_total": 39332,
+  "applicants_men": 19890,
+  "applicants_women": 19442,
+  "admitted_total": 13890,
+  "admitted_men": 7257,
+  "admitted_women": 6633,
+  "enrolled_total": 1663,
+  "enrolled_men": 823,
+  "enrolled_women": 840,
+  "acceptance_rate": 0.3532,
+  "application_fee": 75,
+  "avg_gpa_weighted": 3.78,
+  "rd_deadline": "1/15",
+  "waitlist_offered": 9168,
+  "waitlist_accepted": null,
+  "waitlist_admitted": 688,
+  "ea_ed_type": "ED",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/5",
+  "ea_apps_received": 1053,
+  "ea_apps_admitted": 263,
+  "sat_submitted_pct": 0.52,
+  "sat_submitted_count": 858,
+  "act_submitted_pct": 0.15,
+  "act_submitted_count": 245,
+  "sat_composite_25": 1440,
+  "sat_composite_75": 1530,
+  "sat_reading_25": 710,
+  "sat_reading_75": 760,
+  "sat_math_25": 730,
+  "sat_math_75": 780,
+  "act_composite_25": 32,
+  "act_composite_75": 34,
+  "act_math_25": 31,
+  "act_math_75": 35,
+  "act_english_25": 33,
+  "act_english_75": 35,
+  "total_undergrads": 6534,
+  "undergrads_male": 3351,
+  "undergrads_female": 3173,
+  "retention_rate": 0.933,
+  "tuition": 71410,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": null,
+  "room_and_board": null,
+  "books_supplies": 1200,
+  "other_expenses": null,
+  "pct_out_of_state": 0.864,
+  "pct_on_campus_housing": 0.977,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 9168,
+      "accepted_spots": null,
+      "enrolled": 688
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 19890,
+      "female": 19442
+    },
+    "accepted": {
+      "male": 7257,
+      "female": 6633
+    },
+    "enrolled": {
+      "male": 823,
+      "female": 840
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 120,
+      "hispanic": 147,
+      "black": 77,
+      "white": 520,
+      "american_indian": 2,
+      "asian": 678,
+      "pacific_islander": 1,
+      "two_or_more": 92,
+      "unknown": 26,
+      "total": 1663
+    },
+    "undergrad": {
+      "nonresident_aliens": 581,
+      "hispanic": 708,
+      "black": 409,
+      "white": 2084,
+      "american_indian": 5,
+      "asian": 2193,
+      "pacific_islander": 2,
+      "two_or_more": 346,
+      "unknown": 100,
+      "total": 6428
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.864,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 858,
+    "sat_submitted_pct": 0.52,
+    "act_submitted_count": 245,
+    "act_submitted_pct": 0.15
+  },
+  "class_rank": {
+    "top10": 0.7,
+    "top25": 0.93,
+    "top50": 0.996,
+    "bottom50": 0.004,
+    "bottom25": 0.0
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.164,
+    "gpa_375_399": 0.482,
+    "gpa_350_374": 0.257,
+    "gpa_325_349": 0.077,
+    "gpa_300_324": 0.017,
+    "gpa_250_299": 0.003,
+    "gpa_200_249": null,
+    "gpa_100_199": null
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "very_important",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "important",
+    "interview": "important",
+    "extracurriculars": "very_important",
+    "talent": "important",
+    "character": "important",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 369,
+      "admitted": 104,
+      "enrolled": 29
+    },
+    "female": {
+      "applied": 292,
+      "admitted": 69,
+      "enrolled": 22
+    },
+    "total": {
+      "applied": 661,
+      "admitted": 173,
+      "enrolled": 51
+    }
+  },
+  "slug": "case-western"
+}

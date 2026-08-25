@@ -1,0 +1,178 @@
+{
+  "name": "Drexel University",
+  "data_year": "2025-2026",
+  "city": "Philadelphia",
+  "state": "PA",
+  "location": "Philadelphia, PA",
+  "school_type": "Private",
+  "website": "drexel.edu",
+  "applicants_total": 38030,
+  "applicants_men": 17871,
+  "applicants_women": 19659,
+  "admitted_total": 26583,
+  "admitted_men": 12480,
+  "admitted_women": 13748,
+  "enrolled_total": 1948,
+  "enrolled_men": 1027,
+  "enrolled_women": 882,
+  "acceptance_rate": 0.699,
+  "application_fee": 65,
+  "avg_gpa_weighted": 3.79,
+  "rd_deadline": "1/15",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "ED",
+  "ea_ed_deadline": "11/15",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": 299,
+  "ea_apps_admitted": 234,
+  "sat_submitted_pct": 0.35,
+  "sat_submitted_count": 674,
+  "act_submitted_pct": 0.04,
+  "act_submitted_count": 76,
+  "sat_composite_25": 1260,
+  "sat_composite_75": 1430,
+  "sat_reading_25": 630,
+  "sat_reading_75": 710,
+  "sat_math_25": 630,
+  "sat_math_75": 730,
+  "act_composite_25": 28,
+  "act_composite_75": 33,
+  "act_math_25": 26,
+  "act_math_75": 32,
+  "act_english_25": 26,
+  "act_english_75": 34,
+  "total_undergrads": 12318,
+  "undergrads_male": 6273,
+  "undergrads_female": 5795,
+  "retention_rate": 0.885,
+  "tuition": 63078,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 2370,
+  "room_and_board": 19398,
+  "books_supplies": 1200,
+  "other_expenses": 1100,
+  "pct_out_of_state": 0.44,
+  "pct_on_campus_housing": 0.75,
+  "applicant_pools": {
+    "ea": {
+      "applied": 299,
+      "admitted": 234,
+      "rate": 0.7826
+    },
+    "rd": {
+      "applied": 37731,
+      "admitted": 26349,
+      "rate": 0.6983
+    },
+    "waitlist": null
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 17871,
+      "female": 19659
+    },
+    "accepted": {
+      "male": 12480,
+      "female": 13748
+    },
+    "enrolled": {
+      "male": 1027,
+      "female": 882
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 140,
+      "hispanic": 188,
+      "black": 174,
+      "white": 700,
+      "american_indian": 2,
+      "asian": 578,
+      "pacific_islander": 0,
+      "two_or_more": 110,
+      "unknown": 56,
+      "total": 1948
+    },
+    "undergrad": {
+      "nonresident_aliens": 1095,
+      "hispanic": 1152,
+      "black": 1277,
+      "white": 4728,
+      "american_indian": 13,
+      "asian": 3182,
+      "pacific_islander": 5,
+      "two_or_more": 601,
+      "unknown": 265,
+      "total": 12318
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.44,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 674,
+    "sat_submitted_pct": 0.35,
+    "act_submitted_count": 76,
+    "act_submitted_pct": 0.04
+  },
+  "class_rank": {
+    "top10": 0.3178,
+    "top25": 0.6318,
+    "top50": 0.8895,
+    "bottom50": 0.1105,
+    "bottom25": 0.0097
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.34,
+    "gpa_375_399": 0.21,
+    "gpa_350_374": 0.2,
+    "gpa_325_349": 0.13,
+    "gpa_300_324": 0.08,
+    "gpa_250_299": 0.04,
+    "gpa_200_249": 0.0,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "very_important",
+    "academic_gpa": "very_important",
+    "test_scores": "very_important",
+    "essay": "important",
+    "recommendations": "important",
+    "interview": "considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "important",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 991,
+      "admitted": 630,
+      "enrolled": 241
+    },
+    "female": {
+      "applied": 1557,
+      "admitted": 850,
+      "enrolled": 258
+    },
+    "total": {
+      "applied": 2596,
+      "admitted": 1511,
+      "enrolled": 499
+    }
+  },
+  "slug": "drexel"
+}

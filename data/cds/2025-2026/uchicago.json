@@ -1,0 +1,166 @@
+{
+  "name": "The University of Chicago",
+  "data_year": "2025-26",
+  "city": "Chicago",
+  "state": "IL",
+  "location": "Chicago, IL",
+  "school_type": "Private",
+  "website": "uchicago.edu",
+  "applicants_total": 45533,
+  "applicants_men": 19929,
+  "applicants_women": 24578,
+  "admitted_total": 2039,
+  "admitted_men": 1169,
+  "admitted_women": 870,
+  "enrolled_total": 1786,
+  "enrolled_men": 1042,
+  "enrolled_women": 744,
+  "acceptance_rate": 0.0448,
+  "application_fee": 90,
+  "avg_gpa_weighted": 4.54,
+  "rd_deadline": null,
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": null,
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.57,
+  "sat_submitted_count": 1011,
+  "act_submitted_pct": 0.25,
+  "act_submitted_count": 449,
+  "sat_composite_25": 1500,
+  "sat_composite_75": 1560,
+  "sat_reading_25": 740,
+  "sat_reading_75": 770,
+  "sat_math_25": 760,
+  "sat_math_75": 790,
+  "act_composite_25": 34,
+  "act_composite_75": 35,
+  "act_math_25": 31,
+  "act_math_75": 35,
+  "act_english_25": 34,
+  "act_english_75": 36,
+  "total_undergrads": 7453,
+  "undergrads_male": 4202,
+  "undergrads_female": 3251,
+  "retention_rate": 0.99,
+  "tuition": 75960,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 2715,
+  "room_and_board": 21414,
+  "books_supplies": 1800,
+  "other_expenses": 1950,
+  "pct_out_of_state": 0.88,
+  "pct_on_campus_housing": 1.0,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 19929,
+      "female": 24578
+    },
+    "accepted": {
+      "male": 1169,
+      "female": 870
+    },
+    "enrolled": {
+      "male": 1042,
+      "female": 744
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 323,
+      "hispanic": 246,
+      "black": 71,
+      "white": 545,
+      "american_indian": 0,
+      "asian": 362,
+      "pacific_islander": 0,
+      "two_or_more": 113,
+      "unknown": 126,
+      "total": 1786
+    },
+    "undergrad": {
+      "nonresident_aliens": 1432,
+      "hispanic": 1181,
+      "black": 445,
+      "white": 2136,
+      "american_indian": 3,
+      "asian": 1476,
+      "pacific_islander": 1,
+      "two_or_more": 514,
+      "unknown": 250,
+      "total": 7438
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.88,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 1011,
+    "sat_submitted_pct": 0.57,
+    "act_submitted_count": 449,
+    "act_submitted_pct": 0.25
+  },
+  "class_rank": {
+    "top10": 0.97,
+    "top25": 1.0,
+    "top50": 1.0,
+    "bottom50": 0.0,
+    "bottom25": 0.0
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.5676,
+    "gpa_375_399": 0.2685,
+    "gpa_350_374": 0.0991,
+    "gpa_325_349": 0.0279,
+    "gpa_300_324": 0.0288,
+    "gpa_250_299": 0.0072,
+    "gpa_200_249": 0.0009,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "considered",
+    "test_scores": "considered",
+    "essay": "very_important",
+    "recommendations": "very_important",
+    "interview": "not_considered",
+    "extracurriculars": "very_important",
+    "talent": "very_important",
+    "character": "very_important",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1770,
+      "admitted": 249,
+      "enrolled": 204
+    },
+    "female": {
+      "applied": 1326,
+      "admitted": 131,
+      "enrolled": 107
+    },
+    "total": {
+      "applied": 3231,
+      "admitted": 380,
+      "enrolled": 311
+    }
+  },
+  "slug": "uchicago"
+}

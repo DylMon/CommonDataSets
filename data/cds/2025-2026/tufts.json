@@ -1,0 +1,173 @@
+{
+  "name": "Tufts University",
+  "data_year": "2025-2026",
+  "city": "Medford",
+  "state": "MA",
+  "location": "Medford, MA",
+  "school_type": "Private",
+  "website": "tufts.edu",
+  "applicants_total": 33395,
+  "applicants_men": 14444,
+  "applicants_women": 18947,
+  "admitted_total": 3612,
+  "admitted_men": 1568,
+  "admitted_women": 2044,
+  "enrolled_total": 1764,
+  "enrolled_men": 777,
+  "enrolled_women": 987,
+  "acceptance_rate": 0.1082,
+  "application_fee": 75,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "1/6",
+  "waitlist_offered": 3061,
+  "waitlist_accepted": 1193,
+  "waitlist_admitted": 71,
+  "ea_ed_type": "ED I & II",
+  "ea_ed_deadline": "11/4",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": 3344,
+  "ea_apps_admitted": 1071,
+  "sat_submitted_pct": 0.42,
+  "sat_submitted_count": 749,
+  "act_submitted_pct": 0.16,
+  "act_submitted_count": 279,
+  "sat_composite_25": 1460,
+  "sat_composite_75": 1520,
+  "sat_reading_25": 720,
+  "sat_reading_75": 760,
+  "sat_math_25": 730,
+  "sat_math_75": 780,
+  "act_composite_25": 33,
+  "act_composite_75": 35,
+  "act_math_25": 31,
+  "act_math_75": 34,
+  "act_english_25": 34,
+  "act_english_75": 35,
+  "total_undergrads": 7031,
+  "undergrads_male": 3091,
+  "undergrads_female": 3940,
+  "retention_rate": 0.95,
+  "tuition": null,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": null,
+  "room_and_board": null,
+  "books_supplies": null,
+  "other_expenses": null,
+  "pct_out_of_state": 0.76,
+  "pct_on_campus_housing": 1.0,
+  "applicant_pools": {
+    "ea": {
+      "applied": 3344,
+      "admitted": 1071,
+      "rate": 0.3201
+    },
+    "rd": {
+      "applied": 30051,
+      "admitted": 2541,
+      "rate": 0.0846
+    },
+    "waitlist": {
+      "offered": 3061,
+      "accepted_spots": 1193,
+      "enrolled": 71
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 14444,
+      "female": 18947
+    },
+    "accepted": {
+      "male": 1568,
+      "female": 2044
+    },
+    "enrolled": {
+      "male": 777,
+      "female": 987
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 211,
+      "hispanic": 184,
+      "black": 109,
+      "white": 696,
+      "american_indian": 2,
+      "asian": 302,
+      "pacific_islander": 1,
+      "two_or_more": 138,
+      "unknown": 133,
+      "total": 1776
+    },
+    "undergrad": {
+      "nonresident_aliens": 876,
+      "hispanic": 717,
+      "black": 427,
+      "white": 2775,
+      "american_indian": 3,
+      "asian": 1193,
+      "pacific_islander": 6,
+      "two_or_more": 535,
+      "unknown": 499,
+      "total": 7031
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.71,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 749,
+    "sat_submitted_pct": 0.42,
+    "act_submitted_count": 279,
+    "act_submitted_pct": 0.16
+  },
+  "class_rank": {
+    "top10": 0.87,
+    "top25": 0.96,
+    "top50": 0.97,
+    "bottom50": 0.03,
+    "bottom25": 0.0
+  },
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "very_important",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "very_important",
+    "recommendations": "very_important",
+    "interview": "considered",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "very_important",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 817,
+      "admitted": 84,
+      "enrolled": 26
+    },
+    "female": {
+      "applied": 814,
+      "admitted": 94,
+      "enrolled": 27
+    },
+    "total": {
+      "applied": 1631,
+      "admitted": 178,
+      "enrolled": 53
+    }
+  },
+  "slug": "tufts"
+}

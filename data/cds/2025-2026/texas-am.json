@@ -1,0 +1,149 @@
+{
+  "name": "Texas A&M University",
+  "data_year": "2025-26",
+  "city": "College Station",
+  "state": "TX",
+  "location": "College Station, TX",
+  "school_type": "Public",
+  "website": "www.tamu.edu",
+  "applicants_total": 62967,
+  "applicants_men": 31337,
+  "applicants_women": 31630,
+  "admitted_total": 32531,
+  "admitted_men": 16375,
+  "admitted_women": 16156,
+  "enrolled_total": 12484,
+  "enrolled_men": 6334,
+  "enrolled_women": 6150,
+  "acceptance_rate": 0.5166,
+  "application_fee": 75,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "12/1",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "10/15",
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.7672,
+  "sat_submitted_count": 9605,
+  "act_submitted_pct": 0.1868,
+  "act_submitted_count": 2339,
+  "sat_composite_25": 1160,
+  "sat_composite_75": 1390,
+  "sat_reading_25": 580,
+  "sat_reading_75": 690,
+  "sat_math_25": 570,
+  "sat_math_75": 710,
+  "act_composite_25": 24,
+  "act_composite_75": 32,
+  "act_math_25": 23,
+  "act_math_75": 30,
+  "act_english_25": 23,
+  "act_english_75": 33,
+  "total_undergrads": 62031,
+  "undergrads_male": 32976,
+  "undergrads_female": 29055,
+  "retention_rate": 0.95,
+  "tuition": null,
+  "tuition_in_state": 8908,
+  "tuition_out_of_state": 36877,
+  "required_fees": 3970,
+  "room_and_board": 12944,
+  "books_supplies": 882,
+  "other_expenses": 3252,
+  "pct_out_of_state": 0.052,
+  "pct_on_campus_housing": 0.5508,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 31337,
+      "female": 31630
+    },
+    "accepted": {
+      "male": 16375,
+      "female": 16156
+    },
+    "enrolled": {
+      "male": 6334,
+      "female": 6150
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 92,
+      "hispanic": 3334,
+      "black": 344,
+      "white": 5712,
+      "american_indian": 27,
+      "asian": 2226,
+      "pacific_islander": 11,
+      "two_or_more": 497,
+      "unknown": 276,
+      "total": 12519
+    },
+    "undergrad": {
+      "nonresident_aliens": 648,
+      "hispanic": 16433,
+      "black": 1616,
+      "white": 30951,
+      "american_indian": 156,
+      "asian": 9098,
+      "pacific_islander": 40,
+      "two_or_more": 2436,
+      "unknown": 653,
+      "total": 62031
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.052,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 9605,
+    "sat_submitted_pct": 0.7672,
+    "act_submitted_count": 2339,
+    "act_submitted_pct": 0.1868
+  },
+  "class_rank": {
+    "top10": 0.7156,
+    "top25": 0.9314,
+    "top50": 0.9862,
+    "bottom50": 0.0136,
+    "bottom25": 0.0023
+  },
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "very_important",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "very_important",
+    "talent": "very_important",
+    "character": "considered",
+    "first_gen": "important",
+    "alumni_relation": "not_considered",
+    "geo_residence": "important",
+    "state_residence": "important",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "not_considered",
+    "work_experience": "not_considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": null,
+    "female": null,
+    "total": {
+      "applied": 6622,
+      "admitted": 3417,
+      "enrolled": 3074
+    }
+  },
+  "slug": "texas-am"
+}

@@ -1,0 +1,174 @@
+{
+  "name": "Southern Methodist University",
+  "data_year": "2025-26",
+  "city": "Dallas",
+  "state": "TX",
+  "location": "Dallas, TX",
+  "school_type": "Private",
+  "website": "www.smu.edu/admission/apply",
+  "applicants_total": 24053,
+  "applicants_men": 11148,
+  "applicants_women": 12905,
+  "admitted_total": 11459,
+  "admitted_men": 5217,
+  "admitted_women": 6242,
+  "enrolled_total": 1715,
+  "enrolled_men": 847,
+  "enrolled_women": 868,
+  "acceptance_rate": 0.4765,
+  "application_fee": 60,
+  "avg_gpa_weighted": 3.69,
+  "rd_deadline": "7/31",
+  "waitlist_offered": 4249,
+  "waitlist_accepted": 1074,
+  "waitlist_admitted": 243,
+  "ea_ed_type": "ED I & II",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/31",
+  "ea_apps_received": 528,
+  "ea_apps_admitted": 424,
+  "sat_submitted_pct": 9.4,
+  "sat_submitted_count": 161,
+  "act_submitted_pct": 8.6,
+  "act_submitted_count": 148,
+  "sat_composite_25": 1360,
+  "sat_composite_75": 1470,
+  "sat_reading_25": 670,
+  "sat_reading_75": 730,
+  "sat_math_25": 670,
+  "sat_math_75": 750,
+  "act_composite_25": 31,
+  "act_composite_75": 34,
+  "act_math_25": 28,
+  "act_math_75": 34,
+  "act_english_25": 31,
+  "act_english_75": 35,
+  "total_undergrads": 7545,
+  "undergrads_male": 3730,
+  "undergrads_female": 3815,
+  "retention_rate": 91,
+  "tuition": 63736,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 8080,
+  "room_and_board": 20950,
+  "books_supplies": 800,
+  "other_expenses": 1600,
+  "pct_out_of_state": 56.91,
+  "pct_on_campus_housing": 96.33,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 4249,
+      "accepted_spots": 1074,
+      "enrolled": 243
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 11148,
+      "female": 12905
+    },
+    "accepted": {
+      "male": 5217,
+      "female": 6242
+    },
+    "enrolled": {
+      "male": 847,
+      "female": 868
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 44,
+      "hispanic": 364,
+      "black": 68,
+      "white": 926,
+      "american_indian": 6,
+      "asian": 112,
+      "pacific_islander": 2,
+      "two_or_more": 106,
+      "unknown": 87,
+      "total": 1715
+    },
+    "undergrad": {
+      "nonresident_aliens": 286,
+      "hispanic": 1472,
+      "black": 402,
+      "white": 4090,
+      "american_indian": 20,
+      "asian": 580,
+      "pacific_islander": 8,
+      "two_or_more": 381,
+      "unknown": 291,
+      "total": 7530
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 56.91,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 161,
+    "sat_submitted_pct": 9.4,
+    "act_submitted_count": 148,
+    "act_submitted_pct": 8.6
+  },
+  "class_rank": {
+    "top10": 48.7,
+    "top25": 78.8,
+    "top50": 93.5,
+    "bottom50": 6.5,
+    "bottom25": 0.7
+  },
+  "gpa_distribution": {
+    "gpa_40": 24.3,
+    "gpa_375_399": 30.2,
+    "gpa_350_374": 22.2,
+    "gpa_325_349": 12.0,
+    "gpa_300_324": 7.1,
+    "gpa_250_299": 4.0,
+    "gpa_200_249": 0.2,
+    "gpa_100_199": null
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "important",
+    "academic_gpa": "very_important",
+    "test_scores": "important",
+    "essay": "very_important",
+    "recommendations": "very_important",
+    "interview": "not_considered",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "important",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 851,
+      "admitted": 652,
+      "enrolled": 221
+    },
+    "female": {
+      "applied": 691,
+      "admitted": 538,
+      "enrolled": 196
+    },
+    "total": {
+      "applied": 1542,
+      "admitted": 1190,
+      "enrolled": 417
+    }
+  },
+  "slug": "smu"
+}

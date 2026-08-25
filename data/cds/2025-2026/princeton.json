@@ -1,0 +1,168 @@
+{
+  "name": "Princeton University",
+  "data_year": "2025-26",
+  "city": "Princeton",
+  "state": "NJ",
+  "location": "Princeton, NJ",
+  "school_type": "Private",
+  "website": "www.princeton.edu",
+  "applicants_total": 42303,
+  "applicants_men": 21692,
+  "applicants_women": 20593,
+  "admitted_total": 1868,
+  "admitted_men": 915,
+  "admitted_women": 953,
+  "enrolled_total": 1408,
+  "enrolled_men": 690,
+  "enrolled_women": 718,
+  "acceptance_rate": 0.0442,
+  "application_fee": 75,
+  "avg_gpa_weighted": 3.96,
+  "rd_deadline": "1/1",
+  "waitlist_offered": 1370,
+  "waitlist_accepted": 1086,
+  "waitlist_admitted": 36,
+  "ea_ed_type": "REA",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "Mid-December",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.6,
+  "sat_submitted_count": 848,
+  "act_submitted_pct": 0.2,
+  "act_submitted_count": 288,
+  "sat_composite_25": 1490,
+  "sat_composite_75": 1560,
+  "sat_reading_25": 740,
+  "sat_reading_75": 780,
+  "sat_math_25": 760,
+  "sat_math_75": 800,
+  "act_composite_25": 34,
+  "act_composite_75": 35,
+  "act_math_25": 33,
+  "act_math_75": 36,
+  "act_english_25": 35,
+  "act_english_75": 36,
+  "total_undergrads": 5916,
+  "undergrads_male": 2937,
+  "undergrads_female": 2976,
+  "retention_rate": 0.99,
+  "tuition": 68140,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 314,
+  "room_and_board": 22120,
+  "books_supplies": 1050,
+  "other_expenses": 3000,
+  "pct_out_of_state": 0.84,
+  "pct_on_campus_housing": 1.0,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 1370,
+      "accepted_spots": 1086,
+      "enrolled": 36
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 21692,
+      "female": 20593
+    },
+    "accepted": {
+      "male": 915,
+      "female": 953
+    },
+    "enrolled": {
+      "male": 690,
+      "female": 718
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 200,
+      "hispanic": 130,
+      "black": 70,
+      "white": 399,
+      "american_indian": 1,
+      "asian": 381,
+      "pacific_islander": 0,
+      "two_or_more": 108,
+      "unknown": 115,
+      "total": 1404
+    },
+    "undergrad": {
+      "nonresident_aliens": 758,
+      "hispanic": 560,
+      "black": 464,
+      "white": 1823,
+      "american_indian": 9,
+      "asian": 1451,
+      "pacific_islander": 3,
+      "two_or_more": 426,
+      "unknown": 314,
+      "total": 5808
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.84,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 848,
+    "sat_submitted_pct": 0.6,
+    "act_submitted_count": 288,
+    "act_submitted_pct": 0.2
+  },
+  "class_rank": null,
+  "gpa_distribution": {
+    "gpa_40": 0.72,
+    "gpa_375_399": 0.24,
+    "gpa_350_374": 0.03,
+    "gpa_325_349": 0.01,
+    "gpa_300_324": null,
+    "gpa_250_299": null,
+    "gpa_200_249": null,
+    "gpa_100_199": null
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "very_important",
+    "academic_gpa": "very_important",
+    "test_scores": "very_important",
+    "essay": "very_important",
+    "recommendations": "very_important",
+    "interview": "not_considered",
+    "extracurriculars": "very_important",
+    "talent": "very_important",
+    "character": "very_important",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1337,
+      "admitted": 29,
+      "enrolled": 21
+    },
+    "female": {
+      "applied": 934,
+      "admitted": 13,
+      "enrolled": 11
+    },
+    "total": {
+      "applied": 2274,
+      "admitted": 42,
+      "enrolled": 32
+    }
+  },
+  "slug": "princeton"
+}

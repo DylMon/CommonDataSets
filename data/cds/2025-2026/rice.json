@@ -1,0 +1,173 @@
+{
+  "name": "William Marsh Rice University",
+  "data_year": "2025-26",
+  "city": "Houston",
+  "state": "TX",
+  "location": "Houston, TX",
+  "school_type": "Private",
+  "website": "www.rice.edu",
+  "applicants_total": 36791,
+  "applicants_men": 19072,
+  "applicants_women": 17712,
+  "admitted_total": 2948,
+  "admitted_men": 1476,
+  "admitted_women": 1472,
+  "enrolled_total": 1263,
+  "enrolled_men": 636,
+  "enrolled_women": 627,
+  "acceptance_rate": 0.0801,
+  "application_fee": 75,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "1/4",
+  "waitlist_offered": 3196,
+  "waitlist_accepted": 2204,
+  "waitlist_admitted": 66,
+  "ea_ed_type": "ED",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": 5748,
+  "ea_apps_admitted": 647,
+  "sat_submitted_pct": 0.59,
+  "sat_submitted_count": 745,
+  "act_submitted_pct": 0.24,
+  "act_submitted_count": 298,
+  "sat_composite_25": 1510,
+  "sat_composite_75": 1560,
+  "sat_reading_25": 740,
+  "sat_reading_75": 770,
+  "sat_math_25": 760,
+  "sat_math_75": 800,
+  "act_composite_25": 34,
+  "act_composite_75": 36,
+  "act_math_25": 33,
+  "act_math_75": 35,
+  "act_english_25": 35,
+  "act_english_75": 36,
+  "total_undergrads": 4807,
+  "undergrads_male": 2429,
+  "undergrads_female": 2377,
+  "retention_rate": 0.9677,
+  "tuition": 71170,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 984,
+  "room_and_board": 20530,
+  "books_supplies": 1540,
+  "other_expenses": 3115,
+  "pct_out_of_state": 0.59,
+  "pct_on_campus_housing": 0.99,
+  "applicant_pools": {
+    "ea": {
+      "applied": 5748,
+      "admitted": 647,
+      "rate": 0.1126
+    },
+    "rd": {
+      "applied": 31043,
+      "admitted": 2301,
+      "rate": 0.0741
+    },
+    "waitlist": {
+      "offered": 3196,
+      "accepted_spots": 2204,
+      "enrolled": 66
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 19072,
+      "female": 17712
+    },
+    "accepted": {
+      "male": 1476,
+      "female": 1472
+    },
+    "enrolled": {
+      "male": 636,
+      "female": 627
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 164,
+      "hispanic": 178,
+      "black": 94,
+      "white": 276,
+      "american_indian": 1,
+      "asian": 439,
+      "pacific_islander": 1,
+      "two_or_more": 68,
+      "unknown": 42,
+      "total": 1263
+    },
+    "undergrad": {
+      "nonresident_aliens": 642,
+      "hispanic": 775,
+      "black": 361,
+      "white": 1162,
+      "american_indian": 7,
+      "asian": 1445,
+      "pacific_islander": 4,
+      "two_or_more": 262,
+      "unknown": 135,
+      "total": 4793
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.59,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 745,
+    "sat_submitted_pct": 0.59,
+    "act_submitted_count": 298,
+    "act_submitted_pct": 0.24
+  },
+  "class_rank": {
+    "top10": 0.9,
+    "top25": 0.97,
+    "top50": 0.996,
+    "bottom50": 0.004,
+    "bottom25": 0.0
+  },
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "very_important",
+    "academic_gpa": "very_important",
+    "test_scores": "very_important",
+    "essay": "very_important",
+    "recommendations": "very_important",
+    "interview": "not_considered",
+    "extracurriculars": "very_important",
+    "talent": "very_important",
+    "character": "very_important",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1032,
+      "admitted": 80,
+      "enrolled": 51
+    },
+    "female": {
+      "applied": 642,
+      "admitted": 45,
+      "enrolled": 23
+    },
+    "total": {
+      "applied": 1675,
+      "admitted": 125,
+      "enrolled": 74
+    }
+  },
+  "slug": "rice"
+}

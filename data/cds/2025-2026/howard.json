@@ -1,0 +1,168 @@
+{
+  "name": "Howard University",
+  "data_year": "2025-2026",
+  "city": "Washington",
+  "state": "DC",
+  "location": "Washington, DC",
+  "school_type": "Private",
+  "website": "www.howard.edu",
+  "applicants_total": 37270,
+  "applicants_men": 10738,
+  "applicants_women": 26532,
+  "admitted_total": 15724,
+  "admitted_men": 4315,
+  "admitted_women": 11409,
+  "enrolled_total": 2490,
+  "enrolled_men": 625,
+  "enrolled_women": 1865,
+  "acceptance_rate": 0.4219,
+  "application_fee": 45.0,
+  "avg_gpa_weighted": 3.68,
+  "rd_deadline": "2/1",
+  "waitlist_offered": 1310,
+  "waitlist_accepted": 637,
+  "waitlist_admitted": null,
+  "ea_ed_type": "ED",
+  "ea_ed_deadline": "11/15",
+  "ea_ed_notification": "12/30",
+  "ea_apps_received": 430,
+  "ea_apps_admitted": 363,
+  "sat_submitted_pct": 0.47,
+  "sat_submitted_count": 1163,
+  "act_submitted_pct": 0.15,
+  "act_submitted_count": 385,
+  "sat_composite_25": 1050,
+  "sat_composite_75": 1270,
+  "sat_reading_25": 540,
+  "sat_reading_75": 660,
+  "sat_math_25": 510,
+  "sat_math_75": 620,
+  "act_composite_25": 20,
+  "act_composite_75": 26,
+  "act_math_25": 18,
+  "act_math_75": 25,
+  "act_english_25": 20,
+  "act_english_75": 27,
+  "total_undergrads": 11084,
+  "undergrads_male": 3177,
+  "undergrads_female": 7907,
+  "retention_rate": 0.88,
+  "tuition": 37996.0,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 940.0,
+  "room_and_board": 18982.0,
+  "books_supplies": 1220.0,
+  "other_expenses": 2494.0,
+  "pct_out_of_state": 0.94,
+  "pct_on_campus_housing": 1.0,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 1310,
+      "accepted_spots": 637,
+      "enrolled": null
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 10738,
+      "female": 26532
+    },
+    "accepted": {
+      "male": 4315,
+      "female": 11409
+    },
+    "enrolled": {
+      "male": 625,
+      "female": 1865
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 102,
+      "hispanic": 224,
+      "black": 1886,
+      "white": 3,
+      "american_indian": 2,
+      "asian": 1,
+      "pacific_islander": null,
+      "two_or_more": 174,
+      "unknown": 98,
+      "total": 2490
+    },
+    "undergrad": {
+      "nonresident_aliens": 483,
+      "hispanic": 696,
+      "black": 7681,
+      "white": 19,
+      "american_indian": 5,
+      "asian": 41,
+      "pacific_islander": null,
+      "two_or_more": 599,
+      "unknown": 1560,
+      "total": 11084
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.94,
+    "international_pct": 0.041
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 1163,
+    "sat_submitted_pct": 0.47,
+    "act_submitted_count": 385,
+    "act_submitted_pct": 0.15
+  },
+  "class_rank": null,
+  "gpa_distribution": {
+    "gpa_40": 0.07,
+    "gpa_375_399": 0.43,
+    "gpa_350_374": 0.3,
+    "gpa_325_349": 0.13,
+    "gpa_300_324": 0.06,
+    "gpa_250_299": 0.01,
+    "gpa_200_249": 0.0,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "very_important",
+    "essay": "considered",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "important",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 335,
+      "admitted": 232,
+      "enrolled": 68
+    },
+    "female": {
+      "applied": 567,
+      "admitted": 390,
+      "enrolled": 126
+    },
+    "total": {
+      "applied": 902,
+      "admitted": 622,
+      "enrolled": 194
+    }
+  },
+  "slug": "howard"
+}

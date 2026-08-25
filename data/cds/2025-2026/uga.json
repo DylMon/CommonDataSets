@@ -1,0 +1,168 @@
+{
+  "name": "University of Georgia",
+  "data_year": "2025-26",
+  "city": "Athens",
+  "state": "GA",
+  "location": "Athens, GA",
+  "school_type": "Public",
+  "website": "www.uga.edu",
+  "applicants_total": 47464,
+  "applicants_men": 19946,
+  "applicants_women": 27511,
+  "admitted_total": 16257,
+  "admitted_men": 6443,
+  "admitted_women": 9814,
+  "enrolled_total": 6195,
+  "enrolled_men": 2380,
+  "enrolled_women": 3815,
+  "acceptance_rate": 0.3425,
+  "application_fee": 70.0,
+  "avg_gpa_weighted": 4.17,
+  "rd_deadline": "1/1",
+  "waitlist_offered": 4442,
+  "waitlist_accepted": 437,
+  "waitlist_admitted": null,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "10/15",
+  "ea_ed_notification": "12/1",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.7031,
+  "sat_submitted_count": 4539,
+  "act_submitted_pct": 0.4391,
+  "act_submitted_count": 2704,
+  "sat_composite_25": 1250,
+  "sat_composite_75": 1420,
+  "sat_reading_25": 610,
+  "sat_reading_75": 710,
+  "sat_math_25": 630,
+  "sat_math_75": 720,
+  "act_composite_25": 27,
+  "act_composite_75": 33,
+  "act_math_25": 26,
+  "act_math_75": 31,
+  "act_english_25": 27,
+  "act_english_75": 34,
+  "total_undergrads": 32824,
+  "undergrads_male": 14125,
+  "undergrads_female": 18699,
+  "retention_rate": 0.94,
+  "tuition": null,
+  "tuition_in_state": 10034.0,
+  "tuition_out_of_state": 30878.0,
+  "required_fees": 1458.0,
+  "room_and_board": 12084.0,
+  "books_supplies": 998.0,
+  "other_expenses": 3464.0,
+  "pct_out_of_state": 0.2,
+  "pct_on_campus_housing": 0.98,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 4442,
+      "accepted_spots": 437,
+      "enrolled": null
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 19946,
+      "female": 27511
+    },
+    "accepted": {
+      "male": 6443,
+      "female": 9814
+    },
+    "enrolled": {
+      "male": 2380,
+      "female": 3815
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 118,
+      "hispanic": 549,
+      "black": 434,
+      "white": 3763,
+      "american_indian": 8,
+      "asian": 1008,
+      "pacific_islander": 3,
+      "two_or_more": 248,
+      "unknown": 64,
+      "total": 6195
+    },
+    "undergrad": {
+      "nonresident_aliens": 411,
+      "hispanic": 2832,
+      "black": 2081,
+      "white": 20765,
+      "american_indian": 34,
+      "asian": 4570,
+      "pacific_islander": 16,
+      "two_or_more": 1466,
+      "unknown": 389,
+      "total": 32564
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.2,
+    "international_pct": 0.0073
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 4539,
+    "sat_submitted_pct": 0.7031,
+    "act_submitted_count": 2704,
+    "act_submitted_pct": 0.4391
+  },
+  "class_rank": null,
+  "gpa_distribution": {
+    "gpa_40": 0.8706,
+    "gpa_375_399": 0.1132,
+    "gpa_350_374": 0.0082,
+    "gpa_325_349": 0.0029,
+    "gpa_300_324": 0.0016,
+    "gpa_250_299": 0.0023,
+    "gpa_200_249": 0.001,
+    "gpa_100_199": 0.0002
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "important",
+    "essay": "considered",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 2047,
+      "admitted": 1305,
+      "enrolled": 1023
+    },
+    "female": {
+      "applied": 1733,
+      "admitted": 1147,
+      "enrolled": 870
+    },
+    "total": {
+      "applied": 3780,
+      "admitted": 2452,
+      "enrolled": 1893
+    }
+  },
+  "slug": "uga"
+}

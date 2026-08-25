@@ -1,0 +1,174 @@
+{
+  "name": "Villanova University",
+  "data_year": "2025-26",
+  "city": "Villanova",
+  "state": "PA",
+  "location": "Villanova, PA",
+  "school_type": "Private",
+  "website": "www.villanova.edu",
+  "applicants_total": 25841,
+  "applicants_men": 11641,
+  "applicants_women": 14200,
+  "admitted_total": 7272,
+  "admitted_men": 3444,
+  "admitted_women": 3828,
+  "enrolled_total": 1805,
+  "enrolled_men": 813,
+  "enrolled_women": 992,
+  "acceptance_rate": 0.2814,
+  "application_fee": 80,
+  "avg_gpa_weighted": 3.87,
+  "rd_deadline": "1/15",
+  "waitlist_offered": 5449,
+  "waitlist_accepted": 2205,
+  "waitlist_admitted": 28,
+  "ea_ed_type": "ED I & II",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": 1680,
+  "ea_apps_admitted": 1005,
+  "sat_submitted_pct": 0.19,
+  "sat_submitted_count": 346,
+  "act_submitted_pct": 0.09,
+  "act_submitted_count": 159,
+  "sat_composite_25": 1420,
+  "sat_composite_75": 1490,
+  "sat_reading_25": 700,
+  "sat_reading_75": 750,
+  "sat_math_25": 710,
+  "sat_math_75": 770,
+  "act_composite_25": 32,
+  "act_composite_75": 34,
+  "act_math_25": 30,
+  "act_math_75": 34,
+  "act_english_25": 33,
+  "act_english_75": 35,
+  "total_undergrads": 6935,
+  "undergrads_male": 3239,
+  "undergrads_female": 3692,
+  "retention_rate": 0.952,
+  "tuition": 72990,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 1024,
+  "room_and_board": 19354,
+  "books_supplies": 1160,
+  "other_expenses": 1450,
+  "pct_out_of_state": 0.784,
+  "pct_on_campus_housing": 0.99,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 5449,
+      "accepted_spots": 2205,
+      "enrolled": 28
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 11641,
+      "female": 14200
+    },
+    "accepted": {
+      "male": 3444,
+      "female": 3828
+    },
+    "enrolled": {
+      "male": 813,
+      "female": 992
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 39,
+      "hispanic": 213,
+      "black": 62,
+      "white": 1254,
+      "american_indian": 0,
+      "asian": 104,
+      "pacific_islander": 1,
+      "two_or_more": 86,
+      "unknown": 45,
+      "total": 1804
+    },
+    "undergrad": {
+      "nonresident_aliens": 134,
+      "hispanic": 812,
+      "black": 399,
+      "white": 4645,
+      "american_indian": 0,
+      "asian": 433,
+      "pacific_islander": 5,
+      "two_or_more": 294,
+      "unknown": 140,
+      "total": 6862
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.784,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 346,
+    "sat_submitted_pct": 0.19,
+    "act_submitted_count": 159,
+    "act_submitted_pct": 0.09
+  },
+  "class_rank": {
+    "top10": 0.81,
+    "top25": 0.95,
+    "top50": 0.99,
+    "bottom50": 0.01,
+    "bottom25": 0.0
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.3201,
+    "gpa_375_399": 0.4092,
+    "gpa_350_374": 0.231,
+    "gpa_325_349": 0.0264,
+    "gpa_300_324": 0.0099,
+    "gpa_250_299": 0.0033,
+    "gpa_200_249": 0.0,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "very_important",
+    "recommendations": "important",
+    "interview": "not_considered",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "important",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 289,
+      "admitted": 150,
+      "enrolled": 55
+    },
+    "female": {
+      "applied": 284,
+      "admitted": 176,
+      "enrolled": 61
+    },
+    "total": {
+      "applied": 575,
+      "admitted": 326,
+      "enrolled": 116
+    }
+  },
+  "slug": "villanova"
+}

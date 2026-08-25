@@ -1,0 +1,167 @@
+{
+  "name": "University of California, Santa Cruz",
+  "data_year": "2025-26",
+  "city": "Santa Cruz",
+  "state": "CA",
+  "location": "Santa Cruz, CA",
+  "school_type": "Public",
+  "website": "www.ucsc.edu",
+  "applicants_total": 66374,
+  "applicants_men": 28428,
+  "applicants_women": 34971,
+  "admitted_total": 48274,
+  "admitted_men": 19978,
+  "admitted_women": 25969,
+  "enrolled_total": 4596,
+  "enrolled_men": 2081,
+  "enrolled_women": 2370,
+  "acceptance_rate": 0.7273,
+  "application_fee": "$80 ($95 for international students)",
+  "avg_gpa_weighted": 3.87,
+  "rd_deadline": "12/1",
+  "waitlist_offered": 9881,
+  "waitlist_accepted": 6444,
+  "waitlist_admitted": 2648,
+  "ea_ed_type": "None",
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": null,
+  "sat_submitted_count": null,
+  "act_submitted_pct": null,
+  "act_submitted_count": null,
+  "sat_composite_25": null,
+  "sat_composite_75": null,
+  "sat_reading_25": null,
+  "sat_reading_75": null,
+  "sat_math_25": null,
+  "sat_math_75": null,
+  "act_composite_25": null,
+  "act_composite_75": null,
+  "act_math_25": null,
+  "act_math_75": null,
+  "act_english_25": null,
+  "act_english_75": null,
+  "total_undergrads": 18194,
+  "undergrads_male": 8641,
+  "undergrads_female": 9553,
+  "retention_rate": 0.898,
+  "tuition": null,
+  "tuition_in_state": 14202,
+  "tuition_out_of_state": 53472,
+  "required_fees": 3037,
+  "room_and_board": 21591,
+  "books_supplies": 1179,
+  "other_expenses": 2652,
+  "pct_out_of_state": 0.052,
+  "pct_on_campus_housing": 0.979,
+  "applicant_pools": {
+    "ea": null,
+    "rd": {
+      "applied": 66374,
+      "admitted": 48274,
+      "rate": 0.7273
+    },
+    "waitlist": {
+      "offered": 9881,
+      "accepted_spots": 6444,
+      "enrolled": 2648
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 28428,
+      "female": 34971
+    },
+    "accepted": {
+      "male": 19978,
+      "female": 25969
+    },
+    "enrolled": {
+      "male": 2081,
+      "female": 2370
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 165,
+      "hispanic": 1430,
+      "black": 87,
+      "white": 1285,
+      "american_indian": 4,
+      "asian": 1066,
+      "pacific_islander": 7,
+      "two_or_more": 438,
+      "unknown": 117,
+      "total": 4599
+    },
+    "undergrad": {
+      "nonresident_aliens": 602,
+      "hispanic": 5326,
+      "black": 357,
+      "white": 5453,
+      "american_indian": 27,
+      "asian": 4317,
+      "pacific_islander": 28,
+      "two_or_more": 1661,
+      "unknown": 423,
+      "total": 18194
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.052,
+    "international_pct": null
+  },
+  "sat_act_breakdown": null,
+  "class_rank": null,
+  "gpa_distribution": {
+    "gpa_40": 0.3586,
+    "gpa_375_399": 0.3643,
+    "gpa_350_374": 0.2216,
+    "gpa_325_349": 0.0471,
+    "gpa_300_324": 0.0075,
+    "gpa_250_299": 0.0007,
+    "gpa_200_249": 0.0002,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "not_considered",
+    "essay": "very_important",
+    "recommendations": "not_considered",
+    "interview": "not_considered",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "important",
+    "first_gen": "important",
+    "alumni_relation": "not_considered",
+    "geo_residence": "important",
+    "state_residence": "very_important",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 6266,
+      "admitted": 4269,
+      "enrolled": 667
+    },
+    "female": {
+      "applied": 5830,
+      "admitted": 4057,
+      "enrolled": 534
+    },
+    "total": {
+      "applied": 12832,
+      "admitted": 8860,
+      "enrolled": 1322
+    }
+  },
+  "slug": "uc-santa-cruz"
+}

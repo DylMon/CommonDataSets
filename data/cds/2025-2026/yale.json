@@ -1,0 +1,165 @@
+{
+  "name": "Yale University",
+  "data_year": "2025-26",
+  "city": "New Haven",
+  "state": "CT",
+  "location": "New Haven, CT",
+  "school_type": "Private",
+  "website": "www.yale.edu",
+  "applicants_total": 50264,
+  "applicants_men": 22819,
+  "applicants_women": 27445,
+  "admitted_total": 2387,
+  "admitted_men": 1189,
+  "admitted_women": 1198,
+  "enrolled_total": 1633,
+  "enrolled_men": 799,
+  "enrolled_women": 834,
+  "acceptance_rate": 0.0475,
+  "application_fee": 80,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "1/2",
+  "waitlist_offered": 944,
+  "waitlist_accepted": 738,
+  "waitlist_admitted": 32,
+  "ea_ed_type": "REA",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.67,
+  "sat_submitted_count": 1092,
+  "act_submitted_pct": 0.25,
+  "act_submitted_count": 412,
+  "sat_composite_25": 1480,
+  "sat_composite_75": 1560,
+  "sat_reading_25": 730,
+  "sat_reading_75": 780,
+  "sat_math_25": 740,
+  "sat_math_75": 790,
+  "act_composite_25": 33,
+  "act_composite_75": 35,
+  "act_math_25": 31,
+  "act_math_75": 35,
+  "act_english_25": 34,
+  "act_english_75": 36,
+  "total_undergrads": 6667,
+  "undergrads_male": 3254,
+  "undergrads_female": 3337,
+  "retention_rate": 0.994,
+  "tuition": 72500,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": null,
+  "room_and_board": 21600,
+  "books_supplies": 1000,
+  "other_expenses": 2700,
+  "pct_out_of_state": 0.91,
+  "pct_on_campus_housing": 1.0,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 944,
+      "accepted_spots": 738,
+      "enrolled": 32
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 22819,
+      "female": 27445
+    },
+    "accepted": {
+      "male": 1189,
+      "female": 1198
+    },
+    "enrolled": {
+      "male": 799,
+      "female": 834
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 155,
+      "hispanic": 222,
+      "black": 137,
+      "white": 501,
+      "american_indian": 10,
+      "asian": 422,
+      "pacific_islander": 4,
+      "two_or_more": 129,
+      "unknown": 53,
+      "total": 1633
+    },
+    "undergrad": {
+      "nonresident_aliens": 706,
+      "hispanic": 1074,
+      "black": 620,
+      "white": 1984,
+      "american_indian": 34,
+      "asian": 1562,
+      "pacific_islander": 11,
+      "two_or_more": 483,
+      "unknown": 162,
+      "total": 6636
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.91,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 1092,
+    "sat_submitted_pct": 0.67,
+    "act_submitted_count": 412,
+    "act_submitted_pct": 0.25
+  },
+  "class_rank": {
+    "top10": 0.97,
+    "top25": 0.99,
+    "top50": 1.0,
+    "bottom50": 0.0,
+    "bottom25": 0.0
+  },
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "very_important",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "very_important",
+    "recommendations": "very_important",
+    "interview": "considered",
+    "extracurriculars": "very_important",
+    "talent": "very_important",
+    "character": "very_important",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 928,
+      "admitted": 23,
+      "enrolled": 17
+    },
+    "female": {
+      "applied": 819,
+      "admitted": 22,
+      "enrolled": 18
+    },
+    "total": {
+      "applied": 1747,
+      "admitted": 45,
+      "enrolled": 35
+    }
+  },
+  "slug": "yale"
+}

@@ -1,2 +1,3 @@
 anthropic>=0.40  # run `pip install -U anthropic` for structured-outputs support if extraction fails
 python-dotenv>=1.0
+pypdf>=4.0  # used to trim oversized PDFs (>32MB base64) down to the API's request limit

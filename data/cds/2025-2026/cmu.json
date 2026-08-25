@@ -1,0 +1,171 @@
+{
+  "name": "Carnegie Mellon University",
+  "data_year": "2025-26",
+  "city": "Pittsburgh",
+  "state": "PA",
+  "location": "Pittsburgh, PA",
+  "school_type": "Private",
+  "website": "www.cmu.edu",
+  "applicants_total": 34867,
+  "applicants_men": 21054,
+  "applicants_women": 12942,
+  "admitted_total": 3859,
+  "admitted_men": 2140,
+  "admitted_women": 1628,
+  "enrolled_total": 1804,
+  "enrolled_men": 1060,
+  "enrolled_women": 700,
+  "acceptance_rate": 0.1107,
+  "application_fee": 75,
+  "avg_gpa_weighted": 3.89,
+  "rd_deadline": "1/1",
+  "waitlist_offered": 7117,
+  "waitlist_accepted": 4937,
+  "waitlist_admitted": 36,
+  "ea_ed_type": "ED",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "December 15",
+  "ea_apps_received": 2680,
+  "ea_apps_admitted": 553,
+  "sat_submitted_pct": 0.655,
+  "sat_submitted_count": 1182,
+  "act_submitted_pct": 0.181,
+  "act_submitted_count": 327,
+  "sat_composite_25": 1500,
+  "sat_composite_75": 1560,
+  "sat_reading_25": 730,
+  "sat_reading_75": 770,
+  "sat_math_25": 770,
+  "sat_math_75": 800,
+  "act_composite_25": 34,
+  "act_composite_75": 36,
+  "act_math_25": 33,
+  "act_math_75": 36,
+  "act_english_25": 33,
+  "act_english_75": 36,
+  "total_undergrads": 7728,
+  "undergrads_male": 4028,
+  "undergrads_female": 3443,
+  "retention_rate": 0.966,
+  "tuition": 67020,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 1756,
+  "room_and_board": 18894,
+  "books_supplies": 1000,
+  "other_expenses": 1400,
+  "pct_out_of_state": null,
+  "pct_on_campus_housing": null,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 7117,
+      "accepted_spots": 4937,
+      "enrolled": 36
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 21054,
+      "female": 12942
+    },
+    "accepted": {
+      "male": 2140,
+      "female": 1628
+    },
+    "enrolled": {
+      "male": 1060,
+      "female": 700
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 261,
+      "hispanic": 108,
+      "black": 56,
+      "white": 346,
+      "american_indian": 0,
+      "asian": 769,
+      "pacific_islander": 0,
+      "two_or_more": 90,
+      "unknown": 174,
+      "total": 1804
+    },
+    "undergrad": {
+      "nonresident_aliens": 1716,
+      "hispanic": 651,
+      "black": 295,
+      "white": 1504,
+      "american_indian": 3,
+      "asian": 2680,
+      "pacific_islander": 2,
+      "two_or_more": 355,
+      "unknown": 522,
+      "total": 7728
+    }
+  },
+  "geographic_breakdown": null,
+  "sat_act_breakdown": {
+    "sat_submitted_count": 1182,
+    "sat_submitted_pct": 0.655,
+    "act_submitted_count": 327,
+    "act_submitted_pct": 0.181
+  },
+  "class_rank": {
+    "top10": 0.825,
+    "top25": 0.944,
+    "top50": 0.991,
+    "bottom50": 0.009,
+    "bottom25": 0.006
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.439,
+    "gpa_375_399": 0.417,
+    "gpa_350_374": 0.109,
+    "gpa_325_349": 0.022,
+    "gpa_300_324": 0.01,
+    "gpa_250_299": 0.003,
+    "gpa_200_249": 0.0,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "very_important",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "important",
+    "interview": "not_considered",
+    "extracurriculars": "very_important",
+    "talent": "important",
+    "character": "very_important",
+    "first_gen": "important",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "very_important",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1053,
+      "admitted": 85,
+      "enrolled": 33
+    },
+    "female": {
+      "applied": 494,
+      "admitted": 46,
+      "enrolled": 25
+    },
+    "total": {
+      "applied": 1610,
+      "admitted": 136,
+      "enrolled": 62
+    }
+  },
+  "slug": "cmu"
+}

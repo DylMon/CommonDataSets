@@ -1,0 +1,174 @@
+{
+  "name": "University of North Carolina at Chapel Hill",
+  "data_year": "2025-26",
+  "city": "Chapel Hill",
+  "state": "NC",
+  "location": "Chapel Hill, NC",
+  "school_type": "Public",
+  "website": "www.unc.edu",
+  "applicants_total": 76247,
+  "applicants_men": 31665,
+  "applicants_women": 44582,
+  "admitted_total": 12751,
+  "admitted_men": 5305,
+  "admitted_women": 7446,
+  "enrolled_total": 5091,
+  "enrolled_men": 1912,
+  "enrolled_women": 3179,
+  "acceptance_rate": 0.1672,
+  "application_fee": 85,
+  "avg_gpa_weighted": 4.47,
+  "rd_deadline": "Jan. 15",
+  "waitlist_offered": 7355,
+  "waitlist_accepted": 5258,
+  "waitlist_admitted": 2099,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "Oct. 15",
+  "ea_ed_notification": "Jan. 31",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.28,
+  "sat_submitted_count": 1102,
+  "act_submitted_pct": 0.41,
+  "act_submitted_count": 1945,
+  "sat_composite_25": 1400,
+  "sat_composite_75": 1530,
+  "sat_reading_25": 690,
+  "sat_reading_75": 750,
+  "sat_math_25": 700,
+  "sat_math_75": 780,
+  "act_composite_25": 29,
+  "act_composite_75": 34,
+  "act_math_25": 28,
+  "act_math_75": 35,
+  "act_english_25": 27,
+  "act_english_75": 35,
+  "total_undergrads": 22007,
+  "undergrads_male": 8667,
+  "undergrads_female": 13340,
+  "retention_rate": 0.967,
+  "tuition": null,
+  "tuition_in_state": 7230,
+  "tuition_out_of_state": 47472,
+  "required_fees": 2129,
+  "room_and_board": 15870,
+  "books_supplies": 638,
+  "other_expenses": 1950,
+  "pct_out_of_state": 0.15,
+  "pct_on_campus_housing": 0.99,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 7355,
+      "accepted_spots": 5258,
+      "enrolled": 2099
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 31665,
+      "female": 44582
+    },
+    "accepted": {
+      "male": 5305,
+      "female": 7446
+    },
+    "enrolled": {
+      "male": 1912,
+      "female": 3179
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 300,
+      "hispanic": 483,
+      "black": 250,
+      "white": 2615,
+      "american_indian": 11,
+      "asian": 950,
+      "pacific_islander": 1,
+      "two_or_more": 269,
+      "unknown": 212,
+      "total": 5091
+    },
+    "undergrad": {
+      "nonresident_aliens": 1683,
+      "hispanic": 2155,
+      "black": 1421,
+      "white": 11232,
+      "american_indian": 58,
+      "asian": 3648,
+      "pacific_islander": 9,
+      "two_or_more": 1104,
+      "unknown": 697,
+      "total": 22007
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.15,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 1102,
+    "sat_submitted_pct": 0.28,
+    "act_submitted_count": 1945,
+    "act_submitted_pct": 0.41
+  },
+  "class_rank": {
+    "top10": 0.762,
+    "top25": 0.967,
+    "top50": 0.996,
+    "bottom50": 0.004,
+    "bottom25": 0.001
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.946,
+    "gpa_375_399": 0.028,
+    "gpa_350_374": 0.012,
+    "gpa_325_349": 0.008,
+    "gpa_300_324": 0.005,
+    "gpa_250_299": 0.001,
+    "gpa_200_249": 0.0,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "important",
+    "academic_gpa": "important",
+    "test_scores": "considered",
+    "essay": "very_important",
+    "recommendations": "very_important",
+    "interview": "not_considered",
+    "extracurriculars": "very_important",
+    "talent": "very_important",
+    "character": "very_important",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "not_considered",
+    "state_residence": "very_important",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "important",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 2687,
+      "admitted": 928,
+      "enrolled": 484
+    },
+    "female": {
+      "applied": 2643,
+      "admitted": 1042,
+      "enrolled": 594
+    },
+    "total": {
+      "applied": 5330,
+      "admitted": 1970,
+      "enrolled": 1078
+    }
+  },
+  "slug": "unc"
+}

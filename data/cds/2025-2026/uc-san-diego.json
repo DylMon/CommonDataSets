@@ -1,0 +1,173 @@
+{
+  "name": "University of California, San Diego",
+  "data_year": "2025-26",
+  "city": "La Jolla",
+  "state": "CA",
+  "location": "La Jolla, CA",
+  "school_type": "Public",
+  "website": "www.ucsd.edu",
+  "applicants_total": 136750,
+  "applicants_men": 62344,
+  "applicants_women": 69786,
+  "admitted_total": 39054,
+  "admitted_men": 16244,
+  "admitted_women": 21283,
+  "enrolled_total": 7801,
+  "enrolled_men": 3511,
+  "enrolled_women": 4096,
+  "acceptance_rate": 0.2856,
+  "application_fee": "$80 ($95 International)",
+  "avg_gpa_weighted": 3.88,
+  "rd_deadline": "11/30",
+  "waitlist_offered": 36709,
+  "waitlist_accepted": 25411,
+  "waitlist_admitted": 5284,
+  "ea_ed_type": "None",
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": null,
+  "sat_submitted_count": null,
+  "act_submitted_pct": null,
+  "act_submitted_count": null,
+  "sat_composite_25": null,
+  "sat_composite_75": null,
+  "sat_reading_25": null,
+  "sat_reading_75": null,
+  "sat_math_25": null,
+  "sat_math_75": null,
+  "act_composite_25": null,
+  "act_composite_75": null,
+  "act_math_25": null,
+  "act_math_75": null,
+  "act_english_25": null,
+  "act_english_75": null,
+  "total_undergrads": 35442,
+  "undergrads_male": 15757,
+  "undergrads_female": 18916,
+  "retention_rate": 0.947,
+  "tuition": null,
+  "tuition_in_state": 14202,
+  "tuition_out_of_state": 53472,
+  "required_fees": 3789,
+  "room_and_board": 20443,
+  "books_supplies": 1203,
+  "other_expenses": 2760,
+  "pct_out_of_state": 0.12,
+  "pct_on_campus_housing": 0.86,
+  "applicant_pools": {
+    "ea": null,
+    "rd": {
+      "applied": 136750,
+      "admitted": 39054,
+      "rate": 0.2856
+    },
+    "waitlist": {
+      "offered": 36709,
+      "accepted_spots": 25411,
+      "enrolled": 5284
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 62344,
+      "female": 69786
+    },
+    "accepted": {
+      "male": 16244,
+      "female": 21283
+    },
+    "enrolled": {
+      "male": 3511,
+      "female": 4096
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 1409,
+      "hispanic": 1864,
+      "black": 97,
+      "white": 1047,
+      "american_indian": 8,
+      "asian": 2694,
+      "pacific_islander": 8,
+      "two_or_more": 469,
+      "unknown": 205,
+      "total": 7801
+    },
+    "undergrad": {
+      "nonresident_aliens": 4304,
+      "hispanic": 9490,
+      "black": 551,
+      "white": 5660,
+      "american_indian": 25,
+      "asian": 12275,
+      "pacific_islander": 27,
+      "two_or_more": 2276,
+      "unknown": 834,
+      "total": 35442
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.12,
+    "international_pct": null
+  },
+  "sat_act_breakdown": null,
+  "class_rank": {
+    "top10": 1.0,
+    "top25": 1.0,
+    "top50": 1.0,
+    "bottom50": 0.0,
+    "bottom25": 0.0
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.31,
+    "gpa_375_399": 0.54,
+    "gpa_350_374": 0.13,
+    "gpa_325_349": 0.02,
+    "gpa_300_324": 0.0,
+    "gpa_250_299": 0.0,
+    "gpa_200_249": 0.0,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "not_considered",
+    "essay": "very_important",
+    "recommendations": "not_considered",
+    "interview": "not_considered",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "important",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "important",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 12468,
+      "admitted": 5921,
+      "enrolled": 1770
+    },
+    "female": {
+      "applied": 10459,
+      "admitted": 6198,
+      "enrolled": 1741
+    },
+    "total": {
+      "applied": 23577,
+      "admitted": 12440,
+      "enrolled": 3591
+    }
+  },
+  "slug": "uc-san-diego"
+}

@@ -1,0 +1,167 @@
+{
+  "name": "University of California, Riverside",
+  "data_year": "2025-26",
+  "city": "Riverside",
+  "state": "CA",
+  "location": "Riverside, CA",
+  "school_type": "Public",
+  "website": "www.ucr.edu",
+  "applicants_total": 61184,
+  "applicants_men": 28275,
+  "applicants_women": 30832,
+  "admitted_total": 52676,
+  "admitted_men": 23831,
+  "admitted_women": 26994,
+  "enrolled_total": 6686,
+  "enrolled_men": 3299,
+  "enrolled_women": 3266,
+  "acceptance_rate": 0.8609,
+  "application_fee": 80,
+  "avg_gpa_weighted": 3.75,
+  "rd_deadline": "12/02",
+  "waitlist_offered": 3783,
+  "waitlist_accepted": 2019,
+  "waitlist_admitted": 0,
+  "ea_ed_type": "None",
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": null,
+  "sat_submitted_count": null,
+  "act_submitted_pct": null,
+  "act_submitted_count": null,
+  "sat_composite_25": null,
+  "sat_composite_75": null,
+  "sat_reading_25": null,
+  "sat_reading_75": null,
+  "sat_math_25": null,
+  "sat_math_75": null,
+  "act_composite_25": null,
+  "act_composite_75": null,
+  "act_math_25": null,
+  "act_math_75": null,
+  "act_english_25": null,
+  "act_english_75": null,
+  "total_undergrads": 24034,
+  "undergrads_male": 11299,
+  "undergrads_female": 12126,
+  "retention_rate": 0.88,
+  "tuition": null,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": null,
+  "room_and_board": null,
+  "books_supplies": null,
+  "other_expenses": null,
+  "pct_out_of_state": 0.01,
+  "pct_on_campus_housing": 0.69,
+  "applicant_pools": {
+    "ea": null,
+    "rd": {
+      "applied": 61184,
+      "admitted": 52676,
+      "rate": 0.8609
+    },
+    "waitlist": {
+      "offered": 3783,
+      "accepted_spots": 2019,
+      "enrolled": 0
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 28275,
+      "female": 30832
+    },
+    "accepted": {
+      "male": 23831,
+      "female": 26994
+    },
+    "enrolled": {
+      "male": 3299,
+      "female": 3266
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 211,
+      "hispanic": 3020,
+      "black": 260,
+      "white": 502,
+      "american_indian": 7,
+      "asian": 2244,
+      "pacific_islander": 7,
+      "two_or_more": 354,
+      "unknown": 81,
+      "total": 6686
+    },
+    "undergrad": {
+      "nonresident_aliens": 784,
+      "hispanic": 10045,
+      "black": 929,
+      "white": 2343,
+      "american_indian": 24,
+      "asian": 8266,
+      "pacific_islander": 35,
+      "two_or_more": 1244,
+      "unknown": 359,
+      "total": 24029
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.01,
+    "international_pct": null
+  },
+  "sat_act_breakdown": null,
+  "class_rank": null,
+  "gpa_distribution": {
+    "gpa_40": 0.29,
+    "gpa_375_399": 0.222,
+    "gpa_350_374": 0.23,
+    "gpa_325_349": 0.162,
+    "gpa_300_324": 0.092,
+    "gpa_250_299": 0.004,
+    "gpa_200_249": null,
+    "gpa_100_199": null
+  },
+  "admission_factors": {
+    "rigor": "important",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "not_considered",
+    "essay": "very_important",
+    "recommendations": "not_considered",
+    "interview": "not_considered",
+    "extracurriculars": "not_considered",
+    "talent": "considered",
+    "character": "not_considered",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "not_considered",
+    "work_experience": "not_considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 7106,
+      "admitted": 4591,
+      "enrolled": 855
+    },
+    "female": {
+      "applied": 6062,
+      "admitted": 4349,
+      "enrolled": 706
+    },
+    "total": {
+      "applied": 13778,
+      "admitted": 9341,
+      "enrolled": 1607
+    }
+  },
+  "slug": "uc-riverside"
+}

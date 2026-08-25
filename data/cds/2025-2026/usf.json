@@ -1,0 +1,174 @@
+{
+  "name": "University of South Florida",
+  "data_year": "2025-26",
+  "city": "Tampa",
+  "state": "FL",
+  "location": "Tampa, FL",
+  "school_type": "Public",
+  "website": "www.usf.edu",
+  "applicants_total": 71722,
+  "applicants_men": 28798,
+  "applicants_women": 42908,
+  "admitted_total": 29196,
+  "admitted_men": 12021,
+  "admitted_women": 17172,
+  "enrolled_total": 6730,
+  "enrolled_men": 2815,
+  "enrolled_women": 3913,
+  "acceptance_rate": 0.4071,
+  "application_fee": 30,
+  "avg_gpa_weighted": 4.09,
+  "rd_deadline": "5/1",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "None",
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.778,
+  "sat_submitted_count": 5238,
+  "act_submitted_pct": 0.217,
+  "act_submitted_count": 1463,
+  "sat_composite_25": 1160,
+  "sat_composite_75": 1340,
+  "sat_reading_25": 590,
+  "sat_reading_75": 670,
+  "sat_math_25": 560,
+  "sat_math_75": 670,
+  "act_composite_25": 25,
+  "act_composite_75": 29,
+  "act_math_25": 23,
+  "act_math_75": 27,
+  "act_english_25": 23,
+  "act_english_75": 30,
+  "total_undergrads": 39093,
+  "undergrads_male": 16878,
+  "undergrads_female": 22191,
+  "retention_rate": 0.91,
+  "tuition": null,
+  "tuition_in_state": 4559.0,
+  "tuition_out_of_state": 16565.0,
+  "required_fees": 1851.0,
+  "room_and_board": 14824.0,
+  "books_supplies": 780.0,
+  "other_expenses": 2944.0,
+  "pct_out_of_state": 0.1348,
+  "pct_on_campus_housing": 0.5551,
+  "applicant_pools": {
+    "ea": null,
+    "rd": {
+      "applied": 71722,
+      "admitted": 29196,
+      "rate": 0.4071
+    },
+    "waitlist": null
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 28798,
+      "female": 42908
+    },
+    "accepted": {
+      "male": 12021,
+      "female": 17172
+    },
+    "enrolled": {
+      "male": 2815,
+      "female": 3913
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 467,
+      "hispanic": 1696,
+      "black": 444,
+      "white": 2792,
+      "american_indian": 7,
+      "asian": 775,
+      "pacific_islander": 9,
+      "two_or_more": 352,
+      "unknown": 188,
+      "total": 6730
+    },
+    "undergrad": {
+      "nonresident_aliens": 2913,
+      "hispanic": 9818,
+      "black": 3108,
+      "white": 16600,
+      "american_indian": 46,
+      "asian": 3563,
+      "pacific_islander": 54,
+      "two_or_more": 1843,
+      "unknown": 1148,
+      "total": 39093
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.1348,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 5238,
+    "sat_submitted_pct": 0.778,
+    "act_submitted_count": 1463,
+    "act_submitted_pct": 0.217
+  },
+  "class_rank": {
+    "top10": 0.291,
+    "top25": 0.628,
+    "top50": 0.888,
+    "bottom50": 0.112,
+    "bottom25": 0.018
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.6199,
+    "gpa_375_399": 0.179,
+    "gpa_350_374": 0.117,
+    "gpa_325_349": 0.0579,
+    "gpa_300_324": 0.0201,
+    "gpa_250_299": 0.0042,
+    "gpa_200_249": 0.0016,
+    "gpa_100_199": 0.0001
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "very_important",
+    "essay": "not_considered",
+    "recommendations": "not_considered",
+    "interview": "not_considered",
+    "extracurriculars": "not_considered",
+    "talent": "not_considered",
+    "character": "not_considered",
+    "first_gen": "not_considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "not_considered",
+    "work_experience": "not_considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 5065,
+      "admitted": 2609,
+      "enrolled": 1448
+    },
+    "female": {
+      "applied": 6406,
+      "admitted": 3486,
+      "enrolled": 1894
+    },
+    "total": {
+      "applied": 11480,
+      "admitted": 6098,
+      "enrolled": 3342
+    }
+  },
+  "slug": "usf"
+}

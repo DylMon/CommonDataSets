@@ -1,9 +1,27 @@
 // scripts/export-data.js
+//
+// STALE as of 2026-08-25 — do not run without updating first. Two things
+// have moved on since this was last touched:
+//
+//   1. Supabase is being phased out as the source of truth (see the CDS
+//      pipeline in scripts/parse-cds-batch.py + scripts/build-cds-json.py,
+//      which writes data/cds-{year}/*.json and data/cds-{year}.json
+//      directly — no Supabase round trip). This script still requires
+//      SUPABASE_URL/SUPABASE_SERVICE_KEY and pulls from the
+//      `cds_2024_2025` / `college_scorecard` tables, which are no longer
+//      being kept in sync with the newer local pipeline.
+//   2. The frontend (index.html, compare.html, js/school.js, js/chanceme.js)
+//      no longer fetches data/schools.json — it fetches the year-specific
+//      data/schools-2025-2026.json. This script's `write('schools.json', …)`
+//      call below (and the doc comment that follows) still target the old
+//      filename and would silently produce a file nothing reads.
+//
 // Pulls both Supabase tables once and writes three static JSON files:
 //
 //   data/cds-2024-2025.json  — raw CDS table rows (one per year going forward)
 //   data/scorecard.json      — raw College Scorecard rows
-//   data/schools.json        — merged output consumed by all frontend pages
+//   data/schools.json        — merged output; RENAME/RETARGET before using —
+//                              see note above, this is not what the site reads
 //
 // Run:  npm run export
 // Re-run whenever CDS or Scorecard data is updated in Supabase.

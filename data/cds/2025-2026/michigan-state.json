@@ -1,0 +1,166 @@
+{
+  "name": "Michigan State University",
+  "data_year": "2025-2026",
+  "city": "East Lansing",
+  "state": "MI",
+  "location": "East Lansing, MI",
+  "school_type": "Public",
+  "website": "www.msu.edu",
+  "applicants_total": 62965,
+  "applicants_men": 29174,
+  "applicants_women": 33760,
+  "admitted_total": 52411,
+  "admitted_men": 24194,
+  "admitted_women": 28194,
+  "enrolled_total": 9355,
+  "enrolled_men": 4393,
+  "enrolled_women": 4958,
+  "acceptance_rate": 0.8324,
+  "application_fee": 75,
+  "avg_gpa_weighted": 3.74,
+  "rd_deadline": "4/1",
+  "waitlist_offered": 4241,
+  "waitlist_accepted": null,
+  "waitlist_admitted": 2254,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "1/15",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.515,
+  "sat_submitted_count": 4817,
+  "act_submitted_pct": 0.068,
+  "act_submitted_count": 638,
+  "sat_composite_25": 1100,
+  "sat_composite_75": 1310,
+  "sat_reading_25": 550,
+  "sat_reading_75": 660,
+  "sat_math_25": 530,
+  "sat_math_75": 660,
+  "act_composite_25": 25,
+  "act_composite_75": 31,
+  "act_math_25": 24,
+  "act_math_75": 30,
+  "act_english_25": 24,
+  "act_english_75": 32,
+  "total_undergrads": 41415,
+  "undergrads_male": 20075,
+  "undergrads_female": 21340,
+  "retention_rate": 0.91,
+  "tuition": null,
+  "tuition_in_state": 16916,
+  "tuition_out_of_state": 44300,
+  "required_fees": 340,
+  "room_and_board": 12928,
+  "books_supplies": 1420,
+  "other_expenses": 3930,
+  "pct_out_of_state": 0.189,
+  "pct_on_campus_housing": 0.95,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 29174,
+      "female": 33760
+    },
+    "accepted": {
+      "male": 24194,
+      "female": 28194
+    },
+    "enrolled": {
+      "male": 4393,
+      "female": 4958
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 402,
+      "hispanic": 784,
+      "black": 678,
+      "white": 6206,
+      "american_indian": 34,
+      "asian": 761,
+      "pacific_islander": 9,
+      "two_or_more": 474,
+      "unknown": 175,
+      "total": 9523
+    },
+    "undergrad": {
+      "nonresident_aliens": 1922,
+      "hispanic": 2972,
+      "black": 2801,
+      "white": 27605,
+      "american_indian": 123,
+      "asian": 3206,
+      "pacific_islander": 29,
+      "two_or_more": 1961,
+      "unknown": 578,
+      "total": 41197
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.189,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 4817,
+    "sat_submitted_pct": 0.515,
+    "act_submitted_count": 638,
+    "act_submitted_pct": 0.068
+  },
+  "class_rank": {
+    "top10": 0.2018,
+    "top25": 0.5275,
+    "top50": 0.902,
+    "bottom50": 0.098,
+    "bottom25": 0.0037
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.2441,
+    "gpa_375_399": 0.281,
+    "gpa_350_374": 0.238,
+    "gpa_325_349": 0.1514,
+    "gpa_300_324": 0.0704,
+    "gpa_250_299": 0.015,
+    "gpa_200_249": 0.0001,
+    "gpa_100_199": 0.0001
+  },
+  "admission_factors": {
+    "rigor": "important",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "not_considered",
+    "interview": "considered",
+    "extracurriculars": "important",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1608,
+      "admitted": 1279,
+      "enrolled": 673
+    },
+    "female": {
+      "applied": 1704,
+      "admitted": 1338,
+      "enrolled": 691
+    },
+    "total": {
+      "applied": 3315,
+      "admitted": 2619,
+      "enrolled": 1365
+    }
+  },
+  "slug": "michigan-state"
+}

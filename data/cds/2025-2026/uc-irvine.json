@@ -1,0 +1,158 @@
+{
+  "name": "University of California, Irvine",
+  "data_year": "2025-26",
+  "city": "Irvine",
+  "state": "CA",
+  "location": "Irvine, CA",
+  "school_type": "Public",
+  "website": "www.uci.edu",
+  "applicants_total": 124231,
+  "applicants_men": 58513,
+  "applicants_women": 65718,
+  "admitted_total": 35964,
+  "admitted_men": 15851,
+  "admitted_women": 20113,
+  "enrolled_total": 6421,
+  "enrolled_men": 2896,
+  "enrolled_women": 3525,
+  "acceptance_rate": 0.2895,
+  "application_fee": 80,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "11/30",
+  "waitlist_offered": 12967,
+  "waitlist_accepted": 5738,
+  "waitlist_admitted": 5737,
+  "ea_ed_type": "None",
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": null,
+  "sat_submitted_count": null,
+  "act_submitted_pct": null,
+  "act_submitted_count": null,
+  "sat_composite_25": null,
+  "sat_composite_75": null,
+  "sat_reading_25": null,
+  "sat_reading_75": null,
+  "sat_math_25": null,
+  "sat_math_75": null,
+  "act_composite_25": null,
+  "act_composite_75": null,
+  "act_math_25": null,
+  "act_math_75": null,
+  "act_english_25": null,
+  "act_english_75": null,
+  "total_undergrads": 30260,
+  "undergrads_male": 13579,
+  "undergrads_female": 16681,
+  "retention_rate": 0.93,
+  "tuition": null,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": null,
+  "room_and_board": null,
+  "books_supplies": null,
+  "other_expenses": null,
+  "pct_out_of_state": 0.9296,
+  "pct_on_campus_housing": 0.8334,
+  "applicant_pools": {
+    "ea": null,
+    "rd": {
+      "applied": 124231,
+      "admitted": 35964,
+      "rate": 0.2895
+    },
+    "waitlist": {
+      "offered": 12967,
+      "accepted_spots": 5738,
+      "enrolled": 5737
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 58513,
+      "female": 65718
+    },
+    "accepted": {
+      "male": 15851,
+      "female": 20113
+    },
+    "enrolled": {
+      "male": 2896,
+      "female": 3525
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 1079,
+      "hispanic": 1527,
+      "black": 127,
+      "white": 669,
+      "american_indian": 7,
+      "asian": 2415,
+      "pacific_islander": 10,
+      "two_or_more": 411,
+      "unknown": 177,
+      "total": 6422
+    },
+    "undergrad": {
+      "nonresident_aliens": 3682,
+      "hispanic": 7786,
+      "black": 548,
+      "white": 3854,
+      "american_indian": 34,
+      "asian": 11609,
+      "pacific_islander": 33,
+      "two_or_more": 2003,
+      "unknown": 711,
+      "total": 30260
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.9296,
+    "international_pct": null
+  },
+  "sat_act_breakdown": null,
+  "class_rank": null,
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "not_considered",
+    "essay": "very_important",
+    "recommendations": "not_considered",
+    "interview": "not_considered",
+    "extracurriculars": "very_important",
+    "talent": "very_important",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "very_important",
+    "work_experience": "very_important",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 13802,
+      "admitted": 5094,
+      "enrolled": 1485
+    },
+    "female": {
+      "applied": 11575,
+      "admitted": 4939,
+      "enrolled": 1309
+    },
+    "total": {
+      "applied": 25377,
+      "admitted": 10033,
+      "enrolled": 2794
+    }
+  },
+  "slug": "uc-irvine"
+}

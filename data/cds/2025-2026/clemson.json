@@ -1,0 +1,174 @@
+{
+  "name": "Clemson University",
+  "data_year": "2025-2026",
+  "city": "Clemson",
+  "state": "SC",
+  "location": "Clemson, SC",
+  "school_type": "Public",
+  "website": "www.clemson.edu",
+  "applicants_total": 64805,
+  "applicants_men": 38684,
+  "applicants_women": 24946,
+  "admitted_total": 27498,
+  "admitted_men": 16914,
+  "admitted_women": 10019,
+  "enrolled_total": 5084,
+  "enrolled_men": 2041,
+  "enrolled_women": 2940,
+  "acceptance_rate": 0.4243,
+  "application_fee": 70,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "5/1",
+  "waitlist_offered": 13297,
+  "waitlist_accepted": 4506,
+  "waitlist_admitted": 1801,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "10/15",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.38,
+  "sat_submitted_count": 1952,
+  "act_submitted_pct": 0.19,
+  "act_submitted_count": 969,
+  "sat_composite_25": 1250,
+  "sat_composite_75": 1400,
+  "sat_reading_25": 630,
+  "sat_reading_75": 710,
+  "sat_math_25": 620,
+  "sat_math_75": 700,
+  "act_composite_25": 28,
+  "act_composite_75": 32,
+  "act_math_25": 26,
+  "act_math_75": 31,
+  "act_english_25": 27,
+  "act_english_75": 34,
+  "total_undergrads": 24060,
+  "undergrads_male": 10961,
+  "undergrads_female": 13099,
+  "retention_rate": 0.94,
+  "tuition": null,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": null,
+  "room_and_board": null,
+  "books_supplies": null,
+  "other_expenses": null,
+  "pct_out_of_state": 0.4754,
+  "pct_on_campus_housing": 0.977,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 13297,
+      "accepted_spots": 4506,
+      "enrolled": 1801
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 38684,
+      "female": 24946
+    },
+    "accepted": {
+      "male": 16914,
+      "female": 10019
+    },
+    "enrolled": {
+      "male": 2041,
+      "female": 2940
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 58,
+      "hispanic": 447,
+      "black": 172,
+      "white": 3899,
+      "american_indian": 6,
+      "asian": 155,
+      "pacific_islander": 2,
+      "two_or_more": 193,
+      "unknown": 152,
+      "total": 5084
+    },
+    "undergrad": {
+      "nonresident_aliens": 205,
+      "hispanic": 2219,
+      "black": 1126,
+      "white": 17987,
+      "american_indian": 49,
+      "asian": 692,
+      "pacific_islander": 14,
+      "two_or_more": 947,
+      "unknown": 613,
+      "total": 23852
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.4754,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 1952,
+    "sat_submitted_pct": 0.38,
+    "act_submitted_count": 969,
+    "act_submitted_pct": 0.19
+  },
+  "class_rank": {
+    "top10": 0.5457,
+    "top25": 0.9208,
+    "top50": 0.9952,
+    "bottom50": 0.0042,
+    "bottom25": 0.0006
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.8595,
+    "gpa_375_399": 0.0946,
+    "gpa_350_374": 0.0269,
+    "gpa_325_349": 0.0098,
+    "gpa_300_324": 0.0055,
+    "gpa_250_299": 0.0031,
+    "gpa_200_249": 0.0006,
+    "gpa_100_199": null
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "very_important",
+    "academic_gpa": "very_important",
+    "test_scores": "important",
+    "essay": "considered",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "important",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "very_important",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "not_considered",
+    "work_experience": "not_considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1709,
+      "admitted": 1068,
+      "enrolled": 751
+    },
+    "female": {
+      "applied": 1657,
+      "admitted": 1181,
+      "enrolled": 934
+    },
+    "total": {
+      "applied": 3829,
+      "admitted": 2452,
+      "enrolled": 1798
+    }
+  },
+  "slug": "clemson"
+}

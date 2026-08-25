@@ -1,0 +1,174 @@
+{
+  "name": "Santa Clara University",
+  "data_year": "2025-26",
+  "city": "Santa Clara",
+  "state": "CA",
+  "location": "Santa Clara, CA",
+  "school_type": "Private",
+  "website": "www.scu.edu",
+  "applicants_total": 20032,
+  "applicants_men": 9262,
+  "applicants_women": 10770,
+  "admitted_total": 9592,
+  "admitted_men": 4256,
+  "admitted_women": 5336,
+  "enrolled_total": 1641,
+  "enrolled_men": 838,
+  "enrolled_women": 803,
+  "acceptance_rate": 0.479,
+  "application_fee": 75,
+  "avg_gpa_weighted": 3.72,
+  "rd_deadline": "1/7",
+  "waitlist_offered": 405,
+  "waitlist_accepted": 268,
+  "waitlist_admitted": 263,
+  "ea_ed_type": "ED I & II",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/31",
+  "ea_apps_received": 611,
+  "ea_apps_admitted": 467,
+  "sat_submitted_pct": 0.29,
+  "sat_submitted_count": 472,
+  "act_submitted_pct": 0.09,
+  "act_submitted_count": 145,
+  "sat_composite_25": 1330,
+  "sat_composite_75": 1470,
+  "sat_reading_25": 660,
+  "sat_reading_75": 730,
+  "sat_math_25": 660,
+  "sat_math_75": 750,
+  "act_composite_25": 29,
+  "act_composite_75": 33,
+  "act_math_25": 27,
+  "act_math_75": 34,
+  "act_english_25": null,
+  "act_english_75": null,
+  "total_undergrads": 6695,
+  "undergrads_male": 3352,
+  "undergrads_female": 3343,
+  "retention_rate": 0.93,
+  "tuition": 64956,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 780,
+  "room_and_board": 21234,
+  "books_supplies": 1450,
+  "other_expenses": 1700,
+  "pct_out_of_state": 0.38,
+  "pct_on_campus_housing": 0.94,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 405,
+      "accepted_spots": 268,
+      "enrolled": 263
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 9262,
+      "female": 10770
+    },
+    "accepted": {
+      "male": 4256,
+      "female": 5336
+    },
+    "enrolled": {
+      "male": 838,
+      "female": 803
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 117,
+      "hispanic": 352,
+      "black": 41,
+      "white": 577,
+      "american_indian": 0,
+      "asian": 369,
+      "pacific_islander": 0,
+      "two_or_more": 151,
+      "unknown": 34,
+      "total": 1641
+    },
+    "undergrad": {
+      "nonresident_aliens": 473,
+      "hispanic": 1391,
+      "black": 205,
+      "white": 2377,
+      "american_indian": 3,
+      "asian": 1484,
+      "pacific_islander": 8,
+      "two_or_more": 621,
+      "unknown": 124,
+      "total": 6686
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.38,
+    "international_pct": 0.087
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 472,
+    "sat_submitted_pct": 0.29,
+    "act_submitted_count": 145,
+    "act_submitted_pct": 0.09
+  },
+  "class_rank": {
+    "top10": 0.47,
+    "top25": 0.74,
+    "top50": 0.91,
+    "bottom50": 0.09,
+    "bottom25": 0.02
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.1043,
+    "gpa_375_399": 0.4342,
+    "gpa_350_374": 0.286,
+    "gpa_325_349": 0.1341,
+    "gpa_300_324": 0.0341,
+    "gpa_250_299": 0.0073,
+    "gpa_200_249": 0.0,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": null,
+    "class_rank": null,
+    "academic_gpa": null,
+    "test_scores": null,
+    "essay": null,
+    "recommendations": null,
+    "interview": null,
+    "extracurriculars": null,
+    "talent": null,
+    "character": null,
+    "first_gen": null,
+    "alumni_relation": null,
+    "geo_residence": null,
+    "state_residence": null,
+    "religious": null,
+    "racial_ethnic": null,
+    "volunteer": null,
+    "work_experience": null,
+    "applicant_interest": null
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 611,
+      "admitted": 387,
+      "enrolled": 128
+    },
+    "female": {
+      "applied": 595,
+      "admitted": 393,
+      "enrolled": 119
+    },
+    "total": {
+      "applied": 1206,
+      "admitted": 780,
+      "enrolled": 247
+    }
+  },
+  "slug": "santa-clara"
+}

@@ -1,0 +1,174 @@
+{
+  "name": "Rensselaer Polytechnic Institute",
+  "data_year": "2025-26",
+  "city": "Troy",
+  "state": "NY",
+  "location": "Troy, NY",
+  "school_type": "Private",
+  "website": "rpi.edu",
+  "applicants_total": 14356,
+  "applicants_men": 9556,
+  "applicants_women": 4785,
+  "admitted_total": 9655,
+  "admitted_men": 6666,
+  "admitted_women": 2980,
+  "enrolled_total": 1394,
+  "enrolled_men": 977,
+  "enrolled_women": 417,
+  "acceptance_rate": 0.673,
+  "application_fee": 70,
+  "avg_gpa_weighted": 3.93,
+  "rd_deadline": "1/15",
+  "waitlist_offered": 1008,
+  "waitlist_accepted": 599,
+  "waitlist_admitted": 6,
+  "ea_ed_type": "ED I & II",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/14",
+  "ea_apps_received": 317,
+  "ea_apps_admitted": 219,
+  "sat_submitted_pct": 0.53,
+  "sat_submitted_count": 733,
+  "act_submitted_pct": 0.13,
+  "act_submitted_count": 180,
+  "sat_composite_25": 1380,
+  "sat_composite_75": 1500,
+  "sat_reading_25": 680,
+  "sat_reading_75": 750,
+  "sat_math_25": 690,
+  "sat_math_75": 770,
+  "act_composite_25": 31,
+  "act_composite_75": 34,
+  "act_math_25": null,
+  "act_math_75": null,
+  "act_english_25": null,
+  "act_english_75": null,
+  "total_undergrads": 5833,
+  "undergrads_male": 3967,
+  "undergrads_female": 1866,
+  "retention_rate": 0.91,
+  "tuition": 66300,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 1676,
+  "room_and_board": 18870,
+  "books_supplies": 1410,
+  "other_expenses": 1280,
+  "pct_out_of_state": 0.61,
+  "pct_on_campus_housing": 1.0,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 1008,
+      "accepted_spots": 599,
+      "enrolled": 6
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 9556,
+      "female": 4785
+    },
+    "accepted": {
+      "male": 6666,
+      "female": 2980
+    },
+    "enrolled": {
+      "male": 977,
+      "female": 417
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 31,
+      "hispanic": 136,
+      "black": 52,
+      "white": 770,
+      "american_indian": 1,
+      "asian": 284,
+      "pacific_islander": 0,
+      "two_or_more": 84,
+      "unknown": 36,
+      "total": 1394
+    },
+    "undergrad": {
+      "nonresident_aliens": 246,
+      "hispanic": 641,
+      "black": 265,
+      "white": 2743,
+      "american_indian": 1,
+      "asian": 1261,
+      "pacific_islander": 3,
+      "two_or_more": 326,
+      "unknown": 293,
+      "total": 5779
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.61,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 733,
+    "sat_submitted_pct": 0.53,
+    "act_submitted_count": 180,
+    "act_submitted_pct": 0.13
+  },
+  "class_rank": {
+    "top10": 0.63,
+    "top25": 0.9,
+    "top50": 0.99,
+    "bottom50": 0.01,
+    "bottom25": 0.0
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.4,
+    "gpa_375_399": 0.4,
+    "gpa_350_374": 0.16,
+    "gpa_325_349": 0.03,
+    "gpa_300_324": 0.01,
+    "gpa_250_299": 0.0,
+    "gpa_200_249": 0.0,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "very_important",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "important",
+    "interview": "not_considered",
+    "extracurriculars": "important",
+    "talent": "considered",
+    "character": "important",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 242,
+      "admitted": 161,
+      "enrolled": 62
+    },
+    "female": {
+      "applied": 105,
+      "admitted": 61,
+      "enrolled": 21
+    },
+    "total": {
+      "applied": 347,
+      "admitted": 222,
+      "enrolled": 83
+    }
+  },
+  "slug": "rpi"
+}

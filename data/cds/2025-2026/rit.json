@@ -1,0 +1,178 @@
+{
+  "name": "Rochester Institute of Technology",
+  "data_year": "2025-26",
+  "city": "Rochester",
+  "state": "NY",
+  "location": "Rochester, NY",
+  "school_type": "Private",
+  "website": "www.rit.edu",
+  "applicants_total": 31565,
+  "applicants_men": 18303,
+  "applicants_women": 13224,
+  "admitted_total": 22439,
+  "admitted_men": 13142,
+  "admitted_women": 9269,
+  "enrolled_total": 2959,
+  "enrolled_men": 1899,
+  "enrolled_women": 1049,
+  "acceptance_rate": 0.7108,
+  "application_fee": 65,
+  "avg_gpa_weighted": 3.9,
+  "rd_deadline": "1/15",
+  "waitlist_offered": 2155,
+  "waitlist_accepted": 657,
+  "waitlist_admitted": 164,
+  "ea_ed_type": "ED I & II",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/1",
+  "ea_apps_received": 1405,
+  "ea_apps_admitted": 1028,
+  "sat_submitted_pct": 0.41,
+  "sat_submitted_count": 1206,
+  "act_submitted_pct": 0.08,
+  "act_submitted_count": 237,
+  "sat_composite_25": 1310,
+  "sat_composite_75": 1440,
+  "sat_reading_25": 650,
+  "sat_reading_75": 730,
+  "sat_math_25": 640,
+  "sat_math_75": 730,
+  "act_composite_25": 30,
+  "act_composite_75": 34,
+  "act_math_25": 27,
+  "act_math_75": 34,
+  "act_english_25": 28,
+  "act_english_75": 35,
+  "total_undergrads": 14145,
+  "undergrads_male": 9082,
+  "undergrads_female": 5024,
+  "retention_rate": 0.89,
+  "tuition": 63508,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 1100,
+  "room_and_board": 17370,
+  "books_supplies": 1100,
+  "other_expenses": 700,
+  "pct_out_of_state": 0.591,
+  "pct_on_campus_housing": 0.95,
+  "applicant_pools": {
+    "ea": {
+      "applied": 1405,
+      "admitted": 1028,
+      "rate": 0.7318
+    },
+    "rd": null,
+    "waitlist": {
+      "offered": 2155,
+      "accepted_spots": 657,
+      "enrolled": 164
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 18303,
+      "female": 13224
+    },
+    "accepted": {
+      "male": 13142,
+      "female": 9269
+    },
+    "enrolled": {
+      "male": 1899,
+      "female": 1049
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 94,
+      "hispanic": 353,
+      "black": 215,
+      "white": 1581,
+      "american_indian": 1,
+      "asian": 348,
+      "pacific_islander": 2,
+      "two_or_more": 188,
+      "unknown": 177,
+      "total": 2959
+    },
+    "undergrad": {
+      "nonresident_aliens": 535,
+      "hispanic": 1426,
+      "black": 804,
+      "white": 7475,
+      "american_indian": 18,
+      "asian": 1622,
+      "pacific_islander": 7,
+      "two_or_more": 769,
+      "unknown": 1489,
+      "total": 14145
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.591,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 1206,
+    "sat_submitted_pct": 0.41,
+    "act_submitted_count": 237,
+    "act_submitted_pct": 0.08
+  },
+  "class_rank": {
+    "top10": 0.4,
+    "top25": 0.63,
+    "top50": 0.93,
+    "bottom50": 0.07,
+    "bottom25": 0.0
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.4168,
+    "gpa_375_399": 0.2714,
+    "gpa_350_374": 0.1179,
+    "gpa_325_349": 0.1087,
+    "gpa_300_324": 0.0442,
+    "gpa_250_299": 0.0336,
+    "gpa_200_249": 0.0058,
+    "gpa_100_199": 0.0013
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "important",
+    "academic_gpa": "very_important",
+    "test_scores": "important",
+    "essay": "important",
+    "recommendations": "important",
+    "interview": "considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "important",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 907,
+      "admitted": 450,
+      "enrolled": 158
+    },
+    "female": {
+      "applied": 701,
+      "admitted": 288,
+      "enrolled": 107
+    },
+    "total": {
+      "applied": 1608,
+      "admitted": 738,
+      "enrolled": 265
+    }
+  },
+  "slug": "rit"
+}

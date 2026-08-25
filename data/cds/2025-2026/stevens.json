@@ -1,0 +1,178 @@
+{
+  "name": "Stevens Institute of Technology",
+  "data_year": "2025-2026",
+  "city": "Hoboken",
+  "state": "NJ",
+  "location": "Hoboken, NJ",
+  "school_type": "Private",
+  "website": "www.stevens.edu",
+  "applicants_total": 10499,
+  "applicants_men": 6965,
+  "applicants_women": 3533,
+  "admitted_total": 5321,
+  "admitted_men": 3458,
+  "admitted_women": 1863,
+  "enrolled_total": 1104,
+  "enrolled_men": 767,
+  "enrolled_women": 336,
+  "acceptance_rate": 0.5068,
+  "application_fee": 75,
+  "avg_gpa_weighted": 3.83,
+  "rd_deadline": "1/5",
+  "waitlist_offered": 2565,
+  "waitlist_accepted": 940,
+  "waitlist_admitted": 517,
+  "ea_ed_type": "ED I & II",
+  "ea_ed_deadline": "11/15",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": 407,
+  "ea_apps_admitted": 284,
+  "sat_submitted_pct": 0.3614,
+  "sat_submitted_count": 399,
+  "act_submitted_pct": 0.0408,
+  "act_submitted_count": 45,
+  "sat_composite_25": 1370,
+  "sat_composite_75": 1470,
+  "sat_reading_25": 670,
+  "sat_reading_75": 730,
+  "sat_math_25": 690,
+  "sat_math_75": 760,
+  "act_composite_25": 32,
+  "act_composite_75": 34,
+  "act_math_25": 30,
+  "act_math_75": 35,
+  "act_english_25": 31,
+  "act_english_75": 35,
+  "total_undergrads": 4206,
+  "undergrads_male": 2786,
+  "undergrads_female": 1408,
+  "retention_rate": 0.94,
+  "tuition": 65530,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 2700,
+  "room_and_board": 20744,
+  "books_supplies": 1200,
+  "other_expenses": 1120,
+  "pct_out_of_state": 0.3476,
+  "pct_on_campus_housing": 0.8116,
+  "applicant_pools": {
+    "ea": {
+      "applied": 407,
+      "admitted": 284,
+      "rate": 0.6978
+    },
+    "rd": null,
+    "waitlist": {
+      "offered": 2565,
+      "accepted_spots": 940,
+      "enrolled": 517
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 6965,
+      "female": 3533
+    },
+    "accepted": {
+      "male": 3458,
+      "female": 1863
+    },
+    "enrolled": {
+      "male": 767,
+      "female": 336
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 51,
+      "hispanic": 226,
+      "black": 36,
+      "white": 438,
+      "american_indian": 1,
+      "asian": 213,
+      "pacific_islander": 0,
+      "two_or_more": 50,
+      "unknown": 89,
+      "total": 1104
+    },
+    "undergrad": {
+      "nonresident_aliens": 172,
+      "hispanic": 751,
+      "black": 136,
+      "white": 1836,
+      "american_indian": 2,
+      "asian": 861,
+      "pacific_islander": 2,
+      "two_or_more": 191,
+      "unknown": 241,
+      "total": 4192
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.3476,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 399,
+    "sat_submitted_pct": 0.3614,
+    "act_submitted_count": 45,
+    "act_submitted_pct": 0.0408
+  },
+  "class_rank": {
+    "top10": 0.4754,
+    "top25": 0.787,
+    "top50": 0.958,
+    "bottom50": 0.042,
+    "bottom25": 0.0174
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.5317,
+    "gpa_375_399": 0.195,
+    "gpa_350_374": 0.1573,
+    "gpa_325_349": 0.0819,
+    "gpa_300_324": 0.0221,
+    "gpa_250_299": 0.012,
+    "gpa_200_249": 0.0,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "important",
+    "interview": "considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "not_considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 231,
+      "admitted": 112,
+      "enrolled": 36
+    },
+    "female": {
+      "applied": 96,
+      "admitted": 40,
+      "enrolled": 7
+    },
+    "total": {
+      "applied": 327,
+      "admitted": 152,
+      "enrolled": 43
+    }
+  },
+  "slug": "stevens"
+}

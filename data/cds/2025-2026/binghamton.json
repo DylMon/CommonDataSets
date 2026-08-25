@@ -1,0 +1,178 @@
+{
+  "name": "Binghamton University",
+  "data_year": "2025-26",
+  "city": "Binghamton",
+  "state": "NY",
+  "location": "Binghamton, NY",
+  "school_type": "Public",
+  "website": "binghamton.edu",
+  "applicants_total": 61197,
+  "applicants_men": 27436,
+  "applicants_women": 33728,
+  "admitted_total": 22835,
+  "admitted_men": 9870,
+  "admitted_women": 12948,
+  "enrolled_total": 3201,
+  "enrolled_men": 1502,
+  "enrolled_women": 1697,
+  "acceptance_rate": 0.373,
+  "application_fee": 50,
+  "avg_gpa_weighted": 3.88,
+  "rd_deadline": "4/1",
+  "waitlist_offered": 16524,
+  "waitlist_accepted": 5365,
+  "waitlist_admitted": 753,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "1/15",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.43,
+  "sat_submitted_count": 1380,
+  "act_submitted_pct": 0.09,
+  "act_submitted_count": 284,
+  "sat_composite_25": 1320,
+  "sat_composite_75": 1480,
+  "sat_reading_25": 650,
+  "sat_reading_75": 740,
+  "sat_math_25": 660,
+  "sat_math_75": 760,
+  "act_composite_25": 31,
+  "act_composite_75": 34,
+  "act_math_25": 28,
+  "act_math_75": 33,
+  "act_english_25": 29,
+  "act_english_75": 35,
+  "total_undergrads": 14559,
+  "undergrads_male": 6955,
+  "undergrads_female": 7597,
+  "retention_rate": 0.901,
+  "tuition": null,
+  "tuition_in_state": 7070,
+  "tuition_out_of_state": 28970,
+  "required_fees": 3497,
+  "room_and_board": null,
+  "books_supplies": 1000,
+  "other_expenses": null,
+  "pct_out_of_state": 0.164,
+  "pct_on_campus_housing": 0.974,
+  "applicant_pools": {
+    "ea": {
+      "applied": 34283,
+      "admitted": 14315,
+      "rate": 0.418
+    },
+    "rd": null,
+    "waitlist": {
+      "offered": 16524,
+      "accepted_spots": 5365,
+      "enrolled": 753
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 27436,
+      "female": 33728
+    },
+    "accepted": {
+      "male": 9870,
+      "female": 12948
+    },
+    "enrolled": {
+      "male": 1502,
+      "female": 1697
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 129,
+      "hispanic": 423,
+      "black": 149,
+      "white": 1550,
+      "american_indian": 1,
+      "asian": 731,
+      "pacific_islander": 3,
+      "two_or_more": 140,
+      "unknown": 75,
+      "total": 3201
+    },
+    "undergrad": {
+      "nonresident_aliens": 645,
+      "hispanic": 2035,
+      "black": 731,
+      "white": 7170,
+      "american_indian": 5,
+      "asian": 2865,
+      "pacific_islander": 9,
+      "two_or_more": 615,
+      "unknown": 484,
+      "total": 14559
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.164,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 1380,
+    "sat_submitted_pct": 0.43,
+    "act_submitted_count": 284,
+    "act_submitted_pct": 0.09
+  },
+  "class_rank": {
+    "top10": 0.51,
+    "top25": 0.87,
+    "top50": 0.98,
+    "bottom50": 0.02,
+    "bottom25": 0.0
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.6392,
+    "gpa_375_399": 0.1761,
+    "gpa_350_374": 0.1156,
+    "gpa_325_349": 0.0425,
+    "gpa_300_324": 0.0216,
+    "gpa_250_299": 0.005,
+    "gpa_200_249": 0.0,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "important",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": null,
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 2267,
+      "admitted": 1023,
+      "enrolled": 440
+    },
+    "female": {
+      "applied": 2457,
+      "admitted": 1072,
+      "enrolled": 413
+    },
+    "total": {
+      "applied": 4727,
+      "admitted": 2097,
+      "enrolled": 853
+    }
+  },
+  "slug": "binghamton"
+}

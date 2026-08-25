@@ -2,11 +2,13 @@
 """
 parse-cds-batch.py — Parse all not-yet-parsed CDS PDFs in one Message Batch.
 
-Submits every unparsed PDF in data/cds-pdfs/ as a single Anthropic Message
-Batch request (50% cheaper than sequential calls, no per-request rate-limit
-pressure — a good fit since this isn't latency-sensitive). Polls until the
-batch finishes, then writes data/cds/{slug}.json for each school and prints
-a completion summary grouped by data richness.
+Submits every unparsed PDF in data/cds-pdfs/{CDS_YEAR}/ as a single Anthropic
+Message Batch request (50% cheaper than sequential calls, no per-request
+rate-limit pressure — a good fit since this isn't latency-sensitive). Polls
+until the batch finishes, then writes data/cds/{CDS_YEAR}/{slug}.json for
+each school and prints a completion summary grouped by data richness.
+
+To parse a different year, update CDS_YEAR below.
 
 Usage:
     python scripts/parse-cds-batch.py [--force]
@@ -45,8 +47,9 @@ build_request_params = _parse_cds.build_request_params
 extract_json = _parse_cds.extract_json
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-PDF_DIR = REPO_ROOT / "data" / "cds-pdfs"
-OUTPUT_DIR = REPO_ROOT / "data" / "cds"
+CDS_YEAR = "2025-2026"
+PDF_DIR = REPO_ROOT / "data" / "cds-pdfs" / CDS_YEAR
+OUTPUT_DIR = REPO_ROOT / "data" / "cds" / CDS_YEAR
 
 POLL_INTERVAL_SECONDS = 30
 
@@ -69,7 +72,7 @@ def score_completeness(data: dict) -> int:
 
 
 def show_group(label: str, group: list[tuple[str, int, dict]]) -> None:
-    print(f"\n── {label} ({len(group)} schools) ──")
+    print(f"\n-- {label} ({len(group)} schools) --")
     for slug, score, data in sorted(group, key=lambda x: -x[1]):
         name = data.get("name") or slug
         core = sum(1 for f in CORE_ADMISSIONS_FIELDS if data.get(f) is not None)
@@ -106,13 +109,24 @@ def main():
         client = anthropic.Anthropic()
 
         print(f"\nBuilding batch of {len(to_parse)} request(s)...")
-        requests = [
-            {"custom_id": slug, "params": build_request_params(pdf)}
-            for slug, pdf in to_parse
-        ]
+        requests = []
+        build_errors = []
+        for slug, pdf in to_parse:
+            try:
+                requests.append({"custom_id": slug, "params": build_request_params(pdf)})
+            except Exception as e:
+                build_errors.append((slug, str(e)))
+
+        if build_errors:
+            print(f"\nCould not build a request for {len(build_errors)} school(s):")
+            for slug, msg in build_errors:
+                print(f"  x {slug}: {msg}")
+
+        if not requests:
+            sys.exit("\nNo requests could be built.")
 
         batch = client.messages.batches.create(requests=requests)
-        print(f"Batch submitted: {batch.id}")
+        print(f"\nBatch submitted: {batch.id}")
 
         while batch.processing_status != "ended":
             time.sleep(POLL_INTERVAL_SECONDS)

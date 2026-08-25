@@ -1,0 +1,174 @@
+{
+  "name": "Penn State University Park",
+  "data_year": "2025-26",
+  "city": "University Park",
+  "state": "PA",
+  "location": "University Park, PA",
+  "school_type": "Public",
+  "website": "www.psu.edu",
+  "applicants_total": 106547,
+  "applicants_men": 47811,
+  "applicants_women": 58615,
+  "admitted_total": 58952,
+  "admitted_men": 25375,
+  "admitted_women": 33514,
+  "enrolled_total": 9148,
+  "enrolled_men": 4456,
+  "enrolled_women": 4691,
+  "acceptance_rate": 0.5533,
+  "application_fee": "$65, $75 for International Students",
+  "avg_gpa_weighted": 3.67,
+  "rd_deadline": null,
+  "waitlist_offered": 2109,
+  "waitlist_accepted": 1153,
+  "waitlist_admitted": 46,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/24",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.286,
+  "sat_submitted_count": 2616,
+  "act_submitted_pct": 0.0498,
+  "act_submitted_count": 456,
+  "sat_composite_25": 1280,
+  "sat_composite_75": 1410,
+  "sat_reading_25": 630,
+  "sat_reading_75": 710,
+  "sat_math_25": 630,
+  "sat_math_75": 720,
+  "act_composite_25": 28,
+  "act_composite_75": 32,
+  "act_math_25": 26,
+  "act_math_75": 32,
+  "act_english_25": 27,
+  "act_english_75": 34,
+  "total_undergrads": 42822,
+  "undergrads_male": 22386,
+  "undergrads_female": 20409,
+  "retention_rate": 0.923,
+  "tuition": null,
+  "tuition_in_state": 20878.0,
+  "tuition_out_of_state": 44574.0,
+  "required_fees": 640.0,
+  "room_and_board": 15968.0,
+  "books_supplies": 1290.0,
+  "other_expenses": 3112.0,
+  "pct_out_of_state": 0.4,
+  "pct_on_campus_housing": 0.96,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 2109,
+      "accepted_spots": 1153,
+      "enrolled": 46
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 47811,
+      "female": 58615
+    },
+    "accepted": {
+      "male": 25375,
+      "female": 33514
+    },
+    "enrolled": {
+      "male": 4456,
+      "female": 4691
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 706,
+      "hispanic": 810,
+      "black": 407,
+      "white": 5901,
+      "american_indian": 11,
+      "asian": 649,
+      "pacific_islander": 3,
+      "two_or_more": 380,
+      "unknown": 281,
+      "total": 9148
+    },
+    "undergrad": {
+      "nonresident_aliens": 3982,
+      "hispanic": 3946,
+      "black": 1921,
+      "white": 26755,
+      "american_indian": 56,
+      "asian": 3264,
+      "pacific_islander": 29,
+      "two_or_more": 1760,
+      "unknown": 1109,
+      "total": 42822
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.4,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 2616,
+    "sat_submitted_pct": 0.286,
+    "act_submitted_count": 456,
+    "act_submitted_pct": 0.0498
+  },
+  "class_rank": {
+    "top10": 0.37,
+    "top25": 0.74,
+    "top50": 0.96,
+    "bottom50": 0.04,
+    "bottom25": 0.01
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.08,
+    "gpa_375_399": 0.38,
+    "gpa_350_374": 0.29,
+    "gpa_325_349": 0.16,
+    "gpa_300_324": 0.06,
+    "gpa_250_299": 0.02,
+    "gpa_200_249": 0.0,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "important",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "not_considered",
+    "recommendations": "not_considered",
+    "interview": "not_considered",
+    "extracurriculars": "not_considered",
+    "talent": "considered",
+    "character": "not_considered",
+    "first_gen": "not_considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "not_considered",
+    "work_experience": "not_considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 762,
+      "admitted": 484,
+      "enrolled": 217
+    },
+    "female": {
+      "applied": 717,
+      "admitted": 423,
+      "enrolled": 159
+    },
+    "total": {
+      "applied": 1508,
+      "admitted": 925,
+      "enrolled": 379
+    }
+  },
+  "slug": "penn-state"
+}

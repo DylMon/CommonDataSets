@@ -1,0 +1,166 @@
+{
+  "name": "Florida International University",
+  "data_year": "2025-26",
+  "city": "Miami",
+  "state": "FL",
+  "location": "Miami, FL",
+  "school_type": "Public",
+  "website": "www.fiu.edu",
+  "applicants_total": 36113,
+  "applicants_men": 15214,
+  "applicants_women": 20899,
+  "admitted_total": 21976,
+  "admitted_men": 9221,
+  "admitted_women": 12755,
+  "enrolled_total": 5854,
+  "enrolled_men": 2701,
+  "enrolled_women": 3153,
+  "acceptance_rate": 0.6085,
+  "application_fee": 30,
+  "avg_gpa_weighted": 4.0,
+  "rd_deadline": "3/4",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/3",
+  "ea_ed_notification": "12/11",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.92,
+  "sat_submitted_count": 5334,
+  "act_submitted_pct": 0.08,
+  "act_submitted_count": 488,
+  "sat_composite_25": 1070,
+  "sat_composite_75": 1260,
+  "sat_reading_25": 560,
+  "sat_reading_75": 650,
+  "sat_math_25": 510,
+  "sat_math_75": 620,
+  "act_composite_25": 22,
+  "act_composite_75": 27,
+  "act_math_25": 19,
+  "act_math_75": 26,
+  "act_english_25": 21,
+  "act_english_75": 27,
+  "total_undergrads": 46249,
+  "undergrads_male": 21038,
+  "undergrads_female": 25211,
+  "retention_rate": 0.92,
+  "tuition": null,
+  "tuition_in_state": 6168,
+  "tuition_out_of_state": 19806,
+  "required_fees": 398,
+  "room_and_board": 13852,
+  "books_supplies": 1350,
+  "other_expenses": 3474,
+  "pct_out_of_state": 0.05,
+  "pct_on_campus_housing": 0.25,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 15214,
+      "female": 20899
+    },
+    "accepted": {
+      "male": 9221,
+      "female": 12755
+    },
+    "enrolled": {
+      "male": 2701,
+      "female": 3153
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 215,
+      "hispanic": 4214,
+      "black": 571,
+      "white": 480,
+      "american_indian": 1,
+      "asian": 184,
+      "pacific_islander": 3,
+      "two_or_more": 120,
+      "unknown": 66,
+      "total": 5854
+    },
+    "undergrad": {
+      "nonresident_aliens": 2959,
+      "hispanic": 27866,
+      "black": 4467,
+      "white": 3368,
+      "american_indian": 22,
+      "asian": 1085,
+      "pacific_islander": 19,
+      "two_or_more": 826,
+      "unknown": 296,
+      "total": 40908
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.05,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 5334,
+    "sat_submitted_pct": 0.92,
+    "act_submitted_count": 488,
+    "act_submitted_pct": 0.08
+  },
+  "class_rank": {
+    "top10": 0.23,
+    "top25": 0.46,
+    "top50": 0.55,
+    "bottom50": 0.45,
+    "bottom25": 0.18
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.65,
+    "gpa_375_399": 0.14,
+    "gpa_350_374": 0.14,
+    "gpa_325_349": 0.05,
+    "gpa_300_324": 0.02,
+    "gpa_250_299": 0.0,
+    "gpa_200_249": 0.0,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "very_important",
+    "academic_gpa": "very_important",
+    "test_scores": "very_important",
+    "essay": "considered",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 3749,
+      "admitted": 2812,
+      "enrolled": 1819
+    },
+    "female": {
+      "applied": 4873,
+      "admitted": 3550,
+      "enrolled": 2367
+    },
+    "total": {
+      "applied": 8622,
+      "admitted": 6362,
+      "enrolled": 4186
+    }
+  },
+  "slug": "fiu"
+}

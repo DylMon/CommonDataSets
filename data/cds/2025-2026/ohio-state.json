@@ -1,0 +1,165 @@
+{
+  "name": "The Ohio State University",
+  "data_year": "2025-2026",
+  "city": "Columbus",
+  "state": "OH",
+  "location": "Columbus, OH",
+  "school_type": "Public",
+  "website": "undergrad.osu.edu/apply/freshmen-columbus",
+  "applicants_total": 81392,
+  "applicants_men": 39510,
+  "applicants_women": 41882,
+  "admitted_total": 40047,
+  "admitted_men": 19444,
+  "admitted_women": 20603,
+  "enrolled_total": 8248,
+  "enrolled_men": 3872,
+  "enrolled_women": 4376,
+  "acceptance_rate": 0.492,
+  "application_fee": 60,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "1/15",
+  "waitlist_offered": 5358,
+  "waitlist_accepted": 2278,
+  "waitlist_admitted": 2049,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "1/31",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.25,
+  "sat_submitted_count": 2099,
+  "act_submitted_pct": 0.42,
+  "act_submitted_count": 3474,
+  "sat_composite_25": 1300,
+  "sat_composite_75": 1440,
+  "sat_reading_25": 640,
+  "sat_reading_75": 720,
+  "sat_math_25": 650,
+  "sat_math_75": 740,
+  "act_composite_25": 27,
+  "act_composite_75": 32,
+  "act_math_25": 26,
+  "act_math_75": 32,
+  "act_english_25": 25,
+  "act_english_75": 34,
+  "total_undergrads": 46627,
+  "undergrads_male": 23121,
+  "undergrads_female": 23506,
+  "retention_rate": 0.93,
+  "tuition": null,
+  "tuition_in_state": 12545,
+  "tuition_out_of_state": 41327,
+  "required_fees": 1096,
+  "room_and_board": 16222,
+  "books_supplies": 1020,
+  "other_expenses": 2726,
+  "pct_out_of_state": 0.28,
+  "pct_on_campus_housing": 0.92,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 5358,
+      "accepted_spots": 2278,
+      "enrolled": 2049
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 39510,
+      "female": 41882
+    },
+    "accepted": {
+      "male": 19444,
+      "female": 20603
+    },
+    "enrolled": {
+      "male": 3872,
+      "female": 4376
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 538,
+      "hispanic": 544,
+      "black": 514,
+      "white": 4763,
+      "american_indian": 5,
+      "asian": 1100,
+      "pacific_islander": 4,
+      "two_or_more": 452,
+      "unknown": 328,
+      "total": 8248
+    },
+    "undergrad": {
+      "nonresident_aliens": 3316,
+      "hispanic": 2918,
+      "black": 3957,
+      "white": 27049,
+      "american_indian": 28,
+      "asian": 5414,
+      "pacific_islander": 15,
+      "two_or_more": 2369,
+      "unknown": 1561,
+      "total": 46627
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.28,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 2099,
+    "sat_submitted_pct": 0.25,
+    "act_submitted_count": 3474,
+    "act_submitted_pct": 0.42
+  },
+  "class_rank": {
+    "top10": 0.73,
+    "top25": 0.96,
+    "top50": 0.99,
+    "bottom50": 0.01,
+    "bottom25": 0.0
+  },
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "very_important",
+    "academic_gpa": "very_important",
+    "test_scores": "very_important",
+    "essay": "important",
+    "recommendations": "important",
+    "interview": "not_considered",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "considered",
+    "first_gen": "important",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "important",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 2325,
+      "admitted": 1993,
+      "enrolled": 1045
+    },
+    "female": {
+      "applied": 1960,
+      "admitted": 1651,
+      "enrolled": 915
+    },
+    "total": {
+      "applied": 4285,
+      "admitted": 3644,
+      "enrolled": 1960
+    }
+  },
+  "slug": "ohio-state"
+}

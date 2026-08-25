@@ -1,0 +1,174 @@
+{
+  "name": "University of Massachusetts Amherst",
+  "data_year": "2025-26",
+  "city": "Amherst",
+  "state": "MA",
+  "location": "Amherst, MA",
+  "school_type": "Public",
+  "website": "www.umass.edu",
+  "applicants_total": 53117,
+  "applicants_men": 24999,
+  "applicants_women": 28118,
+  "admitted_total": 31813,
+  "admitted_men": 13226,
+  "admitted_women": 18587,
+  "enrolled_total": 5315,
+  "enrolled_men": 2520,
+  "enrolled_women": 2795,
+  "acceptance_rate": 0.5989,
+  "application_fee": 90,
+  "avg_gpa_weighted": 4.05,
+  "rd_deadline": "1/15",
+  "waitlist_offered": 11100,
+  "waitlist_accepted": 7261,
+  "waitlist_admitted": 2349,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/5",
+  "ea_ed_notification": "1/25",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.249,
+  "sat_submitted_count": 1322,
+  "act_submitted_pct": 0.003,
+  "act_submitted_count": 160,
+  "sat_composite_25": 1330,
+  "sat_composite_75": 1480,
+  "sat_reading_25": 660,
+  "sat_reading_75": 740,
+  "sat_math_25": 660,
+  "sat_math_75": 760,
+  "act_composite_25": 30,
+  "act_composite_75": 34,
+  "act_math_25": null,
+  "act_math_75": null,
+  "act_english_25": null,
+  "act_english_75": null,
+  "total_undergrads": 24019,
+  "undergrads_male": 11496,
+  "undergrads_female": 12523,
+  "retention_rate": 0.923,
+  "tuition": null,
+  "tuition_in_state": 17601,
+  "tuition_out_of_state": 40873,
+  "required_fees": 1386,
+  "room_and_board": 16726,
+  "books_supplies": 1200,
+  "other_expenses": 1040,
+  "pct_out_of_state": 0.27,
+  "pct_on_campus_housing": 0.97,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 11100,
+      "accepted_spots": 7261,
+      "enrolled": 2349
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 24999,
+      "female": 28118
+    },
+    "accepted": {
+      "male": 13226,
+      "female": 18587
+    },
+    "enrolled": {
+      "male": 2520,
+      "female": 2795
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 509,
+      "hispanic": 550,
+      "black": 237,
+      "white": 2738,
+      "american_indian": 6,
+      "asian": 902,
+      "pacific_islander": 3,
+      "two_or_more": 280,
+      "unknown": 90,
+      "total": 5315
+    },
+    "undergrad": {
+      "nonresident_aliens": 1850,
+      "hispanic": 2267,
+      "black": 1081,
+      "white": 13285,
+      "american_indian": 23,
+      "asian": 3423,
+      "pacific_islander": 13,
+      "two_or_more": 1183,
+      "unknown": 625,
+      "total": 23750
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.27,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 1322,
+    "sat_submitted_pct": 0.249,
+    "act_submitted_count": 160,
+    "act_submitted_pct": 0.003
+  },
+  "class_rank": {
+    "top10": 0.338,
+    "top25": 0.714,
+    "top50": 0.95,
+    "bottom50": 0.05,
+    "bottom25": null
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.599,
+    "gpa_375_399": 0.211,
+    "gpa_350_374": 0.124,
+    "gpa_325_349": 0.053,
+    "gpa_300_324": 0.007,
+    "gpa_250_299": 0.004,
+    "gpa_200_249": 0.001,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "important",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "important",
+    "interview": "not_considered",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "important",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "important",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1943,
+      "admitted": 1186,
+      "enrolled": 643
+    },
+    "female": {
+      "applied": 1679,
+      "admitted": 1185,
+      "enrolled": 547
+    },
+    "total": {
+      "applied": 3622,
+      "admitted": 2371,
+      "enrolled": 1190
+    }
+  },
+  "slug": "umass-amherst"
+}

@@ -1,0 +1,165 @@
+{
+  "name": "Georgetown University",
+  "data_year": "2025-2026",
+  "city": "Washington",
+  "state": "DC",
+  "location": "Washington, DC",
+  "school_type": "Private",
+  "website": "www.georgetown.edu",
+  "applicants_total": 26822,
+  "applicants_men": 11076,
+  "applicants_women": 15526,
+  "admitted_total": 3618,
+  "admitted_men": 1502,
+  "admitted_women": 2094,
+  "enrolled_total": 1589,
+  "enrolled_men": 673,
+  "enrolled_women": 909,
+  "acceptance_rate": 0.1349,
+  "application_fee": 75,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "1/10",
+  "waitlist_offered": 2672,
+  "waitlist_accepted": 2043,
+  "waitlist_admitted": 356,
+  "ea_ed_type": "REA",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.78,
+  "sat_submitted_count": 1239,
+  "act_submitted_pct": 0.32,
+  "act_submitted_count": 510,
+  "sat_composite_25": 1405,
+  "sat_composite_75": 1530,
+  "sat_reading_25": 710,
+  "sat_reading_75": 760,
+  "sat_math_25": 700,
+  "sat_math_75": 780,
+  "act_composite_25": 32,
+  "act_composite_75": 35,
+  "act_math_25": 30,
+  "act_math_75": 35,
+  "act_english_25": 34,
+  "act_english_75": 36,
+  "total_undergrads": 7908,
+  "undergrads_male": 3189,
+  "undergrads_female": 4656,
+  "retention_rate": 0.9635,
+  "tuition": 74520,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 212,
+  "room_and_board": 22180,
+  "books_supplies": null,
+  "other_expenses": 3172,
+  "pct_out_of_state": 0.98,
+  "pct_on_campus_housing": 1.0,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 2672,
+      "accepted_spots": 2043,
+      "enrolled": 356
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 11076,
+      "female": 15526
+    },
+    "accepted": {
+      "male": 1502,
+      "female": 2094
+    },
+    "enrolled": {
+      "male": 673,
+      "female": 909
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 133,
+      "hispanic": 149,
+      "black": 70,
+      "white": 697,
+      "american_indian": 3,
+      "asian": 352,
+      "pacific_islander": 1,
+      "two_or_more": 59,
+      "unknown": 125,
+      "total": 1589
+    },
+    "undergrad": {
+      "nonresident_aliens": 1140,
+      "hispanic": 498,
+      "black": 369,
+      "white": 3375,
+      "american_indian": 10,
+      "asian": 1320,
+      "pacific_islander": 9,
+      "two_or_more": 437,
+      "unknown": 750,
+      "total": 7908
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.98,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 1239,
+    "sat_submitted_pct": 0.78,
+    "act_submitted_count": 510,
+    "act_submitted_pct": 0.32
+  },
+  "class_rank": {
+    "top10": 0.87,
+    "top25": 0.97,
+    "top50": 1.0,
+    "bottom50": 0.0,
+    "bottom25": 0.0
+  },
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "very_important",
+    "academic_gpa": "very_important",
+    "test_scores": "very_important",
+    "essay": "very_important",
+    "recommendations": "very_important",
+    "interview": "important",
+    "extracurriculars": "important",
+    "talent": "very_important",
+    "character": "very_important",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "important",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1401,
+      "admitted": 145,
+      "enrolled": 84
+    },
+    "female": {
+      "applied": 1456,
+      "admitted": 171,
+      "enrolled": 103
+    },
+    "total": {
+      "applied": 2878,
+      "admitted": 319,
+      "enrolled": 190
+    }
+  },
+  "slug": "georgetown"
+}

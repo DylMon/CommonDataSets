@@ -827,7 +827,7 @@ if (typeof document !== 'undefined') {
         document.getElementById('cm-award-level').innerHTML = '<option value="">Level (optional)</option>' +
             AWARD_LEVELS.map(l => `<option value="${l.value}">${l.label}</option>`).join('');
 
-        const res = await fetch('data/schools.json');
+        const res = await fetch('data/schools-2025-2026.json');
         const { schools } = await res.json();
         allSchools = schools;
 

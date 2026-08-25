@@ -1,0 +1,172 @@
+{
+  "name": "University of Washington",
+  "data_year": "2025-2026",
+  "city": "Seattle",
+  "state": "WA",
+  "location": "Seattle, WA",
+  "school_type": "Public",
+  "website": "www.washington.edu",
+  "applicants_total": 72933,
+  "applicants_men": 33584,
+  "applicants_women": 39263,
+  "admitted_total": 30446,
+  "admitted_men": 13032,
+  "admitted_women": 17369,
+  "enrolled_total": 7129,
+  "enrolled_men": 3267,
+  "enrolled_women": 3849,
+  "acceptance_rate": 0.4176,
+  "application_fee": 80,
+  "avg_gpa_weighted": 3.84,
+  "rd_deadline": "11/15",
+  "waitlist_offered": 15363,
+  "waitlist_accepted": 8350,
+  "waitlist_admitted": 2252,
+  "ea_ed_type": "None",
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.1912,
+  "sat_submitted_count": 1364,
+  "act_submitted_pct": 0.0489,
+  "act_submitted_count": 349,
+  "sat_composite_25": 1320,
+  "sat_composite_75": 1502,
+  "sat_reading_25": 650,
+  "sat_reading_75": 740,
+  "sat_math_25": 650,
+  "sat_math_75": 780,
+  "act_composite_25": 30,
+  "act_composite_75": 34,
+  "act_math_25": 28,
+  "act_math_75": 34,
+  "act_english_25": 30,
+  "act_english_75": 35,
+  "total_undergrads": 40996,
+  "undergrads_male": 17570,
+  "undergrads_female": 21718,
+  "retention_rate": 0.95,
+  "tuition": null,
+  "tuition_in_state": 12260,
+  "tuition_out_of_state": 43494,
+  "required_fees": 1146,
+  "room_and_board": 18405,
+  "books_supplies": 900,
+  "other_expenses": 2508,
+  "pct_out_of_state": 0.2863,
+  "pct_on_campus_housing": 0.7,
+  "applicant_pools": {
+    "ea": null,
+    "rd": {
+      "applied": 72933,
+      "admitted": 30446,
+      "rate": 0.4176
+    },
+    "waitlist": {
+      "offered": 15363,
+      "accepted_spots": 8350,
+      "enrolled": 2252
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 33584,
+      "female": 39263
+    },
+    "accepted": {
+      "male": 13032,
+      "female": 17369
+    },
+    "enrolled": {
+      "male": 3267,
+      "female": 3849
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 692,
+      "hispanic": 784,
+      "black": 273,
+      "white": 2074,
+      "american_indian": 23,
+      "asian": 1906,
+      "pacific_islander": 11,
+      "two_or_more": 641,
+      "unknown": 729,
+      "total": 7133
+    },
+    "undergrad": {
+      "nonresident_aliens": 3660,
+      "hispanic": 4525,
+      "black": 1700,
+      "white": 13472,
+      "american_indian": 190,
+      "asian": 10085,
+      "pacific_islander": 160,
+      "two_or_more": 3352,
+      "unknown": 3852,
+      "total": 40996
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.2863,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 1364,
+    "sat_submitted_pct": 0.1912,
+    "act_submitted_count": 349,
+    "act_submitted_pct": 0.0489
+  },
+  "class_rank": null,
+  "gpa_distribution": {
+    "gpa_40": 0.1812,
+    "gpa_375_399": 0.5807,
+    "gpa_350_374": 0.1808,
+    "gpa_325_349": 0.0442,
+    "gpa_300_324": 0.01,
+    "gpa_250_299": 0.0024,
+    "gpa_200_249": 0.0007,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "not_considered",
+    "essay": "very_important",
+    "recommendations": "not_considered",
+    "interview": "not_considered",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "considered",
+    "first_gen": "important",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "very_important",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "important",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 2983,
+      "admitted": 1160,
+      "enrolled": 778
+    },
+    "female": {
+      "applied": 2819,
+      "admitted": 1296,
+      "enrolled": 895
+    },
+    "total": {
+      "applied": 5830,
+      "admitted": 2469,
+      "enrolled": 1685
+    }
+  },
+  "slug": "washington-seattle"
+}

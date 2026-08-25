@@ -1,0 +1,151 @@
+{
+  "name": "Duke University",
+  "data_year": "2025-2026",
+  "city": "Durham",
+  "state": "NC",
+  "location": "Durham, NC",
+  "school_type": "Private",
+  "website": "www.duke.edu",
+  "applicants_total": 55541,
+  "applicants_men": 25641,
+  "applicants_women": 29900,
+  "admitted_total": 2910,
+  "admitted_men": 1390,
+  "admitted_women": 1520,
+  "enrolled_total": 1749,
+  "enrolled_men": 833,
+  "enrolled_women": 916,
+  "acceptance_rate": 0.0524,
+  "application_fee": 85,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "1/2",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "ED",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.48,
+  "sat_submitted_count": 843,
+  "act_submitted_pct": 0.27,
+  "act_submitted_count": 473,
+  "sat_composite_25": 1510,
+  "sat_composite_75": 1570,
+  "sat_reading_25": 740,
+  "sat_reading_75": 780,
+  "sat_math_25": 770,
+  "sat_math_75": 790,
+  "act_composite_25": 34,
+  "act_composite_75": 35,
+  "act_math_25": 33,
+  "act_math_75": 35,
+  "act_english_25": 35,
+  "act_english_75": 36,
+  "total_undergrads": 6525,
+  "undergrads_male": 3063,
+  "undergrads_female": 3460,
+  "retention_rate": 0.97,
+  "tuition": 73740.0,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 2635.0,
+  "room_and_board": 20222.0,
+  "books_supplies": 536.0,
+  "other_expenses": 1637.0,
+  "pct_out_of_state": 0.84,
+  "pct_on_campus_housing": 1.0,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 25641,
+      "female": 29900
+    },
+    "accepted": {
+      "male": 1390,
+      "female": 1520
+    },
+    "enrolled": {
+      "male": 833,
+      "female": 916
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 193,
+      "hispanic": 197,
+      "black": 113,
+      "white": 573,
+      "american_indian": 1,
+      "asian": 439,
+      "pacific_islander": null,
+      "two_or_more": 102,
+      "unknown": 131,
+      "total": 1749
+    },
+    "undergrad": {
+      "nonresident_aliens": 738,
+      "hispanic": 760,
+      "black": 549,
+      "white": 2142,
+      "american_indian": 7,
+      "asian": 1485,
+      "pacific_islander": 4,
+      "two_or_more": 388,
+      "unknown": 452,
+      "total": 6525
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.84,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 843,
+    "sat_submitted_pct": 0.48,
+    "act_submitted_count": 473,
+    "act_submitted_pct": 0.27
+  },
+  "class_rank": null,
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "important",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "very_important",
+    "interview": "considered",
+    "extracurriculars": "very_important",
+    "talent": "very_important",
+    "character": "very_important",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1013,
+      "admitted": 78,
+      "enrolled": 45
+    },
+    "female": {
+      "applied": 799,
+      "admitted": 79,
+      "enrolled": 47
+    },
+    "total": {
+      "applied": 1812,
+      "admitted": 157,
+      "enrolled": 92
+    }
+  },
+  "slug": "duke"
+}

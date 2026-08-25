@@ -1,0 +1,174 @@
+{
+  "name": "Harvard University",
+  "data_year": "2025-26",
+  "city": "Cambridge",
+  "state": "MA",
+  "location": "Cambridge, MA",
+  "school_type": "Private",
+  "website": "www.college.harvard.edu",
+  "applicants_total": 47893,
+  "applicants_men": 24000,
+  "applicants_women": 23872,
+  "admitted_total": 2003,
+  "admitted_men": 968,
+  "admitted_women": 1035,
+  "enrolled_total": 1675,
+  "enrolled_men": 803,
+  "enrolled_women": 872,
+  "acceptance_rate": 0.0418,
+  "application_fee": 90,
+  "avg_gpa_weighted": 4.22,
+  "rd_deadline": "1/1",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": 75,
+  "ea_ed_type": "REA",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/16",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.79,
+  "sat_submitted_count": 1325,
+  "act_submitted_pct": 0.27,
+  "act_submitted_count": 450,
+  "sat_composite_25": null,
+  "sat_composite_75": null,
+  "sat_reading_25": 720,
+  "sat_reading_75": 770,
+  "sat_math_25": 730,
+  "sat_math_75": 790,
+  "act_composite_25": 33,
+  "act_composite_75": 35,
+  "act_math_25": 31,
+  "act_math_75": 35,
+  "act_english_25": 34,
+  "act_english_75": 36,
+  "total_undergrads": 6738,
+  "undergrads_male": 3117,
+  "undergrads_female": 3621,
+  "retention_rate": 0.98,
+  "tuition": null,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": null,
+  "room_and_board": null,
+  "books_supplies": null,
+  "other_expenses": null,
+  "pct_out_of_state": 0.86,
+  "pct_on_campus_housing": 1.0,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": null,
+      "accepted_spots": null,
+      "enrolled": 75
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 24000,
+      "female": 23872
+    },
+    "accepted": {
+      "male": 968,
+      "female": 1035
+    },
+    "enrolled": {
+      "male": 803,
+      "female": 872
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 251,
+      "hispanic": 139,
+      "black": 97,
+      "white": 480,
+      "american_indian": 1,
+      "asian": 462,
+      "pacific_islander": 2,
+      "two_or_more": 139,
+      "unknown": 102,
+      "total": 1673
+    },
+    "undergrad": {
+      "nonresident_aliens": 1021,
+      "hispanic": 728,
+      "black": 547,
+      "white": 1929,
+      "american_indian": 18,
+      "asian": 1681,
+      "pacific_islander": 9,
+      "two_or_more": 531,
+      "unknown": 211,
+      "total": 6675
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.86,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 1325,
+    "sat_submitted_pct": 0.79,
+    "act_submitted_count": 450,
+    "act_submitted_pct": 0.27
+  },
+  "class_rank": {
+    "top10": 0.95,
+    "top25": 0.99,
+    "top50": 1.0,
+    "bottom50": 0.0,
+    "bottom25": 0.0
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.747,
+    "gpa_375_399": 0.2038,
+    "gpa_350_374": 0.0349,
+    "gpa_325_349": 0.0098,
+    "gpa_300_324": 0.0018,
+    "gpa_250_299": 0.0018,
+    "gpa_200_249": 0.0009,
+    "gpa_100_199": null
+  },
+  "admission_factors": {
+    "rigor": "considered",
+    "class_rank": "not_considered",
+    "academic_gpa": "considered",
+    "test_scores": "considered",
+    "essay": "considered",
+    "recommendations": "considered",
+    "interview": "considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1176,
+      "admitted": 6,
+      "enrolled": 6
+    },
+    "female": {
+      "applied": 863,
+      "admitted": 7,
+      "enrolled": 6
+    },
+    "total": {
+      "applied": 2042,
+      "admitted": 13,
+      "enrolled": 12
+    }
+  },
+  "slug": "harvard"
+}

@@ -1,0 +1,182 @@
+{
+  "name": "University of Rochester",
+  "data_year": "2025-26",
+  "city": "Rochester",
+  "state": "NY",
+  "location": "Rochester, NY",
+  "school_type": "Private",
+  "website": "www.rochester.edu",
+  "applicants_total": 21609,
+  "applicants_men": 10660,
+  "applicants_women": 10932,
+  "admitted_total": 9056,
+  "admitted_men": 4142,
+  "admitted_women": 4904,
+  "enrolled_total": 1231,
+  "enrolled_men": 629,
+  "enrolled_women": 599,
+  "acceptance_rate": 0.4191,
+  "application_fee": 50,
+  "avg_gpa_weighted": 3.73,
+  "rd_deadline": "1/5",
+  "waitlist_offered": 1197,
+  "waitlist_accepted": 741,
+  "waitlist_admitted": 262,
+  "ea_ed_type": "ED I & II",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "Mid-December",
+  "ea_apps_received": 1129,
+  "ea_apps_admitted": 472,
+  "sat_submitted_pct": 0.157,
+  "sat_submitted_count": 196,
+  "act_submitted_pct": 0.064,
+  "act_submitted_count": 80,
+  "sat_composite_25": 1400,
+  "sat_composite_75": 1510,
+  "sat_reading_25": 680,
+  "sat_reading_75": 750,
+  "sat_math_25": 700,
+  "sat_math_75": 780,
+  "act_composite_25": 31,
+  "act_composite_75": 34,
+  "act_math_25": 30,
+  "act_math_75": 34,
+  "act_english_25": 31,
+  "act_english_75": 35,
+  "total_undergrads": 6096,
+  "undergrads_male": 2864,
+  "undergrads_female": 3200,
+  "retention_rate": 0.907,
+  "tuition": 71750,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 1622,
+  "room_and_board": 21572,
+  "books_supplies": 0,
+  "other_expenses": 1022,
+  "pct_out_of_state": 0.55,
+  "pct_on_campus_housing": 0.98,
+  "applicant_pools": {
+    "ea": {
+      "applied": 1129,
+      "admitted": 472,
+      "rate": 0.4181
+    },
+    "rd": {
+      "applied": 20480,
+      "admitted": 8584,
+      "rate": 0.4192
+    },
+    "waitlist": {
+      "offered": 1197,
+      "accepted_spots": 741,
+      "enrolled": 262
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 10660,
+      "female": 10932
+    },
+    "accepted": {
+      "male": 4142,
+      "female": 4904
+    },
+    "enrolled": {
+      "male": 629,
+      "female": 599
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 254,
+      "hispanic": 137,
+      "black": 72,
+      "white": 446,
+      "american_indian": 0,
+      "asian": 233,
+      "pacific_islander": 0,
+      "two_or_more": 71,
+      "unknown": 32,
+      "total": 1245
+    },
+    "undergrad": {
+      "nonresident_aliens": 1212,
+      "hispanic": 552,
+      "black": 346,
+      "white": 2256,
+      "american_indian": 5,
+      "asian": 1075,
+      "pacific_islander": 3,
+      "two_or_more": 286,
+      "unknown": 147,
+      "total": 5882
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.55,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 196,
+    "sat_submitted_pct": 0.157,
+    "act_submitted_count": 80,
+    "act_submitted_pct": 0.064
+  },
+  "class_rank": {
+    "top10": 0.846,
+    "top25": 0.951,
+    "top50": 0.992,
+    "bottom50": 0.008,
+    "bottom25": 0.0
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.2433,
+    "gpa_375_399": 0.3157,
+    "gpa_350_374": 0.2522,
+    "gpa_325_349": 0.1172,
+    "gpa_300_324": 0.0555,
+    "gpa_250_299": 0.0161,
+    "gpa_200_249": null,
+    "gpa_100_199": null
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "important",
+    "interview": "important",
+    "extracurriculars": "very_important",
+    "talent": "important",
+    "character": "very_important",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "important"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 484,
+      "admitted": 184,
+      "enrolled": 38
+    },
+    "female": {
+      "applied": 323,
+      "admitted": 120,
+      "enrolled": 24
+    },
+    "total": {
+      "applied": 809,
+      "admitted": 306,
+      "enrolled": 63
+    }
+  },
+  "slug": "rochester"
+}

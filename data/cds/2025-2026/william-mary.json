@@ -1,0 +1,174 @@
+{
+  "name": "William & Mary",
+  "data_year": "2025-2026",
+  "city": "Williamsburg",
+  "state": "VA",
+  "location": "Williamsburg, VA",
+  "school_type": "Public",
+  "website": "www.wm.edu/",
+  "applicants_total": 16895,
+  "applicants_men": 6308,
+  "applicants_women": 10571,
+  "admitted_total": 6245,
+  "admitted_men": 2571,
+  "admitted_women": 3670,
+  "enrolled_total": 1639,
+  "enrolled_men": 647,
+  "enrolled_women": 991,
+  "acceptance_rate": 0.3697,
+  "application_fee": 75,
+  "avg_gpa_weighted": 4.34,
+  "rd_deadline": "1/5",
+  "waitlist_offered": 4085,
+  "waitlist_accepted": 1901,
+  "waitlist_admitted": 103,
+  "ea_ed_type": "ED I & II",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "Mid-December",
+  "ea_apps_received": 1477,
+  "ea_apps_admitted": 735,
+  "sat_submitted_pct": 0.48,
+  "sat_submitted_count": 781,
+  "act_submitted_pct": 0.14,
+  "act_submitted_count": 233,
+  "sat_composite_25": 1390,
+  "sat_composite_75": 1520,
+  "sat_reading_25": 710,
+  "sat_reading_75": 760,
+  "sat_math_25": 680,
+  "sat_math_75": 760,
+  "act_composite_25": 32,
+  "act_composite_75": 34,
+  "act_math_25": 29,
+  "act_math_75": 34,
+  "act_english_25": 33,
+  "act_english_75": 35,
+  "total_undergrads": 6951,
+  "undergrads_male": 2806,
+  "undergrads_female": 4132,
+  "retention_rate": 0.9534,
+  "tuition": null,
+  "tuition_in_state": 19734,
+  "tuition_out_of_state": 46177,
+  "required_fees": 7501,
+  "room_and_board": 17646,
+  "books_supplies": 900,
+  "other_expenses": 2000,
+  "pct_out_of_state": 0.39,
+  "pct_on_campus_housing": 0.99,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 4085,
+      "accepted_spots": 1901,
+      "enrolled": 103
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 6308,
+      "female": 10571
+    },
+    "accepted": {
+      "male": 2571,
+      "female": 3670
+    },
+    "enrolled": {
+      "male": 647,
+      "female": 991
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 35,
+      "hispanic": 155,
+      "black": 77,
+      "white": 1046,
+      "american_indian": 1,
+      "asian": 173,
+      "pacific_islander": 0,
+      "two_or_more": 128,
+      "unknown": 24,
+      "total": 1639
+    },
+    "undergrad": {
+      "nonresident_aliens": 194,
+      "hispanic": 635,
+      "black": 343,
+      "white": 4377,
+      "american_indian": 8,
+      "asian": 760,
+      "pacific_islander": 2,
+      "two_or_more": 537,
+      "unknown": 95,
+      "total": 6951
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.39,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 781,
+    "sat_submitted_pct": 0.48,
+    "act_submitted_count": 233,
+    "act_submitted_pct": 0.14
+  },
+  "class_rank": {
+    "top10": 0.79,
+    "top25": 0.95,
+    "top50": 0.99,
+    "bottom50": 0.01,
+    "bottom25": 0.01
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.889,
+    "gpa_375_399": 0.072,
+    "gpa_350_374": 0.03,
+    "gpa_325_349": 0.008,
+    "gpa_300_324": 0.001,
+    "gpa_250_299": null,
+    "gpa_200_249": null,
+    "gpa_100_199": null
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "very_important",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "very_important",
+    "recommendations": "very_important",
+    "interview": "considered",
+    "extracurriculars": "very_important",
+    "talent": "very_important",
+    "character": "very_important",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "very_important",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "very_important",
+    "work_experience": "very_important",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 446,
+      "admitted": 179,
+      "enrolled": 77
+    },
+    "female": {
+      "applied": 515,
+      "admitted": 260,
+      "enrolled": 129
+    },
+    "total": {
+      "applied": 963,
+      "admitted": 440,
+      "enrolled": 206
+    }
+  },
+  "slug": "william-mary"
+}
