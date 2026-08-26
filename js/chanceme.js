@@ -829,7 +829,7 @@ if (typeof document !== 'undefined') {
 
         const res = await fetch('data/schools-2025-2026.json');
         const { schools } = await res.json();
-        allSchools = schools;
+        allSchools = schools.filter(s => s.name != null); // exclude records with no source data yet (e.g. bad/missing source PDF)
 
         loadDraft();
         toggleStateField();

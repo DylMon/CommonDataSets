@@ -16,11 +16,11 @@
     <meta name="description" content="Side-by-side admissions comparison for top US universities. Compare acceptance rates, SAT/ACT scores, costs, and more.">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/base.css?v=2">
-    <link rel="stylesheet" href="css/school-template.css?v=2">
-    <link rel="stylesheet" href="css/compare.css?v=2">
-    <script src="js/scorecard-merge.js?v=1"></script>
-    <script src="js/header.js?v=2" defer></script>
+    <link rel="stylesheet" href="css/base.css?v=4">
+    <link rel="stylesheet" href="css/school-template.css?v=4">
+    <link rel="stylesheet" href="css/compare.css?v=4">
+    <script src="js/scorecard-merge.js?v=4"></script>
+    <script src="js/header.js?v=4" defer></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2245119166025427"
      crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js" defer></script>
@@ -680,24 +680,41 @@
             compareStats();
         }
 
-        async function init() {
-            const res = await fetch('data/schools-2025-2026.json');
-            if (!res.ok) return;
-            const { schools } = await res.json();
+        async function loadSchools() {
+            try {
+                const res = await fetch('data/schools-2025-2026.json');
+                if (!res.ok) return;
+                const { schools: rawSchools } = await res.json();
+                const schools = rawSchools.filter(s => s.name != null); // exclude records with no source data yet (e.g. bad/missing source PDF)
 
-            let merged = schools;
-            const scRes = await fetch('data/scorecard-2025-2026.json');
-            if (scRes.ok) {
-                const { schools: scSchools } = await scRes.json();
-                merged = mergeScorecard(schools, scSchools);
+                let merged = schools;
+                try {
+                    const scRes = await fetch('data/scorecard-2025-2026.json');
+                    if (scRes.ok) {
+                        const { schools: scSchools } = await scRes.json();
+                        merged = mergeScorecard(schools, scSchools);
+                    }
+                } catch (err) {
+                    console.error('Scorecard fetch failed, showing CDS data without it:', err);
+                }
+                allSchools = merged;
+            } catch (err) {
+                console.error('Failed to load school data:', err);
             }
-            allSchools = merged;
+        }
+
+        function init() {
             [1, 2, 3, 4].forEach(wireSlot);
             document.getElementById('compare-add-school').addEventListener('click', addSlot);
             document.querySelectorAll('.compare-remove-slot').forEach(btn =>
                 btn.addEventListener('click', () => removeSlot(Number(btn.dataset.slot))));
             updateAddRemoveUI();
             wireSectionToggles();
+
+            // Data load happens last and is isolated in its own try/catch —
+            // every control above is wired up regardless of whether this
+            // succeeds.
+            loadSchools();
         }
 
         init();

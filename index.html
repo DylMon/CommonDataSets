@@ -16,27 +16,31 @@
     <title>CommonDataSets — College Admissions Data for Top US Universities</title>
     <meta name="description" content="Acceptance rates, SAT scores, GPA, tuition, and admissions data for 33 top US universities — all in one place. Updated through 2023–24.">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/base.css?v=2">
-    <script src="js/scorecard-merge.js?v=1"></script>
-    <script src="js/header.js?v=2" defer></script>
+    <link rel="stylesheet" href="css/base.css?v=4">
+    <script src="js/scorecard-merge.js?v=4"></script>
+    <script src="js/header.js?v=4" defer></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2245119166025427"
      crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container">
-        <div class="page-intro">
-            <h1 class="page-intro-title">Data Sets</h1>
-            <p class="page-intro-desc" id="page-intro-desc">CommonDataSets compiles official Common Data Set submissions directly from top US universities, giving students and families one place to compare verified admissions statistics, test score ranges, cost of attendance, and enrollment data without the noise.</p>
-        </div>
-        <div class="content-wrapper">
-            <div class="search-bar">
-                <div class="search-wrap">
-                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-                    </svg>
-                    <input type="text" id="school-search" class="search-input" placeholder="Search schools…" autocomplete="off">
+        <div class="hero-banner">
+            <div class="hero-inner">
+                <div class="hero-content">
+                    <img class="hero-logo" src="images/logo-transparent.png" alt="CommonDataSets">
+                    <p class="page-intro-desc" id="page-intro-desc">CommonDataSets compiles official Common Data Set submissions directly from top US universities, giving students and families one place to compare verified admissions statistics, test score ranges, cost of attendance, and enrollment data without the noise.</p>
+                </div>
+                <div class="search-bar">
+                    <div class="search-wrap">
+                        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                        </svg>
+                        <input type="text" id="school-search" class="search-input" placeholder="Search schools…" autocomplete="off">
+                    </div>
                 </div>
             </div>
+        </div>
+        <div class="content-wrapper">
             <p class="results-count" id="results-count"></p>
             <div class="page-layout">
             <div class="sidebar">
@@ -369,14 +373,19 @@
                     document.getElementById('school-list').innerHTML = '<p class="loading">Failed to load schools.</p>';
                     return;
                 }
-                const { schools } = await res.json();
+                const { schools: rawSchools } = await res.json();
+                const schools = rawSchools.filter(s => s.name != null); // exclude records with no source data yet (e.g. bad/missing source PDF)
 
                 let merged = schools;
                 if (SCORECARD_FILES[year]) {
-                    const scRes = await fetch(SCORECARD_FILES[year]);
-                    if (scRes.ok) {
-                        const { schools: scSchools } = await scRes.json();
-                        merged = mergeScorecard(schools, scSchools);
+                    try {
+                        const scRes = await fetch(SCORECARD_FILES[year]);
+                        if (scRes.ok) {
+                            const { schools: scSchools } = await scRes.json();
+                            merged = mergeScorecard(schools, scSchools);
+                        }
+                    } catch (err) {
+                        console.error('Scorecard fetch failed, showing CDS data without it:', err);
                     }
                 }
                 schoolsCache[year] = withSatAvg(merged);
@@ -409,8 +418,6 @@
                     if (opt.dataset.year !== currentYear) loadYear(opt.dataset.year);
                 });
             });
-
-            await loadYear(currentYear);
 
             document.getElementById('school-search').addEventListener('input', e => {
                 searchQuery = e.target.value.trim();
@@ -633,6 +640,16 @@
                 renderList(currentSort);
             });
 
+            // Data load happens last and is isolated in its own try/catch —
+            // every control above is wired up regardless of whether this
+            // succeeds, so a fetch failure can't silently break the search
+            // bar, sort, or filters the way it did when this ran first.
+            try {
+                await loadYear(currentYear);
+            } catch (err) {
+                console.error('Failed to load school data:', err);
+                document.getElementById('school-list').innerHTML = '<p class="loading">Failed to load schools.</p>';
+            }
         }
 
         init();
