@@ -17,6 +17,7 @@
     <meta name="description" content="Acceptance rates, SAT scores, GPA, tuition, and admissions data for 33 top US universities — all in one place. Updated through 2023–24.">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/base.css?v=2">
+    <script src="js/scorecard-merge.js?v=1"></script>
     <script src="js/header.js?v=2" defer></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2245119166025427"
      crossorigin="anonymous"></script>
@@ -232,6 +233,11 @@
             '2025-2026': 'data/schools-2025-2026.json',
             '2024-2025': 'data/schools-2024-2025.json',
         };
+        // Scorecard data lives in its own file, kept separate from CDS data,
+        // and merged in here rather than pre-baked — only 2025-26 has one so far.
+        const SCORECARD_FILES = {
+            '2025-2026': 'data/scorecard-2025-2026.json',
+        };
         const YEAR_LABELS = {
             '2025-2026': '2025–2026',
             '2024-2025': '2024–2025',
@@ -347,6 +353,15 @@
             }).join('');
         }
 
+        function withSatAvg(schools) {
+            return schools.map(s => ({
+                ...s,
+                sat_avg: s.sat_avg ?? (s.sat_composite_25 != null && s.sat_composite_75 != null
+                    ? Math.round((s.sat_composite_25 + s.sat_composite_75) / 2)
+                    : null),
+            }));
+        }
+
         async function loadYear(year) {
             if (!schoolsCache[year]) {
                 const res = await fetch(YEAR_FILES[year]);
@@ -355,7 +370,16 @@
                     return;
                 }
                 const { schools } = await res.json();
-                schoolsCache[year] = schools;
+
+                let merged = schools;
+                if (SCORECARD_FILES[year]) {
+                    const scRes = await fetch(SCORECARD_FILES[year]);
+                    if (scRes.ok) {
+                        const { schools: scSchools } = await scRes.json();
+                        merged = mergeScorecard(schools, scSchools);
+                    }
+                }
+                schoolsCache[year] = withSatAvg(merged);
             }
             currentYear = year;
             allSchools = schoolsCache[year];

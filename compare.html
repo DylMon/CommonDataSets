@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="css/base.css?v=2">
     <link rel="stylesheet" href="css/school-template.css?v=2">
     <link rel="stylesheet" href="css/compare.css?v=2">
+    <script src="js/scorecard-merge.js?v=1"></script>
     <script src="js/header.js?v=2" defer></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2245119166025427"
      crossorigin="anonymous"></script>
@@ -683,7 +684,14 @@
             const res = await fetch('data/schools-2025-2026.json');
             if (!res.ok) return;
             const { schools } = await res.json();
-            allSchools = schools;
+
+            let merged = schools;
+            const scRes = await fetch('data/scorecard-2025-2026.json');
+            if (scRes.ok) {
+                const { schools: scSchools } = await scRes.json();
+                merged = mergeScorecard(schools, scSchools);
+            }
+            allSchools = merged;
             [1, 2, 3, 4].forEach(wireSlot);
             document.getElementById('compare-add-school').addEventListener('click', addSlot);
             document.querySelectorAll('.compare-remove-slot').forEach(btn =>
