@@ -31,67 +31,20 @@
     <div class="container">
         <div class="page-intro">
             <h1 class="page-intro-title">School Comparison Tool</h1>
-            <p class="page-intro-desc">Pick two to four schools to compare their admissions data side by side — test scores, cost, demographics, and more, sourced from each school's 2024–2025 Common Data Set.</p>
+            <p class="page-intro-desc">Pick up to four schools to see their admissions data side by side — test scores, cost, demographics, and more, sourced from each school's 2024–2025 Common Data Set.</p>
         </div>
         <div class="compare-layout">
-            <aside class="compare-sidebar">
-                <div class="compare-wrapper">
-                    <div class="compare-slot" data-slot="1">
-                        <label class="compare-label">School 1</label>
-                        <div class="compare-search">
-                            <input type="text" class="compare-input" data-slot="1" placeholder="Search schools…" autocomplete="off">
-                            <button class="compare-clear" data-slot="1" aria-label="Clear">&times;</button>
-                            <div class="compare-dropdown" data-slot="1"></div>
-                        </div>
-                    </div>
-
-                    <div class="compare-divider"><span class="compare-divider-label">VS</span></div>
-
-                    <div class="compare-slot" data-slot="2">
-                        <label class="compare-label">School 2</label>
-                        <div class="compare-search">
-                            <input type="text" class="compare-input" data-slot="2" placeholder="Search schools…" autocomplete="off">
-                            <button class="compare-clear" data-slot="2" aria-label="Clear">&times;</button>
-                            <div class="compare-dropdown" data-slot="2"></div>
-                        </div>
-                    </div>
-
-                    <div class="compare-slot compare-slot-extra" data-slot="3" hidden>
-                        <div class="compare-slot-head">
-                            <label class="compare-label">School 3</label>
-                            <button class="compare-remove-slot" data-slot="3" type="button">Remove</button>
-                        </div>
-                        <div class="compare-search">
-                            <input type="text" class="compare-input" data-slot="3" placeholder="Search schools…" autocomplete="off">
-                            <button class="compare-clear" data-slot="3" aria-label="Clear">&times;</button>
-                            <div class="compare-dropdown" data-slot="3"></div>
-                        </div>
-                    </div>
-
-                    <div class="compare-slot compare-slot-extra" data-slot="4" hidden>
-                        <div class="compare-slot-head">
-                            <label class="compare-label">School 4</label>
-                            <button class="compare-remove-slot" data-slot="4" type="button">Remove</button>
-                        </div>
-                        <div class="compare-search">
-                            <input type="text" class="compare-input" data-slot="4" placeholder="Search schools…" autocomplete="off">
-                            <button class="compare-clear" data-slot="4" aria-label="Clear">&times;</button>
-                            <div class="compare-dropdown" data-slot="4"></div>
-                        </div>
-                    </div>
-
-                    <button class="compare-add-school" id="compare-add-school" type="button">+ Add School</button>
-                </div>
+            <aside class="compare-picker">
+                <h2 class="compare-picker-title">Comparing</h2>
+                <!-- 2×2 grid of slot cells, rendered by renderPickerGrid():
+                     a filled cell is the school's summary card with an ✕ to
+                     remove it; an empty cell is a search box; a trailing
+                     dashed cell adds the next slot. -->
+                <div class="compare-grid" id="compare-grid"></div>
             </aside>
             <div class="compare-main">
-                <div class="compare-cards-row" id="compare-cards-row">
-                    <div class="compare-result" id="compare-result-1"></div>
-                    <div class="compare-result" id="compare-result-2"></div>
-                    <div class="compare-result" id="compare-result-3"></div>
-                    <div class="compare-result" id="compare-result-4"></div>
-                </div>
                 <div id="compare-sections">
-                    <p class="compare-placeholder">Select at least two schools to see the full comparison.</p>
+                    <p class="compare-placeholder">Search for a school on the left to see its data.</p>
                 </div>
             </div>
         </div>
@@ -163,11 +116,28 @@
             ['pacific_islander', 'Native Hawaiian / Pac. Islander'], ['unknown', 'Unknown'],
         ];
 
-        function tableHtml(headers, rows) {
-            const th = headers.map(h => `<th>${h}</th>`).join('');
-            const tbody = rows.map(r => `<tr>${r.map(c => `<td>${c}</td>`).join('')}</tr>`).join('');
+        // colColors (optional): one solid hex per school data column, in
+        // display order — column 0 is the row label and never tinted. Each
+        // school header gets a thick underline in its color and each body
+        // cell a faint (~10%) wash of it, so a school reads as one column
+        // straight down a wide table.
+        function tableHtml(headers, rows, colColors) {
+            const colorAt = i => colColors && colColors[i - 1];
+            const th = headers.map((h, i) => {
+                const c = colorAt(i);
+                return `<th${c ? ` style="border-bottom:3px solid ${c}"` : ''}>${h}</th>`;
+            }).join('');
+            const tbody = rows.map(r => `<tr>${r.map((cell, i) => {
+                const c = colorAt(i);
+                return `<td${c ? ` style="background:${c}1a"` : ''}>${cell}</td>`;
+            }).join('')}</tr>`).join('');
             return `<div class="tbl-wrap"><table class="tbl"><thead><tr>${th}</tr></thead><tbody>${tbody}</tbody></table></div>`;
         }
+
+        // Solid slot color per active school, in display order — passed to
+        // tableHtml so every comparison table is column-coded to match the
+        // picker cards, the legend, and the charts.
+        const colTints = schools => schools.map(({ color }) => color);
 
         function sectionHtml(title, body) {
             const id = title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
@@ -255,9 +225,102 @@
             return school.name.toLowerCase().includes(query.toLowerCase());
         }
 
+        function actMid(s) {
+            return s.act_composite_25 != null && s.act_composite_75 != null ? (s.act_composite_25 + s.act_composite_75) / 2 : null;
+        }
+
+        function activeSchoolEntries() {
+            return activeSlots
+                .map(slot => selected[slot] ? { slot, school: selected[slot], color: SLOT_COLORS[slot] } : null)
+                .filter(Boolean);
+        }
+
+        // ── Picker grid ────────────────────────────────────────────────
+        // The left column is a 2×2 grid of slot cells. Each cell is either
+        // the chosen school's summary card (with an ✕ to drop it) or a
+        // search box for an empty slot; a trailing dashed cell adds the
+        // next slot. This is the only place schools are picked or shown —
+        // there's no separate labelled-cards row on the right anymore.
+
+        // Six headline stats, matching the old summary cards. `mid` (when
+        // present) is the value used for best/worst coloring while `text`
+        // is what's displayed — ACT shows a range but ranks on its midpoint.
+        const PICKER_STATS = [
+            { key: 'acceptance', label: 'Acceptance',   text: s => fmtPct(s.acceptance_rate),                       val: s => s.acceptance_rate },
+            { key: 'sat',        label: 'SAT Avg',       text: s => s.sat_avg != null ? s.sat_avg : '—',            val: s => s.sat_avg },
+            { key: 'act',        label: 'ACT Range',     text: s => (s.act_composite_25 != null && s.act_composite_75 != null) ? `${s.act_composite_25}–${s.act_composite_75}` : '—', val: s => actMid(s) },
+            { key: 'undergrads', label: 'Undergrads',    text: s => s.total_undergrads != null ? s.total_undergrads.toLocaleString() : '—', val: s => s.total_undergrads },
+            { key: 'gpa',        label: 'Avg GPA',       text: s => fmtGpa(s.avg_gpa_weighted),                     val: s => s.avg_gpa_weighted },
+            { key: 'tuition',    label: 'Tuition (OOS)', text: s => fmtMoney(s.tuition_out_of_state ?? s.tuition),  val: s => s.tuition_out_of_state ?? s.tuition, lowerIsBetter: true },
+        ];
+
+        function statClassMap(schools) {
+            // slot -> { statKey -> 'stat-higher' | 'stat-lower' }
+            const map = {};
+            for (const def of PICKER_STATS) {
+                const items = schools.map(({ slot, school }) => ({ slot, value: def.val(school) }));
+                const classes = bestWorstClasses(items, !!def.lowerIsBetter);
+                for (const [slot, cls] of Object.entries(classes)) {
+                    (map[slot] ||= {})[def.key] = cls;
+                }
+            }
+            return map;
+        }
+
+        function cardCellHtml(slot, s, colors) {
+            const stats = PICKER_STATS.map(def => `
+                <div class="stat-item">
+                    <div class="stat-val ${colors[def.key] || ''}">${def.text(s)}</div>
+                    <div class="stat-label">${def.label}</div>
+                </div>`).join('');
+            return `<div class="compare-cell compare-cell-filled" style="border-top-color:${SLOT_COLORS[slot]}">
+                <button class="compare-cell-remove" data-slot="${slot}" type="button" aria-label="Remove ${s.name}">&times;</button>
+                <div class="compare-card-header">
+                    <img class="compare-card-logo" src="images/logos/${LOGOS[s.slug] || ''}" alt="${s.name}">
+                    <div class="compare-card-body">
+                        <div class="compare-card-name">${s.name}</div>
+                        <a class="compare-card-link" href="schools/${s.slug}.html">View Full Profile →</a>
+                    </div>
+                </div>
+                <div class="compare-card-stats">${stats}</div>
+            </div>`;
+        }
+
+        function searchCellHtml(slot) {
+            const optional = slot > 2; // slots 3 & 4 can be dismissed entirely
+            return `<div class="compare-cell compare-cell-search" data-slot="${slot}" style="border-top-color:${SLOT_COLORS[slot]}">
+                <div class="compare-cell-head">
+                    <label class="compare-label" for="compare-input-${slot}">School ${slot}</label>
+                    ${optional ? `<button class="compare-cell-dismiss" data-slot="${slot}" type="button">Remove</button>` : ''}
+                </div>
+                <div class="compare-search">
+                    <input type="text" id="compare-input-${slot}" class="compare-input" data-slot="${slot}" placeholder="Search schools…" autocomplete="off">
+                    <div class="compare-dropdown" data-slot="${slot}"></div>
+                </div>
+            </div>`;
+        }
+
+        function addCellHtml() {
+            return `<button class="compare-cell compare-cell-add" id="compare-add-school" type="button">
+                <span class="compare-cell-add-icon" aria-hidden="true">+</span>
+                <span>Add School</span>
+            </button>`;
+        }
+
+        function renderPickerGrid() {
+            const grid = document.getElementById('compare-grid');
+            const colorsBySlot = statClassMap(activeSchoolEntries());
+            const cells = activeSlots.map(slot => selected[slot]
+                ? cardCellHtml(slot, selected[slot], colorsBySlot[slot] || {})
+                : searchCellHtml(slot));
+            if (activeSlots.length < MAX_SLOTS) cells.push(addCellHtml());
+            grid.innerHTML = cells.join('');
+        }
+
         function renderDropdown(slot) {
             const input = document.querySelector(`.compare-input[data-slot="${slot}"]`);
             const dropdown = document.querySelector(`.compare-dropdown[data-slot="${slot}"]`);
+            if (!input || !dropdown) return;
             const query = input.value.trim();
 
             const chosenElsewhere = new Set(
@@ -280,138 +343,66 @@
                 : `<div class="compare-empty">No schools found.</div>`;
 
             dropdown.classList.add('open');
-            updateWrapperPadding();
+            updatePickerPadding();
         }
 
-        function closeDropdown(slot) {
-            document.querySelector(`.compare-dropdown[data-slot="${slot}"]`).classList.remove('open');
-            updateWrapperPadding();
-        }
-
-        function updateWrapperPadding() {
+        // Reserve space below the picker while a dropdown is open: html/body
+        // has overflow-x:clip, which per spec forces overflow-y to compute as
+        // auto and clips the absolutely-positioned dropdown past the page's
+        // in-flow height (bites in the empty state, when the right column is
+        // just the placeholder line).
+        function updatePickerPadding() {
             const anyOpen = document.querySelector('.compare-dropdown.open');
-            document.querySelector('.compare-wrapper').classList.toggle('dropdown-open', !!anyOpen);
+            document.querySelector('.compare-picker').classList.toggle('dropdown-open', !!anyOpen);
         }
 
         function selectSchool(slot, slug) {
             const school = allSchools.find(s => s.slug === slug);
             if (!school) return;
             selected[slot] = school;
-
-            const input = document.querySelector(`.compare-input[data-slot="${slot}"]`);
-            input.value = school.name;
-            document.querySelector(`.compare-clear[data-slot="${slot}"]`).classList.add('visible');
-            closeDropdown(slot);
-            renderResult(slot);
+            refresh();
         }
 
-        function clearSlot(slot) {
+        function removeSchool(slot) {
             selected[slot] = null;
-            const input = document.querySelector(`.compare-input[data-slot="${slot}"]`);
-            input.value = '';
-            document.querySelector(`.compare-clear[data-slot="${slot}"]`).classList.remove('visible');
-            document.getElementById(`compare-result-${slot}`).innerHTML = '';
-            compareStats();
-            input.focus();
+            // Slots 1 & 2 always stay (revert to a search box); 3 & 4 vanish.
+            if (slot > 2) activeSlots = activeSlots.filter(x => x !== slot);
+            refresh();
         }
 
-        function renderResult(slot) {
-            const s = selected[slot];
-            const el = document.getElementById(`compare-result-${slot}`);
-            if (!s) {
-                el.innerHTML = '';
-                return;
-            }
-            const actRange = s.act_composite_25 != null && s.act_composite_75 != null ? `${s.act_composite_25}–${s.act_composite_75}` : '—';
-            const color = SLOT_COLORS[slot];
-
-            el.innerHTML = `
-                <div class="compare-card" style="border-top-color:${color}">
-                    <div class="compare-card-header">
-                        <img class="compare-card-logo" src="images/logos/${LOGOS[s.slug]}" alt="${s.name}">
-                        <div class="compare-card-body">
-                            <div class="compare-card-name">${s.name}</div>
-                            <a class="compare-card-link" href="schools/${s.slug}.html">View Full Profile →</a>
-                        </div>
-                    </div>
-                    <div class="compare-card-stats">
-                        <div class="stat-item">
-                            <div class="stat-val" data-stat="acceptance">${fmtPct(s.acceptance_rate)}</div>
-                            <div class="stat-label">Acceptance</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-val" data-stat="sat">${s.sat_avg != null ? s.sat_avg : '—'}</div>
-                            <div class="stat-label">SAT Avg</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-val" data-stat="act">${actRange}</div>
-                            <div class="stat-label">ACT Range</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-val" data-stat="undergrads">${s.total_undergrads != null ? s.total_undergrads.toLocaleString() : '—'}</div>
-                            <div class="stat-label">Undergrads</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-val" data-stat="gpa">${fmtGpa(s.avg_gpa_weighted)}</div>
-                            <div class="stat-label">Avg GPA</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-val" data-stat="tuition">${fmtMoney(s.tuition_out_of_state ?? s.tuition)}</div>
-                            <div class="stat-label">Tuition (OOS)</div>
-                        </div>
-                    </div>
-                </div>`;
-
-            compareStats();
+        function dismissSlot(slot) {
+            if (slot <= 2) return;
+            selected[slot] = null;
+            activeSlots = activeSlots.filter(x => x !== slot);
+            refresh();
         }
 
-        function clearColors() {
-            document.querySelectorAll('.stat-val').forEach(el =>
-                el.classList.remove('stat-higher', 'stat-lower'));
+        function addSlot() {
+            if (activeSlots.length >= MAX_SLOTS) return;
+            const next = [1, 2, 3, 4].find(n => !activeSlots.includes(n));
+            activeSlots = [...activeSlots, next].sort((a, b) => a - b);
+            refresh();
+            // Next frame: the input has just been inserted; focus + open its
+            // dropdown directly rather than relying on the focus event, which
+            // doesn't fire reliably in the same tick as the insertion.
+            requestAnimationFrame(() => {
+                const input = document.querySelector(`.compare-input[data-slot="${next}"]`);
+                if (input) { input.focus(); renderDropdown(next); }
+            });
         }
 
-        function colorStat(slot, stat, cls) {
-            const el = document.querySelector(`#compare-result-${slot} .stat-val[data-stat="${stat}"]`);
-            if (el) el.classList.add(cls);
-        }
-
-        function compareStat(stat, valueFn, schools, lowerIsBetter = false) {
-            const items = schools.map(({ slot, school }) => ({ slot, value: valueFn(school) }));
-            const classes = bestWorstClasses(items, lowerIsBetter);
-            Object.entries(classes).forEach(([slot, cls]) => colorStat(Number(slot), stat, cls));
-        }
-
-        function actMid(s) {
-            return s.act_composite_25 != null && s.act_composite_75 != null ? (s.act_composite_25 + s.act_composite_75) / 2 : null;
-        }
-
-        function activeSchoolEntries() {
-            return activeSlots
-                .map(slot => selected[slot] ? { slot, school: selected[slot], color: SLOT_COLORS[slot] } : null)
-                .filter(Boolean);
-        }
-
-        function compareStats() {
-            clearColors();
-            const schools = activeSchoolEntries();
-            renderExpandedSections(schools);
-            if (schools.length < 2) return;
-
-            compareStat('acceptance', s => s.acceptance_rate, schools);
-            compareStat('sat', s => s.sat_avg, schools);
-            compareStat('act', s => actMid(s), schools);
-            compareStat('undergrads', s => s.total_undergrads, schools);
-            compareStat('gpa', s => s.avg_gpa_weighted, schools);
-            // lower tuition is the better outcome for an applicant — a higher
-            // number here is a cost, not an achievement, so it must NOT get
-            // the same "higher = green" treatment as SAT/GPA above.
-            compareStat('tuition', s => s.tuition_out_of_state ?? s.tuition, schools, true);
+        // One re-render pass: rebuild the picker grid and the comparison
+        // sections from the current activeSlots / selected state.
+        function refresh() {
+            renderPickerGrid();
+            renderExpandedSections(activeSchoolEntries());
         }
 
         // ── Expanded comparison sections ────────────────────────────────
-        // Reuse the per-school detail-page data (GPA distribution, admission
-        // factors, cost breakdown, demographics) instead of the six summary
-        // stats above, once both slots are filled.
+        // The detailed side-by-side comparison (funnel, test scores, GPA,
+        // admission factors, cost, outcomes, demographics), rendered once
+        // two or more slots are filled. The headline six-stat summary lives
+        // in the picker cards on the left.
 
         function legendHtml(schools) {
             return `<div class="cmp-legend">${schools.map(({ school, color }) =>
@@ -426,7 +417,7 @@
                 multiRow('Enrolled',        schools, s => s.enrolled_total,   fmtNum, { noColor: true }),
                 multiRow('Acceptance Rate', schools, s => s.acceptance_rate,  fmtPct),
             ];
-            return sectionHtml('Selectivity', tableHtml(headerRow(schools), rows));
+            return sectionHtml('Selectivity', tableHtml(headerRow(schools), rows, colTints(schools)));
         }
 
         function scoreCompareRow(label, schools, loKey, hiKey, min, max) {
@@ -568,7 +559,7 @@
                 multiRow('Total Cost (Out-of-State)', schools, s => totalCOA(s, 'out'), fmtMoney, { lowerIsBetter: true, strong: true }),
                 multiRow('Application Fee',         schools, s => s.application_fee, fmtMoney, { lowerIsBetter: true }),
             ];
-            return sectionHtml('Cost', tableHtml(headerRow(schools), rows));
+            return sectionHtml('Cost', tableHtml(headerRow(schools), rows, colTints(schools)));
         }
 
         function renderOutcomesCompare(schools) {
@@ -581,7 +572,7 @@
                 multiRow('Median Debt (Graduates)',  schools, s => s.median_debt_graduates, fmtMoney, { lowerIsBetter: true }),
                 multiRow('% Borrowing',              schools, s => s.pct_borrowing, fmtPct, { lowerIsBetter: true }),
             ];
-            return sectionHtml('Outcomes', tableHtml(headerRow(schools), rows));
+            return sectionHtml('Outcomes', tableHtml(headerRow(schools), rows, colTints(schools)));
         }
 
         function racePct(s, key) {
@@ -611,28 +602,25 @@
                 .filter(([key]) => schools.some(({ school }) => racePct(school, key) != null))
                 .map(([key, label]) => multiRow(label, schools, s => racePct(s, key), fmtPct, { noColor: true }));
 
+            const tints = colTints(schools);
+
             const genderBody = hasGender
-                ? tableHtml(headerRow(schools), genderRows)
+                ? tableHtml(headerRow(schools), genderRows, tints)
                 : noDataHtml('Gender breakdown not provided by any selected institution.');
 
             const raceBody = raceRows.length
-                ? tableHtml(headerRow(schools), raceRows)
+                ? tableHtml(headerRow(schools), raceRows, tints)
                 : noDataHtml('Race / ethnicity breakdown not provided by any selected institution.');
 
-            // Total undergrads up top; the two small 2-row breakdowns share a
-            // row; race gets the full width since it can run to nine rows.
+            // Each breakdown gets the full width and its own row — side by
+            // side, the short row labels ("In-State", "Men") get crushed once
+            // the comparison column is narrow.
             return sectionHtml('Student Body', `
-                ${tableHtml(headerRow(schools), [undergradRow])}
-                <div class="cols-2">
-                    <div>
-                        <h3 class="subsection-title">Gender</h3>
-                        ${genderBody}
-                    </div>
-                    <div>
-                        <h3 class="subsection-title">Geographic Origin</h3>
-                        ${tableHtml(headerRow(schools), geoRows)}
-                    </div>
-                </div>
+                ${tableHtml(headerRow(schools), [undergradRow], tints)}
+                <h3 class="subsection-title">Gender</h3>
+                ${genderBody}
+                <h3 class="subsection-title">Geographic Origin</h3>
+                ${tableHtml(headerRow(schools), geoRows, tints)}
                 <h3 class="subsection-title">Race / Ethnicity</h3>
                 ${raceBody}
             `);
@@ -640,13 +628,13 @@
 
         function renderExpandedSections(schools) {
             const container = document.getElementById('compare-sections');
-            if (schools.length < 2) {
-                container.innerHTML = '<p class="compare-placeholder">Select at least two schools to see the full comparison.</p>';
+            if (schools.length < 1) {
+                container.innerHTML = '<p class="compare-placeholder">Search for a school on the left to see its data.</p>';
                 return;
             }
 
             container.innerHTML = `
-                ${legendHtml(schools)}
+                ${schools.length >= 2 ? legendHtml(schools) : ''}
                 ${renderSelectivityCompare(schools)}
                 ${renderAcademicProfileCompare(schools)}
                 ${renderAdmissionFactorsCompare(schools)}
@@ -664,75 +652,37 @@
             applyCollapsedState(container);
         }
 
-        function wireSlot(slot) {
-            const input = document.querySelector(`.compare-input[data-slot="${slot}"]`);
-            const clearBtn = document.querySelector(`.compare-clear[data-slot="${slot}"]`);
-            const dropdown = document.querySelector(`.compare-dropdown[data-slot="${slot}"]`);
+        // The grid's innerHTML is rebuilt on every refresh(), so its controls
+        // are driven by delegated listeners bound once to the stable
+        // #compare-grid container rather than per-element wiring.
+        function wirePickerGrid() {
+            const grid = document.getElementById('compare-grid');
+            const slotOf = el => Number(el.dataset.slot);
 
-            input.addEventListener('focus', () => renderDropdown(slot));
-            input.addEventListener('input', () => {
-                if (selected[slot] && input.value !== selected[slot].name) {
-                    selected[slot] = null;
-                    clearBtn.classList.remove('visible');
-                    renderResult(slot);
-                }
-                renderDropdown(slot);
+            grid.addEventListener('focusin', (e) => {
+                if (e.target.classList.contains('compare-input')) renderDropdown(slotOf(e.target));
             });
-
-            dropdown.addEventListener('click', (e) => {
+            grid.addEventListener('input', (e) => {
+                if (e.target.classList.contains('compare-input')) renderDropdown(slotOf(e.target));
+            });
+            grid.addEventListener('click', (e) => {
                 const opt = e.target.closest('.compare-option');
-                if (opt) selectSchool(slot, opt.dataset.slug);
+                if (opt) { selectSchool(slotOf(opt), opt.dataset.slug); return; }
+                const remove = e.target.closest('.compare-cell-remove');
+                if (remove) { removeSchool(slotOf(remove)); return; }
+                const dismiss = e.target.closest('.compare-cell-dismiss');
+                if (dismiss) { dismissSlot(slotOf(dismiss)); return; }
+                if (e.target.closest('#compare-add-school')) addSlot();
             });
 
-            clearBtn.addEventListener('click', () => clearSlot(slot));
-
+            // Click anywhere outside an open dropdown's own cell closes it.
             document.addEventListener('click', (e) => {
-                if (!e.target.closest(`.compare-slot[data-slot="${slot}"]`)) closeDropdown(slot);
+                document.querySelectorAll('.compare-dropdown.open').forEach(dd => {
+                    const cell = dd.closest('.compare-cell');
+                    if (cell && !cell.contains(e.target)) dd.classList.remove('open');
+                });
+                updatePickerPadding();
             });
-        }
-
-        // Slots are always added/removed sequentially from the end (3, then
-        // 4) rather than at arbitrary positions — matches the "optionally
-        // add a third, then optionally a fourth" flow, and keeps the "which
-        // slot can still be removed" question unambiguous (always the last
-        // one, never a gap in the middle).
-        function updateAddRemoveUI() {
-            document.getElementById('compare-add-school').hidden = activeSlots.length >= MAX_SLOTS;
-            document.querySelectorAll('.compare-remove-slot').forEach(btn => {
-                const slot = Number(btn.dataset.slot);
-                btn.hidden = !(activeSlots.length > 2 && slot === activeSlots[activeSlots.length - 1]);
-            });
-        }
-
-        function addSlot() {
-            if (activeSlots.length >= MAX_SLOTS) return;
-            const next = activeSlots.length + 1;
-            activeSlots.push(next);
-            document.querySelector(`.compare-slot[data-slot="${next}"]`).hidden = false;
-            updateAddRemoveUI();
-            // Deferred to the next frame: focusing an input in the same tick
-            // it's un-hidden lands document.activeElement on it but doesn't
-            // reliably fire the 'focus' event (the browser hasn't laid out
-            // the now-visible element yet), which would silently leave the
-            // dropdown closed. Calling renderDropdown directly sidesteps
-            // that timing quirk instead of depending on the event firing.
-            requestAnimationFrame(() => {
-                const input = document.querySelector(`.compare-input[data-slot="${next}"]`);
-                input.focus();
-                renderDropdown(next);
-            });
-        }
-
-        function removeSlot(slot) {
-            if (activeSlots[activeSlots.length - 1] !== slot) return;
-            activeSlots.pop();
-            selected[slot] = null;
-            document.querySelector(`.compare-input[data-slot="${slot}"]`).value = '';
-            document.querySelector(`.compare-clear[data-slot="${slot}"]`).classList.remove('visible');
-            document.getElementById(`compare-result-${slot}`).innerHTML = '';
-            document.querySelector(`.compare-slot[data-slot="${slot}"]`).hidden = true;
-            updateAddRemoveUI();
-            compareStats();
         }
 
         async function loadSchools() {
@@ -759,16 +709,13 @@
         }
 
         function init() {
-            [1, 2, 3, 4].forEach(wireSlot);
-            document.getElementById('compare-add-school').addEventListener('click', addSlot);
-            document.querySelectorAll('.compare-remove-slot').forEach(btn =>
-                btn.addEventListener('click', () => removeSlot(Number(btn.dataset.slot))));
-            updateAddRemoveUI();
+            wirePickerGrid();
+            renderPickerGrid();
             wireSectionToggles();
 
-            // Data load happens last and is isolated in its own try/catch —
-            // every control above is wired up regardless of whether this
-            // succeeds.
+            // Data load is isolated in its own try/catch: the picker is
+            // usable (shows its search boxes) regardless of whether it
+            // succeeds; dropdowns fill from allSchools on the next keystroke.
             loadSchools();
         }
 
@@ -784,6 +731,7 @@
             <a href="privacy.html">Privacy Policy</a>
             <a href="terms.html">Terms &amp; Conditions</a>
         </nav>
+        <a class="footer-email" href="mailto:info@commondatasets.com">info@commondatasets.com</a>
     </footer>
 </body>
 </html>

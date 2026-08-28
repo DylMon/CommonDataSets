@@ -167,6 +167,21 @@ body {
     align-items: center;
 }
 
+/* In the grid, the links share row 1 with the wordmark and are centred
+   against that row only — so the second-line "Independent project" notice
+   pushes them visually high. Once there's room to the left of the centred
+   wordmark for the links not to collide with it, take them out of flow and
+   pin them to the true vertical centre of the bar. `left` mirrors
+   .nav-wrapper's 38px horizontal padding. */
+@media (min-width: 1024px) {
+    .left-side {
+        position: absolute;
+        left: 38px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
 .nav-link-wrapper {
     margin-right: 20px;
 }
@@ -897,6 +912,21 @@ body {
 
 .footer-nav a:hover {
     color: white;
+}
+
+/* Contact address on its own line, centred across the full footer width
+   (below the brand/links row on desktop, in the stack on mobile).
+   `width:100%` forces the flex wrap; not a nav item, so no uppercasing. */
+.footer-email {
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 0.95em;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    transition: color 0.15s;
 }
 
 /* Info page */
