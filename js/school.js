@@ -1,4 +1,4 @@
-import { GPA_BUCKETS, renderGpaHistogram, normalizeGpaDistribution } from './charts.js';
+import { GPA_BUCKETS, renderGpaHistogram, normalizeGpaDistribution } from './charts.js?v=5';
 
 const SCHOOL_META = {
   'mit':          { color: '#a41931', banner: 'bannerMIT.png' },

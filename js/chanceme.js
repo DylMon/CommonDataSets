@@ -2,7 +2,7 @@
 // Everything here runs client-side against data/schools.json. No AI, no server,
 // nothing typed into the form is ever transmitted anywhere.
 
-import { normalizeGpaDistribution } from './charts.js';
+import { normalizeGpaDistribution } from './charts.js?v=5';
 
 const LOGOS = {
     'mit': 'MITlogo.png', 'harvard': 'harvardlogo.png', 'stanford': 'stanfordlogo.png',

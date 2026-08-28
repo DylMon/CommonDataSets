@@ -89,6 +89,7 @@
 }
 
 .stat-chip-label {
+  font-family: var(--font-display);
   font-size: 0.83em;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -161,6 +162,7 @@
 }
 
 .subsection-title {
+  font-family: var(--font-display);
   font-size: 0.9em;
   font-weight: 400;
   text-transform: uppercase;
@@ -192,6 +194,7 @@
 }
 
 .kv-label {
+  font-family: var(--font-display);
   color: #000;
   font-weight: 300;
   padding-right: 20px;
@@ -226,6 +229,7 @@
 }
 
 .funnel-label {
+  font-family: var(--font-display);
   font-size: 0.83em;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -261,6 +265,10 @@
 
 .tbl thead tr { background: var(--brand); color: #fff; text-align: left; }
 .tbl th, .tbl td { padding: 10px 14px; word-break: break-word; }
+.tbl th { font-family: var(--font-display); font-weight: 400; letter-spacing: 0.03em; }
+/* First cell of every row is a label (round name, expense name, "Male"…); the
+   remaining columns are figures and stay in the data face. */
+.tbl td:first-child { font-family: var(--font-display); }
 .tbl tbody tr { border-bottom: 1px solid #f0f0f0; }
 .tbl tbody tr:nth-of-type(even) { background: #f9f9f9; }
 .tbl tbody tr:last-of-type { border-bottom: 2px solid var(--brand); }
@@ -278,6 +286,7 @@
 .score-row-label {
   width: 160px;
   flex-shrink: 0;
+  font-family: var(--font-display);
   font-size: 1.03em;
   color: #000;
   font-weight: 300;
@@ -335,6 +344,7 @@
   flex-wrap: wrap;
   gap: 6px 20px;
   margin: 4px 0 20px;
+  font-family: var(--font-display);
   font-size: 0.8em;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -361,6 +371,7 @@
 .factor-list:last-child .factor-row:last-child { border-bottom: none; }
 
 .factor-name {
+  font-family: var(--font-display);
   font-size: 1.02em;
   font-weight: 300;
   color: #000;
@@ -391,6 +402,7 @@
 .demo-bar-label {
   width: 230px;
   flex-shrink: 0;
+  font-family: var(--font-display);
   font-size: 1em;
   color: #000;
   font-weight: 300;

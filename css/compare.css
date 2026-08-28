@@ -384,6 +384,29 @@
     min-width: 0;
 }
 
+/* Admission factors: one 4-dot meter per school on each factor row, in
+   that school's legend color. */
+.cmp-factor-meters {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-shrink: 0;
+}
+
+/* Placeholder sized to a 4-dot meter (4×9 + 3×5) so meters stay aligned
+   in their column when a school doesn't report a given factor. */
+.cmp-factor-na {
+    display: inline-block;
+    width: 51px;
+    text-align: center;
+    color: #999;
+}
+
+@media (max-width: 560px) {
+    .factor-row { flex-wrap: wrap; gap: 6px; }
+    .cmp-factor-meters { gap: 14px; }
+}
+
 /* Sidebar/main split only has room to breathe above tablet width —
    stack the school pickers back above the comparison content below it. */
 @media (max-width: 900px) {

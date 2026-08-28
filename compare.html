@@ -18,11 +18,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ropa+Sans:ital@0;1&family=Castoro:ital@0;1&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/base.css?v=4">
-    <link rel="stylesheet" href="css/school-template.css?v=4">
-    <link rel="stylesheet" href="css/compare.css?v=4">
-    <script src="js/scorecard-merge.js?v=4"></script>
-    <script src="js/header.js?v=4" defer></script>
+    <link rel="stylesheet" href="css/base.css?v=5">
+    <link rel="stylesheet" href="css/school-template.css?v=5">
+    <link rel="stylesheet" href="css/compare.css?v=5">
+    <script src="js/scorecard-merge.js?v=5"></script>
+    <script src="js/header.js?v=5" defer></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2245119166025427"
      crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js" defer></script>
@@ -98,7 +98,7 @@
     </div>
 
     <script type="module">
-        import { renderGpaComparisonChart } from './js/charts.js';
+        import { renderGpaComparisonChart } from './js/charts.js?v=5';
 
         // Fixed per-slot colors rather than each school's own brand color —
         // brand hexes are arbitrary and sometimes literally identical
@@ -154,11 +154,6 @@
             religious: 'Religious Affiliation', racial_ethnic: 'Racial / Ethnic Status',
             volunteer: 'Volunteer Work', work_experience: 'Work Experience',
             applicant_interest: "Level of Applicant's Interest",
-        };
-
-        const RATING_LABELS = {
-            very_important: 'Very Important', important: 'Important',
-            considered: 'Considered', not_considered: 'Not Considered',
         };
 
         const RACE_LABELS = [
@@ -424,13 +419,14 @@
             ).join('')}</div>`;
         }
 
-        function renderFunnelCompare(schools) {
+        function renderSelectivityCompare(schools) {
             const rows = [
-                multiRow('Applied',  schools, s => s.applicants_total, fmtNum, { noColor: true }),
-                multiRow('Admitted', schools, s => s.admitted_total,   fmtNum, { noColor: true }),
-                multiRow('Enrolled', schools, s => s.enrolled_total,   fmtNum, { noColor: true }),
+                multiRow('Applied',         schools, s => s.applicants_total, fmtNum, { noColor: true }),
+                multiRow('Admitted',        schools, s => s.admitted_total,   fmtNum, { noColor: true }),
+                multiRow('Enrolled',        schools, s => s.enrolled_total,   fmtNum, { noColor: true }),
+                multiRow('Acceptance Rate', schools, s => s.acceptance_rate,  fmtPct),
             ];
-            return sectionHtml('Applicant Funnel', tableHtml(headerRow(schools), rows));
+            return sectionHtml('Selectivity', tableHtml(headerRow(schools), rows));
         }
 
         function scoreCompareRow(label, schools, loKey, hiKey, min, max) {
@@ -453,7 +449,10 @@
             </div>`;
         }
 
-        function renderTestScoresCompare(schools) {
+        // Test-score ranges and the GPA-distribution chart share one section
+        // in a two-column body, matching the single-school page's "Academic
+        // Profile" — scores on the left, GPA shape on the right.
+        function renderAcademicProfileCompare(schools) {
             const satRows = [
                 scoreCompareRow('Composite', schools, 'sat_composite_25', 'sat_composite_75', 400, 1600),
                 scoreCompareRow('Reading & Writing', schools, 'sat_reading_25', 'sat_reading_75', 200, 800),
@@ -465,11 +464,24 @@
                 scoreCompareRow('English', schools, 'act_english_25', 'act_english_75', 1, 36),
             ].join('');
 
-            return sectionHtml('Test Scores', `
-                <h3 class="subsection-title">SAT — 25th to 75th Percentile</h3>
-                <div class="score-rows">${satRows}</div>
-                <h3 class="subsection-title">ACT — 25th to 75th Percentile</h3>
-                <div class="score-rows">${actRows}</div>`);
+            const gpaBody = schools.some(({ school }) => hasGpaData(school))
+                ? `<div class="gpa-chart-wrap" style="height:300px"><canvas id="cmp-gpa-chart"></canvas></div>
+                   <p class="chart-caption">GPA bands aren't evenly sized, and schools often don't report bands below 3.0 — read this as a shape, not a precise curve.</p>`
+                : noDataHtml('GPA distribution not provided by any selected institution.');
+
+            return sectionHtml('Academic Profile', `
+                <div class="cols-2">
+                    <div>
+                        <h3 class="subsection-title">SAT — 25th to 75th Percentile</h3>
+                        <div class="score-rows">${satRows}</div>
+                        <h3 class="subsection-title">ACT — 25th to 75th Percentile</h3>
+                        <div class="score-rows">${actRows}</div>
+                    </div>
+                    <div>
+                        <h3 class="subsection-title">GPA Distribution</h3>
+                        ${gpaBody}
+                    </div>
+                </div>`);
         }
 
         // A section never disappears just because a school's Common Data
@@ -483,22 +495,56 @@
             return s.gpa_distribution && Object.values(s.gpa_distribution).some(v => v != null);
         }
 
-        function renderGpaCompareSection(schools) {
-            const body = schools.some(({ school }) => hasGpaData(school))
-                ? `<div class="gpa-chart-wrap" style="height:300px"><canvas id="cmp-gpa-chart"></canvas></div>
-                   <p class="chart-caption">GPA bands aren't evenly sized, and schools often don't report bands below 3.0 — read this as a shape, not a precise curve.</p>`
-                : noDataHtml('GPA distribution not provided by any selected institution.');
-            return sectionHtml('GPA Distribution', body);
+        // Each factor is a row of per-school 4-dot meters (in that school's
+        // legend color) instead of a wide grid of "Very Important"/"Considered"
+        // text — the same importance-meter treatment as the single-school page,
+        // read down a column to compare one school, across a row to compare a
+        // factor. Rows where no selected school reports the factor are dropped.
+        const CMP_FACTOR_SCORE = { very_important: 4, important: 3, considered: 2, not_considered: 1 };
+        const CMP_FACTOR_SCORE_LABEL = ['—', 'Not considered', 'Considered', 'Important', 'Very important'];
+
+        function cmpFactorMeter(score, color, schoolName, factorLabel) {
+            if (!score) {
+                return `<span class="cmp-factor-na" title="${schoolName} — ${factorLabel}: not reported">—</span>`;
+            }
+            const dots = [1, 2, 3, 4].map(n => n <= score
+                ? `<span class="factor-dot on" style="border-color:${color};background:${color}"></span>`
+                : `<span class="factor-dot" style="border-color:${color}"></span>`).join('');
+            return `<span class="factor-meter" title="${schoolName} — ${factorLabel}: ${CMP_FACTOR_SCORE_LABEL[score]}">${dots}</span>`;
         }
 
         function renderAdmissionFactorsCompare(schools) {
-            const body = schools.some(({ school }) => school.admission_factors)
-                ? tableHtml(headerRow(schools, 'Factor'), Object.entries(FACTOR_LABELS).map(([key, label]) => [
+            if (!schools.some(({ school }) => school.admission_factors)) {
+                return sectionHtml('What Matters in the Decision',
+                    noDataHtml('Admission factors not provided by any selected institution.'));
+            }
+
+            const rows = Object.entries(FACTOR_LABELS)
+                .map(([key, label]) => ({
                     label,
-                    ...schools.map(({ school }) => RATING_LABELS[school.admission_factors?.[key]] ?? '—'),
-                ]))
-                : noDataHtml('Admission factors not provided by any selected institution.');
-            return sectionHtml('Admission Factors', body);
+                    cells: schools.map(({ school, color }) => ({
+                        color,
+                        name: school.name,
+                        score: CMP_FACTOR_SCORE[school.admission_factors?.[key]] ?? 0,
+                    })),
+                }))
+                .filter(r => r.cells.some(c => c.score > 0));
+
+            const scaleLegend = [4, 3, 2, 1].map(n =>
+                `<span>${[1, 2, 3, 4].map(d => `<span class="factor-dot${d <= n ? ' on' : ''}"></span>`).join('')} ${CMP_FACTOR_SCORE_LABEL[n]}</span>`
+            ).join('');
+
+            const list = rows.map(r => `
+                <div class="factor-row">
+                    <span class="factor-name">${r.label}</span>
+                    <div class="cmp-factor-meters">
+                        ${r.cells.map(c => cmpFactorMeter(c.score, c.color, c.name, r.label)).join('')}
+                    </div>
+                </div>`).join('');
+
+            return sectionHtml('What Matters in the Decision', `
+                <div class="factor-legend">${scaleLegend}</div>
+                <div class="factor-list">${list}</div>`);
         }
 
         function totalCOA(s, variant) {
@@ -522,7 +568,7 @@
                 multiRow('Total Cost (Out-of-State)', schools, s => totalCOA(s, 'out'), fmtMoney, { lowerIsBetter: true, strong: true }),
                 multiRow('Application Fee',         schools, s => s.application_fee, fmtMoney, { lowerIsBetter: true }),
             ];
-            return sectionHtml('Cost & Financial Aid', tableHtml(headerRow(schools), rows));
+            return sectionHtml('Cost', tableHtml(headerRow(schools), rows));
         }
 
         function renderOutcomesCompare(schools) {
@@ -544,7 +590,7 @@
             return d[key] / d.total;
         }
 
-        function renderDemographicsCompare(schools) {
+        function renderStudentBodyCompare(schools) {
             const undergradRow = multiRow('Total Undergraduates', schools, s => s.total_undergrads, fmtNum, { noColor: true });
 
             const hasGender = schools.some(({ school }) => school.total_undergrads && school.undergrads_male != null);
@@ -573,12 +619,20 @@
                 ? tableHtml(headerRow(schools), raceRows)
                 : noDataHtml('Race / ethnicity breakdown not provided by any selected institution.');
 
-            return sectionHtml('Demographics', `
+            // Total undergrads up top; the two small 2-row breakdowns share a
+            // row; race gets the full width since it can run to nine rows.
+            return sectionHtml('Student Body', `
                 ${tableHtml(headerRow(schools), [undergradRow])}
-                <h3 class="subsection-title">Gender</h3>
-                ${genderBody}
-                <h3 class="subsection-title">Geographic Origin</h3>
-                ${tableHtml(headerRow(schools), geoRows)}
+                <div class="cols-2">
+                    <div>
+                        <h3 class="subsection-title">Gender</h3>
+                        ${genderBody}
+                    </div>
+                    <div>
+                        <h3 class="subsection-title">Geographic Origin</h3>
+                        ${tableHtml(headerRow(schools), geoRows)}
+                    </div>
+                </div>
                 <h3 class="subsection-title">Race / Ethnicity</h3>
                 ${raceBody}
             `);
@@ -593,13 +647,12 @@
 
             container.innerHTML = `
                 ${legendHtml(schools)}
-                ${renderFunnelCompare(schools)}
-                ${renderTestScoresCompare(schools)}
-                ${renderGpaCompareSection(schools)}
+                ${renderSelectivityCompare(schools)}
+                ${renderAcademicProfileCompare(schools)}
                 ${renderAdmissionFactorsCompare(schools)}
                 ${renderCostCompare(schools)}
                 ${renderOutcomesCompare(schools)}
-                ${renderDemographicsCompare(schools)}
+                ${renderStudentBodyCompare(schools)}
             `;
 
             const gpaCanvas = document.getElementById('cmp-gpa-chart');
