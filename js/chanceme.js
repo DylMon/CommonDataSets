@@ -2,6 +2,8 @@
 // Everything here runs client-side against data/schools.json. No AI, no server,
 // nothing typed into the form is ever transmitted anywhere.
 
+import { normalizeGpaDistribution } from './charts.js';
+
 const LOGOS = {
     'mit': 'MITlogo.png', 'harvard': 'harvardlogo.png', 'stanford': 'stanfordlogo.png',
     'princeton': 'princetonlogo.png', 'yale': 'yalelogo.png', 'columbia': 'Columbialogo.png',
@@ -179,6 +181,7 @@ export function effectiveWeightedGpa(profile) {
 
 export function gpaPercentile(unweightedGpa, gpaDist) {
     if (unweightedGpa == null || !gpaDist) return null;
+    gpaDist = normalizeGpaDistribution(gpaDist);
     let below = 0, own = 0, total = 0;
     for (const b of GPA_BANDS) {
         const v = gpaDist[b.key] ?? 0;

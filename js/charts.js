@@ -13,6 +13,29 @@ export const GPA_BUCKETS = [
   ['4_0',           '4.0'],
 ];
 
+// The 2024–25 data export keys GPA bands as 4_0 / 3_75_to_3_99… (matching
+// GPA_BUCKETS above); the current CDS pipeline (scripts/parse-cds.py) emits
+// gpa_40 / gpa_375_399… instead. Map either onto the GPA_BUCKETS keys so
+// every consumer — the charts here, js/school.js, js/chanceme.js — reads
+// both vintages. Pass-through when the keys are already canonical.
+const GPA_KEY_ALIASES = {
+  below_1_0: 'gpa_below_100', '1_00_to_1_99': 'gpa_100_199',
+  '2_00_to_2_49': 'gpa_200_249', '2_50_to_2_99': 'gpa_250_299',
+  '3_00_to_3_24': 'gpa_300_324', '3_25_to_3_49': 'gpa_325_349',
+  '3_50_to_3_74': 'gpa_350_374', '3_75_to_3_99': 'gpa_375_399',
+  '4_0': 'gpa_40',
+};
+
+export function normalizeGpaDistribution(dist) {
+  if (!dist) return dist;
+  const out = {};
+  for (const [canon, alias] of Object.entries(GPA_KEY_ALIASES)) {
+    const v = dist[canon] ?? dist[alias];
+    if (v != null) out[canon] = v;
+  }
+  return Object.keys(out).length ? out : dist;
+}
+
 // Mixes `hex` toward `target` by fraction `f` (0 = hex, 1 = target).
 export function hexMix(hex, target, f) {
   const a = hex.replace('#', ''), b = target.replace('#', '');
@@ -29,6 +52,7 @@ export function hexMix(hex, target, f) {
 // wasn't enough data to draw anything.
 export function renderGpaHistogram(canvas, distribution, brandColor) {
   if (!canvas || !distribution) return false;
+  distribution = normalizeGpaDistribution(distribution);
 
   const points = GPA_BUCKETS
     .map(([key, label]) => ({ label, value: distribution[key] }))
@@ -54,7 +78,7 @@ export function renderGpaHistogram(canvas, distribution, brandColor) {
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      font: { family: 'Oswald' },
+      font: { family: 'Ropa Sans' },
       plugins: {
         legend: { display: false },
         tooltip: {
@@ -68,14 +92,14 @@ export function renderGpaHistogram(canvas, distribution, brandColor) {
       scales: {
         x: {
           grid: { display: false },
-          ticks: { font: { family: 'Oswald' }, color: '#666' },
+          ticks: { font: { family: 'Ropa Sans' }, color: '#666' },
         },
         y: {
           beginAtZero: true,
           grid: { color: '#eee' },
           border: { display: false },
           ticks: {
-            font: { family: 'Oswald' },
+            font: { family: 'Ropa Sans' },
             color: '#999',
             callback: v => v + '%',
           },
@@ -93,6 +117,7 @@ export function renderGpaHistogram(canvas, distribution, brandColor) {
 export function renderGpaComparisonChart(canvas, entries) {
   if (!canvas) return false;
 
+  entries = entries.map(e => ({ ...e, distribution: normalizeGpaDistribution(e.distribution) }));
   const buckets = GPA_BUCKETS.filter(([key]) => entries.some(e => e.distribution?.[key] != null));
   if (buckets.length < 2) return false;
 
@@ -112,12 +137,12 @@ export function renderGpaComparisonChart(canvas, entries) {
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      font: { family: 'Oswald' },
+      font: { family: 'Ropa Sans' },
       plugins: {
         legend: {
           display: true,
           position: 'top',
-          labels: { font: { family: 'Oswald', size: 12 }, boxWidth: 12, usePointStyle: true, pointStyle: 'circle' },
+          labels: { font: { family: 'Ropa Sans', size: 12 }, boxWidth: 12, usePointStyle: true, pointStyle: 'circle' },
         },
         tooltip: {
           callbacks: {
@@ -128,14 +153,14 @@ export function renderGpaComparisonChart(canvas, entries) {
       scales: {
         x: {
           grid: { display: false },
-          ticks: { font: { family: 'Oswald' }, color: '#666' },
+          ticks: { font: { family: 'Ropa Sans' }, color: '#666' },
         },
         y: {
           beginAtZero: true,
           grid: { color: '#eee' },
           border: { display: false },
           ticks: {
-            font: { family: 'Oswald' },
+            font: { family: 'Ropa Sans' },
             color: '#999',
             callback: v => v + '%',
           },

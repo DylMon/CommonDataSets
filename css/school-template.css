@@ -36,8 +36,9 @@
 .hero-name {
   margin: 0;
   color: #fff;
+  font-family: var(--font-display);
   font-size: 1.55em;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 0.04em;
   text-shadow: 0 1px 6px rgba(0,0,0,0.4);
   line-height: 1;
@@ -111,7 +112,7 @@
 }
 
 /* ── Section ── */
-.school-section { margin-top: 52px; }
+.school-section { margin-top: 40px; }
 
 /* Two sections placed side by side (e.g. Admissions summary + Cost) to use
    horizontal space instead of stacking everything in one narrow column.
@@ -120,7 +121,25 @@
   display: flex;
   gap: 40px;
   flex-wrap: wrap;
-  margin-top: 52px;
+  margin-top: 40px;
+}
+
+/* ── Two-column section body ──
+   Splits a section's interior into a matched pair of columns so related
+   blocks (SAT next to ACT, race next to gender/geo) sit side by side
+   instead of stacking. Collapses to one column when it would get cramped. */
+.cols-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 40px;
+  align-items: start;
+}
+
+.cols-2 > div > :first-child { margin-top: 0; }
+
+@media (max-width: 720px) {
+  .cols-2 { grid-template-columns: 1fr; }
+  .cols-2 > div + div { margin-top: 4px; }
 }
 
 .school-section-row .school-section {
@@ -130,8 +149,9 @@
 }
 
 .section-title {
+  font-family: var(--font-display);
   font-size: 1.45em;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   margin: 0 0 20px;
@@ -146,7 +166,7 @@
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: #000;
-  margin: 30px 0 10px;
+  margin: 24px 0 8px;
 }
 
 .section-note {
@@ -300,6 +320,69 @@
 
 .score-na-text { color: #000; font-style: italic; font-size: 1em; }
 
+/* Tighter label/value gutters when score bars sit in a half-width column.
+   Only while .cols-2 is actually two columns (see the 720px collapse). */
+@media (min-width: 721px) {
+  .cols-2 .score-row { gap: 10px; }
+  .cols-2 .score-bar-wrap { gap: 10px; }
+  .cols-2 .score-row-label { width: 140px; font-size: 0.98em; }
+  .cols-2 .score-bar-vals { width: 78px; font-size: 0.98em; }
+}
+
+/* ── Admission factors: name + 4-dot importance meter ── */
+.factor-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+  margin: 4px 0 20px;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #000;
+}
+
+.factor-legend > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.factor-list { display: flex; flex-direction: column; }
+
+.factor-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 9px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.factor-list:last-child .factor-row:last-child { border-bottom: none; }
+
+.factor-name {
+  font-size: 1.02em;
+  font-weight: 300;
+  color: #000;
+  line-height: 1.3;
+}
+
+.factor-meter {
+  display: inline-flex;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.factor-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid var(--brand);
+  box-sizing: border-box;
+}
+
+.factor-dot.on { background: var(--brand); }
+
 /* ── Demo / geo bars ── */
 .demo-bars { display: flex; flex-direction: column; gap: 10px; margin: 4px 0; }
 
@@ -341,25 +424,13 @@
 /* ── No-data placeholder ── */
 .no-data { color: #000; font-style: italic; font-size: 1.03em; margin: 8px 0; }
 
-/* ── GPA distribution chart ── */
-.gpa-flex-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin: 12px 0 8px;
-}
-
-.gpa-chart-wrap,
-.gpa-table-col {
+/* ── GPA distribution chart ──
+   The compare page reuses .gpa-chart-wrap with an inline height override. */
+.gpa-chart-wrap {
   position: relative;
-  flex: 1 1 0;
-  min-width: 280px;
-  height: 300px;
+  height: 240px;
+  margin: 4px 0 10px;
 }
-
-.gpa-table-col { overflow-y: auto; }
-.gpa-table-col .tbl-wrap { margin: 0; height: 100%; }
 
 .chart-caption {
   color: #000;

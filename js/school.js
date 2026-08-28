@@ -1,4 +1,4 @@
-import { GPA_BUCKETS, renderGpaHistogram } from './charts.js';
+import { GPA_BUCKETS, renderGpaHistogram, normalizeGpaDistribution } from './charts.js';
 
 const SCHOOL_META = {
   'mit':          { color: '#a41931', banner: 'bannerMIT.png' },
@@ -242,9 +242,9 @@ function renderAdmissionsSummary(s) {
     </section>`;
 }
 
-// ── Render: Admissions detail (funnel, pools, class rank, GPA, factors) ──
+// ── Render: Selectivity (funnel + admit rates by round and by gender) ───
 
-function renderAdmissionsDetails(s) {
+function renderSelectivitySection(s) {
   const ratePct = s.acceptance_rate != null ? (s.acceptance_rate * 100).toFixed(1) + '%' : null;
   const funnel = `<div class="funnel">
     <div class="funnel-step">
@@ -279,79 +279,43 @@ function renderAdmissionsDetails(s) {
     );
   }
 
-  let gpaSectionHtml = '<p class="no-data">Data not yet available.</p>';
-  if (s.gpa_distribution) {
-    const g = s.gpa_distribution;
-    const rows = GPA_BUCKETS.slice().reverse().map(([key, label]) =>
-      [label, g[key] != null ? (g[key] * 100).toFixed(0) + '%' : '—']);
-    const gpaDistHtml = tableHtml(['GPA Range', '% of Enrolled Students'], rows);
-
-    const chartPoints = GPA_BUCKETS
-      .map(([key, label]) => ({ label, value: g[key] }))
-      .filter(p => p.value != null);
-    if (chartPoints.length >= 2) {
-      gpaSectionHtml = `
-        <div class="gpa-flex-row">
-          <div class="gpa-chart-wrap"><canvas id="gpa-chart"></canvas></div>
-          <div class="gpa-table-col">${gpaDistHtml}</div>
-        </div>
-        <p class="chart-caption">GPA bands aren't evenly sized (the top band is a single value, 4.0, while others span up to a full point), and schools often don't report bands below 3.0 — read this as a shape, not a precise curve.</p>`;
-    } else {
-      gpaSectionHtml = gpaDistHtml;
-    }
+  let genderRoundsHtml = '<p class="no-data">Data not yet available.</p>';
+  if (s.gender_breakdown) {
+    const g = s.gender_breakdown;
+    genderRoundsHtml = tableHtml(
+      ['', 'Applied', 'Accepted', 'Enrolled'],
+      [
+        ['Male',   fmt(g.applied?.male),   fmt(g.accepted?.male),   fmt(g.enrolled?.male)],
+        ['Female', fmt(g.applied?.female), fmt(g.accepted?.female), fmt(g.enrolled?.female)],
+      ]
+    );
   }
 
   return `
     <section class="school-section">
-      <h3 class="subsection-title">Applicant Funnel</h3>
+      <h2 class="section-title">Selectivity</h2>
       ${funnel}
-      <h3 class="subsection-title">Applicant Pools (EA vs RD)</h3>
-      ${poolsHtml}
-      <h3 class="subsection-title">GPA Distribution of Enrolled Students</h3>
-      ${gpaSectionHtml}
+      <div class="cols-2">
+        <div>
+          <h3 class="subsection-title">By Round (EA vs RD)</h3>
+          ${poolsHtml}
+        </div>
+        <div>
+          <h3 class="subsection-title">By Gender</h3>
+          ${genderRoundsHtml}
+        </div>
+      </div>
     </section>`;
 }
 
-// ── Render: Admission Factors ───────────────────────────────────────────
+// ── Render: Academic Profile (test score ranges + GPA distribution) ─────
 
-function renderAdmissionFactorsSection(s) {
-  let factorsHtml = '<p class="no-data">Data not yet available.</p>';
-  if (s.admission_factors) {
-    const FACTOR_LABELS = {
-      rigor: 'Rigor of Secondary School Record', class_rank: 'Class Rank',
-      academic_gpa: 'Academic GPA', test_scores: 'Standardized Test Scores',
-      essay: 'Application Essay', recommendations: 'Recommendations',
-      interview: 'Interview', extracurriculars: 'Extracurricular Activities',
-      talent: 'Talent / Ability', character: 'Character / Personal Qualities',
-      first_gen: 'First Generation', alumni_relation: 'Alumni/ae Relation',
-      geo_residence: 'Geographical Residence', state_residence: 'State Residence',
-      religious: 'Religious Affiliation', racial_ethnic: 'Racial / Ethnic Status',
-      volunteer: 'Volunteer Work', work_experience: 'Work Experience',
-      applicant_interest: "Level of Applicant's Interest",
-    };
-    const RATINGS = ['very_important', 'important', 'considered', 'not_considered'];
-    const rows = Object.entries(FACTOR_LABELS).map(([key, label]) => {
-      const rating = s.admission_factors[key];
-      return [label, ...RATINGS.map(r => r === rating ? '✓' : '')];
-    });
-    factorsHtml = tableHtml(['Factor', 'Very Important', 'Important', 'Considered', 'Not Considered'], rows);
-  }
-
-  return `
-    <section class="school-section">
-      <h2 class="section-title">Admission Factors</h2>
-      ${factorsHtml}
-    </section>`;
-}
-
-// ── Render: Test Scores section ─────────────────────────────────────────
-
-function renderTestScoresSection(s) {
+function renderAcademicProfileSection(s) {
   let submissionHtml = '';
   if (s.sat_act_breakdown) {
     const b = s.sat_act_breakdown;
     submissionHtml = `
-      <h3 class="subsection-title">Score Submission (Enrolled Students)</h3>
+      <h3 class="subsection-title">Score Submission (Enrolled)</h3>
       ${tableHtml(
         ['Test', 'Submitted', '% of Enrolled'],
         [
@@ -361,10 +325,8 @@ function renderTestScoresSection(s) {
       )}`;
   }
 
-  return `
-    <section class="school-section">
-      <h2 class="section-title">Test Scores</h2>
-      ${submissionHtml}
+  const scoresCol = `
+    <div>
       <h3 class="subsection-title">SAT — 25th to 75th Percentile</h3>
       <div class="score-rows">
         ${scoreBarHtml('Composite', s.sat_composite_25, s.sat_composite_75, 400, 1600)}
@@ -377,6 +339,98 @@ function renderTestScoresSection(s) {
         ${scoreBarHtml('Math', s.act_math_25, s.act_math_75, 1, 36)}
         ${scoreBarHtml('English', s.act_english_25, s.act_english_75, 1, 36)}
       </div>
+      ${submissionHtml}
+    </div>`;
+
+  let gpaCol = `
+    <div>
+      <h3 class="subsection-title">GPA Distribution of Enrolled Students</h3>
+      <p class="no-data">Data not yet available.</p>
+    </div>`;
+  const g = normalizeGpaDistribution(s.gpa_distribution);
+  if (g) {
+    const rows = GPA_BUCKETS.slice().reverse().map(([key, label]) =>
+      [label, g[key] != null ? (g[key] * 100).toFixed(0) + '%' : '—']);
+    const gpaDistHtml = tableHtml(['GPA Range', '% of Enrolled'], rows);
+
+    const chartPoints = GPA_BUCKETS
+      .map(([key, label]) => ({ label, value: g[key] }))
+      .filter(p => p.value != null);
+
+    const chartBlock = chartPoints.length >= 2
+      ? `<div class="gpa-chart-wrap"><canvas id="gpa-chart"></canvas></div>
+         <p class="chart-caption">GPA bands aren't evenly sized (the top band is a single value, 4.0, while others span up to a full point), and schools often don't report bands below 3.0 — read this as a shape, not a precise curve.</p>`
+      : '';
+
+    gpaCol = `
+      <div>
+        <h3 class="subsection-title">GPA Distribution of Enrolled Students</h3>
+        ${chartBlock}
+        ${gpaDistHtml}
+      </div>`;
+  }
+
+  return `
+    <section class="school-section">
+      <h2 class="section-title">Academic Profile</h2>
+      <div class="cols-2">
+        ${scoresCol}
+        ${gpaCol}
+      </div>
+    </section>`;
+}
+
+// ── Render: Admission Factors (name + 4-dot importance meter, 2 columns) ─
+
+const FACTOR_LABELS = {
+  rigor: 'Rigor of Secondary School Record', class_rank: 'Class Rank',
+  academic_gpa: 'Academic GPA', test_scores: 'Standardized Test Scores',
+  essay: 'Application Essay', recommendations: 'Recommendations',
+  interview: 'Interview', extracurriculars: 'Extracurricular Activities',
+  talent: 'Talent / Ability', character: 'Character / Personal Qualities',
+  first_gen: 'First Generation', alumni_relation: 'Alumni/ae Relation',
+  geo_residence: 'Geographical Residence', state_residence: 'State Residence',
+  religious: 'Religious Affiliation', racial_ethnic: 'Racial / Ethnic Status',
+  volunteer: 'Volunteer Work', work_experience: 'Work Experience',
+  applicant_interest: "Level of Applicant's Interest",
+};
+
+const FACTOR_SCORE = { very_important: 4, important: 3, considered: 2, not_considered: 1 };
+const FACTOR_SCORE_LABEL = ['—', 'Not considered', 'Considered', 'Important', 'Very important'];
+
+function factorMeter(score) {
+  const dots = [1, 2, 3, 4]
+    .map(n => `<span class="factor-dot${n <= score ? ' on' : ''}"></span>`).join('');
+  return `<span class="factor-meter" title="${FACTOR_SCORE_LABEL[score]}">${dots}</span>`;
+}
+
+function renderAdmissionFactorsSection(s) {
+  let body = '<p class="no-data">Data not yet available.</p>';
+
+  if (s.admission_factors) {
+    const items = Object.entries(FACTOR_LABELS)
+      .map(([key, label]) => ({ label, score: FACTOR_SCORE[s.admission_factors[key]] ?? 0 }))
+      .filter(it => it.score > 0);
+
+    if (items.length) {
+      const rowHtml = it =>
+        `<div class="factor-row"><span class="factor-name">${it.label}</span>${factorMeter(it.score)}</div>`;
+      const mid = Math.ceil(items.length / 2);
+      const legend = [4, 3, 2, 1]
+        .map(n => `<span>${factorMeter(n)} ${FACTOR_SCORE_LABEL[n]}</span>`).join('');
+      body = `
+        <div class="factor-legend">${legend}</div>
+        <div class="cols-2 factor-cols">
+          <div class="factor-list">${items.slice(0, mid).map(rowHtml).join('')}</div>
+          <div class="factor-list">${items.slice(mid).map(rowHtml).join('')}</div>
+        </div>`;
+    }
+  }
+
+  return `
+    <section class="school-section">
+      <h2 class="section-title">What Matters in the Decision</h2>
+      ${body}
     </section>`;
 }
 
@@ -452,18 +506,6 @@ function renderStudentBodySection(s) {
     </div>`;
   }
 
-  let genderRoundsHtml = '<p class="no-data">Data not yet available.</p>';
-  if (s.gender_breakdown) {
-    const g = s.gender_breakdown;
-    genderRoundsHtml = tableHtml(
-      ['', 'Applied', 'Accepted', 'Enrolled'],
-      [
-        ['Male',   fmt(g.applied?.male),   fmt(g.accepted?.male),   fmt(g.enrolled?.male)],
-        ['Female', fmt(g.applied?.female), fmt(g.accepted?.female), fmt(g.enrolled?.female)],
-      ]
-    );
-  }
-
   let geoHtml = '<p class="no-data">Data not yet available.</p>';
   if (s.pct_out_of_state != null) {
     const inState = 1 - s.pct_out_of_state;
@@ -496,12 +538,16 @@ function renderStudentBodySection(s) {
       ${ugNote}
       <h3 class="subsection-title">Race / Ethnicity</h3>
       ${raceHtml}
-      <h3 class="subsection-title">Gender</h3>
-      ${genderHtml}
-      <h3 class="subsection-title">Gender by Admissions Round</h3>
-      ${genderRoundsHtml}
-      <h3 class="subsection-title">Geographic Origin</h3>
-      ${geoHtml}
+      <div class="cols-2">
+        <div>
+          <h3 class="subsection-title">Gender</h3>
+          ${genderHtml}
+        </div>
+        <div>
+          <h3 class="subsection-title">Geographic Origin</h3>
+          ${geoHtml}
+        </div>
+      </div>
       <h3 class="subsection-title">Transfer Admissions</h3>
       ${transferHtml}
     </section>`;
@@ -569,7 +615,7 @@ async function init() {
       btn.title = 'Remove from favorites';
     }
     saveFavs(favs);
-    renderFavoritesBox(schools);
+    refreshRail();
   });
 
   document.getElementById('stats-strip').innerHTML = renderStatsStrip(s);
@@ -578,8 +624,8 @@ async function init() {
       ${renderAdmissionsSummary(s)}
       ${renderCostSection(s)}
     </div>` +
-    renderAdmissionsDetails(s) +
-    renderTestScoresSection(s) +
+    renderSelectivitySection(s) +
+    renderAcademicProfileSection(s) +
     renderAdmissionFactorsSection(s) +
     renderStudentBodySection(s);
 
@@ -605,8 +651,18 @@ async function init() {
     </div>`;
   layout.appendChild(sidebar);
 
-  renderFavoritesBox(schools);
-  renderHistoryBox(schools);
+  // Re-render both rail boxes and collapse the whole rail (along with its
+  // top border on narrow layouts) when the visitor has neither favorites
+  // nor history yet. Hoisted so the hero favorite button can call it too.
+  function refreshRail() {
+    renderFavoritesBox(schools);
+    renderHistoryBox(schools);
+    const railEmpty = ['school-fav-box', 'school-history-box']
+      .every(id => document.getElementById(id).style.display === 'none');
+    sidebar.style.display = railEmpty ? 'none' : '';
+  }
+
+  refreshRail();
 
   const back = document.createElement('a');
   back.className = 'floating-back';

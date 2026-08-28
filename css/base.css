@@ -3,6 +3,15 @@
     box-sizing: border-box;
 }
 
+:root {
+    /* Ropa Sans (set on body) stays the face for all data and labels.
+       Castoro — a single-weight serif — is the display face: site
+       wordmark, page headings, school-card names, and the section
+       titles on each school page. It has no bold, so every element
+       that adopts it is pinned to font-weight: 400 to avoid faux bold. */
+    --font-display: 'Castoro', Georgia, 'Times New Roman', serif;
+}
+
 html {
     overflow-x: clip;
     /* Fluid root size: unchanged (16px) up to a 1920px viewport, then scales
@@ -17,7 +26,7 @@ body {
     overflow-x: clip;
     width: 100%;
     margin: 0;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Ropa Sans', sans-serif;
     background: #fff;
 }
 
@@ -42,9 +51,9 @@ body {
 
 .nav-brand {
     grid-column: 2;
-    font-family: 'Oswald', sans-serif;
+    font-family: var(--font-display);
     font-size: 1.45em;
-    font-weight: 600;
+    font-weight: 400;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     color: white;
@@ -80,12 +89,12 @@ body {
 
 .page-intro {
     max-width: 1440px;
-    margin: 0 auto;
+    margin: 32px auto 0;
     text-align: center;
 }
 
 .page-intro-title {
-    font-family: 'Oswald', sans-serif;
+    font-family: var(--font-display);
     font-size: 1.75em;
     font-weight: 400;
     letter-spacing: 0.05em;
@@ -95,7 +104,7 @@ body {
 }
 
 .page-intro-desc {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Ropa Sans', sans-serif;
     font-size: 1.1em;
     font-weight: 300;
     color: #000;
@@ -158,15 +167,6 @@ body {
     align-items: center;
 }
 
-.nav-logo {
-    height: 90px;
-    width: 90px;
-    object-fit: contain;
-    border-radius: 4px;
-    margin-right: 20px;
-    flex-shrink: 0;
-}
-
 .nav-link-wrapper {
     margin-right: 20px;
 }
@@ -212,7 +212,7 @@ body {
 }
 
 .search-input {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Ropa Sans', sans-serif;
     font-size: 1.1em;
     font-weight: 300;
     width: 100%;
@@ -361,7 +361,7 @@ body {
     color: white;
     border: none;
     border-radius: 4px;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Ropa Sans', sans-serif;
     font-size: 0.95em;
     font-weight: 400;
     letter-spacing: 0.04em;
@@ -409,7 +409,7 @@ body {
     padding: 7px 10px;
     background: none;
     border: none;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Ropa Sans', sans-serif;
     font-size: 0.93em;
     font-weight: 400;
     letter-spacing: 0.03em;
@@ -466,7 +466,7 @@ body {
 }
 
 .filter-btn {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Ropa Sans', sans-serif;
     font-size: 0.9em;
     font-weight: 400;
     text-transform: uppercase;
@@ -500,7 +500,7 @@ body {
     background: none;
     border: none;
     color: #000;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Ropa Sans', sans-serif;
     font-size: 0.87em;
     text-transform: uppercase;
     letter-spacing: 0.06em;
@@ -559,7 +559,7 @@ body {
 }
 
 .range-value-input {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Ropa Sans', sans-serif;
     font-size: 0.93em;
     color: #ed6d0b;
     font-weight: 600;
@@ -595,23 +595,28 @@ body {
     gap: 20px;
 }
 
+/* Three columns: an empty left gutter that mirrors the favorites/history
+   sidebar on the right, so the data column sits centered on the page
+   instead of being pushed left by the one-sided sidebar. */
 .school-page-layout {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 200px minmax(0, 1fr) 200px;
+    column-gap: 20px;
+    align-items: start;
+    max-width: 1440px;
     margin: 0 auto;
     padding: 0 24px;
 }
 
 .school-page-layout #school-sections {
-    flex: 1;
+    grid-column: 2;
     min-width: 0;
     margin: 0;
     max-width: none;
 }
 
 .school-page-layout .right-sidebar {
+    grid-column: 3;
     padding-top: 24px;
 }
 
@@ -802,6 +807,7 @@ body {
 
 .school-name {
     flex: 1;
+    font-family: var(--font-display);
     font-size: 1.2em;
     font-weight: 400;
     min-width: 0;
@@ -860,8 +866,9 @@ body {
 }
 
 .footer-brand {
+    font-family: var(--font-display);
     font-size: 1.15em;
-    font-weight: 600;
+    font-weight: 400;
     letter-spacing: 0.06em;
     text-transform: uppercase;
 }
@@ -903,9 +910,9 @@ body {
 }
 
 .info-subheading {
-    font-family: 'Oswald', sans-serif;
+    font-family: var(--font-display);
     font-size: 1.15em;
-    font-weight: 600;
+    font-weight: 400;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: #ed6d0b;
@@ -975,7 +982,7 @@ body {
     color: white;
     padding: 14px 22px;
     text-decoration: none;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Ropa Sans', sans-serif;
     font-size: 16px;
     letter-spacing: 0.04em;
     z-index: 9999;
@@ -1019,14 +1026,36 @@ body {
     .detail-section:nth-last-child(-n+2) { border-bottom: none; }
 }
 
+/* The favorites/history rail plus its mirrored left gutter eat ~440px of
+   horizontal space. Below this width the two .cols-2 halves inside each
+   section would get cramped, so drop the grid, let the data span a
+   comfortable centered reading measure, and move the rail beneath it as a
+   horizontal strip. */
+@media (max-width: 1280px) {
+    .school-page-layout {
+        display: block;
+        max-width: 1000px;
+        padding: 0 20px;
+    }
+
+    .school-page-layout .right-sidebar {
+        width: 100%;
+        position: static;
+        padding-top: 28px;
+        margin-top: 28px;
+        border-top: 1px solid #eee;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .school-page-layout .history-box {
+        flex: 1 1 240px;
+    }
+}
+
 @media (max-width: 768px) {
     .page-layout {
         flex-direction: column;
-    }
-
-    .school-page-layout {
-        flex-direction: column;
-        padding: 0 16px;
     }
 
     .sidebar,
@@ -1076,7 +1105,11 @@ body {
         font-size: 1.25em;
     }
 
-    .left-side { justify-content: center; }
+    .left-side {
+        justify-content: center;
+        flex-wrap: wrap;
+        row-gap: 6px;
+    }
 
     .legal-notice {
         font-size: 0.8em;
@@ -1098,6 +1131,8 @@ body {
     }
 
     .page-intro-title { font-size: 1.45em; }
+
+    .page-intro { margin-top: 16px; }
 
     .info-box {
         padding: 20px;

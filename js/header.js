@@ -14,14 +14,9 @@
         return `<div class="nav-link-wrapper${cls}"><a href="${root}${href}">${label}</a></div>`;
     }
 
-    // Pages with a hero banner show the logo there instead of in the nav bar.
-    const hasHero = !!document.querySelector('.hero-banner');
-    const logoHtml = hasHero ? '' : `<img class="nav-logo" src="${root}favicon.png" alt="CommonDataSets">`;
-
     const nav = `
         <div class="nav-wrapper">
             <div class="left-side">
-                ${logoHtml}
                 ${navLink('index.html', 'Data Sets', 'index')}
                 ${navLink('compare.html', 'Compare', 'compare')}
                 ${navLink('chanceme.html', 'Chance Me', 'chanceme')}
