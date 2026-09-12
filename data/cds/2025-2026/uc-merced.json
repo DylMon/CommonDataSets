@@ -1,28 +1,28 @@
 {
-  "name": null,
-  "data_year": "2025-26",
-  "city": null,
-  "state": null,
-  "location": null,
-  "school_type": null,
-  "website": null,
-  "applicants_total": null,
-  "applicants_men": null,
-  "applicants_women": null,
-  "admitted_total": null,
-  "admitted_men": null,
-  "admitted_women": null,
-  "enrolled_total": null,
-  "enrolled_men": null,
-  "enrolled_women": null,
-  "acceptance_rate": null,
-  "application_fee": null,
-  "avg_gpa_weighted": null,
-  "rd_deadline": null,
+  "name": "University of California, Merced",
+  "data_year": "2024-25",
+  "city": "Merced",
+  "state": "CA",
+  "location": "Merced, CA",
+  "school_type": "Public",
+  "website": "ucmerced.edu",
+  "applicants_total": 31582,
+  "applicants_men": 15051,
+  "applicants_women": 15134,
+  "admitted_total": 28903,
+  "admitted_men": 13672,
+  "admitted_women": 13933,
+  "enrolled_total": 2097,
+  "enrolled_men": 1162,
+  "enrolled_women": 854,
+  "acceptance_rate": 0.9152,
+  "application_fee": 70,
+  "avg_gpa_weighted": 3.57,
+  "rd_deadline": "11/30",
   "waitlist_offered": null,
   "waitlist_accepted": null,
   "waitlist_admitted": null,
-  "ea_ed_type": null,
+  "ea_ed_type": "None",
   "ea_ed_deadline": null,
   "ea_ed_notification": null,
   "ea_apps_received": null,
@@ -43,9 +43,9 @@
   "act_math_75": null,
   "act_english_25": null,
   "act_english_75": null,
-  "total_undergrads": null,
-  "undergrads_male": null,
-  "undergrads_female": null,
+  "total_undergrads": 8372,
+  "undergrads_male": 4484,
+  "undergrads_female": 3677,
   "retention_rate": null,
   "tuition": null,
   "tuition_in_state": null,
@@ -55,15 +55,106 @@
   "books_supplies": null,
   "other_expenses": null,
   "pct_out_of_state": null,
-  "pct_on_campus_housing": null,
+  "pct_on_campus_housing": 0.8,
   "applicant_pools": null,
-  "gender_breakdown": null,
-  "demographics_detail": null,
-  "geographic_breakdown": null,
-  "sat_act_breakdown": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 15051,
+      "female": 15134
+    },
+    "accepted": {
+      "male": 13672,
+      "female": 13933
+    },
+    "enrolled": {
+      "male": 1162,
+      "female": 854
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 87,
+      "hispanic": 1095,
+      "black": 112,
+      "white": 168,
+      "american_indian": 5,
+      "asian": 493,
+      "pacific_islander": 10,
+      "two_or_more": 101,
+      "unknown": 26,
+      "total": 2097
+    },
+    "undergrad": {
+      "nonresident_aliens": 322,
+      "hispanic": 4402,
+      "black": 417,
+      "white": 770,
+      "american_indian": 15,
+      "asian": 1941,
+      "pacific_islander": 21,
+      "two_or_more": 384,
+      "unknown": 100,
+      "total": 8372
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": null,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": null,
+    "sat_submitted_pct": null,
+    "act_submitted_count": null,
+    "act_submitted_pct": null
+  },
   "class_rank": null,
-  "gpa_distribution": null,
-  "admission_factors": null,
-  "transfer_stats": null,
+  "gpa_distribution": {
+    "gpa_40": 0.17,
+    "gpa_375_399": 0.18,
+    "gpa_350_374": 0.23,
+    "gpa_325_349": 0.2,
+    "gpa_300_324": 0.18,
+    "gpa_250_299": 0.04,
+    "gpa_200_249": null,
+    "gpa_100_199": null
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "not_considered",
+    "essay": "very_important",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 2022,
+      "admitted": 1260,
+      "enrolled": 114
+    },
+    "female": {
+      "applied": 1564,
+      "admitted": 1021,
+      "enrolled": 100
+    },
+    "total": {
+      "applied": 3766,
+      "admitted": 2397,
+      "enrolled": 223
+    }
+  },
   "slug": "uc-merced"
 }

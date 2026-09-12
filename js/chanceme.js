@@ -2,21 +2,12 @@
 // Everything here runs client-side against data/schools.json. No AI, no server,
 // nothing typed into the form is ever transmitted anywhere.
 
-import { normalizeGpaDistribution } from './charts.js?v=5';
+import { normalizeGpaDistribution } from './charts.js?v=6';
 
-const LOGOS = {
-    'mit': 'MITlogo.png', 'harvard': 'harvardlogo.png', 'stanford': 'stanfordlogo.png',
-    'princeton': 'princetonlogo.png', 'yale': 'yalelogo.png', 'columbia': 'Columbialogo.png',
-    'upenn': 'UPennlogo.png', 'caltech': 'Caltechlogo.png', 'duke': 'Dukelogo1.png',
-    'jhu': 'JHUlogo.png', 'northwestern': 'NUlogo1.png', 'dartmouth': 'dartmouthlogo1.png',
-    'brown': 'brownlogo.png', 'vanderbilt': 'vandylogo.png', 'rice': 'ricelogo.png',
-    'washu': 'washulogo.png', 'notre-dame': 'NDlogo.png', 'cornell': 'cornelllogo.png',
-    'uchicago': 'uchicagologo.png', 'cmu': 'CMUlogo.png', 'georgetown': 'georgetownlogo.png',
-    'emory': 'emorylogo.png', 'wake-forest': 'wakeforestlogo.png', 'tufts': 'tuftslogo.png',
-    'ucla': 'uclalogo.png', 'berkeley': 'ucblogo.png', 'ucsb': 'ucsblogo.png',
-    'uva': 'UVAlogo.png', 'umich': 'UMichlogo.png', 'unc': 'UNClogo.png',
-    'uf': 'uflogo.png', 'usc': 'USClogo.png', 'nyu': 'NYUlogo.png',
-};
+// Logos live at images/logos/<slug>.png. A few schools have none yet; the
+// onerror hook hides the broken <img> rather than showing a torn-image icon.
+const logoSrc = slug => `images/logos/${slug}.png`;
+const LOGO_ONERR = "this.style.display='none'";
 
 export const US_STATES = [
     ['AL','Alabama'],['AK','Alaska'],['AZ','Arizona'],['AR','Arkansas'],['CA','California'],
@@ -673,7 +664,7 @@ if (typeof document !== 'undefined') {
             ? results.map(s => {
                 const picked = state.targetSchools.some(t => t.slug === s.slug);
                 return `<div class="cm-school-option${picked ? ' disabled' : ''}" data-slug="${s.slug}">
-                    <img class="cm-school-option-logo" src="images/logos/${LOGOS[s.slug] ?? ''}" alt="">
+                    <img class="cm-school-option-logo" src="${logoSrc(s.slug)}" alt="" onerror="${LOGO_ONERR}">
                     <span class="cm-school-option-name">${s.name}</span>
                 </div>`;
             }).join('')
@@ -691,7 +682,7 @@ if (typeof document !== 'undefined') {
                 .join('');
             return `<div class="cm-target-card" data-slug="${t.slug}">
                 <div class="cm-target-card-header">
-                    <img class="cm-school-option-logo" src="images/logos/${LOGOS[t.slug] ?? ''}" alt="">
+                    <img class="cm-school-option-logo" src="${logoSrc(t.slug)}" alt="" onerror="${LOGO_ONERR}">
                     <span class="cm-target-card-name">${s.name}</span>
                     <button type="button" class="cm-list-remove cm-target-remove" data-slug="${t.slug}" aria-label="Remove">&times;</button>
                 </div>
@@ -769,7 +760,7 @@ if (typeof document !== 'undefined') {
 
             if (!result) {
                 return `<div class="cm-result-card">
-                    <img class="cm-result-logo" src="images/logos/${LOGOS[school.slug] ?? ''}" alt="">
+                    <img class="cm-result-logo" src="${logoSrc(school.slug)}" alt="" onerror="${LOGO_ONERR}">
                     <div class="cm-result-body">
                         <div class="cm-result-name">${school.name}</div>
                         <div class="cm-result-meta">No acceptance-rate data available for this school.</div>
@@ -779,7 +770,7 @@ if (typeof document !== 'undefined') {
             const tier = tierFor(result.p);
             const detailId = `cm-detail-${school.slug}`;
             return `<div class="cm-result-card border-${tier.key}">
-                <img class="cm-result-logo" src="images/logos/${LOGOS[school.slug] ?? ''}" alt="">
+                <img class="cm-result-logo" src="${logoSrc(school.slug)}" alt="" onerror="${LOGO_ONERR}">
                 <div class="cm-result-body">
                     <div class="cm-result-name">${school.name}</div>
                     <div class="cm-result-meta">${planLabel}${result.planSourced ? '' : ' (school-specific round data unavailable — generic estimate)'} · Base rate used: ${pctLabel(result.effectiveBaseRate)}${result.competitiveMajor ? ' (competitive-major adjustment applied)' : ''}${result.sourced ? '' : ' · limited CDS data — generic academic/holistic weighting used'}</div>

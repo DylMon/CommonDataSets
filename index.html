@@ -18,9 +18,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ropa+Sans:ital@0;1&family=Castoro:ital@0;1&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/base.css?v=5">
-    <script src="js/scorecard-merge.js?v=5"></script>
-    <script src="js/header.js?v=5" defer></script>
+    <link rel="stylesheet" href="css/base.css?v=6">
+    <script src="js/scorecard-merge.js?v=6"></script>
+    <script src="js/header.js?v=6" defer></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2245119166025427"
      crossorigin="anonymous"></script>
 </head>
@@ -149,41 +149,10 @@
     </div>
 
     <script type="module">
-        const LOGOS = {
-            'mit':          'MITlogo.png',
-            'harvard':      'harvardlogo.png',
-            'stanford':     'stanfordlogo.png',
-            'princeton':    'princetonlogo.png',
-            'yale':         'yalelogo.png',
-            'columbia':     'Columbialogo.png',
-            'upenn':        'UPennlogo.png',
-            'caltech':      'Caltechlogo.png',
-            'duke':         'Dukelogo1.png',
-            'jhu':          'JHUlogo.png',
-            'northwestern': 'NUlogo1.png',
-            'dartmouth':    'dartmouthlogo1.png',
-            'brown':        'brownlogo.png',
-            'vanderbilt':   'vandylogo.png',
-            'rice':         'ricelogo.png',
-            'washu':        'washulogo.png',
-            'notre-dame':   'NDlogo.png',
-            'cornell':      'cornelllogo.png',
-            'uchicago':     'uchicagologo.png',
-            'cmu':          'CMUlogo.png',
-            'georgetown':   'georgetownlogo.png',
-            'emory':        'emorylogo.png',
-            'wake-forest':  'wakeforestlogo.png',
-            'tufts':        'tuftslogo.png',
-            'ucla':         'uclalogo.png',
-            'berkeley':     'ucblogo.png',
-            'ucsb':         'ucsblogo.png',
-            'uva':          'UVAlogo.png',
-            'umich':        'UMichlogo.png',
-            'unc':          'UNClogo.png',
-            'uf':           'uflogo.png',
-            'usc':          'USClogo.png',
-            'nyu':          'NYUlogo.png',
-        };
+        // Logos live at images/logos/<slug>.png. A few schools have none yet;
+        // the onerror hook hides the broken <img> instead of a torn-image icon.
+        const logoSrc = slug => `images/logos/${slug}.png`;
+        const LOGO_ONERR = "this.style.display='none'";
 
         let favorites = new Set(JSON.parse(localStorage.getItem('cds_favorites') ?? '[]'));
 
@@ -259,7 +228,7 @@
                 const school = allSchools.find(s => s.slug === slug);
                 if (!school) return '';
                 return `<a class="history-item" href="schools/${slug}.html">
-                    <img class="history-logo" src="images/logos/${LOGOS[slug] ?? ''}" alt="">
+                    <img class="history-logo" src="${logoSrc(slug)}" alt="" onerror="${LOGO_ONERR}">
                     <span class="history-name">${school.name}</span>
                 </a>`;
             }).filter(Boolean).join('');
@@ -274,7 +243,7 @@
                 const school = allSchools.find(s => s.slug === slug);
                 if (!school) return '';
                 return `<a class="history-item" href="schools/${slug}.html">
-                    <img class="history-logo" src="images/logos/${LOGOS[slug] ?? ''}" alt="">
+                    <img class="history-logo" src="${logoSrc(slug)}" alt="" onerror="${LOGO_ONERR}">
                     <span class="history-name">${school.name}</span>
                 </a>`;
             }).filter(Boolean).join('');
@@ -331,7 +300,7 @@
                 <div class="school-card">
                     <div class="school-row">
                         <div class="school-rank">${i + 1}</div>
-                        <img class="school-logo" src="images/logos/${LOGOS[s.slug]}" alt="${s.name}" />
+                        <img class="school-logo" src="${logoSrc(s.slug)}" alt="${s.name}" onerror="${LOGO_ONERR}" />
                         <div class="school-name">
                             <a class="school-name-link" href="schools/${s.slug}.html">${s.name}</a>
                             <button class="fav-btn${isFav ? ' favorited' : ''}" data-slug="${s.slug}" title="${isFav ? 'Remove from favorites' : 'Add to favorites'}">

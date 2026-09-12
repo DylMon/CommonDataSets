@@ -1,4 +1,4 @@
-import { GPA_BUCKETS, renderGpaHistogram, normalizeGpaDistribution } from './charts.js?v=5';
+import { GPA_BUCKETS, renderGpaHistogram, normalizeGpaDistribution } from './charts.js?v=6';
 
 const SCHOOL_META = {
   'mit':          { color: '#a41931', banner: 'bannerMIT.png' },
@@ -36,41 +36,10 @@ const SCHOOL_META = {
   'nyu':          { color: '#58078d', banner: 'bannerNYU.png' },
 };
 
-const LOGOS = {
-  'mit':          'MITlogo.png',
-  'harvard':      'harvardlogo.png',
-  'stanford':     'stanfordlogo.png',
-  'princeton':    'princetonlogo.png',
-  'yale':         'yalelogo.png',
-  'columbia':     'Columbialogo.png',
-  'upenn':        'UPennlogo.png',
-  'caltech':      'Caltechlogo.png',
-  'duke':         'Dukelogo1.png',
-  'jhu':          'JHUlogo.png',
-  'northwestern': 'NUlogo1.png',
-  'dartmouth':    'dartmouthlogo1.png',
-  'brown':        'brownlogo.png',
-  'vanderbilt':   'vandylogo.png',
-  'rice':         'ricelogo.png',
-  'washu':        'washulogo.png',
-  'notre-dame':   'NDlogo.png',
-  'cornell':      'cornelllogo.png',
-  'uchicago':     'uchicagologo.png',
-  'cmu':          'CMUlogo.png',
-  'georgetown':   'georgetownlogo.png',
-  'emory':        'emorylogo.png',
-  'wake-forest':  'wakeforestlogo.png',
-  'tufts':        'tuftslogo.png',
-  'ucla':         'uclalogo.png',
-  'berkeley':     'ucblogo.png',
-  'ucsb':         'ucsblogo.png',
-  'uva':          'UVAlogo.png',
-  'umich':        'UMichlogo.png',
-  'unc':          'UNClogo.png',
-  'uf':           'uflogo.png',
-  'usc':          'USClogo.png',
-  'nyu':          'NYUlogo.png',
-};
+// Logos live at images/logos/<slug>.png. A few schools have none yet; the
+// onerror hook hides the broken <img> rather than showing a torn-image icon.
+const logoSrc = slug => `../images/logos/${slug}.png`;
+const LOGO_ONERR = "this.style.display='none'";
 
 // ── Favorites & History ────────────────────────────────────────────────
 
@@ -90,7 +59,7 @@ function renderFavoritesBox(allSchools) {
     const school = allSchools.find(s => s.slug === sl);
     if (!school) return '';
     return `<a class="history-item" href="${sl}.html">
-      <img class="history-logo" src="../images/logos/${LOGOS[sl] ?? ''}" alt="">
+      <img class="history-logo" src="${logoSrc(sl)}" alt="" onerror="${LOGO_ONERR}">
       <span class="history-name">${school.name}</span>
     </a>`;
   }).filter(Boolean).join('');
@@ -106,7 +75,7 @@ function renderHistoryBox(allSchools) {
     const school = allSchools.find(s => s.slug === sl);
     if (!school) return '';
     return `<a class="history-item" href="${sl}.html">
-      <img class="history-logo" src="../images/logos/${LOGOS[sl] ?? ''}" alt="">
+      <img class="history-logo" src="${logoSrc(sl)}" alt="" onerror="${LOGO_ONERR}">
       <span class="history-name">${school.name}</span>
     </a>`;
   }).filter(Boolean).join('');
@@ -166,9 +135,7 @@ function renderHero(s, slug, meta) {
   const bannerStyle = meta.banner
     ? `background-image:url('../images/banners/${meta.banner}');background-size:cover;background-position:center;background-repeat:no-repeat`
     : `background:linear-gradient(135deg,${meta.color},#000)`;
-  const logo = LOGOS[slug]
-    ? `<img class="hero-logo" src="../images/logos/${LOGOS[slug]}" alt="${s.name}">`
-    : '';
+  const logo = `<img class="hero-logo" src="${logoSrc(slug)}" alt="${s.name}" onerror="${LOGO_ONERR}">`;
   const metaParts = [s.location, s.school_type].filter(Boolean);
   const siteLink = s.website
     ? ` · <a class="hero-site-link" href="${/^https?:\/\//.test(s.website) ? '' : 'https://'}${s.website}" target="_blank" rel="noopener">Official Site →</a>`

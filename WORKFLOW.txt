@@ -22,11 +22,13 @@ ADDING A NEW SCHOOL
 2. js/school.js
    - Add the slug to SCHOOL_META with its brand color and banner filename:
        'newschool': { color: '#xxxxxx', banner: 'bannernewschool.png' },
-   - Add the slug to LOGOS with its logo filename:
-       'newschool': 'newschoollogo.png',
+   (Logos are no longer listed here — see step 3.)
 
 3. images/
-   - Drop the logo file into images/logos/
+   - Drop the logo into images/logos/ named exactly <slug>.png. The site loads
+     images/logos/<slug>.png directly; no code change needed. Raw logo files can
+     be dropped in images/logos/_incoming/ and normalized with:
+       node scripts/convert-logos.js --write --commit
    - Drop the banner file into images/banners/
 
 4. scripts/generate-school-pages.js
@@ -59,10 +61,10 @@ regenerate to keep search snippet text accurate.
 
 DUPLICATION TO WATCH
 --------------------
-Three places require manual updates when adding a school:
+Two places require manual updates when adding a school:
   - SCHOOL_META in js/school.js           (color + banner)
-  - LOGOS in js/school.js                 (logo filename)
   - SCHOOL_NAMES in scripts/generate-school-pages.js  (display name for HTML generation)
+The logo is matched by filename convention (images/logos/<slug>.png), not a map.
 
 These are intentionally separate concerns (runtime rendering vs. static generation)
 but must be kept in sync by hand.
