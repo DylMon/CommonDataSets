@@ -23,7 +23,6 @@
                 ${navLink('info.html', 'About', 'info')}
             </div>
             <div class="nav-brand">CommonDataSets</div>
-            <div class="legal-notice">Independent project, not affiliated with or endorsed by CommonDataSet.org or any university listed on this site.</div>
         </div>`;
 
     document.addEventListener('DOMContentLoaded', function () {
