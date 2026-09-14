@@ -699,7 +699,17 @@
             }
         }
 
-        function init() {
+        // Lets a school card's "Compare" button (compare.html?school=<slug>)
+        // land here with that school already sitting in slot 1 — the visitor
+        // only has to pick the second (or third/fourth) school themselves.
+        function preselectFromUrl() {
+            const slug = new URLSearchParams(location.search).get('school');
+            if (!slug) return;
+            const school = allSchools.find(s => s.slug === slug);
+            if (school) selectSchool(1, slug);
+        }
+
+        async function init() {
             wirePickerGrid();
             renderPickerGrid();
             wireSectionToggles();
@@ -707,7 +717,8 @@
             // Data load is isolated in its own try/catch: the picker is
             // usable (shows its search boxes) regardless of whether it
             // succeeds; dropdowns fill from allSchools on the next keystroke.
-            loadSchools();
+            await loadSchools();
+            preselectFromUrl();
         }
 
         init();
