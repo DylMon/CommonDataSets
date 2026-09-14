@@ -1,0 +1,165 @@
+{
+  "name": "California Institute of Technology",
+  "data_year": "2025-26",
+  "city": "Pasadena",
+  "state": "CA",
+  "location": "Pasadena, CA",
+  "school_type": "Private",
+  "website": "www.caltech.edu",
+  "applicants_total": 11285,
+  "applicants_men": 7772,
+  "applicants_women": 3513,
+  "admitted_total": 428,
+  "admitted_men": 224,
+  "admitted_women": 204,
+  "enrolled_total": 248,
+  "enrolled_men": 136,
+  "enrolled_women": 112,
+  "acceptance_rate": 0.0379,
+  "application_fee": 75,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "1/3",
+  "waitlist_offered": 263,
+  "waitlist_accepted": 211,
+  "waitlist_admitted": 1,
+  "ea_ed_type": "REA",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.78,
+  "sat_submitted_count": 190,
+  "act_submitted_pct": 0.22,
+  "act_submitted_count": 55,
+  "sat_composite_25": null,
+  "sat_composite_75": null,
+  "sat_reading_25": 760,
+  "sat_reading_75": 780,
+  "sat_math_25": 790,
+  "sat_math_75": 800,
+  "act_composite_25": 35,
+  "act_composite_75": 36,
+  "act_math_25": 35,
+  "act_math_75": 36,
+  "act_english_25": 35,
+  "act_english_75": 36,
+  "total_undergrads": 971,
+  "undergrads_male": 526,
+  "undergrads_female": 445,
+  "retention_rate": 0.96,
+  "tuition": 68574,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 3255,
+  "room_and_board": 21996,
+  "books_supplies": 1428,
+  "other_expenses": 3969,
+  "pct_out_of_state": 0.64,
+  "pct_on_campus_housing": 0.932,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 263,
+      "accepted_spots": 211,
+      "enrolled": 1
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 7772,
+      "female": 3513
+    },
+    "accepted": {
+      "male": 224,
+      "female": 204
+    },
+    "enrolled": {
+      "male": 136,
+      "female": 112
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 37,
+      "hispanic": 21,
+      "black": 4,
+      "white": 52,
+      "american_indian": 0,
+      "asian": 114,
+      "pacific_islander": 0,
+      "two_or_more": 17,
+      "unknown": 3,
+      "total": 248
+    },
+    "undergrad": {
+      "nonresident_aliens": 154,
+      "hispanic": 122,
+      "black": 41,
+      "white": 194,
+      "american_indian": 0,
+      "asian": 385,
+      "pacific_islander": 1,
+      "two_or_more": 70,
+      "unknown": 4,
+      "total": 971
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.64,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 190,
+    "sat_submitted_pct": 0.78,
+    "act_submitted_count": 55,
+    "act_submitted_pct": 0.22
+  },
+  "class_rank": {
+    "top10": 0.973,
+    "top25": 1.0,
+    "top50": 1.0,
+    "bottom50": 0.0,
+    "bottom25": null
+  },
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "important",
+    "academic_gpa": "important",
+    "test_scores": "very_important",
+    "essay": "very_important",
+    "recommendations": "very_important",
+    "interview": "not_considered",
+    "extracurriculars": "important",
+    "talent": "considered",
+    "character": "very_important",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 119,
+      "admitted": 6,
+      "enrolled": 5
+    },
+    "female": {
+      "applied": 43,
+      "admitted": 4,
+      "enrolled": 4
+    },
+    "total": {
+      "applied": 162,
+      "admitted": 10,
+      "enrolled": 9
+    }
+  },
+  "slug": "caltech"
+}

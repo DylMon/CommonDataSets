@@ -15,7 +15,7 @@
   "enrolled_total": 6687,
   "enrolled_men": 2965,
   "enrolled_women": 3722,
-  "acceptance_rate": 0.114,
+  "acceptance_rate": 0.1145,
   "application_fee": 80,
   "avg_gpa_weighted": 3.9,
   "rd_deadline": "11/30",
@@ -54,26 +54,78 @@
   "room_and_board": 26028,
   "books_supplies": 1342,
   "other_expenses": 8336,
-  "pct_out_of_state": 0.194,
-  "pct_on_campus_housing": 0.9,
+  "pct_out_of_state": 0.137,
+  "pct_on_campus_housing": 0.3,
   "applicant_pools": {
     "ea": null,
     "rd": null,
-    "waitlist": {"offered": 9102, "accepted_spots": 6479, "enrolled": 0}
+    "waitlist": {
+      "offered": 9102,
+      "accepted_spots": 6479,
+      "enrolled": 0
+    }
   },
   "gender_breakdown": {
-    "applied": {"male": 62395, "female": 64469},
-    "accepted": {"male": 5978, "female": 8546},
-    "enrolled": {"male": 2965, "female": 3722}
+    "applied": {
+      "male": 62395,
+      "female": 64469
+    },
+    "accepted": {
+      "male": 5978,
+      "female": 8546
+    },
+    "enrolled": {
+      "male": 2965,
+      "female": 3722
+    }
   },
   "demographics_detail": {
-    "first_year": {"nonresident_aliens": 762, "hispanic": 1430, "black": 117, "white": 1106, "american_indian": 19, "asian": 2434, "pacific_islander": 11, "two_or_more": 460, "unknown": 348, "total": 6687},
-    "undergrad": {"nonresident_aliens": 3238, "hispanic": 7482, "black": 641, "white": 6319, "american_indian": 56, "asian": 11696, "pacific_islander": 34, "two_or_more": 2310, "unknown": 1344, "total": 33120}
+    "first_year": {
+      "nonresident_aliens": 762,
+      "hispanic": 1430,
+      "black": 117,
+      "white": 1106,
+      "american_indian": 19,
+      "asian": 2434,
+      "pacific_islander": 11,
+      "two_or_more": 460,
+      "unknown": 348,
+      "total": 6687
+    },
+    "undergrad": {
+      "nonresident_aliens": 3238,
+      "hispanic": 7482,
+      "black": 641,
+      "white": 6319,
+      "american_indian": 56,
+      "asian": 11696,
+      "pacific_islander": 34,
+      "two_or_more": 2310,
+      "unknown": 1344,
+      "total": 33120
+    }
   },
-  "geographic_breakdown": {"out_of_state_pct": 0.194, "international_pct": null},
-  "sat_act_breakdown": {"sat_submitted_count": null, "sat_submitted_pct": null, "act_submitted_count": null, "act_submitted_pct": null},
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.137,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": null,
+    "sat_submitted_pct": null,
+    "act_submitted_count": null,
+    "act_submitted_pct": null
+  },
   "class_rank": null,
-  "gpa_distribution": {"gpa_40": 0.398, "gpa_375_399": 0.501, "gpa_350_374": 0.081, "gpa_325_349": 0.014, "gpa_300_324": 0.003, "gpa_250_299": 0.002, "gpa_200_249": 0.001, "gpa_100_199": 0.0},
+  "gpa_distribution": {
+    "gpa_40": 0.398,
+    "gpa_375_399": 0.501,
+    "gpa_350_374": 0.081,
+    "gpa_325_349": 0.014,
+    "gpa_300_324": 0.003,
+    "gpa_250_299": 0.002,
+    "gpa_200_249": 0.001,
+    "gpa_100_199": 0.0
+  },
   "admission_factors": {
     "rigor": "very_important",
     "class_rank": "not_considered",
@@ -96,9 +148,21 @@
     "applicant_interest": "not_considered"
   },
   "transfer_stats": {
-    "male": {"applied": 12889, "admitted": 2720, "enrolled": 1485},
-    "female": {"applied": 10512, "admitted": 2938, "enrolled": 1570},
-    "total": {"applied": 23401, "admitted": 5658, "enrolled": 3055}
+    "male": {
+      "applied": 12889,
+      "admitted": 2720,
+      "enrolled": 1485
+    },
+    "female": {
+      "applied": 10512,
+      "admitted": 2938,
+      "enrolled": 1570
+    },
+    "total": {
+      "applied": 23401,
+      "admitted": 5658,
+      "enrolled": 3055
+    }
   },
   "slug": "berkeley"
 }

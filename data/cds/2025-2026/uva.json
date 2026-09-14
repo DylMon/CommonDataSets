@@ -1,0 +1,172 @@
+{
+  "name": "University of Virginia",
+  "data_year": "2025-26",
+  "city": "Charlottesville",
+  "state": "VA",
+  "location": "Charlottesville, VA",
+  "school_type": "Public",
+  "website": "www.virginia.edu",
+  "applicants_total": 64457,
+  "applicants_men": 29657,
+  "applicants_women": 34776,
+  "admitted_total": 10086,
+  "admitted_men": 4564,
+  "admitted_women": 5520,
+  "enrolled_total": 3978,
+  "enrolled_men": 1779,
+  "enrolled_women": 2198,
+  "acceptance_rate": 0.1565,
+  "application_fee": 75,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "1/5",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "ED",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.487,
+  "sat_submitted_count": null,
+  "act_submitted_pct": 0.145,
+  "act_submitted_count": null,
+  "sat_composite_25": 1410,
+  "sat_composite_75": null,
+  "sat_reading_25": 700,
+  "sat_reading_75": null,
+  "sat_math_25": 710,
+  "sat_math_75": null,
+  "act_composite_25": 32,
+  "act_composite_75": null,
+  "act_math_25": 30,
+  "act_math_75": null,
+  "act_english_25": 34,
+  "act_english_75": null,
+  "total_undergrads": 17848,
+  "undergrads_male": 7873,
+  "undergrads_female": 9960,
+  "retention_rate": null,
+  "tuition": null,
+  "tuition_in_state": 19309,
+  "tuition_out_of_state": 59035,
+  "required_fees": 3945,
+  "room_and_board": 16070,
+  "books_supplies": 1540,
+  "other_expenses": 3000,
+  "pct_out_of_state": null,
+  "pct_on_campus_housing": null,
+  "applicant_pools": {
+    "ea": {
+      "applied": null,
+      "admitted": null,
+      "rate": null
+    },
+    "rd": {
+      "applied": null,
+      "admitted": null,
+      "rate": null
+    },
+    "waitlist": {
+      "offered": null,
+      "accepted_spots": null,
+      "enrolled": null
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 29657,
+      "female": 34776
+    },
+    "accepted": {
+      "male": 4564,
+      "female": 5520
+    },
+    "enrolled": {
+      "male": 1779,
+      "female": 2198
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 221,
+      "hispanic": 364,
+      "black": 240,
+      "white": 1899,
+      "american_indian": 1,
+      "asian": 764,
+      "pacific_islander": 1,
+      "two_or_more": 246,
+      "unknown": 242,
+      "total": 3978
+    },
+    "undergrad": {
+      "nonresident_aliens": 872,
+      "hispanic": 1512,
+      "black": 1318,
+      "white": 8383,
+      "american_indian": 17,
+      "asian": 3527,
+      "pacific_islander": 7,
+      "two_or_more": 1045,
+      "unknown": 922,
+      "total": 17603
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": null,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": null,
+    "sat_submitted_pct": 0.487,
+    "act_submitted_count": null,
+    "act_submitted_pct": 0.145
+  },
+  "class_rank": {
+    "top10": null,
+    "top25": null,
+    "top50": null,
+    "bottom50": null,
+    "bottom25": null
+  },
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "very_important",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "important",
+    "interview": "not_considered",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "very_important",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "very_important",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 2708,
+      "admitted": 629,
+      "enrolled": null
+    },
+    "female": {
+      "applied": 2165,
+      "admitted": 694,
+      "enrolled": null
+    },
+    "total": {
+      "applied": 4877,
+      "admitted": 1323,
+      "enrolled": null
+    }
+  },
+  "slug": "uva"
+}
