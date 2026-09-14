@@ -1,0 +1,172 @@
+{
+  "name": "Wake Forest University",
+  "data_year": "2025-26",
+  "city": "Winston Salem",
+  "state": "NC",
+  "location": "Winston Salem, NC",
+  "school_type": "Private",
+  "website": "https://www.wfu.edu",
+  "applicants_total": 19600,
+  "applicants_men": 8235,
+  "applicants_women": 11360,
+  "admitted_total": 4068,
+  "admitted_men": 1965,
+  "admitted_women": 2103,
+  "enrolled_total": 1544,
+  "enrolled_men": 676,
+  "enrolled_women": 868,
+  "acceptance_rate": 0.2076,
+  "application_fee": 85,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "1/1",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "ED I & II",
+  "ea_ed_deadline": "11/15",
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.24,
+  "sat_submitted_count": 365,
+  "act_submitted_pct": 0.22,
+  "act_submitted_count": 338,
+  "sat_composite_25": 1420,
+  "sat_composite_75": 1490,
+  "sat_reading_25": 700,
+  "sat_reading_75": 750,
+  "sat_math_25": 700,
+  "sat_math_75": 760,
+  "act_composite_25": 32,
+  "act_composite_75": 34,
+  "act_math_25": 29,
+  "act_math_75": 33,
+  "act_english_25": 33,
+  "act_english_75": 35,
+  "total_undergrads": 5595,
+  "undergrads_male": 2510,
+  "undergrads_female": 3085,
+  "retention_rate": 0.92,
+  "tuition": 71894,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 1276,
+  "room_and_board": 23430,
+  "books_supplies": 1720,
+  "other_expenses": 1930,
+  "pct_out_of_state": 0.847,
+  "pct_on_campus_housing": 0.993,
+  "applicant_pools": {
+    "ea": {
+      "applied": null,
+      "admitted": null,
+      "rate": null
+    },
+    "rd": {
+      "applied": null,
+      "admitted": null,
+      "rate": null
+    },
+    "waitlist": {
+      "offered": null,
+      "accepted_spots": null,
+      "enrolled": null
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 8235,
+      "female": 11360
+    },
+    "accepted": {
+      "male": 1965,
+      "female": 2103
+    },
+    "enrolled": {
+      "male": 676,
+      "female": 868
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 48,
+      "hispanic": 69,
+      "black": 72,
+      "white": 1100,
+      "american_indian": 4,
+      "asian": 58,
+      "pacific_islander": 2,
+      "two_or_more": 64,
+      "unknown": 127,
+      "total": 1544
+    },
+    "undergrad": {
+      "nonresident_aliens": 223,
+      "hispanic": 461,
+      "black": 354,
+      "white": 3741,
+      "american_indian": 8,
+      "asian": 275,
+      "pacific_islander": 7,
+      "two_or_more": 256,
+      "unknown": 267,
+      "total": 5592
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.847,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 365,
+    "sat_submitted_pct": 0.24,
+    "act_submitted_count": 338,
+    "act_submitted_pct": 0.22
+  },
+  "class_rank": {
+    "top10": 0.612,
+    "top25": 0.896,
+    "top50": 0.981,
+    "bottom50": 0.019,
+    "bottom25": 0.007
+  },
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "very_important",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "very_important",
+    "recommendations": "important",
+    "interview": "important",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "very_important",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 245,
+      "admitted": 88,
+      "enrolled": 35
+    },
+    "female": {
+      "applied": 219,
+      "admitted": 85,
+      "enrolled": 24
+    },
+    "total": {
+      "applied": 464,
+      "admitted": 173,
+      "enrolled": 59
+    }
+  },
+  "slug": "wake-forest"
+}

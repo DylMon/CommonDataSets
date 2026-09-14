@@ -54,8 +54,8 @@
   "room_and_board": 16070,
   "books_supplies": 1540,
   "other_expenses": 3000,
-  "pct_out_of_state": null,
-  "pct_on_campus_housing": null,
+  "pct_out_of_state": 0.326,
+  "pct_on_campus_housing": 0.995,
   "applicant_pools": {
     "ea": {
       "applied": null,
@@ -114,7 +114,7 @@
     }
   },
   "geographic_breakdown": {
-    "out_of_state_pct": null,
+    "out_of_state_pct": 0.326,
     "international_pct": null
   },
   "sat_act_breakdown": {

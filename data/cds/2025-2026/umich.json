@@ -1,0 +1,175 @@
+{
+  "name": "University of Michigan",
+  "data_year": "2025-26",
+  "city": "Ann Arbor",
+  "state": "MI",
+  "location": "Ann Arbor, MI",
+  "school_type": "Public",
+  "website": "umich.edu",
+  "applicants_total": 109112,
+  "applicants_men": 53044,
+  "applicants_women": 56068,
+  "admitted_total": 17915,
+  "admitted_men": 7593,
+  "admitted_women": 10322,
+  "enrolled_total": 8178,
+  "enrolled_men": 3499,
+  "enrolled_women": 4679,
+  "acceptance_rate": 0.1642,
+  "application_fee": 75,
+  "avg_gpa_weighted": 3.9,
+  "rd_deadline": "2/1",
+  "waitlist_offered": 24447,
+  "waitlist_accepted": 18435,
+  "waitlist_admitted": 1663,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "1/31",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.55,
+  "sat_submitted_count": 4503,
+  "act_submitted_pct": 0.18,
+  "act_submitted_count": 1462,
+  "sat_composite_25": 1370,
+  "sat_composite_75": 1530,
+  "sat_reading_25": 690,
+  "sat_reading_75": 750,
+  "sat_math_25": 680,
+  "sat_math_75": 780,
+  "act_composite_25": 32,
+  "act_composite_75": 34,
+  "act_math_25": 30,
+  "act_math_75": 35,
+  "act_english_25": 33,
+  "act_english_75": 35,
+  "total_undergrads": 35358,
+  "undergrads_male": 16138,
+  "undergrads_female": 19220,
+  "retention_rate": 0.97,
+  "tuition": null,
+  "tuition_in_state": 18402,
+  "tuition_out_of_state": 66602,
+  "required_fees": 494,
+  "room_and_board": 17220,
+  "books_supplies": 1220,
+  "other_expenses": 2458,
+  "pct_out_of_state": 0.45,
+  "pct_on_campus_housing": 0.96,
+  "applicant_pools": {
+    "ea": {
+      "applied": null,
+      "admitted": null,
+      "rate": null
+    },
+    "rd": {
+      "applied": null,
+      "admitted": null,
+      "rate": null
+    },
+    "waitlist": {
+      "offered": 24447,
+      "accepted_spots": 18435,
+      "enrolled": null
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 53044,
+      "female": 56068
+    },
+    "accepted": {
+      "male": 7593,
+      "female": 10322
+    },
+    "enrolled": {
+      "male": 3499,
+      "female": 4679
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 391,
+      "hispanic": 1066,
+      "black": 487,
+      "white": 3616,
+      "american_indian": 19,
+      "asian": 1530,
+      "pacific_islander": 13,
+      "two_or_more": 510,
+      "unknown": 546,
+      "total": 8178
+    },
+    "undergrad": {
+      "nonresident_aliens": 2493,
+      "hispanic": 4460,
+      "black": 2018,
+      "white": 15786,
+      "american_indian": 64,
+      "asian": 6480,
+      "pacific_islander": 43,
+      "two_or_more": 2071,
+      "unknown": 1663,
+      "total": 35078
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.45,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 4503,
+    "sat_submitted_pct": 0.55,
+    "act_submitted_count": 1462,
+    "act_submitted_pct": 0.18
+  },
+  "class_rank": null,
+  "gpa_distribution": {
+    "gpa_40": 0.388,
+    "gpa_375_399": 0.551,
+    "gpa_350_374": 0.048,
+    "gpa_325_349": 0.007,
+    "gpa_300_324": 0.004,
+    "gpa_250_299": 0.002,
+    "gpa_200_249": 0.0,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "important",
+    "essay": "important",
+    "recommendations": "important",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "important",
+    "first_gen": "important",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 3954,
+      "admitted": 1239,
+      "enrolled": 812
+    },
+    "female": {
+      "applied": 2891,
+      "admitted": 1155,
+      "enrolled": 721
+    },
+    "total": {
+      "applied": 6845,
+      "admitted": 2394,
+      "enrolled": 1533
+    }
+  },
+  "slug": "umich"
+}

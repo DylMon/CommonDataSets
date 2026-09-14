@@ -13,7 +13,7 @@ const SCHOOL_META = {
   'jhu':          { color: '#002d72', banner: 'bannerJHU.png' },
   'northwestern': { color: '#4e2686', banner: 'bannerNU.png' },
   'dartmouth':    { color: '#00693e', banner: 'bannerdartmouth.png' },
-  'brown':        { color: '#ed1e25', banner: 'bannerbrown.png' },
+  'brown':        { color: '#4e3629', banner: 'bannerbrown.png' },
   'vanderbilt':   { color: '#dcb163', banner: 'bannervandy.png' },
   'rice':         { color: '#002169', banner: 'bannerrice.png' },
   'washu':        { color: '#a60c10', banner: 'bannerwashu.png' },

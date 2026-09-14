@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-13",
+  "generated": "2026-09-14",
   "cds_year": "2025-26",
   "schools": [
     {
@@ -1028,6 +1028,179 @@
     },
     {
       "id": 7,
+      "name": "Brown University",
+      "data_year": "2025-26",
+      "city": "Providence",
+      "state": "RI",
+      "location": "Providence, RI",
+      "school_type": "Private",
+      "website": "www.brown.edu",
+      "applicants_total": 42774,
+      "applicants_men": 17972,
+      "applicants_women": 24771,
+      "admitted_total": 2710,
+      "admitted_men": 1375,
+      "admitted_women": 1335,
+      "enrolled_total": 1719,
+      "enrolled_men": 844,
+      "enrolled_women": 875,
+      "acceptance_rate": 0.0634,
+      "application_fee": 80,
+      "avg_gpa_weighted": null,
+      "rd_deadline": "1/5",
+      "waitlist_offered": null,
+      "waitlist_accepted": null,
+      "waitlist_admitted": 295,
+      "ea_ed_type": "ED",
+      "ea_ed_deadline": "11/1",
+      "ea_ed_notification": "Mid-December",
+      "ea_apps_received": 5062,
+      "ea_apps_admitted": 907,
+      "sat_submitted_pct": 0.77,
+      "sat_submitted_count": 1348,
+      "act_submitted_pct": 0.28,
+      "act_submitted_count": 488,
+      "sat_composite_25": 1470,
+      "sat_composite_75": 1550,
+      "sat_reading_25": 730,
+      "sat_reading_75": 770,
+      "sat_math_25": 730,
+      "sat_math_75": 790,
+      "act_composite_25": 33,
+      "act_composite_75": 35,
+      "act_math_25": 31,
+      "act_math_75": 35,
+      "act_english_25": 34,
+      "act_english_75": 36,
+      "total_undergrads": 7951,
+      "undergrads_male": 3837,
+      "undergrads_female": 4111,
+      "retention_rate": 0.988,
+      "tuition": 74568,
+      "tuition_in_state": null,
+      "tuition_out_of_state": null,
+      "required_fees": 3084,
+      "room_and_board": 19464,
+      "books_supplies": 0,
+      "other_expenses": 2878,
+      "pct_out_of_state": 0.96,
+      "pct_on_campus_housing": 0.98,
+      "applicant_pools": {
+        "ea": {
+          "applied": null,
+          "admitted": null,
+          "rate": null
+        },
+        "rd": {
+          "applied": null,
+          "admitted": null,
+          "rate": null
+        },
+        "waitlist": {
+          "offered": null,
+          "accepted_spots": null,
+          "enrolled": null
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": 17972,
+          "female": 24771
+        },
+        "accepted": {
+          "male": 1375,
+          "female": 1335
+        },
+        "enrolled": {
+          "male": 844,
+          "female": 875
+        }
+      },
+      "demographics_detail": {
+        "first_year": {
+          "nonresident_aliens": 227,
+          "hispanic": 198,
+          "black": 129,
+          "white": 497,
+          "american_indian": 1,
+          "asian": 429,
+          "pacific_islander": 2,
+          "two_or_more": 147,
+          "unknown": 120,
+          "total": 1750
+        },
+        "undergrad": {
+          "nonresident_aliens": 926,
+          "hispanic": 828,
+          "black": 566,
+          "white": 2227,
+          "american_indian": 14,
+          "asian": 1734,
+          "pacific_islander": 7,
+          "two_or_more": 575,
+          "unknown": 319,
+          "total": 7196
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.96,
+        "international_pct": null
+      },
+      "sat_act_breakdown": {
+        "sat_submitted_count": 1348,
+        "sat_submitted_pct": 0.77,
+        "act_submitted_count": 488,
+        "act_submitted_pct": 0.28
+      },
+      "class_rank": {
+        "top10": 0.93,
+        "top25": 0.98,
+        "top50": 1.0,
+        "bottom50": 0.0,
+        "bottom25": 0.0
+      },
+      "gpa_distribution": null,
+      "admission_factors": {
+        "rigor": "very_important",
+        "class_rank": "very_important",
+        "academic_gpa": "very_important",
+        "test_scores": "very_important",
+        "essay": "very_important",
+        "recommendations": "very_important",
+        "interview": "not_considered",
+        "extracurriculars": "important",
+        "talent": "very_important",
+        "character": "very_important",
+        "first_gen": "considered",
+        "alumni_relation": "considered",
+        "geo_residence": "considered",
+        "state_residence": "considered",
+        "religious": "not_considered",
+        "racial_ethnic": null,
+        "volunteer": "considered",
+        "work_experience": "considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 1750,
+          "admitted": 88,
+          "enrolled": 54
+        },
+        "female": {
+          "applied": 1553,
+          "admitted": 66,
+          "enrolled": 49
+        },
+        "total": {
+          "applied": 3306,
+          "admitted": 154,
+          "enrolled": 103
+        }
+      },
+      "slug": "brown"
+    },
+    {
+      "id": 8,
       "name": "University at Buffalo",
       "data_year": "2025-2026",
       "city": "Buffalo",
@@ -1202,7 +1375,7 @@
       "slug": "buffalo"
     },
     {
-      "id": 8,
+      "id": 9,
       "name": "California Institute of Technology",
       "data_year": "2025-26",
       "city": "Pasadena",
@@ -1368,7 +1541,7 @@
       "slug": "caltech"
     },
     {
-      "id": 9,
+      "id": 10,
       "name": "Case Western Reserve University",
       "data_year": "2025-26",
       "city": "Cleveland",
@@ -1543,7 +1716,7 @@
       "slug": "case-western"
     },
     {
-      "id": 10,
+      "id": 11,
       "name": "Clemson University",
       "data_year": "2025-2026",
       "city": "Clemson",
@@ -1718,7 +1891,7 @@
       "slug": "clemson"
     },
     {
-      "id": 11,
+      "id": 12,
       "name": "Carnegie Mellon University",
       "data_year": "2025-26",
       "city": "Pittsburgh",
@@ -1890,7 +2063,189 @@
       "slug": "cmu"
     },
     {
-      "id": 12,
+      "id": 13,
+      "name": "Columbia University",
+      "data_year": "2025-26",
+      "city": "New York",
+      "state": "NY",
+      "location": "New York, NY",
+      "school_type": "Private",
+      "website": "www.columbia.edu",
+      "applicants_total": 59611,
+      "applicants_men": 27118,
+      "applicants_women": 32470,
+      "admitted_total": 2946,
+      "admitted_men": 1419,
+      "admitted_women": 1526,
+      "enrolled_total": 1797,
+      "enrolled_men": 863,
+      "enrolled_women": 934,
+      "acceptance_rate": 0.0494,
+      "application_fee": 85,
+      "avg_gpa_weighted": 4.25,
+      "rd_deadline": "1/1",
+      "waitlist_offered": null,
+      "waitlist_accepted": null,
+      "waitlist_admitted": null,
+      "ea_ed_type": "ED",
+      "ea_ed_deadline": "11/1",
+      "ea_ed_notification": "12/15",
+      "ea_apps_received": 5868,
+      "ea_apps_admitted": 819,
+      "sat_submitted_pct": 0.5,
+      "sat_submitted_count": 897,
+      "act_submitted_pct": 0.17,
+      "act_submitted_count": 311,
+      "sat_composite_25": 1510,
+      "sat_composite_75": 1560,
+      "sat_reading_25": 740,
+      "sat_reading_75": 777,
+      "sat_math_25": 760,
+      "sat_math_75": 800,
+      "act_composite_25": 34,
+      "act_composite_75": 35,
+      "act_math_25": 32,
+      "act_math_75": 35,
+      "act_english_25": 35,
+      "act_english_75": 36,
+      "total_undergrads": 6872,
+      "undergrads_male": 3415,
+      "undergrads_female": 3457,
+      "retention_rate": 0.98,
+      "tuition": 72800,
+      "tuition_in_state": null,
+      "tuition_out_of_state": null,
+      "required_fees": 4160,
+      "room_and_board": 19650,
+      "books_supplies": 1320,
+      "other_expenses": 1844,
+      "pct_out_of_state": 0.81,
+      "pct_on_campus_housing": 0.99,
+      "applicant_pools": {
+        "ea": {
+          "applied": null,
+          "admitted": null,
+          "rate": null
+        },
+        "rd": {
+          "applied": null,
+          "admitted": null,
+          "rate": null
+        },
+        "waitlist": {
+          "offered": null,
+          "accepted_spots": null,
+          "enrolled": null
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": 27118,
+          "female": 32470
+        },
+        "accepted": {
+          "male": 1419,
+          "female": 1526
+        },
+        "enrolled": {
+          "male": 863,
+          "female": 934
+        }
+      },
+      "demographics_detail": {
+        "first_year": {
+          "nonresident_aliens": 273,
+          "hispanic": 286,
+          "black": 131,
+          "white": 431,
+          "american_indian": 3,
+          "asian": 485,
+          "pacific_islander": 3,
+          "two_or_more": 121,
+          "unknown": 64,
+          "total": 1797
+        },
+        "undergrad": {
+          "nonresident_aliens": 1176,
+          "hispanic": 1106,
+          "black": 514,
+          "white": 1650,
+          "american_indian": 18,
+          "asian": 1632,
+          "pacific_islander": 12,
+          "two_or_more": 470,
+          "unknown": 294,
+          "total": 6872
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.81,
+        "international_pct": null
+      },
+      "sat_act_breakdown": {
+        "sat_submitted_count": 897,
+        "sat_submitted_pct": 0.5,
+        "act_submitted_count": 311,
+        "act_submitted_pct": 0.17
+      },
+      "class_rank": {
+        "top10": 0.94,
+        "top25": 0.99,
+        "top50": 1.0,
+        "bottom50": null,
+        "bottom25": null
+      },
+      "gpa_distribution": {
+        "gpa_40": 0.749,
+        "gpa_375_399": 0.208,
+        "gpa_350_374": 0.033,
+        "gpa_325_349": 0.009,
+        "gpa_300_324": 0.001,
+        "gpa_250_299": null,
+        "gpa_200_249": null,
+        "gpa_100_199": null
+      },
+      "admission_factors": {
+        "rigor": "very_important",
+        "class_rank": "very_important",
+        "academic_gpa": "very_important",
+        "test_scores": "considered",
+        "essay": "very_important",
+        "recommendations": "very_important",
+        "interview": "not_considered",
+        "extracurriculars": "very_important",
+        "talent": "important",
+        "character": "very_important",
+        "first_gen": "considered",
+        "alumni_relation": "considered",
+        "geo_residence": "considered",
+        "state_residence": "not_considered",
+        "religious": "not_considered",
+        "racial_ethnic": null,
+        "volunteer": "considered",
+        "work_experience": "considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 2770,
+          "admitted": 267,
+          "enrolled": 214
+        },
+        "female": {
+          "applied": 2127,
+          "admitted": 186,
+          "enrolled": 143
+        },
+        "total": {
+          "applied": 4909,
+          "admitted": 453,
+          "enrolled": 357
+        }
+      },
+      "slug": "columbia"
+    },
+    {
+      "id": 14,
       "name": "Cornell University",
       "data_year": "2025-26",
       "city": "Ithaca",
@@ -2064,7 +2419,7 @@
       "slug": "cornell"
     },
     {
-      "id": 13,
+      "id": 15,
       "name": "Dartmouth College",
       "data_year": "2025-26",
       "city": "Hanover",
@@ -2230,7 +2585,7 @@
       "slug": "dartmouth"
     },
     {
-      "id": 14,
+      "id": 16,
       "name": "Drexel University",
       "data_year": "2025-2026",
       "city": "Philadelphia",
@@ -2409,7 +2764,7 @@
       "slug": "drexel"
     },
     {
-      "id": 15,
+      "id": 17,
       "name": "Duke University",
       "data_year": "2025-2026",
       "city": "Durham",
@@ -2561,7 +2916,7 @@
       "slug": "duke"
     },
     {
-      "id": 16,
+      "id": 18,
       "name": "Emory University",
       "data_year": "2025-26",
       "city": "Atlanta",
@@ -2736,7 +3091,7 @@
       "slug": "emory"
     },
     {
-      "id": 17,
+      "id": 19,
       "name": "Florida International University",
       "data_year": "2025-26",
       "city": "Miami",
@@ -2903,7 +3258,7 @@
       "slug": "fiu"
     },
     {
-      "id": 18,
+      "id": 20,
       "name": "Florida State University",
       "data_year": "2025-26",
       "city": "Tallahassee",
@@ -3078,7 +3433,7 @@
       "slug": "fsu"
     },
     {
-      "id": 19,
+      "id": 21,
       "name": "Georgetown University",
       "data_year": "2025-2026",
       "city": "Washington",
@@ -3244,7 +3599,7 @@
       "slug": "georgetown"
     },
     {
-      "id": 20,
+      "id": 22,
       "name": "Georgia Institute of Technology",
       "data_year": "2025-26",
       "city": "Atlanta",
@@ -3419,7 +3774,7 @@
       "slug": "georgia-tech"
     },
     {
-      "id": 21,
+      "id": 23,
       "name": "George Washington University",
       "data_year": "2025-26",
       "city": "Washington",
@@ -3585,7 +3940,7 @@
       "slug": "gwu"
     },
     {
-      "id": 22,
+      "id": 24,
       "name": "Harvard University",
       "data_year": "2025-26",
       "city": "Cambridge",
@@ -3760,7 +4115,7 @@
       "slug": "harvard"
     },
     {
-      "id": 23,
+      "id": 25,
       "name": "Howard University",
       "data_year": "2025-2026",
       "city": "Washington",
@@ -3929,7 +4284,7 @@
       "slug": "howard"
     },
     {
-      "id": 24,
+      "id": 26,
       "name": "Indiana University Bloomington",
       "data_year": "2025-26",
       "city": "Bloomington",
@@ -4054,7 +4409,7 @@
       "slug": "indiana-bloomington"
     },
     {
-      "id": 25,
+      "id": 27,
       "name": "Johns Hopkins University",
       "data_year": "2025-26",
       "city": "Baltimore",
@@ -4237,7 +4592,7 @@
       "slug": "jhu"
     },
     {
-      "id": 26,
+      "id": 28,
       "name": "Lehigh University",
       "data_year": "2025-26",
       "city": "Bethlehem",
@@ -4403,7 +4758,7 @@
       "slug": "lehigh"
     },
     {
-      "id": 27,
+      "id": 29,
       "name": "Marquette University",
       "data_year": "2025-2026",
       "city": "Milwaukee",
@@ -4578,7 +4933,7 @@
       "slug": "marquette"
     },
     {
-      "id": 28,
+      "id": 30,
       "name": "University of Miami",
       "data_year": "2025-26",
       "city": "Coral Gables",
@@ -4753,7 +5108,7 @@
       "slug": "miami"
     },
     {
-      "id": 29,
+      "id": 31,
       "name": "Michigan State University",
       "data_year": "2025-2026",
       "city": "East Lansing",
@@ -4920,7 +5275,7 @@
       "slug": "michigan-state"
     },
     {
-      "id": 30,
+      "id": 32,
       "name": "Massachusetts Institute of Technology",
       "data_year": "2025-26",
       "city": "Cambridge",
@@ -5086,7 +5441,7 @@
       "slug": "mit"
     },
     {
-      "id": 31,
+      "id": 33,
       "name": "North Carolina State University",
       "data_year": "2025-26",
       "city": "Raleigh",
@@ -5261,7 +5616,7 @@
       "slug": "nc-state"
     },
     {
-      "id": 32,
+      "id": 34,
       "name": "New Jersey Institute of Technology",
       "data_year": "2025-2026",
       "city": "Newark",
@@ -5436,7 +5791,7 @@
       "slug": "njit"
     },
     {
-      "id": 33,
+      "id": 35,
       "name": "Northeastern University",
       "data_year": "2024-2025",
       "city": "Boston",
@@ -5607,7 +5962,7 @@
       "slug": "northeastern"
     },
     {
-      "id": 34,
+      "id": 36,
       "name": "Northwestern University",
       "data_year": "2025-26",
       "city": "Evanston",
@@ -5775,7 +6130,7 @@
       "slug": "northwestern"
     },
     {
-      "id": 35,
+      "id": 37,
       "name": "University of Notre Dame",
       "data_year": "2025-26",
       "city": "Notre Dame",
@@ -5941,7 +6296,7 @@
       "slug": "notre-dame"
     },
     {
-      "id": 36,
+      "id": 38,
       "name": "New York University",
       "data_year": "2025-26",
       "city": "New York",
@@ -6102,7 +6457,7 @@
       "slug": "nyu"
     },
     {
-      "id": 37,
+      "id": 39,
       "name": "The Ohio State University",
       "data_year": "2025-2026",
       "city": "Columbus",
@@ -6268,7 +6623,7 @@
       "slug": "ohio-state"
     },
     {
-      "id": 38,
+      "id": 40,
       "name": "Penn State University Park",
       "data_year": "2025-26",
       "city": "University Park",
@@ -6443,7 +6798,7 @@
       "slug": "penn-state"
     },
     {
-      "id": 39,
+      "id": 41,
       "name": "Pepperdine University",
       "data_year": "2025-26",
       "city": "Malibu",
@@ -6612,7 +6967,7 @@
       "slug": "pepperdine"
     },
     {
-      "id": 40,
+      "id": 42,
       "name": "University of Pittsburgh",
       "data_year": "2025-26",
       "city": "Pittsburgh",
@@ -6791,7 +7146,7 @@
       "slug": "pitt"
     },
     {
-      "id": 41,
+      "id": 43,
       "name": "Princeton University",
       "data_year": "2025-26",
       "city": "Princeton",
@@ -6960,7 +7315,7 @@
       "slug": "princeton"
     },
     {
-      "id": 42,
+      "id": 44,
       "name": "Purdue University",
       "data_year": "2025-26",
       "city": "West Lafayette",
@@ -7135,7 +7490,7 @@
       "slug": "purdue"
     },
     {
-      "id": 43,
+      "id": 45,
       "name": "William Marsh Rice University",
       "data_year": "2025-26",
       "city": "Houston",
@@ -7309,7 +7664,7 @@
       "slug": "rice"
     },
     {
-      "id": 44,
+      "id": 46,
       "name": "Rochester Institute of Technology",
       "data_year": "2025-26",
       "city": "Rochester",
@@ -7488,7 +7843,7 @@
       "slug": "rit"
     },
     {
-      "id": 45,
+      "id": 47,
       "name": "University of Rochester",
       "data_year": "2025-26",
       "city": "Rochester",
@@ -7671,7 +8026,7 @@
       "slug": "rochester"
     },
     {
-      "id": 46,
+      "id": 48,
       "name": "Rensselaer Polytechnic Institute",
       "data_year": "2025-26",
       "city": "Troy",
@@ -7846,7 +8201,7 @@
       "slug": "rpi"
     },
     {
-      "id": 47,
+      "id": 49,
       "name": "Santa Clara University",
       "data_year": "2025-26",
       "city": "Santa Clara",
@@ -8021,7 +8376,7 @@
       "slug": "santa-clara"
     },
     {
-      "id": 48,
+      "id": 50,
       "name": "Southern Methodist University",
       "data_year": "2025-26",
       "city": "Dallas",
@@ -8196,7 +8551,7 @@
       "slug": "smu"
     },
     {
-      "id": 49,
+      "id": 51,
       "name": "Stanford University",
       "data_year": "2025-26",
       "city": "Stanford",
@@ -8371,7 +8726,7 @@
       "slug": "stanford"
     },
     {
-      "id": 50,
+      "id": 52,
       "name": "Stevens Institute of Technology",
       "data_year": "2025-2026",
       "city": "Hoboken",
@@ -8550,7 +8905,7 @@
       "slug": "stevens"
     },
     {
-      "id": 51,
+      "id": 53,
       "name": "Stony Brook University",
       "data_year": "2025-26",
       "city": "Stony Brook",
@@ -8725,7 +9080,7 @@
       "slug": "stony-brook"
     },
     {
-      "id": 52,
+      "id": 54,
       "name": "Texas A&M University",
       "data_year": "2025-26",
       "city": "College Station",
@@ -8875,7 +9230,7 @@
       "slug": "texas-am"
     },
     {
-      "id": 53,
+      "id": 55,
       "name": "Tufts University",
       "data_year": "2025-2026",
       "city": "Medford",
@@ -9049,7 +9404,7 @@
       "slug": "tufts"
     },
     {
-      "id": 54,
+      "id": 56,
       "name": "Tulane University",
       "data_year": "2025-26",
       "city": "New Orleans",
@@ -9224,7 +9579,7 @@
       "slug": "tulane"
     },
     {
-      "id": 55,
+      "id": 57,
       "name": "University of California - Davis",
       "data_year": "2025-2026",
       "city": "Davis",
@@ -9392,7 +9747,7 @@
       "slug": "uc-davis"
     },
     {
-      "id": 56,
+      "id": 58,
       "name": "University of California, Irvine",
       "data_year": "2025-26",
       "city": "Irvine",
@@ -9551,7 +9906,7 @@
       "slug": "uc-irvine"
     },
     {
-      "id": 57,
+      "id": 59,
       "name": "University of California, Merced",
       "data_year": "2024-25",
       "city": "Merced",
@@ -9712,7 +10067,7 @@
       "slug": "uc-merced"
     },
     {
-      "id": 58,
+      "id": 60,
       "name": "University of California, Riverside",
       "data_year": "2025-26",
       "city": "Riverside",
@@ -9880,7 +10235,7 @@
       "slug": "uc-riverside"
     },
     {
-      "id": 59,
+      "id": 61,
       "name": "University of California, San Diego",
       "data_year": "2025-26",
       "city": "La Jolla",
@@ -10054,7 +10409,7 @@
       "slug": "uc-san-diego"
     },
     {
-      "id": 60,
+      "id": 62,
       "name": "University of California, Santa Cruz",
       "data_year": "2025-26",
       "city": "Santa Cruz",
@@ -10222,7 +10577,7 @@
       "slug": "uc-santa-cruz"
     },
     {
-      "id": 61,
+      "id": 63,
       "name": "The University of Chicago",
       "data_year": "2025-26",
       "city": "Chicago",
@@ -10389,7 +10744,7 @@
       "slug": "uchicago"
     },
     {
-      "id": 62,
+      "id": 64,
       "name": "University of California, Los Angeles",
       "data_year": "2025-2026",
       "city": "Los Angeles",
@@ -10553,7 +10908,7 @@
       "slug": "ucla"
     },
     {
-      "id": 63,
+      "id": 65,
       "name": "University of Connecticut",
       "data_year": "2025-26",
       "city": "Storrs",
@@ -10719,7 +11074,7 @@
       "slug": "uconn"
     },
     {
-      "id": 64,
+      "id": 66,
       "name": "University of California, Santa Barbara",
       "data_year": "2025-26",
       "city": "Santa Barbara",
@@ -10887,7 +11242,7 @@
       "slug": "ucsb"
     },
     {
-      "id": 65,
+      "id": 67,
       "name": "University of Florida",
       "data_year": "2025-2026",
       "city": "Gainesville",
@@ -11062,7 +11417,7 @@
       "slug": "uf"
     },
     {
-      "id": 66,
+      "id": 68,
       "name": "University of Georgia",
       "data_year": "2025-26",
       "city": "Athens",
@@ -11231,7 +11586,7 @@
       "slug": "uga"
     },
     {
-      "id": 67,
+      "id": 69,
       "name": "University of Illinois Chicago",
       "data_year": "2025-26",
       "city": "Chicago",
@@ -11398,7 +11753,7 @@
       "slug": "uic"
     },
     {
-      "id": 68,
+      "id": 70,
       "name": "University of Illinois Urbana-Champaign",
       "data_year": "2025-26",
       "city": "Champaign",
@@ -11564,7 +11919,7 @@
       "slug": "uiuc"
     },
     {
-      "id": 69,
+      "id": 71,
       "name": "University of Massachusetts Amherst",
       "data_year": "2025-26",
       "city": "Amherst",
@@ -11739,7 +12094,183 @@
       "slug": "umass-amherst"
     },
     {
-      "id": 70,
+      "id": 72,
+      "name": "University of Michigan",
+      "data_year": "2025-26",
+      "city": "Ann Arbor",
+      "state": "MI",
+      "location": "Ann Arbor, MI",
+      "school_type": "Public",
+      "website": "umich.edu",
+      "applicants_total": 109112,
+      "applicants_men": 53044,
+      "applicants_women": 56068,
+      "admitted_total": 17915,
+      "admitted_men": 7593,
+      "admitted_women": 10322,
+      "enrolled_total": 8178,
+      "enrolled_men": 3499,
+      "enrolled_women": 4679,
+      "acceptance_rate": 0.1642,
+      "application_fee": 75,
+      "avg_gpa_weighted": 3.9,
+      "rd_deadline": "2/1",
+      "waitlist_offered": 24447,
+      "waitlist_accepted": 18435,
+      "waitlist_admitted": 1663,
+      "ea_ed_type": "EA",
+      "ea_ed_deadline": "11/1",
+      "ea_ed_notification": "1/31",
+      "ea_apps_received": null,
+      "ea_apps_admitted": null,
+      "sat_submitted_pct": 0.55,
+      "sat_submitted_count": 4503,
+      "act_submitted_pct": 0.18,
+      "act_submitted_count": 1462,
+      "sat_composite_25": 1370,
+      "sat_composite_75": 1530,
+      "sat_reading_25": 690,
+      "sat_reading_75": 750,
+      "sat_math_25": 680,
+      "sat_math_75": 780,
+      "act_composite_25": 32,
+      "act_composite_75": 34,
+      "act_math_25": 30,
+      "act_math_75": 35,
+      "act_english_25": 33,
+      "act_english_75": 35,
+      "total_undergrads": 35358,
+      "undergrads_male": 16138,
+      "undergrads_female": 19220,
+      "retention_rate": 0.97,
+      "tuition": null,
+      "tuition_in_state": 18402,
+      "tuition_out_of_state": 66602,
+      "required_fees": 494,
+      "room_and_board": 17220,
+      "books_supplies": 1220,
+      "other_expenses": 2458,
+      "pct_out_of_state": 0.45,
+      "pct_on_campus_housing": 0.96,
+      "applicant_pools": {
+        "ea": {
+          "applied": null,
+          "admitted": null,
+          "rate": null
+        },
+        "rd": {
+          "applied": null,
+          "admitted": null,
+          "rate": null
+        },
+        "waitlist": {
+          "offered": 24447,
+          "accepted_spots": 18435,
+          "enrolled": null
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": 53044,
+          "female": 56068
+        },
+        "accepted": {
+          "male": 7593,
+          "female": 10322
+        },
+        "enrolled": {
+          "male": 3499,
+          "female": 4679
+        }
+      },
+      "demographics_detail": {
+        "first_year": {
+          "nonresident_aliens": 391,
+          "hispanic": 1066,
+          "black": 487,
+          "white": 3616,
+          "american_indian": 19,
+          "asian": 1530,
+          "pacific_islander": 13,
+          "two_or_more": 510,
+          "unknown": 546,
+          "total": 8178
+        },
+        "undergrad": {
+          "nonresident_aliens": 2493,
+          "hispanic": 4460,
+          "black": 2018,
+          "white": 15786,
+          "american_indian": 64,
+          "asian": 6480,
+          "pacific_islander": 43,
+          "two_or_more": 2071,
+          "unknown": 1663,
+          "total": 35078
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.45,
+        "international_pct": null
+      },
+      "sat_act_breakdown": {
+        "sat_submitted_count": 4503,
+        "sat_submitted_pct": 0.55,
+        "act_submitted_count": 1462,
+        "act_submitted_pct": 0.18
+      },
+      "class_rank": null,
+      "gpa_distribution": {
+        "gpa_40": 0.388,
+        "gpa_375_399": 0.551,
+        "gpa_350_374": 0.048,
+        "gpa_325_349": 0.007,
+        "gpa_300_324": 0.004,
+        "gpa_250_299": 0.002,
+        "gpa_200_249": 0.0,
+        "gpa_100_199": 0.0
+      },
+      "admission_factors": {
+        "rigor": "very_important",
+        "class_rank": "not_considered",
+        "academic_gpa": "very_important",
+        "test_scores": "important",
+        "essay": "important",
+        "recommendations": "important",
+        "interview": "not_considered",
+        "extracurriculars": "considered",
+        "talent": "considered",
+        "character": "important",
+        "first_gen": "important",
+        "alumni_relation": "not_considered",
+        "geo_residence": "considered",
+        "state_residence": "considered",
+        "religious": "not_considered",
+        "racial_ethnic": null,
+        "volunteer": "considered",
+        "work_experience": "considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 3954,
+          "admitted": 1239,
+          "enrolled": 812
+        },
+        "female": {
+          "applied": 2891,
+          "admitted": 1155,
+          "enrolled": 721
+        },
+        "total": {
+          "applied": 6845,
+          "admitted": 2394,
+          "enrolled": 1533
+        }
+      },
+      "slug": "umich"
+    },
+    {
+      "id": 73,
       "name": "University of North Carolina at Chapel Hill",
       "data_year": "2025-26",
       "city": "Chapel Hill",
@@ -11914,7 +12445,7 @@
       "slug": "unc"
     },
     {
-      "id": 71,
+      "id": 74,
       "name": "University of Pennsylvania",
       "data_year": "2025-26",
       "city": "Philadelphia",
@@ -12089,7 +12620,7 @@
       "slug": "upenn"
     },
     {
-      "id": 72,
+      "id": 75,
       "name": "University of Southern California",
       "data_year": "2025-26",
       "city": "Los Angeles",
@@ -12256,7 +12787,7 @@
       "slug": "usc"
     },
     {
-      "id": 73,
+      "id": 76,
       "name": "University of South Florida",
       "data_year": "2025-26",
       "city": "Tampa",
@@ -12431,7 +12962,7 @@
       "slug": "usf"
     },
     {
-      "id": 74,
+      "id": 77,
       "name": "The University of Texas at Austin",
       "data_year": "2025-26",
       "city": "Austin",
@@ -12586,7 +13117,180 @@
       "slug": "ut-austin"
     },
     {
-      "id": 75,
+      "id": 78,
+      "name": "University of Virginia",
+      "data_year": "2025-26",
+      "city": "Charlottesville",
+      "state": "VA",
+      "location": "Charlottesville, VA",
+      "school_type": "Public",
+      "website": "www.virginia.edu",
+      "applicants_total": 64457,
+      "applicants_men": 29657,
+      "applicants_women": 34776,
+      "admitted_total": 10086,
+      "admitted_men": 4564,
+      "admitted_women": 5520,
+      "enrolled_total": 3978,
+      "enrolled_men": 1779,
+      "enrolled_women": 2198,
+      "acceptance_rate": 0.1565,
+      "application_fee": 75,
+      "avg_gpa_weighted": null,
+      "rd_deadline": "1/5",
+      "waitlist_offered": null,
+      "waitlist_accepted": null,
+      "waitlist_admitted": null,
+      "ea_ed_type": "ED",
+      "ea_ed_deadline": "11/1",
+      "ea_ed_notification": "12/15",
+      "ea_apps_received": null,
+      "ea_apps_admitted": null,
+      "sat_submitted_pct": 0.487,
+      "sat_submitted_count": null,
+      "act_submitted_pct": 0.145,
+      "act_submitted_count": null,
+      "sat_composite_25": 1410,
+      "sat_composite_75": null,
+      "sat_reading_25": 700,
+      "sat_reading_75": null,
+      "sat_math_25": 710,
+      "sat_math_75": null,
+      "act_composite_25": 32,
+      "act_composite_75": null,
+      "act_math_25": 30,
+      "act_math_75": null,
+      "act_english_25": 34,
+      "act_english_75": null,
+      "total_undergrads": 17848,
+      "undergrads_male": 7873,
+      "undergrads_female": 9960,
+      "retention_rate": null,
+      "tuition": null,
+      "tuition_in_state": 19309,
+      "tuition_out_of_state": 59035,
+      "required_fees": 3945,
+      "room_and_board": 16070,
+      "books_supplies": 1540,
+      "other_expenses": 3000,
+      "pct_out_of_state": 0.326,
+      "pct_on_campus_housing": 0.995,
+      "applicant_pools": {
+        "ea": {
+          "applied": null,
+          "admitted": null,
+          "rate": null
+        },
+        "rd": {
+          "applied": null,
+          "admitted": null,
+          "rate": null
+        },
+        "waitlist": {
+          "offered": null,
+          "accepted_spots": null,
+          "enrolled": null
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": 29657,
+          "female": 34776
+        },
+        "accepted": {
+          "male": 4564,
+          "female": 5520
+        },
+        "enrolled": {
+          "male": 1779,
+          "female": 2198
+        }
+      },
+      "demographics_detail": {
+        "first_year": {
+          "nonresident_aliens": 221,
+          "hispanic": 364,
+          "black": 240,
+          "white": 1899,
+          "american_indian": 1,
+          "asian": 764,
+          "pacific_islander": 1,
+          "two_or_more": 246,
+          "unknown": 242,
+          "total": 3978
+        },
+        "undergrad": {
+          "nonresident_aliens": 872,
+          "hispanic": 1512,
+          "black": 1318,
+          "white": 8383,
+          "american_indian": 17,
+          "asian": 3527,
+          "pacific_islander": 7,
+          "two_or_more": 1045,
+          "unknown": 922,
+          "total": 17603
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.326,
+        "international_pct": null
+      },
+      "sat_act_breakdown": {
+        "sat_submitted_count": null,
+        "sat_submitted_pct": 0.487,
+        "act_submitted_count": null,
+        "act_submitted_pct": 0.145
+      },
+      "class_rank": {
+        "top10": null,
+        "top25": null,
+        "top50": null,
+        "bottom50": null,
+        "bottom25": null
+      },
+      "gpa_distribution": null,
+      "admission_factors": {
+        "rigor": "very_important",
+        "class_rank": "very_important",
+        "academic_gpa": "very_important",
+        "test_scores": "considered",
+        "essay": "important",
+        "recommendations": "important",
+        "interview": "not_considered",
+        "extracurriculars": "important",
+        "talent": "important",
+        "character": "very_important",
+        "first_gen": "considered",
+        "alumni_relation": "not_considered",
+        "geo_residence": "considered",
+        "state_residence": "very_important",
+        "religious": "not_considered",
+        "racial_ethnic": null,
+        "volunteer": "considered",
+        "work_experience": "considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 2708,
+          "admitted": 629,
+          "enrolled": null
+        },
+        "female": {
+          "applied": 2165,
+          "admitted": 694,
+          "enrolled": null
+        },
+        "total": {
+          "applied": 4877,
+          "admitted": 1323,
+          "enrolled": null
+        }
+      },
+      "slug": "uva"
+    },
+    {
+      "id": 79,
       "name": "Vanderbilt University",
       "data_year": "2025-26",
       "city": "Nashville",
@@ -12761,7 +13465,7 @@
       "slug": "vanderbilt"
     },
     {
-      "id": 76,
+      "id": 80,
       "name": "Villanova University",
       "data_year": "2025-26",
       "city": "Villanova",
@@ -12936,7 +13640,7 @@
       "slug": "villanova"
     },
     {
-      "id": 77,
+      "id": 81,
       "name": "Virginia Polytechnic Institute and State University",
       "data_year": "2025-26",
       "city": "Blacksburg",
@@ -13105,7 +13809,180 @@
       "slug": "virginia-tech"
     },
     {
-      "id": 78,
+      "id": 82,
+      "name": "Wake Forest University",
+      "data_year": "2025-26",
+      "city": "Winston Salem",
+      "state": "NC",
+      "location": "Winston Salem, NC",
+      "school_type": "Private",
+      "website": "https://www.wfu.edu",
+      "applicants_total": 19600,
+      "applicants_men": 8235,
+      "applicants_women": 11360,
+      "admitted_total": 4068,
+      "admitted_men": 1965,
+      "admitted_women": 2103,
+      "enrolled_total": 1544,
+      "enrolled_men": 676,
+      "enrolled_women": 868,
+      "acceptance_rate": 0.2076,
+      "application_fee": 85,
+      "avg_gpa_weighted": null,
+      "rd_deadline": "1/1",
+      "waitlist_offered": null,
+      "waitlist_accepted": null,
+      "waitlist_admitted": null,
+      "ea_ed_type": "ED I & II",
+      "ea_ed_deadline": "11/15",
+      "ea_ed_notification": null,
+      "ea_apps_received": null,
+      "ea_apps_admitted": null,
+      "sat_submitted_pct": 0.24,
+      "sat_submitted_count": 365,
+      "act_submitted_pct": 0.22,
+      "act_submitted_count": 338,
+      "sat_composite_25": 1420,
+      "sat_composite_75": 1490,
+      "sat_reading_25": 700,
+      "sat_reading_75": 750,
+      "sat_math_25": 700,
+      "sat_math_75": 760,
+      "act_composite_25": 32,
+      "act_composite_75": 34,
+      "act_math_25": 29,
+      "act_math_75": 33,
+      "act_english_25": 33,
+      "act_english_75": 35,
+      "total_undergrads": 5595,
+      "undergrads_male": 2510,
+      "undergrads_female": 3085,
+      "retention_rate": 0.92,
+      "tuition": 71894,
+      "tuition_in_state": null,
+      "tuition_out_of_state": null,
+      "required_fees": 1276,
+      "room_and_board": 23430,
+      "books_supplies": 1720,
+      "other_expenses": 1930,
+      "pct_out_of_state": 0.847,
+      "pct_on_campus_housing": 0.993,
+      "applicant_pools": {
+        "ea": {
+          "applied": null,
+          "admitted": null,
+          "rate": null
+        },
+        "rd": {
+          "applied": null,
+          "admitted": null,
+          "rate": null
+        },
+        "waitlist": {
+          "offered": null,
+          "accepted_spots": null,
+          "enrolled": null
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": 8235,
+          "female": 11360
+        },
+        "accepted": {
+          "male": 1965,
+          "female": 2103
+        },
+        "enrolled": {
+          "male": 676,
+          "female": 868
+        }
+      },
+      "demographics_detail": {
+        "first_year": {
+          "nonresident_aliens": 48,
+          "hispanic": 69,
+          "black": 72,
+          "white": 1100,
+          "american_indian": 4,
+          "asian": 58,
+          "pacific_islander": 2,
+          "two_or_more": 64,
+          "unknown": 127,
+          "total": 1544
+        },
+        "undergrad": {
+          "nonresident_aliens": 223,
+          "hispanic": 461,
+          "black": 354,
+          "white": 3741,
+          "american_indian": 8,
+          "asian": 275,
+          "pacific_islander": 7,
+          "two_or_more": 256,
+          "unknown": 267,
+          "total": 5592
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.847,
+        "international_pct": null
+      },
+      "sat_act_breakdown": {
+        "sat_submitted_count": 365,
+        "sat_submitted_pct": 0.24,
+        "act_submitted_count": 338,
+        "act_submitted_pct": 0.22
+      },
+      "class_rank": {
+        "top10": 0.612,
+        "top25": 0.896,
+        "top50": 0.981,
+        "bottom50": 0.019,
+        "bottom25": 0.007
+      },
+      "gpa_distribution": null,
+      "admission_factors": {
+        "rigor": "very_important",
+        "class_rank": "very_important",
+        "academic_gpa": "very_important",
+        "test_scores": "considered",
+        "essay": "very_important",
+        "recommendations": "important",
+        "interview": "important",
+        "extracurriculars": "important",
+        "talent": "important",
+        "character": "very_important",
+        "first_gen": "considered",
+        "alumni_relation": "considered",
+        "geo_residence": "considered",
+        "state_residence": "considered",
+        "religious": "considered",
+        "racial_ethnic": null,
+        "volunteer": "considered",
+        "work_experience": "considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 245,
+          "admitted": 88,
+          "enrolled": 35
+        },
+        "female": {
+          "applied": 219,
+          "admitted": 85,
+          "enrolled": 24
+        },
+        "total": {
+          "applied": 464,
+          "admitted": 173,
+          "enrolled": 59
+        }
+      },
+      "slug": "wake-forest"
+    },
+    {
+      "id": 83,
       "name": "University of Washington",
       "data_year": "2025-2026",
       "city": "Seattle",
@@ -13278,7 +14155,7 @@
       "slug": "washington-seattle"
     },
     {
-      "id": 79,
+      "id": 84,
       "name": "Washington University in St. Louis",
       "data_year": "2025-26",
       "city": "St. Louis",
@@ -13444,7 +14321,7 @@
       "slug": "washu"
     },
     {
-      "id": 80,
+      "id": 85,
       "name": "William & Mary",
       "data_year": "2025-2026",
       "city": "Williamsburg",
@@ -13619,7 +14496,7 @@
       "slug": "william-mary"
     },
     {
-      "id": 81,
+      "id": 86,
       "name": "University of Wisconsin-Madison",
       "data_year": "2025-26",
       "city": "Madison",
@@ -13794,7 +14671,7 @@
       "slug": "wisconsin-madison"
     },
     {
-      "id": 82,
+      "id": 87,
       "name": "Worcester Polytechnic Institute",
       "data_year": "2025-26",
       "city": "Worcester",
@@ -13969,7 +14846,7 @@
       "slug": "wpi"
     },
     {
-      "id": 83,
+      "id": 88,
       "name": "Yale University",
       "data_year": "2025-26",
       "city": "New Haven",
