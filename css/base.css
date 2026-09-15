@@ -227,6 +227,7 @@ body {
 .nav-link-wrapper:hover,
 .active-nav-link {
     background: #ed6d0b;
+    box-shadow: inset 0 2px 0 #000;
 }
 
 .nav-link-wrapper a {
