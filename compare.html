@@ -47,6 +47,16 @@
                     <p class="compare-placeholder">Search for a school on the left to see its data.</p>
                 </div>
             </div>
+            <div class="right-sidebar">
+                <div class="history-box" id="favorites-box" style="display:none">
+                    <div class="history-title">Favorites</div>
+                    <div id="favorites-list"></div>
+                </div>
+                <div class="history-box" id="history-box" style="display:none">
+                    <div class="history-title">History</div>
+                    <div id="history-list"></div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -57,9 +67,9 @@
         // brand hexes are arbitrary and sometimes literally identical
         // (Harvard and UChicago are both #a6152c), which made it hard to
         // tell schools apart in the comparison charts. Slot identity is
-        // what matters here, not brand identity. Validated as a categorical
-        // set (dataviz skill's adjacent-pair check) against a white surface.
-        const SLOT_COLORS = { 1: '#0d9488', 2: '#7c3aed', 3: '#d97706', 4: '#db2777' };
+        // what matters here, not brand identity. Slot 1 is the site's
+        // primary orange; 2-4 are fixed site colors.
+        const SLOT_COLORS = { 1: '#ed6d0b', 2: '#2ECC71', 3: '#0B8BED', 4: '#DE0BED' };
         const MAX_SLOTS = 4;
         let activeSlots = [1, 2];
 
@@ -70,6 +80,39 @@
 
         let allSchools = [];
         const selected = { 1: null, 2: null, 3: null, 4: null };
+
+        // ── Favorites & History rail (same behavior as the index page) ──
+        let favorites = new Set(JSON.parse(localStorage.getItem('cds_favorites') ?? '[]'));
+
+        function renderFavoritesBox() {
+            const slugs = [...favorites];
+            const box = document.getElementById('favorites-box');
+            if (!slugs.length) { box.style.display = 'none'; return; }
+            box.style.display = '';
+            document.getElementById('favorites-list').innerHTML = slugs.map(slug => {
+                const school = allSchools.find(s => s.slug === slug);
+                if (!school) return '';
+                return `<a class="history-item" href="schools/${slug}.html">
+                    <img class="history-logo" src="${logoSrc(slug)}" alt="" onerror="${LOGO_ONERR}">
+                    <span class="history-name">${school.name}</span>
+                </a>`;
+            }).filter(Boolean).join('');
+        }
+
+        function renderHistory() {
+            const slugs = JSON.parse(localStorage.getItem('cds_recently_viewed') ?? '[]');
+            const box = document.getElementById('history-box');
+            if (!slugs.length) { box.style.display = 'none'; return; }
+            box.style.display = '';
+            document.getElementById('history-list').innerHTML = slugs.map(slug => {
+                const school = allSchools.find(s => s.slug === slug);
+                if (!school) return '';
+                return `<a class="history-item" href="schools/${slug}.html">
+                    <img class="history-logo" src="${logoSrc(slug)}" alt="" onerror="${LOGO_ONERR}">
+                    <span class="history-name">${school.name}</span>
+                </a>`;
+            }).filter(Boolean).join('');
+        }
 
         function fmtPct(val) {
             return val != null ? (val * 100).toFixed(1) + '%' : '—';
@@ -719,12 +762,17 @@
             // succeeds; dropdowns fill from allSchools on the next keystroke.
             await loadSchools();
             preselectFromUrl();
+            renderFavoritesBox();
+            renderHistory();
         }
 
         init();
+
+        window.addEventListener('pageshow', () => { renderFavoritesBox(); renderHistory(); });
     </script>
     <footer class="site-footer">
         <div class="footer-brand">CommonDataSets</div>
+        <a class="footer-email" href="mailto:info@commondatasets.com">info@commondatasets.com</a>
         <nav class="footer-nav">
             <a href="index.html">Data Sets</a>
             <a href="compare.html">Compare</a>
@@ -733,7 +781,6 @@
             <a href="privacy.html">Privacy Policy</a>
             <a href="terms.html">Terms &amp; Conditions</a>
         </nav>
-        <a class="footer-email" href="mailto:info@commondatasets.com">info@commondatasets.com</a>
     </footer>
 </body>
 </html>

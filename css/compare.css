@@ -18,7 +18,7 @@
 .compare-picker {
     grid-column: 1;
     position: sticky;
-    top: 24px;
+    top: calc(var(--header-height) + 24px);
 }
 
 /* html/body has overflow-x:clip, which per spec forces overflow-y to
@@ -30,6 +30,13 @@
 .compare-main {
     grid-column: 2;
     min-width: 0;
+}
+
+/* Favorites/history rail — same box as the index page, sitting in the
+   grid track that otherwise stays empty to keep .compare-main centered. */
+.compare-layout .right-sidebar {
+    grid-column: 3;
+    top: calc(var(--header-height) + 24px);
 }
 
 .compare-picker-title {
@@ -372,6 +379,17 @@
         grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     }
     #compare-sections { padding-top: 28px; }
+
+    .compare-layout .right-sidebar {
+        width: 100%;
+        position: static;
+        margin-top: 18px;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .compare-layout .history-box {
+        flex: 1 1 240px;
+    }
 }
 
 @media (max-width: 540px) {

@@ -12,6 +12,7 @@ Usage:
 """
 
 import json
+import re
 from datetime import date
 from pathlib import Path
 
@@ -20,6 +21,10 @@ CDS_YEAR = "2025-2026"
 CDS_YEAR_SHORT = "2025-26"
 INPUT_DIR = REPO_ROOT / "data" / "cds" / CDS_YEAR
 OUTPUT_PATH = REPO_ROOT / "data" / f"cds-{CDS_YEAR}.json"
+
+# Per-school filenames carry a trailing year suffix, e.g. harvard-2526.json —
+# strip it to recover the bare slug when a file doesn't already set one itself.
+YEAR_SUFFIX_RE = re.compile(r"-\d{4}$")
 
 
 def main():
@@ -31,7 +36,7 @@ def main():
     for i, f in enumerate(files, start=1):
         with open(f, encoding="utf-8") as fh:
             data = json.load(fh)
-        data.setdefault("slug", f.stem)
+        data.setdefault("slug", YEAR_SUFFIX_RE.sub("", f.stem))
         schools.append({"id": i, **data})
 
     payload = {

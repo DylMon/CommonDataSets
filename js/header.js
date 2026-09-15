@@ -15,15 +15,19 @@
     }
 
     const nav = `
-        <div class="nav-wrapper">
-            <div class="left-side">
-                ${navLink('index.html', 'Data Sets', 'index')}
-                ${navLink('compare.html', 'Compare', 'compare')}
-                ${navLink('chanceme.html', 'Chance Me', 'chanceme')}
-                ${navLink('info.html', 'About', 'info')}
+        <header class="site-header">
+            <div class="nav-wrapper">
+                <div class="nav-brand">CommonDataSets</div>
             </div>
-            <div class="nav-brand">CommonDataSets</div>
-        </div>`;
+            <div class="header-accent-bar">
+                <div class="left-side">
+                    ${navLink('index.html', 'Data Sets', 'index')}
+                    ${navLink('compare.html', 'Compare', 'compare')}
+                    ${navLink('chanceme.html', 'Chance Me', 'chanceme')}
+                    ${navLink('info.html', 'About', 'info')}
+                </div>
+            </div>
+        </header>`;
 
     document.addEventListener('DOMContentLoaded', function () {
         const link = document.createElement('link');

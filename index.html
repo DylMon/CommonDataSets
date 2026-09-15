@@ -32,17 +32,21 @@
                     <img class="hero-logo" src="images/logo-transparent.png" alt="CommonDataSets">
                     <p class="page-intro-desc" id="page-intro-desc">CommonDataSets compiles official Common Data Set submissions directly from top US universities, giving students and families one place to compare verified admissions statistics, test score ranges, cost of attendance, and enrollment data without the noise.</p>
                 </div>
-                <div class="search-bar">
-                    <div class="search-wrap">
-                        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-                        </svg>
-                        <input type="text" id="school-search" class="search-input" placeholder="Search schools…" autocomplete="off">
-                    </div>
+                <div class="hero-cta-group">
+                    <a class="hero-cta-btn" href="compare.html">Compare University Stats</a>
+                    <a class="hero-cta-btn" href="chanceme.html">Get My Chances</a>
                 </div>
             </div>
         </div>
         <div class="content-wrapper">
+            <div class="search-bar">
+                <div class="search-wrap">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                    </svg>
+                    <input type="text" id="school-search" class="search-input" placeholder="Search schools…" autocomplete="off">
+                </div>
+            </div>
             <p class="results-count" id="results-count"></p>
             <div class="page-layout">
             <div class="sidebar">
@@ -136,6 +140,7 @@
         </div>
         <footer class="site-footer">
             <div class="footer-brand">CommonDataSets</div>
+            <a class="footer-email" href="mailto:info@commondatasets.com">info@commondatasets.com</a>
             <nav class="footer-nav">
                 <a href="index.html">Data Sets</a>
                 <a href="compare.html">Compare</a>
@@ -144,7 +149,6 @@
                 <a href="privacy.html">Privacy Policy</a>
                 <a href="terms.html">Terms &amp; Conditions</a>
             </nav>
-            <a class="footer-email" href="mailto:info@commondatasets.com">info@commondatasets.com</a>
         </footer>
     </div>
 
@@ -254,9 +258,10 @@
             const eaLabel = s.ea_ed_type === 'EA' ? 'Early Action'
                           : s.ea_ed_type === 'ED' ? 'Early Decision'
                           : s.ea_ed_type;
-            const waitlistHtml = s.waitlist_offered != null
-                ? `<span class="detail-waitlist">Waitlist: ${s.waitlist_offered.toLocaleString()} offered · ${s.waitlist_admitted != null ? s.waitlist_admitted.toLocaleString() + ' admitted' : '—'}</span>`
-                : '<span class="detail-waitlist">Waitlist data not reported in CDS</span>';
+            const waitlistBody = s.waitlist_offered != null
+                ? `<div class="detail-kv"><span>Offered</span><span>${s.waitlist_offered.toLocaleString()}</span></div>
+                   <div class="detail-kv"><span>Admitted</span><span>${s.waitlist_admitted != null ? s.waitlist_admitted.toLocaleString() : '—'}</span></div>`
+                : `<div class="detail-kv"><span>Not reported in CDS</span><span></span></div>`;
 
             return `
                 <div class="detail-grid">
@@ -281,9 +286,12 @@
                         <div class="detail-kv"><span>4yr Grad Rate</span><span>${s.graduation_rate_4yr != null ? (s.graduation_rate_4yr * 100).toFixed(0) + '%' : '—'}</span></div>
                         <div class="detail-kv"><span>Median Earn (6yr)</span><span>${fmtMoney(s.median_earnings_6yr)}</span></div>
                     </div>
+                    <div class="detail-section detail-section--full">
+                        <div class="detail-section-title">Waitlist</div>
+                        ${waitlistBody}
+                    </div>
                 </div>
                 <div class="detail-footer">
-                    ${waitlistHtml}
                     <a class="detail-compare-btn" href="compare.html?school=${s.slug}">Compare</a>
                 </div>`;
         }
@@ -308,23 +316,30 @@
                                 <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
                             </button>
                         </div>
-                        <div class="school-stats">
-                            <div class="stat-item">
-                                <div class="stat-val">${fmtPct(s.acceptance_rate)}</div>
-                                <div class="stat-label">Acceptance</div>
+                        <div class="school-row-end">
+                            <div class="school-stats">
+                                <div class="stat-item">
+                                    <div class="stat-val">${fmtPct(s.acceptance_rate)}</div>
+                                    <div class="stat-label">Acceptance</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-val">${s.sat_avg ?? '—'}</div>
+                                    <div class="stat-label">SAT Avg</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-val">${actRange}</div>
+                                    <div class="stat-label">ACT Range</div>
+                                </div>
                             </div>
-                            <div class="stat-item">
-                                <div class="stat-val">${s.sat_avg ?? '—'}</div>
-                                <div class="stat-label">SAT Avg</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-val">${actRange}</div>
-                                <div class="stat-label">ACT Range</div>
-                            </div>
+                            <button class="details-toggle" type="button" aria-expanded="false" aria-label="Show more details">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                            </button>
                         </div>
                     </div>
                     <div class="school-detail-inner">
-                        ${renderDetailPanel(s)}
+                        <div class="school-detail-inner-content">
+                            ${renderDetailPanel(s)}
+                        </div>
                     </div>
                 </div>`;
             }).join('');
@@ -416,6 +431,19 @@
             });
 
             document.getElementById('school-list').addEventListener('click', e => {
+                const toggleBtn = e.target.closest('.details-toggle');
+                if (toggleBtn) {
+                    const card = toggleBtn.closest('.school-card');
+                    const inner = card.querySelector('.school-detail-inner');
+                    const content = card.querySelector('.school-detail-inner-content');
+                    const expanded = !card.classList.contains('expanded');
+                    inner.style.maxHeight = expanded ? content.scrollHeight + 'px' : '0px';
+                    card.classList.toggle('expanded', expanded);
+                    toggleBtn.setAttribute('aria-expanded', String(expanded));
+                    toggleBtn.setAttribute('aria-label', expanded ? 'Hide details' : 'Show more details');
+                    return;
+                }
+
                 const btn = e.target.closest('.fav-btn');
                 if (!btn) return;
                 const slug = btn.dataset.slug;
