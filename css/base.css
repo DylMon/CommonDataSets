@@ -228,7 +228,7 @@ body {
 .active-nav-link {
     background: #ed6d0b;
     border-top: 2px solid #fff;
-    border-bottom: 2px solid #fff;
+    border-bottom: 10px solid #fff;
 }
 
 .nav-link-wrapper a {
