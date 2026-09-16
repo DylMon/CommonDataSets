@@ -1,0 +1,89 @@
+name: Parse CDS drop
+
+# Triggers when a CDS PDF or xlsx is pushed to cds-data-staging — a
+# dedicated branch you drop new CDS files onto, separate from main, so
+# nothing (not even the raw file) touches the live site until you merge
+# cds-data-staging -> main yourself, whenever you're ready to deploy
+# everything accumulated there at once.
+#
+# One-time setup: after this workflow file is merged to main, branch
+# cds-data-staging off of main once (it needs to exist and already contain
+# this workflow file for pushes to it to trigger anything). From then on,
+# just push new PDFs/xlsx straight to cds-data-staging.
+#
+# Parses only the files that changed in this push, detects a brand color for
+# any new school, rebuilds the aggregate JSON, and regenerates static pages —
+# then commits the results right back onto the same branch.
+#
+# Runs parse-cds.py synchronously per file rather than the Batch API: a
+# small push doesn't benefit from batching's async discount, which pays off
+# only when amortized across many requests submitted together (see the
+# workflow_dispatch batch workflow for that case).
+
+on:
+  push:
+    branches: [cds-data-staging]
+    paths:
+      - 'data/cds-pdfs/**/*.pdf'
+      - 'data/cds-xlsx/**/*.xlsx'
+
+permissions:
+  contents: write
+
+jobs:
+  parse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Python dependencies
+        run: pip install -r requirements-cds.txt
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Compute changed CDS files
+        id: changed
+        run: |
+          BEFORE="${{ github.event.before }}"
+          AFTER="${{ github.event.after }}"
+          if [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            BEFORE=$(git rev-list --max-parents=0 "$AFTER")
+          fi
+          FILES=$(git diff --diff-filter=AM --name-only "$BEFORE" "$AFTER" -- 'data/cds-pdfs/**/*.pdf' 'data/cds-xlsx/**/*.xlsx')
+          echo "files<<CDSEOF" >> "$GITHUB_OUTPUT"
+          echo "$FILES" >> "$GITHUB_OUTPUT"
+          echo "CDSEOF" >> "$GITHUB_OUTPUT"
+          echo "Changed files:"
+          echo "$FILES"
+
+      - name: Parse changed files and detect brand colors
+        if: steps.changed.outputs.files != ''
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python scripts/process_cds_drop.py ${{ steps.changed.outputs.files }}
+
+      - name: Commit results back to cds-data-staging
+        if: steps.changed.outputs.files != ''
+        run: |
+          git config user.name "cds-bot"
+          git config user.email "cds-bot@users.noreply.github.com"
+
+          git add data/ js/school.js schools/ sitemap.xml
+          if git diff --cached --quiet; then
+            echo "Nothing new to commit."
+          else
+            git commit -F cds_drop_summary.txt
+            git push origin HEAD:cds-data-staging
+          fi
+          rm -f cds_drop_summary.txt

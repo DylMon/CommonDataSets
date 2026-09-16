@@ -20,7 +20,13 @@ import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
-const SCHOOLS_DATA_PATH = join(ROOT, 'data', 'schools-2025-2026.json');
+
+function getYearArg() {
+  const i = process.argv.indexOf('--year');
+  return i === -1 ? '2025-2026' : process.argv[i + 1];
+}
+
+const SCHOOLS_DATA_PATH = join(ROOT, 'data', `schools-${getYearArg()}.json`);
 const SCHOOLS_DIR = join(ROOT, 'schools');
 
 function buildDescription(s) {

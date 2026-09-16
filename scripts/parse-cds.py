@@ -1,17 +1,27 @@
 #!/usr/bin/env python3
 """
-parse-cds.py — Extract CDS fields from a PDF and save to data/cds/{slug}.json
+parse-cds.py — Extract CDS fields from a PDF or xlsx and save to
+data/cds/{year}/{slug}.json
 
 Sends the PDF directly to Claude (native PDF input) and constrains the
 response with a JSON schema (structured outputs), so the model reads the
 actual PDF layout instead of a pdfplumber text dump, and the output is
 guaranteed to match the schema rather than relying on prompted JSON.
 
+xlsx files (schools that publish their CDS as an Excel workbook instead of
+a PDF) are already tabular, so they skip the document/vision path entirely:
+cell values are flattened to plain "label | value" text (see cds_xlsx.py)
+and sent as a text block, reusing the same schema/prompt/parsing below.
+
 Usage:
-    python scripts/parse-cds.py <pdf_path> <slug>
+    python scripts/parse-cds.py <pdf_or_xlsx_path> <slug> [year]
+
+    year defaults to the input file's parent directory name, so the normal
+    convention data/cds-pdfs/{year}/{slug}.pdf / data/cds-xlsx/{year}/{slug}.xlsx
+    needs no explicit year argument.
 
 Example:
-    python scripts/parse-cds.py data/cds-pdfs/princeton.pdf princeton
+    python scripts/parse-cds.py data/cds-pdfs/2025-2026/princeton.pdf princeton
 
 Requirements:
     pip install -r requirements-cds.txt
@@ -35,9 +45,11 @@ try:
 except ImportError:
     pass  # dotenv optional; key can be set directly in environment
 
+from cds_xlsx import xlsx_to_text
+
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-OUTPUT_DIR = REPO_ROOT / "data" / "cds"
+CDS_DIR = REPO_ROOT / "data" / "cds"
 
 MODEL = "claude-sonnet-5"
 
@@ -356,8 +368,7 @@ JSON_FORMAT_INSTRUCTIONS = (
 )
 
 
-def build_request_params(pdf_path: Path) -> dict:
-    """Build the messages.create() params for one CDS PDF (shared by single-file and batch runs)."""
+def _build_request_params_pdf(pdf_path: Path) -> dict:
     pdf_bytes = _shrink_pdf_bytes(pdf_path, pdf_path.read_bytes())
     pdf_b64 = base64.standard_b64encode(pdf_bytes).decode("ascii")
     return {
@@ -372,6 +383,32 @@ def build_request_params(pdf_path: Path) -> dict:
             ],
         }],
     }
+
+
+def _build_request_params_xlsx(xlsx_path: Path) -> dict:
+    text_dump = xlsx_to_text(xlsx_path)
+    return {
+        "model": MODEL,
+        "max_tokens": 16000,
+        "system": SYSTEM_PROMPT,
+        "messages": [{
+            "role": "user",
+            "content": [
+                {"type": "text", "text": "Common Data Set spreadsheet, sheet-by-sheet dump "
+                                          "(label | value rows per sheet):\n\n" + text_dump},
+                {"type": "text", "text": FIELD_INSTRUCTIONS + "\n\n" + JSON_FORMAT_INSTRUCTIONS},
+            ],
+        }],
+    }
+
+
+def build_request_params(path: Path) -> dict:
+    """Build the messages.create() params for one CDS PDF or xlsx (shared by
+    single-file and batch runs). Dispatches on file extension; everything
+    downstream (schema, prompt, response parsing) is identical either way."""
+    if path.suffix.lower() == ".xlsx":
+        return _build_request_params_xlsx(path)
+    return _build_request_params_pdf(path)
 
 
 def apply_defaults(data: dict, schema: dict = CDS_SCHEMA) -> dict:
@@ -413,31 +450,66 @@ def extract_json(content_blocks) -> dict:
     raise ValueError("No text content block in response")
 
 
-def parse_with_claude(pdf_path: Path) -> dict:
+CORE_ADMISSIONS_FIELDS = [
+    "applicants_total", "admitted_total", "enrolled_total",
+    "acceptance_rate", "sat_composite_25", "act_composite_25",
+    "total_undergrads", "tuition",
+]
+
+RICH_FIELDS = [
+    "gpa_distribution", "admission_factors", "demographics_detail",
+    "transfer_stats", "class_rank", "applicant_pools",
+]
+
+
+def score_completeness(data: dict) -> int:
+    """Shared by the single-file and batch runners so both report the same
+    rich/partial/sparse signal for a reviewer scanning commit messages."""
+    present = sum(1 for f in CORE_ADMISSIONS_FIELDS if data.get(f) is not None)
+    rich = sum(1 for f in RICH_FIELDS if data.get(f) is not None and data[f] != {})
+    return present + rich
+
+
+def completeness_label(score: int) -> str:
+    if score >= 12:
+        return "rich"
+    if score >= 6:
+        return "partial"
+    return "sparse"
+
+
+def parse_with_claude(path: Path) -> dict:
     client = anthropic.Anthropic()
-    print(f"  Sending {pdf_path.name} to Claude ({MODEL})...")
-    message = client.messages.create(**build_request_params(pdf_path))
+    print(f"  Sending {path.name} to Claude ({MODEL})...")
+    message = client.messages.create(**build_request_params(path))
     return extract_json(message.content)
 
 
 def main():
-    if len(sys.argv) != 3:
+    if len(sys.argv) not in (3, 4):
         print(__doc__)
         sys.exit(1)
 
-    pdf_path = Path(sys.argv[1])
+    input_path = Path(sys.argv[1])
     slug = sys.argv[2]
+    # Convention: data/cds-pdfs/{year}/{slug}.pdf or data/cds-xlsx/{year}/{slug}.xlsx
+    # — the parent directory name is the year, so it needs no separate argument
+    # unless the file doesn't live in that layout (e.g. an ad hoc local run).
+    year = sys.argv[3] if len(sys.argv) == 4 else input_path.parent.name
 
-    if not pdf_path.exists():
-        sys.exit(f"PDF not found: {pdf_path}")
+    if not input_path.exists():
+        sys.exit(f"File not found: {input_path}")
+    if input_path.suffix.lower() not in (".pdf", ".xlsx"):
+        sys.exit(f"Unsupported file type: {input_path.suffix} (expected .pdf or .xlsx)")
 
-    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    output_path = OUTPUT_DIR / f"{slug}.json"
+    output_dir = CDS_DIR / year
+    output_dir.mkdir(parents=True, exist_ok=True)
+    output_path = output_dir / f"{slug}.json"
 
-    print(f"\nParsing:  {pdf_path}")
+    print(f"\nParsing:  {input_path}")
     print(f"Output:   {output_path}\n")
 
-    data = parse_with_claude(pdf_path)
+    data = parse_with_claude(input_path)
     data["slug"] = slug
 
     with open(output_path, "w", encoding="utf-8") as f:
@@ -445,7 +517,9 @@ def main():
 
     populated = sum(1 for v in data.values() if v is not None)
     total_fields = len(data)
-    print(f"\nDone. {populated}/{total_fields} fields populated → {output_path}\n")
+    score = score_completeness(data)
+    print(f"\nDone. {populated}/{total_fields} fields populated, "
+          f"completeness={completeness_label(score)} ({score}) → {output_path}\n")
 
 
 if __name__ == "__main__":

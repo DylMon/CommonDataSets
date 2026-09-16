@@ -1,0 +1,76 @@
+name: Parse CDS batch (bulk backlog)
+
+# Manual trigger for parsing a backlog of CDS PDFs/xlsx at once (e.g. after a
+# CDS release season). Uses the Message Batch API (50% cheaper) since a bulk
+# run of many files at once is exactly what amortizes batching's async wait —
+# unlike the push-triggered workflow (parse-cds.yml), which stays synchronous.
+#
+# Run this from the Actions tab with "cds-data-staging" selected as the
+# branch to run on — it commits results back onto whichever branch you pick,
+# never straight to main.
+
+on:
+  workflow_dispatch:
+    inputs:
+      year:
+        description: 'CDS year to parse, e.g. 2025-2026'
+        required: true
+        default: '2025-2026'
+
+permissions:
+  contents: write
+
+jobs:
+  parse-batch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Python dependencies
+        run: pip install -r requirements-cds.txt
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Parse backlog via Message Batch
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python scripts/parse-cds-batch.py --year "${{ inputs.year }}"
+
+      - name: Detect brand colors for every parsed school
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          for f in data/cds/"${{ inputs.year }}"/*.json; do
+            slug=$(basename "$f" .json)
+            name=$(python3 -c "import json,sys; d=json.load(open(sys.argv[1])); print(d.get('name') or sys.argv[2])" "$f" "$slug")
+            node scripts/detect-school-color.js --slug "$slug" --name "$name"
+          done
+
+      - name: Rebuild aggregates and regenerate pages
+        run: |
+          python scripts/build-cds-json.py --year "${{ inputs.year }}"
+          node scripts/generate-school-pages.js --year "${{ inputs.year }}"
+
+      - name: Commit results back to the current branch
+        run: |
+          git config user.name "cds-bot"
+          git config user.email "cds-bot@users.noreply.github.com"
+
+          git add data/ js/school.js schools/ sitemap.xml
+          if git diff --cached --quiet; then
+            echo "Nothing new to commit."
+          else
+            git commit -m "Batch-parse CDS ${{ inputs.year }} backlog"
+            git push origin HEAD:${{ github.ref_name }}
+          fi

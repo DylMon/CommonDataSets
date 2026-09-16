@@ -1,17 +1,16 @@
 #!/usr/bin/env python3
 """
-parse-cds-batch.py — Parse all not-yet-parsed CDS PDFs in one Message Batch.
+parse-cds-batch.py — Parse all not-yet-parsed CDS PDFs/xlsx in one Message Batch.
 
-Submits every unparsed PDF in data/cds-pdfs/{CDS_YEAR}/ as a single Anthropic
-Message Batch request (50% cheaper than sequential calls, no per-request
-rate-limit pressure — a good fit since this isn't latency-sensitive). Polls
-until the batch finishes, then writes data/cds/{CDS_YEAR}/{slug}.json for
-each school and prints a completion summary grouped by data richness.
-
-To parse a different year, update CDS_YEAR below.
+Submits every unparsed file in data/cds-pdfs/{year}/ and data/cds-xlsx/{year}/
+as a single Anthropic Message Batch request (50% cheaper than sequential
+calls, no per-request rate-limit pressure — a good fit since this isn't
+latency-sensitive). Polls until the batch finishes, then writes
+data/cds/{year}/{slug}.json for each school and prints a completion summary
+grouped by data richness.
 
 Usage:
-    python scripts/parse-cds-batch.py [--force]
+    python scripts/parse-cds-batch.py --year 2025-2026 [--force]
 
     --force  Re-parse schools that already have a JSON output.
 
@@ -20,6 +19,7 @@ Requirements:
     ANTHROPIC_API_KEY must be set in .env or the environment
 """
 
+import argparse
 import sys
 import json
 import time
@@ -45,62 +45,50 @@ _parse_cds = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_parse_cds)
 build_request_params = _parse_cds.build_request_params
 extract_json = _parse_cds.extract_json
+score_completeness = _parse_cds.score_completeness
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-CDS_YEAR = "2025-2026"
-PDF_DIR = REPO_ROOT / "data" / "cds-pdfs" / CDS_YEAR
-OUTPUT_DIR = REPO_ROOT / "data" / "cds" / CDS_YEAR
 
 POLL_INTERVAL_SECONDS = 30
-
-CORE_ADMISSIONS_FIELDS = [
-    "applicants_total", "admitted_total", "enrolled_total",
-    "acceptance_rate", "sat_composite_25", "act_composite_25",
-    "total_undergrads", "tuition",
-]
-
-RICH_FIELDS = [
-    "gpa_distribution", "admission_factors", "demographics_detail",
-    "transfer_stats", "class_rank", "applicant_pools",
-]
-
-
-def score_completeness(data: dict) -> int:
-    present = sum(1 for f in CORE_ADMISSIONS_FIELDS if data.get(f) is not None)
-    rich = sum(1 for f in RICH_FIELDS if data.get(f) is not None and data[f] != {})
-    return present + rich
 
 
 def show_group(label: str, group: list[tuple[str, int, dict]]) -> None:
     print(f"\n-- {label} ({len(group)} schools) --")
     for slug, score, data in sorted(group, key=lambda x: -x[1]):
         name = data.get("name") or slug
-        core = sum(1 for f in CORE_ADMISSIONS_FIELDS if data.get(f) is not None)
-        rich = sum(1 for f in RICH_FIELDS if data.get(f) is not None and data[f] != {})
-        print(f"  {slug:20s}  score={score:2d}  core={core}/{len(CORE_ADMISSIONS_FIELDS)}  "
-              f"rich={rich}/{len(RICH_FIELDS)}  ({name})")
+        core = sum(1 for f in _parse_cds.CORE_ADMISSIONS_FIELDS if data.get(f) is not None)
+        rich = sum(1 for f in _parse_cds.RICH_FIELDS if data.get(f) is not None and data[f] != {})
+        print(f"  {slug:20s}  score={score:2d}  core={core}/{len(_parse_cds.CORE_ADMISSIONS_FIELDS)}  "
+              f"rich={rich}/{len(_parse_cds.RICH_FIELDS)}  ({name})")
 
 
 def main():
-    force = "--force" in sys.argv
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--year", required=True, help="CDS year, e.g. 2025-2026")
+    parser.add_argument("--force", action="store_true", help="Re-parse schools that already have a JSON output")
+    args = parser.parse_args()
 
-    pdfs = sorted(PDF_DIR.glob("*.pdf"))
-    if not pdfs:
-        sys.exit(f"No PDFs found in {PDF_DIR}")
+    pdf_dir = REPO_ROOT / "data" / "cds-pdfs" / args.year
+    xlsx_dir = REPO_ROOT / "data" / "cds-xlsx" / args.year
+    output_dir = REPO_ROOT / "data" / "cds" / args.year
 
-    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    files = sorted(pdf_dir.glob("*.pdf")) + sorted(xlsx_dir.glob("*.xlsx"))
+    if not files:
+        sys.exit(f"No PDFs or xlsx files found in {pdf_dir} or {xlsx_dir}")
+
+    output_dir.mkdir(parents=True, exist_ok=True)
 
     already_done = []  # (slug, score, data)
-    to_parse = []       # (slug, pdf_path)
-    for pdf in pdfs:
-        slug = pdf.stem
-        out = OUTPUT_DIR / f"{slug}.json"
-        if out.exists() and not force:
+    to_parse = []       # (slug, path)
+    for path in files:
+        slug = path.stem
+        out = output_dir / f"{slug}.json"
+        if out.exists() and not args.force:
             with open(out, encoding="utf-8") as f:
                 data = json.load(f)
             already_done.append((slug, score_completeness(data), data))
         else:
-            to_parse.append((slug, pdf))
+            to_parse.append((slug, path))
 
     print(f"Already parsed: {len(already_done)}  |  To parse: {len(to_parse)}")
     if not to_parse:
@@ -111,9 +99,9 @@ def main():
         print(f"\nBuilding batch of {len(to_parse)} request(s)...")
         requests = []
         build_errors = []
-        for slug, pdf in to_parse:
+        for slug, path in to_parse:
             try:
-                requests.append({"custom_id": slug, "params": build_request_params(pdf)})
+                requests.append({"custom_id": slug, "params": build_request_params(path)})
             except Exception as e:
                 build_errors.append((slug, str(e)))
 
@@ -151,7 +139,7 @@ def main():
                 errors.append((slug, f"could not parse response JSON: {e}"))
                 continue
             data["slug"] = slug
-            out = OUTPUT_DIR / f"{slug}.json"
+            out = output_dir / f"{slug}.json"
             with open(out, "w", encoding="utf-8") as f:
                 json.dump(data, f, indent=2)
             newly_parsed.append((slug, score_completeness(data), data))
@@ -166,9 +154,9 @@ def main():
                 print(f"  x {slug}: {msg}")
 
         all_results = already_done + newly_parsed
-        rich = [(s, sc, d) for s, sc, d in all_results if sc >= 12]
-        partial = [(s, sc, d) for s, sc, d in all_results if 6 <= sc < 12]
-        sparse = [(s, sc, d) for s, sc, d in all_results if sc < 6]
+        rich = [(s, sc, d) for s, sc, d in all_results if _parse_cds.completeness_label(sc) == "rich"]
+        partial = [(s, sc, d) for s, sc, d in all_results if _parse_cds.completeness_label(sc) == "partial"]
+        sparse = [(s, sc, d) for s, sc, d in all_results if _parse_cds.completeness_label(sc) == "sparse"]
 
         show_group("RICH — full CDS data", rich)
         show_group("PARTIAL — some sections missing", partial)
