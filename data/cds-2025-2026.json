@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-14",
+  "generated": "2026-09-17",
   "cds_year": "2025-26",
   "schools": [
     {
@@ -9907,25 +9907,25 @@
     },
     {
       "id": 59,
-      "name": "University of California, Merced",
-      "data_year": "2024-25",
+      "name": "University of California-Merced",
+      "data_year": "2025-26",
       "city": "Merced",
       "state": "CA",
       "location": "Merced, CA",
       "school_type": "Public",
       "website": "ucmerced.edu",
-      "applicants_total": 31582,
-      "applicants_men": 15051,
-      "applicants_women": 15134,
-      "admitted_total": 28903,
-      "admitted_men": 13672,
-      "admitted_women": 13933,
-      "enrolled_total": 2097,
-      "enrolled_men": 1162,
-      "enrolled_women": 854,
-      "acceptance_rate": 0.9152,
+      "applicants_total": 47985,
+      "applicants_men": 22011,
+      "applicants_women": 24077,
+      "admitted_total": 46564,
+      "admitted_men": 21227,
+      "admitted_women": 23457,
+      "enrolled_total": 1982,
+      "enrolled_men": 1070,
+      "enrolled_women": 847,
+      "acceptance_rate": 0.9704,
       "application_fee": 70,
-      "avg_gpa_weighted": 3.57,
+      "avg_gpa_weighted": 3.59,
       "rd_deadline": "11/30",
       "waitlist_offered": null,
       "waitlist_accepted": null,
@@ -9951,80 +9951,75 @@
       "act_math_75": null,
       "act_english_25": null,
       "act_english_75": null,
-      "total_undergrads": 8372,
-      "undergrads_male": 4484,
-      "undergrads_female": 3677,
-      "retention_rate": null,
+      "total_undergrads": 8234,
+      "undergrads_male": 4457,
+      "undergrads_female": 3442,
+      "retention_rate": 0.8514,
       "tuition": null,
-      "tuition_in_state": null,
-      "tuition_out_of_state": null,
-      "required_fees": null,
-      "room_and_board": null,
+      "tuition_in_state": 14202,
+      "tuition_out_of_state": 53472,
+      "required_fees": 2723,
+      "room_and_board": 23126,
       "books_supplies": null,
       "other_expenses": null,
-      "pct_out_of_state": null,
-      "pct_on_campus_housing": 0.8,
+      "pct_out_of_state": 0.01,
+      "pct_on_campus_housing": 0.75,
       "applicant_pools": null,
       "gender_breakdown": {
         "applied": {
-          "male": 15051,
-          "female": 15134
+          "male": 22011,
+          "female": 24077
         },
         "accepted": {
-          "male": 13672,
-          "female": 13933
+          "male": 21227,
+          "female": 23457
         },
         "enrolled": {
-          "male": 1162,
-          "female": 854
+          "male": 1070,
+          "female": 847
         }
       },
       "demographics_detail": {
         "first_year": {
-          "nonresident_aliens": 87,
-          "hispanic": 1095,
-          "black": 112,
-          "white": 168,
-          "american_indian": 5,
-          "asian": 493,
-          "pacific_islander": 10,
-          "two_or_more": 101,
-          "unknown": 26,
-          "total": 2097
+          "nonresident_aliens": 26,
+          "hispanic": 1189,
+          "black": 97,
+          "white": 163,
+          "american_indian": 3,
+          "asian": 374,
+          "pacific_islander": 3,
+          "two_or_more": 108,
+          "unknown": 19,
+          "total": 1982
         },
         "undergrad": {
-          "nonresident_aliens": 322,
-          "hispanic": 4402,
-          "black": 417,
-          "white": 770,
-          "american_indian": 15,
-          "asian": 1941,
-          "pacific_islander": 21,
-          "two_or_more": 384,
-          "unknown": 100,
-          "total": 8372
+          "nonresident_aliens": 62,
+          "hispanic": 4544,
+          "black": 407,
+          "white": 750,
+          "american_indian": 12,
+          "asian": 1852,
+          "pacific_islander": 16,
+          "two_or_more": 401,
+          "unknown": 91,
+          "total": 8135
         }
       },
       "geographic_breakdown": {
-        "out_of_state_pct": null,
+        "out_of_state_pct": 0.01,
         "international_pct": null
       },
-      "sat_act_breakdown": {
-        "sat_submitted_count": null,
-        "sat_submitted_pct": null,
-        "act_submitted_count": null,
-        "act_submitted_pct": null
-      },
+      "sat_act_breakdown": null,
       "class_rank": null,
       "gpa_distribution": {
-        "gpa_40": 0.17,
-        "gpa_375_399": 0.18,
-        "gpa_350_374": 0.23,
-        "gpa_325_349": 0.2,
-        "gpa_300_324": 0.18,
-        "gpa_250_299": 0.04,
-        "gpa_200_249": null,
-        "gpa_100_199": null
+        "gpa_40": 0.2003,
+        "gpa_375_399": 0.171,
+        "gpa_350_374": 0.2084,
+        "gpa_325_349": 0.1968,
+        "gpa_300_324": 0.1837,
+        "gpa_250_299": 0.0399,
+        "gpa_200_249": 0,
+        "gpa_100_199": 0
       },
       "admission_factors": {
         "rigor": "very_important",
@@ -10049,19 +10044,19 @@
       },
       "transfer_stats": {
         "male": {
-          "applied": 2022,
-          "admitted": 1260,
-          "enrolled": 114
+          "applied": 2605,
+          "admitted": 1830,
+          "enrolled": 140
         },
         "female": {
-          "applied": 1564,
-          "admitted": 1021,
-          "enrolled": 100
+          "applied": 2271,
+          "admitted": 1675,
+          "enrolled": 123
         },
         "total": {
-          "applied": 3766,
-          "admitted": 2397,
-          "enrolled": 223
+          "applied": 5148,
+          "admitted": 3712,
+          "enrolled": 272
         }
       },
       "slug": "uc-merced"
