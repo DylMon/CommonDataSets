@@ -92,6 +92,7 @@ const SCHOOL_META = {
   'william-mary':       { color: '#004e38' },
   'wisconsin-madison':  { color: '#c5050c' },
   'wpi':                { color: '#a6192e' },
+  'asu': { color: '#8C1D40' },
 };
 
 // Logos live at images/logos/<slug>.png. A few schools have none yet; the
