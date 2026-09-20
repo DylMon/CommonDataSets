@@ -1,0 +1,166 @@
+{
+  "name": "Auburn University",
+  "data_year": "2025-26",
+  "city": "Auburn",
+  "state": "AL",
+  "location": "Auburn, AL",
+  "school_type": "Public",
+  "website": "www.auburn.edu",
+  "applicants_total": 59121,
+  "applicants_men": 23647,
+  "applicants_women": 35474,
+  "admitted_total": 27724,
+  "admitted_men": 11568,
+  "admitted_women": 16156,
+  "enrolled_total": 6112,
+  "enrolled_men": 2838,
+  "enrolled_women": 3274,
+  "acceptance_rate": 0.469,
+  "application_fee": 50,
+  "avg_gpa_weighted": 4.1,
+  "rd_deadline": "2/1",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/1",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.19,
+  "sat_submitted_count": 1133,
+  "act_submitted_pct": 0.72,
+  "act_submitted_count": 4431,
+  "sat_composite_25": 1280,
+  "sat_composite_75": 1370,
+  "sat_reading_25": 630,
+  "sat_reading_75": 700,
+  "sat_math_25": 620,
+  "sat_math_75": 700,
+  "act_composite_25": 26,
+  "act_composite_75": 31,
+  "act_math_25": 24,
+  "act_math_75": 30,
+  "act_english_25": 25,
+  "act_english_75": 33,
+  "total_undergrads": 28953,
+  "undergrads_male": 14192,
+  "undergrads_female": 14761,
+  "retention_rate": 0.942,
+  "tuition": null,
+  "tuition_in_state": 11352,
+  "tuition_out_of_state": 34056,
+  "required_fees": 1966,
+  "room_and_board": 17210,
+  "books_supplies": 1200,
+  "other_expenses": 3088,
+  "pct_out_of_state": 0.5,
+  "pct_on_campus_housing": 0.59,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 23647,
+      "female": 35474
+    },
+    "accepted": {
+      "male": 11568,
+      "female": 16156
+    },
+    "enrolled": {
+      "male": 2838,
+      "female": 3274
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 37,
+      "hispanic": 336,
+      "black": 164,
+      "white": 5131,
+      "american_indian": 18,
+      "asian": 168,
+      "pacific_islander": 3,
+      "two_or_more": 226,
+      "unknown": 29,
+      "total": 6112
+    },
+    "undergrad": {
+      "nonresident_aliens": 366,
+      "hispanic": 1440,
+      "black": 1100,
+      "white": 23999,
+      "american_indian": 81,
+      "asian": 841,
+      "pacific_islander": 23,
+      "two_or_more": 984,
+      "unknown": 119,
+      "total": 28953
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.5,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 1133,
+    "sat_submitted_pct": 0.19,
+    "act_submitted_count": 4431,
+    "act_submitted_pct": 0.72
+  },
+  "class_rank": {
+    "top10": 0.35,
+    "top25": 0.65,
+    "top50": 0.93,
+    "bottom50": 0.07,
+    "bottom25": 0.01
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.6402,
+    "gpa_375_399": 0.2025,
+    "gpa_350_374": 0.1038,
+    "gpa_325_349": 0.038,
+    "gpa_300_324": 0.0119,
+    "gpa_250_299": 0.0029,
+    "gpa_200_249": 0.0005,
+    "gpa_100_199": 0.0002
+  },
+  "admission_factors": {
+    "rigor": "important",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "very_important",
+    "essay": "very_important",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "important",
+    "first_gen": "important",
+    "alumni_relation": "important",
+    "geo_residence": "important",
+    "state_residence": "important",
+    "religious": "not_considered",
+    "racial_ethnic": "not_considered",
+    "volunteer": "important",
+    "work_experience": "important",
+    "applicant_interest": "important"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 2239,
+      "admitted": 1381,
+      "enrolled": 731
+    },
+    "female": {
+      "applied": 2319,
+      "admitted": 1287,
+      "enrolled": 595
+    },
+    "total": {
+      "applied": 4558,
+      "admitted": 2668,
+      "enrolled": 1326
+    }
+  },
+  "slug": "auburn"
+}
