@@ -98,6 +98,10 @@ const SCHOOL_META = {
   'coloradoboulder': { color: '#CFB87C' },
   'colorado-state': { color: '#1e4d2b' },
   'creighton': { color: '#005CA9' },
+  'famu': { color: '#D44500' },
+  'florida-atlantic': { color: '#003366' },
+  'iowa-state-science-tech': { color: '#c8102e' },
+  'kansas-state': { color: '#512888' },
 };
 
 // Logos live at images/logos/<slug>.png. A few schools have none yet; the
