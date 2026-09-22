@@ -94,6 +94,7 @@ const SCHOOL_META = {
   'wpi':                { color: '#a6192e' },
   'asu': { color: '#8C1D40' },
   'chapman': { color: '#A50034' },
+  'clarkson': { color: '#0D433B' },
 };
 
 // Logos live at images/logos/<slug>.png. A few schools have none yet; the
