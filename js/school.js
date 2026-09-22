@@ -97,6 +97,7 @@ const SCHOOL_META = {
   'clarkson': { color: '#0D433B' },
   'coloradoboulder': { color: '#CFB87C' },
   'colorado-state': { color: '#1e4d2b' },
+  'creighton': { color: '#005CA9' },
 };
 
 // Logos live at images/logos/<slug>.png. A few schools have none yet; the
