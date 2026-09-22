@@ -93,6 +93,7 @@ const SCHOOL_META = {
   'wisconsin-madison':  { color: '#c5050c' },
   'wpi':                { color: '#a6192e' },
   'asu': { color: '#8C1D40' },
+  'chapman': { color: '#A50034' },
 };
 
 // Logos live at images/logos/<slug>.png. A few schools have none yet; the

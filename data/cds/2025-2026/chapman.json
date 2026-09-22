@@ -1,0 +1,165 @@
+{
+  "name": "Chapman University",
+  "data_year": "2025-2026",
+  "city": "Orange",
+  "state": "CA",
+  "location": "Orange, CA",
+  "school_type": "Private",
+  "website": "www.chapman.edu",
+  "applicants_total": 14769,
+  "applicants_men": 5212,
+  "applicants_women": 9548,
+  "admitted_total": 10642,
+  "admitted_men": 3649,
+  "admitted_women": 6988,
+  "enrolled_total": 1727,
+  "enrolled_men": 625,
+  "enrolled_women": 1101,
+  "acceptance_rate": 0.7206,
+  "application_fee": 70,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "1/15",
+  "waitlist_offered": 1726,
+  "waitlist_accepted": 764,
+  "waitlist_admitted": 246,
+  "ea_ed_type": "ED",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/20",
+  "ea_apps_received": 282,
+  "ea_apps_admitted": 145,
+  "sat_submitted_pct": 0.1592,
+  "sat_submitted_count": 275,
+  "act_submitted_pct": 0.0596,
+  "act_submitted_count": 103,
+  "sat_composite_25": 1255,
+  "sat_composite_75": 1420,
+  "sat_reading_25": 640,
+  "sat_reading_75": 720,
+  "sat_math_25": 590,
+  "sat_math_75": 710,
+  "act_composite_25": 28,
+  "act_composite_75": 32,
+  "act_math_25": 26,
+  "act_math_75": 30,
+  "act_english_25": 28,
+  "act_english_75": 35,
+  "total_undergrads": 7630,
+  "undergrads_male": 2926,
+  "undergrads_female": 4697,
+  "retention_rate": 0.9056,
+  "tuition": 69990,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 404,
+  "room_and_board": 18900,
+  "books_supplies": 1600,
+  "other_expenses": 2182,
+  "pct_out_of_state": 0.3551,
+  "pct_on_campus_housing": 0.8552,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 1726,
+      "accepted_spots": 764,
+      "enrolled": 246
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 5212,
+      "female": 9548
+    },
+    "accepted": {
+      "male": 3649,
+      "female": 6988
+    },
+    "enrolled": {
+      "male": 625,
+      "female": 1101
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 57,
+      "hispanic": 421,
+      "black": 52,
+      "white": 764,
+      "american_indian": 1,
+      "asian": 244,
+      "pacific_islander": 2,
+      "two_or_more": 139,
+      "unknown": 47,
+      "total": 1727
+    },
+    "undergrad": {
+      "nonresident_aliens": 226,
+      "hispanic": 1599,
+      "black": 182,
+      "white": 3399,
+      "american_indian": 7,
+      "asian": 1111,
+      "pacific_islander": 14,
+      "two_or_more": 657,
+      "unknown": 197,
+      "total": 7392
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.3551,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 275,
+    "sat_submitted_pct": 0.1592,
+    "act_submitted_count": 103,
+    "act_submitted_pct": 0.0596
+  },
+  "class_rank": {
+    "top10": 0.302,
+    "top25": 0.644,
+    "top50": 0.899,
+    "bottom50": 0.101,
+    "bottom25": 0.04
+  },
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "very_important",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "very_important",
+    "recommendations": "considered",
+    "interview": "considered",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "very_important",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 621,
+      "admitted": 359,
+      "enrolled": 140
+    },
+    "female": {
+      "applied": 718,
+      "admitted": 458,
+      "enrolled": 159
+    },
+    "total": {
+      "applied": 1340,
+      "admitted": 818,
+      "enrolled": 300
+    }
+  },
+  "slug": "chapman"
+}

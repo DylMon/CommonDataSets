@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-20",
+  "generated": "2026-09-22",
   "cds_year": "2025-26",
   "schools": [
     {
@@ -2046,6 +2046,172 @@
     },
     {
       "id": 13,
+      "name": "Chapman University",
+      "data_year": "2025-2026",
+      "city": "Orange",
+      "state": "CA",
+      "location": "Orange, CA",
+      "school_type": "Private",
+      "website": "www.chapman.edu",
+      "applicants_total": 14769,
+      "applicants_men": 5212,
+      "applicants_women": 9548,
+      "admitted_total": 10642,
+      "admitted_men": 3649,
+      "admitted_women": 6988,
+      "enrolled_total": 1727,
+      "enrolled_men": 625,
+      "enrolled_women": 1101,
+      "acceptance_rate": 0.7206,
+      "application_fee": 70,
+      "avg_gpa_weighted": null,
+      "rd_deadline": "1/15",
+      "waitlist_offered": 1726,
+      "waitlist_accepted": 764,
+      "waitlist_admitted": 246,
+      "ea_ed_type": "ED",
+      "ea_ed_deadline": "11/1",
+      "ea_ed_notification": "12/20",
+      "ea_apps_received": 282,
+      "ea_apps_admitted": 145,
+      "sat_submitted_pct": 0.1592,
+      "sat_submitted_count": 275,
+      "act_submitted_pct": 0.0596,
+      "act_submitted_count": 103,
+      "sat_composite_25": 1255,
+      "sat_composite_75": 1420,
+      "sat_reading_25": 640,
+      "sat_reading_75": 720,
+      "sat_math_25": 590,
+      "sat_math_75": 710,
+      "act_composite_25": 28,
+      "act_composite_75": 32,
+      "act_math_25": 26,
+      "act_math_75": 30,
+      "act_english_25": 28,
+      "act_english_75": 35,
+      "total_undergrads": 7630,
+      "undergrads_male": 2926,
+      "undergrads_female": 4697,
+      "retention_rate": 0.9056,
+      "tuition": 69990,
+      "tuition_in_state": null,
+      "tuition_out_of_state": null,
+      "required_fees": 404,
+      "room_and_board": 18900,
+      "books_supplies": 1600,
+      "other_expenses": 2182,
+      "pct_out_of_state": 0.3551,
+      "pct_on_campus_housing": 0.8552,
+      "applicant_pools": {
+        "ea": null,
+        "rd": null,
+        "waitlist": {
+          "offered": 1726,
+          "accepted_spots": 764,
+          "enrolled": 246
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": 5212,
+          "female": 9548
+        },
+        "accepted": {
+          "male": 3649,
+          "female": 6988
+        },
+        "enrolled": {
+          "male": 625,
+          "female": 1101
+        }
+      },
+      "demographics_detail": {
+        "first_year": {
+          "nonresident_aliens": 57,
+          "hispanic": 421,
+          "black": 52,
+          "white": 764,
+          "american_indian": 1,
+          "asian": 244,
+          "pacific_islander": 2,
+          "two_or_more": 139,
+          "unknown": 47,
+          "total": 1727
+        },
+        "undergrad": {
+          "nonresident_aliens": 226,
+          "hispanic": 1599,
+          "black": 182,
+          "white": 3399,
+          "american_indian": 7,
+          "asian": 1111,
+          "pacific_islander": 14,
+          "two_or_more": 657,
+          "unknown": 197,
+          "total": 7392
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.3551,
+        "international_pct": null
+      },
+      "sat_act_breakdown": {
+        "sat_submitted_count": 275,
+        "sat_submitted_pct": 0.1592,
+        "act_submitted_count": 103,
+        "act_submitted_pct": 0.0596
+      },
+      "class_rank": {
+        "top10": 0.302,
+        "top25": 0.644,
+        "top50": 0.899,
+        "bottom50": 0.101,
+        "bottom25": 0.04
+      },
+      "gpa_distribution": null,
+      "admission_factors": {
+        "rigor": "very_important",
+        "class_rank": "very_important",
+        "academic_gpa": "very_important",
+        "test_scores": "considered",
+        "essay": "very_important",
+        "recommendations": "considered",
+        "interview": "considered",
+        "extracurriculars": "important",
+        "talent": "important",
+        "character": "very_important",
+        "first_gen": "considered",
+        "alumni_relation": "not_considered",
+        "geo_residence": "considered",
+        "state_residence": "considered",
+        "religious": "not_considered",
+        "racial_ethnic": null,
+        "volunteer": "considered",
+        "work_experience": "considered",
+        "applicant_interest": "considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 621,
+          "admitted": 359,
+          "enrolled": 140
+        },
+        "female": {
+          "applied": 718,
+          "admitted": 458,
+          "enrolled": 159
+        },
+        "total": {
+          "applied": 1340,
+          "admitted": 818,
+          "enrolled": 300
+        }
+      },
+      "slug": "chapman"
+    },
+    {
+      "id": 14,
       "name": "Clemson University",
       "data_year": "2025-2026",
       "city": "Clemson",
@@ -2220,7 +2386,7 @@
       "slug": "clemson"
     },
     {
-      "id": 14,
+      "id": 15,
       "name": "Carnegie Mellon University",
       "data_year": "2025-26",
       "city": "Pittsburgh",
@@ -2392,7 +2558,7 @@
       "slug": "cmu"
     },
     {
-      "id": 15,
+      "id": 16,
       "name": "Columbia University",
       "data_year": "2025-26",
       "city": "New York",
@@ -2574,7 +2740,7 @@
       "slug": "columbia"
     },
     {
-      "id": 16,
+      "id": 17,
       "name": "Cornell University",
       "data_year": "2025-26",
       "city": "Ithaca",
@@ -2748,7 +2914,7 @@
       "slug": "cornell"
     },
     {
-      "id": 17,
+      "id": 18,
       "name": "Dartmouth College",
       "data_year": "2025-26",
       "city": "Hanover",
@@ -2914,7 +3080,7 @@
       "slug": "dartmouth"
     },
     {
-      "id": 18,
+      "id": 19,
       "name": "Drexel University",
       "data_year": "2025-2026",
       "city": "Philadelphia",
@@ -3093,7 +3259,7 @@
       "slug": "drexel"
     },
     {
-      "id": 19,
+      "id": 20,
       "name": "Duke University",
       "data_year": "2025-2026",
       "city": "Durham",
@@ -3245,7 +3411,7 @@
       "slug": "duke"
     },
     {
-      "id": 20,
+      "id": 21,
       "name": "Emory University",
       "data_year": "2025-26",
       "city": "Atlanta",
@@ -3420,7 +3586,7 @@
       "slug": "emory"
     },
     {
-      "id": 21,
+      "id": 22,
       "name": "Florida International University",
       "data_year": "2025-26",
       "city": "Miami",
@@ -3587,7 +3753,7 @@
       "slug": "fiu"
     },
     {
-      "id": 22,
+      "id": 23,
       "name": "Florida State University",
       "data_year": "2025-26",
       "city": "Tallahassee",
@@ -3762,7 +3928,7 @@
       "slug": "fsu"
     },
     {
-      "id": 23,
+      "id": 24,
       "name": "Georgetown University",
       "data_year": "2025-2026",
       "city": "Washington",
@@ -3928,7 +4094,7 @@
       "slug": "georgetown"
     },
     {
-      "id": 24,
+      "id": 25,
       "name": "Georgia Institute of Technology",
       "data_year": "2025-26",
       "city": "Atlanta",
@@ -4103,7 +4269,7 @@
       "slug": "georgia-tech"
     },
     {
-      "id": 25,
+      "id": 26,
       "name": "George Washington University",
       "data_year": "2025-26",
       "city": "Washington",
@@ -4269,7 +4435,7 @@
       "slug": "gwu"
     },
     {
-      "id": 26,
+      "id": 27,
       "name": "Harvard University",
       "data_year": "2025-26",
       "city": "Cambridge",
@@ -4444,7 +4610,7 @@
       "slug": "harvard"
     },
     {
-      "id": 27,
+      "id": 28,
       "name": "Howard University",
       "data_year": "2025-2026",
       "city": "Washington",
@@ -4613,7 +4779,7 @@
       "slug": "howard"
     },
     {
-      "id": 28,
+      "id": 29,
       "name": "Indiana University Bloomington",
       "data_year": "2025-26",
       "city": "Bloomington",
@@ -4738,7 +4904,7 @@
       "slug": "indiana-bloomington"
     },
     {
-      "id": 29,
+      "id": 30,
       "name": "Johns Hopkins University",
       "data_year": "2025-26",
       "city": "Baltimore",
@@ -4921,7 +5087,7 @@
       "slug": "jhu"
     },
     {
-      "id": 30,
+      "id": 31,
       "name": "Lehigh University",
       "data_year": "2025-26",
       "city": "Bethlehem",
@@ -5087,7 +5253,7 @@
       "slug": "lehigh"
     },
     {
-      "id": 31,
+      "id": 32,
       "name": "Marquette University",
       "data_year": "2025-2026",
       "city": "Milwaukee",
@@ -5262,7 +5428,7 @@
       "slug": "marquette"
     },
     {
-      "id": 32,
+      "id": 33,
       "name": "University of Miami",
       "data_year": "2025-26",
       "city": "Coral Gables",
@@ -5437,7 +5603,7 @@
       "slug": "miami"
     },
     {
-      "id": 33,
+      "id": 34,
       "name": "Michigan State University",
       "data_year": "2025-2026",
       "city": "East Lansing",
@@ -5604,7 +5770,7 @@
       "slug": "michigan-state"
     },
     {
-      "id": 34,
+      "id": 35,
       "name": "Massachusetts Institute of Technology",
       "data_year": "2025-26",
       "city": "Cambridge",
@@ -5770,7 +5936,7 @@
       "slug": "mit"
     },
     {
-      "id": 35,
+      "id": 36,
       "name": "North Carolina State University",
       "data_year": "2025-26",
       "city": "Raleigh",
@@ -5945,7 +6111,7 @@
       "slug": "nc-state"
     },
     {
-      "id": 36,
+      "id": 37,
       "name": "New Jersey Institute of Technology",
       "data_year": "2025-2026",
       "city": "Newark",
@@ -6120,7 +6286,7 @@
       "slug": "njit"
     },
     {
-      "id": 37,
+      "id": 38,
       "name": "Northeastern University",
       "data_year": "2024-2025",
       "city": "Boston",
@@ -6291,7 +6457,7 @@
       "slug": "northeastern"
     },
     {
-      "id": 38,
+      "id": 39,
       "name": "Northwestern University",
       "data_year": "2025-26",
       "city": "Evanston",
@@ -6459,7 +6625,7 @@
       "slug": "northwestern"
     },
     {
-      "id": 39,
+      "id": 40,
       "name": "University of Notre Dame",
       "data_year": "2025-26",
       "city": "Notre Dame",
@@ -6625,7 +6791,7 @@
       "slug": "notre-dame"
     },
     {
-      "id": 40,
+      "id": 41,
       "name": "New York University",
       "data_year": "2025-26",
       "city": "New York",
@@ -6786,7 +6952,7 @@
       "slug": "nyu"
     },
     {
-      "id": 41,
+      "id": 42,
       "name": "The Ohio State University",
       "data_year": "2025-2026",
       "city": "Columbus",
@@ -6952,7 +7118,7 @@
       "slug": "ohio-state"
     },
     {
-      "id": 42,
+      "id": 43,
       "name": "Penn State University Park",
       "data_year": "2025-26",
       "city": "University Park",
@@ -7127,7 +7293,7 @@
       "slug": "penn-state"
     },
     {
-      "id": 43,
+      "id": 44,
       "name": "Pepperdine University",
       "data_year": "2025-26",
       "city": "Malibu",
@@ -7296,7 +7462,7 @@
       "slug": "pepperdine"
     },
     {
-      "id": 44,
+      "id": 45,
       "name": "University of Pittsburgh",
       "data_year": "2025-26",
       "city": "Pittsburgh",
@@ -7475,7 +7641,7 @@
       "slug": "pitt"
     },
     {
-      "id": 45,
+      "id": 46,
       "name": "Princeton University",
       "data_year": "2025-26",
       "city": "Princeton",
@@ -7644,7 +7810,7 @@
       "slug": "princeton"
     },
     {
-      "id": 46,
+      "id": 47,
       "name": "Purdue University",
       "data_year": "2025-26",
       "city": "West Lafayette",
@@ -7819,7 +7985,7 @@
       "slug": "purdue"
     },
     {
-      "id": 47,
+      "id": 48,
       "name": "William Marsh Rice University",
       "data_year": "2025-26",
       "city": "Houston",
@@ -7993,7 +8159,7 @@
       "slug": "rice"
     },
     {
-      "id": 48,
+      "id": 49,
       "name": "Rochester Institute of Technology",
       "data_year": "2025-26",
       "city": "Rochester",
@@ -8172,7 +8338,7 @@
       "slug": "rit"
     },
     {
-      "id": 49,
+      "id": 50,
       "name": "University of Rochester",
       "data_year": "2025-26",
       "city": "Rochester",
@@ -8355,7 +8521,7 @@
       "slug": "rochester"
     },
     {
-      "id": 50,
+      "id": 51,
       "name": "Rensselaer Polytechnic Institute",
       "data_year": "2025-26",
       "city": "Troy",
@@ -8530,7 +8696,7 @@
       "slug": "rpi"
     },
     {
-      "id": 51,
+      "id": 52,
       "name": "Santa Clara University",
       "data_year": "2025-26",
       "city": "Santa Clara",
@@ -8705,7 +8871,7 @@
       "slug": "santa-clara"
     },
     {
-      "id": 52,
+      "id": 53,
       "name": "Southern Methodist University",
       "data_year": "2025-26",
       "city": "Dallas",
@@ -8880,7 +9046,7 @@
       "slug": "smu"
     },
     {
-      "id": 53,
+      "id": 54,
       "name": "Stanford University",
       "data_year": "2025-26",
       "city": "Stanford",
@@ -9055,7 +9221,7 @@
       "slug": "stanford"
     },
     {
-      "id": 54,
+      "id": 55,
       "name": "Stevens Institute of Technology",
       "data_year": "2025-2026",
       "city": "Hoboken",
@@ -9234,7 +9400,7 @@
       "slug": "stevens"
     },
     {
-      "id": 55,
+      "id": 56,
       "name": "Stony Brook University",
       "data_year": "2025-26",
       "city": "Stony Brook",
@@ -9409,7 +9575,7 @@
       "slug": "stony-brook"
     },
     {
-      "id": 56,
+      "id": 57,
       "name": "Texas A&M University",
       "data_year": "2025-26",
       "city": "College Station",
@@ -9559,7 +9725,7 @@
       "slug": "texas-am"
     },
     {
-      "id": 57,
+      "id": 58,
       "name": "Tufts University",
       "data_year": "2025-2026",
       "city": "Medford",
@@ -9733,7 +9899,7 @@
       "slug": "tufts"
     },
     {
-      "id": 58,
+      "id": 59,
       "name": "Tulane University",
       "data_year": "2025-26",
       "city": "New Orleans",
@@ -9908,7 +10074,7 @@
       "slug": "tulane"
     },
     {
-      "id": 59,
+      "id": 60,
       "name": "University of California - Davis",
       "data_year": "2025-2026",
       "city": "Davis",
@@ -10076,7 +10242,7 @@
       "slug": "uc-davis"
     },
     {
-      "id": 60,
+      "id": 61,
       "name": "University of California, Irvine",
       "data_year": "2025-26",
       "city": "Irvine",
@@ -10235,7 +10401,7 @@
       "slug": "uc-irvine"
     },
     {
-      "id": 61,
+      "id": 62,
       "name": "University of California-Merced",
       "data_year": "2025-26",
       "city": "Merced",
@@ -10391,7 +10557,7 @@
       "slug": "uc-merced"
     },
     {
-      "id": 62,
+      "id": 63,
       "name": "University of California, Riverside",
       "data_year": "2025-26",
       "city": "Riverside",
@@ -10559,7 +10725,7 @@
       "slug": "uc-riverside"
     },
     {
-      "id": 63,
+      "id": 64,
       "name": "University of California, San Diego",
       "data_year": "2025-26",
       "city": "La Jolla",
@@ -10733,7 +10899,7 @@
       "slug": "uc-san-diego"
     },
     {
-      "id": 64,
+      "id": 65,
       "name": "University of California, Santa Cruz",
       "data_year": "2025-26",
       "city": "Santa Cruz",
@@ -10901,7 +11067,7 @@
       "slug": "uc-santa-cruz"
     },
     {
-      "id": 65,
+      "id": 66,
       "name": "The University of Chicago",
       "data_year": "2025-26",
       "city": "Chicago",
@@ -11068,7 +11234,7 @@
       "slug": "uchicago"
     },
     {
-      "id": 66,
+      "id": 67,
       "name": "University of California, Los Angeles",
       "data_year": "2025-2026",
       "city": "Los Angeles",
@@ -11232,7 +11398,7 @@
       "slug": "ucla"
     },
     {
-      "id": 67,
+      "id": 68,
       "name": "University of Connecticut",
       "data_year": "2025-26",
       "city": "Storrs",
@@ -11398,7 +11564,7 @@
       "slug": "uconn"
     },
     {
-      "id": 68,
+      "id": 69,
       "name": "University of California, Santa Barbara",
       "data_year": "2025-26",
       "city": "Santa Barbara",
@@ -11566,7 +11732,7 @@
       "slug": "ucsb"
     },
     {
-      "id": 69,
+      "id": 70,
       "name": "University of Florida",
       "data_year": "2025-2026",
       "city": "Gainesville",
@@ -11741,7 +11907,7 @@
       "slug": "uf"
     },
     {
-      "id": 70,
+      "id": 71,
       "name": "University of Georgia",
       "data_year": "2025-26",
       "city": "Athens",
@@ -11910,7 +12076,7 @@
       "slug": "uga"
     },
     {
-      "id": 71,
+      "id": 72,
       "name": "University of Illinois Chicago",
       "data_year": "2025-26",
       "city": "Chicago",
@@ -12077,7 +12243,7 @@
       "slug": "uic"
     },
     {
-      "id": 72,
+      "id": 73,
       "name": "University of Illinois Urbana-Champaign",
       "data_year": "2025-26",
       "city": "Champaign",
@@ -12243,7 +12409,7 @@
       "slug": "uiuc"
     },
     {
-      "id": 73,
+      "id": 74,
       "name": "University of Massachusetts Amherst",
       "data_year": "2025-26",
       "city": "Amherst",
@@ -12418,7 +12584,7 @@
       "slug": "umass-amherst"
     },
     {
-      "id": 74,
+      "id": 75,
       "name": "University of Michigan",
       "data_year": "2025-26",
       "city": "Ann Arbor",
@@ -12594,7 +12760,7 @@
       "slug": "umich"
     },
     {
-      "id": 75,
+      "id": 76,
       "name": "University of North Carolina at Chapel Hill",
       "data_year": "2025-26",
       "city": "Chapel Hill",
@@ -12769,7 +12935,7 @@
       "slug": "unc"
     },
     {
-      "id": 76,
+      "id": 77,
       "name": "University of Pennsylvania",
       "data_year": "2025-26",
       "city": "Philadelphia",
@@ -12944,7 +13110,7 @@
       "slug": "upenn"
     },
     {
-      "id": 77,
+      "id": 78,
       "name": "University of Southern California",
       "data_year": "2025-26",
       "city": "Los Angeles",
@@ -13111,7 +13277,7 @@
       "slug": "usc"
     },
     {
-      "id": 78,
+      "id": 79,
       "name": "University of South Florida",
       "data_year": "2025-26",
       "city": "Tampa",
@@ -13286,7 +13452,7 @@
       "slug": "usf"
     },
     {
-      "id": 79,
+      "id": 80,
       "name": "The University of Texas at Austin",
       "data_year": "2025-26",
       "city": "Austin",
@@ -13441,7 +13607,7 @@
       "slug": "ut-austin"
     },
     {
-      "id": 80,
+      "id": 81,
       "name": "University of Virginia",
       "data_year": "2025-26",
       "city": "Charlottesville",
@@ -13614,7 +13780,7 @@
       "slug": "uva"
     },
     {
-      "id": 81,
+      "id": 82,
       "name": "Vanderbilt University",
       "data_year": "2025-26",
       "city": "Nashville",
@@ -13789,7 +13955,7 @@
       "slug": "vanderbilt"
     },
     {
-      "id": 82,
+      "id": 83,
       "name": "Villanova University",
       "data_year": "2025-26",
       "city": "Villanova",
@@ -13964,7 +14130,7 @@
       "slug": "villanova"
     },
     {
-      "id": 83,
+      "id": 84,
       "name": "Virginia Polytechnic Institute and State University",
       "data_year": "2025-26",
       "city": "Blacksburg",
@@ -14133,7 +14299,7 @@
       "slug": "virginia-tech"
     },
     {
-      "id": 84,
+      "id": 85,
       "name": "Wake Forest University",
       "data_year": "2025-26",
       "city": "Winston Salem",
@@ -14306,7 +14472,7 @@
       "slug": "wake-forest"
     },
     {
-      "id": 85,
+      "id": 86,
       "name": "University of Washington",
       "data_year": "2025-2026",
       "city": "Seattle",
@@ -14479,7 +14645,7 @@
       "slug": "washington-seattle"
     },
     {
-      "id": 86,
+      "id": 87,
       "name": "Washington University in St. Louis",
       "data_year": "2025-26",
       "city": "St. Louis",
@@ -14645,7 +14811,7 @@
       "slug": "washu"
     },
     {
-      "id": 87,
+      "id": 88,
       "name": "William & Mary",
       "data_year": "2025-2026",
       "city": "Williamsburg",
@@ -14820,7 +14986,7 @@
       "slug": "william-mary"
     },
     {
-      "id": 88,
+      "id": 89,
       "name": "University of Wisconsin-Madison",
       "data_year": "2025-26",
       "city": "Madison",
@@ -14995,7 +15161,7 @@
       "slug": "wisconsin-madison"
     },
     {
-      "id": 89,
+      "id": 90,
       "name": "Worcester Polytechnic Institute",
       "data_year": "2025-26",
       "city": "Worcester",
@@ -15170,7 +15336,7 @@
       "slug": "wpi"
     },
     {
-      "id": 90,
+      "id": 91,
       "name": "Yale University",
       "data_year": "2025-26",
       "city": "New Haven",
