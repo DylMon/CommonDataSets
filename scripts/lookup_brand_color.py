@@ -62,10 +62,20 @@ def lookup(school_name: str) -> dict:
         tools=[{"type": "web_search_20260209", "name": "web_search", "max_uses": 3}],
         messages=[{"role": "user", "content": PROMPT_TEMPLATE.format(school=school_name)}],
     )
-    for block in message.content:
-        if block.type == "text" and block.text.strip():
-            return _extract_json(block.text)
-    raise ValueError("No text content block in response")
+    # With the web_search tool, Claude often writes an explanatory text block
+    # ("Let me look that up...") before the tool call and another after —
+    # the JSON answer isn't necessarily the first text block. Try every text
+    # block and use whichever one actually parses, preferring later ones
+    # since the final answer comes after any search rounds.
+    text_blocks = [b.text for b in message.content if b.type == "text" and b.text.strip()]
+    for text in reversed(text_blocks):
+        try:
+            return _extract_json(text)
+        except (ValueError, json.JSONDecodeError):
+            continue
+    if not text_blocks:
+        raise ValueError("No text content block in response")
+    raise ValueError(f"No block contained a JSON object. Blocks were: {text_blocks!r}")
 
 
 def main():
