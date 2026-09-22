@@ -96,6 +96,7 @@ const SCHOOL_META = {
   'chapman': { color: '#A50034' },
   'clarkson': { color: '#0D433B' },
   'coloradoboulder': { color: '#CFB87C' },
+  'colorado-state': { color: '#1e4d2b' },
 };
 
 // Logos live at images/logos/<slug>.png. A few schools have none yet; the
