@@ -1,0 +1,174 @@
+{
+  "name": "Clark University",
+  "data_year": "2024-2025",
+  "city": "Worcester",
+  "state": "MA",
+  "location": "Worcester, MA",
+  "school_type": "Private",
+  "website": "www.clarku.edu",
+  "applicants_total": 11452,
+  "applicants_men": 5087,
+  "applicants_women": 6339,
+  "admitted_total": 4528,
+  "admitted_men": 1737,
+  "admitted_women": 2776,
+  "enrolled_total": 486,
+  "enrolled_men": 203,
+  "enrolled_women": 277,
+  "acceptance_rate": 0.3954,
+  "application_fee": 0,
+  "avg_gpa_weighted": 3.76,
+  "rd_deadline": "1/15",
+  "waitlist_offered": 730,
+  "waitlist_accepted": 309,
+  "waitlist_admitted": 57,
+  "ea_ed_type": "ED I & II",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.16,
+  "sat_submitted_count": 77,
+  "act_submitted_pct": 0.05,
+  "act_submitted_count": 23,
+  "sat_composite_25": 1300,
+  "sat_composite_75": 1450,
+  "sat_reading_25": 658,
+  "sat_reading_75": 740,
+  "sat_math_25": 630,
+  "sat_math_75": 720,
+  "act_composite_25": 30,
+  "act_composite_75": 33,
+  "act_math_25": 27,
+  "act_math_75": 30,
+  "act_english_25": 32,
+  "act_english_75": 35,
+  "total_undergrads": 2266,
+  "undergrads_male": 976,
+  "undergrads_female": 1283,
+  "retention_rate": 0.86,
+  "tuition": null,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": null,
+  "room_and_board": null,
+  "books_supplies": null,
+  "other_expenses": null,
+  "pct_out_of_state": 0.64,
+  "pct_on_campus_housing": 0.95,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 730,
+      "accepted_spots": 309,
+      "enrolled": 57
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 5087,
+      "female": 6339
+    },
+    "accepted": {
+      "male": 1737,
+      "female": 2776
+    },
+    "enrolled": {
+      "male": 203,
+      "female": 277
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 38,
+      "hispanic": 71,
+      "black": 28,
+      "white": 284,
+      "american_indian": 0,
+      "asian": 27,
+      "pacific_islander": 0,
+      "two_or_more": 23,
+      "unknown": 15,
+      "total": 486
+    },
+    "undergrad": {
+      "nonresident_aliens": 127,
+      "hispanic": 288,
+      "black": 121,
+      "white": 1372,
+      "american_indian": 0,
+      "asian": 153,
+      "pacific_islander": 1,
+      "two_or_more": 100,
+      "unknown": 51,
+      "total": 2213
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.64,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 77,
+    "sat_submitted_pct": 0.16,
+    "act_submitted_count": 23,
+    "act_submitted_pct": 0.05
+  },
+  "class_rank": {
+    "top10": 0.42,
+    "top25": 0.75,
+    "top50": 0.95,
+    "bottom50": 0.05,
+    "bottom25": 0.02
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.38,
+    "gpa_375_399": 0.21,
+    "gpa_350_374": 0.22,
+    "gpa_325_349": 0.11,
+    "gpa_300_324": 0.06,
+    "gpa_250_299": 0.02,
+    "gpa_200_249": 0.0,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "very_important",
+    "interview": "considered",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "important",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 243,
+      "admitted": 43,
+      "enrolled": 16
+    },
+    "female": {
+      "applied": 202,
+      "admitted": 52,
+      "enrolled": 17
+    },
+    "total": {
+      "applied": 448,
+      "admitted": 95,
+      "enrolled": 33
+    }
+  },
+  "slug": "clark"
+}

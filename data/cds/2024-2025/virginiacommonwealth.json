@@ -1,0 +1,178 @@
+{
+  "name": "Virginia Commonwealth University",
+  "data_year": "2024-2025",
+  "city": "Richmond",
+  "state": "VA",
+  "location": "Richmond, VA",
+  "school_type": "Public",
+  "website": "www.vcu.edu",
+  "applicants_total": 21201,
+  "applicants_men": 7729,
+  "applicants_women": 13449,
+  "admitted_total": 19572,
+  "admitted_men": 7042,
+  "admitted_women": 12508,
+  "enrolled_total": 4275,
+  "enrolled_men": 1492,
+  "enrolled_women": 2783,
+  "acceptance_rate": 0.9232,
+  "application_fee": 75,
+  "avg_gpa_weighted": 3.63,
+  "rd_deadline": "1/15",
+  "waitlist_offered": 28,
+  "waitlist_accepted": 28,
+  "waitlist_admitted": 17,
+  "ea_ed_type": "None",
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.337,
+  "sat_submitted_count": 1442,
+  "act_submitted_pct": 0.03,
+  "act_submitted_count": 127,
+  "sat_composite_25": 1010,
+  "sat_composite_75": 1260,
+  "sat_reading_25": 520,
+  "sat_reading_75": 650,
+  "sat_math_25": 490,
+  "sat_math_75": 620,
+  "act_composite_25": 22,
+  "act_composite_75": 30,
+  "act_math_25": 18,
+  "act_math_75": 27,
+  "act_english_25": 21,
+  "act_english_75": 31,
+  "total_undergrads": 21210,
+  "undergrads_male": 7792,
+  "undergrads_female": 13418,
+  "retention_rate": 0.853,
+  "tuition": null,
+  "tuition_in_state": 13520,
+  "tuition_out_of_state": 35994,
+  "required_fees": 3720,
+  "room_and_board": 15128,
+  "books_supplies": 1290,
+  "other_expenses": 5321,
+  "pct_out_of_state": 0.077,
+  "pct_on_campus_housing": 0.81,
+  "applicant_pools": {
+    "ea": null,
+    "rd": {
+      "applied": 21201,
+      "admitted": 19572,
+      "rate": 0.9232
+    },
+    "waitlist": {
+      "offered": 28,
+      "accepted_spots": 28,
+      "enrolled": 17
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 7729,
+      "female": 13449
+    },
+    "accepted": {
+      "male": 7042,
+      "female": 12508
+    },
+    "enrolled": {
+      "male": 1492,
+      "female": 2783
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 84,
+      "hispanic": 654,
+      "black": 1157,
+      "white": 1259,
+      "american_indian": 6,
+      "asian": 586,
+      "pacific_islander": 3,
+      "two_or_more": 374,
+      "unknown": 67,
+      "total": 4190
+    },
+    "undergrad": {
+      "nonresident_aliens": 379,
+      "hispanic": 2514,
+      "black": 4797,
+      "white": 8006,
+      "american_indian": 56,
+      "asian": 2869,
+      "pacific_islander": 31,
+      "two_or_more": 1695,
+      "unknown": 320,
+      "total": 20667
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.077,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 1442,
+    "sat_submitted_pct": 0.337,
+    "act_submitted_count": 127,
+    "act_submitted_pct": 0.03
+  },
+  "class_rank": {
+    "top10": 0.17,
+    "top25": 0.4,
+    "top50": 0.75,
+    "bottom50": 0.25,
+    "bottom25": 0.04
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.2629,
+    "gpa_375_399": 0.1666,
+    "gpa_350_374": 0.1693,
+    "gpa_325_349": 0.1527,
+    "gpa_300_324": 0.1316,
+    "gpa_250_299": 0.114,
+    "gpa_200_249": 0.0026,
+    "gpa_100_199": 0.0003
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "not_considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1035,
+      "admitted": 879,
+      "enrolled": 549
+    },
+    "female": {
+      "applied": 1623,
+      "admitted": 1447,
+      "enrolled": 864
+    },
+    "total": {
+      "applied": 2658,
+      "admitted": 2326,
+      "enrolled": 1413
+    }
+  },
+  "slug": "virginiacommonwealth"
+}

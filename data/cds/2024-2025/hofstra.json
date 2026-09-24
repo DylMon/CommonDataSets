@@ -1,0 +1,174 @@
+{
+  "name": "Hofstra University",
+  "data_year": "2024-2025",
+  "city": "Hempstead",
+  "state": "NY",
+  "location": "Hempstead, NY",
+  "school_type": "Private",
+  "website": "www.hofstra.edu",
+  "applicants_total": 25021,
+  "applicants_men": 9873,
+  "applicants_women": 15123,
+  "admitted_total": 17035,
+  "admitted_men": 6447,
+  "admitted_women": 10573,
+  "enrolled_total": 1754,
+  "enrolled_men": 686,
+  "enrolled_women": 1065,
+  "acceptance_rate": 0.68,
+  "application_fee": 70,
+  "avg_gpa_weighted": 3.78,
+  "rd_deadline": "Rolling",
+  "waitlist_offered": 267,
+  "waitlist_accepted": 117,
+  "waitlist_admitted": 23,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/15 (EA I) & 12/15 (EA II)",
+  "ea_ed_notification": "12/15 (EA I) & 1/15 (EA II)",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.26,
+  "sat_submitted_count": 449,
+  "act_submitted_pct": 0.04,
+  "act_submitted_count": 72,
+  "sat_composite_25": 1240,
+  "sat_composite_75": 1380,
+  "sat_reading_25": 620,
+  "sat_reading_75": 700,
+  "sat_math_25": 610,
+  "sat_math_75": 700,
+  "act_composite_25": 27,
+  "act_composite_75": 32,
+  "act_math_25": null,
+  "act_math_75": null,
+  "act_english_25": null,
+  "act_english_75": null,
+  "total_undergrads": 6581,
+  "undergrads_male": 2811,
+  "undergrads_female": 3767,
+  "retention_rate": 0.84,
+  "tuition": 56545,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 1115,
+  "room_and_board": 18942,
+  "books_supplies": 1000,
+  "other_expenses": 1050,
+  "pct_out_of_state": 0.35,
+  "pct_on_campus_housing": 0.56,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 267,
+      "accepted_spots": 117,
+      "enrolled": 23
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 9873,
+      "female": 15123
+    },
+    "accepted": {
+      "male": 6447,
+      "female": 10573
+    },
+    "enrolled": {
+      "male": 686,
+      "female": 1065
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 30,
+      "hispanic": 380,
+      "black": 193,
+      "white": 619,
+      "american_indian": 8,
+      "asian": 322,
+      "pacific_islander": 0,
+      "two_or_more": 176,
+      "unknown": 26,
+      "total": 1754
+    },
+    "undergrad": {
+      "nonresident_aliens": 210,
+      "hispanic": 1219,
+      "black": 627,
+      "white": 2846,
+      "american_indian": 21,
+      "asian": 1019,
+      "pacific_islander": 0,
+      "two_or_more": 429,
+      "unknown": 117,
+      "total": 6488
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.35,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 449,
+    "sat_submitted_pct": 0.26,
+    "act_submitted_count": 72,
+    "act_submitted_pct": 0.04
+  },
+  "class_rank": {
+    "top10": 0.19,
+    "top25": 0.56,
+    "top50": 0.9,
+    "bottom50": 0.1,
+    "bottom25": 0.01
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.36,
+    "gpa_375_399": 0.19,
+    "gpa_350_374": 0.19,
+    "gpa_325_349": 0.13,
+    "gpa_300_324": 0.08,
+    "gpa_250_299": 0.05,
+    "gpa_200_249": 0.0,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "very_important",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "very_important",
+    "recommendations": "very_important",
+    "interview": "important",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "important",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 764,
+      "admitted": 334,
+      "enrolled": 104
+    },
+    "female": {
+      "applied": 1170,
+      "admitted": 482,
+      "enrolled": 104
+    },
+    "total": {
+      "applied": 1934,
+      "admitted": 816,
+      "enrolled": 208
+    }
+  },
+  "slug": "hofstra"
+}

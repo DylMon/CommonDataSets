@@ -1,0 +1,157 @@
+{
+  "name": "University of Minnesota - Twin Cities Campus",
+  "data_year": "2024-2025",
+  "city": "Minneapolis",
+  "state": "MN",
+  "location": "Minneapolis, MN",
+  "school_type": "Public",
+  "website": "twin-cities.umn.edu/",
+  "applicants_total": 41496,
+  "applicants_men": 20012,
+  "applicants_women": 21345,
+  "admitted_total": 33091,
+  "admitted_men": 15827,
+  "admitted_women": 17170,
+  "enrolled_total": 7391,
+  "enrolled_men": 3411,
+  "enrolled_women": 3946,
+  "acceptance_rate": 0.7975,
+  "application_fee": 55,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "1/1",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "1/31",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.082,
+  "sat_submitted_count": 606,
+  "act_submitted_pct": 0.3332,
+  "act_submitted_count": 2463,
+  "sat_composite_25": 1320,
+  "sat_composite_75": 1470,
+  "sat_reading_25": 640,
+  "sat_reading_75": 730,
+  "sat_math_25": 660,
+  "sat_math_75": 770,
+  "act_composite_25": 26,
+  "act_composite_75": 31,
+  "act_math_25": 25,
+  "act_math_75": 31,
+  "act_english_25": 24,
+  "act_english_75": 33,
+  "total_undergrads": 41303,
+  "undergrads_male": 17867,
+  "undergrads_female": 22041,
+  "retention_rate": 0.9113,
+  "tuition": null,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": null,
+  "room_and_board": null,
+  "books_supplies": null,
+  "other_expenses": null,
+  "pct_out_of_state": 0.2989,
+  "pct_on_campus_housing": 0.7601,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 20012,
+      "female": 21345
+    },
+    "accepted": {
+      "male": 15827,
+      "female": 17170
+    },
+    "enrolled": {
+      "male": 3411,
+      "female": 3946
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 486,
+      "hispanic": 555,
+      "black": 718,
+      "white": 3953,
+      "american_indian": 30,
+      "asian": 1057,
+      "pacific_islander": 4,
+      "two_or_more": 414,
+      "unknown": 174,
+      "total": 7391
+    },
+    "undergrad": {
+      "nonresident_aliens": 1975,
+      "hispanic": 2081,
+      "black": 3165,
+      "white": 18095,
+      "american_indian": 118,
+      "asian": 4267,
+      "pacific_islander": 14,
+      "two_or_more": 1630,
+      "unknown": 510,
+      "total": 31855
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.2989,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 606,
+    "sat_submitted_pct": 0.082,
+    "act_submitted_count": 2463,
+    "act_submitted_pct": 0.3332
+  },
+  "class_rank": {
+    "top10": 0.3633,
+    "top25": 0.697,
+    "top50": 0.9556,
+    "bottom50": 0.0444,
+    "bottom25": 0.0011
+  },
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "very_important",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "considered",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 2868,
+      "admitted": 1530,
+      "enrolled": 805
+    },
+    "female": {
+      "applied": 3097,
+      "admitted": 1681,
+      "enrolled": 912
+    },
+    "total": {
+      "applied": 6071,
+      "admitted": 3270,
+      "enrolled": 1747
+    }
+  },
+  "slug": "uofminnesota-twin-cities"
+}

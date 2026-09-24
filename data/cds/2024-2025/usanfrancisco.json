@@ -1,0 +1,174 @@
+{
+  "name": "University of San Francisco",
+  "data_year": "2024-2025",
+  "city": "San Francisco",
+  "state": "CA",
+  "location": "San Francisco, CA",
+  "school_type": "Private",
+  "website": "www.usfca.edu",
+  "applicants_total": 24888,
+  "applicants_men": 8600,
+  "applicants_women": 15967,
+  "admitted_total": 15358,
+  "admitted_men": 5102,
+  "admitted_women": 9999,
+  "enrolled_total": 920,
+  "enrolled_men": 324,
+  "enrolled_women": 578,
+  "acceptance_rate": 0.6171,
+  "application_fee": 70,
+  "avg_gpa_weighted": 3.62,
+  "rd_deadline": "1/15",
+  "waitlist_offered": 1327,
+  "waitlist_accepted": 768,
+  "waitlist_admitted": 364,
+  "ea_ed_type": "ED",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/1",
+  "ea_apps_received": 85,
+  "ea_apps_admitted": 42,
+  "sat_submitted_pct": 0.1239,
+  "sat_submitted_count": 114,
+  "act_submitted_pct": 0.0261,
+  "act_submitted_count": 24,
+  "sat_composite_25": 1200,
+  "sat_composite_75": 1380,
+  "sat_reading_25": 610,
+  "sat_reading_75": 700,
+  "sat_math_25": 580,
+  "sat_math_75": 690,
+  "act_composite_25": 25,
+  "act_composite_75": 30,
+  "act_math_25": 24,
+  "act_math_75": 28,
+  "act_english_25": 26,
+  "act_english_75": 33,
+  "total_undergrads": 5321,
+  "undergrads_male": 1855,
+  "undergrads_female": 3466,
+  "retention_rate": 0.837,
+  "tuition": 61720,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 592,
+  "room_and_board": 18490,
+  "books_supplies": 1089,
+  "other_expenses": 3195,
+  "pct_out_of_state": 0.3,
+  "pct_on_campus_housing": 0.77,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 1327,
+      "accepted_spots": 768,
+      "enrolled": 364
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 8600,
+      "female": 15967
+    },
+    "accepted": {
+      "male": 5102,
+      "female": 9999
+    },
+    "enrolled": {
+      "male": 324,
+      "female": 578
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 81,
+      "hispanic": 232,
+      "black": 85,
+      "white": 175,
+      "american_indian": 1,
+      "asian": 250,
+      "pacific_islander": 2,
+      "two_or_more": 88,
+      "unknown": 6,
+      "total": 920
+    },
+    "undergrad": {
+      "nonresident_aliens": 483,
+      "hispanic": 1185,
+      "black": 429,
+      "white": 1189,
+      "american_indian": 9,
+      "asian": 1408,
+      "pacific_islander": 13,
+      "two_or_more": 547,
+      "unknown": 24,
+      "total": 5287
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.3,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 114,
+    "sat_submitted_pct": 0.1239,
+    "act_submitted_count": 24,
+    "act_submitted_pct": 0.0261
+  },
+  "class_rank": {
+    "top10": 0.44,
+    "top25": 0.75,
+    "top50": 0.92,
+    "bottom50": 0.08,
+    "bottom25": 0.01
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.2065,
+    "gpa_375_399": 0.2424,
+    "gpa_350_374": 0.1924,
+    "gpa_325_349": 0.1587,
+    "gpa_300_324": 0.1163,
+    "gpa_250_299": 0.0826,
+    "gpa_200_249": 0.0011,
+    "gpa_100_199": null
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "considered",
+    "interview": "considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "important",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 359,
+      "admitted": 224,
+      "enrolled": 47
+    },
+    "female": {
+      "applied": 528,
+      "admitted": 326,
+      "enrolled": 56
+    },
+    "total": {
+      "applied": 1956,
+      "admitted": 1077,
+      "enrolled": 274
+    }
+  },
+  "slug": "usanfrancisco"
+}

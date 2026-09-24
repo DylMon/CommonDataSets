@@ -125,6 +125,23 @@ const SCHOOL_META = {
   'uvermont': { color: '#154734' },
   'washington-stateu': { color: '#981e32' },
   'duquense': { color: '#BA0C2F' },
+  'boston-college': { color: '#98002E' },
+  'bradley': { color: '#e11837' },
+  'clark': { color: '#ee2e24' },
+  'east-carolina': { color: '#592a8a' },
+  'fairfield': { color: '#C8102E' },
+  'hofstra': { color: '#0B1E73' },
+  'suny-albany': { color: '#461660' },
+  'udelaware': { color: '#00539f' },
+  'ukansas': { color: '#0051ba' },
+  'ulouisville': { color: '#AD0000' },
+  'umass-lowell': { color: '#0067B1' },
+  'unc-wilmington': { color: '#007680' },
+  'uofiowa': { color: '#FFCD00' },
+  'uofminnesota-twin-cities': { color: '#7a0019' },
+  'uoklahoma': { color: '#841617' },
+  'usanfrancisco': { color: '#00543C' },
+  'virginiacommonwealth': { color: '#ffb300' },
 };
 
 // Logos live at images/logos/<slug>.png. A few schools have none yet; the

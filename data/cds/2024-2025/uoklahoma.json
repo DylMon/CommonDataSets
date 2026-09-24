@@ -1,0 +1,174 @@
+{
+  "name": "University of Oklahoma",
+  "data_year": "2024-2025",
+  "city": "Norman",
+  "state": "OK",
+  "location": "Norman, OK",
+  "school_type": "Public",
+  "website": "www.ou.edu",
+  "applicants_total": 24893,
+  "applicants_men": 10811,
+  "applicants_women": 14082,
+  "admitted_total": 19069,
+  "admitted_men": 8017,
+  "admitted_women": 11052,
+  "enrolled_total": 5593,
+  "enrolled_men": 2381,
+  "enrolled_women": 3212,
+  "acceptance_rate": 0.766,
+  "application_fee": "$50 for US citizens and permanent residents; $90 for international applicants",
+  "avg_gpa_weighted": 3.63,
+  "rd_deadline": "2/1",
+  "waitlist_offered": 2342,
+  "waitlist_accepted": 1560,
+  "waitlist_admitted": 81,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "Rolling",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.23,
+  "sat_submitted_count": 1286,
+  "act_submitted_pct": 0.4,
+  "act_submitted_count": 2258,
+  "sat_composite_25": 1160,
+  "sat_composite_75": 1320,
+  "sat_reading_25": 580,
+  "sat_reading_75": 670,
+  "sat_math_25": 560,
+  "sat_math_75": 660,
+  "act_composite_25": 23,
+  "act_composite_75": 29,
+  "act_math_25": 21,
+  "act_math_75": 27,
+  "act_english_25": 22,
+  "act_english_75": 30,
+  "total_undergrads": 23351,
+  "undergrads_male": 11153,
+  "undergrads_female": 12198,
+  "retention_rate": 0.9,
+  "tuition": null,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": null,
+  "room_and_board": null,
+  "books_supplies": null,
+  "other_expenses": null,
+  "pct_out_of_state": 0.51,
+  "pct_on_campus_housing": 0.897,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 2342,
+      "accepted_spots": 1560,
+      "enrolled": 81
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 10811,
+      "female": 14082
+    },
+    "accepted": {
+      "male": 8017,
+      "female": 11052
+    },
+    "enrolled": {
+      "male": 2381,
+      "female": 3212
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 144,
+      "hispanic": 875,
+      "black": 287,
+      "white": 3078,
+      "american_indian": 188,
+      "asian": 359,
+      "pacific_islander": 6,
+      "two_or_more": 540,
+      "unknown": 116,
+      "total": 5593
+    },
+    "undergrad": {
+      "nonresident_aliens": 715,
+      "hispanic": 3394,
+      "black": 1208,
+      "white": 12851,
+      "american_indian": 813,
+      "asian": 1651,
+      "pacific_islander": 22,
+      "two_or_more": 2289,
+      "unknown": 408,
+      "total": 23351
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.51,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 1286,
+    "sat_submitted_pct": 0.23,
+    "act_submitted_count": 2258,
+    "act_submitted_pct": 0.4
+  },
+  "class_rank": {
+    "top10": 0.286,
+    "top25": 0.573,
+    "top50": 0.879,
+    "bottom50": 0.121,
+    "bottom25": 0.011
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.116,
+    "gpa_375_399": 0.312,
+    "gpa_350_374": 0.26,
+    "gpa_325_349": 0.181,
+    "gpa_300_324": 0.11,
+    "gpa_250_299": 0.019,
+    "gpa_200_249": 0.001,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "important",
+    "academic_gpa": "very_important",
+    "test_scores": "very_important",
+    "essay": "important",
+    "recommendations": "important",
+    "interview": "considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1842,
+      "admitted": 1182,
+      "enrolled": 671
+    },
+    "female": {
+      "applied": 1966,
+      "admitted": 1203,
+      "enrolled": 669
+    },
+    "total": {
+      "applied": 3808,
+      "admitted": 2385,
+      "enrolled": 1340
+    }
+  },
+  "slug": "uoklahoma"
+}

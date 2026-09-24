@@ -1,0 +1,174 @@
+{
+  "name": "University of Louisville",
+  "data_year": "2024-2025",
+  "city": "Louisville",
+  "state": "KY",
+  "location": "Louisville, KY",
+  "school_type": "Public",
+  "website": "louisville.edu",
+  "applicants_total": 15668,
+  "applicants_men": 6718,
+  "applicants_women": 8950,
+  "admitted_total": 12442,
+  "admitted_men": 5361,
+  "admitted_women": 7081,
+  "enrolled_total": 3120,
+  "enrolled_men": 1438,
+  "enrolled_women": 1682,
+  "acceptance_rate": 0.7941,
+  "application_fee": 30,
+  "avg_gpa_weighted": 3.6,
+  "rd_deadline": "8/1",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "None",
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.182,
+  "sat_submitted_count": 569,
+  "act_submitted_pct": 0.848,
+  "act_submitted_count": 2647,
+  "sat_composite_25": 1010,
+  "sat_composite_75": 1230,
+  "sat_reading_25": 530,
+  "sat_reading_75": 640,
+  "sat_math_25": 510,
+  "sat_math_75": 630,
+  "act_composite_25": 19,
+  "act_composite_75": 27,
+  "act_math_25": 18,
+  "act_math_75": 26,
+  "act_english_25": 19,
+  "act_english_75": 28,
+  "total_undergrads": 17086,
+  "undergrads_male": 7354,
+  "undergrads_female": 9732,
+  "retention_rate": 0.815,
+  "tuition": null,
+  "tuition_in_state": 13390.0,
+  "tuition_out_of_state": 29736.0,
+  "required_fees": 552.0,
+  "room_and_board": 14486.0,
+  "books_supplies": 1190,
+  "other_expenses": 6362,
+  "pct_out_of_state": 0.289,
+  "pct_on_campus_housing": 0.637,
+  "applicant_pools": {
+    "ea": null,
+    "rd": {
+      "applied": 15668,
+      "admitted": 12442,
+      "rate": 0.7941
+    },
+    "waitlist": null
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 6718,
+      "female": 8950
+    },
+    "accepted": {
+      "male": 5361,
+      "female": 7081
+    },
+    "enrolled": {
+      "male": 1438,
+      "female": 1682
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 41,
+      "hispanic": 313,
+      "black": 490,
+      "white": 1854,
+      "american_indian": 0,
+      "asian": 194,
+      "pacific_islander": 1,
+      "two_or_more": 221,
+      "unknown": 6,
+      "total": 3120
+    },
+    "undergrad": {
+      "nonresident_aliens": 270,
+      "hispanic": 1318,
+      "black": 2378,
+      "white": 8976,
+      "american_indian": 15,
+      "asian": 831,
+      "pacific_islander": 9,
+      "two_or_more": 915,
+      "unknown": 15,
+      "total": 14727
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.289,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 569,
+    "sat_submitted_pct": 0.182,
+    "act_submitted_count": 2647,
+    "act_submitted_pct": 0.848
+  },
+  "class_rank": {
+    "top10": 0.248,
+    "top25": 0.522,
+    "top50": 0.842,
+    "bottom50": 0.158,
+    "bottom25": 0.025
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.37,
+    "gpa_375_399": 0.17,
+    "gpa_350_374": 0.16,
+    "gpa_325_349": 0.12,
+    "gpa_300_324": 0.1,
+    "gpa_250_299": 0.08,
+    "gpa_200_249": 0.0,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "important",
+    "essay": "considered",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "not_considered",
+    "first_gen": "not_considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1128,
+      "admitted": 783,
+      "enrolled": 405
+    },
+    "female": {
+      "applied": 1807,
+      "admitted": 1233,
+      "enrolled": 621
+    },
+    "total": {
+      "applied": 2935,
+      "admitted": 2016,
+      "enrolled": 1026
+    }
+  },
+  "slug": "ulouisville"
+}
