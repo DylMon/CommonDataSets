@@ -1228,7 +1228,43 @@ body {
     }
 }
 
-@media (max-width: 768px) {
+/* Tablet-width tier: narrow the two 200px rails instead of stacking them.
+   This is the band a large monitor lands in at high OS/browser zoom (e.g. a
+   2K display at 200% scaling), as well as real tablets in portrait (iPad is
+   768 wide) — both get more room for #school-list without losing the
+   3-column layout outright. Full stacking is reserved for the 640px tier
+   below, where a row layout no longer has room to make sense. */
+@media (max-width: 1024px) {
+    .sidebar,
+    .right-sidebar {
+        width: 160px;
+    }
+
+    .page-layout {
+        gap: 14px;
+    }
+
+    /* Same formula as the default .search-bar rule, updated for this
+       tier's narrower 160px sidebars + 14px gaps (160+14+160+14 = 348). */
+    .search-bar {
+        width: calc(100% - 348px);
+    }
+
+    /* #school-list is narrower here (two rails still present, just
+       thinner), so the 1300px tier's fixed 120px alignment margin plus
+       flex-shrink: 0 has too little room left for 3 stats + their gaps
+       and clips the last one — width:100% + a positive margin always
+       overflows its row by that margin once the item can't shrink.
+       Drop the indent and allow shrinking/wrapping instead. */
+    .school-stats {
+        margin-left: 0;
+        flex-shrink: 1;
+        flex-wrap: wrap;
+        row-gap: 4px;
+    }
+}
+
+@media (max-width: 640px) {
     .search-bar {
         width: 100%;
     }
