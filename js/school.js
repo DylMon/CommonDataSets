@@ -142,6 +142,11 @@ const SCHOOL_META = {
   'uoklahoma': { color: '#841617' },
   'usanfrancisco': { color: '#00543C' },
   'virginiacommonwealth': { color: '#ffb300' },
+  'illinois-tech': { color: '#CC0000' },
+  'mizzou': { color: '#FDB719' },
+  'quinnipiac': { color: '#0C2340' },
+  'rutgers-camden': { color: '#cc0033' },
+  'rutgers-newark': { color: '#cc0033' },
 };
 
 // Logos live at images/logos/<slug>.png. A few schools have none yet; the

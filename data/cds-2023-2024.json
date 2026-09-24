@@ -1,0 +1,997 @@
+{
+  "generated": "2026-09-24",
+  "cds_year": "2023-24",
+  "schools": [
+    {
+      "id": 1,
+      "name": "Illinois Institute of Technology",
+      "data_year": "2023-2024",
+      "city": "Chicago",
+      "state": "IL",
+      "location": "Chicago, IL",
+      "school_type": "Private",
+      "website": "www.iit.edu",
+      "applicants_total": 8912,
+      "applicants_men": 5867,
+      "applicants_women": 3045,
+      "admitted_total": 4939,
+      "admitted_men": 3155,
+      "admitted_women": 1784,
+      "enrolled_total": 534,
+      "enrolled_men": 339,
+      "enrolled_women": 195,
+      "acceptance_rate": 0.5542,
+      "application_fee": null,
+      "avg_gpa_weighted": 4.2,
+      "rd_deadline": "8/1",
+      "waitlist_offered": null,
+      "waitlist_accepted": null,
+      "waitlist_admitted": null,
+      "ea_ed_type": "ED I & II",
+      "ea_ed_deadline": "11/1",
+      "ea_ed_notification": "12/1",
+      "ea_apps_received": 69,
+      "ea_apps_admitted": 47,
+      "sat_submitted_pct": 0.45,
+      "sat_submitted_count": 239,
+      "act_submitted_pct": 0.11,
+      "act_submitted_count": 57,
+      "sat_composite_25": 1190,
+      "sat_composite_75": 1400,
+      "sat_reading_25": 570,
+      "sat_reading_75": 690,
+      "sat_math_25": 610,
+      "sat_math_75": 720,
+      "act_composite_25": 25,
+      "act_composite_75": 31,
+      "act_math_25": 25,
+      "act_math_75": 30,
+      "act_english_25": 24,
+      "act_english_75": 34,
+      "total_undergrads": 3316,
+      "undergrads_male": 2210,
+      "undergrads_female": 1106,
+      "retention_rate": 0.87,
+      "tuition": null,
+      "tuition_in_state": null,
+      "tuition_out_of_state": null,
+      "required_fees": null,
+      "room_and_board": null,
+      "books_supplies": null,
+      "other_expenses": null,
+      "pct_out_of_state": 0.24,
+      "pct_on_campus_housing": 0.64,
+      "applicant_pools": null,
+      "gender_breakdown": {
+        "applied": {
+          "male": 5867,
+          "female": 3045
+        },
+        "accepted": {
+          "male": 3155,
+          "female": 1784
+        },
+        "enrolled": {
+          "male": 339,
+          "female": 195
+        }
+      },
+      "demographics_detail": {
+        "first_year": {
+          "nonresident_aliens": 56,
+          "hispanic": 198,
+          "black": 23,
+          "white": 150,
+          "american_indian": 1,
+          "asian": 77,
+          "pacific_islander": 0,
+          "two_or_more": 22,
+          "unknown": 7,
+          "total": 534
+        },
+        "undergrad": {
+          "nonresident_aliens": 589,
+          "hispanic": 746,
+          "black": 185,
+          "white": 1013,
+          "american_indian": 2,
+          "asian": 482,
+          "pacific_islander": 1,
+          "two_or_more": 116,
+          "unknown": 182,
+          "total": 3316
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.24,
+        "international_pct": null
+      },
+      "sat_act_breakdown": {
+        "sat_submitted_count": 239,
+        "sat_submitted_pct": 0.45,
+        "act_submitted_count": 57,
+        "act_submitted_pct": 0.11
+      },
+      "class_rank": {
+        "top10": 0.39,
+        "top25": 0.77,
+        "top50": 0.97,
+        "bottom50": 0.03,
+        "bottom25": 0.0
+      },
+      "gpa_distribution": {
+        "gpa_40": 0.64,
+        "gpa_375_399": 0.198,
+        "gpa_350_374": 0.113,
+        "gpa_325_349": 0.026,
+        "gpa_300_324": 0.015,
+        "gpa_250_299": 0.004,
+        "gpa_200_249": 0.002,
+        "gpa_100_199": 0.0
+      },
+      "admission_factors": {
+        "rigor": "very_important",
+        "class_rank": "considered",
+        "academic_gpa": "very_important",
+        "test_scores": "considered",
+        "essay": "considered",
+        "recommendations": "considered",
+        "interview": "not_considered",
+        "extracurriculars": "considered",
+        "talent": "considered",
+        "character": "considered",
+        "first_gen": "not_considered",
+        "alumni_relation": "not_considered",
+        "geo_residence": "not_considered",
+        "state_residence": "not_considered",
+        "religious": "not_considered",
+        "racial_ethnic": null,
+        "volunteer": "considered",
+        "work_experience": "considered",
+        "applicant_interest": "not_considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 522,
+          "admitted": 221,
+          "enrolled": 97
+        },
+        "female": {
+          "applied": 241,
+          "admitted": 84,
+          "enrolled": 34
+        },
+        "total": {
+          "applied": 763,
+          "admitted": 305,
+          "enrolled": 131
+        }
+      },
+      "slug": "illinois-tech",
+      "us_news_ranking": null
+    },
+    {
+      "id": 2,
+      "name": "University of Missouri",
+      "data_year": "2023-2024",
+      "city": "Columbia",
+      "state": "MO",
+      "location": "Columbia, MO",
+      "school_type": "Public",
+      "website": "missouri.edu",
+      "applicants_total": 21669,
+      "applicants_men": 9216,
+      "applicants_women": 12453,
+      "admitted_total": 16690,
+      "admitted_men": 6821,
+      "admitted_women": 9869,
+      "enrolled_total": 5139,
+      "enrolled_men": 2187,
+      "enrolled_women": 2952,
+      "acceptance_rate": 0.7703,
+      "application_fee": 55,
+      "avg_gpa_weighted": null,
+      "rd_deadline": null,
+      "waitlist_offered": null,
+      "waitlist_accepted": null,
+      "waitlist_admitted": null,
+      "ea_ed_type": "None",
+      "ea_ed_deadline": null,
+      "ea_ed_notification": null,
+      "ea_apps_received": null,
+      "ea_apps_admitted": null,
+      "sat_submitted_pct": 0.1,
+      "sat_submitted_count": 515,
+      "act_submitted_pct": 0.66,
+      "act_submitted_count": 3414,
+      "sat_composite_25": null,
+      "sat_composite_75": null,
+      "sat_reading_25": 580,
+      "sat_reading_75": 670,
+      "sat_math_25": 570,
+      "sat_math_75": 660,
+      "act_composite_25": 23,
+      "act_composite_75": 29,
+      "act_math_25": 21,
+      "act_math_75": 28,
+      "act_english_25": 22,
+      "act_english_75": 30,
+      "total_undergrads": 23629,
+      "undergrads_male": 10753,
+      "undergrads_female": 12876,
+      "retention_rate": 0.913,
+      "tuition": null,
+      "tuition_in_state": 13650,
+      "tuition_out_of_state": 34860,
+      "required_fees": 1180,
+      "room_and_board": 13700,
+      "books_supplies": 950,
+      "other_expenses": 1960,
+      "pct_out_of_state": 0.33,
+      "pct_on_campus_housing": 0.93,
+      "applicant_pools": null,
+      "gender_breakdown": {
+        "applied": {
+          "male": 9216,
+          "female": 12453
+        },
+        "accepted": {
+          "male": 6821,
+          "female": 9869
+        },
+        "enrolled": {
+          "male": 2187,
+          "female": 2952
+        }
+      },
+      "demographics_detail": {
+        "first_year": {
+          "nonresident_aliens": 33,
+          "hispanic": 338,
+          "black": 226,
+          "white": 4092,
+          "american_indian": 7,
+          "asian": 150,
+          "pacific_islander": 2,
+          "two_or_more": 218,
+          "unknown": 73,
+          "total": 5139
+        },
+        "undergrad": {
+          "nonresident_aliens": 240,
+          "hispanic": 1327,
+          "black": 1175,
+          "white": 18433,
+          "american_indian": 32,
+          "asian": 643,
+          "pacific_islander": 22,
+          "two_or_more": 1014,
+          "unknown": 232,
+          "total": 23118
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.33,
+        "international_pct": null
+      },
+      "sat_act_breakdown": {
+        "sat_submitted_count": 515,
+        "sat_submitted_pct": 0.1,
+        "act_submitted_count": 3414,
+        "act_submitted_pct": 0.66
+      },
+      "class_rank": {
+        "top10": 0.35,
+        "top25": 0.66,
+        "top50": 0.93,
+        "bottom50": 0.07,
+        "bottom25": 0.01
+      },
+      "gpa_distribution": null,
+      "admission_factors": {
+        "rigor": "considered",
+        "class_rank": "very_important",
+        "academic_gpa": "very_important",
+        "test_scores": "very_important",
+        "essay": "considered",
+        "recommendations": "considered",
+        "interview": "not_considered",
+        "extracurriculars": "not_considered",
+        "talent": "considered",
+        "character": "not_considered",
+        "first_gen": "not_considered",
+        "alumni_relation": "not_considered",
+        "geo_residence": "not_considered",
+        "state_residence": "not_considered",
+        "religious": "not_considered",
+        "racial_ethnic": null,
+        "volunteer": "not_considered",
+        "work_experience": "not_considered",
+        "applicant_interest": "not_considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 1281,
+          "admitted": 881,
+          "enrolled": 566
+        },
+        "female": {
+          "applied": 1462,
+          "admitted": 983,
+          "enrolled": 598
+        },
+        "total": {
+          "applied": 2743,
+          "admitted": 1864,
+          "enrolled": 1164
+        }
+      },
+      "slug": "mizzou",
+      "us_news_ranking": null
+    },
+    {
+      "id": 3,
+      "name": "The Ohio State University",
+      "data_year": "2023-2024",
+      "city": "Columbus",
+      "state": "OH",
+      "location": "Columbus, OH",
+      "school_type": "Public",
+      "website": "www.osu.edu",
+      "applicants_total": 70028,
+      "applicants_men": 34160,
+      "applicants_women": 35868,
+      "admitted_total": 35588,
+      "admitted_men": 16943,
+      "admitted_women": 18645,
+      "enrolled_total": 8062,
+      "enrolled_men": 3809,
+      "enrolled_women": 4253,
+      "acceptance_rate": 0.5082,
+      "application_fee": 60,
+      "avg_gpa_weighted": null,
+      "rd_deadline": "1/15",
+      "waitlist_offered": 2596,
+      "waitlist_accepted": 701,
+      "waitlist_admitted": 556,
+      "ea_ed_type": "EA",
+      "ea_ed_deadline": null,
+      "ea_ed_notification": null,
+      "ea_apps_received": null,
+      "ea_apps_admitted": null,
+      "sat_submitted_pct": 0.21,
+      "sat_submitted_count": 1718,
+      "act_submitted_pct": 0.46,
+      "act_submitted_count": 3729,
+      "sat_composite_25": 1290,
+      "sat_composite_75": 1440,
+      "sat_reading_25": 620,
+      "sat_reading_75": 710,
+      "sat_math_25": 640,
+      "sat_math_75": 750,
+      "act_composite_25": 27,
+      "act_composite_75": 32,
+      "act_math_25": 26,
+      "act_math_75": 31,
+      "act_english_25": 25,
+      "act_english_75": 33,
+      "total_undergrads": 45728,
+      "undergrads_male": 22667,
+      "undergrads_female": 23061,
+      "retention_rate": 0.94,
+      "tuition": null,
+      "tuition_in_state": 13244,
+      "tuition_out_of_state": 40022,
+      "required_fees": 0,
+      "room_and_board": 14738,
+      "books_supplies": 1030,
+      "other_expenses": 2374,
+      "pct_out_of_state": 0.29,
+      "pct_on_campus_housing": 0.92,
+      "applicant_pools": {
+        "ea": null,
+        "rd": null,
+        "waitlist": {
+          "offered": 2596,
+          "accepted_spots": 701,
+          "enrolled": 556
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": 34160,
+          "female": 35868
+        },
+        "accepted": {
+          "male": 16943,
+          "female": 18645
+        },
+        "enrolled": {
+          "male": 3809,
+          "female": 4253
+        }
+      },
+      "demographics_detail": {
+        "first_year": {
+          "nonresident_aliens": 707,
+          "hispanic": 515,
+          "black": 542,
+          "white": 4695,
+          "american_indian": 2,
+          "asian": 1000,
+          "pacific_islander": 2,
+          "two_or_more": 382,
+          "unknown": 216,
+          "total": 8061
+        },
+        "undergrad": {
+          "nonresident_aliens": 3238,
+          "hispanic": 2580,
+          "black": 3649,
+          "white": 28139,
+          "american_indian": 26,
+          "asian": 4569,
+          "pacific_islander": 21,
+          "two_or_more": 2108,
+          "unknown": 1398,
+          "total": 45728
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.29,
+        "international_pct": null
+      },
+      "sat_act_breakdown": {
+        "sat_submitted_count": 1718,
+        "sat_submitted_pct": 0.21,
+        "act_submitted_count": 3729,
+        "act_submitted_pct": 0.46
+      },
+      "class_rank": {
+        "top10": 0.67,
+        "top25": 0.95,
+        "top50": 0.99,
+        "bottom50": 0.01,
+        "bottom25": 0.0
+      },
+      "gpa_distribution": null,
+      "admission_factors": {
+        "rigor": "very_important",
+        "class_rank": "very_important",
+        "academic_gpa": "very_important",
+        "test_scores": "very_important",
+        "essay": "important",
+        "recommendations": "important",
+        "interview": "not_considered",
+        "extracurriculars": "important",
+        "talent": "important",
+        "character": "considered",
+        "first_gen": "important",
+        "alumni_relation": "not_considered",
+        "geo_residence": "considered",
+        "state_residence": "considered",
+        "religious": "not_considered",
+        "racial_ethnic": null,
+        "volunteer": "important",
+        "work_experience": "important",
+        "applicant_interest": "not_considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 2054,
+          "admitted": 1754,
+          "enrolled": 991
+        },
+        "female": {
+          "applied": 1720,
+          "admitted": 1503,
+          "enrolled": 844
+        },
+        "total": {
+          "applied": 3774,
+          "admitted": 3257,
+          "enrolled": 1835
+        }
+      },
+      "slug": "ohio-state",
+      "us_news_ranking": 41
+    },
+    {
+      "id": 4,
+      "name": "Quinnipiac University",
+      "data_year": "2023-2024",
+      "city": "Hamden",
+      "state": "CT",
+      "location": "Hamden, CT",
+      "school_type": "Private",
+      "website": "www.qu.edu",
+      "applicants_total": 21323,
+      "applicants_men": 8453,
+      "applicants_women": 12866,
+      "admitted_total": 16418,
+      "admitted_men": 6433,
+      "admitted_women": 9983,
+      "enrolled_total": 1797,
+      "enrolled_men": 745,
+      "enrolled_women": 1052,
+      "acceptance_rate": 0.77,
+      "application_fee": 65,
+      "avg_gpa_weighted": 3.6,
+      "rd_deadline": "2/1",
+      "waitlist_offered": 1736,
+      "waitlist_accepted": 848,
+      "waitlist_admitted": 516,
+      "ea_ed_type": "ED",
+      "ea_ed_deadline": "11/1",
+      "ea_ed_notification": "11/15",
+      "ea_apps_received": 91,
+      "ea_apps_admitted": 81,
+      "sat_submitted_pct": 0.27,
+      "sat_submitted_count": 493,
+      "act_submitted_pct": 0.03,
+      "act_submitted_count": 55,
+      "sat_composite_25": 1120,
+      "sat_composite_75": 1280,
+      "sat_reading_25": 560,
+      "sat_reading_75": 650,
+      "sat_math_25": 540,
+      "sat_math_75": 650,
+      "act_composite_25": 24,
+      "act_composite_75": 29,
+      "act_math_25": 24,
+      "act_math_75": 29,
+      "act_english_25": 23,
+      "act_english_75": 30,
+      "total_undergrads": 6248,
+      "undergrads_male": 2459,
+      "undergrads_female": 3789,
+      "retention_rate": 0.87,
+      "tuition": 52670,
+      "tuition_in_state": null,
+      "tuition_out_of_state": null,
+      "required_fees": 2810,
+      "room_and_board": 17900,
+      "books_supplies": 1100,
+      "other_expenses": 1810,
+      "pct_out_of_state": 0.67,
+      "pct_on_campus_housing": 0.934,
+      "applicant_pools": {
+        "ea": {
+          "applied": 8861,
+          "admitted": 8209,
+          "rate": 0.9264
+        },
+        "rd": {
+          "applied": 12371,
+          "admitted": 8128,
+          "rate": 0.6572
+        },
+        "waitlist": {
+          "offered": 1736,
+          "accepted_spots": 848,
+          "enrolled": 516
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": 8453,
+          "female": 12866
+        },
+        "accepted": {
+          "male": 6433,
+          "female": 9983
+        },
+        "enrolled": {
+          "male": 745,
+          "female": 1052
+        }
+      },
+      "demographics_detail": {
+        "first_year": {
+          "nonresident_aliens": 20,
+          "hispanic": 226,
+          "black": 63,
+          "white": 1345,
+          "american_indian": 4,
+          "asian": 62,
+          "pacific_islander": 0,
+          "two_or_more": 58,
+          "unknown": 19,
+          "total": 1797
+        },
+        "undergrad": {
+          "nonresident_aliens": 115,
+          "hispanic": 713,
+          "black": 256,
+          "white": 4584,
+          "american_indian": 6,
+          "asian": 214,
+          "pacific_islander": 4,
+          "two_or_more": 175,
+          "unknown": 141,
+          "total": 6208
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.67,
+        "international_pct": null
+      },
+      "sat_act_breakdown": {
+        "sat_submitted_count": 493,
+        "sat_submitted_pct": 0.27,
+        "act_submitted_count": 55,
+        "act_submitted_pct": 0.03
+      },
+      "class_rank": {
+        "top10": 0.2,
+        "top25": 0.484,
+        "top50": 0.815,
+        "bottom50": 0.185,
+        "bottom25": 0.043
+      },
+      "gpa_distribution": {
+        "gpa_40": 0.169,
+        "gpa_375_399": 0.244,
+        "gpa_350_374": 0.253,
+        "gpa_325_349": 0.147,
+        "gpa_300_324": 0.106,
+        "gpa_250_299": 0.079,
+        "gpa_200_249": 0.002,
+        "gpa_100_199": 0.0
+      },
+      "admission_factors": {
+        "rigor": "very_important",
+        "class_rank": "not_considered",
+        "academic_gpa": "very_important",
+        "test_scores": "important",
+        "essay": "important",
+        "recommendations": "important",
+        "interview": "important",
+        "extracurriculars": "important",
+        "talent": "not_considered",
+        "character": "very_important",
+        "first_gen": "important",
+        "alumni_relation": "important",
+        "geo_residence": "important",
+        "state_residence": "important",
+        "religious": "not_considered",
+        "racial_ethnic": null,
+        "volunteer": "important",
+        "work_experience": "considered",
+        "applicant_interest": "important"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 254,
+          "admitted": 184,
+          "enrolled": 77
+        },
+        "female": {
+          "applied": 516,
+          "admitted": 332,
+          "enrolled": 135
+        },
+        "total": {
+          "applied": 770,
+          "admitted": 516,
+          "enrolled": 212
+        }
+      },
+      "slug": "quinnipiac",
+      "us_news_ranking": null
+    },
+    {
+      "id": 5,
+      "name": "Rutgers University \u2013 Camden",
+      "data_year": "2023-2024",
+      "city": "Camden",
+      "state": "NJ",
+      "location": "Camden, NJ",
+      "school_type": "Public",
+      "website": "www.camden.rutgers.edu",
+      "applicants_total": 11951,
+      "applicants_men": 5158,
+      "applicants_women": 6793,
+      "admitted_total": 9292,
+      "admitted_men": 4019,
+      "admitted_women": 5273,
+      "enrolled_total": 580,
+      "enrolled_men": 252,
+      "enrolled_women": 328,
+      "acceptance_rate": 0.7776,
+      "application_fee": 70,
+      "avg_gpa_weighted": null,
+      "rd_deadline": null,
+      "waitlist_offered": null,
+      "waitlist_accepted": null,
+      "waitlist_admitted": null,
+      "ea_ed_type": "EA",
+      "ea_ed_deadline": "11/1",
+      "ea_ed_notification": "1/31",
+      "ea_apps_received": null,
+      "ea_apps_admitted": null,
+      "sat_submitted_pct": 0.27,
+      "sat_submitted_count": 155,
+      "act_submitted_pct": 0.02,
+      "act_submitted_count": 12,
+      "sat_composite_25": null,
+      "sat_composite_75": null,
+      "sat_reading_25": 510,
+      "sat_reading_75": 625,
+      "sat_math_25": 500,
+      "sat_math_75": 630,
+      "act_composite_25": 18,
+      "act_composite_75": 26,
+      "act_math_25": 16,
+      "act_math_75": 26,
+      "act_english_25": 16,
+      "act_english_75": 27,
+      "total_undergrads": 3922,
+      "undergrads_male": 1606,
+      "undergrads_female": 2316,
+      "retention_rate": 0.82,
+      "tuition": null,
+      "tuition_in_state": 14222,
+      "tuition_out_of_state": 33734,
+      "required_fees": 3542,
+      "room_and_board": 14376,
+      "books_supplies": 1418,
+      "other_expenses": 3492,
+      "pct_out_of_state": 0.09,
+      "pct_on_campus_housing": 0.32,
+      "applicant_pools": null,
+      "gender_breakdown": {
+        "applied": {
+          "male": 5158,
+          "female": 6793
+        },
+        "accepted": {
+          "male": 4019,
+          "female": 5273
+        },
+        "enrolled": {
+          "male": 252,
+          "female": 328
+        }
+      },
+      "demographics_detail": {
+        "first_year": {
+          "nonresident_aliens": 7,
+          "hispanic": 169,
+          "black": 112,
+          "white": 182,
+          "american_indian": 0,
+          "asian": 78,
+          "pacific_islander": 1,
+          "two_or_more": 23,
+          "unknown": 8,
+          "total": 580
+        },
+        "undergrad": {
+          "nonresident_aliens": 69,
+          "hispanic": 866,
+          "black": 746,
+          "white": 1439,
+          "american_indian": 4,
+          "asian": 501,
+          "pacific_islander": 4,
+          "two_or_more": 138,
+          "unknown": 155,
+          "total": 3922
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.09,
+        "international_pct": null
+      },
+      "sat_act_breakdown": {
+        "sat_submitted_count": 155,
+        "sat_submitted_pct": 0.27,
+        "act_submitted_count": 12,
+        "act_submitted_pct": 0.02
+      },
+      "class_rank": {
+        "top10": 0.13,
+        "top25": 0.35,
+        "top50": 0.7,
+        "bottom50": 0.3,
+        "bottom25": 0.09
+      },
+      "gpa_distribution": null,
+      "admission_factors": {
+        "rigor": "very_important",
+        "class_rank": "important",
+        "academic_gpa": "very_important",
+        "test_scores": "considered",
+        "essay": "considered",
+        "recommendations": "not_considered",
+        "interview": "not_considered",
+        "extracurriculars": "important",
+        "talent": "important",
+        "character": "considered",
+        "first_gen": "not_considered",
+        "alumni_relation": "not_considered",
+        "geo_residence": "not_considered",
+        "state_residence": "not_considered",
+        "religious": "not_considered",
+        "racial_ethnic": null,
+        "volunteer": "considered",
+        "work_experience": "considered",
+        "applicant_interest": "important"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 1067,
+          "admitted": 682,
+          "enrolled": 209
+        },
+        "female": {
+          "applied": 1684,
+          "admitted": 965,
+          "enrolled": 303
+        },
+        "total": {
+          "applied": 2751,
+          "admitted": 1647,
+          "enrolled": 512
+        }
+      },
+      "slug": "rutgers-camden",
+      "us_news_ranking": null
+    },
+    {
+      "id": 6,
+      "name": "RUTGERS UNIVERSITY \u2013 NEWARK",
+      "data_year": "2023-2024",
+      "city": "Newark",
+      "state": "NJ",
+      "location": "Newark, NJ",
+      "school_type": "Public",
+      "website": "www.newark.rutgers.edu",
+      "applicants_total": 17779,
+      "applicants_men": 8049,
+      "applicants_women": 9730,
+      "admitted_total": 13997,
+      "admitted_men": 6215,
+      "admitted_women": 7782,
+      "enrolled_total": 1408,
+      "enrolled_men": 695,
+      "enrolled_women": 713,
+      "acceptance_rate": 0.7873,
+      "application_fee": 70,
+      "avg_gpa_weighted": null,
+      "rd_deadline": null,
+      "waitlist_offered": null,
+      "waitlist_accepted": null,
+      "waitlist_admitted": null,
+      "ea_ed_type": "EA",
+      "ea_ed_deadline": "11/1",
+      "ea_ed_notification": "1/31",
+      "ea_apps_received": null,
+      "ea_apps_admitted": null,
+      "sat_submitted_pct": null,
+      "sat_submitted_count": null,
+      "act_submitted_pct": null,
+      "act_submitted_count": null,
+      "sat_composite_25": null,
+      "sat_composite_75": null,
+      "sat_reading_25": null,
+      "sat_reading_75": null,
+      "sat_math_25": null,
+      "sat_math_75": null,
+      "act_composite_25": null,
+      "act_composite_75": null,
+      "act_math_25": null,
+      "act_math_75": null,
+      "act_english_25": null,
+      "act_english_75": null,
+      "total_undergrads": 7417,
+      "undergrads_male": 3472,
+      "undergrads_female": 3945,
+      "retention_rate": 0.84,
+      "tuition": null,
+      "tuition_in_state": 14222,
+      "tuition_out_of_state": 33734,
+      "required_fees": 3028,
+      "room_and_board": 16074,
+      "books_supplies": 1418,
+      "other_expenses": 3492,
+      "pct_out_of_state": 0.02,
+      "pct_on_campus_housing": 0.26,
+      "applicant_pools": null,
+      "gender_breakdown": {
+        "applied": {
+          "male": 8049,
+          "female": 9730
+        },
+        "accepted": {
+          "male": 6215,
+          "female": 7782
+        },
+        "enrolled": {
+          "male": 695,
+          "female": 713
+        }
+      },
+      "demographics_detail": {
+        "first_year": {
+          "nonresident_aliens": 29,
+          "hispanic": 468,
+          "black": 185,
+          "white": 326,
+          "american_indian": 4,
+          "asian": 336,
+          "pacific_islander": 1,
+          "two_or_more": 42,
+          "unknown": 17,
+          "total": 1408
+        },
+        "undergrad": {
+          "nonresident_aliens": 148,
+          "hispanic": 2581,
+          "black": 1398,
+          "white": 1545,
+          "american_indian": 9,
+          "asian": 1367,
+          "pacific_islander": 7,
+          "two_or_more": 178,
+          "unknown": 184,
+          "total": 7417
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.02,
+        "international_pct": null
+      },
+      "sat_act_breakdown": null,
+      "class_rank": {
+        "top10": 0.16,
+        "top25": 0.36,
+        "top50": 0.71,
+        "bottom50": 0.29,
+        "bottom25": 0.03
+      },
+      "gpa_distribution": null,
+      "admission_factors": {
+        "rigor": "very_important",
+        "class_rank": "considered",
+        "academic_gpa": "very_important",
+        "test_scores": "not_considered",
+        "essay": "important",
+        "recommendations": "not_considered",
+        "interview": "not_considered",
+        "extracurriculars": "considered",
+        "talent": "not_considered",
+        "character": "not_considered",
+        "first_gen": "considered",
+        "alumni_relation": "not_considered",
+        "geo_residence": "considered",
+        "state_residence": "considered",
+        "religious": "not_considered",
+        "racial_ethnic": null,
+        "volunteer": "considered",
+        "work_experience": "considered",
+        "applicant_interest": "considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 1660,
+          "admitted": 1123,
+          "enrolled": 365
+        },
+        "female": {
+          "applied": 2098,
+          "admitted": 1412,
+          "enrolled": 405
+        },
+        "total": {
+          "applied": 3758,
+          "admitted": 2535,
+          "enrolled": 770
+        }
+      },
+      "slug": "rutgers-newark",
+      "us_news_ranking": null
+    }
+  ]
+}

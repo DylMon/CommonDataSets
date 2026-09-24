@@ -1,0 +1,157 @@
+{
+  "name": "Rutgers University \u2013 Camden",
+  "data_year": "2023-2024",
+  "city": "Camden",
+  "state": "NJ",
+  "location": "Camden, NJ",
+  "school_type": "Public",
+  "website": "www.camden.rutgers.edu",
+  "applicants_total": 11951,
+  "applicants_men": 5158,
+  "applicants_women": 6793,
+  "admitted_total": 9292,
+  "admitted_men": 4019,
+  "admitted_women": 5273,
+  "enrolled_total": 580,
+  "enrolled_men": 252,
+  "enrolled_women": 328,
+  "acceptance_rate": 0.7776,
+  "application_fee": 70,
+  "avg_gpa_weighted": null,
+  "rd_deadline": null,
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "1/31",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.27,
+  "sat_submitted_count": 155,
+  "act_submitted_pct": 0.02,
+  "act_submitted_count": 12,
+  "sat_composite_25": null,
+  "sat_composite_75": null,
+  "sat_reading_25": 510,
+  "sat_reading_75": 625,
+  "sat_math_25": 500,
+  "sat_math_75": 630,
+  "act_composite_25": 18,
+  "act_composite_75": 26,
+  "act_math_25": 16,
+  "act_math_75": 26,
+  "act_english_25": 16,
+  "act_english_75": 27,
+  "total_undergrads": 3922,
+  "undergrads_male": 1606,
+  "undergrads_female": 2316,
+  "retention_rate": 0.82,
+  "tuition": null,
+  "tuition_in_state": 14222,
+  "tuition_out_of_state": 33734,
+  "required_fees": 3542,
+  "room_and_board": 14376,
+  "books_supplies": 1418,
+  "other_expenses": 3492,
+  "pct_out_of_state": 0.09,
+  "pct_on_campus_housing": 0.32,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 5158,
+      "female": 6793
+    },
+    "accepted": {
+      "male": 4019,
+      "female": 5273
+    },
+    "enrolled": {
+      "male": 252,
+      "female": 328
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 7,
+      "hispanic": 169,
+      "black": 112,
+      "white": 182,
+      "american_indian": 0,
+      "asian": 78,
+      "pacific_islander": 1,
+      "two_or_more": 23,
+      "unknown": 8,
+      "total": 580
+    },
+    "undergrad": {
+      "nonresident_aliens": 69,
+      "hispanic": 866,
+      "black": 746,
+      "white": 1439,
+      "american_indian": 4,
+      "asian": 501,
+      "pacific_islander": 4,
+      "two_or_more": 138,
+      "unknown": 155,
+      "total": 3922
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.09,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 155,
+    "sat_submitted_pct": 0.27,
+    "act_submitted_count": 12,
+    "act_submitted_pct": 0.02
+  },
+  "class_rank": {
+    "top10": 0.13,
+    "top25": 0.35,
+    "top50": 0.7,
+    "bottom50": 0.3,
+    "bottom25": 0.09
+  },
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "important",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "considered",
+    "recommendations": "not_considered",
+    "interview": "not_considered",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "considered",
+    "first_gen": "not_considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "important"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1067,
+      "admitted": 682,
+      "enrolled": 209
+    },
+    "female": {
+      "applied": 1684,
+      "admitted": 965,
+      "enrolled": 303
+    },
+    "total": {
+      "applied": 2751,
+      "admitted": 1647,
+      "enrolled": 512
+    }
+  },
+  "slug": "rutgers-camden"
+}

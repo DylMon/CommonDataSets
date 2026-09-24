@@ -1,0 +1,165 @@
+{
+  "name": "The Ohio State University",
+  "data_year": "2023-2024",
+  "city": "Columbus",
+  "state": "OH",
+  "location": "Columbus, OH",
+  "school_type": "Public",
+  "website": "www.osu.edu",
+  "applicants_total": 70028,
+  "applicants_men": 34160,
+  "applicants_women": 35868,
+  "admitted_total": 35588,
+  "admitted_men": 16943,
+  "admitted_women": 18645,
+  "enrolled_total": 8062,
+  "enrolled_men": 3809,
+  "enrolled_women": 4253,
+  "acceptance_rate": 0.5082,
+  "application_fee": 60,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "1/15",
+  "waitlist_offered": 2596,
+  "waitlist_accepted": 701,
+  "waitlist_admitted": 556,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.21,
+  "sat_submitted_count": 1718,
+  "act_submitted_pct": 0.46,
+  "act_submitted_count": 3729,
+  "sat_composite_25": 1290,
+  "sat_composite_75": 1440,
+  "sat_reading_25": 620,
+  "sat_reading_75": 710,
+  "sat_math_25": 640,
+  "sat_math_75": 750,
+  "act_composite_25": 27,
+  "act_composite_75": 32,
+  "act_math_25": 26,
+  "act_math_75": 31,
+  "act_english_25": 25,
+  "act_english_75": 33,
+  "total_undergrads": 45728,
+  "undergrads_male": 22667,
+  "undergrads_female": 23061,
+  "retention_rate": 0.94,
+  "tuition": null,
+  "tuition_in_state": 13244,
+  "tuition_out_of_state": 40022,
+  "required_fees": 0,
+  "room_and_board": 14738,
+  "books_supplies": 1030,
+  "other_expenses": 2374,
+  "pct_out_of_state": 0.29,
+  "pct_on_campus_housing": 0.92,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 2596,
+      "accepted_spots": 701,
+      "enrolled": 556
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 34160,
+      "female": 35868
+    },
+    "accepted": {
+      "male": 16943,
+      "female": 18645
+    },
+    "enrolled": {
+      "male": 3809,
+      "female": 4253
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 707,
+      "hispanic": 515,
+      "black": 542,
+      "white": 4695,
+      "american_indian": 2,
+      "asian": 1000,
+      "pacific_islander": 2,
+      "two_or_more": 382,
+      "unknown": 216,
+      "total": 8061
+    },
+    "undergrad": {
+      "nonresident_aliens": 3238,
+      "hispanic": 2580,
+      "black": 3649,
+      "white": 28139,
+      "american_indian": 26,
+      "asian": 4569,
+      "pacific_islander": 21,
+      "two_or_more": 2108,
+      "unknown": 1398,
+      "total": 45728
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.29,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 1718,
+    "sat_submitted_pct": 0.21,
+    "act_submitted_count": 3729,
+    "act_submitted_pct": 0.46
+  },
+  "class_rank": {
+    "top10": 0.67,
+    "top25": 0.95,
+    "top50": 0.99,
+    "bottom50": 0.01,
+    "bottom25": 0.0
+  },
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "very_important",
+    "academic_gpa": "very_important",
+    "test_scores": "very_important",
+    "essay": "important",
+    "recommendations": "important",
+    "interview": "not_considered",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "considered",
+    "first_gen": "important",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "important",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 2054,
+      "admitted": 1754,
+      "enrolled": 991
+    },
+    "female": {
+      "applied": 1720,
+      "admitted": 1503,
+      "enrolled": 844
+    },
+    "total": {
+      "applied": 3774,
+      "admitted": 3257,
+      "enrolled": 1835
+    }
+  },
+  "slug": "ohio-state"
+}
