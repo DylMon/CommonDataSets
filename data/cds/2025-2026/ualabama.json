@@ -1,0 +1,174 @@
+{
+  "name": "The University of Alabama",
+  "data_year": "2025-26",
+  "city": "Tuscaloosa",
+  "state": "AL",
+  "location": "Tuscaloosa, AL",
+  "school_type": "Public",
+  "website": "www.ua.edu",
+  "applicants_total": 61994,
+  "applicants_men": 25528,
+  "applicants_women": 36466,
+  "admitted_total": 44124,
+  "admitted_men": 17977,
+  "admitted_women": 26147,
+  "enrolled_total": 8127,
+  "enrolled_men": 3344,
+  "enrolled_women": 4783,
+  "acceptance_rate": 0.7117,
+  "application_fee": 40,
+  "avg_gpa_weighted": 3.85,
+  "rd_deadline": null,
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "None",
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.19,
+  "sat_submitted_count": 1511,
+  "act_submitted_pct": 0.53,
+  "act_submitted_count": 4283,
+  "sat_composite_25": 1100,
+  "sat_composite_75": 1360,
+  "sat_reading_25": 560,
+  "sat_reading_75": 680,
+  "sat_math_25": 530,
+  "sat_math_75": 680,
+  "act_composite_25": 22,
+  "act_composite_75": 31,
+  "act_math_25": 19,
+  "act_math_75": 28,
+  "act_english_25": 21,
+  "act_english_75": 32,
+  "total_undergrads": 35621,
+  "undergrads_male": 15393,
+  "undergrads_female": 20228,
+  "retention_rate": 0.88,
+  "tuition": null,
+  "tuition_in_state": 11684,
+  "tuition_out_of_state": 34542,
+  "required_fees": 800,
+  "room_and_board": 13616,
+  "books_supplies": 700,
+  "other_expenses": 3962,
+  "pct_out_of_state": 0.57,
+  "pct_on_campus_housing": 0.949,
+  "applicant_pools": {
+    "ea": null,
+    "rd": {
+      "applied": 61994,
+      "admitted": 44124,
+      "rate": 0.7117
+    },
+    "waitlist": null
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 25528,
+      "female": 36466
+    },
+    "accepted": {
+      "male": 17977,
+      "female": 26147
+    },
+    "enrolled": {
+      "male": 3344,
+      "female": 4783
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 91,
+      "hispanic": 673,
+      "black": 1131,
+      "white": 5559,
+      "american_indian": 26,
+      "asian": 112,
+      "pacific_islander": 5,
+      "two_or_more": 366,
+      "unknown": 164,
+      "total": 8127
+    },
+    "undergrad": {
+      "nonresident_aliens": 382,
+      "hispanic": 2777,
+      "black": 4592,
+      "white": 24558,
+      "american_indian": 122,
+      "asian": 545,
+      "pacific_islander": 29,
+      "two_or_more": 1368,
+      "unknown": 1248,
+      "total": 35621
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.57,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 1511,
+    "sat_submitted_pct": 0.19,
+    "act_submitted_count": 4283,
+    "act_submitted_pct": 0.53
+  },
+  "class_rank": {
+    "top10": 0.23,
+    "top25": 0.476,
+    "top50": 0.786,
+    "bottom50": 0.214,
+    "bottom25": 0.03
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.4,
+    "gpa_375_399": 0.19,
+    "gpa_350_374": 0.17,
+    "gpa_325_349": 0.12,
+    "gpa_300_324": 0.09,
+    "gpa_250_299": 0.03,
+    "gpa_200_249": 0.0,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "very_important",
+    "essay": "considered",
+    "recommendations": "considered",
+    "interview": "considered",
+    "extracurriculars": "important",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": "not_considered",
+    "volunteer": "important",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 2515,
+      "admitted": 1349,
+      "enrolled": 599
+    },
+    "female": {
+      "applied": 3203,
+      "admitted": 1570,
+      "enrolled": 658
+    },
+    "total": {
+      "applied": 5718,
+      "admitted": 2919,
+      "enrolled": 1257
+    }
+  },
+  "slug": "ualabama"
+}

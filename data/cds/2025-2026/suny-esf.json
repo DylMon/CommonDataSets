@@ -1,0 +1,163 @@
+{
+  "name": "SUNY Environmental Science and Forestry",
+  "data_year": "2025-26",
+  "city": "Syracuse",
+  "state": "NY",
+  "location": "Syracuse, NY",
+  "school_type": "Public",
+  "website": "www.esf.edu",
+  "applicants_total": 4954,
+  "applicants_men": 2041,
+  "applicants_women": 2901,
+  "admitted_total": 4197,
+  "admitted_men": 1645,
+  "admitted_women": 2541,
+  "enrolled_total": 374,
+  "enrolled_men": 152,
+  "enrolled_women": 221,
+  "acceptance_rate": 0.8472,
+  "application_fee": 50,
+  "avg_gpa_weighted": 3.41,
+  "rd_deadline": "1/15",
+  "waitlist_offered": 55,
+  "waitlist_accepted": 26,
+  "waitlist_admitted": 26,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/15",
+  "ea_ed_notification": "1/15",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": null,
+  "sat_submitted_count": null,
+  "act_submitted_pct": null,
+  "act_submitted_count": null,
+  "sat_composite_25": 1190,
+  "sat_composite_75": 1345,
+  "sat_reading_25": null,
+  "sat_reading_75": null,
+  "sat_math_25": null,
+  "sat_math_75": null,
+  "act_composite_25": 28,
+  "act_composite_75": 30,
+  "act_math_25": null,
+  "act_math_75": null,
+  "act_english_25": null,
+  "act_english_75": null,
+  "total_undergrads": 1850,
+  "undergrads_male": 930,
+  "undergrads_female": 914,
+  "retention_rate": 0.845,
+  "tuition": null,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": null,
+  "room_and_board": null,
+  "books_supplies": null,
+  "other_expenses": null,
+  "pct_out_of_state": 0.2,
+  "pct_on_campus_housing": 0.93,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 55,
+      "accepted_spots": 26,
+      "enrolled": 26
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 2041,
+      "female": 2901
+    },
+    "accepted": {
+      "male": 1645,
+      "female": 2541
+    },
+    "enrolled": {
+      "male": 152,
+      "female": 221
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 1,
+      "hispanic": 49,
+      "black": 14,
+      "white": 266,
+      "american_indian": 0,
+      "asian": 14,
+      "pacific_islander": 0,
+      "two_or_more": 20,
+      "unknown": 9,
+      "total": 373
+    },
+    "undergrad": {
+      "nonresident_aliens": 16,
+      "hispanic": 207,
+      "black": 52,
+      "white": 1380,
+      "american_indian": 3,
+      "asian": 51,
+      "pacific_islander": 1,
+      "two_or_more": 86,
+      "unknown": 54,
+      "total": 1850
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.2,
+    "international_pct": null
+  },
+  "sat_act_breakdown": null,
+  "class_rank": null,
+  "gpa_distribution": {
+    "gpa_40": 0.12,
+    "gpa_375_399": 0.31,
+    "gpa_350_374": 0.3,
+    "gpa_325_349": 0.16,
+    "gpa_300_324": 0.09,
+    "gpa_250_299": 0.02,
+    "gpa_200_249": 0.0,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "considered",
+    "recommendations": "considered",
+    "interview": "considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "not_considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "important"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 275,
+      "admitted": 138,
+      "enrolled": 71
+    },
+    "female": {
+      "applied": 288,
+      "admitted": 152,
+      "enrolled": 78
+    },
+    "total": {
+      "applied": 565,
+      "admitted": 292,
+      "enrolled": 151
+    }
+  },
+  "slug": "suny-esf"
+}

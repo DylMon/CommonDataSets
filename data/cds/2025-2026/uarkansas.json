@@ -1,0 +1,174 @@
+{
+  "name": "University of Arkansas",
+  "data_year": "2025-2026",
+  "city": "Fayetteville",
+  "state": "AR",
+  "location": "Fayetteville, AR",
+  "school_type": "Public",
+  "website": null,
+  "applicants_total": 32928,
+  "applicants_men": 13408,
+  "applicants_women": 19511,
+  "admitted_total": 24326,
+  "admitted_men": 9502,
+  "admitted_women": 14818,
+  "enrolled_total": 6956,
+  "enrolled_men": 2978,
+  "enrolled_women": 3972,
+  "acceptance_rate": 0.7388,
+  "application_fee": 40,
+  "avg_gpa_weighted": 3.83,
+  "rd_deadline": "8/1",
+  "waitlist_offered": 389,
+  "waitlist_accepted": 389,
+  "waitlist_admitted": 32,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.312,
+  "sat_submitted_count": 2170,
+  "act_submitted_pct": 0.722,
+  "act_submitted_count": 5025,
+  "sat_composite_25": 1020,
+  "sat_composite_75": 1210,
+  "sat_reading_25": 520,
+  "sat_reading_75": 620,
+  "sat_math_25": 500,
+  "sat_math_75": 620,
+  "act_composite_25": 21,
+  "act_composite_75": 28,
+  "act_math_25": 18,
+  "act_math_75": 26,
+  "act_english_25": 20,
+  "act_english_75": 28,
+  "total_undergrads": 29252,
+  "undergrads_male": 13072,
+  "undergrads_female": 16134,
+  "retention_rate": 0.859,
+  "tuition": null,
+  "tuition_in_state": 8336.0,
+  "tuition_out_of_state": 30604.0,
+  "required_fees": 2580.0,
+  "room_and_board": 15694.0,
+  "books_supplies": 1270.0,
+  "other_expenses": 3452.0,
+  "pct_out_of_state": 0.542,
+  "pct_on_campus_housing": 0.845,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 389,
+      "accepted_spots": 389,
+      "enrolled": 32
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 13408,
+      "female": 19511
+    },
+    "accepted": {
+      "male": 9502,
+      "female": 14818
+    },
+    "enrolled": {
+      "male": 2978,
+      "female": 3972
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 43,
+      "hispanic": 919,
+      "black": 239,
+      "white": 5037,
+      "american_indian": 54,
+      "asian": 197,
+      "pacific_islander": 9,
+      "two_or_more": 411,
+      "unknown": 47,
+      "total": 6956
+    },
+    "undergrad": {
+      "nonresident_aliens": 332,
+      "hispanic": 3640,
+      "black": 1027,
+      "white": 21125,
+      "american_indian": 247,
+      "asian": 858,
+      "pacific_islander": 38,
+      "two_or_more": 1550,
+      "unknown": 222,
+      "total": 29039
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.542,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 2170,
+    "sat_submitted_pct": 0.312,
+    "act_submitted_count": 5025,
+    "act_submitted_pct": 0.722
+  },
+  "class_rank": {
+    "top10": 0.259,
+    "top25": 0.532,
+    "top50": 0.146,
+    "bottom50": 0.15,
+    "bottom25": 0.019
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.35,
+    "gpa_375_399": 0.27,
+    "gpa_350_374": 0.21,
+    "gpa_325_349": 0.127,
+    "gpa_300_324": 0.029,
+    "gpa_250_299": 0.013,
+    "gpa_200_249": 0.0,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "considered",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "considered",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1940,
+      "admitted": 1116,
+      "enrolled": 643
+    },
+    "female": {
+      "applied": 2384,
+      "admitted": 1093,
+      "enrolled": 551
+    },
+    "total": {
+      "applied": 4326,
+      "admitted": 2211,
+      "enrolled": 1196
+    }
+  },
+  "slug": "uarkansas"
+}

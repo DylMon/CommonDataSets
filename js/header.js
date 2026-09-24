@@ -38,5 +38,36 @@
 
         const container = document.querySelector('.container');
         if (container) container.insertAdjacentHTML('afterbegin', nav);
+
+        // School pages only: hide the header on scroll down, bring it back
+        // on scroll up. Everywhere else it just stays put (sticky to top).
+        if (inSubdir) {
+            const header = document.querySelector('.site-header');
+            if (header) {
+                let lastY = window.scrollY;
+                let ticking = false;
+
+                function updateHeader() {
+                    const y = window.scrollY;
+                    if (Math.abs(y - lastY) > 5) {
+                        const shouldHide = y > lastY && y > header.offsetHeight;
+                        header.classList.toggle('site-header--hidden', shouldHide);
+                        // Mirrored on <body> so the sticky right-sidebar (see
+                        // css/base.css) can rise into the space the header
+                        // just vacated instead of leaving it empty above it.
+                        document.body.classList.toggle('header-hidden', shouldHide);
+                        lastY = y;
+                    }
+                    ticking = false;
+                }
+
+                window.addEventListener('scroll', function () {
+                    if (!ticking) {
+                        window.requestAnimationFrame(updateHeader);
+                        ticking = true;
+                    }
+                }, { passive: true });
+            }
+        }
     });
 })();

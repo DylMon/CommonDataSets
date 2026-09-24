@@ -1,0 +1,161 @@
+{
+  "name": "Arizona State University Campus Immersion",
+  "data_year": "2025-26",
+  "city": "Tempe",
+  "state": "AZ",
+  "location": "Tempe, AZ",
+  "school_type": "Public",
+  "website": "asu.edu",
+  "applicants_total": 69617,
+  "applicants_men": 33554,
+  "applicants_women": 36042,
+  "admitted_total": 61533,
+  "admitted_men": 29517,
+  "admitted_women": 31997,
+  "enrolled_total": 13665,
+  "enrolled_men": 6633,
+  "enrolled_women": 7028,
+  "acceptance_rate": 0.8839,
+  "application_fee": "Residents: $50; Nonresidents: $80; International: $85",
+  "avg_gpa_weighted": 3.52,
+  "rd_deadline": null,
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "None",
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": null,
+  "sat_submitted_count": null,
+  "act_submitted_pct": null,
+  "act_submitted_count": null,
+  "sat_composite_25": null,
+  "sat_composite_75": null,
+  "sat_reading_25": null,
+  "sat_reading_75": null,
+  "sat_math_25": null,
+  "sat_math_75": null,
+  "act_composite_25": null,
+  "act_composite_75": null,
+  "act_math_25": null,
+  "act_math_75": null,
+  "act_english_25": null,
+  "act_english_75": null,
+  "total_undergrads": 64662,
+  "undergrads_male": 33091,
+  "undergrads_female": 31571,
+  "retention_rate": 0.873,
+  "tuition": null,
+  "tuition_in_state": 12527,
+  "tuition_out_of_state": 36065,
+  "required_fees": 1007,
+  "room_and_board": 18819,
+  "books_supplies": 1320,
+  "other_expenses": 2415,
+  "pct_out_of_state": 0.282,
+  "pct_on_campus_housing": 0.682,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 33554,
+      "female": 36042
+    },
+    "accepted": {
+      "male": 29517,
+      "female": 31997
+    },
+    "enrolled": {
+      "male": 6633,
+      "female": 7028
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 792,
+      "hispanic": 4219,
+      "black": 738,
+      "white": 4923,
+      "american_indian": 142,
+      "asian": 1314,
+      "pacific_islander": 41,
+      "two_or_more": 889,
+      "unknown": 607,
+      "total": 13665
+    },
+    "undergrad": {
+      "nonresident_aliens": 5300,
+      "hispanic": 17951,
+      "black": 2993,
+      "white": 24943,
+      "american_indian": 696,
+      "asian": 6011,
+      "pacific_islander": 146,
+      "two_or_more": 3524,
+      "unknown": 3098,
+      "total": 64662
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.282,
+    "international_pct": null
+  },
+  "sat_act_breakdown": null,
+  "class_rank": {
+    "top10": 0.299,
+    "top25": 0.603,
+    "top50": 0.871,
+    "bottom50": 0.129,
+    "bottom25": 0.02
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.09,
+    "gpa_375_399": 0.275,
+    "gpa_350_374": 0.223,
+    "gpa_325_349": 0.176,
+    "gpa_300_324": 0.134,
+    "gpa_250_299": 0.091,
+    "gpa_200_249": 0.01,
+    "gpa_100_199": 0.001
+  },
+  "admission_factors": {
+    "rigor": "important",
+    "class_rank": "important",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "not_considered",
+    "recommendations": "not_considered",
+    "interview": "not_considered",
+    "extracurriculars": "not_considered",
+    "talent": "not_considered",
+    "character": "not_considered",
+    "first_gen": "not_considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "not_considered",
+    "work_experience": "not_considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 4069,
+      "admitted": 3662,
+      "enrolled": 1864
+    },
+    "female": {
+      "applied": 3576,
+      "admitted": 3280,
+      "enrolled": 1811
+    },
+    "total": {
+      "applied": 7648,
+      "admitted": 6945,
+      "enrolled": 3677
+    }
+  },
+  "slug": "asu"
+}

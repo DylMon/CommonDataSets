@@ -180,7 +180,7 @@
         }
 
         const SORTERS = {
-            'us-news':        (a, b) => (a.us_news_rank ?? 999) - (b.us_news_rank ?? 999),
+            'us-news':        (a, b) => (a.us_news_ranking ?? 999) - (b.us_news_ranking ?? 999),
             'acceptance-asc': (a, b) => (a.acceptance_rate ?? 1) - (b.acceptance_rate ?? 1),
             'acceptance-desc':(a, b) => (b.acceptance_rate ?? 0) - (a.acceptance_rate ?? 0),
             'sat':            (a, b) => (b.sat_avg ?? 0) - (a.sat_avg ?? 0),
@@ -192,7 +192,7 @@
                 const af = favorites.has(a.slug) ? 0 : 1;
                 const bf = favorites.has(b.slug) ? 0 : 1;
                 if (af !== bf) return af - bf;
-                return (a.us_news_rank ?? 999) - (b.us_news_rank ?? 999);
+                return (a.us_news_ranking ?? 999) - (b.us_news_ranking ?? 999);
             },
         };
 
@@ -204,6 +204,8 @@
         function fmtPct(val) { return val != null ? (val * 100).toFixed(1) + '%' : '—'; }
         function fmtMoney(val) { return val != null ? '$' + val.toLocaleString() : '—'; }
 
+        const PAGE_SIZE = 50;
+        let currentPage = 1;
         let allSchools = [];
         let searchQuery = '';
         let currentSort = 'us-news';
@@ -296,19 +298,47 @@
                 </div>`;
         }
 
+        function paginationHtml(totalPages) {
+            if (totalPages <= 1) return '';
+            const btn = (page, label, disabled) =>
+                `<button class="page-btn${disabled ? ' disabled' : ''}${page === currentPage ? ' active' : ''}" data-page="${page}" ${disabled ? 'disabled' : ''}>${label}</button>`;
+            let nums = '';
+            for (let p = 1; p <= totalPages; p++) nums += btn(p, p, false);
+            return `<div class="pagination">
+                ${btn(currentPage - 1, 'Prev', currentPage === 1)}
+                ${nums}
+                ${btn(currentPage + 1, 'Next', currentPage === totalPages)}
+            </div>`;
+        }
+
         function renderList(sortKey) {
             const q = searchQuery.toLowerCase();
             let source = q ? allSchools.filter(s => s.name.toLowerCase().includes(q)) : allSchools;
             source = applyFilters(source);
             const sorted = [...source].sort(SORTERS[sortKey]);
-            document.getElementById('results-count').textContent = `Showing ${sorted.length} of ${allSchools.length} institutions`;
-            document.getElementById('school-list').innerHTML = sorted.map((s, i) => {
+
+            // The rank badge always reflects a school's true position across
+            // the FULL dataset under the current sort — search and the other
+            // filters only narrow what's visible, they must never change
+            // what "rank" a school displays as.
+            const fullRanked = [...allSchools].sort(SORTERS[sortKey]);
+            const rankBySlug = new Map(fullRanked.map((s, i) => [s.slug, i + 1]));
+
+            const totalPages = Math.max(1, Math.ceil(sorted.length / PAGE_SIZE));
+            currentPage = Math.min(Math.max(currentPage, 1), totalPages);
+            const pageStart = (currentPage - 1) * PAGE_SIZE;
+            const pageItems = sorted.slice(pageStart, pageStart + PAGE_SIZE);
+
+            document.getElementById('results-count').textContent = sorted.length
+                ? `Showing ${pageStart + 1}–${Math.min(pageStart + PAGE_SIZE, sorted.length)} of ${sorted.length} institutions`
+                : `Showing 0 of ${allSchools.length} institutions`;
+            document.getElementById('school-list').innerHTML = pageItems.map(s => {
                 const actRange = s.act_composite_25 != null && s.act_composite_75 != null ? `${s.act_composite_25}–${s.act_composite_75}` : '—';
                 const isFav = favorites.has(s.slug);
                 return `
                 <div class="school-card">
                     <div class="school-row">
-                        <div class="school-rank">${i + 1}</div>
+                        <div class="school-rank">${rankBySlug.get(s.slug)}</div>
                         <img class="school-logo" src="${logoSrc(s.slug)}" alt="${s.name}" onerror="${LOGO_ONERR}" />
                         <div class="school-name">
                             <a class="school-name-link" href="schools/${s.slug}.html">${s.name}</a>
@@ -342,7 +372,7 @@
                         </div>
                     </div>
                 </div>`;
-            }).join('');
+            }).join('') + paginationHtml(totalPages);
         }
 
         function withSatAvg(schools) {
@@ -355,6 +385,7 @@
         }
 
         async function loadYear(year) {
+            currentPage = 1;
             if (!schoolsCache[year]) {
                 const res = await fetch(YEAR_FILES[year]);
                 if (!res.ok) {
@@ -409,6 +440,7 @@
 
             document.getElementById('school-search').addEventListener('input', e => {
                 searchQuery = e.target.value.trim();
+                currentPage = 1;
                 renderList(currentSort);
             });
 
@@ -424,6 +456,7 @@
                     document.querySelectorAll('#sort-dropdown-menu .sort-option').forEach(o => o.classList.remove('active'));
                     opt.classList.add('active');
                     currentSort = opt.dataset.sort;
+                    currentPage = 1;
                     document.getElementById('sort-label-text').textContent = opt.textContent;
                     sortDropdown.classList.remove('open');
                     renderList(currentSort);
@@ -431,6 +464,15 @@
             });
 
             document.getElementById('school-list').addEventListener('click', e => {
+                const pageBtn = e.target.closest('.page-btn');
+                if (pageBtn) {
+                    if (pageBtn.disabled) return;
+                    currentPage = parseInt(pageBtn.dataset.page, 10);
+                    renderList(currentSort);
+                    document.getElementById('school-list').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    return;
+                }
+
                 const toggleBtn = e.target.closest('.details-toggle');
                 if (toggleBtn) {
                     const card = toggleBtn.closest('.school-card');
@@ -466,6 +508,7 @@
                     activeFilters.eaEd = btn.dataset.value;
                     document.querySelectorAll('.filter-btn[data-filter="ea-ed"]').forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
+                    currentPage = 1;
                     renderList(currentSort);
                 });
             });
@@ -476,6 +519,7 @@
             }
 
             function applyRangeRender() {
+                currentPage = 1;
                 renderList(currentSort);
             }
 
@@ -638,6 +682,7 @@
                 setTuitionValue(75000);
                 setSatValue(1600);
                 setEarnValue(0);
+                currentPage = 1;
                 renderList(currentSort);
             });
 

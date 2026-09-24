@@ -1,0 +1,165 @@
+{
+  "name": "University of Vermont",
+  "data_year": "2025-26",
+  "city": "Burlington",
+  "state": "VT",
+  "location": "Burlington, VT",
+  "school_type": "Public",
+  "website": "www.uvm.edu",
+  "applicants_total": 25434,
+  "applicants_men": 9633,
+  "applicants_women": 15801,
+  "admitted_total": 18576,
+  "admitted_men": 6689,
+  "admitted_women": 11887,
+  "enrolled_total": 2810,
+  "enrolled_men": 1126,
+  "enrolled_women": 1684,
+  "acceptance_rate": 0.7302,
+  "application_fee": 55,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "1/15",
+  "waitlist_offered": 2752,
+  "waitlist_accepted": 1054,
+  "waitlist_admitted": 142,
+  "ea_ed_type": "ED",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/1",
+  "ea_apps_received": 396,
+  "ea_apps_admitted": 363,
+  "sat_submitted_pct": 0.32,
+  "sat_submitted_count": 887,
+  "act_submitted_pct": 0.08,
+  "act_submitted_count": 238,
+  "sat_composite_25": 1300,
+  "sat_composite_75": 1430,
+  "sat_reading_25": 660,
+  "sat_reading_75": 740,
+  "sat_math_25": 630,
+  "sat_math_75": 700,
+  "act_composite_25": 29,
+  "act_composite_75": 33,
+  "act_math_25": 26,
+  "act_math_75": 31,
+  "act_english_25": 28,
+  "act_english_75": 35,
+  "total_undergrads": 12159,
+  "undergrads_male": 4626,
+  "undergrads_female": 7533,
+  "retention_rate": 0.8936,
+  "tuition": null,
+  "tuition_in_state": 16938,
+  "tuition_out_of_state": 46655,
+  "required_fees": 3058,
+  "room_and_board": 14654,
+  "books_supplies": 1320,
+  "other_expenses": 2443,
+  "pct_out_of_state": 0.804,
+  "pct_on_campus_housing": 0.983,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 2752,
+      "accepted_spots": 1054,
+      "enrolled": 142
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 9633,
+      "female": 15801
+    },
+    "accepted": {
+      "male": 6689,
+      "female": 11887
+    },
+    "enrolled": {
+      "male": 1126,
+      "female": 1684
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 40,
+      "hispanic": 208,
+      "black": 38,
+      "white": 2195,
+      "american_indian": 6,
+      "asian": 83,
+      "pacific_islander": 1,
+      "two_or_more": 163,
+      "unknown": 76,
+      "total": 2810
+    },
+    "undergrad": {
+      "nonresident_aliens": 139,
+      "hispanic": 720,
+      "black": 126,
+      "white": 9408,
+      "american_indian": 12,
+      "asian": 324,
+      "pacific_islander": 2,
+      "two_or_more": 566,
+      "unknown": 298,
+      "total": 11595
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.804,
+    "international_pct": 0.0142
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 887,
+    "sat_submitted_pct": 0.32,
+    "act_submitted_count": 238,
+    "act_submitted_pct": 0.08
+  },
+  "class_rank": {
+    "top10": 0.35,
+    "top25": 0.68,
+    "top50": 0.94,
+    "bottom50": 0.06,
+    "bottom25": 0.01
+  },
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "important",
+    "interview": "not_considered",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "important",
+    "first_gen": "important",
+    "alumni_relation": "not_considered",
+    "geo_residence": "important",
+    "state_residence": "important",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "important",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 346,
+      "admitted": 289,
+      "enrolled": 135
+    },
+    "female": {
+      "applied": 481,
+      "admitted": 406,
+      "enrolled": 161
+    },
+    "total": {
+      "applied": 827,
+      "admitted": 695,
+      "enrolled": 296
+    }
+  },
+  "slug": "uvermont"
+}

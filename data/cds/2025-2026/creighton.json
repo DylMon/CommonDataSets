@@ -1,0 +1,174 @@
+{
+  "name": "Creighton University",
+  "data_year": "2025-26",
+  "city": "Omaha",
+  "state": "NE",
+  "location": "Omaha, NE",
+  "school_type": "Private",
+  "website": "www.creighton.edu",
+  "applicants_total": 6389,
+  "applicants_men": 2658,
+  "applicants_women": 3731,
+  "admitted_total": 5888,
+  "admitted_men": 2456,
+  "admitted_women": 3432,
+  "enrolled_total": 1248,
+  "enrolled_men": 511,
+  "enrolled_women": 737,
+  "acceptance_rate": 0.9216,
+  "application_fee": 50,
+  "avg_gpa_weighted": 3.92,
+  "rd_deadline": "12/1",
+  "waitlist_offered": 53,
+  "waitlist_accepted": 18,
+  "waitlist_admitted": 9,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.0809,
+  "sat_submitted_count": 101,
+  "act_submitted_pct": 0.3998,
+  "act_submitted_count": 499,
+  "sat_composite_25": 1280,
+  "sat_composite_75": 1410,
+  "sat_reading_25": 650,
+  "sat_reading_75": 710,
+  "sat_math_25": 620,
+  "sat_math_75": 710,
+  "act_composite_25": 26,
+  "act_composite_75": 31,
+  "act_math_25": 25,
+  "act_math_75": 30,
+  "act_english_25": 25,
+  "act_english_75": 33,
+  "total_undergrads": 4833,
+  "undergrads_male": 2096,
+  "undergrads_female": 2737,
+  "retention_rate": 0.92,
+  "tuition": 50580,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 2322,
+  "room_and_board": 14930,
+  "books_supplies": 1200,
+  "other_expenses": 2500,
+  "pct_out_of_state": 0.7625,
+  "pct_on_campus_housing": 0.948,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 53,
+      "accepted_spots": 18,
+      "enrolled": 9
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 2658,
+      "female": 3731
+    },
+    "accepted": {
+      "male": 2456,
+      "female": 3432
+    },
+    "enrolled": {
+      "male": 511,
+      "female": 737
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 20,
+      "hispanic": 128,
+      "black": 31,
+      "white": 865,
+      "american_indian": 2,
+      "asian": 97,
+      "pacific_islander": 0,
+      "two_or_more": 81,
+      "unknown": 25,
+      "total": 1249
+    },
+    "undergrad": {
+      "nonresident_aliens": 89,
+      "hispanic": 497,
+      "black": 123,
+      "white": 3112,
+      "american_indian": 8,
+      "asian": 349,
+      "pacific_islander": 5,
+      "two_or_more": 294,
+      "unknown": 67,
+      "total": 4544
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.7625,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 101,
+    "sat_submitted_pct": 0.0809,
+    "act_submitted_count": 499,
+    "act_submitted_pct": 0.3998
+  },
+  "class_rank": {
+    "top10": 0.373,
+    "top25": 0.6958,
+    "top50": 0.9048,
+    "bottom50": 0.0952,
+    "bottom25": 0.0106
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.4936,
+    "gpa_375_399": 0.2356,
+    "gpa_350_374": 0.1346,
+    "gpa_325_349": 0.0729,
+    "gpa_300_324": 0.0425,
+    "gpa_250_299": 0.0176,
+    "gpa_200_249": 0.0032,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "important",
+    "essay": "important",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "not_considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 44,
+      "admitted": 41,
+      "enrolled": 18
+    },
+    "female": {
+      "applied": 29,
+      "admitted": 28,
+      "enrolled": 17
+    },
+    "total": {
+      "applied": 73,
+      "admitted": 69,
+      "enrolled": 35
+    }
+  },
+  "slug": "creighton"
+}

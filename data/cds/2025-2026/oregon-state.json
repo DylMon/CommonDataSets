@@ -1,0 +1,174 @@
+{
+  "name": "Oregon State University",
+  "data_year": "2025-26",
+  "city": "Corvallis",
+  "state": "OR",
+  "location": "Corvallis, OR",
+  "school_type": "Public",
+  "website": "oregonstate.edu",
+  "applicants_total": 29362,
+  "applicants_men": 13469,
+  "applicants_women": 15849,
+  "admitted_total": 23172,
+  "admitted_men": 10400,
+  "admitted_women": 12739,
+  "enrolled_total": 4452,
+  "enrolled_men": 2203,
+  "enrolled_women": 2233,
+  "acceptance_rate": 0.7892,
+  "application_fee": 65,
+  "avg_gpa_weighted": 3.7,
+  "rd_deadline": "8/25",
+  "waitlist_offered": 764,
+  "waitlist_accepted": null,
+  "waitlist_admitted": 292,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.08,
+  "sat_submitted_count": 532,
+  "act_submitted_pct": 0.04,
+  "act_submitted_count": 274,
+  "sat_composite_25": 1127.5,
+  "sat_composite_75": 1360,
+  "sat_reading_25": 610,
+  "sat_reading_75": 720,
+  "sat_math_25": 570,
+  "sat_math_75": 700,
+  "act_composite_25": 24,
+  "act_composite_75": 31,
+  "act_math_25": 22,
+  "act_math_75": 29,
+  "act_english_25": 22,
+  "act_english_75": 30,
+  "total_undergrads": 31586,
+  "undergrads_male": 15951,
+  "undergrads_female": 15528,
+  "retention_rate": 0.891,
+  "tuition": null,
+  "tuition_in_state": 13440,
+  "tuition_out_of_state": 40155,
+  "required_fees": 2592,
+  "room_and_board": 19011,
+  "books_supplies": 600,
+  "other_expenses": 2958,
+  "pct_out_of_state": 0.43,
+  "pct_on_campus_housing": 0.91,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 764,
+      "accepted_spots": null,
+      "enrolled": 292
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 13469,
+      "female": 15849
+    },
+    "accepted": {
+      "male": 10400,
+      "female": 12739
+    },
+    "enrolled": {
+      "male": 2203,
+      "female": 2233
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 2,
+      "hispanic": 621,
+      "black": 92,
+      "white": 2825,
+      "american_indian": 25,
+      "asian": 387,
+      "pacific_islander": 17,
+      "two_or_more": 413,
+      "unknown": 70,
+      "total": 4452
+    },
+    "undergrad": {
+      "nonresident_aliens": 974,
+      "hispanic": 4299,
+      "black": 731,
+      "white": 19684,
+      "american_indian": 201,
+      "asian": 2397,
+      "pacific_islander": 104,
+      "two_or_more": 2325,
+      "unknown": 871,
+      "total": 31586
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.43,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 532,
+    "sat_submitted_pct": 0.08,
+    "act_submitted_count": 274,
+    "act_submitted_pct": 0.04
+  },
+  "class_rank": {
+    "top10": 0.28,
+    "top25": 0.58,
+    "top50": 0.89,
+    "bottom50": 0.11,
+    "bottom25": 0.01
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.13,
+    "gpa_375_399": 0.37,
+    "gpa_350_374": 0.25,
+    "gpa_325_349": 0.16,
+    "gpa_300_324": 0.07,
+    "gpa_250_299": 0.02,
+    "gpa_200_249": 0.0,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "important",
+    "first_gen": "not_considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 2692,
+      "admitted": 2245,
+      "enrolled": 1425
+    },
+    "female": {
+      "applied": 2904,
+      "admitted": 2350,
+      "enrolled": 1380
+    },
+    "total": {
+      "applied": 5596,
+      "admitted": 4595,
+      "enrolled": 2805
+    }
+  },
+  "slug": "oregon-state"
+}

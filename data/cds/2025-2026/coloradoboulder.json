@@ -1,0 +1,174 @@
+{
+  "name": "University of Colorado Boulder",
+  "data_year": "2025-26",
+  "city": "Boulder",
+  "state": "CO",
+  "location": "Boulder, CO",
+  "school_type": "Public",
+  "website": "www.colorado.edu",
+  "applicants_total": 73180,
+  "applicants_men": 36277,
+  "applicants_women": 36830,
+  "admitted_total": 51716,
+  "admitted_men": 22915,
+  "admitted_women": 28743,
+  "enrolled_total": 7397,
+  "enrolled_men": 3597,
+  "enrolled_women": 3792,
+  "acceptance_rate": 0.7067,
+  "application_fee": 65,
+  "avg_gpa_weighted": 3.77,
+  "rd_deadline": "1/15",
+  "waitlist_offered": 6367,
+  "waitlist_accepted": 1189,
+  "waitlist_admitted": 92,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/15",
+  "ea_ed_notification": "2/1",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.27,
+  "sat_submitted_count": 1987,
+  "act_submitted_pct": 0.06,
+  "act_submitted_count": 475,
+  "sat_composite_25": 1130,
+  "sat_composite_75": 1370,
+  "sat_reading_25": 570,
+  "sat_reading_75": 700,
+  "sat_math_25": 560,
+  "sat_math_75": 690,
+  "act_composite_25": 27,
+  "act_composite_75": 32,
+  "act_math_25": 26,
+  "act_math_75": 31,
+  "act_english_25": 26,
+  "act_english_75": 34,
+  "total_undergrads": 34101,
+  "undergrads_male": 17748,
+  "undergrads_female": 16353,
+  "retention_rate": 0.912,
+  "tuition": null,
+  "tuition_in_state": 13974,
+  "tuition_out_of_state": 45018,
+  "required_fees": 1040,
+  "room_and_board": 19242,
+  "books_supplies": 1200,
+  "other_expenses": 1782,
+  "pct_out_of_state": 0.44,
+  "pct_on_campus_housing": 0.95,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 6367,
+      "accepted_spots": 1189,
+      "enrolled": 92
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 36277,
+      "female": 36830
+    },
+    "accepted": {
+      "male": 22915,
+      "female": 28743
+    },
+    "enrolled": {
+      "male": 3597,
+      "female": 3792
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 121,
+      "hispanic": 1104,
+      "black": 198,
+      "white": 4866,
+      "american_indian": 16,
+      "asian": 461,
+      "pacific_islander": 4,
+      "two_or_more": 518,
+      "unknown": 109,
+      "total": 7397
+    },
+    "undergrad": {
+      "nonresident_aliens": 759,
+      "hispanic": 4753,
+      "black": 750,
+      "white": 22358,
+      "american_indian": 73,
+      "asian": 2139,
+      "pacific_islander": 37,
+      "two_or_more": 2421,
+      "unknown": 385,
+      "total": 33675
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.44,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 1987,
+    "sat_submitted_pct": 0.27,
+    "act_submitted_count": 475,
+    "act_submitted_pct": 0.06
+  },
+  "class_rank": {
+    "top10": 0.263,
+    "top25": 0.576,
+    "top50": 0.877,
+    "bottom50": 0.123,
+    "bottom25": 0.011
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.436,
+    "gpa_375_399": 0.208,
+    "gpa_350_374": 0.171,
+    "gpa_325_349": 0.115,
+    "gpa_300_324": 0.054,
+    "gpa_250_299": 0.016,
+    "gpa_200_249": 0.0003,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "important",
+    "interview": "not_considered",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "important",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 2595,
+      "admitted": 1811,
+      "enrolled": 863
+    },
+    "female": {
+      "applied": 2151,
+      "admitted": 1507,
+      "enrolled": 634
+    },
+    "total": {
+      "applied": 4760,
+      "admitted": 3326,
+      "enrolled": 1502
+    }
+  },
+  "slug": "coloradoboulder"
+}

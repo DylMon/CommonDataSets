@@ -1,0 +1,174 @@
+{
+  "name": "University of Mississippi",
+  "data_year": "2025-2026",
+  "city": "University",
+  "state": "MS",
+  "location": "University, MS",
+  "school_type": "Public",
+  "website": "olemiss.edu",
+  "applicants_total": 37621,
+  "applicants_men": 14603,
+  "applicants_women": 23007,
+  "admitted_total": 36635,
+  "admitted_men": 14215,
+  "admitted_women": 22409,
+  "enrolled_total": 5458,
+  "enrolled_men": 2163,
+  "enrolled_women": 3295,
+  "acceptance_rate": 0.9738,
+  "application_fee": "$75",
+  "avg_gpa_weighted": 3.6,
+  "rd_deadline": null,
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "None",
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.27,
+  "sat_submitted_count": 1459,
+  "act_submitted_pct": 0.61,
+  "act_submitted_count": 3341,
+  "sat_composite_25": 990,
+  "sat_composite_75": 1175,
+  "sat_reading_25": 500,
+  "sat_reading_75": 610,
+  "sat_math_25": 470,
+  "sat_math_75": 580,
+  "act_composite_25": 21,
+  "act_composite_75": 29,
+  "act_math_25": 19,
+  "act_math_75": 27,
+  "act_english_25": 20,
+  "act_english_75": 29,
+  "total_undergrads": 22939,
+  "undergrads_male": 9584,
+  "undergrads_female": 13355,
+  "retention_rate": 0.8667,
+  "tuition": null,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": null,
+  "room_and_board": null,
+  "books_supplies": null,
+  "other_expenses": null,
+  "pct_out_of_state": 0.68,
+  "pct_on_campus_housing": 0.98,
+  "applicant_pools": {
+    "ea": null,
+    "rd": {
+      "applied": 37621,
+      "admitted": 36635,
+      "rate": 0.9738
+    },
+    "waitlist": null
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 14603,
+      "female": 23007
+    },
+    "accepted": {
+      "male": 14215,
+      "female": 22409
+    },
+    "enrolled": {
+      "male": 2163,
+      "female": 3295
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 55,
+      "hispanic": 396,
+      "black": 472,
+      "white": 4137,
+      "american_indian": 28,
+      "asian": 92,
+      "pacific_islander": 3,
+      "two_or_more": 191,
+      "unknown": 84,
+      "total": 5458
+    },
+    "undergrad": {
+      "nonresident_aliens": 287,
+      "hispanic": 1433,
+      "black": 2287,
+      "white": 17459,
+      "american_indian": 76,
+      "asian": 421,
+      "pacific_islander": 17,
+      "two_or_more": 705,
+      "unknown": 254,
+      "total": 22939
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.68,
+    "international_pct": 0.0101
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 1459,
+    "sat_submitted_pct": 0.27,
+    "act_submitted_count": 3341,
+    "act_submitted_pct": 0.61
+  },
+  "class_rank": {
+    "top10": 0.22,
+    "top25": 0.46,
+    "top50": 0.74,
+    "bottom50": 0.26,
+    "bottom25": 0.08
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.2866,
+    "gpa_375_399": 0.1832,
+    "gpa_350_374": 0.1694,
+    "gpa_325_349": 0.1379,
+    "gpa_300_324": 0.1069,
+    "gpa_250_299": 0.1019,
+    "gpa_200_249": 0.0136,
+    "gpa_100_199": 0.0006
+  },
+  "admission_factors": {
+    "rigor": "considered",
+    "class_rank": "considered",
+    "academic_gpa": "important",
+    "test_scores": "important",
+    "essay": "not_considered",
+    "recommendations": "not_considered",
+    "interview": "not_considered",
+    "extracurriculars": "not_considered",
+    "talent": "not_considered",
+    "character": "not_considered",
+    "first_gen": "not_considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "not_considered",
+    "work_experience": "not_considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1245,
+      "admitted": 823,
+      "enrolled": 511
+    },
+    "female": {
+      "applied": 2297,
+      "admitted": 1317,
+      "enrolled": 848
+    },
+    "total": {
+      "applied": 3545,
+      "admitted": 2140,
+      "enrolled": 1359
+    }
+  },
+  "slug": "olemiss"
+}

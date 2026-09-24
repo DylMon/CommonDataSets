@@ -1,0 +1,166 @@
+{
+  "name": "Kansas State University",
+  "data_year": "2025-26",
+  "city": "Manhattan",
+  "state": "KS",
+  "location": "Manhattan, KS",
+  "school_type": "Public",
+  "website": "www.k-state.edu",
+  "applicants_total": 15591,
+  "applicants_men": 7054,
+  "applicants_women": 8532,
+  "admitted_total": 13642,
+  "admitted_men": 6047,
+  "admitted_women": 7591,
+  "enrolled_total": 3775,
+  "enrolled_men": 1681,
+  "enrolled_women": 2094,
+  "acceptance_rate": 0.875,
+  "application_fee": 40,
+  "avg_gpa_weighted": 3.86,
+  "rd_deadline": null,
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": null,
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.07,
+  "sat_submitted_count": 253,
+  "act_submitted_pct": 0.8,
+  "act_submitted_count": 3016,
+  "sat_composite_25": 1040,
+  "sat_composite_75": 1260,
+  "sat_reading_25": 520,
+  "sat_reading_75": 660,
+  "sat_math_25": 500,
+  "sat_math_75": 650,
+  "act_composite_25": 20,
+  "act_composite_75": 27,
+  "act_math_25": 19,
+  "act_math_75": 27,
+  "act_english_25": 19,
+  "act_english_75": 26,
+  "total_undergrads": 16555,
+  "undergrads_male": 7909,
+  "undergrads_female": 8642,
+  "retention_rate": 0.86,
+  "tuition": null,
+  "tuition_in_state": 10601,
+  "tuition_out_of_state": 28555,
+  "required_fees": 978,
+  "room_and_board": 11520,
+  "books_supplies": 1062,
+  "other_expenses": 2028,
+  "pct_out_of_state": 0.22,
+  "pct_on_campus_housing": 0.81,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 7054,
+      "female": 8532
+    },
+    "accepted": {
+      "male": 6047,
+      "female": 7591
+    },
+    "enrolled": {
+      "male": 1681,
+      "female": 2094
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 43,
+      "hispanic": 339,
+      "black": 127,
+      "white": 2995,
+      "american_indian": 13,
+      "asian": 60,
+      "pacific_islander": 3,
+      "two_or_more": 178,
+      "unknown": 17,
+      "total": 3775
+    },
+    "undergrad": {
+      "nonresident_aliens": 236,
+      "hispanic": 1577,
+      "black": 498,
+      "white": 12482,
+      "american_indian": 61,
+      "asian": 283,
+      "pacific_islander": 19,
+      "two_or_more": 670,
+      "unknown": 93,
+      "total": 15919
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.22,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 253,
+    "sat_submitted_pct": 0.07,
+    "act_submitted_count": 3016,
+    "act_submitted_pct": 0.8
+  },
+  "class_rank": {
+    "top10": 0.29,
+    "top25": 0.56,
+    "top50": 0.84,
+    "bottom50": 0.16,
+    "bottom25": 0.03
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.13,
+    "gpa_375_399": 0.39,
+    "gpa_350_374": 0.21,
+    "gpa_325_349": 0.13,
+    "gpa_300_324": 0.07,
+    "gpa_250_299": 0.06,
+    "gpa_200_249": 0.01,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "important",
+    "essay": "considered",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "not_considered",
+    "talent": "not_considered",
+    "character": "not_considered",
+    "first_gen": "not_considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "not_considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1347,
+      "admitted": 927,
+      "enrolled": 543
+    },
+    "female": {
+      "applied": 1610,
+      "admitted": 1148,
+      "enrolled": 667
+    },
+    "total": {
+      "applied": 2961,
+      "admitted": 2077,
+      "enrolled": 1212
+    }
+  },
+  "slug": "kansas-state"
+}

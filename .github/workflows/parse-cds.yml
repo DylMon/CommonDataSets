@@ -71,7 +71,16 @@ jobs:
         if: steps.changed.outputs.files != ''
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: python scripts/process_cds_drop.py ${{ steps.changed.outputs.files }}
+          # Passed via env, not interpolated directly into the script below:
+          # ${{ }} substitutes as literal text BEFORE the shell runs, so a
+          # multi-line value (more than one changed file) would splice extra
+          # newlines into the script itself — turning file #2 into its own
+          # bare command line instead of an argument, which bash then tries
+          # to "execute" and fails on. Routing it through $CHANGED_FILES lets
+          # bash's own word-splitting turn the newlines into separate
+          # arguments correctly.
+          CHANGED_FILES: ${{ steps.changed.outputs.files }}
+        run: python scripts/process_cds_drop.py $CHANGED_FILES
 
       - name: Commit results back to cds-data-staging
         if: steps.changed.outputs.files != ''

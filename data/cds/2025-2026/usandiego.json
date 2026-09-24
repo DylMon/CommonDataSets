@@ -1,0 +1,161 @@
+{
+  "name": "University of San Diego",
+  "data_year": "2025-26",
+  "city": "San Diego",
+  "state": "CA",
+  "location": "San Diego, CA",
+  "school_type": "Private",
+  "website": "www.sandiego.edu/admission-and-aid/",
+  "applicants_total": 17468,
+  "applicants_men": 6394,
+  "applicants_women": 11069,
+  "admitted_total": 9359,
+  "admitted_men": 3535,
+  "admitted_women": 5822,
+  "enrolled_total": 1300,
+  "enrolled_men": 522,
+  "enrolled_women": 778,
+  "acceptance_rate": 0.5358,
+  "application_fee": 70,
+  "avg_gpa_weighted": 4.02,
+  "rd_deadline": "1/15",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "ED",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": null,
+  "sat_submitted_count": null,
+  "act_submitted_pct": null,
+  "act_submitted_count": null,
+  "sat_composite_25": null,
+  "sat_composite_75": null,
+  "sat_reading_25": null,
+  "sat_reading_75": null,
+  "sat_math_25": null,
+  "sat_math_75": null,
+  "act_composite_25": null,
+  "act_composite_75": null,
+  "act_math_25": null,
+  "act_math_75": null,
+  "act_english_25": null,
+  "act_english_75": null,
+  "total_undergrads": 6049,
+  "undergrads_male": 2624,
+  "undergrads_female": 3425,
+  "retention_rate": 0.92,
+  "tuition": 64100,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 1099,
+  "room_and_board": 19200,
+  "books_supplies": 1320,
+  "other_expenses": 3969,
+  "pct_out_of_state": 0.42,
+  "pct_on_campus_housing": 0.936,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 6394,
+      "female": 11069
+    },
+    "accepted": {
+      "male": 3535,
+      "female": 5822
+    },
+    "enrolled": {
+      "male": 522,
+      "female": 778
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 46,
+      "hispanic": 449,
+      "black": 49,
+      "white": 511,
+      "american_indian": 4,
+      "asian": 80,
+      "pacific_islander": 8,
+      "two_or_more": 119,
+      "unknown": 34,
+      "total": 1300
+    },
+    "undergrad": {
+      "nonresident_aliens": 337,
+      "hispanic": 1833,
+      "black": 265,
+      "white": 2424,
+      "american_indian": 14,
+      "asian": 410,
+      "pacific_islander": 29,
+      "two_or_more": 475,
+      "unknown": 163,
+      "total": 5950
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.42,
+    "international_pct": null
+  },
+  "sat_act_breakdown": null,
+  "class_rank": {
+    "top10": 0.35,
+    "top25": 0.76,
+    "top50": 0.96,
+    "bottom50": 0.04,
+    "bottom25": 0.01
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.5777,
+    "gpa_375_399": 0.24,
+    "gpa_350_374": 0.1377,
+    "gpa_325_349": 0.0369,
+    "gpa_300_324": 0.0062,
+    "gpa_250_299": 0.0015,
+    "gpa_200_249": null,
+    "gpa_100_199": null
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "important",
+    "academic_gpa": "very_important",
+    "test_scores": "not_considered",
+    "essay": "important",
+    "recommendations": "important",
+    "interview": "considered",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "important",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "not_considered",
+    "religious": "considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 805,
+      "admitted": 519,
+      "enrolled": 213
+    },
+    "female": {
+      "applied": 925,
+      "admitted": 600,
+      "enrolled": 188
+    },
+    "total": {
+      "applied": 1731,
+      "admitted": 1119,
+      "enrolled": 401
+    }
+  },
+  "slug": "usandiego"
+}

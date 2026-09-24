@@ -1,0 +1,174 @@
+{
+  "name": "Clarkson University",
+  "data_year": "2025-26",
+  "city": "Potsdam",
+  "state": "NY",
+  "location": "Potsdam, NY",
+  "school_type": "Private",
+  "website": "www.clarkson.edu",
+  "applicants_total": 4948,
+  "applicants_men": 2930,
+  "applicants_women": 2015,
+  "admitted_total": 4082,
+  "admitted_men": 2427,
+  "admitted_women": 1652,
+  "enrolled_total": 525,
+  "enrolled_men": 350,
+  "enrolled_women": 175,
+  "acceptance_rate": 0.825,
+  "application_fee": 50,
+  "avg_gpa_weighted": 3.732,
+  "rd_deadline": "1/15",
+  "waitlist_offered": 44,
+  "waitlist_accepted": 9,
+  "waitlist_admitted": 3,
+  "ea_ed_type": "ED",
+  "ea_ed_deadline": "12/1",
+  "ea_ed_notification": null,
+  "ea_apps_received": 235,
+  "ea_apps_admitted": 178,
+  "sat_submitted_pct": 0.49,
+  "sat_submitted_count": 251,
+  "act_submitted_pct": 0.07,
+  "act_submitted_count": 35,
+  "sat_composite_25": 1190,
+  "sat_composite_75": 1360,
+  "sat_reading_25": 590,
+  "sat_reading_75": 680,
+  "sat_math_25": 590,
+  "sat_math_75": 690,
+  "act_composite_25": 26,
+  "act_composite_75": 31,
+  "act_math_25": 27,
+  "act_math_75": 31,
+  "act_english_25": 24,
+  "act_english_75": 30,
+  "total_undergrads": 2163,
+  "undergrads_male": 1486,
+  "undergrads_female": 677,
+  "retention_rate": 0.879,
+  "tuition": 61594,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 1370,
+  "room_and_board": 19368,
+  "books_supplies": 1560,
+  "other_expenses": 900,
+  "pct_out_of_state": 0.3108,
+  "pct_on_campus_housing": 0.941,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 44,
+      "accepted_spots": 9,
+      "enrolled": 3
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 2930,
+      "female": 2015
+    },
+    "accepted": {
+      "male": 2427,
+      "female": 1652
+    },
+    "enrolled": {
+      "male": 350,
+      "female": 175
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 36,
+      "hispanic": 74,
+      "black": 6,
+      "white": 386,
+      "american_indian": 1,
+      "asian": 8,
+      "pacific_islander": 0,
+      "two_or_more": 13,
+      "unknown": 1,
+      "total": 525
+    },
+    "undergrad": {
+      "nonresident_aliens": 113,
+      "hispanic": 278,
+      "black": 39,
+      "white": 1515,
+      "american_indian": 4,
+      "asian": 35,
+      "pacific_islander": 0,
+      "two_or_more": 79,
+      "unknown": 3,
+      "total": 2066
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.3108,
+    "international_pct": 0.0667
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 251,
+    "sat_submitted_pct": 0.49,
+    "act_submitted_count": 35,
+    "act_submitted_pct": 0.07
+  },
+  "class_rank": {
+    "top10": 0.46,
+    "top25": 0.75,
+    "top50": 0.948,
+    "bottom50": 0.052,
+    "bottom25": 0.008
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.14,
+    "gpa_375_399": 0.444,
+    "gpa_350_374": 0.288,
+    "gpa_325_349": 0.072,
+    "gpa_300_324": 0.03,
+    "gpa_250_299": 0.02,
+    "gpa_200_249": 0.004,
+    "gpa_100_199": 0.002
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "important",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "important",
+    "interview": "important",
+    "extracurriculars": "important",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "important",
+    "applicant_interest": "important"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 176,
+      "admitted": 160,
+      "enrolled": 50
+    },
+    "female": {
+      "applied": 102,
+      "admitted": 87,
+      "enrolled": 17
+    },
+    "total": {
+      "applied": 278,
+      "admitted": 247,
+      "enrolled": 67
+    }
+  },
+  "slug": "clarkson"
+}

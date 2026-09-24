@@ -1,0 +1,174 @@
+{
+  "name": "Montclair State University",
+  "data_year": "2025-26",
+  "city": "Montclair",
+  "state": "NJ",
+  "location": "Montclair, NJ",
+  "school_type": "Public",
+  "website": "www.montclair.edu",
+  "applicants_total": 26224,
+  "applicants_men": 10589,
+  "applicants_women": 15635,
+  "admitted_total": 23443,
+  "admitted_men": 9288,
+  "admitted_women": 14155,
+  "enrolled_total": 3816,
+  "enrolled_men": 1704,
+  "enrolled_women": 2112,
+  "acceptance_rate": 0.894,
+  "application_fee": 65,
+  "avg_gpa_weighted": 3.35,
+  "rd_deadline": "3/1",
+  "waitlist_offered": 2187,
+  "waitlist_accepted": 671,
+  "waitlist_admitted": 1129,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "12/1",
+  "ea_ed_notification": "12/23",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.1,
+  "sat_submitted_count": 364,
+  "act_submitted_pct": null,
+  "act_submitted_count": null,
+  "sat_composite_25": 850,
+  "sat_composite_75": 1160,
+  "sat_reading_25": 430,
+  "sat_reading_75": 600,
+  "sat_math_25": 418,
+  "sat_math_75": 560,
+  "act_composite_25": null,
+  "act_composite_75": null,
+  "act_math_25": null,
+  "act_math_75": null,
+  "act_english_25": null,
+  "act_english_75": null,
+  "total_undergrads": 19048,
+  "undergrads_male": 8091,
+  "undergrads_female": 10957,
+  "retention_rate": 0.7926,
+  "tuition": null,
+  "tuition_in_state": 15678,
+  "tuition_out_of_state": 26394,
+  "required_fees": 1176,
+  "room_and_board": 16862,
+  "books_supplies": 1340,
+  "other_expenses": 2360,
+  "pct_out_of_state": 0.05,
+  "pct_on_campus_housing": 0.37,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 2187,
+      "accepted_spots": 671,
+      "enrolled": 1129
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 10589,
+      "female": 15635
+    },
+    "accepted": {
+      "male": 9288,
+      "female": 14155
+    },
+    "enrolled": {
+      "male": 1704,
+      "female": 2112
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 51,
+      "hispanic": 1721,
+      "black": 604,
+      "white": 1029,
+      "american_indian": 6,
+      "asian": 263,
+      "pacific_islander": 2,
+      "two_or_more": 111,
+      "unknown": 29,
+      "total": 3816
+    },
+    "undergrad": {
+      "nonresident_aliens": 332,
+      "hispanic": 7950,
+      "black": 2568,
+      "white": 5849,
+      "american_indian": 20,
+      "asian": 1215,
+      "pacific_islander": 16,
+      "two_or_more": 489,
+      "unknown": 609,
+      "total": 19048
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.05,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 364,
+    "sat_submitted_pct": 0.1,
+    "act_submitted_count": null,
+    "act_submitted_pct": null
+  },
+  "class_rank": {
+    "top10": 0.08,
+    "top25": 0.28,
+    "top50": 0.62,
+    "bottom50": 0.38,
+    "bottom25": 0.1
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.1162,
+    "gpa_375_399": 0.1215,
+    "gpa_350_374": 0.1758,
+    "gpa_325_349": 0.1652,
+    "gpa_300_324": 0.1755,
+    "gpa_250_299": 0.2309,
+    "gpa_200_249": 0.0145,
+    "gpa_100_199": 0.0006
+  },
+  "admission_factors": {
+    "rigor": "important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "not_considered",
+    "essay": "important",
+    "recommendations": "important",
+    "interview": null,
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "not_considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "important",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1512,
+      "admitted": 1212,
+      "enrolled": 568
+    },
+    "female": {
+      "applied": 2128,
+      "admitted": 1747,
+      "enrolled": 835
+    },
+    "total": {
+      "applied": 3640,
+      "admitted": 2959,
+      "enrolled": 1403
+    }
+  },
+  "slug": "montclair-state"
+}
