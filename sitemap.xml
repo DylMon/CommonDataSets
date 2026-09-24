@@ -125,6 +125,16 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://commondatasets.com/schools/csulb.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://commondatasets.com/schools/csusb.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://commondatasets.com/schools/dartmouth.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -240,6 +250,11 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://commondatasets.com/schools/montclair-state.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://commondatasets.com/schools/nc-state.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -271,6 +286,21 @@
   </url>
   <url>
     <loc>https://commondatasets.com/schools/ohio-state.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://commondatasets.com/schools/oklahoma-state.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://commondatasets.com/schools/olemiss.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://commondatasets.com/schools/oregon-state.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -315,12 +345,22 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://commondatasets.com/schools/rowan.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://commondatasets.com/schools/rpi.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://commondatasets.com/schools/santa-clara.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://commondatasets.com/schools/sdsu.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -345,7 +385,27 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://commondatasets.com/schools/suny-esf.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://commondatasets.com/schools/templeu.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://commondatasets.com/schools/tennessee-knoxville.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://commondatasets.com/schools/texas-am.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://commondatasets.com/schools/texaschristian.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -356,6 +416,16 @@
   </url>
   <url>
     <loc>https://commondatasets.com/schools/tulane.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://commondatasets.com/schools/ualabama.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://commondatasets.com/schools/uarkansas.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -390,6 +460,11 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://commondatasets.com/schools/ucentralflorida.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://commondatasets.com/schools/uchicago.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -406,6 +481,11 @@
   </url>
   <url>
     <loc>https://commondatasets.com/schools/ucsb.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://commondatasets.com/schools/udenver.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -430,7 +510,17 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://commondatasets.com/schools/ukentucky.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://commondatasets.com/schools/umass-amherst.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://commondatasets.com/schools/umbc.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -445,7 +535,17 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://commondatasets.com/schools/unevada-reno.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://commondatasets.com/schools/upenn.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://commondatasets.com/schools/usandiego.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -465,7 +565,17 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://commondatasets.com/schools/ut-dallas.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://commondatasets.com/schools/uva.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://commondatasets.com/schools/uvermont.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -491,6 +601,11 @@
   </url>
   <url>
     <loc>https://commondatasets.com/schools/washington-seattle.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://commondatasets.com/schools/washington-stateu.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>

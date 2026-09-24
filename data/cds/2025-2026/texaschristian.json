@@ -1,0 +1,169 @@
+{
+  "name": "Texas Christian University",
+  "data_year": "2025-26",
+  "city": "Fort Worth",
+  "state": "TX",
+  "location": "Fort Worth, TX",
+  "school_type": "Private",
+  "website": "www.tcu.edu",
+  "applicants_total": 22680,
+  "applicants_men": 8705,
+  "applicants_women": 13975,
+  "admitted_total": 10906,
+  "admitted_men": 3868,
+  "admitted_women": 7038,
+  "enrolled_total": 2754,
+  "enrolled_men": 1014,
+  "enrolled_women": 1740,
+  "acceptance_rate": 0.4808,
+  "application_fee": 50,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "2/1",
+  "waitlist_offered": 3676,
+  "waitlist_accepted": 1083,
+  "waitlist_admitted": 396,
+  "ea_ed_type": "ED I & II",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "1/1",
+  "ea_apps_received": 1373,
+  "ea_apps_admitted": 935,
+  "sat_submitted_pct": 0.27,
+  "sat_submitted_count": 752,
+  "act_submitted_pct": 0.21,
+  "act_submitted_count": 566,
+  "sat_composite_25": 1110,
+  "sat_composite_75": 1330,
+  "sat_reading_25": 560,
+  "sat_reading_75": 680,
+  "sat_math_25": 540,
+  "sat_math_75": 660,
+  "act_composite_25": 26,
+  "act_composite_75": 31,
+  "act_math_25": null,
+  "act_math_75": null,
+  "act_english_25": null,
+  "act_english_75": null,
+  "total_undergrads": 11152,
+  "undergrads_male": 4276,
+  "undergrads_female": 6876,
+  "retention_rate": 0.934,
+  "tuition": 66520,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 90,
+  "room_and_board": 18780,
+  "books_supplies": 700,
+  "other_expenses": 2278,
+  "pct_out_of_state": 0.52,
+  "pct_on_campus_housing": 0.96,
+  "applicant_pools": {
+    "ea": {
+      "applied": 1373,
+      "admitted": 935,
+      "rate": 0.6811
+    },
+    "rd": null,
+    "waitlist": {
+      "offered": 3676,
+      "accepted_spots": 1083,
+      "enrolled": 396
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 8705,
+      "female": 13975
+    },
+    "accepted": {
+      "male": 3868,
+      "female": 7038
+    },
+    "enrolled": {
+      "male": 1014,
+      "female": 1740
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 81,
+      "hispanic": 640,
+      "black": 92,
+      "white": 1545,
+      "american_indian": 8,
+      "asian": 48,
+      "pacific_islander": 2,
+      "two_or_more": 106,
+      "unknown": 232,
+      "total": 2754
+    },
+    "undergrad": {
+      "nonresident_aliens": 446,
+      "hispanic": 2358,
+      "black": 459,
+      "white": 6557,
+      "american_indian": 31,
+      "asian": 284,
+      "pacific_islander": 13,
+      "two_or_more": 459,
+      "unknown": 519,
+      "total": 11126
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.52,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 752,
+    "sat_submitted_pct": 0.27,
+    "act_submitted_count": 566,
+    "act_submitted_pct": 0.21
+  },
+  "class_rank": {
+    "top10": 0.456,
+    "top25": 0.779,
+    "top50": 0.946,
+    "bottom50": 0.054,
+    "bottom25": 0.005
+  },
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "important",
+    "talent": "considered",
+    "character": "important",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "important",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 411,
+      "admitted": 346,
+      "enrolled": 180
+    },
+    "female": {
+      "applied": 538,
+      "admitted": 451,
+      "enrolled": 214
+    },
+    "total": {
+      "applied": 949,
+      "admitted": 797,
+      "enrolled": 394
+    }
+  },
+  "slug": "texaschristian"
+}

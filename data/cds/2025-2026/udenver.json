@@ -1,0 +1,166 @@
+{
+  "name": "University of Denver",
+  "data_year": "2025-26",
+  "city": "Denver",
+  "state": "CO",
+  "location": "Denver, CO",
+  "school_type": "Private",
+  "website": "www.du.edu",
+  "applicants_total": 16637,
+  "applicants_men": 7228,
+  "applicants_women": 9389,
+  "admitted_total": 14205,
+  "admitted_men": 6072,
+  "admitted_women": 8114,
+  "enrolled_total": 1174,
+  "enrolled_men": 532,
+  "enrolled_women": 642,
+  "acceptance_rate": 0.8538,
+  "application_fee": 65,
+  "avg_gpa_weighted": 3.68,
+  "rd_deadline": "1/15",
+  "waitlist_offered": 22,
+  "waitlist_accepted": 4,
+  "waitlist_admitted": 0,
+  "ea_ed_type": "ED I & II",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": 273,
+  "ea_apps_admitted": 231,
+  "sat_submitted_pct": 0.25,
+  "sat_submitted_count": 295,
+  "act_submitted_pct": 0.11,
+  "act_submitted_count": 130,
+  "sat_composite_25": 1160,
+  "sat_composite_75": 1360,
+  "sat_reading_25": 600,
+  "sat_reading_75": 700,
+  "sat_math_25": 560,
+  "sat_math_75": 670,
+  "act_composite_25": 27,
+  "act_composite_75": 32,
+  "act_math_25": 24,
+  "act_math_75": 31,
+  "act_english_25": 26,
+  "act_english_75": 34,
+  "total_undergrads": 5766,
+  "undergrads_male": 2625,
+  "undergrads_female": 3141,
+  "retention_rate": 0.8897,
+  "tuition": 63720,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 1584,
+  "room_and_board": 18815,
+  "books_supplies": 1000,
+  "other_expenses": 1782,
+  "pct_out_of_state": 0.64,
+  "pct_on_campus_housing": 0.89,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 7228,
+      "female": 9389
+    },
+    "accepted": {
+      "male": 6072,
+      "female": 8114
+    },
+    "enrolled": {
+      "male": 532,
+      "female": 642
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 35,
+      "hispanic": 224,
+      "black": 41,
+      "white": 680,
+      "american_indian": 6,
+      "asian": 52,
+      "pacific_islander": 0,
+      "two_or_more": 84,
+      "unknown": 25,
+      "total": 1147
+    },
+    "undergrad": {
+      "nonresident_aliens": 170,
+      "hispanic": 945,
+      "black": 208,
+      "white": 3683,
+      "american_indian": 27,
+      "asian": 238,
+      "pacific_islander": 3,
+      "two_or_more": 371,
+      "unknown": 121,
+      "total": 5766
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.64,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 295,
+    "sat_submitted_pct": 0.25,
+    "act_submitted_count": 130,
+    "act_submitted_pct": 0.11
+  },
+  "class_rank": {
+    "top10": 0.34,
+    "top25": 0.65,
+    "top50": 0.93,
+    "bottom50": 0.07,
+    "bottom25": 0.01
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.355,
+    "gpa_375_399": 0.207,
+    "gpa_350_374": 0.181,
+    "gpa_325_349": 0.111,
+    "gpa_300_324": 0.077,
+    "gpa_250_299": 0.067,
+    "gpa_200_249": 0.003,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "important",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 242,
+      "admitted": 182,
+      "enrolled": 82
+    },
+    "female": {
+      "applied": 218,
+      "admitted": 191,
+      "enrolled": 78
+    },
+    "total": {
+      "applied": 460,
+      "admitted": 373,
+      "enrolled": 160
+    }
+  },
+  "slug": "udenver"
+}

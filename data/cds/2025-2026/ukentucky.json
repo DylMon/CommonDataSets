@@ -1,0 +1,166 @@
+{
+  "name": "University of Kentucky",
+  "data_year": "2025-2026",
+  "city": "Lexington",
+  "state": "KY",
+  "location": "Lexington, KY",
+  "school_type": "Public",
+  "website": "www.uky.edu",
+  "applicants_total": 33387,
+  "applicants_men": 13654,
+  "applicants_women": 19733,
+  "admitted_total": 31222,
+  "admitted_men": 12574,
+  "admitted_women": 18648,
+  "enrolled_total": 6960,
+  "enrolled_men": 2793,
+  "enrolled_women": 4167,
+  "acceptance_rate": 0.9352,
+  "application_fee": 50.0,
+  "avg_gpa_weighted": 3.58,
+  "rd_deadline": "2/15",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "12/1",
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.09,
+  "sat_submitted_count": 600,
+  "act_submitted_pct": 0.48,
+  "act_submitted_count": 3357,
+  "sat_composite_25": 1058,
+  "sat_composite_75": 1270,
+  "sat_reading_25": 540,
+  "sat_reading_75": 650,
+  "sat_math_25": 510,
+  "sat_math_75": 630,
+  "act_composite_25": 21,
+  "act_composite_75": 28,
+  "act_math_25": 19,
+  "act_math_75": 27,
+  "act_english_25": 21,
+  "act_english_75": 29,
+  "total_undergrads": 27386,
+  "undergrads_male": 11325,
+  "undergrads_female": 16061,
+  "retention_rate": 0.853,
+  "tuition": null,
+  "tuition_in_state": 12714.0,
+  "tuition_out_of_state": 34383.0,
+  "required_fees": 1463.0,
+  "room_and_board": 17048.0,
+  "books_supplies": 1200.0,
+  "other_expenses": 3240.0,
+  "pct_out_of_state": 0.398,
+  "pct_on_campus_housing": 0.852,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 13654,
+      "female": 19733
+    },
+    "accepted": {
+      "male": 12574,
+      "female": 18648
+    },
+    "enrolled": {
+      "male": 2793,
+      "female": 4167
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 85,
+      "hispanic": 515,
+      "black": 386,
+      "white": 5326,
+      "american_indian": 10,
+      "asian": 213,
+      "pacific_islander": 4,
+      "two_or_more": 319,
+      "unknown": 102,
+      "total": 6960
+    },
+    "undergrad": {
+      "nonresident_aliens": 372,
+      "hispanic": 1951,
+      "black": 1683,
+      "white": 20830,
+      "american_indian": 36,
+      "asian": 942,
+      "pacific_islander": 21,
+      "two_or_more": 1258,
+      "unknown": 293,
+      "total": 27386
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.398,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 600,
+    "sat_submitted_pct": 0.09,
+    "act_submitted_count": 3357,
+    "act_submitted_pct": 0.48
+  },
+  "class_rank": {
+    "top10": 0.281,
+    "top25": 0.555,
+    "top50": 0.844,
+    "bottom50": 0.156,
+    "bottom25": 0.026
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.141,
+    "gpa_375_399": 0.306,
+    "gpa_350_374": 0.211,
+    "gpa_325_349": 0.141,
+    "gpa_300_324": 0.106,
+    "gpa_250_299": 0.084,
+    "gpa_200_249": 0.011,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "very_important",
+    "recommendations": "considered",
+    "interview": "considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 947,
+      "admitted": 821,
+      "enrolled": 467
+    },
+    "female": {
+      "applied": 1196,
+      "admitted": 1049,
+      "enrolled": 549
+    },
+    "total": {
+      "applied": 2143,
+      "admitted": 1870,
+      "enrolled": 1016
+    }
+  },
+  "slug": "ukentucky"
+}

@@ -1,0 +1,157 @@
+{
+  "name": "Temple University",
+  "data_year": "2025-26",
+  "city": "Philadelphia",
+  "state": "PA",
+  "location": "Philadelphia, PA",
+  "school_type": "Public",
+  "website": "www.temple.edu",
+  "applicants_total": 42824,
+  "applicants_men": 16951,
+  "applicants_women": 25831,
+  "admitted_total": 36922,
+  "admitted_men": 14535,
+  "admitted_women": 22353,
+  "enrolled_total": 5303,
+  "enrolled_men": 2262,
+  "enrolled_women": 3033,
+  "acceptance_rate": 0.8622,
+  "application_fee": 55,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "2/1",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "1/10",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.19,
+  "sat_submitted_count": 1000,
+  "act_submitted_pct": 0.01,
+  "act_submitted_count": 76,
+  "sat_composite_25": 1030,
+  "sat_composite_75": 1310,
+  "sat_reading_25": 530,
+  "sat_reading_75": 670,
+  "sat_math_25": 490,
+  "sat_math_75": 650,
+  "act_composite_25": 23,
+  "act_composite_75": 30,
+  "act_math_25": 21,
+  "act_math_75": 28,
+  "act_english_25": 23,
+  "act_english_75": 33,
+  "total_undergrads": 21031,
+  "undergrads_male": 9310,
+  "undergrads_female": 11552,
+  "retention_rate": 0.82,
+  "tuition": null,
+  "tuition_in_state": 23480,
+  "tuition_out_of_state": 40473,
+  "required_fees": 1098,
+  "room_and_board": 15884,
+  "books_supplies": 1330,
+  "other_expenses": null,
+  "pct_out_of_state": 0.347,
+  "pct_on_campus_housing": 0.6442,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 16951,
+      "female": 25831
+    },
+    "accepted": {
+      "male": 14535,
+      "female": 22353
+    },
+    "enrolled": {
+      "male": 2262,
+      "female": 3033
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 184,
+      "hispanic": 811,
+      "black": 1886,
+      "white": 1400,
+      "american_indian": 29,
+      "asian": 800,
+      "pacific_islander": 9,
+      "two_or_more": 57,
+      "unknown": 127,
+      "total": 5303
+    },
+    "undergrad": {
+      "nonresident_aliens": 813,
+      "hispanic": 2535,
+      "black": 4987,
+      "white": 7074,
+      "american_indian": 60,
+      "asian": 3231,
+      "pacific_islander": 22,
+      "two_or_more": 729,
+      "unknown": 1185,
+      "total": 20636
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.347,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 1000,
+    "sat_submitted_pct": 0.19,
+    "act_submitted_count": 76,
+    "act_submitted_pct": 0.01
+  },
+  "class_rank": {
+    "top10": 0.18,
+    "top25": 0.44,
+    "top50": 0.75,
+    "bottom50": 0.25,
+    "bottom25": 0.07
+  },
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "considered",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1303,
+      "admitted": 971,
+      "enrolled": 413
+    },
+    "female": {
+      "applied": 1643,
+      "admitted": 1236,
+      "enrolled": 510
+    },
+    "total": {
+      "applied": 2954,
+      "admitted": 2211,
+      "enrolled": 924
+    }
+  },
+  "slug": "templeu"
+}
