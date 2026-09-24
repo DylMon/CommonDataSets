@@ -40,6 +40,15 @@ def main():
     cds_path = REPO_ROOT / "data" / f"cds-{args.year}.json"
     schools_path = REPO_ROOT / "data" / f"schools-{args.year}.json"
 
+    # US News ranking isn't part of the Common Data Set — it's a separate,
+    # hand/PDF-maintained overlay (see data/us-news-ranking.json) merged in
+    # here rather than living inside the AI-extracted schema, so it survives
+    # a school being re-parsed (which fully overwrites its CDS json).
+    ranking_path = REPO_ROOT / "data" / "us-news-ranking.json"
+    rankings = {}
+    if ranking_path.exists():
+        rankings = json.loads(ranking_path.read_text(encoding="utf-8")).get("rankings", {})
+
     files = sorted(input_dir.glob("*.json"), key=lambda p: p.stem)
     if not files:
         raise SystemExit(f"No parsed JSON files found in {input_dir}")
@@ -49,6 +58,7 @@ def main():
         with open(f, encoding="utf-8") as fh:
             data = json.load(fh)
         data.setdefault("slug", YEAR_SUFFIX_RE.sub("", f.stem))
+        data["us_news_ranking"] = rankings.get(data["slug"])
         schools.append({"id": i, **data})
 
     payload = {

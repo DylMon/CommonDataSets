@@ -41,11 +41,20 @@ body {
 }
 
 /* Nav — sticks to the top of the viewport on every page so it stays
-   visible while the page scrolls. */
+   visible while the page scrolls. On school pages only (see js/header.js),
+   .site-header--hidden gets toggled on scroll direction: slides up out of
+   view on the way down, slides back on the way up. Percentage translate
+   (not a fixed px) so it works regardless of the header's actual height,
+   which differs between the desktop/tablet and mobile-stacked layouts. */
 .site-header {
     position: sticky;
     top: 0;
     z-index: 500;
+    transition: transform 0.25s ease;
+}
+
+.site-header.site-header--hidden {
+    transform: translateY(-100%);
 }
 
 .nav-wrapper {
@@ -330,6 +339,14 @@ body {
     position: sticky;
     top: calc(var(--header-height) + 20px);
     align-self: flex-start;
+    transition: top 0.25s ease;
+}
+
+/* School pages only: js/header.js toggles body.header-hidden in step with
+   .site-header--hidden, so the sidebar rises to claim the space the header
+   just vacated instead of leaving it sitting under a phantom gap. */
+body.header-hidden .school-page-layout .right-sidebar {
+    top: 20px;
 }
 
 /* History / Favorites boxes */
@@ -687,6 +704,44 @@ body {
 #school-list {
     flex: 1;
     min-width: 0;
+}
+
+.pagination {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 20px;
+}
+
+.page-btn {
+    font-family: 'Ropa Sans', sans-serif;
+    font-size: 0.9em;
+    font-weight: 400;
+    padding: 6px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    color: #000;
+    cursor: pointer;
+    transition: all 0.15s;
+    min-width: 36px;
+}
+
+.page-btn:hover:not(.disabled) {
+    border-color: #ed6d0b;
+    color: #ed6d0b;
+}
+
+.page-btn.active {
+    background: #ed6d0b;
+    border-color: #ed6d0b;
+    color: white;
+}
+
+.page-btn.disabled {
+    opacity: 0.4;
+    cursor: default;
 }
 
 .loading {
@@ -1167,12 +1222,32 @@ body {
         flex-wrap: wrap;
     }
 
-    .school-stats {
+    /* Switched from display:contents to a real flex box so the toggle
+       shares this line with the stats. Left as display:contents (its
+       default), the toggle has nothing to push it rightward once stats
+       no longer claims the full line for itself — it just wraps onto its
+       own line at the flex-start (left) edge. */
+    .school-row-end {
+        display: flex;
+        align-items: center;
         width: 100%;
-        justify-content: flex-start;
-        gap: 28px;
-        margin-left: 120px;
+        justify-content: space-between;
         margin-top: 4px;
+    }
+
+    .school-stats {
+        gap: 28px;
+    }
+
+    /* No longer the big edge-to-edge desktop zone (see the base rule,
+       meant for the single-line ≥1300px layout) — just a compact icon
+       button sharing the line with the stats. */
+    .details-toggle {
+        align-self: auto;
+        margin: 0;
+        padding: 4px;
+        border-left: none;
+        border-radius: 4px;
     }
 }
 
@@ -1251,13 +1326,10 @@ body {
     }
 
     /* #school-list is narrower here (two rails still present, just
-       thinner), so the 1300px tier's fixed 120px alignment margin plus
-       flex-shrink: 0 has too little room left for 3 stats + their gaps
-       and clips the last one — width:100% + a positive margin always
-       overflows its row by that margin once the item can't shrink.
-       Drop the indent and allow shrinking/wrapping instead. */
+       thinner), so 3 stats + their gaps can outgrow the room .school-stats
+       shares with .details-toggle in .school-row-end. Let a stat wrap to
+       its own line instead of overflowing past the toggle. */
     .school-stats {
-        margin-left: 0;
         flex-shrink: 1;
         flex-wrap: wrap;
         row-gap: 4px;
@@ -1376,26 +1448,12 @@ body {
         gap: 8px;
     }
 
-    /* Switched from display:contents to a real flex box — see the
-       .school-row-end base rule for why this (not width on .school-stats
-       itself) is what reliably forces the line break here. */
+    /* .school-row-end/.details-toggle are already set up for this by the
+       1300px tier above — just add the divider this width wants between
+       the name row and the stats+toggle row. */
     .school-row-end {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        justify-content: space-between;
         border-top: 1px solid #f0f0f0;
         padding-top: 8px;
-    }
-
-    /* No longer the big edge-to-edge desktop zone — just a small icon
-       button sitting inline with the stats. */
-    .details-toggle {
-        align-self: auto;
-        margin: 0;
-        padding: 4px;
-        border-left: none;
-        border-radius: 4px;
     }
 
     .school-rank {
@@ -1413,15 +1471,8 @@ body {
         font-size: 1.03em;
     }
 
-    /* Override the 1300px breakpoint's width:100%/margin-left:120px — at
-       this width stats sit inside .school-row-end alongside the toggle,
-       not claiming a full row to themselves. */
     .school-stats {
-        width: auto;
-        margin-left: 0;
-        margin-top: 0;
         gap: 24px;
-        flex-shrink: unset;
     }
 
     .stat-item {

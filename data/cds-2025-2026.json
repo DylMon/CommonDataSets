@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-24",
+  "generated": "2026-09-23",
   "cds_year": "2025-26",
   "schools": [
     {
@@ -152,7 +152,8 @@
           "enrolled": 127
         }
       },
-      "slug": "american"
+      "slug": "american",
+      "us_news_ranking": 88
     },
     {
       "id": 2,
@@ -314,7 +315,8 @@
           "enrolled": 3677
         }
       },
-      "slug": "asu"
+      "slug": "asu",
+      "us_news_ranking": 117
     },
     {
       "id": 3,
@@ -481,7 +483,8 @@
           "enrolled": 1326
         }
       },
-      "slug": "auburn"
+      "slug": "auburn",
+      "us_news_ranking": 102
     },
     {
       "id": 4,
@@ -647,7 +650,8 @@
           "enrolled": 355
         }
       },
-      "slug": "baylor"
+      "slug": "baylor",
+      "us_news_ranking": 88
     },
     {
       "id": 5,
@@ -816,7 +820,8 @@
           "enrolled": 3055
         }
       },
-      "slug": "berkeley"
+      "slug": "berkeley",
+      "us_news_ranking": 15
     },
     {
       "id": 6,
@@ -995,7 +1000,8 @@
           "enrolled": 853
         }
       },
-      "slug": "binghamton"
+      "slug": "binghamton",
+      "us_news_ranking": 73
     },
     {
       "id": 7,
@@ -1178,7 +1184,8 @@
           "enrolled": 840
         }
       },
-      "slug": "boston-university"
+      "slug": "boston-university",
+      "us_news_ranking": 42
     },
     {
       "id": 8,
@@ -1353,7 +1360,8 @@
           "enrolled": 52
         }
       },
-      "slug": "brandeis"
+      "slug": "brandeis",
+      "us_news_ranking": 69
     },
     {
       "id": 9,
@@ -1526,7 +1534,8 @@
           "enrolled": 103
         }
       },
-      "slug": "brown"
+      "slug": "brown",
+      "us_news_ranking": 13
     },
     {
       "id": 10,
@@ -1701,7 +1710,8 @@
           "enrolled": 1493
         }
       },
-      "slug": "buffalo"
+      "slug": "buffalo",
+      "us_news_ranking": 75
     },
     {
       "id": 11,
@@ -1867,7 +1877,8 @@
           "enrolled": 9
         }
       },
-      "slug": "caltech"
+      "slug": "caltech",
+      "us_news_ranking": 11
     },
     {
       "id": 12,
@@ -2042,7 +2053,8 @@
           "enrolled": 51
         }
       },
-      "slug": "case-western"
+      "slug": "case-western",
+      "us_news_ranking": 51
     },
     {
       "id": 13,
@@ -2208,7 +2220,8 @@
           "enrolled": 300
         }
       },
-      "slug": "chapman"
+      "slug": "chapman",
+      "us_news_ranking": 110
     },
     {
       "id": 14,
@@ -2383,7 +2396,8 @@
           "enrolled": 67
         }
       },
-      "slug": "clarkson"
+      "slug": "clarkson",
+      "us_news_ranking": 143
     },
     {
       "id": 15,
@@ -2558,7 +2572,8 @@
           "enrolled": 1798
         }
       },
-      "slug": "clemson"
+      "slug": "clemson",
+      "us_news_ranking": 75
     },
     {
       "id": 16,
@@ -2730,7 +2745,8 @@
           "enrolled": 62
         }
       },
-      "slug": "cmu"
+      "slug": "cmu",
+      "us_news_ranking": 20
     },
     {
       "id": 17,
@@ -2892,7 +2908,8 @@
           "enrolled": 1567
         }
       },
-      "slug": "colorado-state"
+      "slug": "colorado-state",
+      "us_news_ranking": 151
     },
     {
       "id": 18,
@@ -3067,7 +3084,8 @@
           "enrolled": 1502
         }
       },
-      "slug": "coloradoboulder"
+      "slug": "coloradoboulder",
+      "us_news_ranking": 97
     },
     {
       "id": 19,
@@ -3249,7 +3267,8 @@
           "enrolled": 357
         }
       },
-      "slug": "columbia"
+      "slug": "columbia",
+      "us_news_ranking": 15
     },
     {
       "id": 20,
@@ -3423,7 +3442,8 @@
           "enrolled": 625
         }
       },
-      "slug": "cornell"
+      "slug": "cornell",
+      "us_news_ranking": 12
     },
     {
       "id": 21,
@@ -3598,7 +3618,8 @@
           "enrolled": 35
         }
       },
-      "slug": "creighton"
+      "slug": "creighton",
+      "us_news_ranking": 117
     },
     {
       "id": 22,
@@ -3754,7 +3775,8 @@
           "enrolled": 4407
         }
       },
-      "slug": "csulb"
+      "slug": "csulb",
+      "us_news_ranking": 127
     },
     {
       "id": 23,
@@ -3915,7 +3937,8 @@
           "enrolled": 2477
         }
       },
-      "slug": "csusb"
+      "slug": "csusb",
+      "us_news_ranking": 179
     },
     {
       "id": 24,
@@ -4081,7 +4104,8 @@
           "enrolled": 40
         }
       },
-      "slug": "dartmouth"
+      "slug": "dartmouth",
+      "us_news_ranking": 13
     },
     {
       "id": 25,
@@ -4260,7 +4284,8 @@
           "enrolled": 499
         }
       },
-      "slug": "drexel"
+      "slug": "drexel",
+      "us_news_ranking": 80
     },
     {
       "id": 26,
@@ -4412,7 +4437,8 @@
           "enrolled": 92
         }
       },
-      "slug": "duke"
+      "slug": "duke",
+      "us_news_ranking": 7
     },
     {
       "id": 27,
@@ -4587,7 +4613,8 @@
           "enrolled": 173
         }
       },
-      "slug": "emory"
+      "slug": "emory",
+      "us_news_ranking": 24
     },
     {
       "id": 28,
@@ -4754,7 +4781,8 @@
           "enrolled": 502
         }
       },
-      "slug": "famu"
+      "slug": "famu",
+      "us_news_ranking": 169
     },
     {
       "id": 29,
@@ -4921,7 +4949,8 @@
           "enrolled": 4186
         }
       },
-      "slug": "fiu"
+      "slug": "fiu",
+      "us_news_ranking": 97
     },
     {
       "id": 30,
@@ -5096,7 +5125,8 @@
           "enrolled": 1981
         }
       },
-      "slug": "florida-atlantic"
+      "slug": "florida-atlantic",
+      "us_news_ranking": 183
     },
     {
       "id": 31,
@@ -5271,7 +5301,8 @@
           "enrolled": 2106
         }
       },
-      "slug": "fsu"
+      "slug": "fsu",
+      "us_news_ranking": 51
     },
     {
       "id": 32,
@@ -5437,7 +5468,8 @@
           "enrolled": 190
         }
       },
-      "slug": "georgetown"
+      "slug": "georgetown",
+      "us_news_ranking": 24
     },
     {
       "id": 33,
@@ -5612,7 +5644,8 @@
           "enrolled": 663
         }
       },
-      "slug": "georgia-tech"
+      "slug": "georgia-tech",
+      "us_news_ranking": 32
     },
     {
       "id": 34,
@@ -5778,7 +5811,8 @@
           "enrolled": 582
         }
       },
-      "slug": "gwu"
+      "slug": "gwu",
+      "us_news_ranking": 59
     },
     {
       "id": 35,
@@ -5953,7 +5987,8 @@
           "enrolled": 12
         }
       },
-      "slug": "harvard"
+      "slug": "harvard",
+      "us_news_ranking": 3
     },
     {
       "id": 36,
@@ -6122,7 +6157,8 @@
           "enrolled": 194
         }
       },
-      "slug": "howard"
+      "slug": "howard",
+      "us_news_ranking": 88
     },
     {
       "id": 37,
@@ -6247,7 +6283,8 @@
         "applicant_interest": null
       },
       "transfer_stats": null,
-      "slug": "indiana-bloomington"
+      "slug": "indiana-bloomington",
+      "us_news_ranking": 73
     },
     {
       "id": 38,
@@ -6408,7 +6445,8 @@
           "enrolled": 1351
         }
       },
-      "slug": "iowa-state-science-tech"
+      "slug": "iowa-state-science-tech",
+      "us_news_ranking": 117
     },
     {
       "id": 39,
@@ -6591,7 +6629,8 @@
           "enrolled": 59
         }
       },
-      "slug": "jhu"
+      "slug": "jhu",
+      "us_news_ranking": 7
     },
     {
       "id": 40,
@@ -6758,7 +6797,8 @@
           "enrolled": 1212
         }
       },
-      "slug": "kansas-state"
+      "slug": "kansas-state",
+      "us_news_ranking": 158
     },
     {
       "id": 41,
@@ -6924,7 +6964,8 @@
           "enrolled": 60
         }
       },
-      "slug": "lehigh"
+      "slug": "lehigh",
+      "us_news_ranking": 46
     },
     {
       "id": 42,
@@ -7099,7 +7140,8 @@
           "enrolled": 494
         }
       },
-      "slug": "loyola-marymount"
+      "slug": "loyola-marymount",
+      "us_news_ranking": 102
     },
     {
       "id": 43,
@@ -7274,7 +7316,8 @@
           "enrolled": 134
         }
       },
-      "slug": "marquette"
+      "slug": "marquette",
+      "us_news_ranking": 88
     },
     {
       "id": 44,
@@ -7449,7 +7492,8 @@
           "enrolled": 576
         }
       },
-      "slug": "miami"
+      "slug": "miami",
+      "us_news_ranking": 64
     },
     {
       "id": 45,
@@ -7616,7 +7660,8 @@
           "enrolled": 1365
         }
       },
-      "slug": "michigan-state"
+      "slug": "michigan-state",
+      "us_news_ranking": 64
     },
     {
       "id": 46,
@@ -7782,7 +7827,8 @@
           "enrolled": 31
         }
       },
-      "slug": "mit"
+      "slug": "mit",
+      "us_news_ranking": 2
     },
     {
       "id": 47,
@@ -7957,7 +8003,8 @@
           "enrolled": 1403
         }
       },
-      "slug": "montclair-state"
+      "slug": "montclair-state",
+      "us_news_ranking": 158
     },
     {
       "id": 48,
@@ -8132,7 +8179,8 @@
           "enrolled": 1733
         }
       },
-      "slug": "nc-state"
+      "slug": "nc-state",
+      "us_news_ranking": 64
     },
     {
       "id": 49,
@@ -8307,7 +8355,8 @@
           "enrolled": 704
         }
       },
-      "slug": "njit"
+      "slug": "njit",
+      "us_news_ranking": 80
     },
     {
       "id": 50,
@@ -8478,7 +8527,8 @@
           "enrolled": 488
         }
       },
-      "slug": "northeastern"
+      "slug": "northeastern",
+      "us_news_ranking": 46
     },
     {
       "id": 51,
@@ -8646,7 +8696,8 @@
           "enrolled": 249
         }
       },
-      "slug": "northwestern"
+      "slug": "northwestern",
+      "us_news_ranking": 7
     },
     {
       "id": 52,
@@ -8812,7 +8863,8 @@
           "enrolled": 207
         }
       },
-      "slug": "notre-dame"
+      "slug": "notre-dame",
+      "us_news_ranking": 20
     },
     {
       "id": 53,
@@ -8973,7 +9025,8 @@
           "enrolled": 1549
         }
       },
-      "slug": "nyu"
+      "slug": "nyu",
+      "us_news_ranking": 32
     },
     {
       "id": 54,
@@ -9139,7 +9192,8 @@
           "enrolled": 1960
         }
       },
-      "slug": "ohio-state"
+      "slug": "ohio-state",
+      "us_news_ranking": 41
     },
     {
       "id": 55,
@@ -9306,7 +9360,8 @@
           "enrolled": 1635
         }
       },
-      "slug": "oklahoma-state"
+      "slug": "oklahoma-state",
+      "us_news_ranking": 198
     },
     {
       "id": 56,
@@ -9481,7 +9536,8 @@
           "enrolled": 1359
         }
       },
-      "slug": "olemiss"
+      "slug": "olemiss",
+      "us_news_ranking": 169
     },
     {
       "id": 57,
@@ -9656,7 +9712,8 @@
           "enrolled": 2805
         }
       },
-      "slug": "oregon-state"
+      "slug": "oregon-state",
+      "us_news_ranking": 143
     },
     {
       "id": 58,
@@ -9831,7 +9888,8 @@
           "enrolled": 379
         }
       },
-      "slug": "penn-state"
+      "slug": "penn-state",
+      "us_news_ranking": 59
     },
     {
       "id": 59,
@@ -10000,7 +10058,8 @@
           "enrolled": 133
         }
       },
-      "slug": "pepperdine"
+      "slug": "pepperdine",
+      "us_news_ranking": 84
     },
     {
       "id": 60,
@@ -10179,7 +10238,8 @@
           "enrolled": 771
         }
       },
-      "slug": "pitt"
+      "slug": "pitt",
+      "us_news_ranking": 69
     },
     {
       "id": 61,
@@ -10348,7 +10408,8 @@
           "enrolled": 32
         }
       },
-      "slug": "princeton"
+      "slug": "princeton",
+      "us_news_ranking": 1
     },
     {
       "id": 62,
@@ -10523,7 +10584,8 @@
           "enrolled": 1058
         }
       },
-      "slug": "purdue"
+      "slug": "purdue",
+      "us_news_ranking": 46
     },
     {
       "id": 63,
@@ -10697,7 +10759,8 @@
           "enrolled": 74
         }
       },
-      "slug": "rice"
+      "slug": "rice",
+      "us_news_ranking": 17
     },
     {
       "id": 64,
@@ -10876,7 +10939,8 @@
           "enrolled": 265
         }
       },
-      "slug": "rit"
+      "slug": "rit",
+      "us_news_ranking": 88
     },
     {
       "id": 65,
@@ -11059,7 +11123,8 @@
           "enrolled": 63
         }
       },
-      "slug": "rochester"
+      "slug": "rochester",
+      "us_news_ranking": 46
     },
     {
       "id": 66,
@@ -11226,7 +11291,8 @@
           "enrolled": 1887
         }
       },
-      "slug": "rowan"
+      "slug": "rowan",
+      "us_news_ranking": 169
     },
     {
       "id": 67,
@@ -11401,7 +11467,8 @@
           "enrolled": 83
         }
       },
-      "slug": "rpi"
+      "slug": "rpi",
+      "us_news_ranking": 64
     },
     {
       "id": 68,
@@ -11576,7 +11643,8 @@
           "enrolled": 247
         }
       },
-      "slug": "santa-clara"
+      "slug": "santa-clara",
+      "us_news_ranking": 59
     },
     {
       "id": 69,
@@ -11750,7 +11818,8 @@
           "enrolled": 4432
         }
       },
-      "slug": "sdsu"
+      "slug": "sdsu",
+      "us_news_ranking": 117
     },
     {
       "id": 70,
@@ -11925,7 +11994,8 @@
           "enrolled": 417
         }
       },
-      "slug": "smu"
+      "slug": "smu",
+      "us_news_ranking": 88
     },
     {
       "id": 71,
@@ -12100,7 +12170,8 @@
           "enrolled": 89
         }
       },
-      "slug": "stanford"
+      "slug": "stanford",
+      "us_news_ranking": 4
     },
     {
       "id": 72,
@@ -12279,7 +12350,8 @@
           "enrolled": 43
         }
       },
-      "slug": "stevens"
+      "slug": "stevens",
+      "us_news_ranking": 80
     },
     {
       "id": 73,
@@ -12454,7 +12526,8 @@
           "enrolled": 1364
         }
       },
-      "slug": "stony-brook"
+      "slug": "stony-brook",
+      "us_news_ranking": 59
     },
     {
       "id": 74,
@@ -12618,7 +12691,8 @@
           "enrolled": 151
         }
       },
-      "slug": "suny-esf"
+      "slug": "suny-esf",
+      "us_news_ranking": 158
     },
     {
       "id": 75,
@@ -12776,7 +12850,8 @@
           "enrolled": 924
         }
       },
-      "slug": "templeu"
+      "slug": "templeu",
+      "us_news_ranking": 102
     },
     {
       "id": 76,
@@ -12951,7 +13026,8 @@
           "enrolled": 1778
         }
       },
-      "slug": "tennessee-knoxville"
+      "slug": "tennessee-knoxville",
+      "us_news_ranking": 102
     },
     {
       "id": 77,
@@ -13101,7 +13177,8 @@
           "enrolled": 3074
         }
       },
-      "slug": "texas-am"
+      "slug": "texas-am",
+      "us_news_ranking": 51
     },
     {
       "id": 78,
@@ -13271,7 +13348,8 @@
           "enrolled": 394
         }
       },
-      "slug": "texaschristian"
+      "slug": "texaschristian",
+      "us_news_ranking": 97
     },
     {
       "id": 79,
@@ -13445,7 +13523,8 @@
           "enrolled": 53
         }
       },
-      "slug": "tufts"
+      "slug": "tufts",
+      "us_news_ranking": 36
     },
     {
       "id": 80,
@@ -13620,7 +13699,8 @@
           "enrolled": 153
         }
       },
-      "slug": "tulane"
+      "slug": "tulane",
+      "us_news_ranking": 69
     },
     {
       "id": 81,
@@ -13795,7 +13875,8 @@
           "enrolled": 1257
         }
       },
-      "slug": "ualabama"
+      "slug": "ualabama",
+      "us_news_ranking": 169
     },
     {
       "id": 82,
@@ -13970,7 +14051,8 @@
           "enrolled": 1196
         }
       },
-      "slug": "uarkansas"
+      "slug": "uarkansas",
+      "us_news_ranking": 183
     },
     {
       "id": 83,
@@ -14138,7 +14220,8 @@
           "enrolled": 2614
         }
       },
-      "slug": "uc-davis"
+      "slug": "uc-davis",
+      "us_news_ranking": 32
     },
     {
       "id": 84,
@@ -14297,7 +14380,8 @@
           "enrolled": 2794
         }
       },
-      "slug": "uc-irvine"
+      "slug": "uc-irvine",
+      "us_news_ranking": 32
     },
     {
       "id": 85,
@@ -14453,7 +14537,8 @@
           "enrolled": 272
         }
       },
-      "slug": "uc-merced"
+      "slug": "uc-merced",
+      "us_news_ranking": 57
     },
     {
       "id": 86,
@@ -14621,7 +14706,8 @@
           "enrolled": 1607
         }
       },
-      "slug": "uc-riverside"
+      "slug": "uc-riverside",
+      "us_news_ranking": 75
     },
     {
       "id": 87,
@@ -14795,7 +14881,8 @@
           "enrolled": 3591
         }
       },
-      "slug": "uc-san-diego"
+      "slug": "uc-san-diego",
+      "us_news_ranking": 29
     },
     {
       "id": 88,
@@ -14963,7 +15050,8 @@
           "enrolled": 1322
         }
       },
-      "slug": "uc-santa-cruz"
+      "slug": "uc-santa-cruz",
+      "us_news_ranking": 88
     },
     {
       "id": 89,
@@ -15138,7 +15226,8 @@
           "enrolled": 5870
         }
       },
-      "slug": "ucentralflorida"
+      "slug": "ucentralflorida",
+      "us_news_ranking": 117
     },
     {
       "id": 90,
@@ -15305,7 +15394,8 @@
           "enrolled": 311
         }
       },
-      "slug": "uchicago"
+      "slug": "uchicago",
+      "us_news_ranking": 6
     },
     {
       "id": 91,
@@ -15469,7 +15559,8 @@
           "enrolled": 3933
         }
       },
-      "slug": "ucla"
+      "slug": "ucla",
+      "us_news_ranking": 17
     },
     {
       "id": 92,
@@ -15635,7 +15726,8 @@
           "enrolled": 770
         }
       },
-      "slug": "uconn"
+      "slug": "uconn",
+      "us_news_ranking": 69
     },
     {
       "id": 93,
@@ -15803,7 +15895,8 @@
           "enrolled": 2036
         }
       },
-      "slug": "ucsb"
+      "slug": "ucsb",
+      "us_news_ranking": 40
     },
     {
       "id": 94,
@@ -15970,7 +16063,8 @@
           "enrolled": 160
         }
       },
-      "slug": "udenver"
+      "slug": "udenver",
+      "us_news_ranking": 117
     },
     {
       "id": 95,
@@ -16145,7 +16239,8 @@
           "enrolled": 1762
         }
       },
-      "slug": "uf"
+      "slug": "uf",
+      "us_news_ranking": 30
     },
     {
       "id": 96,
@@ -16314,7 +16409,8 @@
           "enrolled": 1893
         }
       },
-      "slug": "uga"
+      "slug": "uga",
+      "us_news_ranking": 46
     },
     {
       "id": 97,
@@ -16481,7 +16577,8 @@
           "enrolled": 2450
         }
       },
-      "slug": "uic"
+      "slug": "uic",
+      "us_news_ranking": 84
     },
     {
       "id": 98,
@@ -16647,7 +16744,8 @@
           "enrolled": 1682
         }
       },
-      "slug": "uiuc"
+      "slug": "uiuc",
+      "us_news_ranking": 36
     },
     {
       "id": 99,
@@ -16814,7 +16912,8 @@
           "enrolled": 1016
         }
       },
-      "slug": "ukentucky"
+      "slug": "ukentucky",
+      "us_news_ranking": 143
     },
     {
       "id": 100,
@@ -16989,7 +17088,8 @@
           "enrolled": 1190
         }
       },
-      "slug": "umass-amherst"
+      "slug": "umass-amherst",
+      "us_news_ranking": 64
     },
     {
       "id": 101,
@@ -17164,7 +17264,8 @@
           "enrolled": 874
         }
       },
-      "slug": "umbc"
+      "slug": "umbc",
+      "us_news_ranking": 127
     },
     {
       "id": 102,
@@ -17340,7 +17441,8 @@
           "enrolled": 1533
         }
       },
-      "slug": "umich"
+      "slug": "umich",
+      "us_news_ranking": 20
     },
     {
       "id": 103,
@@ -17515,7 +17617,8 @@
           "enrolled": 1078
         }
       },
-      "slug": "unc"
+      "slug": "unc",
+      "us_news_ranking": 26
     },
     {
       "id": 104,
@@ -17676,7 +17779,8 @@
           "enrolled": 1073
         }
       },
-      "slug": "unevada-reno"
+      "slug": "unevada-reno",
+      "us_news_ranking": 192
     },
     {
       "id": 105,
@@ -17851,7 +17955,8 @@
           "enrolled": 113
         }
       },
-      "slug": "upenn"
+      "slug": "upenn",
+      "us_news_ranking": 7
     },
     {
       "id": 106,
@@ -18013,7 +18118,8 @@
           "enrolled": 401
         }
       },
-      "slug": "usandiego"
+      "slug": "usandiego",
+      "us_news_ranking": 110
     },
     {
       "id": 107,
@@ -18180,7 +18286,8 @@
           "enrolled": 1544
         }
       },
-      "slug": "usc"
+      "slug": "usc",
+      "us_news_ranking": 28
     },
     {
       "id": 108,
@@ -18355,7 +18462,8 @@
           "enrolled": 3342
         }
       },
-      "slug": "usf"
+      "slug": "usf",
+      "us_news_ranking": 88
     },
     {
       "id": 109,
@@ -18510,7 +18618,8 @@
           "enrolled": 2026
         }
       },
-      "slug": "ut-austin"
+      "slug": "ut-austin",
+      "us_news_ranking": 30
     },
     {
       "id": 110,
@@ -18676,7 +18785,8 @@
           "enrolled": 1911
         }
       },
-      "slug": "ut-dallas"
+      "slug": "ut-dallas",
+      "us_news_ranking": 110
     },
     {
       "id": 111,
@@ -18849,7 +18959,8 @@
           "enrolled": null
         }
       },
-      "slug": "uva"
+      "slug": "uva",
+      "us_news_ranking": 26
     },
     {
       "id": 112,
@@ -19015,7 +19126,8 @@
           "enrolled": 296
         }
       },
-      "slug": "uvermont"
+      "slug": "uvermont",
+      "us_news_ranking": 132
     },
     {
       "id": 113,
@@ -19190,7 +19302,8 @@
           "enrolled": 446
         }
       },
-      "slug": "vanderbilt"
+      "slug": "vanderbilt",
+      "us_news_ranking": 17
     },
     {
       "id": 114,
@@ -19365,7 +19478,8 @@
           "enrolled": 116
         }
       },
-      "slug": "villanova"
+      "slug": "villanova",
+      "us_news_ranking": 57
     },
     {
       "id": 115,
@@ -19534,7 +19648,8 @@
           "enrolled": 1176
         }
       },
-      "slug": "virginia-tech"
+      "slug": "virginia-tech",
+      "us_news_ranking": 51
     },
     {
       "id": 116,
@@ -19707,7 +19822,8 @@
           "enrolled": 59
         }
       },
-      "slug": "wake-forest"
+      "slug": "wake-forest",
+      "us_news_ranking": 51
     },
     {
       "id": 117,
@@ -19880,7 +19996,8 @@
           "enrolled": 1685
         }
       },
-      "slug": "washington-seattle"
+      "slug": "washington-seattle",
+      "us_news_ranking": 42
     },
     {
       "id": 118,
@@ -20041,7 +20158,8 @@
           "enrolled": 1940
         }
       },
-      "slug": "washington-stateu"
+      "slug": "washington-stateu",
+      "us_news_ranking": 192
     },
     {
       "id": 119,
@@ -20207,7 +20325,8 @@
           "enrolled": 84
         }
       },
-      "slug": "washu"
+      "slug": "washu",
+      "us_news_ranking": 20
     },
     {
       "id": 120,
@@ -20382,7 +20501,8 @@
           "enrolled": 206
         }
       },
-      "slug": "william-mary"
+      "slug": "william-mary",
+      "us_news_ranking": 51
     },
     {
       "id": 121,
@@ -20557,7 +20677,8 @@
           "enrolled": 1322
         }
       },
-      "slug": "wisconsin-madison"
+      "slug": "wisconsin-madison",
+      "us_news_ranking": 36
     },
     {
       "id": 122,
@@ -20732,7 +20853,8 @@
           "enrolled": 63
         }
       },
-      "slug": "wpi"
+      "slug": "wpi",
+      "us_news_ranking": 84
     },
     {
       "id": 123,
@@ -20898,7 +21020,8 @@
           "enrolled": 35
         }
       },
-      "slug": "yale"
+      "slug": "yale",
+      "us_news_ranking": 4
     }
   ]
 }

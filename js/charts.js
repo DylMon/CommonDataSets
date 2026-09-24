@@ -110,6 +110,96 @@ export function renderGpaHistogram(canvas, distribution, brandColor) {
   return true;
 }
 
+// Class rank (CDS Section C10) is reported as cumulative percentiles from
+// both ends — top10 ⊆ top25 ⊆ top50, and separately bottom25 ⊆ bottom50 —
+// not the mutually-exclusive buckets a histogram needs. This converts them
+// into non-overlapping segments spanning the whole enrolled class:
+//   Top 10% | Top 10–25% | Top 25–50% | 50th–75th Percentile | Bottom 25%
+// If a school only reports the top-side figures (common — 12 of the 88
+// schools with any class rank data are missing bottom50/bottom25), the
+// bottom half is folded into a single "Bottom 50%" segment via 1 - top50
+// rather than dropping the chart entirely.
+export function classRankSegments(cr) {
+  if (!cr) return null;
+  const { top10, top25, top50, bottom50, bottom25 } = cr;
+  if (top10 == null || top25 == null || top50 == null) return null;
+
+  const segments = [
+    { label: 'Top 10%', value: top10 },
+    { label: 'Top 10–25%', value: top25 - top10 },
+    { label: 'Top 25–50%', value: top50 - top25 },
+  ];
+
+  if (bottom25 != null && bottom50 != null) {
+    segments.push({ label: '50th–75th Percentile', value: bottom50 - bottom25 });
+    segments.push({ label: 'Bottom 25%', value: bottom25 });
+  } else {
+    const remainder = 1 - top50;
+    if (remainder > 0.001) segments.push({ label: 'Bottom 50%', value: remainder });
+  }
+
+  // Drop near-zero/negative slivers (rounding in the source data, or a
+  // school where two cumulative figures were reported identically).
+  return segments.filter(s => s.value > 0.001);
+}
+
+// Single school — same ordinal ramp treatment as renderGpaHistogram (darkest
+// at "Top 10%", lightening toward the bottom of the class).
+export function renderClassRankHistogram(canvas, classRank, brandColor) {
+  if (!canvas) return false;
+  const segments = classRankSegments(classRank);
+  if (!segments || segments.length < 2) return false;
+
+  const n = segments.length;
+  const colors = segments.map((_, i) => hexMix(brandColor, '#1a1a1a', i / (n - 1) * 0.55));
+
+  new Chart(canvas, {
+    type: 'bar',
+    data: {
+      labels: segments.map(s => s.label),
+      datasets: [{
+        data: segments.map(s => +(s.value * 100).toFixed(1)),
+        backgroundColor: colors,
+        maxBarThickness: 24,
+        categoryPercentage: 0.8,
+        barPercentage: 0.9,
+        borderRadius: 4,
+      }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      font: { family: 'Ropa Sans' },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          displayColors: false,
+          callbacks: {
+            label: item => `${item.formattedValue}% of enrolled students`,
+          },
+        },
+      },
+      scales: {
+        x: {
+          grid: { display: false },
+          ticks: { font: { family: 'Ropa Sans' }, color: '#666' },
+        },
+        y: {
+          beginAtZero: true,
+          grid: { color: '#eee' },
+          border: { display: false },
+          ticks: {
+            font: { family: 'Ropa Sans' },
+            color: '#999',
+            callback: v => v + '%',
+          },
+        },
+      },
+    },
+  });
+  return true;
+}
+
 // Two schools — grouped bars, one flat brand color per school (a real
 // categorical/identity comparison, not a magnitude ramp), with a legend
 // since there are now two series sharing the same axis. `entries` is

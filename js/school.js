@@ -1,4 +1,4 @@
-import { GPA_BUCKETS, renderGpaHistogram, normalizeGpaDistribution } from './charts.js?v=6';
+import { GPA_BUCKETS, renderGpaHistogram, normalizeGpaDistribution, classRankSegments, renderClassRankHistogram } from './charts.js?v=6';
 
 const SCHOOL_META = {
   'mit':          { color: '#a41931', banner: 'bannerMIT.png' },
@@ -437,6 +437,39 @@ function renderAcademicProfileSection(s) {
     </section>`;
 }
 
+// ── Render: Class Rank (chart, when the school reports it) ──────────────
+
+function renderClassRankSection(s) {
+  const cr = s.class_rank;
+  const segments = classRankSegments(cr);
+
+  if (!segments) {
+    return `
+      <section class="school-section">
+        <h2 class="section-title">Class Rank of Enrolled Students</h2>
+        <p class="no-data">Not reported in CDS — many high schools no longer calculate class rank.</p>
+      </section>`;
+  }
+
+  const rows = [
+    ['Top 10%', cr.top10],
+    ['Top 25%', cr.top25],
+    ['Top 50%', cr.top50],
+    ['Bottom 50%', cr.bottom50],
+    ['Bottom 25%', cr.bottom25],
+  ]
+    .filter(([, v]) => v != null)
+    .map(([label, v]) => [label, (v * 100).toFixed(0) + '%']);
+
+  return `
+    <section class="school-section">
+      <h2 class="section-title">Class Rank of Enrolled Students</h2>
+      <div class="gpa-chart-wrap"><canvas id="class-rank-chart"></canvas></div>
+      <p class="chart-caption">Reported as cumulative percentiles (e.g. "top 25%" includes the "top 10%" group), split here into the actual share of the class in each band.</p>
+      ${tableHtml(['Percentile', 'Cumulative Share'], rows)}
+    </section>`;
+}
+
 // ── Render: Admission Factors (name + 4-dot importance meter, 2 columns) ─
 
 const FACTOR_LABELS = {
@@ -683,10 +716,12 @@ async function init() {
     </div>` +
     renderSelectivitySection(s) +
     renderAcademicProfileSection(s) +
+    renderClassRankSection(s) +
     renderAdmissionFactorsSection(s) +
     renderStudentBodySection(s);
 
   renderGpaHistogram(document.getElementById('gpa-chart'), s.gpa_distribution, meta.color);
+  renderClassRankHistogram(document.getElementById('class-rank-chart'), s.class_rank, meta.color);
 
   // Inject right sidebar alongside school-sections
   const sectionsEl = document.getElementById('school-sections');
