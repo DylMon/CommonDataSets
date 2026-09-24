@@ -1,0 +1,174 @@
+{
+  "name": "University of Tennessee - Knoxville",
+  "data_year": "2025-26",
+  "city": "Knoxville",
+  "state": "TN",
+  "location": "Knoxville, TN",
+  "school_type": "Public",
+  "website": "utk.edu",
+  "applicants_total": 53841,
+  "applicants_men": 21707,
+  "applicants_women": 32134,
+  "admitted_total": 23464,
+  "admitted_men": 9916,
+  "admitted_women": 13548,
+  "enrolled_total": 7143,
+  "enrolled_men": 3259,
+  "enrolled_women": 3884,
+  "acceptance_rate": 0.4358,
+  "application_fee": 75,
+  "avg_gpa_weighted": 4.25,
+  "rd_deadline": "12/15",
+  "waitlist_offered": 11980,
+  "waitlist_accepted": 3516,
+  "waitlist_admitted": 134,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.25,
+  "sat_submitted_count": 1758,
+  "act_submitted_pct": 0.8,
+  "act_submitted_count": 5679,
+  "sat_composite_25": 1280,
+  "sat_composite_75": 1380,
+  "sat_reading_25": 640,
+  "sat_reading_75": 700,
+  "sat_math_25": 630,
+  "sat_math_75": 700,
+  "act_composite_25": 26,
+  "act_composite_75": 31,
+  "act_math_25": 25,
+  "act_math_75": 30,
+  "act_english_25": 25,
+  "act_english_75": 33,
+  "total_undergrads": 32041,
+  "undergrads_male": 15081,
+  "undergrads_female": 16960,
+  "retention_rate": 0.924,
+  "tuition": null,
+  "tuition_in_state": 11560,
+  "tuition_out_of_state": 31672,
+  "required_fees": 2464,
+  "room_and_board": 14738,
+  "books_supplies": 1598,
+  "other_expenses": 3042,
+  "pct_out_of_state": 0.39,
+  "pct_on_campus_housing": 0.9,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 11980,
+      "accepted_spots": 3516,
+      "enrolled": 134
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 21707,
+      "female": 32134
+    },
+    "accepted": {
+      "male": 9916,
+      "female": 13548
+    },
+    "enrolled": {
+      "male": 3259,
+      "female": 3884
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 53,
+      "hispanic": 577,
+      "black": 250,
+      "white": 5482,
+      "american_indian": 6,
+      "asian": 241,
+      "pacific_islander": 0,
+      "two_or_more": 409,
+      "unknown": 125,
+      "total": 7143
+    },
+    "undergrad": {
+      "nonresident_aliens": 293,
+      "hispanic": 2328,
+      "black": 1193,
+      "white": 24660,
+      "american_indian": 43,
+      "asian": 1196,
+      "pacific_islander": 0,
+      "two_or_more": 1755,
+      "unknown": 455,
+      "total": 31923
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.39,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 1758,
+    "sat_submitted_pct": 0.25,
+    "act_submitted_count": 5679,
+    "act_submitted_pct": 0.8
+  },
+  "class_rank": {
+    "top10": 0.47,
+    "top25": 0.77,
+    "top50": 0.97,
+    "bottom50": 0.03,
+    "bottom25": 0.0
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.8,
+    "gpa_375_399": 0.12,
+    "gpa_350_374": 0.05,
+    "gpa_325_349": 0.02,
+    "gpa_300_324": 0.01,
+    "gpa_250_299": 0.0,
+    "gpa_200_249": 0.0,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "very_important",
+    "essay": "very_important",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "important",
+    "first_gen": "not_considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "very_important",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "important",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1692,
+      "admitted": 1502,
+      "enrolled": 884
+    },
+    "female": {
+      "applied": 1905,
+      "admitted": 1666,
+      "enrolled": 894
+    },
+    "total": {
+      "applied": 3597,
+      "admitted": 3168,
+      "enrolled": 1778
+    }
+  },
+  "slug": "tennessee-knoxville"
+}

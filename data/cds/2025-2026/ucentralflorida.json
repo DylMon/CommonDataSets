@@ -1,0 +1,174 @@
+{
+  "name": "University of Central Florida",
+  "data_year": "2025-2026",
+  "city": "Orlando",
+  "state": "FL",
+  "location": "Orlando, FL",
+  "school_type": "Public",
+  "website": "www.ucf.edu",
+  "applicants_total": 59629,
+  "applicants_men": 25767,
+  "applicants_women": 33853,
+  "admitted_total": 25522,
+  "admitted_men": 11777,
+  "admitted_women": 13743,
+  "enrolled_total": 8103,
+  "enrolled_men": 4123,
+  "enrolled_women": 3979,
+  "acceptance_rate": 0.4281,
+  "application_fee": 30,
+  "avg_gpa_weighted": 4.18,
+  "rd_deadline": "5/1",
+  "waitlist_offered": 2966,
+  "waitlist_accepted": 2157,
+  "waitlist_admitted": 343,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "10/15",
+  "ea_ed_notification": "12/4",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.739,
+  "sat_submitted_count": 5788,
+  "act_submitted_pct": 0.258,
+  "act_submitted_count": 2024,
+  "sat_composite_25": 1220,
+  "sat_composite_75": 1350,
+  "sat_reading_25": 620,
+  "sat_reading_75": 690,
+  "sat_math_25": 590,
+  "sat_math_75": 680,
+  "act_composite_25": 25,
+  "act_composite_75": 30,
+  "act_math_25": 23,
+  "act_math_75": 28,
+  "act_english_25": 24,
+  "act_english_75": 31,
+  "total_undergrads": 60083,
+  "undergrads_male": 28534,
+  "undergrads_female": 31540,
+  "retention_rate": 0.933,
+  "tuition": null,
+  "tuition_in_state": 6368,
+  "tuition_out_of_state": 26732,
+  "required_fees": 0,
+  "room_and_board": 12436,
+  "books_supplies": 1200,
+  "other_expenses": 3104,
+  "pct_out_of_state": 0.067,
+  "pct_on_campus_housing": 0.694,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 2966,
+      "accepted_spots": 2157,
+      "enrolled": 343
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 25767,
+      "female": 33853
+    },
+    "accepted": {
+      "male": 11777,
+      "female": 13743
+    },
+    "enrolled": {
+      "male": 4123,
+      "female": 3979
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 162,
+      "hispanic": 2492,
+      "black": 523,
+      "white": 3537,
+      "american_indian": 6,
+      "asian": 775,
+      "pacific_islander": 5,
+      "two_or_more": 449,
+      "unknown": 154,
+      "total": 8103
+    },
+    "undergrad": {
+      "nonresident_aliens": 1906,
+      "hispanic": 19452,
+      "black": 5069,
+      "white": 24588,
+      "american_indian": 65,
+      "asian": 4785,
+      "pacific_islander": 59,
+      "two_or_more": 2966,
+      "unknown": 718,
+      "total": 59608
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.067,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 5788,
+    "sat_submitted_pct": 0.739,
+    "act_submitted_count": 2024,
+    "act_submitted_pct": 0.258
+  },
+  "class_rank": {
+    "top10": 0.33,
+    "top25": 0.68,
+    "top50": 0.94,
+    "bottom50": 0.06,
+    "bottom25": 0.01
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.7,
+    "gpa_375_399": 0.178,
+    "gpa_350_374": 0.103,
+    "gpa_325_349": 0.015,
+    "gpa_300_324": 0.002,
+    "gpa_250_299": 0.001,
+    "gpa_200_249": 0.0,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "very_important",
+    "essay": "important",
+    "recommendations": "not_considered",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 5329,
+      "admitted": 3677,
+      "enrolled": 2501
+    },
+    "female": {
+      "applied": 7380,
+      "admitted": 5149,
+      "enrolled": 3369
+    },
+    "total": {
+      "applied": 12709,
+      "admitted": 8826,
+      "enrolled": 5870
+    }
+  },
+  "slug": "ucentralflorida"
+}

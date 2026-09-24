@@ -1,0 +1,160 @@
+{
+  "name": "California State University, San Bernardino",
+  "data_year": "2025-26",
+  "city": "San Bernardino",
+  "state": "CA",
+  "location": "San Bernardino, CA",
+  "school_type": "Public",
+  "website": "www.csusb.edu",
+  "applicants_total": 14947,
+  "applicants_men": 5748,
+  "applicants_women": 8933,
+  "admitted_total": 14095,
+  "admitted_men": 5392,
+  "admitted_women": 8449,
+  "enrolled_total": 2162,
+  "enrolled_men": 840,
+  "enrolled_women": 1283,
+  "acceptance_rate": 0.943,
+  "application_fee": 70,
+  "avg_gpa_weighted": 3.39,
+  "rd_deadline": "11/30",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.15,
+  "sat_submitted_count": 317,
+  "act_submitted_pct": 0.01,
+  "act_submitted_count": 13,
+  "sat_composite_25": 890,
+  "sat_composite_75": 1130,
+  "sat_reading_25": 450,
+  "sat_reading_75": 580,
+  "sat_math_25": 430,
+  "sat_math_75": 560,
+  "act_composite_25": 17,
+  "act_composite_75": 26,
+  "act_math_25": 18,
+  "act_math_75": 22,
+  "act_english_25": 15,
+  "act_english_75": 28,
+  "total_undergrads": 15948,
+  "undergrads_male": 5906,
+  "undergrads_female": 9030,
+  "retention_rate": 0.8026,
+  "tuition": null,
+  "tuition_in_state": 6450,
+  "tuition_out_of_state": 11778,
+  "required_fees": 2122,
+  "room_and_board": 16180,
+  "books_supplies": 840,
+  "other_expenses": 1998,
+  "pct_out_of_state": 0.0,
+  "pct_on_campus_housing": 0.15,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 5748,
+      "female": 8933
+    },
+    "accepted": {
+      "male": 5392,
+      "female": 8449
+    },
+    "enrolled": {
+      "male": 840,
+      "female": 1283
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 18,
+      "hispanic": 1695,
+      "black": 131,
+      "white": 116,
+      "american_indian": 2,
+      "asian": 126,
+      "pacific_islander": 1,
+      "two_or_more": 43,
+      "unknown": 30,
+      "total": 2162
+    },
+    "undergrad": {
+      "nonresident_aliens": 182,
+      "hispanic": 11041,
+      "black": 897,
+      "white": 1414,
+      "american_indian": 20,
+      "asian": 936,
+      "pacific_islander": 24,
+      "two_or_more": 419,
+      "unknown": 1015,
+      "total": 15948
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.0,
+    "international_pct": 0.0051
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 317,
+    "sat_submitted_pct": 0.15,
+    "act_submitted_count": 13,
+    "act_submitted_pct": 0.01
+  },
+  "class_rank": null,
+  "gpa_distribution": {
+    "gpa_40": 0.1454,
+    "gpa_375_399": 0.1491,
+    "gpa_350_374": 0.1681,
+    "gpa_325_349": 0.1306,
+    "gpa_300_324": 0.1551,
+    "gpa_250_299": 0.2116,
+    "gpa_200_249": 0.0403,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "not_considered",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "very_important",
+    "essay": "not_considered",
+    "recommendations": "not_considered",
+    "interview": "not_considered",
+    "extracurriculars": "not_considered",
+    "talent": "not_considered",
+    "character": "not_considered",
+    "first_gen": "not_considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "important",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "not_considered",
+    "work_experience": "not_considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 2569,
+      "admitted": 2294,
+      "enrolled": 895
+    },
+    "female": {
+      "applied": 4441,
+      "admitted": 3926,
+      "enrolled": 1506
+    },
+    "total": {
+      "applied": 7356,
+      "admitted": 6497,
+      "enrolled": 2477
+    }
+  },
+  "slug": "csusb"
+}

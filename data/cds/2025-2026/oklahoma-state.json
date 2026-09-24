@@ -1,0 +1,166 @@
+{
+  "name": "Oklahoma State University",
+  "data_year": "2025-26",
+  "city": "Stillwater",
+  "state": "OK",
+  "location": "Stillwater, OK",
+  "school_type": "Public",
+  "website": "www.okstate.edu",
+  "applicants_total": 28024,
+  "applicants_men": 12231,
+  "applicants_women": 15784,
+  "admitted_total": 20646,
+  "admitted_men": 9169,
+  "admitted_women": 11474,
+  "enrolled_total": 5160,
+  "enrolled_men": 2291,
+  "enrolled_women": 2869,
+  "acceptance_rate": 0.7368,
+  "application_fee": 50,
+  "avg_gpa_weighted": 3.76,
+  "rd_deadline": null,
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "None",
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.168,
+  "sat_submitted_count": 869,
+  "act_submitted_pct": 0.63,
+  "act_submitted_count": 3253,
+  "sat_composite_25": 1060,
+  "sat_composite_75": 1250,
+  "sat_reading_25": 540,
+  "sat_reading_75": 640,
+  "sat_math_25": 520,
+  "sat_math_75": 630,
+  "act_composite_25": 20,
+  "act_composite_75": 27,
+  "act_math_25": 17,
+  "act_math_75": 26,
+  "act_english_25": 19,
+  "act_english_75": 26,
+  "total_undergrads": 23003,
+  "undergrads_male": 10752,
+  "undergrads_female": 12249,
+  "retention_rate": 0.819,
+  "tuition": null,
+  "tuition_in_state": 5416.5,
+  "tuition_out_of_state": 20937.0,
+  "required_fees": 3827,
+  "room_and_board": 9845,
+  "books_supplies": 1400,
+  "other_expenses": 3420,
+  "pct_out_of_state": 0.38,
+  "pct_on_campus_housing": 0.91,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 12231,
+      "female": 15784
+    },
+    "accepted": {
+      "male": 9169,
+      "female": 11474
+    },
+    "enrolled": {
+      "male": 2291,
+      "female": 2869
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 59,
+      "hispanic": 666,
+      "black": 246,
+      "white": 3291,
+      "american_indian": 227,
+      "asian": 80,
+      "pacific_islander": 6,
+      "two_or_more": 577,
+      "unknown": 8,
+      "total": 5160
+    },
+    "undergrad": {
+      "nonresident_aliens": 401,
+      "hispanic": 2570,
+      "black": 927,
+      "white": 14370,
+      "american_indian": 1073,
+      "asian": 431,
+      "pacific_islander": 31,
+      "two_or_more": 2450,
+      "unknown": 29,
+      "total": 22282
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.38,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 869,
+    "sat_submitted_pct": 0.168,
+    "act_submitted_count": 3253,
+    "act_submitted_pct": 0.63
+  },
+  "class_rank": {
+    "top10": 0.29,
+    "top25": 0.5532,
+    "top50": 0.8284,
+    "bottom50": 0.1716,
+    "bottom25": 0.0444
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.355,
+    "gpa_375_399": 0.2284,
+    "gpa_350_374": 0.1644,
+    "gpa_325_349": 0.1078,
+    "gpa_300_324": 0.0772,
+    "gpa_250_299": 0.0584,
+    "gpa_200_249": 0.0078,
+    "gpa_100_199": 0.0012
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "important",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "not_considered",
+    "recommendations": "not_considered",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "not_considered",
+    "character": "not_considered",
+    "first_gen": "not_considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "not_considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 2166,
+      "admitted": 1133,
+      "enrolled": 721
+    },
+    "female": {
+      "applied": 2829,
+      "admitted": 1472,
+      "enrolled": 914
+    },
+    "total": {
+      "applied": 4997,
+      "admitted": 2606,
+      "enrolled": 1635
+    }
+  },
+  "slug": "oklahoma-state"
+}

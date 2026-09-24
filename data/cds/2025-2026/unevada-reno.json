@@ -1,0 +1,160 @@
+{
+  "name": "University of Nevada, Reno",
+  "data_year": "2025-2026",
+  "city": "Reno",
+  "state": "NV",
+  "location": "Reno, NV",
+  "school_type": "Public",
+  "website": "www.unr.edu",
+  "applicants_total": 19136,
+  "applicants_men": 7614,
+  "applicants_women": 11453,
+  "admitted_total": 15908,
+  "admitted_men": 6350,
+  "admitted_women": 9505,
+  "enrolled_total": 3747,
+  "enrolled_men": 1612,
+  "enrolled_women": 2114,
+  "acceptance_rate": 0.8313,
+  "application_fee": null,
+  "avg_gpa_weighted": 3.42,
+  "rd_deadline": null,
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "None",
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.16,
+  "sat_submitted_count": 593,
+  "act_submitted_pct": 0.61,
+  "act_submitted_count": 2284,
+  "sat_composite_25": 1060,
+  "sat_composite_75": 1280,
+  "sat_reading_25": 540,
+  "sat_reading_75": 660,
+  "sat_math_25": 510,
+  "sat_math_75": 640,
+  "act_composite_25": 18,
+  "act_composite_75": 25,
+  "act_math_25": 17,
+  "act_math_75": 25,
+  "act_english_25": 16,
+  "act_english_75": 25,
+  "total_undergrads": 20204,
+  "undergrads_male": 9010,
+  "undergrads_female": 11118,
+  "retention_rate": null,
+  "tuition": null,
+  "tuition_in_state": 8656,
+  "tuition_out_of_state": 27288,
+  "required_fees": 1642,
+  "room_and_board": 15409,
+  "books_supplies": null,
+  "other_expenses": null,
+  "pct_out_of_state": 0.23,
+  "pct_on_campus_housing": 0.55,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 7614,
+      "female": 11453
+    },
+    "accepted": {
+      "male": 6350,
+      "female": 9505
+    },
+    "enrolled": {
+      "male": 1612,
+      "female": 2114
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 38,
+      "hispanic": 985,
+      "black": 156,
+      "white": 1790,
+      "american_indian": 28,
+      "asian": 265,
+      "pacific_islander": 17,
+      "two_or_more": 377,
+      "unknown": 91,
+      "total": 3747
+    },
+    "undergrad": {
+      "nonresident_aliens": 195,
+      "hispanic": 4072,
+      "black": 553,
+      "white": 7835,
+      "american_indian": 135,
+      "asian": 1209,
+      "pacific_islander": 58,
+      "two_or_more": 1560,
+      "unknown": 327,
+      "total": 15944
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.23,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 593,
+    "sat_submitted_pct": 0.16,
+    "act_submitted_count": 2284,
+    "act_submitted_pct": 0.61
+  },
+  "class_rank": null,
+  "gpa_distribution": {
+    "gpa_40": 0.059,
+    "gpa_375_399": 0.247,
+    "gpa_350_374": 0.208,
+    "gpa_325_349": 0.193,
+    "gpa_300_324": 0.141,
+    "gpa_250_299": 0.134,
+    "gpa_200_249": 0.015,
+    "gpa_100_199": 0.002
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "not_considered",
+    "essay": "not_considered",
+    "recommendations": "not_considered",
+    "interview": "not_considered",
+    "extracurriculars": "not_considered",
+    "talent": "not_considered",
+    "character": "not_considered",
+    "first_gen": "not_considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "not_considered",
+    "work_experience": "not_considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1236,
+      "admitted": 792,
+      "enrolled": 435
+    },
+    "female": {
+      "applied": 1816,
+      "admitted": 1160,
+      "enrolled": 636
+    },
+    "total": {
+      "applied": 3063,
+      "admitted": 1955,
+      "enrolled": 1073
+    }
+  },
+  "slug": "unevada-reno"
+}

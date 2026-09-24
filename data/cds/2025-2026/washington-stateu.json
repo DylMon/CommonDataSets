@@ -1,0 +1,160 @@
+{
+  "name": "Washington State University",
+  "data_year": "2025-2026",
+  "city": "Pullman",
+  "state": "WA",
+  "location": "Pullman, WA",
+  "school_type": "Public",
+  "website": "wsu.edu",
+  "applicants_total": 26403,
+  "applicants_men": 10787,
+  "applicants_women": 15616,
+  "admitted_total": 22732,
+  "admitted_men": 9251,
+  "admitted_women": 13481,
+  "enrolled_total": 4420,
+  "enrolled_men": 1989,
+  "enrolled_women": 2431,
+  "acceptance_rate": 0.8609,
+  "application_fee": 70,
+  "avg_gpa_weighted": 3.46,
+  "rd_deadline": "3/31",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "None",
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.0624,
+  "sat_submitted_count": 276,
+  "act_submitted_pct": 0.0111,
+  "act_submitted_count": 49,
+  "sat_composite_25": null,
+  "sat_composite_75": null,
+  "sat_reading_25": null,
+  "sat_reading_75": null,
+  "sat_math_25": null,
+  "sat_math_75": null,
+  "act_composite_25": null,
+  "act_composite_75": null,
+  "act_math_25": null,
+  "act_math_75": null,
+  "act_english_25": null,
+  "act_english_75": null,
+  "total_undergrads": 21400,
+  "undergrads_male": 10032,
+  "undergrads_female": 11368,
+  "retention_rate": 0.8,
+  "tuition": null,
+  "tuition_in_state": 12063,
+  "tuition_out_of_state": 29734,
+  "required_fees": 2298,
+  "room_and_board": 15245,
+  "books_supplies": 900,
+  "other_expenses": 1968,
+  "pct_out_of_state": 0.1394,
+  "pct_on_campus_housing": 0.7921,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 10787,
+      "female": 15616
+    },
+    "accepted": {
+      "male": 9251,
+      "female": 13481
+    },
+    "enrolled": {
+      "male": 1989,
+      "female": 2431
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 44,
+      "hispanic": 965,
+      "black": 158,
+      "white": 2445,
+      "american_indian": 37,
+      "asian": 261,
+      "pacific_islander": 26,
+      "two_or_more": 418,
+      "unknown": 66,
+      "total": 4420
+    },
+    "undergrad": {
+      "nonresident_aliens": 483,
+      "hispanic": 4315,
+      "black": 722,
+      "white": 11912,
+      "american_indian": 137,
+      "asian": 1367,
+      "pacific_islander": 136,
+      "two_or_more": 1814,
+      "unknown": 514,
+      "total": 21400
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.1394,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 276,
+    "sat_submitted_pct": 0.0624,
+    "act_submitted_count": 49,
+    "act_submitted_pct": 0.0111
+  },
+  "class_rank": null,
+  "gpa_distribution": {
+    "gpa_40": 0.036,
+    "gpa_375_399": 0.2503,
+    "gpa_350_374": 0.2139,
+    "gpa_325_349": 0.1924,
+    "gpa_300_324": 0.1712,
+    "gpa_250_299": 0.1311,
+    "gpa_200_249": 0.005,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "not_considered",
+    "essay": "considered",
+    "recommendations": "not_considered",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "not_considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 2032,
+      "admitted": 1590,
+      "enrolled": 878
+    },
+    "female": {
+      "applied": 2606,
+      "admitted": 2021,
+      "enrolled": 1062
+    },
+    "total": {
+      "applied": 4638,
+      "admitted": 3611,
+      "enrolled": 1940
+    }
+  },
+  "slug": "washington-stateu"
+}
