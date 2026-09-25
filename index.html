@@ -27,9 +27,16 @@
 <body>
     <div class="container">
         <div class="hero-banner">
+            <div class="hero-slides" id="hero-slides">
+                <div class="hero-slide" style="background-image:url('images/heroes/cornell1.jpg')"></div>
+                <div class="hero-slide" style="background-image:url('images/heroes/harvard1.jpg')"></div>
+                <div class="hero-slide" style="background-image:url('images/heroes/MIT1.jpg')"></div>
+                <div class="hero-slide" style="background-image:url('images/heroes/stanford1.jpg')"></div>
+                <div class="hero-slide" style="background-image:url('images/heroes/yale1.jpg')"></div>
+            </div>
             <div class="hero-inner">
                 <div class="hero-content">
-                    <img class="hero-logo" src="images/logo-transparent.png" alt="CommonDataSets">
+                    <h1 class="page-intro-title">The Common Dataset, simplified.</h1>
                     <p class="page-intro-desc" id="page-intro-desc">CommonDataSets compiles official Common Data Set submissions directly from top US universities, giving students and families one place to compare verified admissions statistics, test score ranges, cost of attendance, and enrollment data without the noise.</p>
                 </div>
                 <div class="hero-cta-group">
@@ -38,6 +45,38 @@
                 </div>
             </div>
         </div>
+        <script>
+            // Hero slideshow: cycles the background photos in .hero-slides.
+            // Kept separate from the main module script below so it runs
+            // regardless of whether the school data fetch succeeds.
+            (function () {
+                const slides = document.querySelectorAll('#hero-slides .hero-slide');
+                if (slides.length < 2) return;
+                let current = 0;
+                slides[0].classList.add('hero-slide--active');
+
+                setInterval(() => {
+                    // Captured by value, not left as a read of the outer
+                    // `current` variable: that gets reassigned synchronously
+                    // a few lines down, and since 1100ms is less than this
+                    // interval's own 5000ms period, the setTimeout below
+                    // would otherwise fire after `current` already points at
+                    // the slide that just became active — clearing --prev
+                    // from the wrong (or no) element and leaving it stuck on
+                    // the actual outgoing slide forever.
+                    const outgoing = slides[current];
+                    const next = (current + 1) % slides.length;
+                    outgoing.classList.remove('hero-slide--active');
+                    outgoing.classList.add('hero-slide--prev');
+                    slides[next].classList.add('hero-slide--active');
+                    // Cleared after the transition finishes so the next cycle's
+                    // reset (prev's translateX(-100%) back to the default
+                    // translateX(100%)) doesn't fight an in-progress animation.
+                    setTimeout(() => outgoing.classList.remove('hero-slide--prev'), 1100);
+                    current = next;
+                }, 5000);
+            })();
+        </script>
         <div class="content-wrapper">
             <div class="search-bar">
                 <div class="search-wrap">
@@ -45,6 +84,9 @@
                         <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
                     </svg>
                     <input type="text" id="school-search" class="search-input" placeholder="Search schools…" autocomplete="off">
+                    <button type="button" class="search-clear" id="search-clear" aria-label="Clear search" hidden>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    </button>
                 </div>
             </div>
             <p class="results-count" id="results-count"></p>
@@ -139,7 +181,7 @@
             </div><!-- /.page-layout -->
         </div>
         <footer class="site-footer">
-            <div class="footer-brand">CommonDataSets</div>
+            <a class="footer-brand" href="index.html">CommonDataSets</a>
             <a class="footer-email" href="mailto:info@commondatasets.com">info@commondatasets.com</a>
             <nav class="footer-nav">
                 <a href="index.html">Data Sets</a>
@@ -201,8 +243,8 @@
             return 0;
         }
 
-        function fmtPct(val) { return val != null ? (val * 100).toFixed(1) + '%' : '—'; }
-        function fmtMoney(val) { return val != null ? '$' + val.toLocaleString() : '—'; }
+        function fmtPct(val) { return val != null ? (val * 100).toFixed(1) + '%' : '<span class="stat-na">n/a</span>'; }
+        function fmtMoney(val) { return val != null ? '$' + val.toLocaleString() : '<span class="stat-na">n/a</span>'; }
 
         const PAGE_SIZE = 50;
         let currentPage = 1;
@@ -262,30 +304,30 @@
                           : s.ea_ed_type;
             const waitlistBody = s.waitlist_offered != null
                 ? `<div class="detail-kv"><span>Offered</span><span>${s.waitlist_offered.toLocaleString()}</span></div>
-                   <div class="detail-kv"><span>Admitted</span><span>${s.waitlist_admitted != null ? s.waitlist_admitted.toLocaleString() : '—'}</span></div>`
+                   <div class="detail-kv"><span>Admitted</span><span>${s.waitlist_admitted != null ? s.waitlist_admitted.toLocaleString() : '<span class="stat-na">n/a</span>'}</span></div>`
                 : `<div class="detail-kv"><span>Not reported in CDS</span><span></span></div>`;
 
             return `
                 <div class="detail-grid">
                     <div class="detail-section">
                         <div class="detail-section-title">Deadlines</div>
-                        ${eaLabel ? `<div class="detail-kv"><span>${eaLabel}</span><span>${s.ea_ed_deadline ?? '—'}</span></div>` : ''}
-                        <div class="detail-kv"><span>Regular Decision</span><span>${s.rd_deadline ?? '—'}</span></div>
+                        ${eaLabel ? `<div class="detail-kv"><span>${eaLabel}</span><span>${s.ea_ed_deadline ?? '<span class="stat-na">n/a</span>'}</span></div>` : ''}
+                        <div class="detail-kv"><span>Regular Decision</span><span>${s.rd_deadline ?? '<span class="stat-na">n/a</span>'}</span></div>
                     </div>
                     <div class="detail-section">
                         <div class="detail-section-title">Test Scores (25–75th)</div>
-                        <div class="detail-kv"><span>SAT Composite</span><span>${s.sat_composite_25 != null ? `${s.sat_composite_25}–${s.sat_composite_75}` : '—'}</span></div>
-                        <div class="detail-kv"><span>ACT Composite</span><span>${s.act_composite_25 != null ? `${s.act_composite_25}–${s.act_composite_75}` : '—'}</span></div>
+                        <div class="detail-kv"><span>SAT Composite</span><span>${s.sat_composite_25 != null ? `${s.sat_composite_25}–${s.sat_composite_75}` : '<span class="stat-na">n/a</span>'}</span></div>
+                        <div class="detail-kv"><span>ACT Composite</span><span>${s.act_composite_25 != null ? `${s.act_composite_25}–${s.act_composite_75}` : '<span class="stat-na">n/a</span>'}</span></div>
                     </div>
                     <div class="detail-section">
                         <div class="detail-section-title">Quick Facts</div>
                         <div class="detail-kv"><span>Tuition (OOS)</span><span>${fmtMoney(tuitionVal)}</span></div>
-                        <div class="detail-kv"><span>Undergrads</span><span>${s.total_undergrads != null ? s.total_undergrads.toLocaleString() : '—'}</span></div>
-                        <div class="detail-kv"><span>Retention Rate</span><span>${s.retention_rate != null ? (s.retention_rate * 100).toFixed(0) + '%' : '—'}</span></div>
+                        <div class="detail-kv"><span>Undergrads</span><span>${s.total_undergrads != null ? s.total_undergrads.toLocaleString() : '<span class="stat-na">n/a</span>'}</span></div>
+                        <div class="detail-kv"><span>Retention Rate</span><span>${s.retention_rate != null ? (s.retention_rate * 100).toFixed(0) + '%' : '<span class="stat-na">n/a</span>'}</span></div>
                     </div>
                     <div class="detail-section">
                         <div class="detail-section-title">Outcomes</div>
-                        <div class="detail-kv"><span>4yr Grad Rate</span><span>${s.graduation_rate_4yr != null ? (s.graduation_rate_4yr * 100).toFixed(0) + '%' : '—'}</span></div>
+                        <div class="detail-kv"><span>4yr Grad Rate</span><span>${s.graduation_rate_4yr != null ? (s.graduation_rate_4yr * 100).toFixed(0) + '%' : '<span class="stat-na">n/a</span>'}</span></div>
                         <div class="detail-kv"><span>Median Earn (6yr)</span><span>${fmtMoney(s.median_earnings_6yr)}</span></div>
                     </div>
                     <div class="detail-section detail-section--full">
@@ -333,7 +375,7 @@
                 ? `Showing ${pageStart + 1}–${Math.min(pageStart + PAGE_SIZE, sorted.length)} of ${sorted.length} institutions`
                 : `Showing 0 of ${allSchools.length} institutions`;
             document.getElementById('school-list').innerHTML = pageItems.map(s => {
-                const actRange = s.act_composite_25 != null && s.act_composite_75 != null ? `${s.act_composite_25}–${s.act_composite_75}` : '—';
+                const actRange = s.act_composite_25 != null && s.act_composite_75 != null ? `${s.act_composite_25}–${s.act_composite_75}` : '<span class="stat-na">n/a</span>';
                 const isFav = favorites.has(s.slug);
                 return `
                 <div class="school-card">
@@ -353,7 +395,7 @@
                                     <div class="stat-label">Acceptance</div>
                                 </div>
                                 <div class="stat-item">
-                                    <div class="stat-val">${s.sat_avg ?? '—'}</div>
+                                    <div class="stat-val">${s.sat_avg ?? '<span class="stat-na">n/a</span>'}</div>
                                     <div class="stat-label">SAT Avg</div>
                                 </div>
                                 <div class="stat-item">
@@ -413,7 +455,7 @@
             allSchools = schoolsCache[year];
             localStorage.setItem('cds_data_year', year);
             document.getElementById('page-intro-desc').textContent =
-                `CommonDataSets compiles official Common Data Set submissions directly from ${allSchools.length} top US universities, giving students and families one place to compare verified admissions statistics, test score ranges, cost of attendance, and enrollment data without the noise. Data covers the ${YEAR_LABELS[year]} admissions cycle.`;
+                `Official Common Data Set submissions gathered directly from ${allSchools.length} top US universities, giving students and families one place to compare verified admissions statistics, test score ranges, cost of attendance, and enrollment data without the noise.`;
             renderList(currentSort);
             renderFavoritesBox();
             renderHistory();
@@ -438,10 +480,27 @@
                 });
             });
 
-            document.getElementById('school-search').addEventListener('input', e => {
+            const searchInput = document.getElementById('school-search');
+            const searchClear = document.getElementById('search-clear');
+
+            function updateSearchClear() {
+                searchClear.hidden = searchInput.value.length === 0;
+            }
+
+            searchInput.addEventListener('input', e => {
                 searchQuery = e.target.value.trim();
                 currentPage = 1;
+                updateSearchClear();
                 renderList(currentSort);
+            });
+
+            searchClear.addEventListener('click', () => {
+                searchInput.value = '';
+                searchQuery = '';
+                currentPage = 1;
+                updateSearchClear();
+                renderList(currentSort);
+                searchInput.focus();
             });
 
             const sortDropdown = document.getElementById('sort-dropdown');

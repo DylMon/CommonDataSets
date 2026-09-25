@@ -33,6 +33,16 @@ body {
     background: #FFFFFF;
 }
 
+/* Wraps every "n/a" placeholder that fills in for a missing CDS value
+   (school cards, detail panels, comparison tables) — lighter than the
+   surrounding black text so a real value still reads as the primary
+   content. Matches .cmp-factor-na's existing #999. !important because it
+   nests inside value containers (e.g. .detail-kv span:last-child) whose
+   own descendant-span color rules would otherwise outrank it. */
+.stat-na {
+    color: #999 !important;
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -55,6 +65,34 @@ body {
 
 .site-header.site-header--hidden {
     transform: translateY(-100%);
+}
+
+/* Crest badge in the header's top-left corner — sized to straddle both
+   the orange title bar and the white nav-links bar beneath it, rather
+   than being confined to either one. .site-header's own position:sticky
+   is what gives this its containing block. Needs an explicit z-index:
+   .nav-wrapper is also position:relative (for its own gradient overlay),
+   so without one, paint order falls back to DOM order among positioned
+   elements and .nav-wrapper's background — painted after, since it comes
+   second — covers the part of the badge over the top bar. */
+.site-logo-link {
+    position: absolute;
+    left: 24px;
+    top: 8px;
+    z-index: 2;
+    display: block;
+    line-height: 0;
+}
+
+.site-logo {
+    height: 88px;
+    width: auto;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35));
+    transition: transform 0.15s ease;
+}
+
+.site-logo-link:hover .site-logo {
+    transform: scale(1.04);
 }
 
 .nav-wrapper {
@@ -92,6 +130,7 @@ body {
     text-transform: uppercase;
     color: white;
     white-space: nowrap;
+    text-decoration: none;
 }
 
 .legal-notice {
@@ -105,19 +144,87 @@ body {
 }
 
 /* Hero banner — photo background with a dark scrim for text contrast.
-   Wraps the intro text and the search bar, which sits docked at the
-   bottom of the banner rather than in the plain content flow below. */
+   On index.html the photo comes from the rotating .hero-slides layers;
+   everywhere else (compare/chanceme/info) it's a single static photo set
+   directly as this element's own background-image via an inline style,
+   so the cover/position/repeat trio below is what positions that one. */
 .hero-banner {
-    background:
-        linear-gradient(rgba(0, 0, 0, 0.48), rgba(0, 0, 0, 0.56)),
-        url('../images/heroes/ucla_royce_hall.jpg') center 30% / cover no-repeat;
-    background-attachment: fixed;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center 30%;
+    background-repeat: no-repeat;
     padding: 56px 0 36px;
     min-height: 390px; /* ~25% taller than the ~313px this content naturally renders at */
     display: flex;
     flex-direction: column;
     justify-content: center;
     box-sizing: border-box;
+}
+
+/* Dark scrim for text contrast — was baked into .hero-banner's own
+   background shorthand before the banner had to hold multiple slide
+   layers instead of one background-image. */
+.hero-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.48), rgba(0, 0, 0, 0.56));
+    z-index: 1;
+}
+
+.hero-slides {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+/* Each slide sits off to the right until it's current, then slides in;
+   the outgoing slide gets .hero-slide--prev for one cycle to slide out to
+   the left instead of just disappearing. Both non-active states share
+   opacity:0, so the position reset between cycles (-100% back to 100%)
+   happens invisibly regardless of whether its own transition is still
+   technically running.
+   z-index is explicit (not left to DOM order) so the incoming slide always
+   paints above the outgoing one: with 5 slides in a fixed DOM order, every
+   transition except the wrap (slide 5 back to slide 1) happens to have the
+   incoming slide later in the DOM, which painted it on top by accident;
+   only on the wrap was the incoming slide earlier in the DOM, so the old
+   photo stayed on top and the new one was invisible underneath it until
+   the old one finished sliding away — reading as the transition running
+   backward. */
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    background-position: center 30%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 0;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: transform 1.1s ease, opacity 1.1s ease;
+}
+
+.hero-slide.hero-slide--prev {
+    z-index: 1;
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+.hero-slide.hero-slide--active {
+    z-index: 2;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-slide {
+        transition: opacity 1.1s ease;
+    }
+
+    .hero-slide.hero-slide--prev {
+        transform: translateX(0);
+    }
 }
 
 .page-intro {
@@ -147,11 +254,12 @@ body {
     letter-spacing: 0.02em;
 }
 
-/* Hero content — logo + description in a 1:3 grid, sitting over the photo,
-   so this pair needs the white/shadow treatment the plain (non-hero)
-   .page-intro-desc usage on other pages (chanceme, compare, info, etc.)
-   must NOT get. */
+/* Hero title/description sit over a photo, so this pair needs the white/
+   shadow treatment below; the plain (non-hero) .page-intro-desc usage on
+   privacy/terms — pages with no hero photo — must NOT get it. */
 .hero-inner {
+    position: relative;
+    z-index: 2;
     max-width: 1440px;
     margin: 0 auto;
     padding: 0 20px;
@@ -159,28 +267,23 @@ body {
     box-sizing: border-box;
 }
 
+/* Logo used to live here (1fr column beside the text); it now lives in
+   .site-header instead (see .site-logo), so this is just the centered
+   description block. */
 .hero-content {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    align-items: center;
-    gap: 12px;
-    max-width: 780px;
+    max-width: 680px;
     margin: 0 auto;
+    text-align: center;
 }
 
-.hero-logo {
-    width: 100%;
-    max-width: 190px;
-    justify-self: center;
-    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.45));
+.hero-content .page-intro-title {
+    color: #fff;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
 }
 
 .hero-content .page-intro-desc {
     color: #fff;
     text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
-    max-width: none;
-    margin: 0;
-    text-align: left;
 }
 
 /* Hero CTA buttons — replace the search bar's old spot at the bottom of
@@ -284,12 +387,43 @@ body {
     flex-shrink: 0;
 }
 
+.search-clear {
+    position: absolute;
+    right: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    background: none;
+    border: none;
+    color: #000;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+/* display:flex above otherwise beats the UA stylesheet's [hidden] rule
+   (same specificity, author sheet loads later) and the button never hides. */
+.search-clear[hidden] {
+    display: none;
+}
+
+.search-clear svg {
+    width: 16px;
+    height: 16px;
+}
+
+.search-clear:hover {
+    color: #ed6d0b;
+}
+
 .search-input {
     font-family: 'Ropa Sans', sans-serif;
     font-size: 1.1em;
     font-weight: 300;
     width: 100%;
-    padding: 10px 16px 10px 40px;
+    padding: 10px 40px 10px 40px;
     border: 2px solid #ed6d0b;
     border-radius: 999px;
     background: #fff;
@@ -1082,6 +1216,8 @@ body.header-hidden .school-page-layout .right-sidebar {
     font-weight: 400;
     letter-spacing: 0.06em;
     text-transform: uppercase;
+    color: inherit;
+    text-decoration: none;
 }
 
 .footer-nav {
@@ -1150,7 +1286,7 @@ body.header-hidden .school-page-layout .right-sidebar {
     font-size: 1.03em;
     font-weight: 300;
     color: #000;
-    line-height: 1.8;
+    line-height: 1.2;
     margin: 0 0 16px;
 }
 
@@ -1167,7 +1303,7 @@ body.header-hidden .school-page-layout .right-sidebar {
     font-size: 1.03em;
     font-weight: 300;
     color: #000;
-    line-height: 1.8;
+    line-height: 1.2;
     margin-bottom: 6px;
 }
 
@@ -1392,6 +1528,12 @@ body.header-hidden .school-page-layout .right-sidebar {
         font-size: 1.25em;
     }
 
+    /* The centered wordmark has no fixed home to leave clear at this width,
+       so the floating badge steps aside rather than risk overlapping it. */
+    .site-logo-link {
+        display: none;
+    }
+
     .header-accent-bar {
         padding: 6px 16px;
     }
@@ -1419,11 +1561,6 @@ body.header-hidden .school-page-layout .right-sidebar {
     .hero-cta-group {
         flex-direction: column;
         align-items: stretch;
-        gap: 10px;
-    }
-
-    .hero-content {
-        grid-template-columns: 100px 1fr;
         gap: 10px;
     }
 
