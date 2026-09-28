@@ -59,9 +59,16 @@ def lookup(school_name: str) -> dict:
     message = client.messages.create(
         model=MODEL,
         max_tokens=1024,
+        # Same reasoning as parse-cds.py's _OUTPUT_CONFIG: default thinking
+        # can burn through a small max_tokens budget before answering at all,
+        # and this is a smaller budget than parse-cds.py's — a simple lookup
+        # doesn't need deep reasoning, so keep effort low rather than risk it.
+        output_config={"effort": "low"},
         tools=[{"type": "web_search_20260209", "name": "web_search", "max_uses": 3}],
         messages=[{"role": "user", "content": PROMPT_TEMPLATE.format(school=school_name)}],
     )
+    if message.stop_reason == "max_tokens":
+        raise ValueError(f"{school_name}: response hit max_tokens with no usable answer")
     # With the web_search tool, Claude often writes an explanatory text block
     # ("Let me look that up...") before the tool call and another after —
     # the JSON answer isn't necessarily the first text block. Try every text
