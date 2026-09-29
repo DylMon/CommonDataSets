@@ -264,8 +264,13 @@
 }
 
 .tbl thead tr { background: var(--brand); color: #fff; text-align: left; }
-.tbl th, .tbl td { padding: 10px 14px; word-break: break-word; }
-.tbl th { font-family: var(--font-display); font-weight: 400; letter-spacing: 0.03em; }
+/* overflow-wrap (not word-break) so a cell only splits mid-word when a
+   single "word" truly can't fit — short labels like "Applied"/"Rate" wrap
+   at spaces or not at all instead of breaking arbitrarily. Headers never
+   wrap: .tbl-wrap's horizontal scroll is the fallback for a column too
+   narrow for its own label, not mangling the label into two lines. */
+.tbl th, .tbl td { padding: 10px 14px; overflow-wrap: break-word; }
+.tbl th { font-family: var(--font-display); font-weight: 400; letter-spacing: 0.03em; white-space: nowrap; }
 /* First cell of every row is a label (round name, expense name, "Male"…); the
    remaining columns are figures and stay in the data face. */
 .tbl td:first-child { font-family: var(--font-display); }

@@ -33,6 +33,13 @@ body {
     background: #FFFFFF;
 }
 
+/* Home page only — inverted from the sitewide default: the page behind
+   the filters/favorites/history/cards is cream, so those sections go
+   back to plain white to read as raised surfaces against it. */
+body.page-home {
+    background: #FFFCFA;
+}
+
 /* Wraps every "n/a" placeholder that fills in for a missing CDS value
    (school cards, detail panels, comparison tables) — lighter than the
    surrounding black text so a real value still reads as the primary
@@ -458,7 +465,7 @@ body {
 /* Sort + filter container */
 .controls-container {
     background: #fff;
-    border: 2px solid #e8e8e8;
+    border: 2px solid #d0d0d0;
     border-radius: 8px;
     padding: 14px 16px;
 }
@@ -486,7 +493,7 @@ body.header-hidden .school-page-layout .right-sidebar {
 /* History / Favorites boxes */
 .history-box {
     background: #fff;
-    border: 2px solid #e8e8e8;
+    border: 2px solid #d0d0d0;
     border-radius: 8px;
     padding: 14px 16px;
 }
@@ -887,11 +894,11 @@ body.header-hidden .school-page-layout .right-sidebar {
 
 .school-card {
     background: #fff;
-    border: 2px solid #e8e8e8;
+    border: 2px solid #d0d0d0;
     border-radius: 8px;
     margin-bottom: 10px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     transition: box-shadow 0.2s, transform 0.2s;
 }
 
