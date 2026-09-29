@@ -1,0 +1,162 @@
+{
+  "name": "Yeshiva University",
+  "data_year": "2023-2024",
+  "city": "New York",
+  "state": "NY",
+  "location": "New York, NY",
+  "school_type": "Private",
+  "website": "yu.edu",
+  "applicants_total": 1713,
+  "applicants_men": 908,
+  "applicants_women": 805,
+  "admitted_total": 1092,
+  "admitted_men": 544,
+  "admitted_women": 548,
+  "enrolled_total": 644,
+  "enrolled_men": 337,
+  "enrolled_women": 307,
+  "acceptance_rate": 0.6374,
+  "application_fee": 65,
+  "avg_gpa_weighted": 3.49,
+  "rd_deadline": "2/1",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "ED",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": 129,
+  "ea_apps_admitted": 129,
+  "sat_submitted_pct": 0.213,
+  "sat_submitted_count": 141,
+  "act_submitted_pct": 0.186,
+  "act_submitted_count": 123,
+  "sat_composite_25": 1330,
+  "sat_composite_50": 1410,
+  "sat_composite_75": 1470,
+  "sat_reading_25": 660,
+  "sat_reading_75": 740,
+  "sat_math_25": 660,
+  "sat_math_75": 760,
+  "act_composite_25": 28,
+  "act_composite_50": 31,
+  "act_composite_75": 33,
+  "act_math_25": 25,
+  "act_math_75": 31,
+  "act_english_25": 28,
+  "act_english_75": 35,
+  "total_undergrads": 2334,
+  "undergrads_male": 1279,
+  "undergrads_female": 1055,
+  "retention_rate": 0.928,
+  "tuition": null,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": null,
+  "room_and_board": null,
+  "books_supplies": null,
+  "other_expenses": null,
+  "pct_out_of_state": 0.37,
+  "pct_on_campus_housing": 0.94,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 908,
+      "female": 805
+    },
+    "accepted": {
+      "male": 544,
+      "female": 548
+    },
+    "enrolled": {
+      "male": 337,
+      "female": 307
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 43,
+      "hispanic": 12,
+      "black": 1,
+      "white": 401,
+      "american_indian": 1,
+      "asian": 2,
+      "pacific_islander": 0,
+      "two_or_more": 5,
+      "unknown": 176,
+      "total": 641
+    },
+    "undergrad": {
+      "nonresident_aliens": 174,
+      "hispanic": 40,
+      "black": 4,
+      "white": 1156,
+      "american_indian": 1,
+      "asian": 2,
+      "pacific_islander": 0,
+      "two_or_more": 8,
+      "unknown": 798,
+      "total": 2183
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.37,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 141,
+    "sat_submitted_pct": 0.213,
+    "act_submitted_count": 123,
+    "act_submitted_pct": 0.186
+  },
+  "class_rank": null,
+  "gpa_distribution": {
+    "gpa_40": 0.169,
+    "gpa_375_399": 0.211,
+    "gpa_350_374": 0.219,
+    "gpa_325_349": 0.15,
+    "gpa_300_324": 0.116,
+    "gpa_250_299": 0.095,
+    "gpa_200_249": 0.02,
+    "gpa_100_199": 0.02
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "very_important",
+    "essay": "very_important",
+    "recommendations": "important",
+    "interview": "very_important",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "not_considered",
+    "first_gen": "not_considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 28,
+      "admitted": 28,
+      "enrolled": 14
+    },
+    "female": {
+      "applied": 27,
+      "admitted": 27,
+      "enrolled": 14
+    },
+    "total": {
+      "applied": 55,
+      "admitted": 55,
+      "enrolled": 28
+    }
+  },
+  "slug": "yeshiva"
+}

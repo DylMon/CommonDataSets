@@ -171,6 +171,7 @@ const SCHOOL_META = {
   'miamiu': { color: '#c8102e' },
   'thomas-jefferson': { color: '#1A2650' },
   'unebraska-lincoln': { color: '#E41C38' },
+  'yeshiva': { color: '#035596' },
 };
 
 // Logos live at images/logos/<slug>.png. A few schools have none yet; the
