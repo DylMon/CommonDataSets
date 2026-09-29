@@ -8,7 +8,7 @@
    Fixed height since nothing inside sizes it anymore. */
 .school-hero {
   position: relative;
-  height: 220px;
+  height: 140px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -56,7 +56,7 @@
    the wrapper's width constraint. */
 .stats-strip {
   max-width: 1040px;
-  margin: -50px auto 0;
+  margin: -40px auto 0;
   padding: 0 20px;
   position: relative;
   z-index: 5;
