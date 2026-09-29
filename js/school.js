@@ -246,36 +246,43 @@ function demoBarHtml(label, val) {
 }
 
 // ── Render: Hero ────────────────────────────────────────────────────────
+// Just the photo/gradient strip — see renderHeroPill for the floating
+// name/location/site card and renderQuickFacts for the stats below it.
 
 function renderHero(s, slug, meta) {
   const bannerStyle = meta.banner
-    ? `background-image:url('../images/banners/${meta.banner}');background-size:cover;background-position:center;background-repeat:no-repeat`
+    ? `background:linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url('../images/banners/${meta.banner}');background-size:cover;background-position:center;background-repeat:no-repeat`
     : `background:linear-gradient(135deg,${meta.color},#000)`;
+  return `<div class="school-hero" style="${bannerStyle}"></div>`;
+}
+
+// ── Render: Floating hero pill (name/location/site + a large logo) ─────
+
+function renderHeroPill(s, slug, meta) {
   const logo = `<img class="hero-logo" src="${logoSrc(slug)}" alt="${s.name}" onerror="${LOGO_ONERR}">`;
   const metaParts = [s.location, s.school_type].filter(Boolean);
   const siteLink = s.website
     ? ` · <a class="hero-site-link" href="${/^https?:\/\//.test(s.website) ? '' : 'https://'}${s.website}" target="_blank" rel="noopener">Official Site →</a>`
     : '';
+
   return `
-    <div class="school-hero" style="${bannerStyle}">
-      <div class="hero-overlay">
-        ${logo}
-        <div class="hero-text">
-          <h1 class="hero-name">
-            ${s.name}
-            <button class="fav-btn hero-fav-btn${getFavs().has(slug) ? ' favorited' : ''}" id="hero-fav-btn" title="${getFavs().has(slug) ? 'Remove from favorites' : 'Add to favorites'}">
-              <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-            </button>
-          </h1>
-          <p class="hero-meta">${metaParts.join(' · ')}${siteLink}</p>
-        </div>
+    <div class="hero-pill">
+      ${logo}
+      <div class="hero-text">
+        <h1 class="hero-name">
+          ${s.name}
+          <button class="fav-btn hero-fav-btn${getFavs().has(slug) ? ' favorited' : ''}" id="hero-fav-btn" title="${getFavs().has(slug) ? 'Remove from favorites' : 'Add to favorites'}">
+            <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          </button>
+        </h1>
+        <p class="hero-meta">${metaParts.join(' · ')}${siteLink}</p>
       </div>
     </div>`;
 }
 
-// ── Render: Stats strip ─────────────────────────────────────────────────
+// ── Render: Quick facts strip (flat bar below the pill) ─────────────────
 
-function renderStatsStrip(s) {
+function renderQuickFacts(s) {
   const satVal   = s.sat_composite_25 != null && s.sat_composite_75 != null
     ? `${s.sat_composite_25}–${s.sat_composite_75}`
     : '<span class="stat-na">n/a</span>';
@@ -717,6 +724,12 @@ async function init() {
   document.querySelector('meta[name="description"]').content = descParts.join(' · ') + '.';
 
   document.getElementById('school-hero').innerHTML = renderHero(s, slug, meta);
+  document.getElementById('stats-strip').innerHTML = renderHeroPill(s, slug, meta);
+  // .quick-facts-strip isn't in the static HTML template (only school-hero
+  // and stats-strip are) — inserted here so the generated pages don't all
+  // need editing for this one extra container.
+  document.getElementById('stats-strip')
+    .insertAdjacentHTML('afterend', `<div class="quick-facts-strip">${renderQuickFacts(s)}</div>`);
 
   document.getElementById('hero-fav-btn').addEventListener('click', () => {
     const favs = getFavs();
@@ -733,8 +746,6 @@ async function init() {
     saveFavs(favs);
     refreshRail();
   });
-
-  document.getElementById('stats-strip').innerHTML = renderStatsStrip(s);
   document.getElementById('school-sections').innerHTML =
     `<div class="school-section-row">
       ${renderAdmissionsSummary(s)}

@@ -2,73 +2,85 @@
 
 :root { --brand: #333; }
 
-/* ── Hero banner (same height as the nav above it) ── */
+/* ── Hero banner ──
+   Just a photo/gradient strip — the name, location, site link, and logo
+   live in the floating .hero-pill below, which overlaps its bottom edge.
+   Fixed height since nothing inside sizes it anymore. */
 .school-hero {
   position: relative;
+  height: 220px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  display: flex;
-  align-items: stretch;
-  border-bottom: 1px solid rgba(0,0,0,0.18);
-}
-
-.hero-overlay {
-  background: rgba(0,0,0,0.46);
-  width: 100%;
-  /* match nav-wrapper padding exactly */
-  padding: 28px 38px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
 }
 
 .hero-logo {
-  width: 34px;
-  height: 34px;
+  width: 76px;
+  height: 76px;
   object-fit: contain;
-  filter: drop-shadow(0 1px 4px rgba(0,0,0,0.35));
   flex-shrink: 0;
 }
 
-.hero-text { display: flex; flex-direction: column; gap: 3px; }
+.hero-text { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
 
 .hero-name {
   margin: 0;
-  color: #fff;
+  color: #000;
   font-family: var(--font-display);
-  font-size: 1.55em;
+  font-size: 1.6em;
   font-weight: 400;
-  letter-spacing: 0.04em;
-  text-shadow: 0 1px 6px rgba(0,0,0,0.4);
-  line-height: 1;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
   display: flex;
   align-items: center;
-  white-space: nowrap;
 }
 
 .hero-meta {
   margin: 0;
-  color: #fff;
-  font-size: 0.87em;
+  color: #444;
+  font-size: 0.9em;
   font-weight: 300;
 }
 
 .hero-site-link {
-  color: #fff;
+  color: var(--brand);
   text-decoration: underline;
-  transition: color 0.2s;
+  transition: opacity 0.2s;
 }
-.hero-site-link:hover { color: #fff; }
+.hero-site-link:hover { opacity: 0.7; }
 
-/* ── Stats strip ── */
+/* ── Floating hero pill ── name/location/site + a large logo, overlapping
+   the hero's bottom edge. Quick facts live separately in .quick-facts-strip
+   below. Wrapper handles the centering/negative-margin overlap; .hero-pill
+   is the actual card so its own box-shadow/border-radius aren't clipped by
+   the wrapper's width constraint. */
 .stats-strip {
+  max-width: 1040px;
+  margin: -50px auto 0;
+  padding: 0 20px;
+  position: relative;
+  z-index: 5;
+}
+
+.hero-pill {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 10px 34px rgba(0,0,0,0.2);
+  padding: 20px 30px;
+}
+
+/* ── Quick facts strip (flat, full-width, below the pill) ── */
+.quick-facts-strip {
   display: flex;
   align-items: stretch;
   justify-content: center;
   background: #fff;
   border-bottom: 1px solid #eee;
   flex-wrap: wrap;
+  margin-top: 30px;
 }
 
 .stat-chip {
