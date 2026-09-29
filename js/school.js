@@ -148,6 +148,7 @@ const SCHOOL_META = {
   'rutgers-camden': { color: '#cc0033' },
   'rutgers-newark': { color: '#cc0033' },
   'stockton': { color: '#79bde9' },
+  'colorado-school-of-mines': { color: '#21314D' },
 };
 
 // Logos live at images/logos/<slug>.png. A few schools have none yet; the

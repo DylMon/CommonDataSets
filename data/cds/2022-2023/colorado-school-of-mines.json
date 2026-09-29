@@ -1,0 +1,178 @@
+{
+  "name": "Colorado School of Mines",
+  "data_year": "2022-2023",
+  "city": "Golden",
+  "state": "CO",
+  "location": "Golden, CO",
+  "school_type": "Public",
+  "website": "www.mines.edu",
+  "applicants_total": 10886,
+  "applicants_men": 7498,
+  "applicants_women": 3388,
+  "admitted_total": 6314,
+  "admitted_men": 4090,
+  "admitted_women": 2224,
+  "enrolled_total": 1515,
+  "enrolled_men": 1037,
+  "enrolled_women": 478,
+  "acceptance_rate": 0.5799,
+  "application_fee": 50.0,
+  "avg_gpa_weighted": 3.85,
+  "rd_deadline": "5/1",
+  "waitlist_offered": 765,
+  "waitlist_accepted": 224,
+  "waitlist_admitted": 6,
+  "ea_ed_type": "ED",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/21",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.45,
+  "sat_submitted_count": 686,
+  "act_submitted_pct": 0.24,
+  "act_submitted_count": 365,
+  "sat_composite_25": 1340,
+  "sat_composite_75": 1460,
+  "sat_reading_25": 650,
+  "sat_reading_75": 728,
+  "sat_math_25": 680,
+  "sat_math_75": 760,
+  "act_composite_25": 30,
+  "act_composite_75": 33,
+  "act_math_25": 28,
+  "act_math_75": 34,
+  "act_english_25": 29,
+  "act_english_75": 35,
+  "total_undergrads": 5730,
+  "undergrads_male": 3906,
+  "undergrads_female": 1827,
+  "retention_rate": 0.948,
+  "tuition": null,
+  "tuition_in_state": 17520,
+  "tuition_out_of_state": 39600,
+  "required_fees": 2520,
+  "room_and_board": 16110,
+  "books_supplies": 1500,
+  "other_expenses": 1229,
+  "pct_out_of_state": 0.5,
+  "pct_on_campus_housing": 0.93,
+  "applicant_pools": {
+    "ea": null,
+    "rd": {
+      "applied": 10886,
+      "admitted": 6314,
+      "rate": 0.5799
+    },
+    "waitlist": {
+      "offered": 765,
+      "accepted_spots": 224,
+      "enrolled": 6
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 7498,
+      "female": 3388
+    },
+    "accepted": {
+      "male": 4090,
+      "female": 2224
+    },
+    "enrolled": {
+      "male": 1037,
+      "female": 478
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 22,
+      "hispanic": 192,
+      "black": 17,
+      "white": 1064,
+      "american_indian": 8,
+      "asian": 94,
+      "pacific_islander": 3,
+      "two_or_more": 88,
+      "unknown": 29,
+      "total": 1515
+    },
+    "undergrad": {
+      "nonresident_aliens": 206,
+      "hispanic": 702,
+      "black": 68,
+      "white": 3943,
+      "american_indian": 27,
+      "asian": 329,
+      "pacific_islander": 3,
+      "two_or_more": 333,
+      "unknown": 122,
+      "total": 5681
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.5,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 686,
+    "sat_submitted_pct": 0.45,
+    "act_submitted_count": 365,
+    "act_submitted_pct": 0.24
+  },
+  "class_rank": {
+    "top10": 0.57,
+    "top25": 0.87,
+    "top50": 0.98,
+    "bottom50": 0.02,
+    "bottom25": 0.0
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.229,
+    "gpa_375_399": 0.531,
+    "gpa_350_374": 0.197,
+    "gpa_325_349": 0.038,
+    "gpa_300_324": 0.005,
+    "gpa_250_299": 0.0,
+    "gpa_200_249": 0.0,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "important",
+    "interview": "considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": "not_considered",
+    "volunteer": "not_considered",
+    "work_experience": "not_considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 335,
+      "admitted": 157,
+      "enrolled": 88
+    },
+    "female": {
+      "applied": 136,
+      "admitted": 66,
+      "enrolled": 42
+    },
+    "total": {
+      "applied": 471,
+      "admitted": 223,
+      "enrolled": 130
+    }
+  },
+  "slug": "colorado-school-of-mines"
+}
