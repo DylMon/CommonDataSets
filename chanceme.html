@@ -53,22 +53,46 @@
                             <label class="cm-label" for="cm-gpa-weighted">Weighted GPA</label>
                             <input class="cm-input" id="cm-gpa-weighted" type="number" min="0" max="8.0" step="0.01" placeholder="e.g. 4.40">
                         </div>
-                        <div class="cm-field cm-span-2">
-                            <label class="cm-label" for="cm-gpa-max-weighted">Maximum Possible Weighted GPA At Your School <span class="cm-optional">(so we can normalize it — schools cap this differently)</span></label>
+                        <div class="cm-field">
+                            <label class="cm-label" for="cm-gpa-max-weighted">Max Possible Weighted GPA <span class="cm-optional">(schools cap this differently)</span></label>
                             <input class="cm-input" id="cm-gpa-max-weighted" type="number" min="4.0" max="10.0" step="0.01" placeholder="e.g. 5.00">
                         </div>
-
                         <div class="cm-field">
-                            <label class="cm-label" for="cm-ap-count">AP / IB / Dual-Enrollment Classes <span class="cm-optional">(count)</span></label>
+                            <label class="cm-label" for="cm-class-rank-band">Class Rank <span class="cm-optional">(optional — some schools weigh this over GPA)</span></label>
+                            <input type="range" class="cm-rank-slider" id="cm-class-rank-band" min="0" max="20" step="1" value="0">
+                            <div class="cm-range-value" id="cm-class-rank-band-value">Not Ranked / Prefer not to say</div>
+                        </div>
+
+                        <div class="cm-field cm-span-2">
+                            <label class="cm-label" for="cm-course-track">Does Your School Offer AP or IB? <span class="cm-optional">(pick whichever applies — we'll ask for the right scale)</span></label>
+                            <select class="cm-select" id="cm-course-track">
+                                <option value="">Neither / Not Sure</option>
+                                <option value="ap">AP (Advanced Placement)</option>
+                                <option value="ib">IB (International Baccalaureate)</option>
+                            </select>
+                        </div>
+                        <div class="cm-field" id="cm-ap-count-field" style="display:none">
+                            <label class="cm-label" for="cm-ap-count">Number of AP Classes</label>
                             <input class="cm-input" id="cm-ap-count" type="number" min="0" max="30" step="1" placeholder="e.g. 8">
                         </div>
-                        <div class="cm-field">
-                            <label class="cm-label" for="cm-ap-avg">Average Score <span class="cm-optional">(AP: 1–5, IB: 1–7 → enter AP-equivalent)</span></label>
-                            <input class="cm-input" id="cm-ap-avg" type="number" min="0" max="5" step="0.1" placeholder="e.g. 4.5">
+                        <div class="cm-field" id="cm-ap-avg-field" style="display:none">
+                            <label class="cm-label" for="cm-ap-avg">Average AP Score <span class="cm-optional">(1–5)</span></label>
+                            <input class="cm-input" id="cm-ap-avg" type="number" min="1" max="5" step="0.1" placeholder="e.g. 4.5">
                         </div>
-                        <div class="cm-field">
-                            <label class="cm-label" for="cm-courses-failed">Courses Failed <span class="cm-optional">(optional)</span></label>
-                            <input class="cm-input" id="cm-courses-failed" type="number" min="0" max="20" step="1" placeholder="0">
+                        <div class="cm-field" id="cm-ib-count-field" style="display:none">
+                            <label class="cm-label" for="cm-ib-count">Number of IB Classes</label>
+                            <input class="cm-input" id="cm-ib-count" type="number" min="0" max="30" step="1" placeholder="e.g. 6">
+                        </div>
+                        <div class="cm-field" id="cm-ib-avg-field" style="display:none">
+                            <label class="cm-label" for="cm-ib-avg">Average IB Score <span class="cm-optional">(1–7)</span></label>
+                            <input class="cm-input" id="cm-ib-avg" type="number" min="1" max="7" step="0.1" placeholder="e.g. 5.5">
+                        </div>
+                        <div class="cm-field cm-span-2">
+                            <label class="cm-checkbox-row" for="cm-dual-enrollment-check">
+                                <input type="checkbox" id="cm-dual-enrollment-check">
+                                <span>I've taken dual-enrollment (college-credit) courses</span>
+                            </label>
+                            <input class="cm-input" id="cm-dual-enrollment-count" type="number" min="0" max="20" step="1" placeholder="How many?" style="display:none;margin-top:8px">
                         </div>
 
                         <div class="cm-field">
@@ -88,7 +112,7 @@
                         <span class="cm-section-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
                         <h2 class="cm-section-title">Background</h2>
                     </div>
-                    <p class="cm-section-hint">Residency is determined per-school automatically — a California school only gets an in-state bump if you're from California, not just because you picked "in-state" once. Demographic data is collected for your own context only — race is not used in the formula, since it is no longer a permitted admissions factor at U.S. institutions following <em>SFFA v. Harvard</em> (2023). First-gen status and income <em>are</em> used: first-gen ties to each school's own reported "first generation" admission factor, and income has a small effect only for international applicants (see Results).</p>
+                    <p class="cm-section-hint">Residency is determined per-school automatically — a California school only gets an in-state bump if you're from California, not just because you picked "in-state" once. Demographic data is collected for your own context only — race is not used in the formula, since it is no longer a permitted admissions factor at U.S. institutions following <em>SFFA v. Harvard</em> (2023). First-gen status is used, tied to each school's own reported "first generation" admission factor. International applicants who'll need financial aid see a small adjustment at schools that aren't need-blind for international students (see Results) — income mainly sets how large that adjustment is.</p>
                     <div class="cm-grid">
                         <div class="cm-field">
                             <label class="cm-label" for="cm-country">Country</label>
@@ -100,6 +124,14 @@
                         <div class="cm-field" id="cm-state-field">
                             <label class="cm-label" for="cm-state">Home State</label>
                             <select class="cm-select" id="cm-state"></select>
+                        </div>
+                        <div class="cm-field" id="cm-intl-aid-field" style="display:none">
+                            <label class="cm-label" for="cm-intl-aid">Will You Need Financial Aid?</label>
+                            <select class="cm-select" id="cm-intl-aid">
+                                <option value="">Prefer not to say</option>
+                                <option value="no">No — I can cover the full cost</option>
+                                <option value="yes">Yes — I'll need financial aid</option>
+                            </select>
                         </div>
                         <div class="cm-field">
                             <label class="cm-label" for="cm-demographic">Demographic <span class="cm-optional">(not scored)</span></label>
@@ -184,13 +216,24 @@
                     <div class="cm-scale-caption" id="cm-scale-lor-caption"></div>
                 </section>
 
+                <!-- Interview -->
+                <section class="cm-section">
+                    <div class="cm-section-head">
+                        <span class="cm-section-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+                        <h2 class="cm-section-title">Interview</h2>
+                    </div>
+                    <p class="cm-section-hint">How do you think your interview went (or would go)? Rate on a 1–5 scale. This only moves the needle at schools that actually interview and say so — schools that don't consider interviews ignore this entirely, and it's automatically weighted higher at schools that call it "Very Important."</p>
+                    <div class="cm-scale" id="cm-scale-interview" data-max="5"></div>
+                    <div class="cm-scale-caption" id="cm-scale-interview-caption"></div>
+                </section>
+
                 <!-- Target schools -->
                 <section class="cm-section">
                     <div class="cm-section-head">
                         <span class="cm-section-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></span>
                         <h2 class="cm-section-title">Target Schools</h2>
                     </div>
-                    <p class="cm-section-hint">Pick from the 33 schools we track Common Data Set statistics for. For each one, set your application plan, whether you're a legacy applicant, and whether your intended major is competitive there — all three affect that school's estimate.</p>
+                    <p class="cm-section-hint">Pick from the schools we track Common Data Set statistics for. For each one, set your application plan, whether you're a legacy applicant, and whether your intended major is competitive there — all three affect that school's estimate.</p>
                     <div class="cm-school-search">
                         <input class="cm-input" id="cm-school-input" type="text" placeholder="Search schools…" autocomplete="off">
                         <div class="cm-school-dropdown" id="cm-school-dropdown"></div>
@@ -199,10 +242,7 @@
                 </section>
 
                 <div class="cm-submit-row">
-                    <button type="submit" class="cm-submit-btn" id="cm-submit-btn">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                        Get My Chances
-                    </button>
+                    <button type="submit" class="cm-submit-btn" id="cm-submit-btn">Get My Chances</button>
                     <div class="cm-form-error" id="cm-form-error"></div>
                 </div>
             </form>
@@ -214,11 +254,11 @@
 
                 <details class="cm-methodology">
                     <summary>How this is calculated</summary>
-                    <p>Activities, Awards, and Essay are self-rated on a 1–10 scale; Letters of Recommendation on a 1–5 scale. Each scale's examples (in that section, above) are calibrated against the profiles admitted to the selective schools we track, not a generic curve. Leaving a category unrated never counts against you — it's treated as neutral, not weak.</p>
-                    <p>Each school gets an <strong>Academic Index</strong> (GPA percentile within that school's own reported GPA distribution, SAT/ACT composite percentile against its 25th–75th range, and course rigor from your AP/IB/DE load, average score, and weighted-GPA strength, minus a small penalty for failed courses) and a <strong>Holistic Index</strong> (your Activities, Awards, Essay, and Letters-of-Recommendation ratings). If a school doesn't report a GPA distribution or test-score range at all, we fall back to a rough generic estimate rather than dropping that factor entirely — noted per-school below when it happens.</p>
-                    <p>The two are blended using weights derived from that school's own Common Data Set "Admission Factors" table — a school that marks test scores "Very Important" and essays "Considered" leans more on your Academic Index; a school that rates both "Very Important" blends them evenly.</p>
-                    <p>That blended score is compared against a base acceptance rate using a logistic model to produce a probability, then mapped to one of seven tiers. The base rate uses that school's own <em>reported</em> Early Action/Early Decision or Regular Decision rate when available (about a third of tracked schools report this split); otherwise it falls back to the school's overall rate adjusted by a disclosed, generic industry-wide early-round boost. If you flagged a competitive major, that rate is further reduced by a disclosed generic multiplier — we don't have real per-major CDS data, so this isn't school-specific. We also apply a small upward calibration shift throughout: a Common Data Set distribution describes the admitted class, not the full applicant pool (which includes many unrealistic "reach" applications that drag the raw acceptance rate down) — so a profile that matches the admitted-class median is treated as better odds than the bare acceptance rate would suggest.</p>
-                    <p>Small additive adjustments apply for: in-state residency at public schools (scaled by how much that school says it considers residency — different for every target school, so a CA school and an NY school are judged independently), legacy status (scaled by that school's "alumni relation" importance), first-generation status (scaled by that school's "first generation" importance), and international applicants at need-aware schools.</p>
+                    <p>Activities, Awards, and Essay are self-rated on a 1–10 scale; Letters of Recommendation and Interview on a 1–5 scale. Each scale's examples (in that section, above) are calibrated against the profiles admitted to the selective schools we track, not a generic curve. Leaving a category unrated never counts against you — it's treated as neutral, not weak.</p>
+                    <p>Each school gets an <strong>Academic Index</strong> (GPA percentile within that school's own reported GPA distribution, class-rank percentile against its reported rank bands if you set the Class Rank slider, SAT/ACT composite percentile against its 25th–75th range, and course rigor from your AP or IB load, average score, and weighted-GPA strength — dual-enrollment courses add to the course-count side of rigor even without a track selected) and a <strong>Holistic Index</strong> (your Activities, Awards, Essay, Letters-of-Recommendation, and Interview ratings). Class rank matters most at schools that weigh it heavily in their own CDS "Admission Factors" table — some schools lean on it more than GPA. Interview works the same way: its weight within the Holistic Index scales with how important that specific school says interviews are, from zero at schools that don't consider them up to on par with Letters of Recommendation at schools that call them "Very Important." If a school doesn't report a GPA distribution or test-score range at all, we fall back to a rough generic estimate rather than dropping that factor entirely — noted per-school below when it happens.</p>
+                    <p>The two are blended using weights derived from that school's own Common Data Set "Admission Factors" table — a school that marks test scores "Very Important" and essays "Considered" leans more on your Academic Index; a school that rates both "Very Important" blends them evenly. Interview's importance rating now counts toward this school-level blend too, not just its own weight inside the Holistic Index.</p>
+                    <p>That blended score is compared against a base acceptance rate using a logistic model to produce a probability, then mapped to one of seven tiers. The base rate uses that school's own <em>reported</em> Early Action/Early Decision or Regular Decision rate when available (about a third of tracked schools report this split); otherwise it falls back to the school's overall rate adjusted by a disclosed, generic industry-wide early-round boost. If you flagged a competitive major, that rate is further reduced by a disclosed generic multiplier — we don't have real per-major CDS data, so this isn't school-specific. We also apply a small upward calibration shift throughout: a Common Data Set distribution describes the admitted class, not the full applicant pool (which includes many unrealistic "reach" applications that drag the raw acceptance rate down) — so a profile that matches the admitted-class median is treated as better odds than the bare acceptance rate would suggest. That shift (and how much your profile strength moves the needle at all) is scaled down at the most selective schools — being meaningfully above the admitted median matters less, proportionally, when a school rejects the large majority of similarly excellent applicants anyway.</p>
+                    <p>Small additive adjustments apply for: in-state residency at public schools (scaled by how much that school says it considers residency — different for every target school, so a CA school and an NY school are judged independently), legacy status (scaled by that school's "alumni relation" importance), first-generation status (scaled by that school's "first generation" importance), and international applicants who indicated they'll need financial aid, at schools that aren't need-blind for international students. We track need-blind-for-international status ourselves for a short, well-documented list of schools (Harvard, MIT, Princeton, Yale, and Dartmouth, among the schools we track) since the Common Data Set itself doesn't report this — everywhere else defaults to need-aware. International applicants who don't need aid, or who are applying to one of those need-blind schools, get no penalty.</p>
                     <ul>
                         <li>This is a statistical estimate, not a prediction — admissions decisions involve factors this form can't capture.</li>
                         <li>Race/ethnicity is not used in scoring.</li>
