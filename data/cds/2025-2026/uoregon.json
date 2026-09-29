@@ -1,0 +1,168 @@
+{
+  "name": "University of Oregon",
+  "data_year": "2025-26",
+  "city": "Eugene",
+  "state": "OR",
+  "location": "Eugene, OR",
+  "school_type": "Public",
+  "website": "www.uoregon.edu",
+  "applicants_total": 41368,
+  "applicants_men": 17548,
+  "applicants_women": 23726,
+  "admitted_total": 36148,
+  "admitted_men": 15055,
+  "admitted_women": 21019,
+  "enrolled_total": 5009,
+  "enrolled_men": 2132,
+  "enrolled_women": 2858,
+  "acceptance_rate": 0.8738,
+  "application_fee": 65,
+  "avg_gpa_weighted": 3.73,
+  "rd_deadline": "1/15",
+  "waitlist_offered": 1941,
+  "waitlist_accepted": 827,
+  "waitlist_admitted": 422,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.1066,
+  "sat_submitted_count": 534,
+  "act_submitted_pct": 0.0443,
+  "act_submitted_count": 222,
+  "sat_composite_25": 1050,
+  "sat_composite_75": 1320,
+  "sat_reading_25": 540,
+  "sat_reading_75": 680,
+  "sat_math_25": 500,
+  "sat_math_75": 650,
+  "act_composite_25": 22,
+  "act_composite_75": 29,
+  "act_math_25": 21,
+  "act_math_75": 28,
+  "act_english_25": 21,
+  "act_english_75": 30,
+  "total_undergrads": 20710,
+  "undergrads_male": 9075,
+  "undergrads_female": 11526,
+  "retention_rate": 0.857,
+  "tuition": null,
+  "tuition_in_state": 14532,
+  "tuition_out_of_state": 44523,
+  "required_fees": 2943,
+  "room_and_board": 18183,
+  "books_supplies": 1434,
+  "other_expenses": 2673,
+  "pct_out_of_state": 0.4922,
+  "pct_on_campus_housing": 0.94,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 1941,
+      "accepted_spots": 827,
+      "enrolled": 422
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 17548,
+      "female": 23726
+    },
+    "accepted": {
+      "male": 15055,
+      "female": 21019
+    },
+    "enrolled": {
+      "male": 2132,
+      "female": 2858
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 58,
+      "hispanic": 919,
+      "black": 184,
+      "white": 2938,
+      "american_indian": 39,
+      "asian": 323,
+      "pacific_islander": 17,
+      "two_or_more": 493,
+      "unknown": 38,
+      "total": 5009
+    },
+    "undergrad": {
+      "nonresident_aliens": 299,
+      "hispanic": 3563,
+      "black": 650,
+      "white": 12402,
+      "american_indian": 131,
+      "asian": 1404,
+      "pacific_islander": 78,
+      "two_or_more": 1996,
+      "unknown": 187,
+      "total": 20710
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.4922,
+    "international_pct": 0.0116
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 534,
+    "sat_submitted_pct": 0.1066,
+    "act_submitted_count": 222,
+    "act_submitted_pct": 0.0443
+  },
+  "class_rank": null,
+  "gpa_distribution": {
+    "gpa_40": 0.3275,
+    "gpa_375_399": 0.2031,
+    "gpa_350_374": 0.1736,
+    "gpa_325_349": 0.1402,
+    "gpa_300_324": 0.1041,
+    "gpa_250_299": 0.0509,
+    "gpa_200_249": 0.0006,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1317,
+      "admitted": 897,
+      "enrolled": 437
+    },
+    "female": {
+      "applied": 1475,
+      "admitted": 998,
+      "enrolled": 416
+    },
+    "total": {
+      "applied": 2792,
+      "admitted": 1895,
+      "enrolled": 853
+    }
+  },
+  "slug": "uoregon"
+}
