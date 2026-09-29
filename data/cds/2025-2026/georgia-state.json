@@ -1,0 +1,162 @@
+{
+  "name": "Georgia State University",
+  "data_year": "2025-26",
+  "city": "Atlanta",
+  "state": "GA",
+  "location": "Atlanta, GA",
+  "school_type": "Public",
+  "website": "www.gsu.edu",
+  "applicants_total": 42323,
+  "applicants_men": 14672,
+  "applicants_women": 27640,
+  "admitted_total": 24217,
+  "admitted_men": 8366,
+  "admitted_women": 15847,
+  "enrolled_total": 4470,
+  "enrolled_men": 1889,
+  "enrolled_women": 2581,
+  "acceptance_rate": 0.5722,
+  "application_fee": 60,
+  "avg_gpa_weighted": 3.6,
+  "rd_deadline": "5/1",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/15",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.4,
+  "sat_submitted_count": 1820,
+  "act_submitted_pct": 0.1,
+  "act_submitted_count": 458,
+  "sat_composite_25": 1030,
+  "sat_composite_50": 1140,
+  "sat_composite_75": 1240,
+  "sat_reading_25": 500,
+  "sat_reading_75": 590,
+  "sat_math_25": 450,
+  "sat_math_75": 610,
+  "act_composite_25": 18,
+  "act_composite_50": 23,
+  "act_composite_75": 27,
+  "act_math_25": 17,
+  "act_math_75": 26,
+  "act_english_25": 18,
+  "act_english_75": 27,
+  "total_undergrads": 26784,
+  "undergrads_male": 10988,
+  "undergrads_female": 15796,
+  "retention_rate": 0.8037,
+  "tuition": null,
+  "tuition_in_state": 9180,
+  "tuition_out_of_state": 30000,
+  "required_fees": 1320,
+  "room_and_board": 11138,
+  "books_supplies": null,
+  "other_expenses": null,
+  "pct_out_of_state": 0.06,
+  "pct_on_campus_housing": 0.19,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 14672,
+      "female": 27640
+    },
+    "accepted": {
+      "male": 8366,
+      "female": 15847
+    },
+    "enrolled": {
+      "male": 1889,
+      "female": 2581
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 202,
+      "hispanic": 780,
+      "black": 1854,
+      "white": 494,
+      "american_indian": 7,
+      "asian": 1000,
+      "pacific_islander": 0,
+      "two_or_more": 207,
+      "unknown": 53,
+      "total": 4597
+    },
+    "undergrad": {
+      "nonresident_aliens": 1161,
+      "hispanic": 4006,
+      "black": 11466,
+      "white": 3586,
+      "american_indian": 29,
+      "asian": 4139,
+      "pacific_islander": 9,
+      "two_or_more": 1288,
+      "unknown": 154,
+      "total": 25838
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.06,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 1820,
+    "sat_submitted_pct": 0.4,
+    "act_submitted_count": 458,
+    "act_submitted_pct": 0.1
+  },
+  "class_rank": null,
+  "gpa_distribution": {
+    "gpa_40": 0.1804,
+    "gpa_375_399": 0.2213,
+    "gpa_350_374": 0.2529,
+    "gpa_325_349": 0.1704,
+    "gpa_300_324": 0.1493,
+    "gpa_250_299": 0.0207,
+    "gpa_200_249": 0.005,
+    "gpa_100_199": 2e-05
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "very_important",
+    "essay": "considered",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "not_considered",
+    "talent": "considered",
+    "character": "not_considered",
+    "first_gen": "not_considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "not_considered",
+    "work_experience": "not_considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1432,
+      "admitted": 654,
+      "enrolled": 350
+    },
+    "female": {
+      "applied": 2546,
+      "admitted": 1211,
+      "enrolled": 611
+    },
+    "total": {
+      "applied": 3980,
+      "admitted": 1866,
+      "enrolled": 961
+    }
+  },
+  "slug": "georgia-state"
+}

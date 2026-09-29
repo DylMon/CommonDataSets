@@ -1,0 +1,176 @@
+{
+  "name": "Elon University",
+  "data_year": "2025-2026",
+  "city": "Elon",
+  "state": "NC",
+  "location": "Elon, NC",
+  "school_type": "Private",
+  "website": "elon.edu",
+  "applicants_total": 18557,
+  "applicants_men": 6864,
+  "applicants_women": 11688,
+  "admitted_total": 11740,
+  "admitted_men": 4145,
+  "admitted_women": 7592,
+  "enrolled_total": 1333,
+  "enrolled_men": 533,
+  "enrolled_women": 799,
+  "acceptance_rate": 0.6326,
+  "application_fee": 60,
+  "avg_gpa_weighted": 3.88,
+  "rd_deadline": "1/10",
+  "waitlist_offered": 4214,
+  "waitlist_accepted": 835,
+  "waitlist_admitted": 98,
+  "ea_ed_type": "ED I & II",
+  "ea_ed_deadline": "12/1",
+  "ea_ed_notification": "11/1",
+  "ea_apps_received": 353,
+  "ea_apps_admitted": 304,
+  "sat_submitted_pct": 0.23,
+  "sat_submitted_count": 301,
+  "act_submitted_pct": 0.17,
+  "act_submitted_count": 226,
+  "sat_composite_25": 1190,
+  "sat_composite_50": 1270,
+  "sat_composite_75": 1340,
+  "sat_reading_25": 590,
+  "sat_reading_75": 690,
+  "sat_math_25": 580,
+  "sat_math_75": 660,
+  "act_composite_25": 25,
+  "act_composite_50": 28,
+  "act_composite_75": 31,
+  "act_math_25": 23,
+  "act_math_75": 28,
+  "act_english_25": 24,
+  "act_english_75": 33,
+  "total_undergrads": 6191,
+  "undergrads_male": 2525,
+  "undergrads_female": 3666,
+  "retention_rate": 0.891,
+  "tuition": 50386,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 982,
+  "room_and_board": 17127,
+  "books_supplies": 900,
+  "other_expenses": 1150,
+  "pct_out_of_state": 0.74,
+  "pct_on_campus_housing": 0.99,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 4214,
+      "accepted_spots": 835,
+      "enrolled": null
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 6864,
+      "female": 11688
+    },
+    "accepted": {
+      "male": 4145,
+      "female": 7592
+    },
+    "enrolled": {
+      "male": 533,
+      "female": 799
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 22,
+      "hispanic": 161,
+      "black": 87,
+      "white": 964,
+      "american_indian": 1,
+      "asian": 26,
+      "pacific_islander": 0,
+      "two_or_more": 64,
+      "unknown": 8,
+      "total": 1333
+    },
+    "undergrad": {
+      "nonresident_aliens": 129,
+      "hispanic": 538,
+      "black": 355,
+      "white": 4592,
+      "american_indian": 8,
+      "asian": 146,
+      "pacific_islander": 1,
+      "two_or_more": 209,
+      "unknown": 213,
+      "total": 6191
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.74,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 301,
+    "sat_submitted_pct": 0.23,
+    "act_submitted_count": 226,
+    "act_submitted_pct": 0.17
+  },
+  "class_rank": {
+    "top10": 0.2,
+    "top25": 0.48,
+    "top50": 0.81,
+    "bottom50": 0.19,
+    "bottom25": 0.03
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.5883,
+    "gpa_375_399": 0.1067,
+    "gpa_350_374": 0.1044,
+    "gpa_325_349": 0.0856,
+    "gpa_300_324": 0.0654,
+    "gpa_250_299": 0.0473,
+    "gpa_200_249": 0.0023,
+    "gpa_100_199": null
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "not_considered",
+    "essay": "very_important",
+    "recommendations": "very_important",
+    "interview": null,
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "important",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "very_important",
+    "work_experience": "very_important",
+    "applicant_interest": "very_important"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 213,
+      "admitted": 140,
+      "enrolled": 47
+    },
+    "female": {
+      "applied": 261,
+      "admitted": 134,
+      "enrolled": 29
+    },
+    "total": {
+      "applied": 475,
+      "admitted": 275,
+      "enrolled": 77
+    }
+  },
+  "slug": "elon"
+}

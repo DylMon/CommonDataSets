@@ -1,0 +1,162 @@
+{
+  "name": "California State University, Fullerton",
+  "data_year": "2025-26",
+  "city": "Fullerton",
+  "state": "CA",
+  "location": "Fullerton, CA",
+  "school_type": "Public",
+  "website": "www.fullerton.edu",
+  "applicants_total": 55289,
+  "applicants_men": 23157,
+  "applicants_women": 31780,
+  "admitted_total": 48716,
+  "admitted_men": 19860,
+  "admitted_women": 28532,
+  "enrolled_total": 6787,
+  "enrolled_men": 2961,
+  "enrolled_women": 3792,
+  "acceptance_rate": 0.8811,
+  "application_fee": 70,
+  "avg_gpa_weighted": 3.452,
+  "rd_deadline": "11/30",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "None",
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.05569,
+  "sat_submitted_count": 378,
+  "act_submitted_pct": 0.00295,
+  "act_submitted_count": 20,
+  "sat_composite_25": 850,
+  "sat_composite_50": 950,
+  "sat_composite_75": 1060,
+  "sat_reading_25": 430,
+  "sat_reading_75": 542.5,
+  "sat_math_25": 410,
+  "sat_math_75": 530,
+  "act_composite_25": 17,
+  "act_composite_50": 22,
+  "act_composite_75": 24.75,
+  "act_math_25": 16,
+  "act_math_75": 23.75,
+  "act_english_25": 15,
+  "act_english_75": 25,
+  "total_undergrads": 40705,
+  "undergrads_male": 18170,
+  "undergrads_female": 22437,
+  "retention_rate": 0.8415,
+  "tuition": null,
+  "tuition_in_state": 6838,
+  "tuition_out_of_state": 18142,
+  "required_fees": 1678,
+  "room_and_board": 20384,
+  "books_supplies": 1078,
+  "other_expenses": 3274,
+  "pct_out_of_state": 0.009,
+  "pct_on_campus_housing": 0.194,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 23157,
+      "female": 31780
+    },
+    "accepted": {
+      "male": 19860,
+      "female": 28532
+    },
+    "enrolled": {
+      "male": 2961,
+      "female": 3792
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 32,
+      "hispanic": 4514,
+      "black": 223,
+      "white": 553,
+      "american_indian": 1,
+      "asian": 1071,
+      "pacific_islander": 10,
+      "two_or_more": 282,
+      "unknown": 101,
+      "total": 6787
+    },
+    "undergrad": {
+      "nonresident_aliens": 419,
+      "hispanic": 23650,
+      "black": 1043,
+      "white": 5093,
+      "american_indian": 41,
+      "asian": 7915,
+      "pacific_islander": 50,
+      "two_or_more": 1573,
+      "unknown": 921,
+      "total": 40705
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.009,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 378,
+    "sat_submitted_pct": 0.05569,
+    "act_submitted_count": 20,
+    "act_submitted_pct": 0.00295
+  },
+  "class_rank": null,
+  "gpa_distribution": {
+    "gpa_40": 0.017,
+    "gpa_375_399": 0.167,
+    "gpa_350_374": 0.243,
+    "gpa_325_349": 0.245,
+    "gpa_300_324": 0.213,
+    "gpa_250_299": 0.112,
+    "gpa_200_249": 0.003,
+    "gpa_100_199": 0
+  },
+  "admission_factors": {
+    "rigor": "not_considered",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "not_considered",
+    "essay": "not_considered",
+    "recommendations": "not_considered",
+    "interview": "not_considered",
+    "extracurriculars": "not_considered",
+    "talent": "not_considered",
+    "character": "not_considered",
+    "first_gen": "not_considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "very_important",
+    "state_residence": "very_important",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "not_considered",
+    "work_experience": "not_considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 9502,
+      "admitted": 7629,
+      "enrolled": 2315
+    },
+    "female": {
+      "applied": 12488,
+      "admitted": 9310,
+      "enrolled": 2684
+    },
+    "total": {
+      "applied": 22217,
+      "admitted": 17127,
+      "enrolled": 5061
+    }
+  },
+  "slug": "csufullerton"
+}

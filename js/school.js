@@ -160,6 +160,14 @@ const SCHOOL_META = {
   'uutah': { color: '#cc0000' },
   'valparaiso': { color: '#381e0e' },
   'wayne-state': { color: '#0c5449' },
+  'csufullerton': { color: '#00244E' },
+  'elon': { color: '#73000a' },
+  'georgia-state': { color: '#0039a6' },
+  'michigan-tech': { color: '#ffcd00' },
+  'missourri-s&t': { color: '#154734' },
+  'north-carolina-charolette': { color: '#005035' },
+  'uhouston': { color: '#c8102e' },
+  'university-maryland-college-park': { color: '#CE1126' },
 };
 
 // Logos live at images/logos/<slug>.png. A few schools have none yet; the

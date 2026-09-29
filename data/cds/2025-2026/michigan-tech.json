@@ -1,0 +1,148 @@
+{
+  "name": "Michigan Technological University",
+  "data_year": "2025-26",
+  "city": "Houghton",
+  "state": "MI",
+  "location": "Houghton, MI",
+  "school_type": "Public",
+  "website": "www.mtu.edu",
+  "applicants_total": 10359,
+  "applicants_men": 6696,
+  "applicants_women": 3663,
+  "admitted_total": 8853,
+  "admitted_men": 5754,
+  "admitted_women": 3099,
+  "enrolled_total": 1448,
+  "enrolled_men": 1048,
+  "enrolled_women": 400,
+  "acceptance_rate": 0.8547,
+  "application_fee": null,
+  "avg_gpa_weighted": 3.86,
+  "rd_deadline": "1/15",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "None",
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.66,
+  "sat_submitted_count": 959,
+  "act_submitted_pct": 0.18,
+  "act_submitted_count": 261,
+  "sat_composite_25": 1120,
+  "sat_composite_50": 1230,
+  "sat_composite_75": 1330,
+  "sat_reading_25": 560,
+  "sat_reading_75": 670,
+  "sat_math_25": 560,
+  "sat_math_75": 670,
+  "act_composite_25": 25,
+  "act_composite_50": 29,
+  "act_composite_75": 32,
+  "act_math_25": 26,
+  "act_math_75": 32,
+  "act_english_25": 23,
+  "act_english_75": 32,
+  "total_undergrads": 6009,
+  "undergrads_male": 4291,
+  "undergrads_female": 1718,
+  "retention_rate": 0.885,
+  "tuition": null,
+  "tuition_in_state": 20396,
+  "tuition_out_of_state": 46294,
+  "required_fees": 382,
+  "room_and_board": 14321,
+  "books_supplies": 1200,
+  "other_expenses": 1372,
+  "pct_out_of_state": 0.239,
+  "pct_on_campus_housing": 0.956,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 6696,
+      "female": 3663
+    },
+    "accepted": {
+      "male": 5754,
+      "female": 3099
+    },
+    "enrolled": {
+      "male": 1048,
+      "female": 400
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 9,
+      "hispanic": 65,
+      "black": 20,
+      "white": 1211,
+      "american_indian": 4,
+      "asian": 24,
+      "pacific_islander": 1,
+      "two_or_more": 47,
+      "unknown": 67,
+      "total": 1448
+    },
+    "undergrad": {
+      "nonresident_aliens": 52,
+      "hispanic": 201,
+      "black": 70,
+      "white": 4886,
+      "american_indian": 25,
+      "asian": 101,
+      "pacific_islander": 4,
+      "two_or_more": 190,
+      "unknown": 407,
+      "total": 5936
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.239,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 959,
+    "sat_submitted_pct": 0.66,
+    "act_submitted_count": 261,
+    "act_submitted_pct": 0.18
+  },
+  "class_rank": {
+    "top10": 0.3429,
+    "top25": 0.6428,
+    "top50": 0.9074,
+    "bottom50": 0.0926,
+    "bottom25": 0.0052
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.404,
+    "gpa_375_399": 0.2644,
+    "gpa_350_374": 0.1573,
+    "gpa_325_349": 0.099,
+    "gpa_300_324": 0.0576,
+    "gpa_250_299": 0.0177,
+    "gpa_200_249": null,
+    "gpa_100_199": null
+  },
+  "admission_factors": null,
+  "transfer_stats": {
+    "male": {
+      "applied": 409,
+      "admitted": 243,
+      "enrolled": 117
+    },
+    "female": {
+      "applied": 190,
+      "admitted": 105,
+      "enrolled": 36
+    },
+    "total": {
+      "applied": 599,
+      "admitted": 348,
+      "enrolled": 153
+    }
+  },
+  "slug": "michigan-tech"
+}

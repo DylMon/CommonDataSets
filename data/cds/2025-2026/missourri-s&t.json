@@ -1,0 +1,168 @@
+{
+  "name": "Missouri University of Science and Technology",
+  "data_year": "2025-26",
+  "city": "Rolla",
+  "state": "MO",
+  "location": "Rolla, MO",
+  "school_type": "Public",
+  "website": "www.mst.edu",
+  "applicants_total": 8330,
+  "applicants_men": 5505,
+  "applicants_women": 2822,
+  "admitted_total": 6550,
+  "admitted_men": 4380,
+  "admitted_women": 2169,
+  "enrolled_total": 1251,
+  "enrolled_men": 959,
+  "enrolled_women": 292,
+  "acceptance_rate": 0.7863,
+  "application_fee": null,
+  "avg_gpa_weighted": 3.82,
+  "rd_deadline": "7/1",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "None",
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.117,
+  "sat_submitted_count": 147,
+  "act_submitted_pct": 0.682,
+  "act_submitted_count": 853,
+  "sat_composite_25": 1220,
+  "sat_composite_50": 1300,
+  "sat_composite_75": 1380,
+  "sat_reading_25": 600,
+  "sat_reading_75": 700,
+  "sat_math_25": 610,
+  "sat_math_75": 720,
+  "act_composite_25": 25,
+  "act_composite_50": 28,
+  "act_composite_75": 31,
+  "act_math_25": 25,
+  "act_math_75": 30,
+  "act_english_25": 22,
+  "act_english_75": 30,
+  "total_undergrads": 5687,
+  "undergrads_male": 4355,
+  "undergrads_female": 1332,
+  "retention_rate": 0.8835725677830941,
+  "tuition": null,
+  "tuition_in_state": 14328,
+  "tuition_out_of_state": 33516,
+  "required_fees": 1636,
+  "room_and_board": 13422,
+  "books_supplies": 720,
+  "other_expenses": 1172,
+  "pct_out_of_state": 0.219,
+  "pct_on_campus_housing": 0.944,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 5505,
+      "female": 2822
+    },
+    "accepted": {
+      "male": 4380,
+      "female": 2169
+    },
+    "enrolled": {
+      "male": 959,
+      "female": 292
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 32,
+      "hispanic": 68,
+      "black": 45,
+      "white": 965,
+      "american_indian": 13,
+      "asian": 47,
+      "pacific_islander": 3,
+      "two_or_more": 40,
+      "unknown": 38,
+      "total": 1251
+    },
+    "undergrad": {
+      "nonresident_aliens": 208,
+      "hispanic": 288,
+      "black": 207,
+      "white": 4148,
+      "american_indian": 29,
+      "asian": 224,
+      "pacific_islander": 5,
+      "two_or_more": 171,
+      "unknown": 379,
+      "total": 5659
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.219,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 147,
+    "sat_submitted_pct": 0.117,
+    "act_submitted_count": 853,
+    "act_submitted_pct": 0.682
+  },
+  "class_rank": {
+    "top10": 0.441,
+    "top25": 0.705,
+    "top50": 0.9333,
+    "bottom50": 0.0667,
+    "bottom25": 0.0155
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.50940311,
+    "gpa_375_399": 0.2159,
+    "gpa_350_374": 0.14554374,
+    "gpa_325_349": 0.06704824,
+    "gpa_300_324": 0.03843009,
+    "gpa_250_299": 0.01798855,
+    "gpa_200_249": 0.00408831,
+    "gpa_100_199": 0.00163532
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "important",
+    "essay": "not_considered",
+    "recommendations": "not_considered",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "not_considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "not_considered",
+    "work_experience": "not_considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 764,
+      "admitted": 600,
+      "enrolled": 211
+    },
+    "female": {
+      "applied": 352,
+      "admitted": 259,
+      "enrolled": 67
+    },
+    "total": {
+      "applied": 1116,
+      "admitted": 859,
+      "enrolled": 278
+    }
+  },
+  "slug": "missourri-s&t"
+}
