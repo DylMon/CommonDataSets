@@ -310,6 +310,11 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://commondatasets.com/schools/miamiu/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://commondatasets.com/schools/michigan-state/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -530,6 +535,11 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://commondatasets.com/schools/thomas-jefferson/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://commondatasets.com/schools/tufts/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -691,6 +701,11 @@
   </url>
   <url>
     <loc>https://commondatasets.com/schools/unc-wilmington/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://commondatasets.com/schools/unebraska-lincoln/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>

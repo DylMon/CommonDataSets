@@ -1,0 +1,168 @@
+{
+  "name": "University of Nebraska - Lincoln",
+  "data_year": "2025-26",
+  "city": "Lincoln",
+  "state": "NE",
+  "location": "Lincoln, NE",
+  "school_type": "Public",
+  "website": "www.unl.edu",
+  "applicants_total": 17841,
+  "applicants_men": 7954,
+  "applicants_women": 9869,
+  "admitted_total": 15609,
+  "admitted_men": 6849,
+  "admitted_women": 8745,
+  "enrolled_total": 4650,
+  "enrolled_men": 2319,
+  "enrolled_women": 2322,
+  "acceptance_rate": 0.8749,
+  "application_fee": 45,
+  "avg_gpa_weighted": 3.54,
+  "rd_deadline": "5/1",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "None",
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.07,
+  "sat_submitted_count": 323,
+  "act_submitted_pct": 0.82,
+  "act_submitted_count": 3830,
+  "sat_composite_25": 1100,
+  "sat_composite_50": 1200,
+  "sat_composite_75": 1310,
+  "sat_reading_25": 560,
+  "sat_reading_75": 670,
+  "sat_math_25": 538,
+  "sat_math_75": 660,
+  "act_composite_25": 22,
+  "act_composite_50": 24,
+  "act_composite_75": 28,
+  "act_math_25": 20,
+  "act_math_75": 27,
+  "act_english_25": 21,
+  "act_english_75": 28,
+  "total_undergrads": 19701,
+  "undergrads_male": 9847,
+  "undergrads_female": 9854,
+  "retention_rate": 0.863,
+  "tuition": null,
+  "tuition_in_state": 8730,
+  "tuition_out_of_state": 27960,
+  "required_fees": 2370,
+  "room_and_board": 14210,
+  "books_supplies": 1128,
+  "other_expenses": 2364,
+  "pct_out_of_state": 0.24,
+  "pct_on_campus_housing": 0.89,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 7954,
+      "female": 9869
+    },
+    "accepted": {
+      "male": 6849,
+      "female": 8745
+    },
+    "enrolled": {
+      "male": 2319,
+      "female": 2322
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 65,
+      "hispanic": 490,
+      "black": 152,
+      "white": 3477,
+      "american_indian": 22,
+      "asian": 176,
+      "pacific_islander": 4,
+      "two_or_more": 193,
+      "unknown": 71,
+      "total": 4650
+    },
+    "undergrad": {
+      "nonresident_aliens": 545,
+      "hispanic": 1837,
+      "black": 552,
+      "white": 14485,
+      "american_indian": 54,
+      "asian": 788,
+      "pacific_islander": 17,
+      "two_or_more": 725,
+      "unknown": 175,
+      "total": 19178
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.24,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 323,
+    "sat_submitted_pct": 0.07,
+    "act_submitted_count": 3830,
+    "act_submitted_pct": 0.82
+  },
+  "class_rank": {
+    "top10": 0.27,
+    "top25": 0.57,
+    "top50": 0.85,
+    "bottom50": 0.15,
+    "bottom25": 0.03
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.1,
+    "gpa_375_399": 0.26,
+    "gpa_350_374": 0.21,
+    "gpa_325_349": 0.26,
+    "gpa_300_324": 0.11,
+    "gpa_250_299": 0.05,
+    "gpa_200_249": 0.01,
+    "gpa_100_199": 0
+  },
+  "admission_factors": {
+    "rigor": "important",
+    "class_rank": "important",
+    "academic_gpa": "important",
+    "test_scores": "important",
+    "essay": "not_considered",
+    "recommendations": "not_considered",
+    "interview": "not_considered",
+    "extracurriculars": "not_considered",
+    "talent": "not_considered",
+    "character": "not_considered",
+    "first_gen": "not_considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "not_considered",
+    "work_experience": "not_considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 953,
+      "admitted": 544,
+      "enrolled": 389
+    },
+    "female": {
+      "applied": 1003,
+      "admitted": 548,
+      "enrolled": 354
+    },
+    "total": {
+      "applied": 1958,
+      "admitted": 1093,
+      "enrolled": 744
+    }
+  },
+  "slug": "unebraska-lincoln"
+}

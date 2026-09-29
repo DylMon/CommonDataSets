@@ -168,6 +168,9 @@ const SCHOOL_META = {
   'north-carolina-charolette': { color: '#005035' },
   'uhouston': { color: '#c8102e' },
   'university-maryland-college-park': { color: '#CE1126' },
+  'miamiu': { color: '#c8102e' },
+  'thomas-jefferson': { color: '#1A2650' },
+  'unebraska-lincoln': { color: '#E41C38' },
 };
 
 // Logos live at images/logos/<slug>.png. A few schools have none yet; the

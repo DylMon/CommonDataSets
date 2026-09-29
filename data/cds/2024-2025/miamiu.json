@@ -1,0 +1,174 @@
+{
+  "name": "Miami University",
+  "data_year": "2025-26",
+  "city": "Oxford",
+  "state": "OH",
+  "location": "Oxford, OH",
+  "school_type": "Public",
+  "website": "www.MiamiOH.edu",
+  "applicants_total": 39580,
+  "applicants_men": 18051,
+  "applicants_women": 21529,
+  "admitted_total": 29843,
+  "admitted_men": 13382,
+  "admitted_women": 16461,
+  "enrolled_total": 4192,
+  "enrolled_men": 1925,
+  "enrolled_women": 2267,
+  "acceptance_rate": 0.7541,
+  "application_fee": 50,
+  "avg_gpa_weighted": 3.82,
+  "rd_deadline": "2/1",
+  "waitlist_offered": 5144,
+  "waitlist_accepted": 632,
+  "waitlist_admitted": 236,
+  "ea_ed_type": "ED",
+  "ea_ed_deadline": "11/15",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": 521,
+  "ea_apps_admitted": 438,
+  "sat_submitted_pct": 0.082,
+  "sat_submitted_count": 342,
+  "act_submitted_pct": 0.239,
+  "act_submitted_count": 1000,
+  "sat_composite_25": 1240,
+  "sat_composite_50": 1300,
+  "sat_composite_75": 1378,
+  "sat_reading_25": 610,
+  "sat_reading_75": 690,
+  "sat_math_25": 610,
+  "sat_math_75": 700,
+  "act_composite_25": 25,
+  "act_composite_50": 28,
+  "act_composite_75": 30,
+  "act_math_25": 25,
+  "act_math_75": 30,
+  "act_english_25": 24,
+  "act_english_75": 32,
+  "total_undergrads": 16816,
+  "undergrads_male": 8048,
+  "undergrads_female": 8768,
+  "retention_rate": 0.901,
+  "tuition": null,
+  "tuition_in_state": 17191.44,
+  "tuition_out_of_state": 40713.12,
+  "required_fees": 1328.48,
+  "room_and_board": 17154,
+  "books_supplies": 1290,
+  "other_expenses": 2600,
+  "pct_out_of_state": 0.35,
+  "pct_on_campus_housing": 0.96,
+  "applicant_pools": {
+    "ea": {
+      "applied": 521,
+      "admitted": 438,
+      "rate": 0.8407
+    },
+    "rd": null,
+    "waitlist": {
+      "offered": 5144,
+      "accepted_spots": 632,
+      "enrolled": 236
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 18051,
+      "female": 21529
+    },
+    "accepted": {
+      "male": 13382,
+      "female": 16461
+    },
+    "enrolled": {
+      "male": 1925,
+      "female": 2267
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 39,
+      "hispanic": 226,
+      "black": 132,
+      "white": 3483,
+      "american_indian": 10,
+      "asian": 90,
+      "pacific_islander": 4,
+      "two_or_more": 182,
+      "unknown": 26,
+      "total": 4192
+    },
+    "undergrad": {
+      "nonresident_aliens": 411,
+      "hispanic": 783,
+      "black": 487,
+      "white": 13769,
+      "american_indian": 39,
+      "asian": 398,
+      "pacific_islander": 11,
+      "two_or_more": 606,
+      "unknown": 150,
+      "total": 16654
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.35,
+    "international_pct": 0.0093
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 342,
+    "sat_submitted_pct": 0.082,
+    "act_submitted_count": 1000,
+    "act_submitted_pct": 0.239
+  },
+  "class_rank": null,
+  "gpa_distribution": {
+    "gpa_40": 0.4006,
+    "gpa_375_399": 0.1957,
+    "gpa_350_374": 0.1506,
+    "gpa_325_349": 0.1069,
+    "gpa_300_324": 0.0811,
+    "gpa_250_299": 0.0606,
+    "gpa_200_249": 0.0045,
+    "gpa_100_199": 0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "important",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 795,
+      "admitted": 360,
+      "enrolled": 206
+    },
+    "female": {
+      "applied": 631,
+      "admitted": 336,
+      "enrolled": 192
+    },
+    "total": {
+      "applied": 1426,
+      "admitted": 696,
+      "enrolled": 398
+    }
+  },
+  "slug": "miamiu"
+}
