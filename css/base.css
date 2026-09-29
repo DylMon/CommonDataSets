@@ -109,7 +109,7 @@ body.page-home {
     min-height: 64px;
     padding: 0 38px;
     position: relative;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 45%, rgba(255, 255, 255, 0.16) 100%), #ed6d0b;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 45%, rgba(255, 255, 255, 0.16) 100%), var(--brand, #ed6d0b);
     width: 100%;
 }
 
@@ -167,6 +167,14 @@ body.page-home {
     flex-direction: column;
     justify-content: center;
     box-sizing: border-box;
+}
+
+/* Compare page only — its hero is just a title + one line of description
+   (no slideshow/search/CTAs like the home page), so it doesn't need the
+   full height; roughly half of the default. */
+body.page-compare .hero-banner {
+    padding: 28px 0 18px;
+    min-height: 195px;
 }
 
 /* Dark scrim for text contrast — was baked into .hero-banner's own
@@ -345,7 +353,7 @@ body.page-home {
 
 .nav-link-wrapper:hover,
 .active-nav-link {
-    background: #ed6d0b;
+    background: var(--brand, #ed6d0b);
 }
 
 .nav-link-wrapper a {
@@ -1559,6 +1567,11 @@ body.header-hidden .school-page-layout .right-sidebar {
     .hero-banner {
         padding: 32px 0 24px;
         min-height: 450px; /* ~25% taller than the ~360px this content naturally renders at on mobile */
+    }
+
+    body.page-compare .hero-banner {
+        padding: 16px 0 12px;
+        min-height: 225px;
     }
 
     .hero-inner {
