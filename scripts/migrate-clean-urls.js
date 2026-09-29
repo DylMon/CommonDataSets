@@ -83,13 +83,23 @@ function migrateOne(slug) {
   writeFileSync(oldPath, redirectStub(`/schools/${slug}/`), 'utf8');
 }
 
+// Guards against re-running this against a flat file that's already been
+// converted to a redirect stub (its <title> is always exactly this) — doing
+// that once overwrote 150 perfectly good nested pages with "Redirecting…"
+// and an empty description, because the "old" title/description extracted
+// from the stub was blank/wrong. A real content shell never has this title.
+function isRedirectStub(html) {
+  return html.includes('<title>Redirecting…</title>');
+}
+
 function main() {
   const slugs = readdirSync(SCHOOLS_DIR)
     .filter(f => f.endsWith('.html') && f !== 'school.html')
+    .filter(f => !isRedirectStub(readFileSync(join(SCHOOLS_DIR, f), 'utf8')))
     .map(f => f.slice(0, -'.html'.length));
 
   if (!slugs.length) {
-    console.log('No flat schools/*.html files found — nothing to migrate.');
+    console.log('No flat schools/*.html files found that need migrating (already-migrated redirect stubs are skipped).');
     return;
   }
 
