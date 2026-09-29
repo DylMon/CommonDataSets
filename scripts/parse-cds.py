@@ -105,9 +105,15 @@ Test Scores (Section C9):
   first-year students submitting SAT
 - act_submitted_pct / act_submitted_count
 - sat_composite_25 / sat_composite_75
+- sat_composite_50: SAT Composite 50th percentile — a genuine third reported
+  figure alongside the 25th/75th (not their average), listed as its own
+  question, e.g. "SAT Composite: 50th Percentile" — extract it directly if
+  the document reports it; leave null if it doesn't
 - sat_reading_25 / sat_reading_75: SAT Evidence-Based Reading and Writing
 - sat_math_25 / sat_math_75
 - act_composite_25 / act_composite_75
+- act_composite_50: ACT Composite 50th percentile, same as sat_composite_50
+  above — its own reported question, e.g. "ACT Composite: 50th Percentile"
 - act_math_25 / act_math_75
 - act_english_25 / act_english_75
 
@@ -251,12 +257,14 @@ CDS_SCHEMA = _obj({
     "act_submitted_pct": _nullable("number"),
     "act_submitted_count": _nullable("integer"),
     "sat_composite_25": _nullable("integer"),
+    "sat_composite_50": _nullable("integer"),
     "sat_composite_75": _nullable("integer"),
     "sat_reading_25": _nullable("integer"),
     "sat_reading_75": _nullable("integer"),
     "sat_math_25": _nullable("integer"),
     "sat_math_75": _nullable("integer"),
     "act_composite_25": _nullable("integer"),
+    "act_composite_50": _nullable("integer"),
     "act_composite_75": _nullable("integer"),
     "act_math_25": _nullable("integer"),
     "act_math_75": _nullable("integer"),
