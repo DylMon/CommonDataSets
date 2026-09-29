@@ -22,6 +22,7 @@ Requirements:
 import argparse
 import sys
 import json
+import subprocess
 import time
 from pathlib import Path
 
@@ -38,6 +39,9 @@ except ImportError:
 
 import importlib.util
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from git_commit_push import commit_and_push, rebuild_aggregates  # noqa: E402
+
 _spec = importlib.util.spec_from_file_location(
     "parse_cds", Path(__file__).resolve().parent / "parse-cds.py"
 )
@@ -50,6 +54,19 @@ score_completeness = _parse_cds.score_completeness
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
 POLL_INTERVAL_SECONDS = 30
+
+
+def detect_colors_for_year(year: str) -> None:
+    output_dir = REPO_ROOT / "data" / "cds" / year
+    for f in sorted(output_dir.glob("*.json")):
+        slug = f.stem
+        with open(f, encoding="utf-8") as fh:
+            data = json.load(fh)
+        name = data.get("name") or slug
+        subprocess.run(
+            ["node", str(REPO_ROOT / "scripts" / "detect-school-color.js"), "--slug", slug, "--name", name],
+            check=True,
+        )
 
 
 def show_group(label: str, group: list[tuple[str, int, dict]]) -> None:
@@ -164,6 +181,14 @@ def main():
 
         print(f"\nNewly parsed: {len(newly_parsed)}  |  Errors: {len(errors)}  |  "
               f"Total on disk: {len(all_results)}\n")
+
+    print(f"\nDetecting brand colors for {args.year} ...")
+    detect_colors_for_year(args.year)
+
+    print(f"\nRebuilding aggregates for {args.year} ...")
+    rebuild_aggregates([args.year])
+
+    commit_and_push([args.year], f"Batch-parse CDS {args.year} backlog")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,174 @@
+{
+  "name": "University of Massachusetts Lowell",
+  "data_year": "2024-2025",
+  "city": "Lowell",
+  "state": "MA",
+  "location": "Lowell, MA",
+  "school_type": "Public",
+  "website": "www.uml.edu",
+  "applicants_total": 13676,
+  "applicants_men": 6976,
+  "applicants_women": 6686,
+  "admitted_total": 11345,
+  "admitted_men": 5868,
+  "admitted_women": 5471,
+  "enrolled_total": 2011,
+  "enrolled_men": 1172,
+  "enrolled_women": 837,
+  "acceptance_rate": 0.8296,
+  "application_fee": 70,
+  "avg_gpa_weighted": 3.72,
+  "rd_deadline": "6/1",
+  "waitlist_offered": 572,
+  "waitlist_accepted": 240,
+  "waitlist_admitted": 45,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "2/5",
+  "ea_ed_notification": "12/10",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.27,
+  "sat_submitted_count": 550,
+  "act_submitted_pct": 0.02,
+  "act_submitted_count": 46,
+  "sat_composite_25": 1200,
+  "sat_composite_75": 1360,
+  "sat_reading_25": 590,
+  "sat_reading_75": 680,
+  "sat_math_25": 590,
+  "sat_math_75": 690,
+  "act_composite_25": 25,
+  "act_composite_75": 32,
+  "act_math_25": 25,
+  "act_math_75": 30,
+  "act_english_25": 23,
+  "act_english_75": 34,
+  "total_undergrads": 12122,
+  "undergrads_male": 6897,
+  "undergrads_female": 5211,
+  "retention_rate": 0.84,
+  "tuition": null,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": null,
+  "room_and_board": null,
+  "books_supplies": null,
+  "other_expenses": null,
+  "pct_out_of_state": 0.1,
+  "pct_on_campus_housing": 0.66,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 572,
+      "accepted_spots": 240,
+      "enrolled": 45
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 6976,
+      "female": 6686
+    },
+    "accepted": {
+      "male": 5868,
+      "female": 5471
+    },
+    "enrolled": {
+      "male": 1172,
+      "female": 837
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 63,
+      "hispanic": 394,
+      "black": 245,
+      "white": 851,
+      "american_indian": 4,
+      "asian": 301,
+      "pacific_islander": 0,
+      "two_or_more": 83,
+      "unknown": 70,
+      "total": 2011
+    },
+    "undergrad": {
+      "nonresident_aliens": 305,
+      "hispanic": 2104,
+      "black": 1228,
+      "white": 5889,
+      "american_indian": 14,
+      "asian": 1718,
+      "pacific_islander": 3,
+      "two_or_more": 415,
+      "unknown": 446,
+      "total": 12122
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.1,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 550,
+    "sat_submitted_pct": 0.27,
+    "act_submitted_count": 46,
+    "act_submitted_pct": 0.02
+  },
+  "class_rank": {
+    "top10": 0.22,
+    "top25": 0.5,
+    "top50": 0.82,
+    "bottom50": 0.18,
+    "bottom25": 0.02
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.3262,
+    "gpa_375_399": 0.1576,
+    "gpa_350_374": 0.1527,
+    "gpa_325_349": 0.1646,
+    "gpa_300_324": 0.1477,
+    "gpa_250_299": 0.0502,
+    "gpa_200_249": 0.001,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "important",
+    "essay": "important",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "important",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 894,
+      "admitted": 766,
+      "enrolled": 388
+    },
+    "female": {
+      "applied": 745,
+      "admitted": 613,
+      "enrolled": 285
+    },
+    "total": {
+      "applied": 1647,
+      "admitted": 1384,
+      "enrolled": 673
+    }
+  },
+  "slug": "umass-lowell"
+}

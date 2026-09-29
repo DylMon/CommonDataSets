@@ -1,0 +1,166 @@
+{
+  "name": "Illinois Institute of Technology",
+  "data_year": "2023-2024",
+  "city": "Chicago",
+  "state": "IL",
+  "location": "Chicago, IL",
+  "school_type": "Private",
+  "website": "www.iit.edu",
+  "applicants_total": 8912,
+  "applicants_men": 5867,
+  "applicants_women": 3045,
+  "admitted_total": 4939,
+  "admitted_men": 3155,
+  "admitted_women": 1784,
+  "enrolled_total": 534,
+  "enrolled_men": 339,
+  "enrolled_women": 195,
+  "acceptance_rate": 0.5542,
+  "application_fee": null,
+  "avg_gpa_weighted": 4.2,
+  "rd_deadline": "8/1",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "ED I & II",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/1",
+  "ea_apps_received": 69,
+  "ea_apps_admitted": 47,
+  "sat_submitted_pct": 0.45,
+  "sat_submitted_count": 239,
+  "act_submitted_pct": 0.11,
+  "act_submitted_count": 57,
+  "sat_composite_25": 1190,
+  "sat_composite_75": 1400,
+  "sat_reading_25": 570,
+  "sat_reading_75": 690,
+  "sat_math_25": 610,
+  "sat_math_75": 720,
+  "act_composite_25": 25,
+  "act_composite_75": 31,
+  "act_math_25": 25,
+  "act_math_75": 30,
+  "act_english_25": 24,
+  "act_english_75": 34,
+  "total_undergrads": 3316,
+  "undergrads_male": 2210,
+  "undergrads_female": 1106,
+  "retention_rate": 0.87,
+  "tuition": null,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": null,
+  "room_and_board": null,
+  "books_supplies": null,
+  "other_expenses": null,
+  "pct_out_of_state": 0.24,
+  "pct_on_campus_housing": 0.64,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 5867,
+      "female": 3045
+    },
+    "accepted": {
+      "male": 3155,
+      "female": 1784
+    },
+    "enrolled": {
+      "male": 339,
+      "female": 195
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 56,
+      "hispanic": 198,
+      "black": 23,
+      "white": 150,
+      "american_indian": 1,
+      "asian": 77,
+      "pacific_islander": 0,
+      "two_or_more": 22,
+      "unknown": 7,
+      "total": 534
+    },
+    "undergrad": {
+      "nonresident_aliens": 589,
+      "hispanic": 746,
+      "black": 185,
+      "white": 1013,
+      "american_indian": 2,
+      "asian": 482,
+      "pacific_islander": 1,
+      "two_or_more": 116,
+      "unknown": 182,
+      "total": 3316
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.24,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 239,
+    "sat_submitted_pct": 0.45,
+    "act_submitted_count": 57,
+    "act_submitted_pct": 0.11
+  },
+  "class_rank": {
+    "top10": 0.39,
+    "top25": 0.77,
+    "top50": 0.97,
+    "bottom50": 0.03,
+    "bottom25": 0.0
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.64,
+    "gpa_375_399": 0.198,
+    "gpa_350_374": 0.113,
+    "gpa_325_349": 0.026,
+    "gpa_300_324": 0.015,
+    "gpa_250_299": 0.004,
+    "gpa_200_249": 0.002,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "considered",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "not_considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 522,
+      "admitted": 221,
+      "enrolled": 97
+    },
+    "female": {
+      "applied": 241,
+      "admitted": 84,
+      "enrolled": 34
+    },
+    "total": {
+      "applied": 763,
+      "admitted": 305,
+      "enrolled": 131
+    }
+  },
+  "slug": "illinois-tech"
+}

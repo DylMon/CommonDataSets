@@ -16,6 +16,9 @@ workflow), this:
   5. Prints a human-readable summary (completeness score, color source, and
      any new-school flags) suitable for use as a commit message body —
      this is the signal a reviewer uses to decide what's safe to merge.
+  6. Commits and pushes the result (scripts/git_commit_push.py), retrying
+     through a concurrent push from another run instead of failing outright
+     and losing everything this run just parsed.
 
 Usage:
     python scripts/process_cds_drop.py <path1> [path2 ...]
@@ -30,6 +33,9 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 YEAR_RE = re.compile(r"^\d{4}-\d{4}$")
+
+sys.path.insert(0, str(REPO_ROOT / "scripts"))
+from git_commit_push import commit_and_push, rebuild_aggregates  # noqa: E402
 
 _spec = importlib.util.spec_from_file_location("parse_cds", REPO_ROOT / "scripts" / "parse-cds.py")
 _parse_cds = importlib.util.module_from_spec(_spec)
@@ -98,12 +104,10 @@ def main():
         summaries.append(process_one(path))
         years_touched.add(path.parent.name)
 
-    for year in sorted(years_touched):
-        if not YEAR_RE.match(year):
-            continue
-        print(f"\nRebuilding aggregates for {year} ...")
-        subprocess.run([sys.executable, str(REPO_ROOT / "scripts" / "build-cds-json.py"), "--year", year], check=True)
-        subprocess.run(["node", str(REPO_ROOT / "scripts" / "generate-school-pages.js"), "--year", year], check=True)
+    years = sorted(y for y in years_touched if YEAR_RE.match(y))
+    if years:
+        print(f"\nRebuilding aggregates for {', '.join(years)} ...")
+        rebuild_aggregates(years)
 
     print("\n" + "=" * 60)
     print("SUMMARY")
@@ -111,9 +115,8 @@ def main():
     for s in summaries:
         print(s)
 
-    # Write the summary to a file the workflow can use directly as a commit
-    # message body, since GITHUB_OUTPUT doesn't handle multi-line values well.
-    (REPO_ROOT / "cds_drop_summary.txt").write_text("\n".join(summaries) + "\n", encoding="utf-8")
+    if years:
+        commit_and_push(years, "\n".join(summaries) + "\n")
 
 
 if __name__ == "__main__":

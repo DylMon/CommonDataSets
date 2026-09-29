@@ -1,0 +1,169 @@
+{
+  "name": "Boston College",
+  "data_year": "2024-2025",
+  "city": "Chestnut Hill",
+  "state": "MA",
+  "location": "Chestnut Hill, MA",
+  "school_type": "Private",
+  "website": "www.bc.edu",
+  "applicants_total": 34779,
+  "applicants_men": 14099,
+  "applicants_women": 20674,
+  "admitted_total": 5632,
+  "admitted_men": 2800,
+  "admitted_women": 2832,
+  "enrolled_total": 2394,
+  "enrolled_men": 1193,
+  "enrolled_women": 1201,
+  "acceptance_rate": 0.1619,
+  "application_fee": null,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "1/2",
+  "waitlist_offered": 7444,
+  "waitlist_accepted": 4139,
+  "waitlist_admitted": 352,
+  "ea_ed_type": "ED I & II",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": 4288,
+  "ea_apps_admitted": 1434,
+  "sat_submitted_pct": 0.3,
+  "sat_submitted_count": 711,
+  "act_submitted_pct": 0.15,
+  "act_submitted_count": 366,
+  "sat_composite_25": 1460,
+  "sat_composite_75": 1520,
+  "sat_reading_25": 710,
+  "sat_reading_75": 760,
+  "sat_math_25": 730,
+  "sat_math_75": 780,
+  "act_composite_25": 33,
+  "act_composite_75": 35,
+  "act_math_25": 30,
+  "act_math_75": 34,
+  "act_english_25": 34,
+  "act_english_75": 35,
+  "total_undergrads": 9654,
+  "undergrads_male": 4557,
+  "undergrads_female": 5097,
+  "retention_rate": 0.96,
+  "tuition": 72180,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 1328,
+  "room_and_board": 19290,
+  "books_supplies": 1250,
+  "other_expenses": 2000,
+  "pct_out_of_state": 0.78,
+  "pct_on_campus_housing": 0.99,
+  "applicant_pools": {
+    "ea": {
+      "applied": 4288,
+      "admitted": 1434,
+      "rate": 0.3345
+    },
+    "rd": null,
+    "waitlist": {
+      "offered": 7444,
+      "accepted_spots": 4139,
+      "enrolled": 352
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 14099,
+      "female": 20674
+    },
+    "accepted": {
+      "male": 2800,
+      "female": 2832
+    },
+    "enrolled": {
+      "male": 1193,
+      "female": 1201
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 182,
+      "hispanic": 347,
+      "black": 114,
+      "white": 1265,
+      "american_indian": 1,
+      "asian": 297,
+      "pacific_islander": 2,
+      "two_or_more": 136,
+      "unknown": 50,
+      "total": 2394
+    },
+    "undergrad": {
+      "nonresident_aliens": 639,
+      "hispanic": 1211,
+      "black": 480,
+      "white": 5557,
+      "american_indian": 4,
+      "asian": 1100,
+      "pacific_islander": 7,
+      "two_or_more": 503,
+      "unknown": 153,
+      "total": 9654
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.78,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 711,
+    "sat_submitted_pct": 0.3,
+    "act_submitted_count": 366,
+    "act_submitted_pct": 0.15
+  },
+  "class_rank": {
+    "top10": 0.9,
+    "top25": 0.969,
+    "top50": 0.991,
+    "bottom50": 0.009,
+    "bottom25": 0.002
+  },
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "important",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "considered",
+    "recommendations": "considered",
+    "interview": null,
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "important",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "not_considered",
+    "religious": "considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 739,
+      "admitted": 192,
+      "enrolled": 87
+    },
+    "female": {
+      "applied": 739,
+      "admitted": 217,
+      "enrolled": 94
+    },
+    "total": {
+      "applied": 1480,
+      "admitted": 410,
+      "enrolled": 181
+    }
+  },
+  "slug": "boston-college"
+}

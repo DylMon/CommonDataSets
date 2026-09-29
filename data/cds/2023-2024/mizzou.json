@@ -1,0 +1,157 @@
+{
+  "name": "University of Missouri",
+  "data_year": "2023-2024",
+  "city": "Columbia",
+  "state": "MO",
+  "location": "Columbia, MO",
+  "school_type": "Public",
+  "website": "missouri.edu",
+  "applicants_total": 21669,
+  "applicants_men": 9216,
+  "applicants_women": 12453,
+  "admitted_total": 16690,
+  "admitted_men": 6821,
+  "admitted_women": 9869,
+  "enrolled_total": 5139,
+  "enrolled_men": 2187,
+  "enrolled_women": 2952,
+  "acceptance_rate": 0.7703,
+  "application_fee": 55,
+  "avg_gpa_weighted": null,
+  "rd_deadline": null,
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "None",
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.1,
+  "sat_submitted_count": 515,
+  "act_submitted_pct": 0.66,
+  "act_submitted_count": 3414,
+  "sat_composite_25": null,
+  "sat_composite_75": null,
+  "sat_reading_25": 580,
+  "sat_reading_75": 670,
+  "sat_math_25": 570,
+  "sat_math_75": 660,
+  "act_composite_25": 23,
+  "act_composite_75": 29,
+  "act_math_25": 21,
+  "act_math_75": 28,
+  "act_english_25": 22,
+  "act_english_75": 30,
+  "total_undergrads": 23629,
+  "undergrads_male": 10753,
+  "undergrads_female": 12876,
+  "retention_rate": 0.913,
+  "tuition": null,
+  "tuition_in_state": 13650,
+  "tuition_out_of_state": 34860,
+  "required_fees": 1180,
+  "room_and_board": 13700,
+  "books_supplies": 950,
+  "other_expenses": 1960,
+  "pct_out_of_state": 0.33,
+  "pct_on_campus_housing": 0.93,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 9216,
+      "female": 12453
+    },
+    "accepted": {
+      "male": 6821,
+      "female": 9869
+    },
+    "enrolled": {
+      "male": 2187,
+      "female": 2952
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 33,
+      "hispanic": 338,
+      "black": 226,
+      "white": 4092,
+      "american_indian": 7,
+      "asian": 150,
+      "pacific_islander": 2,
+      "two_or_more": 218,
+      "unknown": 73,
+      "total": 5139
+    },
+    "undergrad": {
+      "nonresident_aliens": 240,
+      "hispanic": 1327,
+      "black": 1175,
+      "white": 18433,
+      "american_indian": 32,
+      "asian": 643,
+      "pacific_islander": 22,
+      "two_or_more": 1014,
+      "unknown": 232,
+      "total": 23118
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.33,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 515,
+    "sat_submitted_pct": 0.1,
+    "act_submitted_count": 3414,
+    "act_submitted_pct": 0.66
+  },
+  "class_rank": {
+    "top10": 0.35,
+    "top25": 0.66,
+    "top50": 0.93,
+    "bottom50": 0.07,
+    "bottom25": 0.01
+  },
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "considered",
+    "class_rank": "very_important",
+    "academic_gpa": "very_important",
+    "test_scores": "very_important",
+    "essay": "considered",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "not_considered",
+    "talent": "considered",
+    "character": "not_considered",
+    "first_gen": "not_considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "not_considered",
+    "work_experience": "not_considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1281,
+      "admitted": 881,
+      "enrolled": 566
+    },
+    "female": {
+      "applied": 1462,
+      "admitted": 983,
+      "enrolled": 598
+    },
+    "total": {
+      "applied": 2743,
+      "admitted": 1864,
+      "enrolled": 1164
+    }
+  },
+  "slug": "mizzou"
+}

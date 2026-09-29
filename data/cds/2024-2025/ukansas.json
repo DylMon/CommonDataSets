@@ -1,0 +1,174 @@
+{
+  "name": "University of Kansas",
+  "data_year": "2024-2025",
+  "city": "Lawrence",
+  "state": "KS",
+  "location": "Lawrence, KS",
+  "school_type": "Public",
+  "website": "ku.edu",
+  "applicants_total": 22363,
+  "applicants_men": 9927,
+  "applicants_women": 12436,
+  "admitted_total": 20905,
+  "admitted_men": 9166,
+  "admitted_women": 11739,
+  "enrolled_total": 5323,
+  "enrolled_men": 2336,
+  "enrolled_women": 2987,
+  "acceptance_rate": 0.9348,
+  "application_fee": 40,
+  "avg_gpa_weighted": 3.68,
+  "rd_deadline": null,
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "None",
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.086,
+  "sat_submitted_count": 456,
+  "act_submitted_pct": 0.552,
+  "act_submitted_count": 2939,
+  "sat_composite_25": 1090,
+  "sat_composite_75": 1280,
+  "sat_reading_25": 540,
+  "sat_reading_75": 650,
+  "sat_math_25": 530,
+  "sat_math_75": 650,
+  "act_composite_25": 20,
+  "act_composite_75": 28,
+  "act_math_25": 18,
+  "act_math_75": 27,
+  "act_english_25": 20,
+  "act_english_75": 27,
+  "total_undergrads": 22085,
+  "undergrads_male": 10277,
+  "undergrads_female": 11808,
+  "retention_rate": 0.86,
+  "tuition": null,
+  "tuition_in_state": 10968,
+  "tuition_out_of_state": 29298,
+  "required_fees": 1134,
+  "room_and_board": 11358,
+  "books_supplies": 1224,
+  "other_expenses": 2044,
+  "pct_out_of_state": 0.43,
+  "pct_on_campus_housing": 0.75,
+  "applicant_pools": {
+    "ea": null,
+    "rd": {
+      "applied": 22363,
+      "admitted": 20905,
+      "rate": 0.9348
+    },
+    "waitlist": null
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 9927,
+      "female": 12436
+    },
+    "accepted": {
+      "male": 9166,
+      "female": 11739
+    },
+    "enrolled": {
+      "male": 2336,
+      "female": 2987
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 97,
+      "hispanic": 598,
+      "black": 231,
+      "white": 3775,
+      "american_indian": 21,
+      "asian": 256,
+      "pacific_islander": 3,
+      "two_or_more": 303,
+      "unknown": 39,
+      "total": 5323
+    },
+    "undergrad": {
+      "nonresident_aliens": 680,
+      "hispanic": 2353,
+      "black": 952,
+      "white": 15209,
+      "american_indian": 113,
+      "asian": 1315,
+      "pacific_islander": 26,
+      "two_or_more": 1257,
+      "unknown": 180,
+      "total": 22085
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.43,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 456,
+    "sat_submitted_pct": 0.086,
+    "act_submitted_count": 2939,
+    "act_submitted_pct": 0.552
+  },
+  "class_rank": {
+    "top10": 0.26,
+    "top25": 0.54,
+    "top50": 0.82,
+    "bottom50": 0.18,
+    "bottom25": 0.04
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.36,
+    "gpa_375_399": 0.23,
+    "gpa_350_374": 0.16,
+    "gpa_325_349": 0.11,
+    "gpa_300_324": 0.07,
+    "gpa_250_299": 0.06,
+    "gpa_200_249": 0.01,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "not_considered",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "not_considered",
+    "recommendations": "not_considered",
+    "interview": "not_considered",
+    "extracurriculars": "not_considered",
+    "talent": "not_considered",
+    "character": "not_considered",
+    "first_gen": "not_considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "not_considered",
+    "work_experience": "not_considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1161,
+      "admitted": 1011,
+      "enrolled": 619
+    },
+    "female": {
+      "applied": 1334,
+      "admitted": 1049,
+      "enrolled": 600
+    },
+    "total": {
+      "applied": 2495,
+      "admitted": 2060,
+      "enrolled": 1219
+    }
+  },
+  "slug": "ukansas"
+}

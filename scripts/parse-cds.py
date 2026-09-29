@@ -368,6 +368,18 @@ JSON_FORMAT_INSTRUCTIONS = (
 )
 
 
+# Sonnet 5 runs extended thinking by default even without asking for it, and
+# for a mechanical field-extraction task (not open-ended reasoning) that can
+# occasionally run long enough to exhaust max_tokens before any answer gets
+# written — the request ends with zero text blocks and extract_json() has
+# nothing to parse (see parse_with_claude's stop_reason check below, added
+# after exactly that happened on a trimmed FSU PDF). Capping effort at
+# "medium" curbs how much thinking a single request can spend without
+# disabling it outright, which has its own failure modes (leaked <thinking>
+# tags, tool calls written as plain text).
+_OUTPUT_CONFIG = {"effort": "medium"}
+
+
 def _build_request_params_pdf(pdf_path: Path) -> dict:
     pdf_bytes = _shrink_pdf_bytes(pdf_path, pdf_path.read_bytes())
     pdf_b64 = base64.standard_b64encode(pdf_bytes).decode("ascii")
@@ -375,6 +387,7 @@ def _build_request_params_pdf(pdf_path: Path) -> dict:
         "model": MODEL,
         "max_tokens": 16000,
         "system": SYSTEM_PROMPT,
+        "output_config": _OUTPUT_CONFIG,
         "messages": [{
             "role": "user",
             "content": [
@@ -391,6 +404,7 @@ def _build_request_params_xlsx(xlsx_path: Path) -> dict:
         "model": MODEL,
         "max_tokens": 16000,
         "system": SYSTEM_PROMPT,
+        "output_config": _OUTPUT_CONFIG,
         "messages": [{
             "role": "user",
             "content": [
@@ -447,7 +461,8 @@ def extract_json(content_blocks) -> dict:
     for block in content_blocks:
         if block.type == "text":
             return apply_defaults(_parse_json_loosely(block.text))
-    raise ValueError("No text content block in response")
+    block_types = [b.type for b in content_blocks]
+    raise ValueError(f"No text content block in response (block types seen: {block_types})")
 
 
 CORE_ADMISSIONS_FIELDS = [
@@ -482,6 +497,14 @@ def parse_with_claude(path: Path) -> dict:
     client = anthropic.Anthropic()
     print(f"  Sending {path.name} to Claude ({MODEL})...")
     message = client.messages.create(**build_request_params(path))
+    if message.stop_reason == "max_tokens":
+        raise ValueError(
+            f"{path.name}: response hit max_tokens before finishing — extended thinking likely "
+            f"consumed the whole output budget on a hard-to-parse document (this is what happened "
+            f"to fsu-2526.pdf, trimmed to fit the size limit, on 2026-09-25). Re-running with --force "
+            f"sometimes succeeds on a retry; if it recurs for the same school, the PDF may need "
+            f"manual review."
+        )
     return extract_json(message.content)
 
 

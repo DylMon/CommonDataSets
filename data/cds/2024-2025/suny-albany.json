@@ -1,0 +1,166 @@
+{
+  "name": "University at Albany - SUNY",
+  "data_year": "2024-25",
+  "city": "Albany",
+  "state": "NY",
+  "location": "Albany, NY",
+  "school_type": "Public",
+  "website": "albany.edu",
+  "applicants_total": 32446,
+  "applicants_men": 14374,
+  "applicants_women": 18064,
+  "admitted_total": 22417,
+  "admitted_men": 9577,
+  "admitted_women": 12837,
+  "enrolled_total": 2828,
+  "enrolled_men": 1245,
+  "enrolled_women": 1582,
+  "acceptance_rate": 0.6909,
+  "application_fee": 50,
+  "avg_gpa_weighted": 3.7,
+  "rd_deadline": "2/1",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "November 15",
+  "ea_ed_notification": "January 15",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.1,
+  "sat_submitted_count": 290,
+  "act_submitted_pct": 0.01,
+  "act_submitted_count": 42,
+  "sat_composite_25": 1160,
+  "sat_composite_75": 1310,
+  "sat_reading_25": 580,
+  "sat_reading_75": 670,
+  "sat_math_25": 570,
+  "sat_math_75": 650,
+  "act_composite_25": 24,
+  "act_composite_75": 30,
+  "act_math_25": null,
+  "act_math_75": null,
+  "act_english_25": null,
+  "act_english_75": null,
+  "total_undergrads": 12666,
+  "undergrads_male": 5799,
+  "undergrads_female": 6859,
+  "retention_rate": 0.836,
+  "tuition": null,
+  "tuition_in_state": 7070,
+  "tuition_out_of_state": 27460,
+  "required_fees": 3796,
+  "room_and_board": 16423,
+  "books_supplies": 1000,
+  "other_expenses": 1700,
+  "pct_out_of_state": 0.063,
+  "pct_on_campus_housing": 0.886,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 14374,
+      "female": 18064
+    },
+    "accepted": {
+      "male": 9577,
+      "female": 12837
+    },
+    "enrolled": {
+      "male": 1245,
+      "female": 1582
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 87,
+      "hispanic": 653,
+      "black": 784,
+      "white": 840,
+      "american_indian": 8,
+      "asian": 286,
+      "pacific_islander": 3,
+      "two_or_more": 103,
+      "unknown": 64,
+      "total": 2828
+    },
+    "undergrad": {
+      "nonresident_aliens": 403,
+      "hispanic": 2480,
+      "black": 3044,
+      "white": 4595,
+      "american_indian": 27,
+      "asian": 1300,
+      "pacific_islander": 15,
+      "two_or_more": 505,
+      "unknown": 195,
+      "total": 12564
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.063,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 290,
+    "sat_submitted_pct": 0.1,
+    "act_submitted_count": 42,
+    "act_submitted_pct": 0.01
+  },
+  "class_rank": {
+    "top10": 0.081,
+    "top25": 0.128,
+    "top50": 0.855,
+    "bottom50": 0.145,
+    "bottom25": 0.004
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.318,
+    "gpa_375_399": 0.132,
+    "gpa_350_374": 0.2,
+    "gpa_325_349": 0.139,
+    "gpa_300_324": 0.156,
+    "gpa_250_299": 0.054,
+    "gpa_200_249": 0.001,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "considered",
+    "recommendations": "considered",
+    "interview": "considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "very_important",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": "not_considered",
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": null
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1976,
+      "admitted": 1104,
+      "enrolled": 574
+    },
+    "female": {
+      "applied": 2246,
+      "admitted": 1178,
+      "enrolled": 674
+    },
+    "total": {
+      "applied": 4236,
+      "admitted": 2293,
+      "enrolled": 1252
+    }
+  },
+  "slug": "suny-albany"
+}

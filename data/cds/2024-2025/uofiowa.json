@@ -1,0 +1,178 @@
+{
+  "name": "University of Iowa",
+  "data_year": "2024-2025",
+  "city": "Iowa City",
+  "state": "IA",
+  "location": "Iowa City, IA",
+  "school_type": "Public",
+  "website": "uiowa.edu",
+  "applicants_total": 27770,
+  "applicants_men": 11808,
+  "applicants_women": 15897,
+  "admitted_total": 23222,
+  "admitted_men": 9537,
+  "admitted_women": 13638,
+  "enrolled_total": 5208,
+  "enrolled_men": 2089,
+  "enrolled_women": 3083,
+  "acceptance_rate": 0.8362,
+  "application_fee": 55.0,
+  "avg_gpa_weighted": 3.83,
+  "rd_deadline": "5/1",
+  "waitlist_offered": 13969,
+  "waitlist_accepted": 13969,
+  "waitlist_admitted": 13,
+  "ea_ed_type": "None",
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.1851,
+  "sat_submitted_count": 964,
+  "act_submitted_pct": 0.5662,
+  "act_submitted_count": 2949,
+  "sat_composite_25": 1140,
+  "sat_composite_75": 1313,
+  "sat_reading_25": 570,
+  "sat_reading_75": 670,
+  "sat_math_25": 560,
+  "sat_math_75": 660,
+  "act_composite_25": 21,
+  "act_composite_75": 28,
+  "act_math_25": 19,
+  "act_math_75": 27,
+  "act_english_25": 20,
+  "act_english_75": 28,
+  "total_undergrads": 22738,
+  "undergrads_male": 9781,
+  "undergrads_female": 12692,
+  "retention_rate": 0.904,
+  "tuition": null,
+  "tuition_in_state": 9565.0,
+  "tuition_out_of_state": 31653.0,
+  "required_fees": 2057.0,
+  "room_and_board": 13680.0,
+  "books_supplies": 950.0,
+  "other_expenses": 3458.0,
+  "pct_out_of_state": 0.4541,
+  "pct_on_campus_housing": 0.9303,
+  "applicant_pools": {
+    "ea": null,
+    "rd": {
+      "applied": 27770,
+      "admitted": 23222,
+      "rate": 0.8362
+    },
+    "waitlist": {
+      "offered": 13969,
+      "accepted_spots": 13969,
+      "enrolled": 13
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 11808,
+      "female": 15897
+    },
+    "accepted": {
+      "male": 9537,
+      "female": 13638
+    },
+    "enrolled": {
+      "male": 2089,
+      "female": 3083
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 57,
+      "hispanic": 410,
+      "black": 116,
+      "white": 3899,
+      "american_indian": 12,
+      "asian": 218,
+      "pacific_islander": 3,
+      "two_or_more": 183,
+      "unknown": 310,
+      "total": 5208
+    },
+    "undergrad": {
+      "nonresident_aliens": 278,
+      "hispanic": 1979,
+      "black": 621,
+      "white": 16567,
+      "american_indian": 37,
+      "asian": 988,
+      "pacific_islander": 9,
+      "two_or_more": 859,
+      "unknown": 926,
+      "total": 22264
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.4541,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 964,
+    "sat_submitted_pct": 0.1851,
+    "act_submitted_count": 2949,
+    "act_submitted_pct": 0.5662
+  },
+  "class_rank": {
+    "top10": 0.3846,
+    "top25": 0.7436,
+    "top50": 1.0,
+    "bottom50": 0.0,
+    "bottom25": 0.0
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.3295,
+    "gpa_375_399": 0.3012,
+    "gpa_350_374": 0.1882,
+    "gpa_325_349": 0.1171,
+    "gpa_300_324": 0.0516,
+    "gpa_250_299": 0.0116,
+    "gpa_200_249": 0.0008,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "very_important",
+    "academic_gpa": "very_important",
+    "test_scores": "very_important",
+    "essay": "not_considered",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "not_considered",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "not_considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "not_considered",
+    "work_experience": "not_considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1380,
+      "admitted": 947,
+      "enrolled": 551
+    },
+    "female": {
+      "applied": 1379,
+      "admitted": 947,
+      "enrolled": 520
+    },
+    "total": {
+      "applied": 2786,
+      "admitted": 1912,
+      "enrolled": 1083
+    }
+  },
+  "slug": "uofiowa"
+}

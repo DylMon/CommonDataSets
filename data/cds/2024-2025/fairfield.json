@@ -1,0 +1,174 @@
+{
+  "name": "Fairfield University",
+  "data_year": "2024-2025",
+  "city": "Fairfield",
+  "state": "CT",
+  "location": "Fairfield, CT",
+  "school_type": "Private",
+  "website": "www.fairfield.edu",
+  "applicants_total": 18509,
+  "applicants_men": 6977,
+  "applicants_women": 11532,
+  "admitted_total": 6162,
+  "admitted_men": 2401,
+  "admitted_women": 3761,
+  "enrolled_total": 1461,
+  "enrolled_men": 611,
+  "enrolled_women": 850,
+  "acceptance_rate": 0.333,
+  "application_fee": 60,
+  "avg_gpa_weighted": 3.76,
+  "rd_deadline": "1/15",
+  "waitlist_offered": 8898,
+  "waitlist_accepted": 2477,
+  "waitlist_admitted": 22,
+  "ea_ed_type": "ED I & II",
+  "ea_ed_deadline": "11/15",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": 516,
+  "ea_apps_admitted": 412,
+  "sat_submitted_pct": 0.14,
+  "sat_submitted_count": 200,
+  "act_submitted_pct": 0.05,
+  "act_submitted_count": 69,
+  "sat_composite_25": 1270,
+  "sat_composite_75": 1370,
+  "sat_reading_25": 630,
+  "sat_reading_75": 700,
+  "sat_math_25": 630,
+  "sat_math_75": 690,
+  "act_composite_25": 29,
+  "act_composite_75": 32,
+  "act_math_25": null,
+  "act_math_75": null,
+  "act_english_25": null,
+  "act_english_75": null,
+  "total_undergrads": 5391,
+  "undergrads_male": 2274,
+  "undergrads_female": 3117,
+  "retention_rate": 0.91,
+  "tuition": 57450,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 900,
+  "room_and_board": 19838,
+  "books_supplies": 1175,
+  "other_expenses": 1055,
+  "pct_out_of_state": 0.87,
+  "pct_on_campus_housing": 0.98,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 8898,
+      "accepted_spots": 2477,
+      "enrolled": 22
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 6977,
+      "female": 11532
+    },
+    "accepted": {
+      "male": 2401,
+      "female": 3761
+    },
+    "enrolled": {
+      "male": 611,
+      "female": 850
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 18,
+      "hispanic": 137,
+      "black": 16,
+      "white": 1172,
+      "american_indian": 0,
+      "asian": 19,
+      "pacific_islander": 2,
+      "two_or_more": 35,
+      "unknown": 62,
+      "total": 1461
+    },
+    "undergrad": {
+      "nonresident_aliens": 104,
+      "hispanic": 478,
+      "black": 72,
+      "white": 4264,
+      "american_indian": 1,
+      "asian": 94,
+      "pacific_islander": 4,
+      "two_or_more": 109,
+      "unknown": 265,
+      "total": 5391
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.87,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 200,
+    "sat_submitted_pct": 0.14,
+    "act_submitted_count": 69,
+    "act_submitted_pct": 0.05
+  },
+  "class_rank": {
+    "top10": 0.29,
+    "top25": 0.61,
+    "top50": 0.91,
+    "bottom50": 0.09,
+    "bottom25": 0.02
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.326,
+    "gpa_375_399": 0.209,
+    "gpa_350_374": 0.215,
+    "gpa_325_349": 0.134,
+    "gpa_300_324": 0.065,
+    "gpa_250_299": 0.048,
+    "gpa_200_249": 0.004,
+    "gpa_100_199": 0.001
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "very_important",
+    "recommendations": "very_important",
+    "interview": "important",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "important",
+    "first_gen": "important",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "important",
+    "applicant_interest": "important"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 244,
+      "admitted": 26,
+      "enrolled": 23
+    },
+    "female": {
+      "applied": 273,
+      "admitted": 24,
+      "enrolled": 18
+    },
+    "total": {
+      "applied": 518,
+      "admitted": 50,
+      "enrolled": 41
+    }
+  },
+  "slug": "fairfield"
+}

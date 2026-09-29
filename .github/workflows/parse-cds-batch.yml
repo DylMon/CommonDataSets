@@ -42,35 +42,7 @@ jobs:
       - name: Install Node dependencies
         run: npm ci
 
-      - name: Parse backlog via Message Batch
+      - name: Parse backlog, detect colors, rebuild aggregates, and push
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python scripts/parse-cds-batch.py --year "${{ inputs.year }}"
-
-      - name: Detect brand colors for every parsed school
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: |
-          for f in data/cds/"${{ inputs.year }}"/*.json; do
-            slug=$(basename "$f" .json)
-            name=$(python3 -c "import json,sys; d=json.load(open(sys.argv[1])); print(d.get('name') or sys.argv[2])" "$f" "$slug")
-            node scripts/detect-school-color.js --slug "$slug" --name "$name"
-          done
-
-      - name: Rebuild aggregates and regenerate pages
-        run: |
-          python scripts/build-cds-json.py --year "${{ inputs.year }}"
-          node scripts/generate-school-pages.js --year "${{ inputs.year }}"
-
-      - name: Commit results back to the current branch
-        run: |
-          git config user.name "cds-bot"
-          git config user.email "cds-bot@users.noreply.github.com"
-
-          git add data/ js/school.js schools/ sitemap.xml
-          if git diff --cached --quiet; then
-            echo "Nothing new to commit."
-          else
-            git commit -m "Batch-parse CDS ${{ inputs.year }} backlog"
-            git push origin HEAD:${{ github.ref_name }}
-          fi

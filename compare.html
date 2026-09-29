@@ -29,9 +29,13 @@
 </head>
 <body>
     <div class="container">
-        <div class="page-intro">
-            <h1 class="page-intro-title">School Comparison Tool</h1>
-            <p class="page-intro-desc">Pick up to four schools to see their admissions data side by side — test scores, cost, demographics, and more, sourced from each school's 2024–2025 Common Data Set.</p>
+        <div class="hero-banner" style="background-image:url('images/heroes/upenn1.jpg')">
+            <div class="hero-inner">
+                <div class="hero-content">
+                    <h1 class="page-intro-title">School Comparison Tool</h1>
+                    <p class="page-intro-desc">Pick up to four schools to see their admissions data side by side — test scores, cost, demographics, and more, sourced from each school's 2024–2025 Common Data Set.</p>
+                </div>
+            </div>
         </div>
         <div class="compare-layout">
             <aside class="compare-picker">
@@ -115,19 +119,19 @@
         }
 
         function fmtPct(val) {
-            return val != null ? (val * 100).toFixed(1) + '%' : '—';
+            return val != null ? (val * 100).toFixed(1) + '%' : '<span class="stat-na">n/a</span>';
         }
 
         function fmtMoney(val) {
-            return val != null ? '$' + val.toLocaleString() : '—';
+            return val != null ? '$' + val.toLocaleString() : '<span class="stat-na">n/a</span>';
         }
 
         function fmtGpa(val) {
-            return val != null ? parseFloat(val).toFixed(2) : '—';
+            return val != null ? parseFloat(val).toFixed(2) : '<span class="stat-na">n/a</span>';
         }
 
         function fmtNum(val) {
-            return val != null ? val.toLocaleString() : '—';
+            return val != null ? val.toLocaleString() : '<span class="stat-na">n/a</span>';
         }
 
         const FACTOR_LABELS = {
@@ -281,9 +285,9 @@
         // is what's displayed — ACT shows a range but ranks on its midpoint.
         const PICKER_STATS = [
             { key: 'acceptance', label: 'Acceptance',   text: s => fmtPct(s.acceptance_rate),                       val: s => s.acceptance_rate },
-            { key: 'sat',        label: 'SAT Avg',       text: s => s.sat_avg != null ? s.sat_avg : '—',            val: s => s.sat_avg },
-            { key: 'act',        label: 'ACT Range',     text: s => (s.act_composite_25 != null && s.act_composite_75 != null) ? `${s.act_composite_25}–${s.act_composite_75}` : '—', val: s => actMid(s) },
-            { key: 'undergrads', label: 'Undergrads',    text: s => s.total_undergrads != null ? s.total_undergrads.toLocaleString() : '—', val: s => s.total_undergrads },
+            { key: 'sat',        label: 'SAT Avg',       text: s => s.sat_avg != null ? s.sat_avg : '<span class="stat-na">n/a</span>',            val: s => s.sat_avg },
+            { key: 'act',        label: 'ACT Range',     text: s => (s.act_composite_25 != null && s.act_composite_75 != null) ? `${s.act_composite_25}–${s.act_composite_75}` : '<span class="stat-na">n/a</span>', val: s => actMid(s) },
+            { key: 'undergrads', label: 'Undergrads',    text: s => s.total_undergrads != null ? s.total_undergrads.toLocaleString() : '<span class="stat-na">n/a</span>', val: s => s.total_undergrads },
             { key: 'gpa',        label: 'Avg GPA',       text: s => fmtGpa(s.avg_gpa_weighted),                     val: s => s.avg_gpa_weighted },
             { key: 'tuition',    label: 'Tuition (OOS)', text: s => fmtMoney(s.tuition_out_of_state ?? s.tuition),  val: s => s.tuition_out_of_state ?? s.tuition, lowerIsBetter: true },
         ];
@@ -526,11 +530,11 @@
         // read down a column to compare one school, across a row to compare a
         // factor. Rows where no selected school reports the factor are dropped.
         const CMP_FACTOR_SCORE = { very_important: 4, important: 3, considered: 2, not_considered: 1 };
-        const CMP_FACTOR_SCORE_LABEL = ['—', 'Not considered', 'Considered', 'Important', 'Very important'];
+        const CMP_FACTOR_SCORE_LABEL = ['n/a', 'Not considered', 'Considered', 'Important', 'Very important'];
 
         function cmpFactorMeter(score, color, schoolName, factorLabel) {
             if (!score) {
-                return `<span class="cmp-factor-na" title="${schoolName} — ${factorLabel}: not reported">—</span>`;
+                return `<span class="cmp-factor-na" title="${schoolName} — ${factorLabel}: not reported">n/a</span>`;
             }
             const dots = [1, 2, 3, 4].map(n => n <= score
                 ? `<span class="factor-dot on" style="border-color:${color};background:${color}"></span>`
@@ -771,7 +775,7 @@
         window.addEventListener('pageshow', () => { renderFavoritesBox(); renderHistory(); });
     </script>
     <footer class="site-footer">
-        <div class="footer-brand">CommonDataSets</div>
+        <a class="footer-brand" href="index.html">CommonDataSets</a>
         <a class="footer-email" href="mailto:info@commondatasets.com">info@commondatasets.com</a>
         <nav class="footer-nav">
             <a href="index.html">Data Sets</a>

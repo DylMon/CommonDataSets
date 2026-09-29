@@ -1,0 +1,174 @@
+{
+  "name": "University of Delaware",
+  "data_year": "2024-2025",
+  "city": "Newark",
+  "state": "DE",
+  "location": "Newark, DE",
+  "school_type": "Public",
+  "website": "www.udel.edu",
+  "applicants_total": 39742,
+  "applicants_men": 15747,
+  "applicants_women": 23994,
+  "admitted_total": 27517,
+  "admitted_men": 10155,
+  "admitted_women": 17361,
+  "enrolled_total": 4075,
+  "enrolled_men": 1590,
+  "enrolled_women": 2485,
+  "acceptance_rate": 0.6924,
+  "application_fee": 75,
+  "avg_gpa_weighted": 3.98,
+  "rd_deadline": "1/15",
+  "waitlist_offered": 3417,
+  "waitlist_accepted": null,
+  "waitlist_admitted": 2087,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "1/31",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.191,
+  "sat_submitted_count": 780,
+  "act_submitted_pct": 0.028,
+  "act_submitted_count": 113,
+  "sat_composite_25": 1220,
+  "sat_composite_75": 1370,
+  "sat_reading_25": 610,
+  "sat_reading_75": 700,
+  "sat_math_25": 590,
+  "sat_math_75": 690,
+  "act_composite_25": 28,
+  "act_composite_75": 32,
+  "act_math_25": 26,
+  "act_math_75": 32,
+  "act_english_25": 27,
+  "act_english_75": 35,
+  "total_undergrads": 19287,
+  "undergrads_male": 7654,
+  "undergrads_female": 11633,
+  "retention_rate": 0.92,
+  "tuition": null,
+  "tuition_in_state": 15280,
+  "tuition_out_of_state": 40840,
+  "required_fees": 2380,
+  "room_and_board": 15974,
+  "books_supplies": 1250,
+  "other_expenses": 2000,
+  "pct_out_of_state": 0.66,
+  "pct_on_campus_housing": 0.91,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 3417,
+      "accepted_spots": null,
+      "enrolled": 2087
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 15747,
+      "female": 23994
+    },
+    "accepted": {
+      "male": 10155,
+      "female": 17361
+    },
+    "enrolled": {
+      "male": 1590,
+      "female": 2485
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 56,
+      "hispanic": 464,
+      "black": 242,
+      "white": 2797,
+      "american_indian": 0,
+      "asian": 244,
+      "pacific_islander": 0,
+      "two_or_more": 186,
+      "unknown": 86,
+      "total": 4075
+    },
+    "undergrad": {
+      "nonresident_aliens": 596,
+      "hispanic": 1878,
+      "black": 1125,
+      "white": 12398,
+      "american_indian": 14,
+      "asian": 1021,
+      "pacific_islander": 1,
+      "two_or_more": 956,
+      "unknown": 343,
+      "total": 18332
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.66,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 780,
+    "sat_submitted_pct": 0.191,
+    "act_submitted_count": 113,
+    "act_submitted_pct": 0.028
+  },
+  "class_rank": {
+    "top10": 0.315,
+    "top25": 0.642,
+    "top50": 0.924,
+    "bottom50": 0.076,
+    "bottom25": 0.003
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.51,
+    "gpa_375_399": 0.22,
+    "gpa_350_374": 0.2,
+    "gpa_325_349": 0.08,
+    "gpa_300_324": 0.02,
+    "gpa_250_299": 0.0,
+    "gpa_200_249": 0.0,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "important",
+    "interview": "considered",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "important",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "very_important",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "important",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1020,
+      "admitted": 534,
+      "enrolled": 313
+    },
+    "female": {
+      "applied": 1013,
+      "admitted": 623,
+      "enrolled": 329
+    },
+    "total": {
+      "applied": 2033,
+      "admitted": 1157,
+      "enrolled": 642
+    }
+  },
+  "slug": "udelaware"
+}

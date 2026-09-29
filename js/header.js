@@ -16,8 +16,11 @@
 
     const nav = `
         <header class="site-header">
+            <a class="site-logo-link" href="${root}index.html">
+                <img class="site-logo" src="${root}images/logo-transparent.png" alt="CommonDataSets">
+            </a>
             <div class="nav-wrapper">
-                <div class="nav-brand">CommonDataSets</div>
+                <a class="nav-brand" href="${root}index.html">CommonDataSets</a>
             </div>
             <div class="header-accent-bar">
                 <div class="left-side">
