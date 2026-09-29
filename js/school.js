@@ -149,6 +149,7 @@ const SCHOOL_META = {
   'rutgers-newark': { color: '#cc0033' },
   'stockton': { color: '#79bde9' },
   'colorado-school-of-mines': { color: '#21314D' },
+  'saintlouisu': { color: '#00244D' },
 };
 
 // Logos live at images/logos/<slug>.png. A few schools have none yet; the

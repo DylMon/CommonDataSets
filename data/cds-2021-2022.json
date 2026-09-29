@@ -1,0 +1,169 @@
+{
+  "generated": "2026-09-29",
+  "cds_year": "2021-22",
+  "schools": [
+    {
+      "id": 1,
+      "name": "Saint Louis University",
+      "data_year": "2021-2022",
+      "city": "St. Louis",
+      "state": "MO",
+      "location": "St. Louis, MO",
+      "school_type": "Private",
+      "website": "www.slu.edu",
+      "applicants_total": 15047,
+      "applicants_men": 5847,
+      "applicants_women": 9200,
+      "admitted_total": 10540,
+      "admitted_men": 4010,
+      "admitted_women": 6530,
+      "enrolled_total": 1794,
+      "enrolled_men": 659,
+      "enrolled_women": 1135,
+      "acceptance_rate": 0.7005,
+      "application_fee": 0,
+      "avg_gpa_weighted": 3.95,
+      "rd_deadline": null,
+      "waitlist_offered": null,
+      "waitlist_accepted": null,
+      "waitlist_admitted": null,
+      "ea_ed_type": "ED",
+      "ea_ed_deadline": "11/1",
+      "ea_ed_notification": "December 1",
+      "ea_apps_received": null,
+      "ea_apps_admitted": null,
+      "sat_submitted_pct": null,
+      "sat_submitted_count": null,
+      "act_submitted_pct": null,
+      "act_submitted_count": null,
+      "sat_composite_25": null,
+      "sat_composite_75": null,
+      "sat_reading_25": null,
+      "sat_reading_75": null,
+      "sat_math_25": null,
+      "sat_math_75": null,
+      "act_composite_25": null,
+      "act_composite_75": null,
+      "act_math_25": null,
+      "act_math_75": null,
+      "act_english_25": null,
+      "act_english_75": null,
+      "total_undergrads": 7366,
+      "undergrads_male": 2858,
+      "undergrads_female": 4508,
+      "retention_rate": 0.888,
+      "tuition": 49800,
+      "tuition_in_state": null,
+      "tuition_out_of_state": null,
+      "required_fees": 1044,
+      "room_and_board": 13890,
+      "books_supplies": 1070,
+      "other_expenses": 2952,
+      "pct_out_of_state": 0.61,
+      "pct_on_campus_housing": 0.86,
+      "applicant_pools": null,
+      "gender_breakdown": {
+        "applied": {
+          "male": 5847,
+          "female": 9200
+        },
+        "accepted": {
+          "male": 4010,
+          "female": 6530
+        },
+        "enrolled": {
+          "male": 659,
+          "female": 1135
+        }
+      },
+      "demographics_detail": {
+        "first_year": {
+          "nonresident_aliens": 44,
+          "hispanic": 165,
+          "black": 140,
+          "white": 1077,
+          "american_indian": 0,
+          "asian": 257,
+          "pacific_islander": 0,
+          "two_or_more": 103,
+          "unknown": 8,
+          "total": 1794
+        },
+        "undergrad": {
+          "nonresident_aliens": 279,
+          "hispanic": 573,
+          "black": 540,
+          "white": 4597,
+          "american_indian": 9,
+          "asian": 939,
+          "pacific_islander": 5,
+          "two_or_more": 349,
+          "unknown": 75,
+          "total": 7366
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.61,
+        "international_pct": null
+      },
+      "sat_act_breakdown": null,
+      "class_rank": {
+        "top10": 0.39,
+        "top25": 0.7,
+        "top50": 0.91,
+        "bottom50": 0.09,
+        "bottom25": 0.02
+      },
+      "gpa_distribution": {
+        "gpa_40": 0.5056,
+        "gpa_375_399": 0.1979,
+        "gpa_350_374": 0.121,
+        "gpa_325_349": 0.0764,
+        "gpa_300_324": 0.0474,
+        "gpa_250_299": 0.0457,
+        "gpa_200_249": 0.0061,
+        "gpa_100_199": null
+      },
+      "admission_factors": {
+        "rigor": "important",
+        "class_rank": "not_considered",
+        "academic_gpa": "very_important",
+        "test_scores": "considered",
+        "essay": "important",
+        "recommendations": "considered",
+        "interview": "considered",
+        "extracurriculars": "important",
+        "talent": "important",
+        "character": "important",
+        "first_gen": "not_considered",
+        "alumni_relation": "not_considered",
+        "geo_residence": "not_considered",
+        "state_residence": "not_considered",
+        "religious": "not_considered",
+        "racial_ethnic": "not_considered",
+        "volunteer": "important",
+        "work_experience": "considered",
+        "applicant_interest": "not_considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 927,
+          "admitted": 439,
+          "enrolled": 205
+        },
+        "female": {
+          "applied": 1285,
+          "admitted": 540,
+          "enrolled": 233
+        },
+        "total": {
+          "applied": 2212,
+          "admitted": 979,
+          "enrolled": 438
+        }
+      },
+      "slug": "saintlouisu",
+      "us_news_ranking": null
+    }
+  ]
+}
