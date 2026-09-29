@@ -113,6 +113,15 @@ body.page-home {
     width: 100%;
 }
 
+/* The header's --brand fallback above only kicks in where the variable is
+   completely unset. compare/index.html also loads school-template.css (for
+   its shared table styles), whose own :root sets --brand: #333 as a
+   pre-JS default for school pages — that leaks into the header here too,
+   so pin it back to the site orange explicitly. */
+body.page-compare {
+    --brand: #ed6d0b;
+}
+
 /* Secondary nav bar under the header — holds the page links (moved out of
    .nav-wrapper). */
 .header-accent-bar {
