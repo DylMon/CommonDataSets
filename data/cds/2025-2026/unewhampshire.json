@@ -1,0 +1,160 @@
+{
+  "name": "University of New Hampshire",
+  "data_year": "2025-26",
+  "city": "Durham",
+  "state": "NH",
+  "location": "Durham, NH",
+  "school_type": "Public",
+  "website": "www.unh.edu",
+  "applicants_total": 21567,
+  "applicants_men": 8855,
+  "applicants_women": 12705,
+  "admitted_total": 19224,
+  "admitted_men": 7702,
+  "admitted_women": 11516,
+  "enrolled_total": 2302,
+  "enrolled_men": 1014,
+  "enrolled_women": 1286,
+  "acceptance_rate": 0.8915,
+  "application_fee": 50.0,
+  "avg_gpa_weighted": 3.64,
+  "rd_deadline": "2/1",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/15",
+  "ea_ed_notification": "1/30",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.1937,
+  "sat_submitted_count": 446,
+  "act_submitted_pct": 0.0143,
+  "act_submitted_count": 33,
+  "sat_composite_25": 1120,
+  "sat_composite_75": 1310,
+  "sat_reading_25": 560,
+  "sat_reading_75": 680,
+  "sat_math_25": 540,
+  "sat_math_75": 650,
+  "act_composite_25": 26,
+  "act_composite_75": 30,
+  "act_math_25": 23,
+  "act_math_75": 28,
+  "act_english_25": 24,
+  "act_english_75": 30,
+  "total_undergrads": 10900,
+  "undergrads_male": 4893,
+  "undergrads_female": 5995,
+  "retention_rate": 0.88,
+  "tuition": null,
+  "tuition_in_state": 16304.0,
+  "tuition_out_of_state": 37996.0,
+  "required_fees": 3868.0,
+  "room_and_board": 15034.0,
+  "books_supplies": 1000,
+  "other_expenses": 3796,
+  "pct_out_of_state": 0.5247,
+  "pct_on_campus_housing": 0.9566,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 8855,
+      "female": 12705
+    },
+    "accepted": {
+      "male": 7702,
+      "female": 11516
+    },
+    "enrolled": {
+      "male": 1014,
+      "female": 1286
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 34,
+      "hispanic": 126,
+      "black": 29,
+      "white": 1914,
+      "american_indian": 5,
+      "asian": 53,
+      "pacific_islander": 0,
+      "two_or_more": 78,
+      "unknown": 63,
+      "total": 2302
+    },
+    "undergrad": {
+      "nonresident_aliens": 108,
+      "hispanic": 518,
+      "black": 108,
+      "white": 9130,
+      "american_indian": 11,
+      "asian": 281,
+      "pacific_islander": 2,
+      "two_or_more": 320,
+      "unknown": 331,
+      "total": 10809
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.5247,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 446,
+    "sat_submitted_pct": 0.1937,
+    "act_submitted_count": 33,
+    "act_submitted_pct": 0.0143
+  },
+  "class_rank": null,
+  "gpa_distribution": {
+    "gpa_40": 0.274,
+    "gpa_375_399": 0.1675,
+    "gpa_350_374": 0.1644,
+    "gpa_325_349": 0.1575,
+    "gpa_300_324": 0.1335,
+    "gpa_250_299": 0.1005,
+    "gpa_200_249": 0.0018,
+    "gpa_100_199": 0.0004
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "considered",
+    "recommendations": "important",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 479,
+      "admitted": 417,
+      "enrolled": 208
+    },
+    "female": {
+      "applied": 534,
+      "admitted": 491,
+      "enrolled": 209
+    },
+    "total": {
+      "applied": 1013,
+      "admitted": 908,
+      "enrolled": 417
+    }
+  },
+  "slug": "unewhampshire"
+}

@@ -1,0 +1,160 @@
+{
+  "name": "University of Utah",
+  "data_year": "2025-2026",
+  "city": "Salt Lake City",
+  "state": "UT",
+  "location": "Salt Lake City, UT",
+  "school_type": "Public",
+  "website": null,
+  "applicants_total": 30036,
+  "applicants_men": 15253,
+  "applicants_women": 14783,
+  "admitted_total": 27076,
+  "admitted_men": 13659,
+  "admitted_women": 13417,
+  "enrolled_total": 6513,
+  "enrolled_men": 3407,
+  "enrolled_women": 3106,
+  "acceptance_rate": 0.9014,
+  "application_fee": "$0 UT residents, $55 Domestic, Non-UT resident, $65 International",
+  "avg_gpa_weighted": 3.64,
+  "rd_deadline": "4/1",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "12/1",
+  "ea_ed_notification": "1/15",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.14,
+  "sat_submitted_count": 908,
+  "act_submitted_pct": 0.36,
+  "act_submitted_count": 2345,
+  "sat_composite_25": 1120,
+  "sat_composite_75": 1320,
+  "sat_reading_25": 560,
+  "sat_reading_75": 670,
+  "sat_math_25": 550,
+  "sat_math_75": 660,
+  "act_composite_25": 22,
+  "act_composite_75": 29,
+  "act_math_25": 21,
+  "act_math_75": 28,
+  "act_english_25": 21,
+  "act_english_75": 29,
+  "total_undergrads": 29335,
+  "undergrads_male": 15481,
+  "undergrads_female": 13854,
+  "retention_rate": 0.86,
+  "tuition": null,
+  "tuition_in_state": 10080,
+  "tuition_out_of_state": 35282,
+  "required_fees": 1086,
+  "room_and_board": 15537,
+  "books_supplies": 1600,
+  "other_expenses": 12000,
+  "pct_out_of_state": 0.49,
+  "pct_on_campus_housing": 0.65,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 15253,
+      "female": 14783
+    },
+    "accepted": {
+      "male": 13659,
+      "female": 13417
+    },
+    "enrolled": {
+      "male": 3407,
+      "female": 3106
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 244,
+      "hispanic": 889,
+      "black": 68,
+      "white": 4358,
+      "american_indian": 34,
+      "asian": 340,
+      "pacific_islander": 29,
+      "two_or_more": 446,
+      "unknown": 105,
+      "total": 6513
+    },
+    "undergrad": {
+      "nonresident_aliens": 1738,
+      "hispanic": 4046,
+      "black": 356,
+      "white": 18543,
+      "american_indian": 124,
+      "asian": 1829,
+      "pacific_islander": 119,
+      "two_or_more": 1798,
+      "unknown": 782,
+      "total": 29335
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.49,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 908,
+    "sat_submitted_pct": 0.14,
+    "act_submitted_count": 2345,
+    "act_submitted_pct": 0.36
+  },
+  "class_rank": null,
+  "gpa_distribution": {
+    "gpa_40": 0.1,
+    "gpa_375_399": 0.36,
+    "gpa_350_374": 0.24,
+    "gpa_325_349": 0.18,
+    "gpa_300_324": 0.09,
+    "gpa_250_299": 0.03,
+    "gpa_200_249": 0.0,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "considered",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1791,
+      "admitted": 1506,
+      "enrolled": 771
+    },
+    "female": {
+      "applied": 1808,
+      "admitted": 1559,
+      "enrolled": 728
+    },
+    "total": {
+      "applied": 3599,
+      "admitted": 3065,
+      "enrolled": 1499
+    }
+  },
+  "slug": "uutah"
+}

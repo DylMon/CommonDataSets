@@ -1,0 +1,174 @@
+{
+  "name": "University of Rhode Island",
+  "data_year": "2025-26",
+  "city": "Kingston",
+  "state": "RI",
+  "location": "Kingston, RI",
+  "school_type": "Public",
+  "website": "www.uri.edu",
+  "applicants_total": 28021,
+  "applicants_men": 9685,
+  "applicants_women": 18321,
+  "admitted_total": 20892,
+  "admitted_men": 6893,
+  "admitted_women": 13994,
+  "enrolled_total": 3431,
+  "enrolled_men": 1285,
+  "enrolled_women": 2144,
+  "acceptance_rate": 0.7455,
+  "application_fee": 65,
+  "avg_gpa_weighted": 3.65,
+  "rd_deadline": "2/1",
+  "waitlist_offered": 1430,
+  "waitlist_accepted": 60,
+  "waitlist_admitted": 9,
+  "ea_ed_type": "ED",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/1",
+  "ea_apps_received": 202,
+  "ea_apps_admitted": 150,
+  "sat_submitted_pct": 0.23,
+  "sat_submitted_count": 775,
+  "act_submitted_pct": 0.0149,
+  "act_submitted_count": 51,
+  "sat_composite_25": 1090,
+  "sat_composite_75": 1310,
+  "sat_reading_25": 550,
+  "sat_reading_75": 670,
+  "sat_math_25": 520,
+  "sat_math_75": 645,
+  "act_composite_25": 24.5,
+  "act_composite_75": 31,
+  "act_math_25": 22.5,
+  "act_math_75": 29,
+  "act_english_25": 23,
+  "act_english_75": 33,
+  "total_undergrads": 14466,
+  "undergrads_male": 5897,
+  "undergrads_female": 8500,
+  "retention_rate": 0.852,
+  "tuition": null,
+  "tuition_in_state": 15148,
+  "tuition_out_of_state": 36070,
+  "required_fees": 2328,
+  "room_and_board": 15070,
+  "books_supplies": 1290,
+  "other_expenses": 2360,
+  "pct_out_of_state": 0.62,
+  "pct_on_campus_housing": 0.93,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 1430,
+      "accepted_spots": 60,
+      "enrolled": 9
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 9685,
+      "female": 18321
+    },
+    "accepted": {
+      "male": 6893,
+      "female": 13994
+    },
+    "enrolled": {
+      "male": 1285,
+      "female": 2144
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 34,
+      "hispanic": 520,
+      "black": 163,
+      "white": 2357,
+      "american_indian": 6,
+      "asian": 109,
+      "pacific_islander": 2,
+      "two_or_more": 161,
+      "unknown": 79,
+      "total": 3431
+    },
+    "undergrad": {
+      "nonresident_aliens": 178,
+      "hispanic": 1972,
+      "black": 786,
+      "white": 9937,
+      "american_indian": 31,
+      "asian": 436,
+      "pacific_islander": 6,
+      "two_or_more": 563,
+      "unknown": 557,
+      "total": 14466
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.62,
+    "international_pct": 0.0099
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 775,
+    "sat_submitted_pct": 0.23,
+    "act_submitted_count": 51,
+    "act_submitted_pct": 0.0149
+  },
+  "class_rank": {
+    "top10": 0.19,
+    "top25": 0.48,
+    "top50": 0.86,
+    "bottom50": 0.14,
+    "bottom25": 0.01
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.28,
+    "gpa_375_399": 0.15,
+    "gpa_350_374": 0.21,
+    "gpa_325_349": 0.13,
+    "gpa_300_324": 0.15,
+    "gpa_250_299": 0.07,
+    "gpa_200_249": 0.01,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "very_important",
+    "recommendations": "very_important",
+    "interview": "not_considered",
+    "extracurriculars": "important",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "important",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 710,
+      "admitted": 492,
+      "enrolled": 296
+    },
+    "female": {
+      "applied": 1003,
+      "admitted": 628,
+      "enrolled": 330
+    },
+    "total": {
+      "applied": 1718,
+      "admitted": 1124,
+      "enrolled": 628
+    }
+  },
+  "slug": "urhodeisland"
+}

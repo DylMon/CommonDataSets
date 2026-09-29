@@ -150,6 +150,16 @@ const SCHOOL_META = {
   'stockton': { color: '#79bde9' },
   'colorado-school-of-mines': { color: '#21314D' },
   'saintlouisu': { color: '#00244D' },
+  'duquesne': { color: '#ba0c2f' },
+  'udayton': { color: '#004B8D' },
+  'uidaho': { color: '#F1B300' },
+  'unewhampshire': { color: '#041e42' },
+  'uoregon': { color: '#007030' },
+  'upacific': { color: '#D86018' },
+  'urhodeisland': { color: '#002147' },
+  'uutah': { color: '#cc0000' },
+  'valparaiso': { color: '#381e0e' },
+  'wayne-state': { color: '#0c5449' },
 };
 
 // Logos live at images/logos/<slug>.png. A few schools have none yet; the
