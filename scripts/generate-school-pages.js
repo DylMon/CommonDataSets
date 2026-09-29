@@ -1,11 +1,16 @@
 // scripts/generate-school-pages.js
 //
-// Generates the thin static SEO shell at schools/{slug}.html for any school
-// in data/schools-2025-2026.json that doesn't already have one, and rewrites
-// sitemap.xml to cover every school currently on disk. Actual page content
-// (hero, stats, tables, charts) is rendered client-side by js/school.js from
-// SCHOOL_SLUG — these shells only carry the <title>/<meta description> baked
-// in at generation time for SEO.
+// Generates the thin static SEO shell at schools/{slug}/index.html for any
+// school in data/schools-2025-2026.json that doesn't already have one, and
+// rewrites sitemap.xml to cover every school currently on disk. Actual page
+// content (hero, stats, tables, charts) is rendered client-side by
+// js/school.js from SCHOOL_SLUG — these shells only carry the
+// <title>/<meta description> baked in at generation time for SEO.
+//
+// A directory-per-school with its own index.html (rather than a flat
+// schools/{slug}.html) is what makes the URL resolve without a .html
+// extension (/schools/{slug}/) — the same convention the site's own
+// homepage already relies on (index.html at the root serving as /).
 //
 // No longer reads from Supabase — pulls straight from the local JSON file
 // that's already the site's live data source.
@@ -14,7 +19,7 @@
 // Only writes pages that don't already exist; existing pages (including the
 // original 33, which may have hand-tuned descriptions) are left untouched.
 
-import { readFileSync, writeFileSync, existsSync, readdirSync } from 'fs';
+import { readFileSync, writeFileSync, existsSync, readdirSync, mkdirSync, statSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -47,17 +52,17 @@ function pageHtml(slug, name, description) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${name} Admissions Data — CommonDataSets</title>
   <meta name="description" content="${description}">
-  <link rel="canonical" href="https://commondatasets.com/schools/${slug}.html">
+  <link rel="canonical" href="https://commondatasets.com/schools/${slug}/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Ropa+Sans:ital@0;1&family=Castoro:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/base.css?v=6">
-  <link rel="stylesheet" href="../css/school-template.css?v=6">
+  <link rel="stylesheet" href="/css/base.css?v=6">
+  <link rel="stylesheet" href="/css/school-template.css?v=6">
   <script>var SCHOOL_SLUG = '${slug}';</script>
-  <script src="../js/header.js?v=6" defer></script>
+  <script src="/js/header.js?v=6" defer></script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2245119166025427" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js" defer></script>
-  <script type="module" src="../js/school.js?v=6"></script>
+  <script type="module" src="/js/school.js?v=6"></script>
 </head>
 <body>
   <div class="container">
@@ -75,7 +80,7 @@ function pageHtml(slug, name, description) {
 function sitemapXml(slugs) {
   const schoolUrls = slugs.map(slug => `
   <url>
-    <loc>https://commondatasets.com/schools/${slug}.html</loc>
+    <loc>https://commondatasets.com/schools/${slug}/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>`).join('');
@@ -90,13 +95,13 @@ function sitemapXml(slugs) {
   </url>
 
   <url>
-    <loc>https://commondatasets.com/compare.html</loc>
+    <loc>https://commondatasets.com/compare/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://commondatasets.com/chanceme.html</loc>
+    <loc>https://commondatasets.com/chanceme/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -110,23 +115,25 @@ function main() {
 
   const existingSlugs = new Set(
     readdirSync(SCHOOLS_DIR)
-      .filter(f => f.endsWith('.html') && f !== 'school.html')
-      .map(f => f.slice(0, -'.html'.length))
+      .filter(f => statSync(join(SCHOOLS_DIR, f)).isDirectory())
+      .filter(f => existsSync(join(SCHOOLS_DIR, f, 'index.html')))
   );
 
   const created = [];
   const skipped = [];
 
   for (const s of schools) {
-    const outPath = join(SCHOOLS_DIR, `${s.slug}.html`);
+    const outDir = join(SCHOOLS_DIR, s.slug);
+    const outPath = join(outDir, 'index.html');
     if (existsSync(outPath)) {
       skipped.push(s.slug);
       continue;
     }
+    mkdirSync(outDir, { recursive: true });
     const description = buildDescription(s);
     writeFileSync(outPath, pageHtml(s.slug, s.name, description), 'utf8');
     created.push(s.slug);
-    console.log(`  + schools/${s.slug}.html`);
+    console.log(`  + schools/${s.slug}/index.html`);
   }
 
   console.log(`\nCreated ${created.length} new page(s). Skipped ${skipped.length} already present.`);

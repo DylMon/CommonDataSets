@@ -8,7 +8,7 @@
 //   node scripts/convert-logos.js --write    # write PNGs into images/logos/_staged/
 //   node scripts/convert-logos.js --write --commit   # also move them into images/logos/
 //
-// Every file becomes  <slug>.png  where <slug> is a school slug (schools/<slug>.html).
+// Every file becomes  <slug>.png  where <slug> is a school slug (schools/<slug>/).
 // The script guesses the slug from the filename; anything it can't match
 // confidently is left as  _unmatched__<cleaned-name>.png  for you to rename by hand.
 
@@ -32,10 +32,12 @@ const MAX_EDGE   = 800;   // px, longest side of the output PNG
 const SVG_DENSITY = 384;  // DPI used to rasterize SVGs before the resize
 
 // ── known schools ────────────────────────────────────────────────────────────
+// Each school is schools/<slug>/index.html (a directory per school, not a
+// flat <slug>.html) since the clean-URL migration — a slug is any directory
+// under schools/ that actually contains a page.
 const SLUGS = fs.readdirSync(SCHOOL_DIR)
-  .filter(f => f.endsWith('.html'))
-  .map(f => f.replace(/\.html$/, ''))
-  .filter(s => s !== 'school');
+  .filter(f => fs.statSync(path.join(SCHOOL_DIR, f)).isDirectory())
+  .filter(f => fs.existsSync(path.join(SCHOOL_DIR, f, 'index.html')));
 
 // slug -> full name, pulled from whichever data file is present
 let NAMES = {};
@@ -253,7 +255,7 @@ async function main() {
   console.log('\n' + '-'.repeat(96));
   console.log(`${rows.length} file(s), ${seen.size} matched, ${unmatched.length} unmatched.`);
   if (unmatched.length)
-    console.log(`Unmatched: rename these by hand in _staged/ (valid slugs are the schools/<slug>.html names).`);
+    console.log(`Unmatched: rename these by hand in _staged/ (valid slugs are the schools/<slug>/ names).`);
   if (!WRITE) { console.log(`\nDry run. Re-run with --write to produce PNGs in images/logos/_staged/.`); return; }
   console.log(`\nPNGs written to images/logos/_staged/. Review them, then:`);
   console.log(`  node scripts/convert-logos.js --write --commit   # move into images/logos/`);

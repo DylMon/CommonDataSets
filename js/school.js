@@ -154,7 +154,7 @@ const SCHOOL_META = {
 
 // Logos live at images/logos/<slug>.png. A few schools have none yet; the
 // onerror hook hides the broken <img> rather than showing a torn-image icon.
-const logoSrc = slug => `../images/logos/${slug}.png`;
+const logoSrc = slug => `/images/logos/${slug}.png`;
 const LOGO_ONERR = "this.style.display='none'";
 
 // ── Favorites & History ────────────────────────────────────────────────
@@ -174,7 +174,7 @@ function renderFavoritesBox(allSchools) {
   document.getElementById('school-fav-list').innerHTML = slugs.map(sl => {
     const school = allSchools.find(s => s.slug === sl);
     if (!school) return '';
-    return `<a class="history-item" href="${sl}.html">
+    return `<a class="history-item" href="/schools/${sl}/">
       <img class="history-logo" src="${logoSrc(sl)}" alt="" onerror="${LOGO_ONERR}">
       <span class="history-name">${school.name}</span>
     </a>`;
@@ -190,7 +190,7 @@ function renderHistoryBox(allSchools) {
   document.getElementById('school-history-list').innerHTML = slugs.map(sl => {
     const school = allSchools.find(s => s.slug === sl);
     if (!school) return '';
-    return `<a class="history-item" href="${sl}.html">
+    return `<a class="history-item" href="/schools/${sl}/">
       <img class="history-logo" src="${logoSrc(sl)}" alt="" onerror="${LOGO_ONERR}">
       <span class="history-name">${school.name}</span>
     </a>`;
@@ -251,7 +251,7 @@ function demoBarHtml(label, val) {
 
 function renderHero(s, slug, meta) {
   const bannerStyle = meta.banner
-    ? `background:linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url('../images/banners/${meta.banner}');background-size:cover;background-position:center;background-repeat:no-repeat`
+    ? `background:linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url('/images/banners/${meta.banner}');background-size:cover;background-position:center;background-repeat:no-repeat`
     : `background:linear-gradient(135deg,${meta.color},#000)`;
   return `<div class="school-hero" style="${bannerStyle}"></div>`;
 }
@@ -693,7 +693,7 @@ async function init() {
   recentHistory = [slug, ...recentHistory.filter(s => s !== slug)].slice(0, 5);
   localStorage.setItem(historyKey, JSON.stringify(recentHistory));
 
-  const res = await fetch('../data/schools-2025-2026.json');
+  const res = await fetch('/data/schools-2025-2026.json');
   if (!res.ok) {
     document.getElementById('school-sections').innerHTML =
       '<p class="loading">Failed to load school data.</p>';
@@ -795,7 +795,7 @@ async function init() {
 
   const back = document.createElement('a');
   back.className = 'floating-back';
-  back.href = '../index.html';
+  back.href = '/';
   back.textContent = '← Schools';
   document.body.appendChild(back);
 }

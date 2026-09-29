@@ -18,9 +18,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ropa+Sans:ital@0;1&family=Castoro:ital@0;1&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/base.css?v=6">
-    <script src="js/scorecard-merge.js?v=6"></script>
-    <script src="js/header.js?v=6" defer></script>
+    <link rel="stylesheet" href="/css/base.css?v=6">
+    <script src="/js/scorecard-merge.js?v=6"></script>
+    <script src="/js/header.js?v=6" defer></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2245119166025427"
      crossorigin="anonymous"></script>
 </head>
@@ -28,11 +28,11 @@
     <div class="container">
         <div class="hero-banner">
             <div class="hero-slides" id="hero-slides">
-                <div class="hero-slide" style="background-image:url('images/heroes/cornell1.jpg')"></div>
-                <div class="hero-slide" style="background-image:url('images/heroes/harvard1.jpg')"></div>
-                <div class="hero-slide" style="background-image:url('images/heroes/MIT1.jpg')"></div>
-                <div class="hero-slide" style="background-image:url('images/heroes/stanford1.jpg')"></div>
-                <div class="hero-slide" style="background-image:url('images/heroes/yale1.jpg')"></div>
+                <div class="hero-slide" style="background-image:url('/images/heroes/cornell1.jpg')"></div>
+                <div class="hero-slide" style="background-image:url('/images/heroes/harvard1.jpg')"></div>
+                <div class="hero-slide" style="background-image:url('/images/heroes/MIT1.jpg')"></div>
+                <div class="hero-slide" style="background-image:url('/images/heroes/stanford1.jpg')"></div>
+                <div class="hero-slide" style="background-image:url('/images/heroes/yale1.jpg')"></div>
             </div>
             <div class="hero-inner">
                 <div class="hero-content">
@@ -40,8 +40,8 @@
                     <p class="page-intro-desc" id="page-intro-desc">CommonDataSets compiles official Common Data Set submissions directly from top US universities, giving students and families one place to compare verified admissions statistics, test score ranges, cost of attendance, and enrollment data without the noise.</p>
                 </div>
                 <div class="hero-cta-group">
-                    <a class="hero-cta-btn" href="compare.html">Compare University Stats</a>
-                    <a class="hero-cta-btn" href="chanceme.html">Get My Chances</a>
+                    <a class="hero-cta-btn" href="/compare/">Compare University Stats</a>
+                    <a class="hero-cta-btn" href="/chanceme/">Get My Chances</a>
                 </div>
             </div>
         </div>
@@ -181,15 +181,15 @@
             </div><!-- /.page-layout -->
         </div>
         <footer class="site-footer">
-            <a class="footer-brand" href="index.html">CommonDataSets</a>
+            <a class="footer-brand" href="/">CommonDataSets</a>
             <a class="footer-email" href="mailto:info@commondatasets.com">info@commondatasets.com</a>
             <nav class="footer-nav">
-                <a href="index.html">Data Sets</a>
-                <a href="compare.html">Compare</a>
-                <a href="chanceme.html">Chance Me</a>
-                <a href="info.html">About</a>
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="terms.html">Terms &amp; Conditions</a>
+                <a href="/">Data Sets</a>
+                <a href="/compare/">Compare</a>
+                <a href="/chanceme/">Chance Me</a>
+                <a href="/info/">About</a>
+                <a href="/privacy/">Privacy Policy</a>
+                <a href="/terms/">Terms &amp; Conditions</a>
             </nav>
         </footer>
     </div>
@@ -197,7 +197,7 @@
     <script type="module">
         // Logos live at images/logos/<slug>.png. A few schools have none yet;
         // the onerror hook hides the broken <img> instead of a torn-image icon.
-        const logoSrc = slug => `images/logos/${slug}.png`;
+        const logoSrc = slug => `/images/logos/${slug}.png`;
         const LOGO_ONERR = "this.style.display='none'";
 
         let favorites = new Set(JSON.parse(localStorage.getItem('cds_favorites') ?? '[]'));
@@ -254,13 +254,13 @@
         let currentYear = localStorage.getItem('cds_data_year') || '2025-2026';
         const schoolsCache = {};
         const YEAR_FILES = {
-            '2025-2026': 'data/schools-2025-2026.json',
-            '2024-2025': 'data/schools-2024-2025.json',
+            '2025-2026': '/data/schools-2025-2026.json',
+            '2024-2025': '/data/schools-2024-2025.json',
         };
         // Scorecard data lives in its own file, kept separate from CDS data,
         // and merged in here rather than pre-baked — only 2025-26 has one so far.
         const SCORECARD_FILES = {
-            '2025-2026': 'data/scorecard-2025-2026.json',
+            '2025-2026': '/data/scorecard-2025-2026.json',
         };
         const YEAR_LABELS = {
             '2025-2026': '2025–2026',
@@ -275,7 +275,7 @@
             document.getElementById('favorites-list').innerHTML = slugs.map(slug => {
                 const school = allSchools.find(s => s.slug === slug);
                 if (!school) return '';
-                return `<a class="history-item" href="schools/${slug}.html">
+                return `<a class="history-item" href="/schools/${slug}/">
                     <img class="history-logo" src="${logoSrc(slug)}" alt="" onerror="${LOGO_ONERR}">
                     <span class="history-name">${school.name}</span>
                 </a>`;
@@ -290,7 +290,7 @@
             document.getElementById('history-list').innerHTML = slugs.map(slug => {
                 const school = allSchools.find(s => s.slug === slug);
                 if (!school) return '';
-                return `<a class="history-item" href="schools/${slug}.html">
+                return `<a class="history-item" href="/schools/${slug}/">
                     <img class="history-logo" src="${logoSrc(slug)}" alt="" onerror="${LOGO_ONERR}">
                     <span class="history-name">${school.name}</span>
                 </a>`;
@@ -336,7 +336,7 @@
                     </div>
                 </div>
                 <div class="detail-footer">
-                    <a class="detail-compare-btn" href="compare.html?school=${s.slug}">Compare</a>
+                    <a class="detail-compare-btn" href="/compare/?school=${s.slug}">Compare</a>
                 </div>`;
         }
 
@@ -383,7 +383,7 @@
                         <div class="school-rank">${rankBySlug.get(s.slug)}</div>
                         <img class="school-logo" src="${logoSrc(s.slug)}" alt="${s.name}" onerror="${LOGO_ONERR}" />
                         <div class="school-name">
-                            <a class="school-name-link" href="schools/${s.slug}.html">${s.name}</a>
+                            <a class="school-name-link" href="/schools/${s.slug}/">${s.name}</a>
                             <button class="fav-btn${isFav ? ' favorited' : ''}" data-slug="${s.slug}" title="${isFav ? 'Remove from favorites' : 'Add to favorites'}">
                                 <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
                             </button>

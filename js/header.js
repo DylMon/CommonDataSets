@@ -1,7 +1,10 @@
 (function () {
+    // Root-relative absolute paths throughout (the site has a fixed custom
+    // domain — see CNAME) rather than computing a `../` prefix per nesting
+    // level, since every page now lives one or two directories deep
+    // (/compare/, /schools/{slug}/) under the clean-URL convention.
     const path = window.location.pathname;
-    const inSubdir = path.includes('/schools/');
-    const root = inSubdir ? '../' : '';
+    const onSchoolPage = path.includes('/schools/');
 
     const active = path.includes('compare')  ? 'compare'
                  : path.includes('chanceme') ? 'chanceme'
@@ -11,23 +14,23 @@
 
     function navLink(href, label, key) {
         const cls = active === key ? ' active-nav-link' : '';
-        return `<div class="nav-link-wrapper${cls}"><a href="${root}${href}">${label}</a></div>`;
+        return `<div class="nav-link-wrapper${cls}"><a href="${href}">${label}</a></div>`;
     }
 
     const nav = `
         <header class="site-header">
-            <a class="site-logo-link" href="${root}index.html">
-                <img class="site-logo" src="${root}images/logo-transparent.png" alt="CommonDataSets">
+            <a class="site-logo-link" href="/">
+                <img class="site-logo" src="/images/logo-transparent.png" alt="CommonDataSets">
             </a>
             <div class="nav-wrapper">
-                <a class="nav-brand" href="${root}index.html">CommonDataSets</a>
+                <a class="nav-brand" href="/">CommonDataSets</a>
             </div>
             <div class="header-accent-bar">
                 <div class="left-side">
-                    ${navLink('index.html', 'Data Sets', 'index')}
-                    ${navLink('compare.html', 'Compare', 'compare')}
-                    ${navLink('chanceme.html', 'Chance Me', 'chanceme')}
-                    ${navLink('info.html', 'About', 'info')}
+                    ${navLink('/', 'Data Sets', 'index')}
+                    ${navLink('/compare/', 'Compare', 'compare')}
+                    ${navLink('/chanceme/', 'Chance Me', 'chanceme')}
+                    ${navLink('/info/', 'About', 'info')}
                 </div>
             </div>
         </header>`;
@@ -36,7 +39,7 @@
         const link = document.createElement('link');
         link.rel = 'icon';
         link.type = 'image/png';
-        link.href = root + 'favicon.png';
+        link.href = '/favicon.png';
         document.head.appendChild(link);
 
         const container = document.querySelector('.container');
@@ -44,7 +47,7 @@
 
         // School pages only: hide the header on scroll down, bring it back
         // on scroll up. Everywhere else it just stays put (sticky to top).
-        if (inSubdir) {
+        if (onSchoolPage) {
             const header = document.querySelector('.site-header');
             if (header) {
                 let lastY = window.scrollY;
