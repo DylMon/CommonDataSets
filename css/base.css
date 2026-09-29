@@ -178,10 +178,13 @@ body.page-compare {
     box-sizing: border-box;
 }
 
-/* Compare page only — its hero is just a title + one line of description
-   (no slideshow/search/CTAs like the home page), so it doesn't need the
-   full height; roughly half of the default. */
-body.page-compare .hero-banner {
+/* Compare/Chance Me/About only — each is just a title + a line or two of
+   description (no slideshow/search/CTAs like the home page), so none of
+   them need the full height; roughly half of the default. Individual
+   school pages have their own .school-hero sizing and are untouched. */
+body.page-compare .hero-banner,
+body.page-chanceme .hero-banner,
+body.page-info .hero-banner {
     padding: 28px 0 18px;
     min-height: 195px;
 }
@@ -1578,7 +1581,9 @@ body.header-hidden .school-page-layout .right-sidebar {
         min-height: 450px; /* ~25% taller than the ~360px this content naturally renders at on mobile */
     }
 
-    body.page-compare .hero-banner {
+    body.page-compare .hero-banner,
+    body.page-chanceme .hero-banner,
+    body.page-info .hero-banner {
         padding: 16px 0 12px;
         min-height: 225px;
     }
