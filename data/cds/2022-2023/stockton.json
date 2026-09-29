@@ -1,0 +1,178 @@
+{
+  "name": "Stockton University",
+  "data_year": "2022-2023",
+  "city": "Galloway",
+  "state": "NJ",
+  "location": "Galloway, NJ",
+  "school_type": "Public",
+  "website": "www.stockton.edu",
+  "applicants_total": 9591,
+  "applicants_men": 3547,
+  "applicants_women": 6044,
+  "admitted_total": 8204,
+  "admitted_men": 2962,
+  "admitted_women": 5242,
+  "enrolled_total": 1562,
+  "enrolled_men": 630,
+  "enrolled_women": 932,
+  "acceptance_rate": 0.8554,
+  "application_fee": 50,
+  "avg_gpa_weighted": 3.56,
+  "rd_deadline": "9/1",
+  "waitlist_offered": 443,
+  "waitlist_accepted": 439,
+  "waitlist_admitted": 176,
+  "ea_ed_type": "None",
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.28,
+  "sat_submitted_count": 431,
+  "act_submitted_pct": 0.02,
+  "act_submitted_count": 29,
+  "sat_composite_25": 1050,
+  "sat_composite_75": 1250,
+  "sat_reading_25": 530,
+  "sat_reading_75": 630,
+  "sat_math_25": 520,
+  "sat_math_75": 620,
+  "act_composite_25": 18,
+  "act_composite_75": 25,
+  "act_math_25": 17,
+  "act_math_75": 25,
+  "act_english_25": 15,
+  "act_english_75": 25,
+  "total_undergrads": 8138,
+  "undergrads_male": 3184,
+  "undergrads_female": 4954,
+  "retention_rate": 0.7775,
+  "tuition": null,
+  "tuition_in_state": 12996,
+  "tuition_out_of_state": 20884,
+  "required_fees": 2536,
+  "room_and_board": 14653,
+  "books_supplies": 1250,
+  "other_expenses": 5710,
+  "pct_out_of_state": 0.04,
+  "pct_on_campus_housing": 0.64,
+  "applicant_pools": {
+    "ea": null,
+    "rd": {
+      "applied": 9591,
+      "admitted": 8204,
+      "rate": 0.8554
+    },
+    "waitlist": {
+      "offered": 443,
+      "accepted_spots": 439,
+      "enrolled": 176
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 3547,
+      "female": 6044
+    },
+    "accepted": {
+      "male": 2962,
+      "female": 5242
+    },
+    "enrolled": {
+      "male": 630,
+      "female": 932
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 11,
+      "hispanic": 333,
+      "black": 197,
+      "white": 838,
+      "american_indian": 1,
+      "asian": 106,
+      "pacific_islander": 1,
+      "two_or_more": 63,
+      "unknown": 12,
+      "total": 1562
+    },
+    "undergrad": {
+      "nonresident_aliens": 45,
+      "hispanic": 1516,
+      "black": 837,
+      "white": 4758,
+      "american_indian": 9,
+      "asian": 599,
+      "pacific_islander": 5,
+      "two_or_more": 294,
+      "unknown": 75,
+      "total": 8138
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.04,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 431,
+    "sat_submitted_pct": 0.28,
+    "act_submitted_count": 29,
+    "act_submitted_pct": 0.02
+  },
+  "class_rank": {
+    "top10": 0.1351,
+    "top25": 0.361,
+    "top50": 0.6855,
+    "bottom50": 0.3145,
+    "bottom25": 0.0072
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.182,
+    "gpa_375_399": 0.1942,
+    "gpa_350_374": 0.2019,
+    "gpa_325_349": 0.1659,
+    "gpa_300_324": 0.1023,
+    "gpa_250_299": 0.1203,
+    "gpa_200_249": 0.0296,
+    "gpa_100_199": 0.0019
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "considered",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": "not_considered",
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 666,
+      "admitted": 540,
+      "enrolled": 325
+    },
+    "female": {
+      "applied": 1099,
+      "admitted": 845,
+      "enrolled": 483
+    },
+    "total": {
+      "applied": 1765,
+      "admitted": 1385,
+      "enrolled": 808
+    }
+  },
+  "slug": "stockton"
+}

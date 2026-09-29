@@ -445,6 +445,11 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://commondatasets.com/schools/stockton.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://commondatasets.com/schools/stony-brook.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
