@@ -54,6 +54,43 @@ export const ESSAY_SCALE_EXAMPLES = [
     { score: 8, desc: 'Distinctive and vivid — concrete specific details, a strong personal voice, and real self-reflection that shows who you are.' },
 ];
 
+// Class-rank slider bands: 20 five-point bands, top-of-class first. `topPct`
+// is each band's midpoint (percent from the top of the class), used directly
+// as the "userTopPct" input to classRankPercentile. Position 0 on the slider
+// is "not ranked / skip" (null), positions 1-20 index into this array.
+export const CLASS_RANK_BANDS = [
+    { topPct: 2.5,  label: 'Top 5%' },
+    { topPct: 7.5,  label: 'Top 5–10%' },
+    { topPct: 12.5, label: 'Top 10–15%' },
+    { topPct: 17.5, label: 'Top 15–20%' },
+    { topPct: 22.5, label: 'Top 20–25%' },
+    { topPct: 27.5, label: 'Top 25–30%' },
+    { topPct: 32.5, label: 'Top 30–35%' },
+    { topPct: 37.5, label: 'Top 35–40%' },
+    { topPct: 42.5, label: 'Top 40–45%' },
+    { topPct: 47.5, label: 'Top 45–50%' },
+    { topPct: 52.5, label: 'Top 50–55%' },
+    { topPct: 57.5, label: 'Top 55–60%' },
+    { topPct: 62.5, label: 'Top 60–65%' },
+    { topPct: 67.5, label: 'Top 65–70%' },
+    { topPct: 72.5, label: 'Top 70–75%' },
+    { topPct: 77.5, label: 'Top 75–80%' },
+    { topPct: 82.5, label: 'Top 80–85%' },
+    { topPct: 87.5, label: 'Top 85–90%' },
+    { topPct: 92.5, label: 'Top 90–95%' },
+    { topPct: 97.5, label: 'Bottom 5%' },
+];
+
+export function classRankBandLabel(position) {
+    if (!position) return 'Not Ranked / Prefer not to say';
+    return CLASS_RANK_BANDS[position - 1]?.label ?? 'Not Ranked / Prefer not to say';
+}
+
+export function classRankTopPctFromPosition(position) {
+    if (!position) return null;
+    return CLASS_RANK_BANDS[position - 1]?.topPct ?? null;
+}
+
 export const CHANCE_TIERS = [
     { ceiling: 0.01,  key: 'not-possible',      label: 'Not Possible' },
     { ceiling: 0.08,  key: 'highly-unlikely',    label: 'Highly Unlikely' },
@@ -65,8 +102,20 @@ export const CHANCE_TIERS = [
 ];
 
 const ACADEMIC_FACTOR_KEYS = ['rigor', 'class_rank', 'academic_gpa', 'test_scores'];
-const HOLISTIC_FACTOR_KEYS = ['essay', 'extracurriculars', 'talent', 'character', 'recommendations'];
+// 'interview' counts toward the holistic side of a school's own academic/holistic
+// split now too, in addition to its own dynamic weight inside holisticIndex below —
+// previously a school's declared interview importance was read nowhere at all.
+const HOLISTIC_FACTOR_KEYS = ['essay', 'extracurriculars', 'talent', 'character', 'recommendations', 'interview'];
 const IMPORTANCE_WEIGHT = { very_important: 3, important: 2, considered: 1, not_considered: 0 };
+
+// The Common Data Set has no "need-blind for international applicants" field, so
+// this is a disclosed, hand-curated list rather than sourced CDS data — a short,
+// well-documented, stable set of schools (among the ones we track) that are both
+// need-blind AND meet full demonstrated need for international applicants. Every
+// other school defaults to need-aware for internationals, which is accurate for
+// the overwhelming majority of U.S. institutions (nearly all public schools and
+// all but a handful of privates limit or condition aid for international students).
+const NEED_BLIND_INTERNATIONAL_SLUGS = new Set(['harvard', 'mit', 'princeton', 'yale', 'dartmouth']);
 
 const GPA_BANDS = [
     { min: 0.00, max: 0.999, key: 'below_1_0' },
@@ -93,12 +142,29 @@ const COMPETITIVE_MAJOR_MULTIPLIER = 0.7;
 // applicants-to-admits acceptance rate, which is diluted by that long tail.
 // This constant shifts the probability curve to reflect that, calibrated so
 // a solidly-above-average profile at a ~30% public school reads as "Likely"
-// rather than sitting at the bare acceptance rate.
+// rather than sitting at the bare acceptance rate. This is the shift at full
+// strength (see profileSensitivity below) — schools at ~30% acceptance and
+// above get exactly this; it tapers down below that.
 const ADMIT_MEDIAN_ANCHOR_SHIFT = 0.45;
 
 function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
 function scaleToScore100(v, max) { return v == null ? null : clamp((v - 1) / (max - 1) * 100, 0, 100); }
 function maxOf(arr) { const v = arr.filter(x => x != null); return v.length ? Math.max(...v) : null; }
+
+// At schools admitting ~30%+ of applicants, this is 1.0 (no change from a flat
+// model). Below that, it tapers down to 0.55 at the most selective end (~0%
+// acceptance). Rationale: at a hyper-selective school the admitted pool is so
+// tightly bunched in quality, and so oversubscribed relative to spots, that
+// being well above the admitted median doesn't swing your real odds nearly as
+// much as the same gap would at a less selective school — a large share of
+// equally-excellent applicants get turned away regardless of merit. A flat
+// sensitivity constant overstated this at the low end (a "combined=80"
+// profile at a 4% school was landing at "Likely," which doesn't match how
+// hyper-selective admissions actually plays out) while already being
+// reasonably calibrated at 30%+ schools, so only the low end is dampened.
+function profileSensitivity(baseRate) {
+    return clamp(0.55 + baseRate * 1.5, 0.55, 1.0);
+}
 
 // ── GPA ──────────────────────────────────────────────────────────────────
 
@@ -157,11 +223,52 @@ function genericTestPercentile(sat, act) {
     return maxOf([satP, actP]);
 }
 
+// ── Class rank ───────────────────────────────────────────────────────────
+// CDS class-rank buckets are cumulative-from-the-top (top10 ⊆ top25 ⊆ top50)
+// and top50/bottom50 are complementary halves. We convert them into five
+// mutually exclusive bands and estimate the user's percentile the same way
+// gpaPercentile does: count bands strictly worse than the user's, plus half
+// of their own band. userTopPct is the midpoint of the slider band the user
+// picked (e.g. "Top 5-10%" -> 7.5).
+export function classRankPercentile(userTopPct, buckets) {
+    if (userTopPct == null || !buckets) return null;
+    const { top10, top25, top50, bottom50, bottom25 } = buckets;
+    if ([top10, top25, top50, bottom50, bottom25].every(v => v == null)) return null;
+
+    const bands = [
+        { lo: 0,  hi: 10,  frac: Math.max(top10 ?? 0, 0) },
+        { lo: 10, hi: 25,  frac: Math.max((top25 ?? 0) - (top10 ?? 0), 0) },
+        { lo: 25, hi: 50,  frac: Math.max((top50 ?? 0) - (top25 ?? 0), 0) },
+        { lo: 50, hi: 75,  frac: Math.max((bottom50 ?? 0) - (bottom25 ?? 0), 0) },
+        { lo: 75, hi: 100, frac: Math.max(bottom25 ?? 0, 0) },
+    ];
+    const total = bands.reduce((s, b) => s + b.frac, 0);
+    if (total <= 0) return null;
+
+    let worse = 0, own = 0;
+    for (const b of bands) {
+        if (userTopPct <= b.lo) worse += b.frac;
+        else if (userTopPct > b.lo && userTopPct <= b.hi) own += b.frac;
+    }
+    return clamp((worse + own / 2) / total * 100, 1, 99);
+}
+
+// No official IB-to-AP concordance table exists; this is a disclosed, commonly-
+// used rough heuristic (subtract 2 from the IB 1-7 average to land on AP's 1-5
+// scale — IB 7/6 ≈ AP 5, IB 5 ≈ AP 4, IB 3 ≈ AP 1) rather than precise research,
+// used only so IB students can enter their real IB average directly instead of
+// converting it by hand.
+export function ibToApEquivalent(ibAvg) {
+    return ibAvg == null ? null : clamp(ibAvg - 2, 1, 5);
+}
+
 // ── Rigor (AP/IB load + weighted-GPA strength relative to the student's own school) ──
 
 export function rigorScore(numCourses, avgScore, gpaWeighted, gpaMaxWeighted) {
     const parts = [];
-    if (numCourses) parts.push({ v: Math.min(1, numCourses / 10) * 100, w: 0.45 });
+    // != null (not truthy) so an explicit "0 rigorous courses" is real data, not
+    // silently dropped and treated the same as "didn't answer."
+    if (numCourses != null) parts.push({ v: clamp(numCourses / 10, 0, 1) * 100, w: 0.45 });
     if (avgScore != null) parts.push({ v: clamp(avgScore / 5, 0, 1) * 100, w: 0.35 });
     if (gpaWeighted != null && gpaMaxWeighted) parts.push({ v: clamp(gpaWeighted / gpaMaxWeighted, 0, 1) * 100, w: 0.20 });
     if (!parts.length) return 50; // no rigor data at all — neutral, not a penalty
@@ -181,23 +288,23 @@ export function academicIndex(school, profile) {
     const testPct = testSpecific ?? genericTestPercentile(profile.sat, profile.act);
     const testSourced = testSpecific != null;
 
+    const classRankPct = classRankPercentile(profile.classRankTopPct, school.class_rank);
+
     const rigor = rigorScore(profile.apCount, profile.apAvgScore, effectiveWeightedGpa(profile), profile.gpaMaxWeighted);
 
     const parts = [];
-    if (gpaPct != null) parts.push({ v: gpaPct, w: 0.40 });
-    if (testPct != null) parts.push({ v: testPct, w: 0.38 });
-    parts.push({ v: rigor, w: 0.22 });
+    if (gpaPct != null) parts.push({ v: gpaPct, w: 0.32 });
+    if (testPct != null) parts.push({ v: testPct, w: 0.30 });
+    if (classRankPct != null) parts.push({ v: classRankPct, w: 0.20 });
+    parts.push({ v: rigor, w: 0.18 });
 
     const totalW = parts.reduce((s, p) => s + p.w, 0);
-    let value = parts.reduce((s, p) => s + p.v * p.w, 0) / totalW;
+    const value = clamp(parts.reduce((s, p) => s + p.v * p.w, 0) / totalW, 0, 100);
 
-    const failedPenalty = Math.min((profile.coursesFailed ?? 0) * 6, 24);
-    value = clamp(value - failedPenalty, 0, 100);
-
-    return { value, gpaPct, gpaSourced, testPct, testSourced, rigor, failedPenalty };
+    return { value, gpaPct, gpaSourced, testPct, testSourced, classRankPct, rigor };
 }
 
-// ── Holistic Index (self-rated: Activities, Awards, Essay, LOR) ────────
+// ── Holistic Index (self-rated: Activities, Awards, Essay, LOR, Interview) ──
 
 export function activitiesIndex(selfRating) {
     return scaleToScore100(selfRating, 10) ?? 50;
@@ -207,13 +314,40 @@ export function awardsIndex(selfRating) {
     return scaleToScore100(selfRating, 10) ?? 50;
 }
 
-export function holisticIndex(profile) {
+export function interviewIndex(selfRating) {
+    return scaleToScore100(selfRating, 5) ?? 50;
+}
+
+// Interview isn't a fixed weight like the others — plenty of schools don't
+// interview at all, so a self-rating there shouldn't move the needle. Its
+// weight scales with that specific school's own declared interview importance
+// (0 at "not considered" schools, up to INTERVIEW_MAX_WEIGHT — on par with
+// LOR — at schools that call it "Very Important"), and whatever weight it
+// claims is taken proportionally from the other four, which always keep their
+// relative 0.39 / 0.28 / 0.17 / 0.16 ratio to each other.
+const HOLISTIC_BASE_WEIGHTS = { ec: 0.39, essay: 0.28, awards: 0.17, lor: 0.16 };
+const INTERVIEW_MAX_WEIGHT = 0.15;
+const INTERVIEW_IMPORTANCE_SCALE = { very_important: 1, important: 0.66, considered: 0.33, not_considered: 0 };
+
+export function holisticIndex(profile, school) {
     const ec = activitiesIndex(profile.activitiesRating);
     const essay = scaleToScore100(profile.essayRating, 10) ?? 50;
     const awards = awardsIndex(profile.awardsRating);
     const lor = scaleToScore100(profile.lorRating, 5) ?? 50;
-    const value = ec * 0.39 + essay * 0.28 + awards * 0.17 + lor * 0.16;
-    return { value, ec, essay, awards, lor };
+    const interview = interviewIndex(profile.interviewRating);
+
+    const interviewImportance = INTERVIEW_IMPORTANCE_SCALE[school?.admission_factors?.interview] ?? 0;
+    const interviewWeight = INTERVIEW_MAX_WEIGHT * interviewImportance;
+    const scale = 1 - interviewWeight; // base weights already sum to 1.00
+
+    const value =
+        ec * HOLISTIC_BASE_WEIGHTS.ec * scale +
+        essay * HOLISTIC_BASE_WEIGHTS.essay * scale +
+        awards * HOLISTIC_BASE_WEIGHTS.awards * scale +
+        lor * HOLISTIC_BASE_WEIGHTS.lor * scale +
+        interview * interviewWeight;
+
+    return { value, ec, essay, awards, lor, interview, interviewWeight };
 }
 
 // ── Per-school academic/holistic blend from CDS admission factors ──────
@@ -242,8 +376,17 @@ export function residencyModifier(school, profile) {
     return profile.homeState === school.state ? importance * 2 : -importance * 1.5;
 }
 
-export function internationalModifier(profile) {
+// Only bites if the applicant said they'll need financial aid — a full-pay
+// international applicant isn't disadvantaged by a need-aware policy — and
+// only at schools that aren't on the need-blind-for-international list above.
+// Income (when given) sets how severe the need-aware penalty is; leaving it
+// blank defaults to the same mid-severity penalty as before, consistent with
+// this being a real structural disadvantage rather than a self-rating (unlike
+// the 1-10/1-5 scales, silence here isn't treated as neutral).
+export function internationalModifier(school, profile) {
     if (profile.country !== 'international') return 0;
+    if (profile.needsFinancialAid === false) return 0;
+    if (NEED_BLIND_INTERNATIONAL_SLUGS.has(school.slug)) return 0;
     if (profile.incomeBand === '200k-plus') return -1;
     if (!profile.incomeBand) return -3;
     return -4;
@@ -316,19 +459,19 @@ export function estimateProbability(school, profile, selection = {}) {
     const base = competitiveMajor ? clamp(planRate * COMPETITIVE_MAJOR_MULTIPLIER, 0.001, 0.98) : planRate;
 
     const ai = academicIndex(school, profile);
-    const hi = holisticIndex(profile);
+    const hi = holisticIndex(profile, school);
     const { academicWeight, holisticWeight, sourced } = academicHolisticSplit(school);
     const combined = ai.value * academicWeight + hi.value * holisticWeight;
 
     const modifier =
         residencyModifier(school, profile) +
-        internationalModifier(profile) +
+        internationalModifier(school, profile) +
         legacyModifier(school, selection.legacy) +
         firstGenModifier(school, profile.firstGen);
 
+    const k = profileSensitivity(base);
     const baseLogit = Math.log(base / (1 - base));
-    const k = 1.0;
-    const logit = baseLogit + ADMIT_MEDIAN_ANCHOR_SHIFT + k * ((combined - 50) / 10) + modifier / 10;
+    const logit = baseLogit + ADMIT_MEDIAN_ANCHOR_SHIFT * k + k * ((combined - 50) / 10) + modifier / 10;
     const p = clamp(1 / (1 + Math.exp(-logit)), 0.0005, 0.995);
 
     return {
@@ -348,7 +491,7 @@ if (typeof document !== 'undefined') {
 
     const state = {
         targetSchools: [], // { slug, plan, legacy, competitiveMajor }
-        ratings: { activities: null, awards: null, essay: null, lor: null },
+        ratings: { activities: null, awards: null, essay: null, lor: null, interview: null },
     };
 
     let allSchools = [];
@@ -360,7 +503,9 @@ if (typeof document !== 'undefined') {
             const draft = JSON.parse(raw);
             Object.entries(draft.fields ?? {}).forEach(([id, v]) => {
                 const el = document.getElementById(id);
-                if (el) el.value = v;
+                if (!el) return;
+                if (el.type === 'checkbox') el.checked = !!v;
+                else el.value = v;
             });
             state.targetSchools = draft.targetSchools ?? [];
             state.ratings = { ...state.ratings, ...(draft.ratings ?? {}) };
@@ -369,15 +514,17 @@ if (typeof document !== 'undefined') {
 
     const FIELD_IDS = [
         'cm-gpa-unweighted', 'cm-gpa-weighted', 'cm-gpa-max-weighted',
-        'cm-courses-failed', 'cm-ap-count', 'cm-ap-avg', 'cm-sat', 'cm-act',
-        'cm-country', 'cm-state', 'cm-demographic', 'cm-first-gen', 'cm-income',
+        'cm-course-track', 'cm-ap-count', 'cm-ap-avg', 'cm-ib-count', 'cm-ib-avg',
+        'cm-dual-enrollment-check', 'cm-dual-enrollment-count',
+        'cm-sat', 'cm-act', 'cm-class-rank-band',
+        'cm-country', 'cm-state', 'cm-demographic', 'cm-first-gen', 'cm-income', 'cm-intl-aid',
     ];
 
     function saveDraft() {
         const fields = {};
         FIELD_IDS.forEach(id => {
             const el = document.getElementById(id);
-            if (el) fields[id] = el.value;
+            if (el) fields[id] = el.type === 'checkbox' ? el.checked : el.value;
         });
         localStorage.setItem(DRAFT_KEY, JSON.stringify({
             fields, targetSchools: state.targetSchools, ratings: state.ratings,
@@ -386,10 +533,32 @@ if (typeof document !== 'undefined') {
 
     function val(id) { return document.getElementById(id)?.value ?? ''; }
     function num(id) { const v = val(id); return v === '' ? null : Number(v); }
+    function checked(id) { return !!document.getElementById(id)?.checked; }
 
     function toggleStateField() {
         const isUsa = val('cm-country') === 'usa';
         document.getElementById('cm-state-field').style.display = isUsa ? '' : 'none';
+        document.getElementById('cm-intl-aid-field').style.display = isUsa ? 'none' : '';
+    }
+
+    function toggleCourseTrackFields() {
+        const track = val('cm-course-track');
+        document.getElementById('cm-ap-count-field').style.display = track === 'ap' ? '' : 'none';
+        document.getElementById('cm-ap-avg-field').style.display = track === 'ap' ? '' : 'none';
+        document.getElementById('cm-ib-count-field').style.display = track === 'ib' ? '' : 'none';
+        document.getElementById('cm-ib-avg-field').style.display = track === 'ib' ? '' : 'none';
+    }
+
+    function toggleDualEnrollmentCount() {
+        document.getElementById('cm-dual-enrollment-count').style.display = checked('cm-dual-enrollment-check') ? '' : 'none';
+    }
+
+    function renderClassRankBandLabel() {
+        const slider = document.getElementById('cm-class-rank-band');
+        const position = Number(slider.value) || 0;
+        document.getElementById('cm-class-rank-band-value').textContent = classRankBandLabel(position);
+        const pct = (position / (Number(slider.max) || 20)) * 100;
+        slider.style.background = `linear-gradient(to right, #ed6d0b 0%, #ed6d0b ${pct}%, #ddd ${pct}%, #ddd 100%)`;
     }
 
     // ── Scale pickers (activities / awards / essay / LOR) ──
@@ -493,23 +662,37 @@ if (typeof document !== 'undefined') {
 
     // ── Results ──
     function buildProfile() {
+        const track = val('cm-course-track'); // '', 'ap', 'ib'
+        const trackCount = track === 'ap' ? num('cm-ap-count') : track === 'ib' ? num('cm-ib-count') : null;
+        const trackAvgApEquivalent = track === 'ap' ? num('cm-ap-avg')
+            : track === 'ib' ? ibToApEquivalent(num('cm-ib-avg'))
+            : null;
+        const dualCount = checked('cm-dual-enrollment-check') ? num('cm-dual-enrollment-count') : null;
+        // Only combine into a real count if at least one side actually has data —
+        // otherwise this should stay null (no rigor-count data at all), not 0.
+        const rigorCourseCount = (trackCount != null || dualCount != null) ? (trackCount ?? 0) + (dualCount ?? 0) : null;
+
+        const intlAid = val('cm-intl-aid');
+
         return {
             gpaUnweighted: num('cm-gpa-unweighted'),
             gpaWeighted: num('cm-gpa-weighted'),
             gpaMaxWeighted: num('cm-gpa-max-weighted'),
-            coursesFailed: num('cm-courses-failed') ?? 0,
-            apCount: num('cm-ap-count'),
-            apAvgScore: num('cm-ap-avg'),
+            apCount: rigorCourseCount,
+            apAvgScore: trackAvgApEquivalent,
             sat: num('cm-sat'),
             act: num('cm-act'),
+            classRankTopPct: classRankTopPctFromPosition(Number(val('cm-class-rank-band')) || 0),
             country: val('cm-country') || 'usa',
             homeState: val('cm-state') || null,
             firstGen: val('cm-first-gen') === 'yes',
             incomeBand: val('cm-income') || null,
+            needsFinancialAid: intlAid === 'yes' ? true : intlAid === 'no' ? false : null,
             activitiesRating: state.ratings.activities,
             awardsRating: state.ratings.awards,
             essayRating: state.ratings.essay,
             lorRating: state.ratings.lor,
+            interviewRating: state.ratings.interview,
         };
     }
 
@@ -554,10 +737,10 @@ if (typeof document !== 'undefined') {
                     <div class="cm-detail-row"><span>Blend used (this school's CDS weighting)</span><span>${Math.round(result.academicWeight * 100)}% academic / ${Math.round(result.holisticWeight * 100)}% holistic</span></div>
                     ${!result.ai.gpaSourced && result.ai.gpaPct != null ? `<div class="cm-detail-row"><span>GPA percentile</span><span>estimated — school doesn't report a GPA distribution</span></div>` : ''}
                     ${!result.ai.testSourced && result.ai.testPct != null ? `<div class="cm-detail-row"><span>Test-score percentile</span><span>estimated — school doesn't report a test-score range</span></div>` : ''}
-                    ${result.ai.failedPenalty ? `<div class="cm-detail-row"><span>Failed-course penalty</span><span>-${result.ai.failedPenalty.toFixed(1)}</span></div>` : ''}
-                    ${result.modifier !== 0 ? `<div class="cm-detail-row"><span>Residency / legacy / first-gen adjustments</span><span>${result.modifier > 0 ? '+' : ''}${result.modifier.toFixed(1)}</span></div>` : ''}
+                    ${result.hi.interviewWeight > 0 ? `<div class="cm-detail-row"><span>Interview weight at this school</span><span>${Math.round(result.hi.interviewWeight * 100)}% of Holistic Index</span></div>` : ''}
+                    ${result.modifier !== 0 ? `<div class="cm-detail-row"><span>Residency / legacy / first-gen / international-aid adjustments</span><span>${result.modifier > 0 ? '+' : ''}${result.modifier.toFixed(1)}</span></div>` : ''}
                     ${result.competitiveMajor ? `<div class="cm-detail-row"><span>Competitive-major haircut (generic heuristic)</span><span>×0.7 on base rate</span></div>` : ''}
-                    <div class="cm-detail-note">Academic Index blends GPA percentile, test-score percentile, and course rigor against this school's own reported data. Holistic Index blends your Activities, Awards, Essay, and Letters-of-Recommendation ratings.</div>
+                    <div class="cm-detail-note">Academic Index blends GPA percentile, class-rank percentile (if given), test-score percentile, and course rigor against this school's own reported data. Holistic Index blends your Activities, Awards, Essay, Letters-of-Recommendation, and Interview ratings — Interview's weight above is this school's own.</div>
                 </div>
             </div>`;
         }).join('');
@@ -586,18 +769,26 @@ if (typeof document !== 'undefined') {
 
         loadDraft();
         toggleStateField();
+        toggleCourseTrackFields();
+        toggleDualEnrollmentCount();
+        renderClassRankBandLabel();
         renderTargetSchools();
 
         renderScale('cm-scale-activities', 'cm-scale-activities-caption', 'activities');
         renderScale('cm-scale-awards', 'cm-scale-awards-caption', 'awards');
         renderScale('cm-scale-essay', 'cm-scale-essay-caption', 'essay');
         renderScale('cm-scale-lor', 'cm-scale-lor-caption', 'lor');
+        renderScale('cm-scale-interview', 'cm-scale-interview-caption', 'interview');
 
         renderScaleExamples('cm-scale-activities-examples', ACTIVITY_SCALE_EXAMPLES);
         renderScaleExamples('cm-scale-awards-examples', AWARD_SCALE_EXAMPLES);
         renderScaleExamples('cm-scale-essay-examples', ESSAY_SCALE_EXAMPLES);
 
         document.getElementById('cm-country').addEventListener('change', () => { toggleStateField(); saveDraft(); });
+        document.getElementById('cm-course-track').addEventListener('change', () => { toggleCourseTrackFields(); saveDraft(); });
+        document.getElementById('cm-dual-enrollment-check').addEventListener('change', () => { toggleDualEnrollmentCount(); saveDraft(); });
+
+        document.getElementById('cm-class-rank-band').addEventListener('input', renderClassRankBandLabel);
 
         const schoolInput = document.getElementById('cm-school-input');
         const schoolDropdown = document.getElementById('cm-school-dropdown');
