@@ -347,6 +347,46 @@ body.page-info .hero-banner {
     color: #ed6d0b;
 }
 
+/* Category filter bar — single-select pills beneath the search bar, same
+   rounded/orange language as .hero-cta-btn above but with an on/off toggle
+   state instead of a hover-only inversion: unselected pills sit outlined,
+   the active one fills solid, matching the sidebar's .filter-btn pattern
+   but in this page's pill shape rather than sharp corners. */
+.category-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 14px auto 0;
+}
+
+.category-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 20px;
+    background: #fff;
+    border: 1.5px solid #ed6d0b;
+    border-radius: 999px;
+    color: #ed6d0b;
+    font-family: var(--font-display);
+    font-size: 0.9em;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+
+.category-btn:hover {
+    background: #fff3e9;
+}
+
+.category-btn.active {
+    background: #ed6d0b;
+    color: #fff;
+}
+
 .page-intro-desc + .page-intro-desc {
     margin-top: 12px;
 }

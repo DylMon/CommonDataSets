@@ -89,6 +89,7 @@
                     </button>
                 </div>
             </div>
+            <div class="category-filter-bar" id="category-filter-bar"></div>
             <p class="results-count" id="results-count"></p>
             <div class="page-layout">
             <div class="sidebar">
@@ -206,10 +207,25 @@
             localStorage.setItem('cds_favorites', JSON.stringify([...favorites]));
         }
 
-        const activeFilters = { eaEd: 'all', size: 40000, selectivity: 100, tuition: 75000, sat: 1600, earnings: 0 };
+        const activeFilters = { category: 'all', eaEd: 'all', size: 40000, selectivity: 100, tuition: 75000, sat: 1600, earnings: 0 };
+
+        // Human-readable labels for the data-driven tags in categories.json
+        // (see data/categories.json / scripts/build-cds-json.py). A tag with
+        // no entry here still renders — falls back to title-casing the slug
+        // — so a brand-new category never needs a matching code change here.
+        const CATEGORY_LABELS = {
+            'ivy-league': 'Ivy League',
+            'uc-system': 'UC System',
+            'liberal-arts': 'Liberal Arts',
+        };
+
+        function categoryLabel(tag) {
+            return CATEGORY_LABELS[tag] ?? tag.split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' ');
+        }
 
         function applyFilters(schools) {
             return schools.filter(s => {
+                if (activeFilters.category !== 'all' && !(s.categories ?? []).includes(activeFilters.category)) return false;
                 if (activeFilters.eaEd === 'ea' && s.ea_ed_type !== 'EA') return false;
                 if (activeFilters.eaEd === 'ed' && s.ea_ed_type !== 'ED') return false;
                 if (activeFilters.size < 40000 && (s.total_undergrads == null || s.total_undergrads > activeFilters.size)) return false;
@@ -219,6 +235,16 @@
                 if (activeFilters.earnings > 0 && (s.median_earnings_6yr == null || s.median_earnings_6yr < activeFilters.earnings)) return false;
                 return true;
             });
+        }
+
+        function renderCategoryBar() {
+            const bar = document.getElementById('category-filter-bar');
+            const tags = [...new Set(allSchools.flatMap(s => s.categories ?? []))].sort();
+
+            const btn = (value, label) =>
+                `<button type="button" class="category-btn${activeFilters.category === value ? ' active' : ''}" data-category="${value}">${label}</button>`;
+
+            bar.innerHTML = btn('all', 'All') + tags.map(t => btn(t, categoryLabel(t))).join('');
         }
 
         const SORTERS = {
@@ -456,6 +482,7 @@
             localStorage.setItem('cds_data_year', year);
             document.getElementById('page-intro-desc').textContent =
                 `Official Common Data Set submissions gathered directly from ${allSchools.length} top US universities, giving students and families one place to compare verified admissions statistics, test score ranges, cost of attendance, and enrollment data without the noise.`;
+            renderCategoryBar();
             renderList(currentSort);
             renderFavoritesBox();
             renderHistory();
@@ -501,6 +528,18 @@
                 updateSearchClear();
                 renderList(currentSort);
                 searchInput.focus();
+            });
+
+            // Delegated (not bound per-button) since renderCategoryBar() can
+            // redraw this bar's contents — a plain per-button listener would
+            // be lost the moment the markup it was attached to gets replaced.
+            document.getElementById('category-filter-bar').addEventListener('click', e => {
+                const btn = e.target.closest('.category-btn');
+                if (!btn) return;
+                activeFilters.category = btn.dataset.category;
+                currentPage = 1;
+                renderCategoryBar();
+                renderList(currentSort);
             });
 
             const sortDropdown = document.getElementById('sort-dropdown');
@@ -733,6 +772,8 @@
             updateRangeFill(earnRange);
 
             document.getElementById('reset-filters-btn').addEventListener('click', () => {
+                activeFilters.category = 'all';
+                renderCategoryBar();
                 activeFilters.eaEd = 'all';
                 document.querySelectorAll('.filter-btn[data-filter="ea-ed"]').forEach(b => b.classList.remove('active'));
                 document.querySelector('.filter-btn[data-filter="ea-ed"][data-value="all"]').classList.add('active');
