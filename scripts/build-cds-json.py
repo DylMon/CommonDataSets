@@ -49,6 +49,17 @@ def main():
     if ranking_path.exists():
         rankings = json.loads(ranking_path.read_text(encoding="utf-8")).get("rankings", {})
 
+    # Same reasoning as us_news_ranking above: institutional categories
+    # (Ivy League, UC system, liberal arts, ...) aren't reported in a CDS
+    # filing, so they're hand-maintained here rather than guessed by the
+    # model during extraction (which would be unreliable and could drift
+    # between re-parses). A school with no entry gets an empty list, not
+    # null, so frontend filter code can always safely call .includes() on it.
+    categories_path = REPO_ROOT / "data" / "categories.json"
+    categories = {}
+    if categories_path.exists():
+        categories = json.loads(categories_path.read_text(encoding="utf-8"))
+
     files = sorted(input_dir.glob("*.json"), key=lambda p: p.stem)
     if not files:
         raise SystemExit(f"No parsed JSON files found in {input_dir}")
@@ -59,6 +70,7 @@ def main():
             data = json.load(fh)
         data.setdefault("slug", YEAR_SUFFIX_RE.sub("", f.stem))
         data["us_news_ranking"] = rankings.get(data["slug"])
+        data["categories"] = categories.get(data["slug"], [])
         schools.append({"id": i, **data})
 
     payload = {
