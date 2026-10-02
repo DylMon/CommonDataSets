@@ -34,7 +34,6 @@
                     ${navLink('/', 'Data Sets', 'index')}
                     ${navLink('/compare/', 'Compare', 'compare')}
                     ${navLink('/chanceme/', 'Chance Me', 'chanceme')}
-                    ${navLink('/info/', 'About', 'info')}
                 </div>
             </div>
         </header>`;
