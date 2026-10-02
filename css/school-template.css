@@ -270,6 +270,11 @@
    wrap: .tbl-wrap's horizontal scroll is the fallback for a column too
    narrow for its own label, not mangling the label into two lines. */
 .tbl th, .tbl td { padding: 10px 14px; overflow-wrap: break-word; }
+/* FONT CANDIDATE: both of these put dense data-table text (column headers,
+   row labels) in the display serif rather than Public Sans. That split is
+   intentional (see comment below) but worth re-auditing now that the data
+   face has real weights of its own — a table is exactly the content type
+   usually best served by the data/UI face throughout, not the headline face. */
 .tbl th { font-family: var(--font-display); font-weight: 400; letter-spacing: 0.03em; white-space: nowrap; }
 /* First cell of every row is a label (round name, expense name, "Male"…); the
    remaining columns are figures and stay in the data face. */
@@ -291,6 +296,10 @@
 .score-row-label {
   width: 160px;
   flex-shrink: 0;
+  /* FONT NOTE: font-weight:300 was likely rendering as Castoro's only
+     weight (400) all along, since it had nothing lighter to fall back to.
+     Source Serif 4 actually ships a true 300 — worth a visual check that
+     this label doesn't now read thinner/different than it used to. */
   font-family: var(--font-display);
   font-size: 1.03em;
   color: #000;
