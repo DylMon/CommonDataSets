@@ -19,21 +19,19 @@
 
     const nav = `
         <header class="site-header">
-            <a class="site-logo-link" href="/">
-                <img class="site-logo" src="/images/logo-transparent.png" alt="CommonDataSets">
-            </a>
             <div class="nav-wrapper">
-                <a class="nav-brand" href="/">CommonDataSets</a>
-                <div class="nav-corner-links">
-                    <a href="/info/">About Us</a>
-                    <a href="/contact/">Contact Us</a>
-                </div>
-            </div>
-            <div class="header-accent-bar">
+                <a class="nav-brand-group" href="/">
+                    <img class="site-logo" src="/images/logo-transparent.png" alt="">
+                    <span class="nav-brand">CommonDataSets</span>
+                </a>
                 <div class="left-side">
                     ${navLink('/', 'Data Sets', 'index')}
                     ${navLink('/compare/', 'Compare', 'compare')}
                     ${navLink('/chanceme/', 'Chance Me', 'chanceme')}
+                </div>
+                <div class="nav-corner-links">
+                    <a href="/info/">About Us</a>
+                    <a href="/contact/">Contact Us</a>
                 </div>
             </div>
         </header>`;
