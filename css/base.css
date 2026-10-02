@@ -1289,6 +1289,20 @@ body.header-hidden .school-page-layout .right-sidebar {
     color: #ed6d0b;
 }
 
+/* Which CDS reporting year this card's stats actually come from — sits
+   between the name and the favorite star, see .school-name's gap. */
+.school-data-year {
+    flex-shrink: 0;
+    font-family: 'Public Sans', sans-serif;
+    font-size: 0.75em;
+    font-weight: 500;
+    color: #777;
+    background: #f2f2f2;
+    border-radius: 999px;
+    padding: 3px 9px;
+    white-space: nowrap;
+}
+
 .school-location {
     display: flex;
     align-items: center;
