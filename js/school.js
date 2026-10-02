@@ -172,6 +172,21 @@ const SCHOOL_META = {
   'thomas-jefferson': { color: '#1A2650' },
   'unebraska-lincoln': { color: '#E41C38' },
   'yeshiva': { color: '#035596' },
+  'amherst': { color: '#3f1f69' },
+  'barnard': { color: '#002F6C' },
+  'bowdoin': { color: '#000000' },
+  'carleton': { color: '#173a79' },
+  'claremont-mckenna': { color: '#60001E' },
+  'davidson': { color: '#970213' },
+  'hamilton': { color: '#002f86' },
+  'harvey-mudd': { color: '#fdb913' },
+  'pomona': { color: '#005499' },
+  'swarthmore': { color: '#84000D' },
+  'urichmond': { color: '#990000' },
+  'vassar': { color: '#951829' },
+  'washington-and-lee': { color: '#003087' },
+  'wellesly': { color: '#002776' },
+  'williams': { color: '#500082' },
 };
 
 // Logos live at images/logos/<slug>.png. A few schools have none yet; the

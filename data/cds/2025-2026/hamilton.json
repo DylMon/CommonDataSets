@@ -1,0 +1,175 @@
+{
+  "name": "Hamilton College",
+  "data_year": "2025-2026",
+  "city": "Clinton",
+  "state": "NY",
+  "location": "Clinton, NY",
+  "school_type": "Private",
+  "website": "www.hamilton.edu",
+  "applicants_total": 8904,
+  "applicants_men": 4147,
+  "applicants_women": 4757,
+  "admitted_total": 1210,
+  "admitted_men": 580,
+  "admitted_women": 630,
+  "enrolled_total": 478,
+  "enrolled_men": 225,
+  "enrolled_women": 253,
+  "acceptance_rate": 0.1359,
+  "application_fee": 65,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "1/6",
+  "waitlist_offered": 2032,
+  "waitlist_accepted": 1226,
+  "waitlist_admitted": 49,
+  "ea_ed_type": "ED I & II",
+  "ea_ed_deadline": "11/15",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": 1120,
+  "ea_apps_admitted": 315,
+  "sat_submitted_pct": 0.35,
+  "sat_submitted_count": 166,
+  "act_submitted_pct": 0.13,
+  "act_submitted_count": 64,
+  "sat_composite_25": 1440,
+  "sat_composite_50": 1480,
+  "sat_composite_75": 1510,
+  "sat_reading_25": 710,
+  "sat_reading_75": 760,
+  "sat_math_25": 710,
+  "sat_math_75": 770,
+  "act_composite_25": 33,
+  "act_composite_50": 34,
+  "act_composite_75": 35,
+  "act_math_25": null,
+  "act_math_75": null,
+  "act_english_25": null,
+  "act_english_75": null,
+  "total_undergrads": 1980,
+  "undergrads_male": 905,
+  "undergrads_female": 1075,
+  "retention_rate": 0.962,
+  "tuition": 75210,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 750,
+  "room_and_board": 19290,
+  "books_supplies": 800,
+  "other_expenses": 1000,
+  "pct_out_of_state": 0.7,
+  "pct_on_campus_housing": 1.0,
+  "applicant_pools": {
+    "ea": {
+      "applied": 1120,
+      "admitted": 315,
+      "rate": 0.2813
+    },
+    "rd": {
+      "applied": 7784,
+      "admitted": 895,
+      "rate": 0.115
+    },
+    "waitlist": {
+      "offered": 2032,
+      "accepted_spots": 1226,
+      "enrolled": 49
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 4147,
+      "female": 4757
+    },
+    "accepted": {
+      "male": 580,
+      "female": 630
+    },
+    "enrolled": {
+      "male": 225,
+      "female": 253
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 40,
+      "hispanic": 52,
+      "black": 25,
+      "white": 266,
+      "american_indian": 1,
+      "asian": 46,
+      "pacific_islander": null,
+      "two_or_more": 34,
+      "unknown": 15,
+      "total": 478
+    },
+    "undergrad": {
+      "nonresident_aliens": 155,
+      "hispanic": 198,
+      "black": 72,
+      "white": 1206,
+      "american_indian": null,
+      "asian": 174,
+      "pacific_islander": null,
+      "two_or_more": 127,
+      "unknown": 43,
+      "total": 1976
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.7,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 166,
+    "sat_submitted_pct": 0.35,
+    "act_submitted_count": 64,
+    "act_submitted_pct": 0.13
+  },
+  "class_rank": {
+    "top10": 0.8636,
+    "top25": 0.9773,
+    "top50": 1.0,
+    "bottom50": null,
+    "bottom25": null
+  },
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "very_important",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "important",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "important",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 134,
+      "admitted": 29,
+      "enrolled": 12
+    },
+    "female": {
+      "applied": 91,
+      "admitted": 13,
+      "enrolled": 2
+    },
+    "total": {
+      "applied": 225,
+      "admitted": 42,
+      "enrolled": 14
+    }
+  },
+  "slug": "hamilton"
+}

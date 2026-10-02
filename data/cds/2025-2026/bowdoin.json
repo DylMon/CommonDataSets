@@ -1,0 +1,171 @@
+{
+  "name": "Bowdoin College",
+  "data_year": "2025-26",
+  "city": "Brunswick",
+  "state": "ME",
+  "location": "Brunswick, ME",
+  "school_type": "Private",
+  "website": "www.bowdoin.edu",
+  "applicants_total": 14045,
+  "applicants_men": 6690,
+  "applicants_women": 7355,
+  "admitted_total": 957,
+  "admitted_men": 440,
+  "admitted_women": 517,
+  "enrolled_total": 515,
+  "enrolled_men": 250,
+  "enrolled_women": 265,
+  "acceptance_rate": 0.0681,
+  "application_fee": 65.0,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "1/5",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": 5,
+  "ea_ed_type": "ED I & II",
+  "ea_ed_deadline": "11/15",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": 1985,
+  "ea_apps_admitted": 296,
+  "sat_submitted_pct": 0.3476,
+  "sat_submitted_count": 179,
+  "act_submitted_pct": 0.1728,
+  "act_submitted_count": 89,
+  "sat_composite_25": 1470,
+  "sat_composite_50": 1510,
+  "sat_composite_75": 1540,
+  "sat_reading_25": 730,
+  "sat_reading_75": 770,
+  "sat_math_25": 730,
+  "sat_math_75": 780,
+  "act_composite_25": 33,
+  "act_composite_50": 34,
+  "act_composite_75": 35,
+  "act_math_25": 31,
+  "act_math_75": 35,
+  "act_english_25": 34,
+  "act_english_75": 35,
+  "total_undergrads": 1841,
+  "undergrads_male": 865,
+  "undergrads_female": 976,
+  "retention_rate": 0.9763,
+  "tuition": 71070,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 670,
+  "room_and_board": 19560,
+  "books_supplies": 840,
+  "other_expenses": 1660,
+  "pct_out_of_state": 0.8933,
+  "pct_on_campus_housing": 1.0,
+  "applicant_pools": {
+    "ea": {
+      "applied": 1985,
+      "admitted": 296,
+      "rate": 0.1491
+    },
+    "rd": null,
+    "waitlist": {
+      "offered": null,
+      "accepted_spots": null,
+      "enrolled": 5
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 6690,
+      "female": 7355
+    },
+    "accepted": {
+      "male": 440,
+      "female": 517
+    },
+    "enrolled": {
+      "male": 250,
+      "female": 265
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 26,
+      "hispanic": 61,
+      "black": 24,
+      "white": 299,
+      "american_indian": 1,
+      "asian": 54,
+      "pacific_islander": 0,
+      "two_or_more": 44,
+      "unknown": 6,
+      "total": 515
+    },
+    "undergrad": {
+      "nonresident_aliens": 118,
+      "hispanic": 276,
+      "black": 99,
+      "white": 981,
+      "american_indian": 2,
+      "asian": 186,
+      "pacific_islander": 1,
+      "two_or_more": 160,
+      "unknown": 14,
+      "total": 1837
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.8933,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 179,
+    "sat_submitted_pct": 0.3476,
+    "act_submitted_count": 89,
+    "act_submitted_pct": 0.1728
+  },
+  "class_rank": {
+    "top10": 89.05,
+    "top25": 100,
+    "top50": 100,
+    "bottom50": 0,
+    "bottom25": 0
+  },
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "very_important",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "very_important",
+    "recommendations": "very_important",
+    "interview": "considered",
+    "extracurriculars": "very_important",
+    "talent": "very_important",
+    "character": "very_important",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 179,
+      "admitted": 18,
+      "enrolled": 6
+    },
+    "female": {
+      "applied": 183,
+      "admitted": 11,
+      "enrolled": 6
+    },
+    "total": {
+      "applied": 362,
+      "admitted": 29,
+      "enrolled": 12
+    }
+  },
+  "slug": "bowdoin"
+}

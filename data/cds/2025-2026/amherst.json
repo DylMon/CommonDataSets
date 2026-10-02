@@ -1,0 +1,175 @@
+{
+  "name": "Amherst College",
+  "data_year": "2025-26",
+  "city": "Amherst",
+  "state": "MA",
+  "location": "Amherst, MA",
+  "school_type": "Private",
+  "website": null,
+  "applicants_total": 15819,
+  "applicants_men": 7425,
+  "applicants_women": 8375,
+  "admitted_total": 1222,
+  "admitted_men": 539,
+  "admitted_women": 682,
+  "enrolled_total": 485,
+  "enrolled_men": 213,
+  "enrolled_women": 271,
+  "acceptance_rate": 0.0773,
+  "application_fee": 75,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "1/5",
+  "waitlist_offered": 1294,
+  "waitlist_accepted": 740,
+  "waitlist_admitted": 44,
+  "ea_ed_type": "ED",
+  "ea_ed_deadline": "11/7",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": 971,
+  "ea_apps_admitted": 216,
+  "sat_submitted_pct": 0.4,
+  "sat_submitted_count": 192,
+  "act_submitted_pct": 0.16,
+  "act_submitted_count": 78,
+  "sat_composite_25": 1470,
+  "sat_composite_50": 1510,
+  "sat_composite_75": 1540,
+  "sat_reading_25": 730,
+  "sat_reading_75": 770,
+  "sat_math_25": 730,
+  "sat_math_75": 790,
+  "act_composite_25": 33,
+  "act_composite_50": 34,
+  "act_composite_75": 35,
+  "act_math_25": 31,
+  "act_math_75": 35,
+  "act_english_25": 34,
+  "act_english_75": 36,
+  "total_undergrads": 1907,
+  "undergrads_male": 849,
+  "undergrads_female": 1055,
+  "retention_rate": 0.98,
+  "tuition": 73140,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 690,
+  "room_and_board": 19260,
+  "books_supplies": 0,
+  "other_expenses": 1800,
+  "pct_out_of_state": 0.87,
+  "pct_on_campus_housing": 1.0,
+  "applicant_pools": {
+    "ea": {
+      "applied": 971,
+      "admitted": 216,
+      "rate": 0.2224
+    },
+    "rd": {
+      "applied": 14848,
+      "admitted": 1006,
+      "rate": 0.0677
+    },
+    "waitlist": {
+      "offered": 1294,
+      "accepted_spots": 740,
+      "enrolled": 44
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 7425,
+      "female": 8375
+    },
+    "accepted": {
+      "male": 539,
+      "female": 682
+    },
+    "enrolled": {
+      "male": 213,
+      "female": 271
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 55,
+      "hispanic": 73,
+      "black": 28,
+      "white": 193,
+      "american_indian": 2,
+      "asian": 56,
+      "pacific_islander": 0,
+      "two_or_more": 49,
+      "unknown": 29,
+      "total": 485
+    },
+    "undergrad": {
+      "nonresident_aliens": 244,
+      "hispanic": 256,
+      "black": 155,
+      "white": 708,
+      "american_indian": 4,
+      "asian": 299,
+      "pacific_islander": 0,
+      "two_or_more": 166,
+      "unknown": 69,
+      "total": 1901
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.87,
+    "international_pct": 0.0845
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 192,
+    "sat_submitted_pct": 0.4,
+    "act_submitted_count": 78,
+    "act_submitted_pct": 0.16
+  },
+  "class_rank": {
+    "top10": 0.88,
+    "top25": 0.96,
+    "top50": 1.0,
+    "bottom50": null,
+    "bottom25": null
+  },
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "important",
+    "academic_gpa": "very_important",
+    "test_scores": "very_important",
+    "essay": "very_important",
+    "recommendations": "very_important",
+    "interview": "not_considered",
+    "extracurriculars": "very_important",
+    "talent": "very_important",
+    "character": "important",
+    "first_gen": "important",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "important",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 370,
+      "admitted": 34,
+      "enrolled": 14
+    },
+    "female": {
+      "applied": 345,
+      "admitted": 21,
+      "enrolled": 10
+    },
+    "total": {
+      "applied": 717,
+      "admitted": 55,
+      "enrolled": 24
+    }
+  },
+  "slug": "amherst"
+}

@@ -1,0 +1,167 @@
+{
+  "name": "Davidson College",
+  "data_year": "2025-26",
+  "city": "Davidson",
+  "state": "NC",
+  "location": "Davidson, NC",
+  "school_type": "Private",
+  "website": "www.davidson.edu",
+  "applicants_total": 8933,
+  "applicants_men": 4325,
+  "applicants_women": 4606,
+  "admitted_total": 1127,
+  "admitted_men": 527,
+  "admitted_women": 600,
+  "enrolled_total": 531,
+  "enrolled_men": 255,
+  "enrolled_women": 276,
+  "acceptance_rate": 0.1262,
+  "application_fee": 50.0,
+  "avg_gpa_weighted": 3.85,
+  "rd_deadline": "1/10",
+  "waitlist_offered": 1968,
+  "waitlist_accepted": 953,
+  "waitlist_admitted": 28,
+  "ea_ed_type": "ED I & II",
+  "ea_ed_deadline": "11/15",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": 1232,
+  "ea_apps_admitted": 358,
+  "sat_submitted_pct": 0.254,
+  "sat_submitted_count": 135,
+  "act_submitted_pct": 0.243,
+  "act_submitted_count": 129,
+  "sat_composite_25": 1410,
+  "sat_composite_50": 1460,
+  "sat_composite_75": 1500,
+  "sat_reading_25": 710,
+  "sat_reading_75": 755,
+  "sat_math_25": 695,
+  "sat_math_75": 760,
+  "act_composite_25": 32,
+  "act_composite_50": 33,
+  "act_composite_75": 34,
+  "act_math_25": null,
+  "act_math_75": null,
+  "act_english_25": null,
+  "act_english_75": null,
+  "total_undergrads": 1860,
+  "undergrads_male": 880,
+  "undergrads_female": 980,
+  "retention_rate": 0.96,
+  "tuition": 73090,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 900,
+  "room_and_board": 18780,
+  "books_supplies": 825,
+  "other_expenses": 1400,
+  "pct_out_of_state": 0.8058,
+  "pct_on_campus_housing": 1.0,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 1968,
+      "accepted_spots": 953,
+      "enrolled": 28
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 4325,
+      "female": 4606
+    },
+    "accepted": {
+      "male": 527,
+      "female": 600
+    },
+    "enrolled": {
+      "male": 255,
+      "female": 276
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 52,
+      "hispanic": 78,
+      "black": 45,
+      "white": 286,
+      "american_indian": 1,
+      "asian": 31,
+      "pacific_islander": 0,
+      "two_or_more": 29,
+      "unknown": 9,
+      "total": 531
+    },
+    "undergrad": {
+      "nonresident_aliens": 209,
+      "hispanic": 231,
+      "black": 138,
+      "white": 1063,
+      "american_indian": 4,
+      "asian": 94,
+      "pacific_islander": 0,
+      "two_or_more": 90,
+      "unknown": 30,
+      "total": 1859
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.8058,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 135,
+    "sat_submitted_pct": 0.254,
+    "act_submitted_count": 129,
+    "act_submitted_pct": 0.243
+  },
+  "class_rank": {
+    "top10": 0.8,
+    "top25": 0.2,
+    "top50": 1.0,
+    "bottom50": 0.0,
+    "bottom25": 0.0
+  },
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "considered",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "very_important",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "very_important",
+    "first_gen": null,
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 76,
+      "admitted": 15,
+      "enrolled": 11
+    },
+    "female": {
+      "applied": 76,
+      "admitted": 13,
+      "enrolled": 6
+    },
+    "total": {
+      "applied": 152,
+      "admitted": 28,
+      "enrolled": 17
+    }
+  },
+  "slug": "davidson"
+}

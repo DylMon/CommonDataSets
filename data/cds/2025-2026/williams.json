@@ -1,0 +1,171 @@
+{
+  "name": "Williams College",
+  "data_year": "2025-26",
+  "city": "Williamstown",
+  "state": "MA",
+  "location": "Williamstown, MA",
+  "school_type": "Private",
+  "website": "www.williams.edu",
+  "applicants_total": 15520,
+  "applicants_men": 7368,
+  "applicants_women": 7248,
+  "admitted_total": 1336,
+  "admitted_men": 628,
+  "admitted_women": 661,
+  "enrolled_total": 567,
+  "enrolled_men": 286,
+  "enrolled_women": 279,
+  "acceptance_rate": 0.0861,
+  "application_fee": 65,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "1/5",
+  "waitlist_offered": 2193,
+  "waitlist_accepted": 850,
+  "waitlist_admitted": 25,
+  "ea_ed_type": "ED",
+  "ea_ed_deadline": "11/15",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": 964,
+  "ea_apps_admitted": 256,
+  "sat_submitted_pct": 0.43,
+  "sat_submitted_count": 242,
+  "act_submitted_pct": 0.18,
+  "act_submitted_count": 104,
+  "sat_composite_25": 1490,
+  "sat_composite_50": 1520,
+  "sat_composite_75": 1550,
+  "sat_reading_25": 740,
+  "sat_reading_75": 770,
+  "sat_math_25": 740,
+  "sat_math_75": 790,
+  "act_composite_25": 33,
+  "act_composite_50": 34,
+  "act_composite_75": 35,
+  "act_math_25": 30,
+  "act_math_75": 35,
+  "act_english_25": 34,
+  "act_english_75": 36,
+  "total_undergrads": 2101,
+  "undergrads_male": 1013,
+  "undergrads_female": 1056,
+  "retention_rate": 0.974,
+  "tuition": 76300,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 340,
+  "room_and_board": 19320,
+  "books_supplies": 1000,
+  "other_expenses": 1850,
+  "pct_out_of_state": 0.87,
+  "pct_on_campus_housing": 0.998,
+  "applicant_pools": {
+    "ea": {
+      "applied": 964,
+      "admitted": 256,
+      "rate": 0.2656
+    },
+    "rd": null,
+    "waitlist": {
+      "offered": 2193,
+      "accepted_spots": 850,
+      "enrolled": 25
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 7368,
+      "female": 7248
+    },
+    "accepted": {
+      "male": 628,
+      "female": 661
+    },
+    "enrolled": {
+      "male": 286,
+      "female": 279
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 60,
+      "hispanic": 79,
+      "black": 28,
+      "white": 252,
+      "american_indian": 0,
+      "asian": 85,
+      "pacific_islander": 0,
+      "two_or_more": 36,
+      "unknown": 44,
+      "total": 584
+    },
+    "undergrad": {
+      "nonresident_aliens": 191,
+      "hispanic": 317,
+      "black": 127,
+      "white": 898,
+      "american_indian": 2,
+      "asian": 271,
+      "pacific_islander": 0,
+      "two_or_more": 150,
+      "unknown": 111,
+      "total": 2067
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.87,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 242,
+    "sat_submitted_pct": 0.43,
+    "act_submitted_count": 104,
+    "act_submitted_pct": 0.18
+  },
+  "class_rank": {
+    "top10": 0.88,
+    "top25": 0.97,
+    "top50": 0.99,
+    "bottom50": 0.01,
+    "bottom25": 0.01
+  },
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "very_important",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "very_important",
+    "interview": "not_considered",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "very_important",
+    "first_gen": "important",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "not_considered",
+    "religious": "considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "important",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 296,
+      "admitted": 13,
+      "enrolled": 9
+    },
+    "female": {
+      "applied": 259,
+      "admitted": 10,
+      "enrolled": 6
+    },
+    "total": {
+      "applied": 595,
+      "admitted": 23,
+      "enrolled": 15
+    }
+  },
+  "slug": "williams"
+}
