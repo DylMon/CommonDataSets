@@ -100,7 +100,7 @@
 
 .cm-input,
 .cm-select {
-    font-family: 'Ropa Sans', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-size: 1.07em;
     font-weight: 400;
     padding: 10px 12px;
@@ -189,7 +189,7 @@
 .cm-scale-btn {
     flex: 1;
     min-width: 38px;
-    font-family: 'Ropa Sans', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-size: 1em;
     font-weight: 600;
     padding: 10px 4px;
@@ -406,7 +406,7 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    font-family: 'Ropa Sans', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-size: 1.1em;
     font-weight: 600;
     text-transform: uppercase;

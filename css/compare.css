@@ -83,6 +83,9 @@
 
 .compare-label {
     display: block;
+    /* FONT CANDIDATE: same tiny all-caps serif label pattern as
+       .detail-section-title in base.css — probably reads cleaner in
+       Public Sans at this size than in the display serif. */
     font-family: var(--font-display);
     font-size: 0.78em;
     font-weight: 400;
@@ -164,6 +167,11 @@
 .compare-card-body { min-width: 0; }
 
 .compare-card-name {
+    /* FONT CANDIDATE / layout risk: same long-university-name problem
+       .school-name on index.html had before its ellipsis fix (e.g.
+       "Massachusetts Institute of Technology" in a narrow card column) —
+       this rule has no overflow/nowrap guard, so it may wrap to 2+ lines
+       and break card-height consistency here too. */
     font-family: var(--font-display);
     font-size: 1.1em;
     font-weight: 400;
