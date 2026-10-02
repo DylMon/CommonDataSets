@@ -78,7 +78,7 @@ export function renderGpaHistogram(canvas, distribution, brandColor) {
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      font: { family: 'Ropa Sans' },
+      font: { family: 'Public Sans' },
       plugins: {
         legend: { display: false },
         tooltip: {
@@ -92,14 +92,14 @@ export function renderGpaHistogram(canvas, distribution, brandColor) {
       scales: {
         x: {
           grid: { display: false },
-          ticks: { font: { family: 'Ropa Sans' }, color: '#666' },
+          ticks: { font: { family: 'Public Sans' }, color: '#666' },
         },
         y: {
           beginAtZero: true,
           grid: { color: '#eee' },
           border: { display: false },
           ticks: {
-            font: { family: 'Ropa Sans' },
+            font: { family: 'Public Sans' },
             color: '#999',
             callback: v => v + '%',
           },
@@ -169,7 +169,7 @@ export function renderClassRankHistogram(canvas, classRank, brandColor) {
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      font: { family: 'Ropa Sans' },
+      font: { family: 'Public Sans' },
       plugins: {
         legend: { display: false },
         tooltip: {
@@ -182,14 +182,14 @@ export function renderClassRankHistogram(canvas, classRank, brandColor) {
       scales: {
         x: {
           grid: { display: false },
-          ticks: { font: { family: 'Ropa Sans' }, color: '#666' },
+          ticks: { font: { family: 'Public Sans' }, color: '#666' },
         },
         y: {
           beginAtZero: true,
           grid: { color: '#eee' },
           border: { display: false },
           ticks: {
-            font: { family: 'Ropa Sans' },
+            font: { family: 'Public Sans' },
             color: '#999',
             callback: v => v + '%',
           },
@@ -227,12 +227,12 @@ export function renderGpaComparisonChart(canvas, entries) {
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      font: { family: 'Ropa Sans' },
+      font: { family: 'Public Sans' },
       plugins: {
         legend: {
           display: true,
           position: 'top',
-          labels: { font: { family: 'Ropa Sans', size: 12 }, boxWidth: 12, usePointStyle: true, pointStyle: 'circle' },
+          labels: { font: { family: 'Public Sans', size: 12 }, boxWidth: 12, usePointStyle: true, pointStyle: 'circle' },
         },
         tooltip: {
           callbacks: {
@@ -243,14 +243,14 @@ export function renderGpaComparisonChart(canvas, entries) {
       scales: {
         x: {
           grid: { display: false },
-          ticks: { font: { family: 'Ropa Sans' }, color: '#666' },
+          ticks: { font: { family: 'Public Sans' }, color: '#666' },
         },
         y: {
           beginAtZero: true,
           grid: { color: '#eee' },
           border: { display: false },
           ticks: {
-            font: { family: 'Ropa Sans' },
+            font: { family: 'Public Sans' },
             color: '#999',
             callback: v => v + '%',
           },

@@ -4,12 +4,15 @@
 }
 
 :root {
-    /* Ropa Sans (set on body) stays the face for all data and labels.
-       Castoro — a single-weight serif — is the display face: site
-       wordmark, page headings, school-card names, and the section
-       titles on each school page. It has no bold, so every element
-       that adopts it is pinned to font-weight: 400 to avoid faux bold. */
-    --font-display: 'Castoro', Georgia, 'Times New Roman', serif;
+    /* FONT TEST BRANCH: swapped from Ropa Sans / Castoro (both single-weight,
+       no real bold — every bold rule below was being faux-bolded by the
+       browser) to Public Sans / Source Serif 4, which both ship true 400/
+       500/600/700 weights. Public Sans (set on body) is the face for all
+       data and labels. Source Serif 4 is the display face: site wordmark,
+       page headings, school-card names, and the section titles on each
+       school page — unlike Castoro it has a real bold, so headings can
+       actually use font-weight: 600/700 now instead of being pinned to 400. */
+    --font-display: 'Source Serif 4', Georgia, 'Times New Roman', serif;
     /* .nav-wrapper's 64px min-height + .header-accent-bar's 40px min-height.
        Used to offset sticky sidebars/pickers below the fixed header. */
     --header-height: 104px;
@@ -29,7 +32,7 @@ body {
     overflow-x: clip;
     width: 100%;
     margin: 0;
-    font-family: 'Ropa Sans', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     background: #FFFFFF;
 }
 
@@ -139,9 +142,12 @@ body.page-compare {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: var(--font-display);
-    font-size: 1.45em;
-    font-weight: 400;
+    /* FONT TEST: wordmark gets its own face (Spectral) instead of
+       var(--font-display) — bigger and bolder than the rest of the site's
+       headings on purpose, so the brand reads distinctly from section titles. */
+    font-family: 'Spectral', Georgia, 'Times New Roman', serif;
+    font-size: 1.7em;
+    font-weight: 700;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     color: white;
@@ -299,7 +305,7 @@ body.page-info .hero-banner {
 }
 
 .page-intro-desc {
-    font-family: 'Ropa Sans', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-size: 1.1em;
     font-weight: 300;
     color: #000;
@@ -360,9 +366,11 @@ body.page-info .hero-banner {
     border: 1px solid #ed6d0b;
     border-radius: 999px;
     color: #fff;
-    font-family: var(--font-display);
+    /* FONT TEST: these buttons read as UI controls, not headings, so they
+       get the body face (Public Sans) instead of var(--font-display). */
+    font-family: 'Public Sans', sans-serif;
     font-size: 1em;
-    font-weight: 400;
+    font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     text-decoration: none;
@@ -514,7 +522,7 @@ body.page-info .hero-banner {
 }
 
 .search-input {
-    font-family: 'Ropa Sans', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-size: 1.1em;
     font-weight: 300;
     width: 100%;
@@ -671,7 +679,7 @@ body.header-hidden .school-page-layout .right-sidebar {
     color: white;
     border: none;
     border-radius: 4px;
-    font-family: 'Ropa Sans', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-size: 0.95em;
     font-weight: 400;
     letter-spacing: 0.04em;
@@ -719,7 +727,7 @@ body.header-hidden .school-page-layout .right-sidebar {
     padding: 7px 10px;
     background: none;
     border: none;
-    font-family: 'Ropa Sans', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-size: 0.93em;
     font-weight: 400;
     letter-spacing: 0.03em;
@@ -776,7 +784,7 @@ body.header-hidden .school-page-layout .right-sidebar {
 }
 
 .filter-btn {
-    font-family: 'Ropa Sans', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-size: 0.9em;
     font-weight: 400;
     text-transform: uppercase;
@@ -810,7 +818,7 @@ body.header-hidden .school-page-layout .right-sidebar {
     background: none;
     border: none;
     color: #000;
-    font-family: 'Ropa Sans', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-size: 0.87em;
     text-transform: uppercase;
     letter-spacing: 0.06em;
@@ -869,7 +877,7 @@ body.header-hidden .school-page-layout .right-sidebar {
 }
 
 .range-value-input {
-    font-family: 'Ropa Sans', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-size: 0.93em;
     color: #ed6d0b;
     font-weight: 600;
@@ -944,7 +952,7 @@ body.header-hidden .school-page-layout .right-sidebar {
 }
 
 .page-btn {
-    font-family: 'Ropa Sans', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-size: 0.9em;
     font-weight: 400;
     padding: 6px 12px;
@@ -1085,6 +1093,12 @@ body.header-hidden .school-page-layout .right-sidebar {
 }
 
 .detail-section-title {
+    /* FONT CANDIDATE: a tiny (0.82em) all-caps bold label like "Test Scores"
+       is arguably a UI label, not a heading — worth trying this in the body
+       face (Public Sans) instead of the display serif; bold serif at small
+       sizes/all-caps can read heavier/less crisp than bold sans does. Also
+       the first rule in this file to actually render true bold now that
+       the display face has one — under Castoro this was faux-bolded. */
     font-family: var(--font-display);
     /* Bold + uppercase carries the hierarchy; kept just under the 0.93em
        .detail-kv rows so "Test Scores (25–75th)" stays on one line in its
@@ -1150,7 +1164,7 @@ body.header-hidden .school-page-layout .right-sidebar {
     border-radius: 3px;
     background: white;
     color: #ed6d0b;
-    font-family: 'Ropa Sans', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-size: 0.82em;
     font-weight: 600;
     text-transform: uppercase;
@@ -1252,11 +1266,18 @@ body.header-hidden .school-page-layout .right-sidebar {
     gap: 2px;
 }
 
+/* min-width:0 + overflow hidden so the longest names (e.g. "Massachusetts
+   Institute of Technology") ellipsize instead of wrapping to a second row
+   and breaking the card's fixed height. */
 .school-name-link {
     font-family: var(--font-display);
-    font-size: 1.2em;
+    font-size: 1.25em;
+    font-weight: 500;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     color: #000;
-    font-weight: 400;
     text-decoration: none;
     transition: color 0.15s;
 }
@@ -1269,7 +1290,7 @@ body.header-hidden .school-page-layout .right-sidebar {
     display: flex;
     align-items: center;
     gap: 4px;
-    font-family: 'Ropa Sans', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-size: 0.9em;
     font-weight: 400;
     color: #777;
@@ -1333,6 +1354,12 @@ body.header-hidden .school-page-layout .right-sidebar {
 }
 
 .footer-brand {
+    /* FONT CANDIDATE: same wordmark text as .nav-brand, but .nav-brand now
+       uses Spectral while this still uses var(--font-display) — the brand
+       currently renders in two different serifs depending on where it
+       appears on the page. Worth deciding whether the footer should match
+       the header (switch to Spectral too) or whether the plainer display
+       face is fine for this smaller, less prominent repeat of the name. */
     font-family: var(--font-display);
     font-size: 1.15em;
     font-weight: 400;
@@ -1463,7 +1490,7 @@ body.header-hidden .school-page-layout .right-sidebar {
     color: white;
     padding: 14px 22px;
     text-decoration: none;
-    font-family: 'Ropa Sans', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-size: 16px;
     letter-spacing: 0.04em;
     z-index: 9999;
@@ -1647,7 +1674,7 @@ body.header-hidden .school-page-layout .right-sidebar {
     .nav-brand {
         grid-column: 1;
         order: -1;
-        font-size: 1.25em;
+        font-size: 1.45em;
     }
 
     /* The centered wordmark has no fixed home to leave clear at this width,
@@ -1740,8 +1767,8 @@ body.header-hidden .school-page-layout .right-sidebar {
         width: 38px;
     }
 
-    .school-name {
-        font-size: 1.03em;
+    .school-name-link {
+        font-size: 1.05em;
     }
 
     .school-stats {
