@@ -210,11 +210,6 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://commondatasets.com/schools/duquense/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
     <loc>https://commondatasets.com/schools/duquesne/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>

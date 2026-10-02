@@ -124,7 +124,6 @@ const SCHOOL_META = {
   'ut-dallas': { color: '#e87500' },
   'uvermont': { color: '#154734' },
   'washington-stateu': { color: '#981e32' },
-  'duquense': { color: '#BA0C2F' },
   'boston-college': { color: '#98002E' },
   'bradley': { color: '#e11837' },
   'clark': { color: '#ee2e24' },
