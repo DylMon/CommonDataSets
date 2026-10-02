@@ -148,11 +148,53 @@ const SCHOOL_META = {
   'rutgers-camden': { color: '#cc0033' },
   'rutgers-newark': { color: '#cc0033' },
   'stockton': { color: '#79bde9' },
+  'colorado-school-of-mines': { color: '#21314D' },
+  'saintlouisu': { color: '#00244D' },
+  'duquesne': { color: '#ba0c2f' },
+  'udayton': { color: '#004B8D' },
+  'uidaho': { color: '#F1B300' },
+  'unewhampshire': { color: '#041e42' },
+  'uoregon': { color: '#007030' },
+  'upacific': { color: '#D86018' },
+  'urhodeisland': { color: '#002147' },
+  'uutah': { color: '#cc0000' },
+  'valparaiso': { color: '#381e0e' },
+  'wayne-state': { color: '#0c5449' },
+  'csufullerton': { color: '#00244E' },
+  'elon': { color: '#73000a' },
+  'georgia-state': { color: '#0039a6' },
+  'michigan-tech': { color: '#ffcd00' },
+  'missourri-s&t': { color: '#154734' },
+  'north-carolina-charolette': { color: '#005035' },
+  'uhouston': { color: '#c8102e' },
+  'university-maryland-college-park': { color: '#CE1126' },
+  'miamiu': { color: '#c8102e' },
+  'thomas-jefferson': { color: '#1A2650' },
+  'unebraska-lincoln': { color: '#E41C38' },
+  'yeshiva': { color: '#035596' },
+  'amherst': { color: '#3f1f69' },
+  'barnard': { color: '#002F6C' },
+  'bowdoin': { color: '#000000' },
+  'carleton': { color: '#173a79' },
+  'claremont-mckenna': { color: '#60001E' },
+  'davidson': { color: '#970213' },
+  'hamilton': { color: '#002f86' },
+  'harvey-mudd': { color: '#fdb913' },
+  'pomona': { color: '#005499' },
+  'swarthmore': { color: '#84000D' },
+  'urichmond': { color: '#990000' },
+  'vassar': { color: '#951829' },
+  'washington-and-lee': { color: '#003087' },
+  'wellesly': { color: '#002776' },
+  'williams': { color: '#500082' },
+  'wesleyan': { color: '#D72331' },
+  'grinnell': { color: '#DA291C' },
+  'usma-west-point': { color: '#000000' },
 };
 
 // Logos live at images/logos/<slug>.png. A few schools have none yet; the
 // onerror hook hides the broken <img> rather than showing a torn-image icon.
-const logoSrc = slug => `../images/logos/${slug}.png`;
+const logoSrc = slug => `/images/logos/${slug}.png`;
 const LOGO_ONERR = "this.style.display='none'";
 
 // ── Favorites & History ────────────────────────────────────────────────
@@ -172,7 +214,7 @@ function renderFavoritesBox(allSchools) {
   document.getElementById('school-fav-list').innerHTML = slugs.map(sl => {
     const school = allSchools.find(s => s.slug === sl);
     if (!school) return '';
-    return `<a class="history-item" href="${sl}.html">
+    return `<a class="history-item" href="/schools/${sl}/">
       <img class="history-logo" src="${logoSrc(sl)}" alt="" onerror="${LOGO_ONERR}">
       <span class="history-name">${school.name}</span>
     </a>`;
@@ -188,7 +230,7 @@ function renderHistoryBox(allSchools) {
   document.getElementById('school-history-list').innerHTML = slugs.map(sl => {
     const school = allSchools.find(s => s.slug === sl);
     if (!school) return '';
-    return `<a class="history-item" href="${sl}.html">
+    return `<a class="history-item" href="/schools/${sl}/">
       <img class="history-logo" src="${logoSrc(sl)}" alt="" onerror="${LOGO_ONERR}">
       <span class="history-name">${school.name}</span>
     </a>`;
@@ -244,36 +286,43 @@ function demoBarHtml(label, val) {
 }
 
 // ── Render: Hero ────────────────────────────────────────────────────────
+// Just the photo/gradient strip — see renderHeroPill for the floating
+// name/location/site card and renderQuickFacts for the stats below it.
 
 function renderHero(s, slug, meta) {
   const bannerStyle = meta.banner
-    ? `background-image:url('../images/banners/${meta.banner}');background-size:cover;background-position:center;background-repeat:no-repeat`
+    ? `background:linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url('/images/banners/${meta.banner}');background-size:cover;background-position:center;background-repeat:no-repeat`
     : `background:linear-gradient(135deg,${meta.color},#000)`;
+  return `<div class="school-hero" style="${bannerStyle}"></div>`;
+}
+
+// ── Render: Floating hero pill (name/location/site + a large logo) ─────
+
+function renderHeroPill(s, slug, meta) {
   const logo = `<img class="hero-logo" src="${logoSrc(slug)}" alt="${s.name}" onerror="${LOGO_ONERR}">`;
   const metaParts = [s.location, s.school_type].filter(Boolean);
   const siteLink = s.website
     ? ` · <a class="hero-site-link" href="${/^https?:\/\//.test(s.website) ? '' : 'https://'}${s.website}" target="_blank" rel="noopener">Official Site →</a>`
     : '';
+
   return `
-    <div class="school-hero" style="${bannerStyle}">
-      <div class="hero-overlay">
-        ${logo}
-        <div class="hero-text">
-          <h1 class="hero-name">
-            ${s.name}
-            <button class="fav-btn hero-fav-btn${getFavs().has(slug) ? ' favorited' : ''}" id="hero-fav-btn" title="${getFavs().has(slug) ? 'Remove from favorites' : 'Add to favorites'}">
-              <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-            </button>
-          </h1>
-          <p class="hero-meta">${metaParts.join(' · ')}${siteLink}</p>
-        </div>
+    <div class="hero-pill">
+      ${logo}
+      <div class="hero-text">
+        <h1 class="hero-name">
+          ${s.name}
+          <button class="fav-btn hero-fav-btn${getFavs().has(slug) ? ' favorited' : ''}" id="hero-fav-btn" title="${getFavs().has(slug) ? 'Remove from favorites' : 'Add to favorites'}">
+            <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          </button>
+        </h1>
+        <p class="hero-meta">${metaParts.join(' · ')}${siteLink}</p>
       </div>
     </div>`;
 }
 
-// ── Render: Stats strip ─────────────────────────────────────────────────
+// ── Render: Quick facts strip (flat bar below the pill) ─────────────────
 
-function renderStatsStrip(s) {
+function renderQuickFacts(s) {
   const satVal   = s.sat_composite_25 != null && s.sat_composite_75 != null
     ? `${s.sat_composite_25}–${s.sat_composite_75}`
     : '<span class="stat-na">n/a</span>';
@@ -684,7 +733,7 @@ async function init() {
   recentHistory = [slug, ...recentHistory.filter(s => s !== slug)].slice(0, 5);
   localStorage.setItem(historyKey, JSON.stringify(recentHistory));
 
-  const res = await fetch('../data/schools-2025-2026.json');
+  const res = await fetch('/data/schools-2025-2026.json');
   if (!res.ok) {
     document.getElementById('school-sections').innerHTML =
       '<p class="loading">Failed to load school data.</p>';
@@ -715,6 +764,12 @@ async function init() {
   document.querySelector('meta[name="description"]').content = descParts.join(' · ') + '.';
 
   document.getElementById('school-hero').innerHTML = renderHero(s, slug, meta);
+  document.getElementById('stats-strip').innerHTML = renderHeroPill(s, slug, meta);
+  // .quick-facts-strip isn't in the static HTML template (only school-hero
+  // and stats-strip are) — inserted here so the generated pages don't all
+  // need editing for this one extra container.
+  document.getElementById('stats-strip')
+    .insertAdjacentHTML('afterend', `<div class="quick-facts-strip">${renderQuickFacts(s)}</div>`);
 
   document.getElementById('hero-fav-btn').addEventListener('click', () => {
     const favs = getFavs();
@@ -731,8 +786,6 @@ async function init() {
     saveFavs(favs);
     refreshRail();
   });
-
-  document.getElementById('stats-strip').innerHTML = renderStatsStrip(s);
   document.getElementById('school-sections').innerHTML =
     `<div class="school-section-row">
       ${renderAdmissionsSummary(s)}
@@ -782,7 +835,7 @@ async function init() {
 
   const back = document.createElement('a');
   back.className = 'floating-back';
-  back.href = '../index.html';
+  back.href = '/';
   back.textContent = '← Schools';
   document.body.appendChild(back);
 }

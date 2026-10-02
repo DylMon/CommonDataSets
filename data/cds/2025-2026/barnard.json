@@ -1,0 +1,167 @@
+{
+  "name": "Barnard College",
+  "data_year": "2025-26",
+  "city": "New York",
+  "state": "NY",
+  "location": "New York, NY",
+  "school_type": "Private",
+  "website": "barnard.edu",
+  "applicants_total": 10426,
+  "applicants_men": 0,
+  "applicants_women": 10426,
+  "admitted_total": 1048,
+  "admitted_men": 0,
+  "admitted_women": 1048,
+  "enrolled_total": 702,
+  "enrolled_men": 0,
+  "enrolled_women": 702,
+  "acceptance_rate": 0.1005,
+  "application_fee": 75,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "1/1",
+  "waitlist_offered": 2173,
+  "waitlist_accepted": 1644,
+  "waitlist_admitted": 150,
+  "ea_ed_type": "ED",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": null,
+  "ea_apps_received": 1437,
+  "ea_apps_admitted": 476,
+  "sat_submitted_pct": 0.38,
+  "sat_submitted_count": 265,
+  "act_submitted_pct": 0.16,
+  "act_submitted_count": 109,
+  "sat_composite_25": 1480,
+  "sat_composite_50": 1510,
+  "sat_composite_75": 1540,
+  "sat_reading_25": 730,
+  "sat_reading_75": 760,
+  "sat_math_25": 730,
+  "sat_math_75": 790,
+  "act_composite_25": 32,
+  "act_composite_50": 34,
+  "act_composite_75": 35,
+  "act_math_25": 30,
+  "act_math_75": 34,
+  "act_english_25": 34,
+  "act_english_75": 36,
+  "total_undergrads": 3223,
+  "undergrads_male": 0,
+  "undergrads_female": 3223,
+  "retention_rate": 0.97,
+  "tuition": 73120,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 2472,
+  "room_and_board": 23258,
+  "books_supplies": 1200,
+  "other_expenses": 1830,
+  "pct_out_of_state": 0.67,
+  "pct_on_campus_housing": 0.97,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 2173,
+      "accepted_spots": 1644,
+      "enrolled": 150
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 0,
+      "female": 10426
+    },
+    "accepted": {
+      "male": 0,
+      "female": 1048
+    },
+    "enrolled": {
+      "male": 0,
+      "female": 702
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 104,
+      "hispanic": 102,
+      "black": 40,
+      "white": 186,
+      "american_indian": 1,
+      "asian": 189,
+      "pacific_islander": 0,
+      "two_or_more": 53,
+      "unknown": 27,
+      "total": 702
+    },
+    "undergrad": {
+      "nonresident_aliens": 539,
+      "hispanic": 443,
+      "black": 168,
+      "white": 957,
+      "american_indian": 2,
+      "asian": 786,
+      "pacific_islander": null,
+      "two_or_more": 239,
+      "unknown": 89,
+      "total": 3223
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.67,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 265,
+    "sat_submitted_pct": 0.38,
+    "act_submitted_count": 109,
+    "act_submitted_pct": 0.16
+  },
+  "class_rank": {
+    "top10": 0.96,
+    "top25": 0.98,
+    "top50": 1.0,
+    "bottom50": 0.0,
+    "bottom25": 0.0
+  },
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "important",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "very_important",
+    "recommendations": "very_important",
+    "interview": "not_considered",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "very_important",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "important",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 0,
+      "admitted": 0,
+      "enrolled": 0
+    },
+    "female": {
+      "applied": 1142,
+      "admitted": 262,
+      "enrolled": 142
+    },
+    "total": {
+      "applied": 1142,
+      "admitted": 262,
+      "enrolled": 142
+    }
+  },
+  "slug": "barnard"
+}

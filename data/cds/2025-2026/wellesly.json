@@ -1,0 +1,167 @@
+{
+  "name": "Wellesley College",
+  "data_year": "2025-26",
+  "city": "Wellesley",
+  "state": "MA",
+  "location": "Wellesley, MA",
+  "school_type": "Private",
+  "website": "www.wellesley.edu",
+  "applicants_total": 8506,
+  "applicants_men": 0,
+  "applicants_women": 8506,
+  "admitted_total": 1258,
+  "admitted_men": 0,
+  "admitted_women": 1258,
+  "enrolled_total": 576,
+  "enrolled_men": 0,
+  "enrolled_women": 576,
+  "acceptance_rate": 0.1479,
+  "application_fee": null,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "1/8",
+  "waitlist_offered": 2214,
+  "waitlist_accepted": 1121,
+  "waitlist_admitted": 59,
+  "ea_ed_type": "ED",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "mid-Dec",
+  "ea_apps_received": 1023,
+  "ea_apps_admitted": 301,
+  "sat_submitted_pct": 0.44,
+  "sat_submitted_count": 253,
+  "act_submitted_pct": 0.18,
+  "act_submitted_count": 103,
+  "sat_composite_25": 1460,
+  "sat_composite_50": 1500,
+  "sat_composite_75": 1540,
+  "sat_reading_25": 730,
+  "sat_reading_75": 760,
+  "sat_math_25": 720,
+  "sat_math_75": 790,
+  "act_composite_25": 33,
+  "act_composite_50": 34,
+  "act_composite_75": 35,
+  "act_math_25": 30,
+  "act_math_75": 34,
+  "act_english_25": 35,
+  "act_english_75": 36,
+  "total_undergrads": 2366,
+  "undergrads_male": 31,
+  "undergrads_female": 2329,
+  "retention_rate": 0.9503,
+  "tuition": null,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": null,
+  "room_and_board": null,
+  "books_supplies": null,
+  "other_expenses": null,
+  "pct_out_of_state": 0.88,
+  "pct_on_campus_housing": 1.0,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 2214,
+      "accepted_spots": 1121,
+      "enrolled": 59
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 0,
+      "female": 8506
+    },
+    "accepted": {
+      "male": 0,
+      "female": 1258
+    },
+    "enrolled": {
+      "male": 0,
+      "female": 576
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 73,
+      "hispanic": 66,
+      "black": 29,
+      "white": 185,
+      "american_indian": 1,
+      "asian": 172,
+      "pacific_islander": 0,
+      "two_or_more": 45,
+      "unknown": 5,
+      "total": 576
+    },
+    "undergrad": {
+      "nonresident_aliens": 292,
+      "hispanic": 302,
+      "black": 166,
+      "white": 689,
+      "american_indian": 3,
+      "asian": 642,
+      "pacific_islander": 4,
+      "two_or_more": 176,
+      "unknown": 11,
+      "total": 2285
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.88,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 253,
+    "sat_submitted_pct": 0.44,
+    "act_submitted_count": 103,
+    "act_submitted_pct": 0.18
+  },
+  "class_rank": {
+    "top10": 0.88,
+    "top25": 0.99,
+    "top50": 1.0,
+    "bottom50": 0.0,
+    "bottom25": 0.0
+  },
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "very_important",
+    "interview": "not_considered",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "very_important",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 0,
+      "admitted": 0,
+      "enrolled": 0
+    },
+    "female": {
+      "applied": 340,
+      "admitted": 44,
+      "enrolled": 18
+    },
+    "total": {
+      "applied": 340,
+      "admitted": 44,
+      "enrolled": 18
+    }
+  },
+  "slug": "wellesly"
+}

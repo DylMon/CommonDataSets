@@ -1,0 +1,176 @@
+{
+  "name": "University of Maryland",
+  "data_year": "2025-26",
+  "city": "College Park",
+  "state": "MD",
+  "location": "College Park, MD",
+  "school_type": "Public",
+  "website": "www.umd.edu",
+  "applicants_total": 67101,
+  "applicants_men": 33095,
+  "applicants_women": 34006,
+  "admitted_total": 30218,
+  "admitted_men": 14151,
+  "admitted_women": 16067,
+  "enrolled_total": 6559,
+  "enrolled_men": 3163,
+  "enrolled_women": 3396,
+  "acceptance_rate": 0.4503,
+  "application_fee": 80,
+  "avg_gpa_weighted": 4.41,
+  "rd_deadline": "1/20",
+  "waitlist_offered": 247,
+  "waitlist_accepted": 0,
+  "waitlist_admitted": 0,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "By 2/1",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.37,
+  "sat_submitted_count": 2432,
+  "act_submitted_pct": 0.07,
+  "act_submitted_count": 464,
+  "sat_composite_25": 1410,
+  "sat_composite_50": 1470,
+  "sat_composite_75": 1520,
+  "sat_reading_25": 690,
+  "sat_reading_75": 750,
+  "sat_math_25": 700,
+  "sat_math_75": 780,
+  "act_composite_25": 32,
+  "act_composite_50": 34,
+  "act_composite_75": 35,
+  "act_math_25": 30,
+  "act_math_75": 35,
+  "act_english_25": 33,
+  "act_english_75": 35,
+  "total_undergrads": 31875,
+  "undergrads_male": 16155,
+  "undergrads_female": 15720,
+  "retention_rate": 0.966,
+  "tuition": null,
+  "tuition_in_state": 10490,
+  "tuition_out_of_state": 40253,
+  "required_fees": 1800,
+  "room_and_board": 16747,
+  "books_supplies": 1250,
+  "other_expenses": 1200,
+  "pct_out_of_state": 0.352,
+  "pct_on_campus_housing": 0.883,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 247,
+      "accepted_spots": 0,
+      "enrolled": 0
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 33095,
+      "female": 34006
+    },
+    "accepted": {
+      "male": 14151,
+      "female": 16067
+    },
+    "enrolled": {
+      "male": 3163,
+      "female": 3396
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 238,
+      "hispanic": 671,
+      "black": 835,
+      "white": 2524,
+      "american_indian": 3,
+      "asian": 1521,
+      "pacific_islander": 1,
+      "two_or_more": 378,
+      "unknown": 395,
+      "total": 6566
+    },
+    "undergrad": {
+      "nonresident_aliens": 1051,
+      "hispanic": 3663,
+      "black": 4280,
+      "white": 11799,
+      "american_indian": 28,
+      "asian": 7382,
+      "pacific_islander": 17,
+      "two_or_more": 1720,
+      "unknown": 1542,
+      "total": 31482
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.352,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 2432,
+    "sat_submitted_pct": 0.37,
+    "act_submitted_count": 464,
+    "act_submitted_pct": 0.07
+  },
+  "class_rank": {
+    "top10": 0.76,
+    "top25": 0.904,
+    "top50": 0.982,
+    "bottom50": 0.0185,
+    "bottom25": 0.0073
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.8923,
+    "gpa_375_399": 0.061,
+    "gpa_350_374": 0.0253,
+    "gpa_325_349": 0.0106,
+    "gpa_300_324": 0.0066,
+    "gpa_250_299": 0.0027,
+    "gpa_200_249": 0.0015,
+    "gpa_100_199": null
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "important",
+    "academic_gpa": "very_important",
+    "test_scores": "important",
+    "essay": "important",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "important",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 4102,
+      "admitted": 2181,
+      "enrolled": 1306
+    },
+    "female": {
+      "applied": 3551,
+      "admitted": 1905,
+      "enrolled": 1136
+    },
+    "total": {
+      "applied": 7653,
+      "admitted": 4086,
+      "enrolled": 2442
+    }
+  },
+  "slug": "university-maryland-college-park"
+}

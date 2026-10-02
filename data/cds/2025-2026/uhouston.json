@@ -1,0 +1,168 @@
+{
+  "name": "University of Houston",
+  "data_year": "2025-26",
+  "city": "Houston",
+  "state": "TX",
+  "location": "Houston, TX",
+  "school_type": "Public",
+  "website": "www.uh.edu",
+  "applicants_total": 34728,
+  "applicants_men": 14837,
+  "applicants_women": 19891,
+  "admitted_total": 26312,
+  "admitted_men": 11207,
+  "admitted_women": 15105,
+  "enrolled_total": 6669,
+  "enrolled_men": 3081,
+  "enrolled_women": 3588,
+  "acceptance_rate": 0.7577,
+  "application_fee": 75,
+  "avg_gpa_weighted": 3.46,
+  "rd_deadline": "6/1",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "None",
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.55,
+  "sat_submitted_count": 3691,
+  "act_submitted_pct": 0.07,
+  "act_submitted_count": 471,
+  "sat_composite_25": 1140,
+  "sat_composite_50": 1220,
+  "sat_composite_75": 1310,
+  "sat_reading_25": 570,
+  "sat_reading_75": 660,
+  "sat_math_25": 560,
+  "sat_math_75": 660,
+  "act_composite_25": 22,
+  "act_composite_50": 25,
+  "act_composite_75": 28,
+  "act_math_25": 20,
+  "act_math_75": 27,
+  "act_english_25": 21,
+  "act_english_75": 28,
+  "total_undergrads": 40366,
+  "undergrads_male": 19588,
+  "undergrads_female": 20778,
+  "retention_rate": 0.8657881047338304,
+  "tuition": null,
+  "tuition_in_state": 10856,
+  "tuition_out_of_state": 26744,
+  "required_fees": 1032,
+  "room_and_board": 11286,
+  "books_supplies": 1430,
+  "other_expenses": 3889,
+  "pct_out_of_state": 0.03,
+  "pct_on_campus_housing": 0.36,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 14837,
+      "female": 19891
+    },
+    "accepted": {
+      "male": 11207,
+      "female": 15105
+    },
+    "enrolled": {
+      "male": 3081,
+      "female": 3588
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 257,
+      "hispanic": 2400,
+      "black": 1167,
+      "white": 889,
+      "american_indian": 8,
+      "asian": 1576,
+      "pacific_islander": 1,
+      "two_or_more": 230,
+      "unknown": 141,
+      "total": 6669
+    },
+    "undergrad": {
+      "nonresident_aliens": 2511,
+      "hispanic": 15139,
+      "black": 5344,
+      "white": 6341,
+      "american_indian": 37,
+      "asian": 9008,
+      "pacific_islander": 17,
+      "two_or_more": 1305,
+      "unknown": 664,
+      "total": 40366
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.03,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 3691,
+    "sat_submitted_pct": 0.55,
+    "act_submitted_count": 471,
+    "act_submitted_pct": 0.07
+  },
+  "class_rank": {
+    "top10": 0.2543,
+    "top25": 0.5906,
+    "top50": 0.8947,
+    "bottom50": 0.1054,
+    "bottom25": 0.0196
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.0271,
+    "gpa_375_399": 0.2182,
+    "gpa_350_374": 0.2698,
+    "gpa_325_349": 0.2249,
+    "gpa_300_324": 0.1528,
+    "gpa_250_299": 0.0942,
+    "gpa_200_249": 0.0116,
+    "gpa_100_199": 0.0012
+  },
+  "admission_factors": {
+    "rigor": "considered",
+    "class_rank": "considered",
+    "academic_gpa": "important",
+    "test_scores": "important",
+    "essay": "considered",
+    "recommendations": "not_considered",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "not_considered",
+    "first_gen": "not_considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 4291,
+      "admitted": 3756,
+      "enrolled": 2262
+    },
+    "female": {
+      "applied": 4067,
+      "admitted": 3634,
+      "enrolled": 2153
+    },
+    "total": {
+      "applied": 8358,
+      "admitted": 7390,
+      "enrolled": 4415
+    }
+  },
+  "slug": "uhouston"
+}

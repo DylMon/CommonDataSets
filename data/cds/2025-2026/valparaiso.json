@@ -1,0 +1,174 @@
+{
+  "name": "Valparaiso University",
+  "data_year": "2025-26",
+  "city": "Valparaiso",
+  "state": "IN",
+  "location": "Valparaiso, IN",
+  "school_type": "Private",
+  "website": "www.valpo.edu/admission/apply/",
+  "applicants_total": 4704,
+  "applicants_men": 2138,
+  "applicants_women": 2566,
+  "admitted_total": 4231,
+  "admitted_men": 1912,
+  "admitted_women": 2319,
+  "enrolled_total": 498,
+  "enrolled_men": 213,
+  "enrolled_women": 285,
+  "acceptance_rate": 0.8995,
+  "application_fee": null,
+  "avg_gpa_weighted": 3.68,
+  "rd_deadline": null,
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "None",
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.33,
+  "sat_submitted_count": 165,
+  "act_submitted_pct": 0.04,
+  "act_submitted_count": 20,
+  "sat_composite_25": null,
+  "sat_composite_75": null,
+  "sat_reading_25": null,
+  "sat_reading_75": null,
+  "sat_math_25": null,
+  "sat_math_75": null,
+  "act_composite_25": null,
+  "act_composite_75": null,
+  "act_math_25": null,
+  "act_math_75": null,
+  "act_english_25": null,
+  "act_english_75": null,
+  "total_undergrads": 2056,
+  "undergrads_male": 873,
+  "undergrads_female": 1183,
+  "retention_rate": 0.772,
+  "tuition": 50650,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 1630,
+  "room_and_board": 15545,
+  "books_supplies": 960,
+  "other_expenses": 870,
+  "pct_out_of_state": 0.378,
+  "pct_on_campus_housing": 0.65,
+  "applicant_pools": {
+    "ea": null,
+    "rd": {
+      "applied": 4704,
+      "admitted": 4231,
+      "rate": 0.8995
+    },
+    "waitlist": null
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 2138,
+      "female": 2566
+    },
+    "accepted": {
+      "male": 1912,
+      "female": 2319
+    },
+    "enrolled": {
+      "male": 213,
+      "female": 285
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 8,
+      "hispanic": 117,
+      "black": 39,
+      "white": 296,
+      "american_indian": 3,
+      "asian": 16,
+      "pacific_islander": 0,
+      "two_or_more": 16,
+      "unknown": 8,
+      "total": 503
+    },
+    "undergrad": {
+      "nonresident_aliens": 78,
+      "hispanic": 337,
+      "black": 142,
+      "white": 1301,
+      "american_indian": 5,
+      "asian": 62,
+      "pacific_islander": 0,
+      "two_or_more": 78,
+      "unknown": 28,
+      "total": 2031
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.378,
+    "international_pct": 0.0161
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 165,
+    "sat_submitted_pct": 0.33,
+    "act_submitted_count": 20,
+    "act_submitted_pct": 0.04
+  },
+  "class_rank": {
+    "top10": 0.28,
+    "top25": 0.568,
+    "top50": 0.836,
+    "bottom50": 0.164,
+    "bottom25": 0.02
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.31,
+    "gpa_375_399": 0.18,
+    "gpa_350_374": 0.15,
+    "gpa_325_349": 0.14,
+    "gpa_300_324": 0.14,
+    "gpa_250_299": 0.08,
+    "gpa_200_249": 0.0,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "considered",
+    "interview": "considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "not_considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "not_considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 139,
+      "admitted": 107,
+      "enrolled": 41
+    },
+    "female": {
+      "applied": 210,
+      "admitted": 171,
+      "enrolled": 79
+    },
+    "total": {
+      "applied": 349,
+      "admitted": 278,
+      "enrolled": 120
+    }
+  },
+  "slug": "valparaiso"
+}

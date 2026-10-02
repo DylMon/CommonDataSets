@@ -112,8 +112,17 @@ body.page-home {
     min-height: 64px;
     padding: 0 38px;
     position: relative;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 45%, rgba(255, 255, 255, 0.16) 100%), #ed6d0b;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 45%, rgba(255, 255, 255, 0.16) 100%), var(--brand, #ed6d0b);
     width: 100%;
+}
+
+/* The header's --brand fallback above only kicks in where the variable is
+   completely unset. compare/index.html also loads school-template.css (for
+   its shared table styles), whose own :root sets --brand: #333 as a
+   pre-JS default for school pages — that leaks into the header here too,
+   so pin it back to the site orange explicitly. */
+body.page-compare {
+    --brand: #ed6d0b;
 }
 
 /* Secondary nav bar under the header — holds the page links (moved out of
@@ -146,6 +155,34 @@ body.page-home {
     text-decoration: none;
 }
 
+/* Redundant shortcuts to /info/ and /contact/ — the real nav link for
+   About lives in .header-accent-bar below; these just save a trip down
+   for anyone already looking at the top bar. Plain text, side by side,
+   no box/border. */
+.nav-corner-links {
+    grid-column: 3;
+    justify-self: end;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-corner-links a {
+    color: #fff;
+    font-size: 1.05em;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+}
+
+.nav-corner-links a:hover {
+    opacity: 0.7;
+}
+
 .legal-notice {
     grid-column: 1 / -1;
     text-align: center;
@@ -173,6 +210,17 @@ body.page-home {
     flex-direction: column;
     justify-content: center;
     box-sizing: border-box;
+}
+
+/* Compare/Chance Me/About only — each is just a title + a line or two of
+   description (no slideshow/search/CTAs like the home page), so none of
+   them need the full height; roughly half of the default. Individual
+   school pages have their own .school-hero sizing and are untouched. */
+body.page-compare .hero-banner,
+body.page-chanceme .hero-banner,
+body.page-info .hero-banner {
+    padding: 28px 0 18px;
+    min-height: 195px;
 }
 
 /* Dark scrim for text contrast — was baked into .hero-banner's own
@@ -335,6 +383,46 @@ body.page-home {
     color: #ed6d0b;
 }
 
+/* Category filter bar — single-select pills beneath the search bar, same
+   rounded/orange language as .hero-cta-btn above but with an on/off toggle
+   state instead of a hover-only inversion: unselected pills sit outlined,
+   the active one fills solid, matching the sidebar's .filter-btn pattern
+   but in this page's pill shape rather than sharp corners. */
+.category-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 14px auto 0;
+}
+
+.category-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 20px;
+    background: #fff;
+    border: 1.5px solid #ed6d0b;
+    border-radius: 999px;
+    color: #ed6d0b;
+    font-family: var(--font-display);
+    font-size: 0.9em;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+
+.category-btn:hover {
+    background: #fff3e9;
+}
+
+.category-btn.active {
+    background: #ed6d0b;
+    color: #fff;
+}
+
 .page-intro-desc + .page-intro-desc {
     margin-top: 12px;
 }
@@ -353,7 +441,7 @@ body.page-home {
 
 .nav-link-wrapper:hover,
 .active-nav-link {
-    background: #ed6d0b;
+    background: var(--brand, #ed6d0b);
 }
 
 .nav-link-wrapper a {
@@ -1129,7 +1217,7 @@ body.header-hidden .school-page-layout .right-sidebar {
 }
 
 .hero-fav-btn {
-    color: #fff;
+    color: #000;
     margin-left: 10px;
 }
 
@@ -1161,33 +1249,58 @@ body.header-hidden .school-page-layout .right-sidebar {
 
 .school-name {
     flex: 1;
-    font-family: var(--font-display);
-    font-size: 1.25em;
-    font-weight: 500;
     min-width: 0;
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
+/* Title + location stack vertically here; .fav-btn stays a plain sibling
+   so it stays vertically centered against the whole stack, not just the
+   title's own line. */
+.school-name-main {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
 /* min-width:0 + overflow hidden so the longest names (e.g. "Massachusetts
    Institute of Technology") ellipsize instead of wrapping to a second row
-   and breaking the card's fixed height — flex:1 lets it fill the row
-   without pushing .fav-btn out of view. */
+   and breaking the card's fixed height. */
 .school-name-link {
-    flex: 1;
+    font-family: var(--font-display);
+    font-size: 1.25em;
+    font-weight: 500;
     min-width: 0;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     color: #000;
-    font-weight: 400;
     text-decoration: none;
     transition: color 0.15s;
 }
 
 .school-name-link:hover {
     color: #ed6d0b;
+}
+
+.school-location {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Public Sans', sans-serif;
+    font-size: 0.9em;
+    font-weight: 400;
+    color: #777;
+}
+
+.location-pin {
+    width: 11px;
+    height: 11px;
+    flex-shrink: 0;
+    color: #999;
 }
 
 /* Invisible to layout by default — .school-stats and .details-toggle
@@ -1570,6 +1683,13 @@ body.header-hidden .school-page-layout .right-sidebar {
         display: none;
     }
 
+    /* Purely a convenience shortcut on wider screens — at this width both
+       are already one short scroll away in the stacked nav/footer below,
+       so drop the duplicates instead of adding more clutter. */
+    .nav-corner-links {
+        display: none;
+    }
+
     .header-accent-bar {
         padding: 6px 16px;
     }
@@ -1588,6 +1708,13 @@ body.header-hidden .school-page-layout .right-sidebar {
     .hero-banner {
         padding: 32px 0 24px;
         min-height: 450px; /* ~25% taller than the ~360px this content naturally renders at on mobile */
+    }
+
+    body.page-compare .hero-banner,
+    body.page-chanceme .hero-banner,
+    body.page-info .hero-banner {
+        padding: 16px 0 12px;
+        min-height: 225px;
     }
 
     .hero-inner {
@@ -1640,7 +1767,7 @@ body.header-hidden .school-page-layout .right-sidebar {
         width: 38px;
     }
 
-    .school-name {
+    .school-name-link {
         font-size: 1.05em;
     }
 

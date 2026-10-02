@@ -1,0 +1,175 @@
+{
+  "name": "Harvey Mudd College",
+  "data_year": "2025-26",
+  "city": "Claremont",
+  "state": "CA",
+  "location": "Claremont, CA",
+  "school_type": "Private",
+  "website": "www.hmc.edu",
+  "applicants_total": 5217,
+  "applicants_men": 3452,
+  "applicants_women": 1761,
+  "admitted_total": 643,
+  "admitted_men": 276,
+  "admitted_women": 365,
+  "enrolled_total": 236,
+  "enrolled_men": 109,
+  "enrolled_women": 125,
+  "acceptance_rate": 0.1233,
+  "application_fee": 70,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "1/5",
+  "waitlist_offered": 685,
+  "waitlist_accepted": 439,
+  "waitlist_admitted": 0,
+  "ea_ed_type": "ED I & II",
+  "ea_ed_deadline": "11/15",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": 594,
+  "ea_apps_admitted": 109,
+  "sat_submitted_pct": 0.55,
+  "sat_submitted_count": 130,
+  "act_submitted_pct": 0.21,
+  "act_submitted_count": 49,
+  "sat_composite_25": 1500,
+  "sat_composite_50": 1510,
+  "sat_composite_75": 1560,
+  "sat_reading_25": 740,
+  "sat_reading_75": 770,
+  "sat_math_25": 760,
+  "sat_math_75": 800,
+  "act_composite_25": 35,
+  "act_composite_50": 35,
+  "act_composite_75": 36,
+  "act_math_25": 34,
+  "act_math_75": 36,
+  "act_english_25": 34,
+  "act_english_75": 36,
+  "total_undergrads": 913,
+  "undergrads_male": 446,
+  "undergrads_female": 465,
+  "retention_rate": 0.9524,
+  "tuition": 75669,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 401,
+  "room_and_board": 23434,
+  "books_supplies": 800,
+  "other_expenses": null,
+  "pct_out_of_state": 0.52,
+  "pct_on_campus_housing": 0.99,
+  "applicant_pools": {
+    "ea": {
+      "applied": 594,
+      "admitted": 109,
+      "rate": 0.1835
+    },
+    "rd": {
+      "applied": 4623,
+      "admitted": 534,
+      "rate": 0.1155
+    },
+    "waitlist": {
+      "offered": 685,
+      "accepted_spots": 439,
+      "enrolled": 0
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 3452,
+      "female": 1761
+    },
+    "accepted": {
+      "male": 276,
+      "female": 365
+    },
+    "enrolled": {
+      "male": 109,
+      "female": 125
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 30,
+      "hispanic": 36,
+      "black": 1,
+      "white": 64,
+      "american_indian": 0,
+      "asian": 62,
+      "pacific_islander": 0,
+      "two_or_more": 22,
+      "unknown": 21,
+      "total": 236
+    },
+    "undergrad": {
+      "nonresident_aliens": 99,
+      "hispanic": 186,
+      "black": 32,
+      "white": 233,
+      "american_indian": 2,
+      "asian": 198,
+      "pacific_islander": 1,
+      "two_or_more": 102,
+      "unknown": 60,
+      "total": 913
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.52,
+    "international_pct": 0.1356
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 130,
+    "sat_submitted_pct": 0.55,
+    "act_submitted_count": 49,
+    "act_submitted_pct": 0.21
+  },
+  "class_rank": {
+    "top10": 0.95,
+    "top25": 1.0,
+    "top50": 1.0,
+    "bottom50": 0.0,
+    "bottom25": null
+  },
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "very_important",
+    "interview": "considered",
+    "extracurriculars": "important",
+    "talent": "considered",
+    "character": "important",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 96,
+      "admitted": 3,
+      "enrolled": 1
+    },
+    "female": {
+      "applied": 40,
+      "admitted": 1,
+      "enrolled": 1
+    },
+    "total": {
+      "applied": 136,
+      "admitted": 4,
+      "enrolled": 2
+    }
+  },
+  "slug": "harvey-mudd"
+}

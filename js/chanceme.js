@@ -6,7 +6,7 @@ import { normalizeGpaDistribution } from './charts.js?v=6';
 
 // Logos live at images/logos/<slug>.png. A few schools have none yet; the
 // onerror hook hides the broken <img> rather than showing a torn-image icon.
-const logoSrc = slug => `images/logos/${slug}.png`;
+const logoSrc = slug => `/images/logos/${slug}.png`;
 const LOGO_ONERR = "this.style.display='none'";
 
 export const US_STATES = [
@@ -763,7 +763,7 @@ if (typeof document !== 'undefined') {
         stateSelect.innerHTML = '<option value="">Select state…</option>' +
             US_STATES.map(([code, name]) => `<option value="${code}">${name}</option>`).join('');
 
-        const res = await fetch('data/schools-2025-2026.json');
+        const res = await fetch('/data/schools-2025-2026.json');
         const { schools } = await res.json();
         allSchools = schools.filter(s => s.name != null); // exclude records with no source data yet (e.g. bad/missing source PDF)
 

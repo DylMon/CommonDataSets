@@ -1,0 +1,166 @@
+{
+  "name": "University of Dayton",
+  "data_year": "2025-2026",
+  "city": "Dayton",
+  "state": "OH",
+  "location": "Dayton, OH",
+  "school_type": "Private",
+  "website": "www.udayton.edu",
+  "applicants_total": 22247,
+  "applicants_men": 11701,
+  "applicants_women": 10530,
+  "admitted_total": 14814,
+  "admitted_men": 7364,
+  "admitted_women": 7445,
+  "enrolled_total": 1578,
+  "enrolled_men": 812,
+  "enrolled_women": 766,
+  "acceptance_rate": 0.6659,
+  "application_fee": null,
+  "avg_gpa_weighted": 3.78,
+  "rd_deadline": null,
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/01",
+  "ea_ed_notification": "12/01",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.1,
+  "sat_submitted_count": 157,
+  "act_submitted_pct": 0.27,
+  "act_submitted_count": 423,
+  "sat_composite_25": 1210,
+  "sat_composite_75": 1350,
+  "sat_reading_25": 610,
+  "sat_reading_75": 690,
+  "sat_math_25": 600,
+  "sat_math_75": 690,
+  "act_composite_25": 26,
+  "act_composite_75": 31,
+  "act_math_25": 26,
+  "act_math_75": 31,
+  "act_english_25": 24,
+  "act_english_75": 33,
+  "total_undergrads": 7252,
+  "undergrads_male": 3811,
+  "undergrads_female": 3423,
+  "retention_rate": 0.9,
+  "tuition": 51910,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 600,
+  "room_and_board": 17190,
+  "books_supplies": 1000,
+  "other_expenses": 2110,
+  "pct_out_of_state": 0.57,
+  "pct_on_campus_housing": 0.91,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 11701,
+      "female": 10530
+    },
+    "accepted": {
+      "male": 7364,
+      "female": 7445
+    },
+    "enrolled": {
+      "male": 812,
+      "female": 766
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 28,
+      "hispanic": 122,
+      "black": 96,
+      "white": 1236,
+      "american_indian": 0,
+      "asian": 33,
+      "pacific_islander": 1,
+      "two_or_more": 50,
+      "unknown": 12,
+      "total": 1578
+    },
+    "undergrad": {
+      "nonresident_aliens": 205,
+      "hispanic": 500,
+      "black": 368,
+      "white": 5685,
+      "american_indian": 3,
+      "asian": 136,
+      "pacific_islander": 8,
+      "two_or_more": 256,
+      "unknown": 91,
+      "total": 7252
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.57,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 157,
+    "sat_submitted_pct": 0.1,
+    "act_submitted_count": 423,
+    "act_submitted_pct": 0.27
+  },
+  "class_rank": {
+    "top10": 0.34,
+    "top25": 0.64,
+    "top50": 0.88,
+    "bottom50": 0.12,
+    "bottom25": 0.03
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.38,
+    "gpa_375_399": 0.18,
+    "gpa_350_374": 0.16,
+    "gpa_325_349": 0.11,
+    "gpa_300_324": 0.08,
+    "gpa_250_299": 0.09,
+    "gpa_200_249": 0.0,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "very_important",
+    "recommendations": "important",
+    "interview": "not_considered",
+    "extracurriculars": "important",
+    "talent": "considered",
+    "character": "important",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "important"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 475,
+      "admitted": 165,
+      "enrolled": 95
+    },
+    "female": {
+      "applied": 361,
+      "admitted": 141,
+      "enrolled": 76
+    },
+    "total": {
+      "applied": 836,
+      "admitted": 306,
+      "enrolled": 171
+    }
+  },
+  "slug": "udayton"
+}

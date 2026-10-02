@@ -1,0 +1,171 @@
+{
+  "name": "Carleton College",
+  "data_year": "2025-26",
+  "city": "Northfield",
+  "state": "MN",
+  "location": "Northfield, MN",
+  "school_type": "Private",
+  "website": "www.carleton.edu",
+  "applicants_total": 6796,
+  "applicants_men": 3499,
+  "applicants_women": 3286,
+  "admitted_total": 1480,
+  "admitted_men": 673,
+  "admitted_women": 800,
+  "enrolled_total": 518,
+  "enrolled_men": 251,
+  "enrolled_women": 265,
+  "acceptance_rate": 0.2178,
+  "application_fee": 0,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "1/15",
+  "waitlist_offered": 675,
+  "waitlist_accepted": 335,
+  "waitlist_admitted": 33,
+  "ea_ed_type": "ED I & II",
+  "ea_ed_deadline": "11/15",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": 760,
+  "ea_apps_admitted": 263,
+  "sat_submitted_pct": 0.394,
+  "sat_submitted_count": 204,
+  "act_submitted_pct": 0.247,
+  "act_submitted_count": 128,
+  "sat_composite_25": 1460,
+  "sat_composite_50": 1500,
+  "sat_composite_75": 1530,
+  "sat_reading_25": 730,
+  "sat_reading_75": 770,
+  "sat_math_25": 720,
+  "sat_math_75": 780,
+  "act_composite_25": 32,
+  "act_composite_50": 34,
+  "act_composite_75": 35,
+  "act_math_25": 30,
+  "act_math_75": 35,
+  "act_english_25": 34,
+  "act_english_75": 36,
+  "total_undergrads": 1974,
+  "undergrads_male": 959,
+  "undergrads_female": 1012,
+  "retention_rate": 0.9448,
+  "tuition": 75186,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 486,
+  "room_and_board": 19314,
+  "books_supplies": 1101,
+  "other_expenses": 939,
+  "pct_out_of_state": 0.7923,
+  "pct_on_campus_housing": 1.0,
+  "applicant_pools": {
+    "ea": {
+      "applied": 760,
+      "admitted": 263,
+      "rate": 0.3461
+    },
+    "rd": null,
+    "waitlist": {
+      "offered": 675,
+      "accepted_spots": 335,
+      "enrolled": 33
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 3499,
+      "female": 3286
+    },
+    "accepted": {
+      "male": 673,
+      "female": 800
+    },
+    "enrolled": {
+      "male": 251,
+      "female": 265
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 51,
+      "hispanic": 43,
+      "black": 28,
+      "white": 285,
+      "american_indian": 0,
+      "asian": 57,
+      "pacific_islander": 0,
+      "two_or_more": 38,
+      "unknown": 16,
+      "total": 518
+    },
+    "undergrad": {
+      "nonresident_aliens": 193,
+      "hispanic": 200,
+      "black": 104,
+      "white": 976,
+      "american_indian": 2,
+      "asian": 211,
+      "pacific_islander": 1,
+      "two_or_more": 160,
+      "unknown": 64,
+      "total": 1911
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.7923,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 204,
+    "sat_submitted_pct": 0.394,
+    "act_submitted_count": 128,
+    "act_submitted_pct": 0.247
+  },
+  "class_rank": {
+    "top10": 0.77,
+    "top25": 0.94,
+    "top50": 1.0,
+    "bottom50": 0.0,
+    "bottom25": 0.0
+  },
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "very_important",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "very_important",
+    "recommendations": "very_important",
+    "interview": "considered",
+    "extracurriculars": "very_important",
+    "talent": "very_important",
+    "character": "very_important",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 65,
+      "admitted": 9,
+      "enrolled": 5
+    },
+    "female": {
+      "applied": 67,
+      "admitted": 19,
+      "enrolled": 10
+    },
+    "total": {
+      "applied": 132,
+      "admitted": 28,
+      "enrolled": 15
+    }
+  },
+  "slug": "carleton"
+}

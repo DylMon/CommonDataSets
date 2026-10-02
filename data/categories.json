@@ -1,0 +1,20 @@
+{
+  "harvard": ["ivy-league"],
+  "yale": ["ivy-league"],
+  "princeton": ["ivy-league"],
+  "columbia": ["ivy-league"],
+  "upenn": ["ivy-league"],
+  "brown": ["ivy-league"],
+  "dartmouth": ["ivy-league"],
+  "cornell": ["ivy-league"],
+
+  "berkeley": ["uc-system"],
+  "uc-davis": ["uc-system"],
+  "uc-irvine": ["uc-system"],
+  "uc-merced": ["uc-system"],
+  "uc-riverside": ["uc-system"],
+  "uc-san-diego": ["uc-system"],
+  "uc-santa-cruz": ["uc-system"],
+  "ucla": ["uc-system"],
+  "ucsb": ["uc-system"]
+}

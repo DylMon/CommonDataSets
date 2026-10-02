@@ -1,0 +1,175 @@
+{
+  "name": "Vassar College",
+  "data_year": "2025-26",
+  "city": "Poughkeepsie",
+  "state": "NY",
+  "location": "Poughkeepsie, NY",
+  "school_type": "Private",
+  "website": null,
+  "applicants_total": 11118,
+  "applicants_men": 3991,
+  "applicants_women": 7103,
+  "admitted_total": 2327,
+  "admitted_men": 836,
+  "admitted_women": 1484,
+  "enrolled_total": 697,
+  "enrolled_men": 272,
+  "enrolled_women": 423,
+  "acceptance_rate": 0.2093,
+  "application_fee": 65,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "1/1",
+  "waitlist_offered": 918,
+  "waitlist_accepted": 510,
+  "waitlist_admitted": 30,
+  "ea_ed_type": "ED I & II",
+  "ea_ed_deadline": "11/15",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": 1046,
+  "ea_apps_admitted": 402,
+  "sat_submitted_pct": 0.32,
+  "sat_submitted_count": 225,
+  "act_submitted_pct": 0.14,
+  "act_submitted_count": 96,
+  "sat_composite_25": 1460,
+  "sat_composite_50": 1490,
+  "sat_composite_75": 1520,
+  "sat_reading_25": 730,
+  "sat_reading_75": 770,
+  "sat_math_25": 710,
+  "sat_math_75": 770,
+  "act_composite_25": 33,
+  "act_composite_50": 34,
+  "act_composite_75": 34,
+  "act_math_25": null,
+  "act_math_75": null,
+  "act_english_25": null,
+  "act_english_75": null,
+  "total_undergrads": 2514,
+  "undergrads_male": 981,
+  "undergrads_female": 1526,
+  "retention_rate": 0.95,
+  "tuition": 76140,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 1020,
+  "room_and_board": 19800,
+  "books_supplies": 900,
+  "other_expenses": null,
+  "pct_out_of_state": 0.66,
+  "pct_on_campus_housing": 1.0,
+  "applicant_pools": {
+    "ea": {
+      "applied": 1046,
+      "admitted": 402,
+      "rate": 0.3843
+    },
+    "rd": {
+      "applied": 11118,
+      "admitted": 2327,
+      "rate": 0.2093
+    },
+    "waitlist": {
+      "offered": 918,
+      "accepted_spots": 510,
+      "enrolled": 30
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 3991,
+      "female": 7103
+    },
+    "accepted": {
+      "male": 836,
+      "female": 1484
+    },
+    "enrolled": {
+      "male": 272,
+      "female": 423
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 48,
+      "hispanic": 90,
+      "black": 14,
+      "white": 393,
+      "american_indian": 1,
+      "asian": 51,
+      "pacific_islander": 0,
+      "two_or_more": 54,
+      "unknown": 43,
+      "total": 694
+    },
+    "undergrad": {
+      "nonresident_aliens": 157,
+      "hispanic": 336,
+      "black": 87,
+      "white": 1359,
+      "american_indian": 2,
+      "asian": 253,
+      "pacific_islander": 0,
+      "two_or_more": 201,
+      "unknown": 119,
+      "total": 2514
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.66,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 225,
+    "sat_submitted_pct": 0.32,
+    "act_submitted_count": 96,
+    "act_submitted_pct": 0.14
+  },
+  "class_rank": {
+    "top10": 0.79,
+    "top25": 0.97,
+    "top50": 1.0,
+    "bottom50": 0.0,
+    "bottom25": 0.0
+  },
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "important",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "very_important",
+    "recommendations": "very_important",
+    "interview": "considered",
+    "extracurriculars": "very_important",
+    "talent": "very_important",
+    "character": "very_important",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "not_considered",
+    "religious": "considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "important",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 139,
+      "admitted": 28,
+      "enrolled": 7
+    },
+    "female": {
+      "applied": 226,
+      "admitted": 26,
+      "enrolled": 7
+    },
+    "total": {
+      "applied": 365,
+      "admitted": 54,
+      "enrolled": 14
+    }
+  },
+  "slug": "vassar"
+}

@@ -1,0 +1,167 @@
+{
+  "name": "Claremont McKenna College",
+  "data_year": "2024-25",
+  "city": "Claremont",
+  "state": "CA",
+  "location": "Claremont, CA",
+  "school_type": "Private",
+  "website": "www.claremontmckenna.edu",
+  "applicants_total": 6939,
+  "applicants_men": 3460,
+  "applicants_women": 3476,
+  "admitted_total": 655,
+  "admitted_men": 301,
+  "admitted_women": 354,
+  "enrolled_total": 335,
+  "enrolled_men": 171,
+  "enrolled_women": 164,
+  "acceptance_rate": 0.0944,
+  "application_fee": 70,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "1/10",
+  "waitlist_offered": 711,
+  "waitlist_accepted": 469,
+  "waitlist_admitted": 61,
+  "ea_ed_type": "ED I & II",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": 978,
+  "ea_apps_admitted": 216,
+  "sat_submitted_pct": 0.34,
+  "sat_submitted_count": 115,
+  "act_submitted_pct": 0.14,
+  "act_submitted_count": 48,
+  "sat_composite_25": 1480,
+  "sat_composite_50": 1510,
+  "sat_composite_75": 1540,
+  "sat_reading_25": 730,
+  "sat_reading_75": 760,
+  "sat_math_25": 740,
+  "sat_math_75": 790,
+  "act_composite_25": 33,
+  "act_composite_50": 34,
+  "act_composite_75": 35,
+  "act_math_25": 31,
+  "act_math_75": 34,
+  "act_english_25": 34,
+  "act_english_75": 35,
+  "total_undergrads": 1378,
+  "undergrads_male": 701,
+  "undergrads_female": 677,
+  "retention_rate": 0.9792,
+  "tuition": null,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": null,
+  "room_and_board": null,
+  "books_supplies": null,
+  "other_expenses": null,
+  "pct_out_of_state": 0.675,
+  "pct_on_campus_housing": 0.997,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 711,
+      "accepted_spots": 469,
+      "enrolled": 61
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 3460,
+      "female": 3476
+    },
+    "accepted": {
+      "male": 301,
+      "female": 354
+    },
+    "enrolled": {
+      "male": 171,
+      "female": 164
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 43,
+      "hispanic": 38,
+      "black": 9,
+      "white": 101,
+      "american_indian": 0,
+      "asian": 89,
+      "pacific_islander": 1,
+      "two_or_more": 31,
+      "unknown": 23,
+      "total": 335
+    },
+    "undergrad": {
+      "nonresident_aliens": 186,
+      "hispanic": 186,
+      "black": 49,
+      "white": 477,
+      "american_indian": 0,
+      "asian": 271,
+      "pacific_islander": 1,
+      "two_or_more": 132,
+      "unknown": 69,
+      "total": 1371
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.675,
+    "international_pct": 0.167
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 115,
+    "sat_submitted_pct": 0.34,
+    "act_submitted_count": 48,
+    "act_submitted_pct": 0.14
+  },
+  "class_rank": {
+    "top10": 0.64,
+    "top25": 0.94,
+    "top50": 1.0,
+    "bottom50": 0.0,
+    "bottom25": 0.0
+  },
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "very_important",
+    "recommendations": "very_important",
+    "interview": "important",
+    "extracurriculars": "very_important",
+    "talent": "important",
+    "character": "very_important",
+    "first_gen": "considered",
+    "alumni_relation": null,
+    "geo_residence": "considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 170,
+      "admitted": 15,
+      "enrolled": 9
+    },
+    "female": {
+      "applied": 136,
+      "admitted": 10,
+      "enrolled": 5
+    },
+    "total": {
+      "applied": 307,
+      "admitted": 25,
+      "enrolled": 14
+    }
+  },
+  "slug": "claremont-mckenna"
+}

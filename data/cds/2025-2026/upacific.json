@@ -1,0 +1,174 @@
+{
+  "name": "University of the Pacific",
+  "data_year": "2025-26",
+  "city": "Stockton",
+  "state": "CA",
+  "location": "Stockton, CA",
+  "school_type": "Private",
+  "website": null,
+  "applicants_total": 8656,
+  "applicants_men": 2722,
+  "applicants_women": 5663,
+  "admitted_total": 5977,
+  "admitted_men": 2077,
+  "admitted_women": 3797,
+  "enrolled_total": 676,
+  "enrolled_men": 289,
+  "enrolled_women": 381,
+  "acceptance_rate": 0.6904,
+  "application_fee": 55,
+  "avg_gpa_weighted": 3.61,
+  "rd_deadline": null,
+  "waitlist_offered": 273,
+  "waitlist_accepted": 200,
+  "waitlist_admitted": 172,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/15",
+  "ea_ed_notification": "12/20",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.1538,
+  "sat_submitted_count": 104,
+  "act_submitted_pct": 0.037,
+  "act_submitted_count": 25,
+  "sat_composite_25": 1220,
+  "sat_composite_75": 1453,
+  "sat_reading_25": 590,
+  "sat_reading_75": 710,
+  "sat_math_25": 600,
+  "sat_math_75": 760,
+  "act_composite_25": 26,
+  "act_composite_75": 34,
+  "act_math_25": 25,
+  "act_math_75": 35,
+  "act_english_25": 25,
+  "act_english_75": 35,
+  "total_undergrads": 3097,
+  "undergrads_male": 1410,
+  "undergrads_female": 1668,
+  "retention_rate": 0.8521,
+  "tuition": 57824,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 1020,
+  "room_and_board": 17546,
+  "books_supplies": 1089,
+  "other_expenses": 2780,
+  "pct_out_of_state": 0.1011,
+  "pct_on_campus_housing": 0.7115,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 273,
+      "accepted_spots": 200,
+      "enrolled": 172
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 2722,
+      "female": 5663
+    },
+    "accepted": {
+      "male": 2077,
+      "female": 3797
+    },
+    "enrolled": {
+      "male": 289,
+      "female": 381
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 43,
+      "hispanic": 186,
+      "black": 25,
+      "white": 77,
+      "american_indian": 1,
+      "asian": 212,
+      "pacific_islander": 6,
+      "two_or_more": 28,
+      "unknown": 98,
+      "total": 676
+    },
+    "undergrad": {
+      "nonresident_aliens": 201,
+      "hispanic": 893,
+      "black": 87,
+      "white": 393,
+      "american_indian": 5,
+      "asian": 941,
+      "pacific_islander": 13,
+      "two_or_more": 145,
+      "unknown": 351,
+      "total": 3029
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.1011,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 104,
+    "sat_submitted_pct": 0.1538,
+    "act_submitted_count": 25,
+    "act_submitted_pct": 0.037
+  },
+  "class_rank": {
+    "top10": 0.3628,
+    "top25": 0.6562,
+    "top50": 0.8864,
+    "bottom50": 0.1136,
+    "bottom25": 0.0284
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.1084,
+    "gpa_375_399": 0.3569,
+    "gpa_350_374": 0.2184,
+    "gpa_325_349": 0.1627,
+    "gpa_300_324": 0.0843,
+    "gpa_250_299": 0.0678,
+    "gpa_200_249": 0.0015,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "very_important",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "very_important",
+    "talent": "important",
+    "character": "important",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 314,
+      "admitted": 258,
+      "enrolled": 126
+    },
+    "female": {
+      "applied": 402,
+      "admitted": 305,
+      "enrolled": 125
+    },
+    "total": {
+      "applied": 719,
+      "admitted": 565,
+      "enrolled": 252
+    }
+  },
+  "slug": "upacific"
+}

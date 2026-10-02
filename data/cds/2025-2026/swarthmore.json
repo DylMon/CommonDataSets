@@ -1,0 +1,171 @@
+{
+  "name": "Swarthmore College",
+  "data_year": "2025-26",
+  "city": "Swarthmore",
+  "state": "PA",
+  "location": "Swarthmore, PA",
+  "school_type": "Private",
+  "website": "swarthmore.edu",
+  "applicants_total": 12995,
+  "applicants_men": 5709,
+  "applicants_women": 7286,
+  "admitted_total": 977,
+  "admitted_men": 472,
+  "admitted_women": 505,
+  "enrolled_total": 426,
+  "enrolled_men": 201,
+  "enrolled_women": 225,
+  "acceptance_rate": 0.0752,
+  "application_fee": 60,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "1/4",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": 14,
+  "ea_ed_type": "ED I & II",
+  "ea_ed_deadline": "11/15",
+  "ea_ed_notification": "12/16",
+  "ea_apps_received": 1281,
+  "ea_apps_admitted": 228,
+  "sat_submitted_pct": 0.4014,
+  "sat_submitted_count": 171,
+  "act_submitted_pct": 0.1479,
+  "act_submitted_count": 63,
+  "sat_composite_25": 1480,
+  "sat_composite_50": 1520,
+  "sat_composite_75": 1550,
+  "sat_reading_25": 740,
+  "sat_reading_75": 770,
+  "sat_math_25": 740,
+  "sat_math_75": 790,
+  "act_composite_25": 33,
+  "act_composite_50": 34,
+  "act_composite_75": 35,
+  "act_math_25": 30,
+  "act_math_75": 35,
+  "act_english_25": 35,
+  "act_english_75": 36,
+  "total_undergrads": 1631,
+  "undergrads_male": 766,
+  "undergrads_female": 865,
+  "retention_rate": 98.1,
+  "tuition": 68766,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 460,
+  "room_and_board": 21466,
+  "books_supplies": 785,
+  "other_expenses": 1695,
+  "pct_out_of_state": 85.91,
+  "pct_on_campus_housing": 100.0,
+  "applicant_pools": {
+    "ea": null,
+    "rd": {
+      "applied": 11714,
+      "admitted": 749,
+      "rate": 0.0639
+    },
+    "waitlist": {
+      "offered": null,
+      "accepted_spots": null,
+      "enrolled": 14
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 5709,
+      "female": 7286
+    },
+    "accepted": {
+      "male": 472,
+      "female": 505
+    },
+    "enrolled": {
+      "male": 201,
+      "female": 225
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 57,
+      "hispanic": 76,
+      "black": 23,
+      "white": 142,
+      "american_indian": 2,
+      "asian": 66,
+      "pacific_islander": 0,
+      "two_or_more": 42,
+      "unknown": 18,
+      "total": 426
+    },
+    "undergrad": {
+      "nonresident_aliens": 220,
+      "hispanic": 267,
+      "black": 135,
+      "white": 490,
+      "american_indian": 8,
+      "asian": 271,
+      "pacific_islander": 2,
+      "two_or_more": 176,
+      "unknown": 54,
+      "total": 1623
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 85.91,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 171,
+    "sat_submitted_pct": 40.14,
+    "act_submitted_count": 63,
+    "act_submitted_pct": 14.79
+  },
+  "class_rank": {
+    "top10": 86.72,
+    "top25": 97.66,
+    "top50": 100.0,
+    "bottom50": 0.0,
+    "bottom25": 0.0
+  },
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "very_important",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "very_important",
+    "recommendations": "very_important",
+    "interview": "considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "very_important",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 202,
+      "admitted": 19,
+      "enrolled": 5
+    },
+    "female": {
+      "applied": 219,
+      "admitted": 23,
+      "enrolled": 14
+    },
+    "total": {
+      "applied": 421,
+      "admitted": 42,
+      "enrolled": 19
+    }
+  },
+  "slug": "swarthmore"
+}

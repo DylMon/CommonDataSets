@@ -1,0 +1,176 @@
+{
+  "name": "University of Richmond",
+  "data_year": "2025-26",
+  "city": "University of Richmond",
+  "state": "VA",
+  "location": "University of Richmond, VA",
+  "school_type": "Private",
+  "website": "www.richmond.edu",
+  "applicants_total": 16560,
+  "applicants_men": 6840,
+  "applicants_women": 9717,
+  "admitted_total": 3683,
+  "admitted_men": 1633,
+  "admitted_women": 2050,
+  "enrolled_total": 857,
+  "enrolled_men": 378,
+  "enrolled_women": 479,
+  "acceptance_rate": 0.2224,
+  "application_fee": 50,
+  "avg_gpa_weighted": 3.81,
+  "rd_deadline": "1/1",
+  "waitlist_offered": 3634,
+  "waitlist_accepted": 2016,
+  "waitlist_admitted": 102,
+  "ea_ed_type": "ED I & II",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": 1154,
+  "ea_apps_admitted": 421,
+  "sat_submitted_pct": 0.186,
+  "sat_submitted_count": 159,
+  "act_submitted_pct": 0.145,
+  "act_submitted_count": 124,
+  "sat_composite_25": 1420,
+  "sat_composite_50": 1440,
+  "sat_composite_75": 1490,
+  "sat_reading_25": 700,
+  "sat_reading_75": 750,
+  "sat_math_25": 700,
+  "sat_math_75": 770,
+  "act_composite_25": 33,
+  "act_composite_50": 33,
+  "act_composite_75": 34,
+  "act_math_25": null,
+  "act_math_75": null,
+  "act_english_25": null,
+  "act_english_75": null,
+  "total_undergrads": 3052,
+  "undergrads_male": 1512,
+  "undergrads_female": 1876,
+  "retention_rate": 0.92,
+  "tuition": 70725,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": null,
+  "room_and_board": 18815,
+  "books_supplies": 1000,
+  "other_expenses": 1780,
+  "pct_out_of_state": 0.86,
+  "pct_on_campus_housing": null,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 3634,
+      "accepted_spots": 2016,
+      "enrolled": 102
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 6840,
+      "female": 9717
+    },
+    "accepted": {
+      "male": 1633,
+      "female": 2050
+    },
+    "enrolled": {
+      "male": 378,
+      "female": 479
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 72,
+      "hispanic": 82,
+      "black": 37,
+      "white": 562,
+      "american_indian": 0,
+      "asian": 42,
+      "pacific_islander": 1,
+      "two_or_more": 50,
+      "unknown": 11,
+      "total": 857
+    },
+    "undergrad": {
+      "nonresident_aliens": 351,
+      "hispanic": 264,
+      "black": 175,
+      "white": 1898,
+      "american_indian": 1,
+      "asian": 161,
+      "pacific_islander": 1,
+      "two_or_more": 154,
+      "unknown": 47,
+      "total": 3052
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.86,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 159,
+    "sat_submitted_pct": 0.186,
+    "act_submitted_count": 124,
+    "act_submitted_pct": 0.145
+  },
+  "class_rank": {
+    "top10": 63,
+    "top25": 89,
+    "top50": 99,
+    "bottom50": 1,
+    "bottom25": null
+  },
+  "gpa_distribution": {
+    "gpa_40": 23,
+    "gpa_375_399": 47,
+    "gpa_350_374": 25,
+    "gpa_325_349": 2.5,
+    "gpa_300_324": 1,
+    "gpa_250_299": 1,
+    "gpa_200_249": 0.5,
+    "gpa_100_199": null
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "important",
+    "academic_gpa": "very_important",
+    "test_scores": "important",
+    "essay": "important",
+    "recommendations": "important",
+    "interview": "not_considered",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "important",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "important",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 134,
+      "admitted": 69,
+      "enrolled": 29
+    },
+    "female": {
+      "applied": 179,
+      "admitted": 88,
+      "enrolled": 18
+    },
+    "total": {
+      "applied": 313,
+      "admitted": 157,
+      "enrolled": 47
+    }
+  },
+  "slug": "urichmond"
+}

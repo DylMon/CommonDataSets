@@ -1,0 +1,168 @@
+{
+  "name": "The University of North Carolina at Charlotte",
+  "data_year": "2025-26",
+  "city": "Charlotte",
+  "state": "NC",
+  "location": "Charlotte, NC",
+  "school_type": "Public",
+  "website": "www.charlotte.edu",
+  "applicants_total": 27218,
+  "applicants_men": 11978,
+  "applicants_women": 15240,
+  "admitted_total": 21170,
+  "admitted_men": 9133,
+  "admitted_women": 12037,
+  "enrolled_total": 4934,
+  "enrolled_men": 2437,
+  "enrolled_women": 2497,
+  "acceptance_rate": 0.7778,
+  "application_fee": 75,
+  "avg_gpa_weighted": 3.56,
+  "rd_deadline": "6/1",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "1/30",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.161,
+  "sat_submitted_count": 792,
+  "act_submitted_pct": 0.27,
+  "act_submitted_count": 1331,
+  "sat_composite_25": 1150,
+  "sat_composite_50": 1250,
+  "sat_composite_75": 1340,
+  "sat_reading_25": 570,
+  "sat_reading_75": 670,
+  "sat_math_25": 570,
+  "sat_math_75": 680,
+  "act_composite_25": 21,
+  "act_composite_50": 24,
+  "act_composite_75": 27,
+  "act_math_25": 20,
+  "act_math_75": 27,
+  "act_english_25": 19,
+  "act_english_75": 26,
+  "total_undergrads": 26213,
+  "undergrads_male": 13380,
+  "undergrads_female": 12833,
+  "retention_rate": 0.86,
+  "tuition": null,
+  "tuition_in_state": 3812,
+  "tuition_out_of_state": 20018,
+  "required_fees": 3505,
+  "room_and_board": 12390,
+  "books_supplies": 600,
+  "other_expenses": 2360,
+  "pct_out_of_state": 0.1035,
+  "pct_on_campus_housing": 0.8058,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 11978,
+      "female": 15240
+    },
+    "accepted": {
+      "male": 9133,
+      "female": 12037
+    },
+    "enrolled": {
+      "male": 2437,
+      "female": 2497
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 132,
+      "hispanic": 845,
+      "black": 996,
+      "white": 1988,
+      "american_indian": 18,
+      "asian": 573,
+      "pacific_islander": 4,
+      "two_or_more": 280,
+      "unknown": 98,
+      "total": 4934
+    },
+    "undergrad": {
+      "nonresident_aliens": 700,
+      "hispanic": 4350,
+      "black": 5170,
+      "white": 11344,
+      "american_indian": 81,
+      "asian": 2758,
+      "pacific_islander": 23,
+      "two_or_more": 1386,
+      "unknown": 401,
+      "total": 26213
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.1035,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 792,
+    "sat_submitted_pct": 0.161,
+    "act_submitted_count": 1331,
+    "act_submitted_pct": 0.27
+  },
+  "class_rank": {
+    "top10": 0.1857,
+    "top25": 0.4708,
+    "top50": 0.8253,
+    "bottom50": 0.1747,
+    "bottom25": 0.0264
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.0436,
+    "gpa_375_399": 0.23568,
+    "gpa_350_374": 0.30595,
+    "gpa_325_349": 0.25982,
+    "gpa_300_324": 0.12505,
+    "gpa_250_299": 0.02486,
+    "gpa_200_249": 0.00396,
+    "gpa_100_199": 0.00108
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "very_important",
+    "essay": "considered",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "not_considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "not_considered",
+    "work_experience": "considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 2648,
+      "admitted": 2378,
+      "enrolled": 1502
+    },
+    "female": {
+      "applied": 2809,
+      "admitted": 2504,
+      "enrolled": 1485
+    },
+    "total": {
+      "applied": 5457,
+      "admitted": 4882,
+      "enrolled": 2987
+    }
+  },
+  "slug": "north-carolina-charolette"
+}
