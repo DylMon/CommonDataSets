@@ -5,7 +5,7 @@
     {
       "id": 1,
       "name": "Boston College",
-      "data_year": "2024-2025",
+      "data_year": "2024-25",
       "city": "Chestnut Hill",
       "state": "MA",
       "location": "Chestnut Hill, MA",
@@ -177,7 +177,7 @@
     {
       "id": 2,
       "name": "Bradley University",
-      "data_year": "2024-2025",
+      "data_year": "2024-25",
       "city": "Peoria",
       "state": "IL",
       "location": "Peoria, IL",
@@ -700,7 +700,7 @@
     {
       "id": 5,
       "name": "Clark University",
-      "data_year": "2024-2025",
+      "data_year": "2024-25",
       "city": "Worcester",
       "state": "MA",
       "location": "Worcester, MA",
@@ -1597,7 +1597,7 @@
     {
       "id": 10,
       "name": "DePaul University",
-      "data_year": "2024-2025",
+      "data_year": "2024-25",
       "city": "Chicago",
       "state": "IL",
       "location": "Chicago, IL",
@@ -1950,7 +1950,7 @@
     {
       "id": 12,
       "name": "East Carolina University",
-      "data_year": "2024-2025",
+      "data_year": "2024-25",
       "city": "Greenville",
       "state": "NC",
       "location": "Greenville, NC",
@@ -2259,7 +2259,7 @@
     {
       "id": 14,
       "name": "Fairfield University",
-      "data_year": "2024-2025",
+      "data_year": "2024-25",
       "city": "Fairfield",
       "state": "CT",
       "location": "Fairfield, CT",
@@ -2612,7 +2612,7 @@
     {
       "id": 16,
       "name": "Grinnell College",
-      "data_year": "2024-2025",
+      "data_year": "2024-25",
       "city": "Grinnell",
       "state": "IA",
       "location": "Grinnell, IA",
@@ -2970,7 +2970,7 @@
     {
       "id": 18,
       "name": "Hofstra University",
-      "data_year": "2024-2025",
+      "data_year": "2024-25",
       "city": "Hempstead",
       "state": "NY",
       "location": "Hempstead, NY",
@@ -5761,7 +5761,7 @@
     {
       "id": 34,
       "name": "University of Delaware",
-      "data_year": "2024-2025",
+      "data_year": "2024-25",
       "city": "Newark",
       "state": "DE",
       "location": "Newark, DE",
@@ -6102,7 +6102,7 @@
     {
       "id": 36,
       "name": "University of Kansas",
-      "data_year": "2024-2025",
+      "data_year": "2024-25",
       "city": "Lawrence",
       "state": "KS",
       "location": "Lawrence, KS",
@@ -6279,7 +6279,7 @@
     {
       "id": 37,
       "name": "University of Louisville",
-      "data_year": "2024-2025",
+      "data_year": "2024-25",
       "city": "Louisville",
       "state": "KY",
       "location": "Louisville, KY",
@@ -6456,7 +6456,7 @@
     {
       "id": 38,
       "name": "University of Massachusetts Lowell",
-      "data_year": "2024-2025",
+      "data_year": "2024-25",
       "city": "Lowell",
       "state": "MA",
       "location": "Lowell, MA",
@@ -6949,7 +6949,7 @@
     {
       "id": 41,
       "name": "University of North Carolina Wilmington",
-      "data_year": "2024-2025",
+      "data_year": "2024-25",
       "city": "Wilmington",
       "state": "NC",
       "location": "Wilmington, NC",
@@ -7297,7 +7297,7 @@
     {
       "id": 43,
       "name": "University of Iowa",
-      "data_year": "2024-2025",
+      "data_year": "2024-25",
       "city": "Iowa City",
       "state": "IA",
       "location": "Iowa City, IA",
@@ -7478,7 +7478,7 @@
     {
       "id": 44,
       "name": "University of Minnesota - Twin Cities Campus",
-      "data_year": "2024-2025",
+      "data_year": "2024-25",
       "city": "Minneapolis",
       "state": "MN",
       "location": "Minneapolis, MN",
@@ -7638,7 +7638,7 @@
     {
       "id": 45,
       "name": "University of Oklahoma",
-      "data_year": "2024-2025",
+      "data_year": "2024-25",
       "city": "Norman",
       "state": "OK",
       "location": "Norman, OK",
@@ -7992,7 +7992,7 @@
     {
       "id": 47,
       "name": "University of San Francisco",
-      "data_year": "2024-2025",
+      "data_year": "2024-25",
       "city": "San Francisco",
       "state": "CA",
       "location": "San Francisco, CA",
@@ -8330,7 +8330,7 @@
     {
       "id": 49,
       "name": "United States Military Academy at West Point",
-      "data_year": "2024-2025",
+      "data_year": "2024-25",
       "city": "West Point",
       "state": "NY",
       "location": "West Point, NY",
@@ -8662,7 +8662,7 @@
     {
       "id": 51,
       "name": "Virginia Commonwealth University",
-      "data_year": "2024-2025",
+      "data_year": "2024-25",
       "city": "Richmond",
       "state": "VA",
       "location": "Richmond, VA",

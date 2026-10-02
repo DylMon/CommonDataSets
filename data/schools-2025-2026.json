@@ -840,7 +840,7 @@
     {
       "id": 6,
       "name": "Baylor University",
-      "data_year": "2025-2026",
+      "data_year": "2025-26",
       "city": "Waco",
       "state": "TX",
       "location": "Waco, TX",
@@ -2075,7 +2075,7 @@
     {
       "id": 13,
       "name": "University at Buffalo",
-      "data_year": "2025-2026",
+      "data_year": "2025-26",
       "city": "Buffalo",
       "state": "NY",
       "location": "Buffalo, NY",
@@ -2771,7 +2771,7 @@
     {
       "id": 17,
       "name": "Chapman University",
-      "data_year": "2025-2026",
+      "data_year": "2025-26",
       "city": "Orange",
       "state": "CA",
       "location": "Orange, CA",
@@ -3286,7 +3286,7 @@
     {
       "id": 20,
       "name": "Clemson University",
-      "data_year": "2025-2026",
+      "data_year": "2025-26",
       "city": "Clemson",
       "state": "SC",
       "location": "Clemson, SC",
@@ -5345,7 +5345,7 @@
     {
       "id": 32,
       "name": "Drexel University",
-      "data_year": "2025-2026",
+      "data_year": "2025-26",
       "city": "Philadelphia",
       "state": "PA",
       "location": "Philadelphia, PA",
@@ -5526,7 +5526,7 @@
     {
       "id": 33,
       "name": "Duke University",
-      "data_year": "2025-2026",
+      "data_year": "2025-26",
       "city": "Durham",
       "state": "NC",
       "location": "Durham, NC",
@@ -5680,7 +5680,7 @@
     {
       "id": 34,
       "name": "Duquesne University",
-      "data_year": "2025-2026",
+      "data_year": "2025-26",
       "city": "Pittsburgh",
       "state": "PA",
       "location": "Pittsburgh, PA",
@@ -5857,7 +5857,7 @@
     {
       "id": 35,
       "name": "Elon University",
-      "data_year": "2025-2026",
+      "data_year": "2025-26",
       "city": "Elon",
       "state": "NC",
       "location": "Elon, NC",
@@ -6551,7 +6551,7 @@
     {
       "id": 39,
       "name": "Florida Atlantic University",
-      "data_year": "2025-2026",
+      "data_year": "2025-26",
       "city": "Boca Raton",
       "state": "FL",
       "location": "Boca Raton, FL",
@@ -6905,7 +6905,7 @@
     {
       "id": 41,
       "name": "Georgetown University",
-      "data_year": "2025-2026",
+      "data_year": "2025-26",
       "city": "Washington",
       "state": "DC",
       "location": "Washington, DC",
@@ -7583,7 +7583,7 @@
     {
       "id": 45,
       "name": "Hamilton College",
-      "data_year": "2025-2026",
+      "data_year": "2025-26",
       "city": "Clinton",
       "state": "NY",
       "location": "Clinton, NY",
@@ -8118,7 +8118,7 @@
     {
       "id": 48,
       "name": "Howard University",
-      "data_year": "2025-2026",
+      "data_year": "2025-26",
       "city": "Washington",
       "state": "DC",
       "location": "Washington, DC",
@@ -9101,7 +9101,7 @@
     {
       "id": 54,
       "name": "Loyola Marymount University",
-      "data_year": "2025-2026",
+      "data_year": "2025-26",
       "city": "Los Angeles",
       "state": "CA",
       "location": "Los Angeles, CA",
@@ -9278,7 +9278,7 @@
     {
       "id": 55,
       "name": "Marquette University",
-      "data_year": "2025-2026",
+      "data_year": "2025-26",
       "city": "Milwaukee",
       "state": "WI",
       "location": "Milwaukee, WI",
@@ -9632,7 +9632,7 @@
     {
       "id": 57,
       "name": "Michigan State University",
-      "data_year": "2025-2026",
+      "data_year": "2025-26",
       "city": "East Lansing",
       "state": "MI",
       "location": "East Lansing, MI",
@@ -10645,7 +10645,7 @@
     {
       "id": 63,
       "name": "New Jersey Institute of Technology",
-      "data_year": "2025-2026",
+      "data_year": "2025-26",
       "city": "Newark",
       "state": "NJ",
       "location": "Newark, NJ",
@@ -10993,7 +10993,7 @@
     {
       "id": 65,
       "name": "Northeastern University",
-      "data_year": "2024-2025",
+      "data_year": "2024-25",
       "city": "Boston",
       "state": "MA",
       "location": "Boston, MA",
@@ -11667,7 +11667,7 @@
     {
       "id": 69,
       "name": "The Ohio State University",
-      "data_year": "2025-2026",
+      "data_year": "2025-26",
       "city": "Columbus",
       "state": "OH",
       "location": "Columbus, OH",
@@ -12004,7 +12004,7 @@
     {
       "id": 71,
       "name": "University of Mississippi",
-      "data_year": "2025-2026",
+      "data_year": "2025-26",
       "city": "University",
       "state": "MS",
       "location": "University, MS",
@@ -14950,7 +14950,7 @@
     {
       "id": 88,
       "name": "Stevens Institute of Technology",
-      "data_year": "2025-2026",
+      "data_year": "2025-26",
       "city": "Hoboken",
       "state": "NJ",
       "location": "Hoboken, NJ",
@@ -16309,7 +16309,7 @@
     {
       "id": 96,
       "name": "Tufts University",
-      "data_year": "2025-2026",
+      "data_year": "2025-26",
       "city": "Medford",
       "state": "MA",
       "location": "Medford, MA",
@@ -16839,7 +16839,7 @@
     {
       "id": 99,
       "name": "University of Arkansas",
-      "data_year": "2025-2026",
+      "data_year": "2025-26",
       "city": "Fayetteville",
       "state": "AR",
       "location": "Fayetteville, AR",
@@ -17016,7 +17016,7 @@
     {
       "id": 100,
       "name": "University of California - Davis",
-      "data_year": "2025-2026",
+      "data_year": "2025-26",
       "city": "Davis",
       "state": "CA",
       "location": "Davis, CA",
@@ -18033,7 +18033,7 @@
     {
       "id": 106,
       "name": "University of Central Florida",
-      "data_year": "2025-2026",
+      "data_year": "2025-26",
       "city": "Orlando",
       "state": "FL",
       "location": "Orlando, FL",
@@ -18379,7 +18379,7 @@
     {
       "id": 108,
       "name": "University of California, Los Angeles",
-      "data_year": "2025-2026",
+      "data_year": "2025-26",
       "city": "Los Angeles",
       "state": "CA",
       "location": "Los Angeles, CA",
@@ -18887,7 +18887,7 @@
     {
       "id": 111,
       "name": "University of Dayton",
-      "data_year": "2025-2026",
+      "data_year": "2025-26",
       "city": "Dayton",
       "state": "OH",
       "location": "Dayton, OH",
@@ -19225,7 +19225,7 @@
     {
       "id": 113,
       "name": "University of Florida",
-      "data_year": "2025-2026",
+      "data_year": "2025-26",
       "city": "Gainesville",
       "state": "FL",
       "location": "Gainesville, FL",
@@ -20239,7 +20239,7 @@
     {
       "id": 119,
       "name": "University of Kentucky",
-      "data_year": "2025-2026",
+      "data_year": "2025-26",
       "city": "Lexington",
       "state": "KY",
       "location": "Lexington, KY",
@@ -20585,7 +20585,7 @@
     {
       "id": 121,
       "name": "University of Maryland, Baltimore County",
-      "data_year": "2025-2026",
+      "data_year": "2025-26",
       "city": "Baltimore",
       "state": "MD",
       "location": "Baltimore, MD",
@@ -21117,7 +21117,7 @@
     {
       "id": 124,
       "name": "University of Nevada, Reno",
-      "data_year": "2025-2026",
+      "data_year": "2025-26",
       "city": "Reno",
       "state": "NV",
       "location": "Reno, NV",
@@ -23340,7 +23340,7 @@
     {
       "id": 137,
       "name": "University of Utah",
-      "data_year": "2025-2026",
+      "data_year": "2025-26",
       "city": "Salt Lake City",
       "state": "UT",
       "location": "Salt Lake City, UT",
@@ -25071,7 +25071,7 @@
     {
       "id": 147,
       "name": "University of Washington",
-      "data_year": "2025-2026",
+      "data_year": "2025-26",
       "city": "Seattle",
       "state": "WA",
       "location": "Seattle, WA",
@@ -25246,7 +25246,7 @@
     {
       "id": 148,
       "name": "Washington State University",
-      "data_year": "2025-2026",
+      "data_year": "2025-26",
       "city": "Pullman",
       "state": "WA",
       "location": "Pullman, WA",
@@ -26080,7 +26080,7 @@
     {
       "id": 153,
       "name": "William & Mary",
-      "data_year": "2025-2026",
+      "data_year": "2025-26",
       "city": "Williamsburg",
       "state": "VA",
       "location": "Williamsburg, VA",

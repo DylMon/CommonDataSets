@@ -5,7 +5,7 @@
     {
       "id": 1,
       "name": "Illinois Institute of Technology",
-      "data_year": "2023-2024",
+      "data_year": "2023-24",
       "city": "Chicago",
       "state": "IL",
       "location": "Chicago, IL",
@@ -173,7 +173,7 @@
     {
       "id": 2,
       "name": "University of Missouri",
-      "data_year": "2023-2024",
+      "data_year": "2023-24",
       "city": "Columbia",
       "state": "MO",
       "location": "Columbia, MO",
@@ -332,7 +332,7 @@
     {
       "id": 3,
       "name": "The Ohio State University",
-      "data_year": "2023-2024",
+      "data_year": "2023-24",
       "city": "Columbus",
       "state": "OH",
       "location": "Columbus, OH",
@@ -499,7 +499,7 @@
     {
       "id": 4,
       "name": "Quinnipiac University",
-      "data_year": "2023-2024",
+      "data_year": "2023-24",
       "city": "Hamden",
       "state": "CT",
       "location": "Hamden, CT",
@@ -683,7 +683,7 @@
     {
       "id": 5,
       "name": "Rutgers University \u2013 Camden",
-      "data_year": "2023-2024",
+      "data_year": "2023-24",
       "city": "Camden",
       "state": "NJ",
       "location": "Camden, NJ",
@@ -842,7 +842,7 @@
     {
       "id": 6,
       "name": "RUTGERS UNIVERSITY \u2013 NEWARK",
-      "data_year": "2023-2024",
+      "data_year": "2023-24",
       "city": "Newark",
       "state": "NJ",
       "location": "Newark, NJ",
@@ -996,7 +996,7 @@
     {
       "id": 7,
       "name": "Yeshiva University",
-      "data_year": "2023-2024",
+      "data_year": "2023-24",
       "city": "New York",
       "state": "NY",
       "location": "New York, NY",
