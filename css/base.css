@@ -149,23 +149,20 @@ body.page-compare {
     text-decoration: none;
 }
 
-/* Redundant shortcut to /info/ — the real nav link for it lives in
-   .header-accent-bar below; this just saves a trip down for anyone
-   already looking at the top bar. Also the hover trigger for the
-   secondary-pages dropdown (About the CDS / Contact Us). */
-.nav-about-wrapper {
+/* Redundant shortcuts to /info/ and /contact/ — the real nav link for
+   About lives in .header-accent-bar below; these just save a trip down
+   for anyone already looking at the top bar. Plain text, side by side,
+   no box/border. */
+.nav-corner-links {
     grid-column: 3;
     justify-self: end;
     align-self: center;
-    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
-.nav-about-btn {
-    display: inline-flex;
-    align-items: center;
-    padding: 7px 18px;
-    border: 1px solid #fff;
-    border-radius: 10px;
+.nav-corner-links a {
     color: #fff;
     font-family: var(--font-display);
     font-size: 0.85em;
@@ -174,57 +171,11 @@ body.page-compare {
     letter-spacing: 0.05em;
     text-decoration: none;
     white-space: nowrap;
-    transition: background 0.2s, color 0.2s;
+    transition: opacity 0.2s;
 }
 
-.nav-about-btn:hover {
-    background: #fff;
-    color: var(--brand, #ed6d0b);
-}
-
-/* Flush against the button (no gap) so the hover area is continuous —
-   a margin here would create a dead zone the pointer has to cross. */
-.nav-about-dropdown {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    min-width: 220px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
-    padding: 6px;
-    display: flex;
-    flex-direction: column;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-6px);
-    transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
-    z-index: 20;
-}
-
-.nav-about-wrapper:hover .nav-about-dropdown,
-.nav-about-wrapper:focus-within .nav-about-dropdown {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.nav-about-dropdown a {
-    display: block;
-    padding: 10px 14px;
-    border-radius: 6px;
-    color: #000;
-    text-decoration: none;
-    font-size: 0.85em;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-    white-space: nowrap;
-    transition: background 0.15s, color 0.15s;
-}
-
-.nav-about-dropdown a:hover {
-    background: var(--brand, #ed6d0b);
-    color: #fff;
+.nav-corner-links a:hover {
+    opacity: 0.7;
 }
 
 .legal-notice {
@@ -1679,12 +1630,10 @@ body.header-hidden .school-page-layout .right-sidebar {
         display: none;
     }
 
-    /* Purely a convenience shortcut on wider screens — at this width the
-       real About link is already one short scroll away in the stacked
-       nav below, so drop the duplicate instead of adding more clutter.
-       (Its dropdown is hover-only anyway, which doesn't exist on touch;
-       About the CDS / Contact Us are reachable from the footer instead.) */
-    .nav-about-wrapper {
+    /* Purely a convenience shortcut on wider screens — at this width both
+       are already one short scroll away in the stacked nav/footer below,
+       so drop the duplicates instead of adding more clutter. */
+    .nav-corner-links {
         display: none;
     }
 
