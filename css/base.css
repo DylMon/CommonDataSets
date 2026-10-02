@@ -170,7 +170,7 @@ body.page-compare {
    The span is the not-yet-built Resources page, shown as plain text. */
 .nav-corner-links :is(a, span) {
     font-family: var(--link-font, inherit);
-    color: var(--hdr-fg);
+    color: var(--hdr-corner, var(--hdr-fg));
     font-size: 0.9em;
     font-weight: 400;
     text-transform: uppercase;
@@ -471,7 +471,7 @@ body.page-info .hero-banner {
 }
 
 .nav-link-wrapper a {
-    color: var(--hdr-fg);
+    color: var(--hdr-link, var(--hdr-fg));
     text-decoration: none;
     text-transform: uppercase;
     font-family: var(--link-font, inherit);

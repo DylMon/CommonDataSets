@@ -57,6 +57,18 @@
     }, extra);
     const sub = bg => ({ '--sub-display': 'block', '--sub-bg': bg });
     const hlColor = (fill, text) => ({ '--hdr-accent': fill, '--hdr-on-accent': text, '--hdr-line': fill });
+    const textColors = prop => [
+        ['auto', 'Match bar', ''],
+        ['white', 'White', { [prop]: '#fff' }],
+        ['cream', 'Cream', { [prop]: '#FFF1E2' }],
+        ['orange', 'Orange', { [prop]: B }],
+        ['deep', 'Deep orange', { [prop]: mix(78, '#000') }],
+        ['amber', 'Amber', { [prop]: mix(55, '#ffc04d') }],
+        ['peach', 'Peach', { [prop]: mix(30, '#fff') }],
+        ['espresso', 'Espresso', { [prop]: '#2a1c13' }],
+        ['charcoal', 'Charcoal', { [prop]: '#2b2b2b' }],
+        ['gray', 'Gray', { [prop]: '#6b6b6b' }],
+    ];
     const font = (prop, family, extra) => Object.assign({ [prop]: family }, extra);
 
     // [value, label, class name or {css var: value}]
@@ -73,6 +85,11 @@
                 { '--hdr-backdrop': 'blur(14px) saturate(1.5)' })],
             ['dark', 'Dark', dark('#1d1d1f')],
             ['espresso', 'Espresso', dark('#2a1c13', { '--hdr-fg': '#f6ebe2' })]] },
+
+        // Text colors — after Bar color so they override that theme's text.
+        { tab: 'Colors', key: 'tcolor', label: 'Title text', options: textColors('--hdr-wordmark') },
+        { tab: 'Colors', key: 'lcolor', label: 'Link text', options: textColors('--hdr-link') },
+        { tab: 'Colors', key: 'ccolor', label: 'About area text', options: textColors('--hdr-corner') },
 
         { tab: 'Bar & shadow', key: 'sub', label: 'Sub-bar', options: [
             ['none', 'None', ''],
@@ -174,7 +191,7 @@
     ];
     const VARIANT_TABS = ['Colors', 'Bar & shadow', 'Layout', 'Highlight', 'Type', 'Motion'];
     const VARIANT_DEFAULTS = {
-        style: 'orange', sub: 'none', subh: 'thin', subpos: 'below', shadow: 'medium',
+        style: 'orange', tcolor: 'auto', lcolor: 'auto', ccolor: 'auto', sub: 'none', subh: 'thin', subpos: 'below', shadow: 'medium',
         layout: 'grouped', width: 'full', cta: 'plain', logo: 'm',
         hl: 'pill', hlc: 'auto', hlw: 'auto',
         brand: 'serif', bsize: 'm', lfont: 'public', lsize: 'm', lweight: 'semi', text: 'normal',
