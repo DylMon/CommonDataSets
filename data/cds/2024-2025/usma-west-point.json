@@ -1,0 +1,168 @@
+{
+  "name": "United States Military Academy at West Point",
+  "data_year": "2024-2025",
+  "city": "West Point",
+  "state": "NY",
+  "location": "West Point, NY",
+  "school_type": "Public",
+  "website": "www.westpoint.edu",
+  "applicants_total": 12316,
+  "applicants_men": 8549,
+  "applicants_women": 3771,
+  "admitted_total": 1534,
+  "admitted_men": 1175,
+  "admitted_women": 359,
+  "enrolled_total": 1195,
+  "enrolled_men": 931,
+  "enrolled_women": 264,
+  "acceptance_rate": 0.1245,
+  "application_fee": null,
+  "avg_gpa_weighted": 4.1,
+  "rd_deadline": "1/31",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "None",
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.68,
+  "sat_submitted_count": 817,
+  "act_submitted_pct": 0.32,
+  "act_submitted_count": 378,
+  "sat_composite_25": 1210,
+  "sat_composite_50": 1330,
+  "sat_composite_75": 1420,
+  "sat_reading_25": 600,
+  "sat_reading_75": 710,
+  "sat_math_25": 600,
+  "sat_math_75": 720,
+  "act_composite_25": 27,
+  "act_composite_50": 31,
+  "act_composite_75": 33,
+  "act_math_25": 26,
+  "act_math_75": 32,
+  "act_english_25": 26,
+  "act_english_75": 34,
+  "total_undergrads": 4473,
+  "undergrads_male": 3479,
+  "undergrads_female": 994,
+  "retention_rate": 0.95,
+  "tuition": null,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": null,
+  "room_and_board": null,
+  "books_supplies": null,
+  "other_expenses": null,
+  "pct_out_of_state": 0.93,
+  "pct_on_campus_housing": 1.0,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 8549,
+      "female": 3771
+    },
+    "accepted": {
+      "male": 1175,
+      "female": 359
+    },
+    "enrolled": {
+      "male": 931,
+      "female": 264
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 16,
+      "hispanic": 161,
+      "black": 86,
+      "white": 756,
+      "american_indian": 9,
+      "asian": 147,
+      "pacific_islander": 6,
+      "two_or_more": 14,
+      "unknown": 0,
+      "total": 1195
+    },
+    "undergrad": {
+      "nonresident_aliens": 60,
+      "hispanic": 515,
+      "black": 396,
+      "white": 2807,
+      "american_indian": 40,
+      "asian": 520,
+      "pacific_islander": 29,
+      "two_or_more": 49,
+      "unknown": 57,
+      "total": 4473
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.93,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 817,
+    "sat_submitted_pct": 0.68,
+    "act_submitted_count": 378,
+    "act_submitted_pct": 0.32
+  },
+  "class_rank": {
+    "top10": 0.43,
+    "top25": 0.67,
+    "top50": 0.91,
+    "bottom50": 0.09,
+    "bottom25": 0.02
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.7557,
+    "gpa_375_399": 0.0867,
+    "gpa_350_374": 0.0985,
+    "gpa_325_349": 0.0307,
+    "gpa_300_324": 0.0205,
+    "gpa_250_299": 0.0055,
+    "gpa_200_249": 0.0016,
+    "gpa_100_199": 0.0008
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "very_important",
+    "essay": "important",
+    "recommendations": "important",
+    "interview": "very_important",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "very_important",
+    "first_gen": "not_considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "important"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 0,
+      "admitted": 0,
+      "enrolled": 0
+    },
+    "female": {
+      "applied": 0,
+      "admitted": 0,
+      "enrolled": 0
+    },
+    "total": {
+      "applied": 0,
+      "admitted": 0,
+      "enrolled": 0
+    }
+  },
+  "slug": "usma-west-point"
+}

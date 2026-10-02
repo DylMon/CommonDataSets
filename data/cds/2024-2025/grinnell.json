@@ -1,0 +1,167 @@
+{
+  "name": "Grinnell College",
+  "data_year": "2024-2025",
+  "city": "Grinnell",
+  "state": "IA",
+  "location": "Grinnell, IA",
+  "school_type": "Private",
+  "website": "www.grinnell.edu",
+  "applicants_total": 9758,
+  "applicants_men": 5048,
+  "applicants_women": 4421,
+  "admitted_total": 1416,
+  "admitted_men": 637,
+  "admitted_women": 725,
+  "enrolled_total": 438,
+  "enrolled_men": 211,
+  "enrolled_women": 211,
+  "acceptance_rate": 0.1451,
+  "application_fee": null,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "1/15",
+  "waitlist_offered": 2021,
+  "waitlist_accepted": 1180,
+  "waitlist_admitted": 36,
+  "ea_ed_type": "ED",
+  "ea_ed_deadline": "11/5",
+  "ea_ed_notification": "12/15",
+  "ea_apps_received": 828,
+  "ea_apps_admitted": 283,
+  "sat_submitted_pct": 0.29,
+  "sat_submitted_count": 129,
+  "act_submitted_pct": 0.21,
+  "act_submitted_count": 92,
+  "sat_composite_25": 1430,
+  "sat_composite_50": 1490,
+  "sat_composite_75": 1520,
+  "sat_reading_25": 700,
+  "sat_reading_75": 750,
+  "sat_math_25": 710,
+  "sat_math_75": 790,
+  "act_composite_25": 31,
+  "act_composite_50": 33,
+  "act_composite_75": 34,
+  "act_math_25": 28,
+  "act_math_75": 34,
+  "act_english_25": 31,
+  "act_english_75": 35,
+  "total_undergrads": 1788,
+  "undergrads_male": 819,
+  "undergrads_female": 969,
+  "retention_rate": 0.93,
+  "tuition": 71788,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 558,
+  "room_and_board": 17348,
+  "books_supplies": 800,
+  "other_expenses": 1850,
+  "pct_out_of_state": 0.92,
+  "pct_on_campus_housing": 1.0,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 2021,
+      "accepted_spots": 1180,
+      "enrolled": 36
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 5048,
+      "female": 4421
+    },
+    "accepted": {
+      "male": 637,
+      "female": 725
+    },
+    "enrolled": {
+      "male": 211,
+      "female": 211
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 98,
+      "hispanic": 43,
+      "black": 20,
+      "white": 189,
+      "american_indian": 0,
+      "asian": 55,
+      "pacific_islander": 1,
+      "two_or_more": 31,
+      "unknown": 1,
+      "total": 438
+    },
+    "undergrad": {
+      "nonresident_aliens": 365,
+      "hispanic": 152,
+      "black": 85,
+      "white": 859,
+      "american_indian": 1,
+      "asian": 169,
+      "pacific_islander": 1,
+      "two_or_more": 116,
+      "unknown": 40,
+      "total": 1788
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.92,
+    "international_pct": null
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 129,
+    "sat_submitted_pct": 0.29,
+    "act_submitted_count": 92,
+    "act_submitted_pct": 0.21
+  },
+  "class_rank": {
+    "top10": 0.562,
+    "top25": 0.314,
+    "top50": 0.109,
+    "bottom50": 0.015,
+    "bottom25": null
+  },
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "very_important",
+    "academic_gpa": "important",
+    "test_scores": "important",
+    "essay": "important",
+    "recommendations": "very_important",
+    "interview": "considered",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 40,
+      "admitted": 7,
+      "enrolled": 3
+    },
+    "female": {
+      "applied": 45,
+      "admitted": 7,
+      "enrolled": 2
+    },
+    "total": {
+      "applied": 90,
+      "admitted": 17,
+      "enrolled": 8
+    }
+  },
+  "slug": "grinnell"
+}
