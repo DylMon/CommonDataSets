@@ -410,7 +410,13 @@
                         <div class="school-rank">${rankBySlug.get(s.slug)}</div>
                         <img class="school-logo" src="${logoSrc(s.slug)}" alt="${s.name}" onerror="${LOGO_ONERR}" />
                         <div class="school-name">
-                            <a class="school-name-link" href="/schools/${s.slug}/">${s.name}</a>
+                            <div class="school-name-main">
+                                <a class="school-name-link" href="/schools/${s.slug}/">${s.name}</a>
+                                ${s.location ? `<div class="school-location">
+                                    <svg class="location-pin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+                                    ${s.location}
+                                </div>` : ''}
+                            </div>
                             <button class="fav-btn${isFav ? ' favorited' : ''}" data-slug="${s.slug}" title="${isFav ? 'Remove from favorites' : 'Add to favorites'}">
                                 <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
                             </button>

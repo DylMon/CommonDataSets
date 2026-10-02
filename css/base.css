@@ -1235,16 +1235,26 @@ body.header-hidden .school-page-layout .right-sidebar {
 
 .school-name {
     flex: 1;
-    font-family: var(--font-display);
-    font-size: 1.2em;
-    font-weight: 400;
     min-width: 0;
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
+/* Title + location stack vertically here; .fav-btn stays a plain sibling
+   so it stays vertically centered against the whole stack, not just the
+   title's own line. */
+.school-name-main {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
 .school-name-link {
+    font-family: var(--font-display);
+    font-size: 1.2em;
     color: #000;
     font-weight: 400;
     text-decoration: none;
@@ -1253,6 +1263,23 @@ body.header-hidden .school-page-layout .right-sidebar {
 
 .school-name-link:hover {
     color: #ed6d0b;
+}
+
+.school-location {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Ropa Sans', sans-serif;
+    font-size: 0.78em;
+    font-weight: 400;
+    color: #777;
+}
+
+.location-pin {
+    width: 11px;
+    height: 11px;
+    flex-shrink: 0;
+    color: #999;
 }
 
 /* Invisible to layout by default — .school-stats and .details-toggle
