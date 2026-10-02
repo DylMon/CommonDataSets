@@ -25,9 +25,9 @@
             <div class="nav-wrapper">
                 <a class="nav-brand" href="/">CommonDataSets</a>
                 <div class="nav-about-wrapper">
-                    <a class="nav-about-btn" href="/info/">About</a>
+                    <a class="nav-about-btn" href="/about/">About the Common Data Set</a>
                     <div class="nav-about-dropdown">
-                        <a href="/about/">About the Common Data Set</a>
+                        <a href="/info/">About Us</a>
                         <a href="/contact/">Contact Us</a>
                     </div>
                 </div>
