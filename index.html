@@ -94,19 +94,6 @@
             <div class="page-layout">
             <div class="sidebar">
             <div class="controls-container">
-            <div class="year-toggle-bar">
-                <span class="sort-label">Data Year</span>
-                <div class="sort-dropdown" id="year-dropdown">
-                    <button class="sort-dropdown-btn" id="year-dropdown-btn">
-                        <span id="year-label-text">2025–26</span>
-                        <svg class="sort-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-                    </button>
-                    <div class="sort-dropdown-menu" id="year-dropdown-menu">
-                        <button class="sort-option active" data-year="2025-2026">2025–26</button>
-                        <button class="sort-option" data-year="2024-2025">2024–25</button>
-                    </div>
-                </div>
-            </div>
             <div class="sort-bar">
                 <span class="sort-label">Sort by</span>
                 <div class="sort-dropdown" id="sort-dropdown">
@@ -278,21 +265,22 @@
         let allSchools = [];
         let searchQuery = '';
         let currentSort = 'us-news';
-        let currentYear = localStorage.getItem('cds_data_year') || '2025-2026';
-        const schoolsCache = {};
-        const YEAR_FILES = {
-            '2025-2026': '/data/schools-2025-2026.json',
-            '2024-2025': '/data/schools-2024-2025.json',
-        };
+
+        // Every year we've ever parsed CDS data for, oldest first. A school
+        // present in more than one of these (most are only in the latest)
+        // gets the record from whichever file appears last in this list —
+        // see loadAllSchools(). No per-year filter on this page anymore:
+        // every school is shown exactly once, using its most recent data.
+        const ALL_YEAR_FILES = [
+            '/data/schools-2021-2022.json',
+            '/data/schools-2022-2023.json',
+            '/data/schools-2023-2024.json',
+            '/data/schools-2024-2025.json',
+            '/data/schools-2025-2026.json',
+        ];
         // Scorecard data lives in its own file, kept separate from CDS data,
         // and merged in here rather than pre-baked — only 2025-26 has one so far.
-        const SCORECARD_FILES = {
-            '2025-2026': '/data/scorecard-2025-2026.json',
-        };
-        const YEAR_LABELS = {
-            '2025-2026': '2025–2026',
-            '2024-2025': '2024–2025',
-        };
+        const SCORECARD_FILE = '/data/scorecard-2025-2026.json';
 
         function renderFavoritesBox() {
             const slugs = [...favorites];
@@ -460,34 +448,48 @@
             }));
         }
 
-        async function loadYear(year) {
+        async function loadAllSchools() {
             currentPage = 1;
-            if (!schoolsCache[year]) {
-                const res = await fetch(YEAR_FILES[year]);
-                if (!res.ok) {
-                    document.getElementById('school-list').innerHTML = '<p class="loading">Failed to load schools.</p>';
-                    return;
-                }
-                const { schools: rawSchools } = await res.json();
-                const schools = rawSchools.filter(s => s.name != null); // exclude records with no source data yet (e.g. bad/missing source PDF)
 
-                let merged = schools;
-                if (SCORECARD_FILES[year]) {
-                    try {
-                        const scRes = await fetch(SCORECARD_FILES[year]);
-                        if (scRes.ok) {
-                            const { schools: scSchools } = await scRes.json();
-                            merged = mergeScorecard(schools, scSchools);
-                        }
-                    } catch (err) {
-                        console.error('Scorecard fetch failed, showing CDS data without it:', err);
-                    }
+            const results = await Promise.all(ALL_YEAR_FILES.map(async url => {
+                try {
+                    const res = await fetch(url);
+                    if (!res.ok) return [];
+                    const { schools } = await res.json();
+                    return schools.filter(s => s.name != null); // exclude records with no source data yet (e.g. bad/missing source PDF)
+                } catch (err) {
+                    console.error(`Failed to load ${url}:`, err);
+                    return [];
                 }
-                schoolsCache[year] = withSatAvg(merged);
+            }));
+
+            // ALL_YEAR_FILES is oldest-first, so a later file's record for the
+            // same slug simply overwrites the earlier one here — every school
+            // ends up with only its single most recent record.
+            const bySlug = new Map();
+            for (const yearSchools of results) {
+                for (const s of yearSchools) {
+                    if (s.slug) bySlug.set(s.slug, s);
+                }
             }
-            currentYear = year;
-            allSchools = schoolsCache[year];
-            localStorage.setItem('cds_data_year', year);
+            let merged = [...bySlug.values()];
+
+            if (merged.length === 0) {
+                document.getElementById('school-list').innerHTML = '<p class="loading">Failed to load schools.</p>';
+                return;
+            }
+
+            try {
+                const scRes = await fetch(SCORECARD_FILE);
+                if (scRes.ok) {
+                    const { schools: scSchools } = await scRes.json();
+                    merged = mergeScorecard(merged, scSchools);
+                }
+            } catch (err) {
+                console.error('Scorecard fetch failed, showing CDS data without it:', err);
+            }
+
+            allSchools = withSatAvg(merged);
             document.getElementById('page-intro-desc').textContent =
                 `Official Common Data Set submissions gathered directly from ${allSchools.length} top US universities, giving students and families one place to compare verified admissions statistics, test score ranges, cost of attendance, and enrollment data without the noise.`;
             renderCategoryBar();
@@ -497,24 +499,6 @@
         }
 
         async function init() {
-            const yearDropdown = document.getElementById('year-dropdown');
-            document.getElementById('year-dropdown-btn').addEventListener('click', () => {
-                yearDropdown.classList.toggle('open');
-            });
-            document.addEventListener('click', e => {
-                if (!e.target.closest('#year-dropdown')) yearDropdown.classList.remove('open');
-            });
-            document.querySelectorAll('#year-dropdown-menu .sort-option').forEach(opt => {
-                opt.classList.toggle('active', opt.dataset.year === currentYear);
-                opt.addEventListener('click', () => {
-                    document.querySelectorAll('#year-dropdown-menu .sort-option').forEach(o => o.classList.remove('active'));
-                    opt.classList.add('active');
-                    document.getElementById('year-label-text').textContent = opt.textContent;
-                    yearDropdown.classList.remove('open');
-                    if (opt.dataset.year !== currentYear) loadYear(opt.dataset.year);
-                });
-            });
-
             const searchInput = document.getElementById('school-search');
             const searchClear = document.getElementById('search-clear');
 
@@ -799,7 +783,7 @@
             // succeeds, so a fetch failure can't silently break the search
             // bar, sort, or filters the way it did when this ran first.
             try {
-                await loadYear(currentYear);
+                await loadAllSchools();
             } catch (err) {
                 console.error('Failed to load school data:', err);
                 document.getElementById('school-list').innerHTML = '<p class="loading">Failed to load schools.</p>';
