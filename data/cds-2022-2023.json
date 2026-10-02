@@ -5,7 +5,7 @@
     {
       "id": 1,
       "name": "Colorado School of Mines",
-      "data_year": "2022-2023",
+      "data_year": "2022-23",
       "city": "Golden",
       "state": "CO",
       "location": "Golden, CO",
@@ -185,7 +185,7 @@
     {
       "id": 2,
       "name": "Stockton University",
-      "data_year": "2022-2023",
+      "data_year": "2022-23",
       "city": "Galloway",
       "state": "NJ",
       "location": "Galloway, NJ",

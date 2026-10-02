@@ -94,17 +94,13 @@
             <div class="page-layout">
             <div class="sidebar">
             <div class="controls-container">
-            <div class="year-toggle-bar">
-                <span class="sort-label">Data Year</span>
+            <div class="year-filter-bar">
                 <div class="sort-dropdown" id="year-dropdown">
-                    <button class="sort-dropdown-btn" id="year-dropdown-btn">
-                        <span id="year-label-text">2025–26</span>
+                    <button class="year-filter-btn" id="year-dropdown-btn" type="button">
+                        <span id="year-filter-text" class="year-filter-placeholder">Search by Year</span>
                         <svg class="sort-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                     </button>
-                    <div class="sort-dropdown-menu" id="year-dropdown-menu">
-                        <button class="sort-option active" data-year="2025-2026">2025–26</button>
-                        <button class="sort-option" data-year="2024-2025">2024–25</button>
-                    </div>
+                    <div class="sort-dropdown-menu" id="year-dropdown-menu"></div>
                 </div>
             </div>
             <div class="sort-bar">
@@ -141,7 +137,7 @@
                     <div class="range-ends"><span>0</span><span>40k+</span></div>
                 </div>
                 <span class="filter-sep"></span>
-                <span class="filter-group-label">Acceptance Rate <input type="text" class="range-value-input" id="sel-val" value="All"></span>
+                <span class="filter-group-label">Acceptance <input type="text" class="range-value-input" id="sel-val" value="All"></span>
                 <div class="filter-range-wrap">
                     <input type="range" class="filter-range" id="sel-range" min="0" max="100" value="100" step="1">
                     <div class="range-ends"><span>0%</span><span>100%</span></div>
@@ -208,7 +204,7 @@
             localStorage.setItem('cds_favorites', JSON.stringify([...favorites]));
         }
 
-        const activeFilters = { category: 'all', eaEd: 'all', size: 40000, selectivity: 100, tuition: 75000, sat: 1600, earnings: 0 };
+        const activeFilters = { category: 'all', year: 'all', eaEd: 'all', size: 40000, selectivity: 100, tuition: 75000, sat: 1600, earnings: 0 };
 
         // Human-readable labels for the data-driven tags in categories.json
         // (see data/categories.json / scripts/build-cds-json.py). A tag with
@@ -227,6 +223,7 @@
         function applyFilters(schools) {
             return schools.filter(s => {
                 if (activeFilters.category !== 'all' && !(s.categories ?? []).includes(activeFilters.category)) return false;
+                if (activeFilters.year !== 'all' && s._yearKey !== activeFilters.year) return false;
                 if (activeFilters.eaEd === 'ea' && s.ea_ed_type !== 'EA') return false;
                 if (activeFilters.eaEd === 'ed' && s.ea_ed_type !== 'ED') return false;
                 if (activeFilters.size < 40000 && (s.total_undergrads == null || s.total_undergrads > activeFilters.size)) return false;
@@ -238,12 +235,19 @@
             });
         }
 
+        const CATEGORY_CLEAR_ICON = `<span class="category-clear" data-clear="1" aria-label="Clear category filter">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </span>`;
+
         function renderCategoryBar() {
             const bar = document.getElementById('category-filter-bar');
             const tags = [...new Set(allSchools.flatMap(s => s.categories ?? []))].sort();
 
-            const btn = (value, label) =>
-                `<button type="button" class="category-btn${activeFilters.category === value ? ' active' : ''}" data-category="${value}">${label}</button>`;
+            const btn = (value, label) => {
+                const active = activeFilters.category === value;
+                const clear = active && value !== 'all' ? CATEGORY_CLEAR_ICON : '';
+                return `<button type="button" class="category-btn${active ? ' active' : ''}" data-category="${value}">${clear}${label}</button>`;
+            };
 
             bar.innerHTML = btn('all', 'All') + tags.map(t => btn(t, categoryLabel(t))).join('');
         }
@@ -278,21 +282,36 @@
         let allSchools = [];
         let searchQuery = '';
         let currentSort = 'us-news';
-        let currentYear = localStorage.getItem('cds_data_year') || '2025-2026';
-        const schoolsCache = {};
-        const YEAR_FILES = {
-            '2025-2026': '/data/schools-2025-2026.json',
-            '2024-2025': '/data/schools-2024-2025.json',
-        };
+
+        // Every year we've ever parsed CDS data for, oldest first. A school
+        // present in more than one of these (most are only in the latest)
+        // gets the record from whichever file appears last in this list — see
+        // loadAllSchools(). By default every school is shown exactly once,
+        // using its most recent data; the "Search by Year" dropdown (built
+        // from this same list, see renderYearFilter()) can filter that back
+        // down to schools whose most recent data happens to be a given year.
+        const ALL_YEAR_FILES = [
+            '/data/schools-2021-2022.json',
+            '/data/schools-2022-2023.json',
+            '/data/schools-2023-2024.json',
+            '/data/schools-2024-2025.json',
+            '/data/schools-2025-2026.json',
+        ];
         // Scorecard data lives in its own file, kept separate from CDS data,
         // and merged in here rather than pre-baked — only 2025-26 has one so far.
-        const SCORECARD_FILES = {
-            '2025-2026': '/data/scorecard-2025-2026.json',
-        };
-        const YEAR_LABELS = {
-            '2025-2026': '2025–2026',
-            '2024-2025': '2024–2025',
-        };
+        const SCORECARD_FILE = '/data/scorecard-2025-2026.json';
+
+        // '/data/schools-2025-2026.json' -> '2025-2026'
+        function yearKeyFromUrl(url) {
+            return url.match(/schools-(\d{4}-\d{4})\.json/)?.[1] ?? null;
+        }
+
+        // '2025-2026' -> '2025–26' (en dash, short second year — matches the
+        // data-year badge on each card and the site's other year labels)
+        function shortYearLabel(key) {
+            const [start, end] = key.split('-');
+            return `${start}–${end.slice(2)}`;
+        }
 
         function renderFavoritesBox() {
             const slugs = [...favorites];
@@ -417,6 +436,7 @@
                                     ${s.location}
                                 </div>` : ''}
                             </div>
+                            ${s.data_year ? `<span class="school-data-year">${s.data_year}</span>` : ''}
                             <button class="fav-btn${isFav ? ' favorited' : ''}" data-slug="${s.slug}" title="${isFav ? 'Remove from favorites' : 'Add to favorites'}">
                                 <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
                             </button>
@@ -459,34 +479,55 @@
             }));
         }
 
-        async function loadYear(year) {
+        async function loadAllSchools() {
             currentPage = 1;
-            if (!schoolsCache[year]) {
-                const res = await fetch(YEAR_FILES[year]);
-                if (!res.ok) {
-                    document.getElementById('school-list').innerHTML = '<p class="loading">Failed to load schools.</p>';
-                    return;
-                }
-                const { schools: rawSchools } = await res.json();
-                const schools = rawSchools.filter(s => s.name != null); // exclude records with no source data yet (e.g. bad/missing source PDF)
 
-                let merged = schools;
-                if (SCORECARD_FILES[year]) {
-                    try {
-                        const scRes = await fetch(SCORECARD_FILES[year]);
-                        if (scRes.ok) {
-                            const { schools: scSchools } = await scRes.json();
-                            merged = mergeScorecard(schools, scSchools);
-                        }
-                    } catch (err) {
-                        console.error('Scorecard fetch failed, showing CDS data without it:', err);
-                    }
+            const results = await Promise.all(ALL_YEAR_FILES.map(async url => {
+                const yearKey = yearKeyFromUrl(url);
+                try {
+                    const res = await fetch(url);
+                    if (!res.ok) return [];
+                    const { schools } = await res.json();
+                    return schools
+                        .filter(s => s.name != null) // exclude records with no source data yet (e.g. bad/missing source PDF)
+                        // _yearKey drives the "Search by Year" filter — pulled from
+                        // the filename rather than each record's own (inconsistently
+                        // formatted) data_year field, so filtering stays reliable
+                        // regardless of that formatting.
+                        .map(s => ({ ...s, _yearKey: yearKey }));
+                } catch (err) {
+                    console.error(`Failed to load ${url}:`, err);
+                    return [];
                 }
-                schoolsCache[year] = withSatAvg(merged);
+            }));
+
+            // ALL_YEAR_FILES is oldest-first, so a later file's record for the
+            // same slug simply overwrites the earlier one here — every school
+            // ends up with only its single most recent record.
+            const bySlug = new Map();
+            for (const yearSchools of results) {
+                for (const s of yearSchools) {
+                    if (s.slug) bySlug.set(s.slug, s);
+                }
             }
-            currentYear = year;
-            allSchools = schoolsCache[year];
-            localStorage.setItem('cds_data_year', year);
+            let merged = [...bySlug.values()];
+
+            if (merged.length === 0) {
+                document.getElementById('school-list').innerHTML = '<p class="loading">Failed to load schools.</p>';
+                return;
+            }
+
+            try {
+                const scRes = await fetch(SCORECARD_FILE);
+                if (scRes.ok) {
+                    const { schools: scSchools } = await scRes.json();
+                    merged = mergeScorecard(merged, scSchools);
+                }
+            } catch (err) {
+                console.error('Scorecard fetch failed, showing CDS data without it:', err);
+            }
+
+            allSchools = withSatAvg(merged);
             document.getElementById('page-intro-desc').textContent =
                 `Official Common Data Set submissions gathered directly from ${allSchools.length} top US universities, giving students and families one place to compare verified admissions statistics, test score ranges, cost of attendance, and enrollment data without the noise.`;
             renderCategoryBar();
@@ -496,24 +537,6 @@
         }
 
         async function init() {
-            const yearDropdown = document.getElementById('year-dropdown');
-            document.getElementById('year-dropdown-btn').addEventListener('click', () => {
-                yearDropdown.classList.toggle('open');
-            });
-            document.addEventListener('click', e => {
-                if (!e.target.closest('#year-dropdown')) yearDropdown.classList.remove('open');
-            });
-            document.querySelectorAll('#year-dropdown-menu .sort-option').forEach(opt => {
-                opt.classList.toggle('active', opt.dataset.year === currentYear);
-                opt.addEventListener('click', () => {
-                    document.querySelectorAll('#year-dropdown-menu .sort-option').forEach(o => o.classList.remove('active'));
-                    opt.classList.add('active');
-                    document.getElementById('year-label-text').textContent = opt.textContent;
-                    yearDropdown.classList.remove('open');
-                    if (opt.dataset.year !== currentYear) loadYear(opt.dataset.year);
-                });
-            });
-
             const searchInput = document.getElementById('school-search');
             const searchClear = document.getElementById('search-clear');
 
@@ -541,11 +564,46 @@
             // redraw this bar's contents — a plain per-button listener would
             // be lost the moment the markup it was attached to gets replaced.
             document.getElementById('category-filter-bar').addEventListener('click', e => {
-                const btn = e.target.closest('.category-btn');
-                if (!btn) return;
-                activeFilters.category = btn.dataset.category;
+                if (e.target.closest('.category-clear')) {
+                    activeFilters.category = 'all';
+                } else {
+                    const btn = e.target.closest('.category-btn');
+                    if (!btn) return;
+                    activeFilters.category = btn.dataset.category;
+                }
                 currentPage = 1;
                 renderCategoryBar();
+                renderList(currentSort);
+            });
+
+            // "Search by Year" — menu is generated from ALL_YEAR_FILES (not
+            // hardcoded in the HTML) so it always lists exactly the years we
+            // actually have data for, with no manual edit needed here when a
+            // new year gets added to that list.
+            const yearDropdown = document.getElementById('year-dropdown');
+            const yearMenu = document.getElementById('year-dropdown-menu');
+            const yearFilterText = document.getElementById('year-filter-text');
+            const yearKeys = ALL_YEAR_FILES.map(yearKeyFromUrl).reverse(); // newest first
+            yearMenu.innerHTML = '<button type="button" class="sort-option active" data-year="all">All Years</button>' +
+                yearKeys.map(k => `<button type="button" class="sort-option" data-year="${k}">${shortYearLabel(k)}</button>`).join('');
+
+            document.getElementById('year-dropdown-btn').addEventListener('click', () => {
+                yearDropdown.classList.toggle('open');
+            });
+            document.addEventListener('click', e => {
+                if (!e.target.closest('#year-dropdown')) yearDropdown.classList.remove('open');
+            });
+            yearMenu.addEventListener('click', e => {
+                const opt = e.target.closest('.sort-option');
+                if (!opt) return;
+                yearMenu.querySelectorAll('.sort-option').forEach(o => o.classList.remove('active'));
+                opt.classList.add('active');
+                activeFilters.year = opt.dataset.year;
+                const isAll = opt.dataset.year === 'all';
+                yearFilterText.textContent = isAll ? 'Search by Year' : opt.textContent;
+                yearFilterText.classList.toggle('year-filter-placeholder', isAll);
+                currentPage = 1;
+                yearDropdown.classList.remove('open');
                 renderList(currentSort);
             });
 
@@ -798,7 +856,7 @@
             // succeeds, so a fetch failure can't silently break the search
             // bar, sort, or filters the way it did when this ran first.
             try {
-                await loadYear(currentYear);
+                await loadAllSchools();
             } catch (err) {
                 console.error('Failed to load school data:', err);
                 document.getElementById('school-list').innerHTML = '<p class="loading">Failed to load schools.</p>';

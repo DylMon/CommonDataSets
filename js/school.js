@@ -184,7 +184,7 @@ const SCHOOL_META = {
   'urichmond': { color: '#990000' },
   'vassar': { color: '#951829' },
   'washington-and-lee': { color: '#003087' },
-  'wellesly': { color: '#002776' },
+  'wellesley': { color: '#002776' },
   'williams': { color: '#500082' },
   'wesleyan': { color: '#D72331' },
   'grinnell': { color: '#DA291C' },

@@ -70,7 +70,10 @@ body.page-home {
     position: sticky;
     top: 0;
     z-index: 500;
-    transition: transform 0.25s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    /* Same subtle depth as .school-card, so the header reads as floating
+       just slightly above the page content scrolling beneath it. */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
 }
 
 .site-header.site-header--hidden {
@@ -421,6 +424,27 @@ body.page-info .hero-banner {
 .category-btn.active {
     background: #ed6d0b;
     color: #fff;
+    gap: 6px;
+}
+
+.category-clear {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+    opacity: 0.85;
+    transition: opacity 0.15s;
+}
+
+.category-clear:hover {
+    opacity: 1;
+}
+
+.category-clear svg {
+    width: 100%;
+    height: 100%;
 }
 
 .page-intro-desc + .page-intro-desc {
@@ -638,14 +662,42 @@ body.header-hidden .school-page-layout .right-sidebar {
     text-overflow: ellipsis;
 }
 
-/* Year toggle */
-.year-toggle-bar {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+/* Search-by-year filter — a blank combobox (not the bold .sort-dropdown-btn
+   look) since unlike Sort By, "unfiltered" is the normal/default state here. */
+.year-filter-bar {
     padding-bottom: 12px;
     margin-bottom: 12px;
     border-bottom: 1px solid #f0f0f0;
+}
+
+.year-filter-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    padding: 7px 10px;
+    background: #fff;
+    color: #000;
+    border: 1px solid #d0d0d0;
+    border-radius: 4px;
+    font-family: 'Public Sans', sans-serif;
+    font-size: 0.95em;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: border-color 0.15s;
+}
+
+.year-filter-btn:hover {
+    border-color: #ed6d0b;
+}
+
+.year-filter-btn .year-filter-placeholder {
+    color: rgba(0, 0, 0, 0.55);
+    font-weight: 300;
+    text-transform: none;
+    letter-spacing: 0.02em;
 }
 
 /* Sort bar */
@@ -1284,6 +1336,20 @@ body.header-hidden .school-page-layout .right-sidebar {
 
 .school-name-link:hover {
     color: #ed6d0b;
+}
+
+/* Which CDS reporting year this card's stats actually come from — sits
+   between the name and the favorite star, see .school-name's gap. */
+.school-data-year {
+    flex-shrink: 0;
+    font-family: 'Public Sans', sans-serif;
+    font-size: 0.75em;
+    font-weight: 500;
+    color: #777;
+    background: #f2f2f2;
+    border-radius: 999px;
+    padding: 3px 9px;
+    white-space: nowrap;
 }
 
 .school-location {
