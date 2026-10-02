@@ -6,9 +6,10 @@
     const path = window.location.pathname;
     const onSchoolPage = path.includes('/schools/');
 
-    const active = path.includes('compare')  ? 'compare'
-                 : path.includes('chanceme') ? 'chanceme'
-                 : path.includes('info')     ? 'info'
+    const active = path.includes('compare')   ? 'compare'
+                 : path.includes('chanceme')  ? 'chanceme'
+                 : path.includes('info')      ? 'info'
+                 : path.includes('resources') ? 'resources'
                  : path.includes('privacy') || path.includes('terms') ? null
                  : 'index';
 
@@ -27,6 +28,7 @@
                 <div class="nav-corner-links">
                     <a href="/info/">About Us</a>
                     <a href="/contact/">Contact Us</a>
+                    <a href="/resources/">Resources</a>
                 </div>
             </div>
             <div class="header-accent-bar">

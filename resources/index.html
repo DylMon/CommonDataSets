@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LT7RKZPR5H"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LT7RKZPR5H');
+    </script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Resources — CommonDataSets</title>
+    <meta name="description" content="The official Common Data Set Initiative website, plus a full list of every school we track with the year of the most recent CDS we're using and a link to find it on that school's own site.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=Spectral:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/base.css?v=6">
+    <link rel="stylesheet" href="/css/resources.css?v=1">
+    <script src="/js/header.js?v=6" defer></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2245119166025427"
+     crossorigin="anonymous"></script>
+</head>
+<body class="page-resources">
+    <div class="container">
+        <div class="hero-banner" style="background-image:url('/images/heroes/columbia1.jpg')">
+            <div class="hero-inner">
+                <div class="hero-content">
+                    <h1 class="page-intro-title">Resources</h1>
+                    <p class="page-intro-desc">Where our data comes from, and where to find it yourself — straight from each school.</p>
+                </div>
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <div class="info-box">
+                <h2 class="info-subheading">Official Common Data Set Initiative</h2>
+                <p class="info-text">CommonDataSets.com is an independent project — we're not affiliated with, and don't speak for, the organization that actually defines the Common Data Set standard. For the CDS methodology, definitions, and current reporting templates, go straight to the source:</p>
+                <a class="resources-official-link" href="https://commondataset.org/" target="_blank" rel="noopener">
+                    commondataset.org
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+            </div>
+
+            <div class="info-box resources-table-box">
+                <h2 class="info-subheading">Every School We Track</h2>
+                <p class="info-text">The year shown is the most recent Common Data Set we have on file for that school — some schools haven't published their newest CDS yet, so the figures used on their page may be a year or more behind. Each link goes to that school's own Common Data Set or institutional research <em>page</em> — never to the PDF itself, since those get replaced and the link would eventually break. A few schools don't publish a findable CDS page at all; those fall back to a plain link to the school's website, shown a little more muted.</p>
+
+                <div class="search-wrap resources-search">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input class="search-input" id="resources-search" type="text" placeholder="Filter by school name…" autocomplete="off">
+                </div>
+                <div class="resources-count" id="resources-count"></div>
+
+                <div class="resources-table-wrap">
+                    <table class="resources-table">
+                        <thead>
+                            <tr>
+                                <th>School</th>
+                                <th>Most Recent CDS</th>
+                                <th>Website</th>
+                            </tr>
+                        </thead>
+                        <tbody id="resources-tbody">
+                            <tr><td colspan="3" class="resources-loading">Loading schools…</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <footer class="site-footer">
+            <a class="footer-brand" href="/">CommonDataSets</a>
+            <a class="footer-email" href="mailto:info@commondatasets.com">info@commondatasets.com</a>
+            <nav class="footer-nav">
+                <a href="/">Data Sets</a>
+                <a href="/compare/">Compare</a>
+                <a href="/chanceme/">Chance Me</a>
+                <a href="/info/">About</a>
+                <a href="/contact/">Contact Us</a>
+                <a href="/resources/">Resources</a>
+                <a href="/privacy/">Privacy Policy</a>
+                <a href="/terms/">Terms &amp; Conditions</a>
+            </nav>
+        </footer>
+    </div>
+    <script src="/js/resources.js?v=1" defer></script>
+</body>
+</html>
