@@ -188,6 +188,8 @@ const SCHOOL_META = {
   'wellesly': { color: '#002776' },
   'williams': { color: '#500082' },
   'wesleyan': { color: '#D72331' },
+  'grinnell': { color: '#DA291C' },
+  'usma-west-point': { color: '#000000' },
 };
 
 // Logos live at images/logos/<slug>.png. A few schools have none yet; the
