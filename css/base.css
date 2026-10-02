@@ -165,7 +165,7 @@ body.page-compare {
     align-items: center;
     padding: 7px 18px;
     border: 1px solid #fff;
-    border-radius: 999px;
+    border-radius: 10px;
     color: #fff;
     font-family: var(--font-display);
     font-size: 0.85em;
