@@ -57,6 +57,11 @@
     }, extra);
     const sub = bg => ({ '--sub-display': 'block', '--sub-bg': bg });
     const hlColor = (fill, text) => ({ '--hdr-accent': fill, '--hdr-on-accent': text, '--hdr-line': fill });
+    // Thin outline that hugs the round crest (the PNG has transparent
+    // padding, so a CSS border/ring would float off its edge).
+    const outline = (c, w) => [[w, 0], [-w, 0], [0, w], [0, -w]]
+        .map(([x, y]) => `drop-shadow(${x}px ${y}px 0 ${c})`).join(" ");
+    const SOFT_SHADOW = "drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35))";
     const textColors = prop => [
         ['auto', 'Match bar', ''],
         ['white', 'White', { [prop]: '#fff' }],
@@ -109,6 +114,9 @@
             ['tall', 'Tall', { '--sub-height': '32px' }]] },
         { tab: 'Bar & shadow', key: 'subpos', label: 'Position', options: [
             ['below', 'Below', ''], ['above', 'Above', 'sub-top']] },
+        { tab: 'Bar & shadow', key: 'shape', label: 'Bar shape', options: [
+            ['square', 'Square', ''], ['round', 'Rounded bottom', 'shape-round'],
+            ['float', 'Floating', 'shape-float']] },
         { tab: 'Bar & shadow', key: 'shadow', label: 'Shadow', options: [
             ['none', 'None', { '--hdr-shadow': 'none' }],
             ['line', 'Hairline', { '--hdr-shadow': '0 1px 0 rgba(0, 0, 0, 0.12)' }],
@@ -138,14 +146,41 @@
             ['deep', 'Deep orange', hlColor(mix(78, '#000'), '#fff')],
             ['amber', 'Amber', hlColor(mix(55, '#ffc04d'), '#2a1c13')],
             ['peach', 'Peach', hlColor(mix(18, '#fff'), mix(80, '#000'))],
-            ['dark', 'Dark', hlColor('#1d1d1f', '#fff')]] },
+            ['espresso', 'Espresso', hlColor('#2a1c13', '#fff')],
+            ['charcoal', 'Charcoal', hlColor('#2b2b2b', '#fff')],
+            ['dark', 'Dark', hlColor('#1d1d1f', '#fff')],
+            ['gray', 'Gray', hlColor('#6b6b6b', '#fff')],
+            ['lightgray', 'Light gray', hlColor('#ececec', '#2b2b2b')]] },
+        // After Color, so it can override the text on/next to the highlight.
+        { tab: 'Highlight', key: 'hlt', label: 'Highlight text', options: [
+            ['auto', 'Auto', ''],
+            ...[['white', 'White', '#fff'], ['cream', 'Cream', '#FFF1E2'], ['orange', 'Orange', B],
+                ['deep', 'Deep orange', mix(78, '#000')], ['amber', 'Amber', mix(55, '#ffc04d')],
+                ['espresso', 'Espresso', '#2a1c13'], ['charcoal', 'Charcoal', '#2b2b2b']]
+                .map(([v, t, c]) => [v, t, { '--hdr-on-accent': c, '--hdr-line-text': c }])] },
         { tab: 'Highlight', key: 'hlw', label: 'Line weight', options: [
             ['auto', 'Default', ''], ['thin', 'Thin', { '--hl-line-w': '2px' }],
             ['medium', 'Medium', { '--hl-line-w': '3px' }], ['thick', 'Thick', { '--hl-line-w': '5px' }]] },
         { tab: 'Layout', key: 'cta', label: 'Contact Us', options: [
             ['plain', 'Plain text', ''], ['pill', 'Button', 'cta-pill'], ['outline', 'Outline button', 'cta-outline']] },
-        { tab: 'Layout', key: 'logo', label: 'Logo', options: [
+        { tab: 'Layout', key: 'gap', label: 'Link spacing', options: [
+            ['normal', 'Normal', ''], ['roomy', 'Roomy', { '--link-gap': '14px' }],
+            ['extra', 'Extra roomy', { '--link-gap': '30px' }]] },
+        { tab: 'Layout', key: 'sep', label: 'Separators', options: [
+            ['none', 'None', ''], ['dot', 'Dots', 'sep-dot'], ['line', 'Lines', 'sep-line']] },
+
+        { tab: 'Logo', key: 'logo', label: 'Size', options: [
             ['s', 'Small', 'logo-s'], ['m', 'Medium', ''], ['l', 'Large', 'logo-l'], ['hang', 'Hang', 'logo-hang']] },
+        // After Bar color (light bars turn the logo shadow off).
+        { tab: 'Logo', key: 'leffect', label: 'Effect', options: [
+            ['auto', 'Match bar', ''],
+            ['none', 'Flat', { '--logo-filter': 'none' }],
+            ['shadow', 'Shadow', { '--logo-filter': SOFT_SHADOW }],
+            ['white', 'White outline', { '--logo-filter': outline('#fff', 2) + ' ' + SOFT_SHADOW }],
+            ['orange', 'Orange outline', { '--logo-filter': outline(B, 2) }],
+            ['espresso', 'Espresso outline', { '--logo-filter': outline('#2a1c13', 2) }],
+            ['halo', 'White halo', { '--logo-filter': 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.9))' }],
+            ['glow', 'Orange glow', { '--logo-filter': `drop-shadow(0 0 10px ${mix(85, "transparent")})` }]] },
 
         { tab: 'Type', key: 'brand', label: 'Wordmark font', options: [
             ['serif', 'Spectral', ''],
@@ -163,6 +198,10 @@
             ['none', 'Hidden', 'brand-none']] },
         { tab: 'Type', key: 'bsize', label: 'Wordmark size', options: [
             ['s', 'Small', { '--wordmark-size': '1.5em' }], ['m', 'Medium', ''], ['l', 'Large', { '--wordmark-size': '2.2em' }]] },
+        { tab: 'Type', key: 'bspace', label: 'Wordmark spacing', options: [
+            ['default', 'Default', ''], ['tight', 'Tight', { '--wordmark-spacing': '0' }],
+            ['wide', 'Wide', { '--wordmark-spacing': '0.12em' }],
+            ['xwide', 'Extra wide', { '--wordmark-spacing': '0.22em' }]] },
         { tab: 'Type', key: 'lfont', label: 'Link font', options: [
             ['public', 'Public Sans', ''],
             ['inter', 'Inter', font('--link-font', "'Inter', sans-serif")],
@@ -183,17 +222,22 @@
         { tab: 'Motion', key: 'hover', label: 'Link hover', options: [
             ['none', 'Just highlight', ''], ['grow', 'Grow', 'hover-grow'],
             ['lift', 'Lift', 'hover-lift'], ['glow', 'Glow', 'hover-glow']] },
-        { tab: 'Motion', key: 'lhover', label: 'Logo hover', options: [
-            ['grow', 'Grow', ''], ['spin', 'Spin', 'logo-spin'], ['tilt', 'Tilt', 'logo-tilt'], ['still', 'None', 'logo-still']] },
+        { tab: 'Logo', key: 'lhover', label: 'Hover', options: [
+            ['grow', 'Grow', ''], ['pop', 'Pop', 'logo-pop'], ['pulse', 'Pulse', 'logo-pulse'],
+            ['bounce', 'Bounce', 'logo-bounce'], ['wiggle', 'Wiggle', 'logo-wiggle'],
+            ['swing', 'Swing', 'logo-swing'], ['spin', 'Spin', 'logo-spin'],
+            ['flip', 'Flip', 'logo-flip'], ['tilt', 'Tilt', 'logo-tilt'],
+            ['glow', 'Glow', 'logo-glow'], ['still', 'None', 'logo-still']] },
         // Default keeps today's behavior: hide-on-scroll on school pages only.
         { tab: 'Motion', key: 'scroll', label: 'On scroll', options: [
             ['default', 'Default', ''], ['shrink', 'Shrink', 'scroll-shrink'], ['hide', 'Hide (all pages)', 'scroll-hide']] },
     ];
-    const VARIANT_TABS = ['Colors', 'Bar & shadow', 'Layout', 'Highlight', 'Type', 'Motion'];
+    const VARIANT_TABS = ['Colors', 'Bar & shadow', 'Layout', 'Highlight', 'Logo', 'Type', 'Motion'];
     const VARIANT_DEFAULTS = {
         style: 'orange', tcolor: 'auto', lcolor: 'auto', ccolor: 'auto', sub: 'none', subh: 'thin', subpos: 'below', shadow: 'medium',
         layout: 'grouped', width: 'full', cta: 'plain', logo: 'm',
-        hl: 'pill', hlc: 'auto', hlw: 'auto',
+        hl: 'pill', hlc: 'auto', hlt: 'auto', hlw: 'auto', gap: 'normal', sep: 'none',
+        shape: 'square', leffect: 'auto', bspace: 'default',
         brand: 'serif', bsize: 'm', lfont: 'public', lsize: 'm', lweight: 'semi', text: 'normal',
         hover: 'none', lhover: 'grow', scroll: 'default',
     };

@@ -148,7 +148,7 @@ body.page-compare {
     font-family: var(--wordmark-font, 'Spectral', Georgia, 'Times New Roman', serif);
     font-size: var(--wordmark-size, 1.85em);
     font-weight: var(--wordmark-weight, 700);
-    letter-spacing: 0.05em;
+    letter-spacing: var(--wordmark-spacing, 0.05em);
     text-transform: uppercase;
     color: var(--hdr-wordmark);
     white-space: nowrap;
@@ -456,6 +456,7 @@ body.page-info .hero-banner {
     grid-column: 2;
     display: flex;
     align-items: stretch;
+    gap: var(--link-gap, 0px);
 }
 
 .nav-link-wrapper {
@@ -730,6 +731,134 @@ body.page-info .hero-banner {
 :is(.text-normal, .text-brand-caps) .nav-corner-links :is(a, span) {
     text-transform: none;
     letter-spacing: 0.01em;
+}
+
+.text-normal .nav-brand {
+    letter-spacing: var(--wordmark-spacing, 0.01em);
+}
+
+/* Separators between the page links (dot or thin line). */
+:is(.sep-dot, .sep-line) .nav-link-wrapper + .nav-link-wrapper {
+    position: relative;
+}
+
+:is(.sep-dot, .sep-line) .nav-link-wrapper + .nav-link-wrapper::before {
+    content: "";
+    position: absolute;
+    left: calc(var(--link-gap, 0px) / -2);
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--hdr-divider);
+}
+
+.sep-dot .nav-link-wrapper + .nav-link-wrapper::before {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+}
+
+.sep-line .nav-link-wrapper + .nav-link-wrapper::before {
+    width: 1px;
+    height: 40%;
+}
+
+/* More logo hover effects. */
+@keyframes logo-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.12); }
+}
+
+@keyframes logo-bounce {
+    0%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-9px); }
+    55% { transform: translateY(0); }
+    75% { transform: translateY(-4px); }
+}
+
+@keyframes logo-wiggle {
+    0%, 100% { transform: rotate(0); }
+    20% { transform: rotate(-12deg); }
+    40% { transform: rotate(10deg); }
+    60% { transform: rotate(-7deg); }
+    80% { transform: rotate(4deg); }
+}
+
+@keyframes logo-swing {
+    0%, 100% { transform: rotate(0); }
+    50% { transform: rotate(-20deg); }
+}
+
+.logo-pulse .nav-brand:hover .site-logo {
+    animation: logo-pulse 0.9s ease-in-out infinite;
+}
+
+.logo-bounce .nav-brand:hover .site-logo {
+    animation: logo-bounce 0.8s ease;
+}
+
+.logo-wiggle .nav-brand:hover .site-logo {
+    animation: logo-wiggle 0.6s ease;
+}
+
+.logo-swing .site-logo {
+    transform-origin: 50% 0;
+}
+
+.logo-swing .nav-brand:hover .site-logo {
+    animation: logo-swing 1.2s ease-in-out infinite;
+}
+
+.logo-flip .site-logo {
+    transition: transform 0.7s ease;
+}
+
+.logo-flip .nav-brand:hover .site-logo {
+    transform: perspective(500px) rotateY(360deg);
+}
+
+.logo-pop .site-logo {
+    transition: transform 0.35s cubic-bezier(0.34, 1.7, 0.64, 1);
+}
+
+.logo-pop .nav-brand:hover .site-logo {
+    transform: scale(1.18);
+}
+
+.logo-glow .site-logo {
+    transition: transform 0.2s ease, filter 0.25s ease;
+}
+
+.logo-glow .nav-brand:hover .site-logo {
+    filter: drop-shadow(0 0 10px #FFFCFA) drop-shadow(0 0 18px color-mix(in srgb, var(--brand, #ed6d0b) 80%, #ffd27a));
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :is(.logo-pulse, .logo-bounce, .logo-wiggle, .logo-swing) .nav-brand:hover .site-logo {
+        animation: none;
+    }
+}
+
+/* Bar shape: rounded bottom corners, or a floating rounded bar inset
+   from the edges. Hang can't drop out of a clipped bar, so it stays in. */
+.site-header.shape-round {
+    border-radius: 0 0 18px 18px;
+    overflow: hidden;
+}
+
+.site-header.shape-float {
+    top: 10px;
+    margin: 10px 16px 0;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.shape-float.site-header--hidden {
+    transform: translateY(calc(-100% - 14px));
+}
+
+:is(.shape-round, .shape-float).logo-hang .site-logo {
+    align-self: center;
+    margin: 0;
 }
 
 /* Layout and logo size only apply on wide screens — below 961px every
