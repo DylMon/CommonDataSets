@@ -70,7 +70,10 @@ body.page-home {
     position: sticky;
     top: 0;
     z-index: 500;
-    transition: transform 0.25s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    /* Same subtle depth as .school-card, so the header reads as floating
+       just slightly above the page content scrolling beneath it. */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .site-header.site-header--hidden {
