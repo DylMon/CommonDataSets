@@ -187,6 +187,7 @@ const SCHOOL_META = {
   'washington-and-lee': { color: '#003087' },
   'wellesly': { color: '#002776' },
   'williams': { color: '#500082' },
+  'wesleyan': { color: '#D72331' },
 };
 
 // Logos live at images/logos/<slug>.png. A few schools have none yet; the

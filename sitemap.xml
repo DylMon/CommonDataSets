@@ -925,6 +925,11 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://commondatasets.com/schools/wesleyan/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://commondatasets.com/schools/william-mary/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>

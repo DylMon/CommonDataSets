@@ -26086,6 +26086,176 @@
     },
     {
       "id": 153,
+      "name": "Wesleyan University",
+      "data_year": "2025-26",
+      "city": "Middletown",
+      "state": "CT",
+      "location": "Middletown, CT",
+      "school_type": "Private",
+      "website": null,
+      "applicants_total": 14973,
+      "applicants_men": 6460,
+      "applicants_women": 8486,
+      "admitted_total": 2451,
+      "admitted_men": 1119,
+      "admitted_women": 1327,
+      "enrolled_total": 825,
+      "enrolled_men": 399,
+      "enrolled_women": 426,
+      "acceptance_rate": 0.1637,
+      "application_fee": 65,
+      "avg_gpa_weighted": null,
+      "rd_deadline": "1/1",
+      "waitlist_offered": 2224,
+      "waitlist_accepted": 1246,
+      "waitlist_admitted": 54,
+      "ea_ed_type": "ED I & II",
+      "ea_ed_deadline": "11/15",
+      "ea_ed_notification": "12/15",
+      "ea_apps_received": 1220,
+      "ea_apps_admitted": 522,
+      "sat_submitted_pct": 0.4352,
+      "sat_submitted_count": 359,
+      "act_submitted_pct": 0.1515,
+      "act_submitted_count": 125,
+      "sat_composite_25": 1350,
+      "sat_composite_50": 1460,
+      "sat_composite_75": 1510,
+      "sat_reading_25": 690,
+      "sat_reading_75": 750,
+      "sat_math_25": 660,
+      "sat_math_75": 770,
+      "act_composite_25": 32,
+      "act_composite_50": 33,
+      "act_composite_75": 35,
+      "act_math_25": 28,
+      "act_math_75": 34,
+      "act_english_25": 33,
+      "act_english_75": 36,
+      "total_undergrads": 3043,
+      "undergrads_male": 1473,
+      "undergrads_female": 1570,
+      "retention_rate": 0.9455,
+      "tuition": 72438,
+      "tuition_in_state": null,
+      "tuition_out_of_state": null,
+      "required_fees": 690,
+      "room_and_board": 20668,
+      "books_supplies": 1200,
+      "other_expenses": 1550,
+      "pct_out_of_state": 0.94,
+      "pct_on_campus_housing": 1,
+      "applicant_pools": {
+        "ea": null,
+        "rd": null,
+        "waitlist": {
+          "offered": 2224,
+          "accepted_spots": 1246,
+          "enrolled": 54
+        }
+      },
+      "gender_breakdown": {
+        "applied": {
+          "male": 6460,
+          "female": 8486
+        },
+        "accepted": {
+          "male": 1119,
+          "female": 1327
+        },
+        "enrolled": {
+          "male": 399,
+          "female": 426
+        }
+      },
+      "demographics_detail": {
+        "first_year": {
+          "nonresident_aliens": 87,
+          "hispanic": 83,
+          "black": 47,
+          "white": 410,
+          "american_indian": 0,
+          "asian": 73,
+          "pacific_islander": 0,
+          "two_or_more": 72,
+          "unknown": 53,
+          "total": 825
+        },
+        "undergrad": {
+          "nonresident_aliens": 310,
+          "hispanic": 315,
+          "black": 173,
+          "white": 1545,
+          "american_indian": 2,
+          "asian": 274,
+          "pacific_islander": 0,
+          "two_or_more": 227,
+          "unknown": 133,
+          "total": 2979
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.94,
+        "international_pct": null
+      },
+      "sat_act_breakdown": {
+        "sat_submitted_count": 359,
+        "sat_submitted_pct": 0.4352,
+        "act_submitted_count": 125,
+        "act_submitted_pct": 0.1515
+      },
+      "class_rank": {
+        "top10": 0.7285,
+        "top25": 0.9536,
+        "top50": 1,
+        "bottom50": 0,
+        "bottom25": 0
+      },
+      "gpa_distribution": null,
+      "admission_factors": {
+        "rigor": "very_important",
+        "class_rank": "important",
+        "academic_gpa": "important",
+        "test_scores": "considered",
+        "essay": "important",
+        "recommendations": "important",
+        "interview": "not_considered",
+        "extracurriculars": "considered",
+        "talent": "important",
+        "character": "important",
+        "first_gen": "important",
+        "alumni_relation": "not_considered",
+        "geo_residence": "considered",
+        "state_residence": "considered",
+        "religious": "not_considered",
+        "racial_ethnic": null,
+        "volunteer": "considered",
+        "work_experience": "considered",
+        "applicant_interest": "not_considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 266,
+          "admitted": 45,
+          "enrolled": 24
+        },
+        "female": {
+          "applied": 304,
+          "admitted": 56,
+          "enrolled": 20
+        },
+        "total": {
+          "applied": 570,
+          "admitted": 101,
+          "enrolled": 44
+        }
+      },
+      "slug": "wesleyan",
+      "us_news_ranking": null,
+      "categories": []
+    },
+    {
+      "id": 154,
       "name": "William & Mary",
       "data_year": "2025-2026",
       "city": "Williamsburg",
@@ -26262,7 +26432,7 @@
       "categories": []
     },
     {
-      "id": 154,
+      "id": 155,
       "name": "Williams College",
       "data_year": "2025-26",
       "city": "Williamstown",
@@ -26436,7 +26606,7 @@
       "categories": []
     },
     {
-      "id": 155,
+      "id": 156,
       "name": "University of Wisconsin-Madison",
       "data_year": "2025-26",
       "city": "Madison",
@@ -26613,7 +26783,7 @@
       "categories": []
     },
     {
-      "id": 156,
+      "id": 157,
       "name": "Worcester Polytechnic Institute",
       "data_year": "2025-26",
       "city": "Worcester",
@@ -26790,7 +26960,7 @@
       "categories": []
     },
     {
-      "id": 157,
+      "id": 158,
       "name": "Yale University",
       "data_year": "2025-26",
       "city": "New Haven",
