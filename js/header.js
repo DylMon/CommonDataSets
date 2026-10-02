@@ -24,6 +24,7 @@
             </a>
             <div class="nav-wrapper">
                 <a class="nav-brand" href="/">CommonDataSets</a>
+                <a class="nav-about-btn" href="/info/">About</a>
             </div>
             <div class="header-accent-bar">
                 <div class="left-side">

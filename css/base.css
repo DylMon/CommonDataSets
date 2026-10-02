@@ -149,6 +149,34 @@ body.page-compare {
     text-decoration: none;
 }
 
+/* Redundant shortcut to /info/ — the real nav link for it lives in
+   .header-accent-bar below; this just saves a trip down for anyone
+   already looking at the top bar. */
+.nav-about-btn {
+    grid-column: 3;
+    justify-self: end;
+    align-self: center;
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 18px;
+    border: 1px solid #fff;
+    border-radius: 999px;
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: 0.85em;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.2s, color 0.2s;
+}
+
+.nav-about-btn:hover {
+    background: #fff;
+    color: var(--brand, #ed6d0b);
+}
+
 .legal-notice {
     grid-column: 1 / -1;
     text-align: center;
@@ -1598,6 +1626,13 @@ body.header-hidden .school-page-layout .right-sidebar {
     /* The centered wordmark has no fixed home to leave clear at this width,
        so the floating badge steps aside rather than risk overlapping it. */
     .site-logo-link {
+        display: none;
+    }
+
+    /* Purely a convenience shortcut on wider screens — at this width the
+       real About link is already one short scroll away in the stacked
+       nav below, so drop the duplicate instead of adding more clutter. */
+    .nav-about-btn {
         display: none;
     }
 
