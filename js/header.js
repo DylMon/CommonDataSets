@@ -17,26 +17,40 @@
         return `<div class="nav-link-wrapper${cls}"><a href="${href}">${label}</a></div>`;
     }
 
+    // Header look (Umber bar, orange block highlight, Outfit wordmark/links,
+    // links grouped next to the logo, hanging logo, grow link hover, logo
+    // tilt, shrink-on-scroll) is baked directly into this class list and
+    // the matching --hdr-*/--wordmark-*/--link-* defaults in css/base.css's
+    // .site-header rule — see the variant panel on the header-option-3
+    // branch if it needs to change.
     const nav = `
-        <header class="site-header">
-            <a class="site-logo-link" href="/">
-                <img class="site-logo" src="/images/logo-transparent.png" alt="CommonDataSets">
-            </a>
+        <header class="site-header nav-grouped cta-outline logo-hang text-normal hover-grow logo-tilt scroll-shrink">
             <div class="nav-wrapper">
-                <a class="nav-brand" href="/">CommonDataSets</a>
-                <div class="nav-corner-links">
-                    <a href="/info/">About Us</a>
-                    <a href="/contact/">Contact Us</a>
-                </div>
-            </div>
-            <div class="header-accent-bar">
+                <a class="nav-brand" href="/">
+                    <img class="site-logo" src="/images/logo-transparent.png" alt="">
+                    <span>CommonDataSets</span>
+                </a>
                 <div class="left-side">
                     ${navLink('/', 'Data Sets', 'index')}
                     ${navLink('/compare/', 'Compare', 'compare')}
                     ${navLink('/chanceme/', 'Chance Me', 'chanceme')}
                 </div>
+                <div class="nav-corner-links">
+                    <span class="nav-placeholder">Resources</span>
+                    <a href="/info/">About Us</a>
+                    <a href="/contact/">Contact Us</a>
+                </div>
             </div>
+            <div class="header-sub-bar"></div>
         </header>`;
+
+    // Sticky sidebars offset themselves by --header-height, so keep it in
+    // step with whatever height the header actually renders at (it varies
+    // with viewport width and the shrink-on-scroll state).
+    function syncHeaderHeight() {
+        const header = document.querySelector('.site-header');
+        if (header) document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px');
+    }
 
     document.addEventListener('DOMContentLoaded', function () {
         const link = document.createElement('link');
@@ -48,35 +62,49 @@
         const container = document.querySelector('.container');
         if (container) container.insertAdjacentHTML('afterbegin', nav);
 
-        // School pages only: hide the header on scroll down, bring it back
-        // on scroll up. Everywhere else it just stays put (sticky to top).
-        if (onSchoolPage) {
-            const header = document.querySelector('.site-header');
-            if (header) {
-                let lastY = window.scrollY;
-                let ticking = false;
+        syncHeaderHeight();
+        window.addEventListener('resize', syncHeaderHeight);
+        window.addEventListener('load', syncHeaderHeight);
 
-                function updateHeader() {
-                    const y = window.scrollY;
-                    if (Math.abs(y - lastY) > 5) {
-                        const shouldHide = y > lastY && y > header.offsetHeight;
-                        header.classList.toggle('site-header--hidden', shouldHide);
-                        // Mirrored on <body> so the sticky right-sidebar (see
-                        // css/base.css) can rise into the space the header
-                        // just vacated instead of leaving it empty above it.
-                        document.body.classList.toggle('header-hidden', shouldHide);
-                        lastY = y;
-                    }
-                    ticking = false;
+        // School pages (or any page with the "Hide" scroll variant): hide the
+        // header on scroll down, bring it back on scroll up. Everywhere else
+        // it just stays put (sticky to top). .is-scrolled drives the
+        // "Shrink" scroll variant.
+        const header = document.querySelector('.site-header');
+        if (header) {
+            let lastY = window.scrollY;
+            let ticking = false;
+
+            function updateHeader() {
+                const y = window.scrollY;
+                header.classList.toggle('is-scrolled', y > 30);
+                const hides = onSchoolPage || header.classList.contains('scroll-hide');
+                if (!hides) {
+                    header.classList.remove('site-header--hidden');
+                    document.body.classList.remove('header-hidden');
+                } else if (Math.abs(y - lastY) > 5) {
+                    const shouldHide = y > lastY && y > header.offsetHeight;
+                    header.classList.toggle('site-header--hidden', shouldHide);
+                    // Mirrored on <body> so the sticky right-sidebar (see
+                    // css/base.css) can rise into the space the header
+                    // just vacated instead of leaving it empty above it.
+                    document.body.classList.toggle('header-hidden', shouldHide);
                 }
-
-                window.addEventListener('scroll', function () {
-                    if (!ticking) {
-                        window.requestAnimationFrame(updateHeader);
-                        ticking = true;
-                    }
-                }, { passive: true });
+                if (Math.abs(y - lastY) > 5) lastY = y;
+                ticking = false;
             }
+
+            window.addEventListener('scroll', function () {
+                if (!ticking) {
+                    window.requestAnimationFrame(updateHeader);
+                    ticking = true;
+                }
+            }, { passive: true });
+
+            // Shrink changes the header's height mid-scroll; keep the sticky
+            // sidebars' offset in step once it settles.
+            header.addEventListener('transitionend', syncHeaderHeight);
+            updateHeader();
         }
     });
 })();
