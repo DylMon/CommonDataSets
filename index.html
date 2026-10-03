@@ -277,7 +277,7 @@
         function fmtPct(val) { return val != null ? (val * 100).toFixed(1) + '%' : '<span class="stat-na">n/a</span>'; }
         function fmtMoney(val) { return val != null ? '$' + val.toLocaleString() : '<span class="stat-na">n/a</span>'; }
 
-        const PAGE_SIZE = 50;
+        const PAGE_SIZE = 25;
         let currentPage = 1;
         let allSchools = [];
         let searchQuery = '';
@@ -361,11 +361,6 @@
                         <div class="detail-kv"><span>Regular Decision</span><span>${s.rd_deadline ?? '<span class="stat-na">n/a</span>'}</span></div>
                     </div>
                     <div class="detail-section">
-                        <div class="detail-section-title">Test Scores (25–75th)</div>
-                        <div class="detail-kv"><span>SAT Composite</span><span>${s.sat_composite_25 != null ? `${s.sat_composite_25}–${s.sat_composite_75}` : '<span class="stat-na">n/a</span>'}</span></div>
-                        <div class="detail-kv"><span>ACT Composite</span><span>${s.act_composite_25 != null ? `${s.act_composite_25}–${s.act_composite_75}` : '<span class="stat-na">n/a</span>'}</span></div>
-                    </div>
-                    <div class="detail-section">
                         <div class="detail-section-title">Quick Facts</div>
                         <div class="detail-kv"><span>Tuition (OOS)</span><span>${fmtMoney(tuitionVal)}</span></div>
                         <div class="detail-kv"><span>Undergrads</span><span>${s.total_undergrads != null ? s.total_undergrads.toLocaleString() : '<span class="stat-na">n/a</span>'}</span></div>
@@ -376,7 +371,7 @@
                         <div class="detail-kv"><span>4yr Grad Rate</span><span>${s.graduation_rate_4yr != null ? (s.graduation_rate_4yr * 100).toFixed(0) + '%' : '<span class="stat-na">n/a</span>'}</span></div>
                         <div class="detail-kv"><span>Median Earn (6yr)</span><span>${fmtMoney(s.median_earnings_6yr)}</span></div>
                     </div>
-                    <div class="detail-section detail-section--full">
+                    <div class="detail-section">
                         <div class="detail-section-title">Waitlist</div>
                         ${waitlistBody}
                     </div>
@@ -431,12 +426,14 @@
                         <div class="school-name">
                             <div class="school-name-main">
                                 <a class="school-name-link" href="/schools/${s.slug}/">${s.name}</a>
-                                ${s.location ? `<div class="school-location">
-                                    <svg class="location-pin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
-                                    ${s.location}
+                                ${s.data_year || s.location ? `<div class="school-meta-row">
+                                    ${s.data_year ? `<span class="school-data-year">${s.data_year}</span>` : ''}
+                                    ${s.location ? `<div class="school-location">
+                                        <svg class="location-pin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+                                        ${s.location}
+                                    </div>` : ''}
                                 </div>` : ''}
                             </div>
-                            ${s.data_year ? `<span class="school-data-year">${s.data_year}</span>` : ''}
                             <button class="fav-btn${isFav ? ' favorited' : ''}" data-slug="${s.slug}" title="${isFav ? 'Remove from favorites' : 'Add to favorites'}">
                                 <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
                             </button>

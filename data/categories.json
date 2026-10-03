@@ -16,5 +16,24 @@
   "uc-san-diego": ["uc-system"],
   "uc-santa-cruz": ["uc-system"],
   "ucla": ["uc-system"],
-  "ucsb": ["uc-system"]
+  "ucsb": ["uc-system"],
+
+  "amherst": ["liberal-arts"],
+  "barnard": ["liberal-arts"],
+  "bowdoin": ["liberal-arts"],
+  "carleton": ["liberal-arts"],
+  "claremont-mckenna": ["liberal-arts"],
+  "davidson": ["liberal-arts"],
+  "grinnell": ["liberal-arts"],
+  "hamilton": ["liberal-arts"],
+  "harvey-mudd": ["liberal-arts"],
+  "pomona": ["liberal-arts"],
+  "swarthmore": ["liberal-arts"],
+  "vassar": ["liberal-arts"],
+  "washington-and-lee": ["liberal-arts"],
+  "wellesley": ["liberal-arts"],
+  "wesleyan": ["liberal-arts"],
+  "williams": ["liberal-arts"],
+  "urichmond": ["liberal-arts"],
+  "usma-west-point": ["liberal-arts"]
 }

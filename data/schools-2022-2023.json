@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-29",
+  "generated": "2026-10-02",
   "cds_year": "2022-23",
   "schools": [
     {
@@ -180,7 +180,8 @@
         }
       },
       "slug": "colorado-school-of-mines",
-      "us_news_ranking": null
+      "us_news_ranking": null,
+      "categories": []
     },
     {
       "id": 2,
@@ -360,7 +361,8 @@
         }
       },
       "slug": "stockton",
-      "us_news_ranking": null
+      "us_news_ranking": null,
+      "categories": []
     }
   ]
 }

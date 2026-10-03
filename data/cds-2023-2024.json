@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-29",
+  "generated": "2026-10-02",
   "cds_year": "2023-24",
   "schools": [
     {
@@ -168,7 +168,8 @@
         }
       },
       "slug": "illinois-tech",
-      "us_news_ranking": null
+      "us_news_ranking": null,
+      "categories": []
     },
     {
       "id": 2,
@@ -327,11 +328,12 @@
         }
       },
       "slug": "mizzou",
-      "us_news_ranking": null
+      "us_news_ranking": null,
+      "categories": []
     },
     {
       "id": 3,
-      "name": "The Ohio State University",
+      "name": "Ohio State University",
       "data_year": "2023-24",
       "city": "Columbus",
       "state": "OH",
@@ -494,7 +496,8 @@
         }
       },
       "slug": "ohio-state",
-      "us_news_ranking": 41
+      "us_news_ranking": 41,
+      "categories": []
     },
     {
       "id": 4,
@@ -678,11 +681,12 @@
         }
       },
       "slug": "quinnipiac",
-      "us_news_ranking": null
+      "us_news_ranking": null,
+      "categories": []
     },
     {
       "id": 5,
-      "name": "Rutgers University \u2013 Camden",
+      "name": "Rutgers University, Camden",
       "data_year": "2023-24",
       "city": "Camden",
       "state": "NJ",
@@ -837,11 +841,12 @@
         }
       },
       "slug": "rutgers-camden",
-      "us_news_ranking": null
+      "us_news_ranking": null,
+      "categories": []
     },
     {
       "id": 6,
-      "name": "RUTGERS UNIVERSITY \u2013 NEWARK",
+      "name": "Rutgers University, Newark",
       "data_year": "2023-24",
       "city": "Newark",
       "state": "NJ",
@@ -991,7 +996,8 @@
         }
       },
       "slug": "rutgers-newark",
-      "us_news_ranking": null
+      "us_news_ranking": null,
+      "categories": []
     },
     {
       "id": 7,
@@ -1155,7 +1161,8 @@
         }
       },
       "slug": "yeshiva",
-      "us_news_ranking": null
+      "us_news_ranking": null,
+      "categories": []
     }
   ]
 }

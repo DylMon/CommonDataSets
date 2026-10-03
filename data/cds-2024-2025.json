@@ -2777,7 +2777,9 @@
       },
       "slug": "grinnell",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [
+        "liberal-arts"
+      ]
     },
     {
       "id": 17,
@@ -4719,7 +4721,7 @@
     },
     {
       "id": 28,
-      "name": "University at Albany - SUNY",
+      "name": "University at Albany",
       "data_year": "2024-25",
       "city": "Albany",
       "state": "NY",
@@ -7125,7 +7127,7 @@
     },
     {
       "id": 42,
-      "name": "University of Nebraska - Lincoln",
+      "name": "University of Nebraska, Lincoln",
       "data_year": "2025-26",
       "city": "Lincoln",
       "state": "NE",
@@ -7477,7 +7479,7 @@
     },
     {
       "id": 44,
-      "name": "University of Minnesota - Twin Cities Campus",
+      "name": "University of Minnesota, Twin Cities",
       "data_year": "2024-25",
       "city": "Minneapolis",
       "state": "MN",
@@ -8496,7 +8498,9 @@
       },
       "slug": "usma-west-point",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [
+        "liberal-arts"
+      ]
     },
     {
       "id": 50,
