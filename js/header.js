@@ -18,12 +18,13 @@
     }
 
     // Header look (Umber bar, orange block highlight, Outfit wordmark/links,
-    // hanging logo, grow link hover, logo tilt, shrink-on-scroll) is baked
-    // directly into this class list and the matching --hdr-*/--wordmark-*/
-    // --link-* defaults in css/base.css's .site-header rule — see the
-    // variant panel on the header-option-3 branch if it needs to change.
+    // links grouped next to the logo, hanging logo, grow link hover, logo
+    // tilt, shrink-on-scroll) is baked directly into this class list and
+    // the matching --hdr-*/--wordmark-*/--link-* defaults in css/base.css's
+    // .site-header rule — see the variant panel on the header-option-3
+    // branch if it needs to change.
     const nav = `
-        <header class="site-header cta-outline logo-hang text-normal hover-grow logo-tilt scroll-shrink">
+        <header class="site-header nav-grouped cta-outline logo-hang text-normal hover-grow logo-tilt scroll-shrink">
             <div class="nav-wrapper">
                 <a class="nav-brand" href="/">
                     <img class="site-logo" src="/images/logo-transparent.png" alt="">
