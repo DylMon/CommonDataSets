@@ -57,6 +57,16 @@
     }, extra);
     const sub = bg => ({ '--sub-display': 'block', '--sub-bg': bg });
     const hlColor = (fill, text) => ({ '--hdr-accent': fill, '--hdr-on-accent': text, '--hdr-line': fill });
+    // Bar color options below run their effect through this so the footer
+    // (--ftr-bg/--ftr-fg) always mirrors whatever the header bar just set,
+    // instead of needing every option to state the footer colors too.
+    const withFooter = effect => {
+        if (!effect || typeof effect === 'string') return effect;
+        const out = Object.assign({}, effect);
+        if (effect['--hdr-bg']) out['--ftr-bg'] = effect['--hdr-bg'];
+        if (effect['--hdr-fg']) out['--ftr-fg'] = effect['--hdr-fg'];
+        return out;
+    };
     // Thin outline that hugs the round crest (the PNG has transparent
     // padding, so a CSS border/ring would float off its edge).
     const outline = (c, w) => [[w, 0], [-w, 0], [0, w], [0, -w]]
@@ -80,16 +90,17 @@
     const VARIANT_GROUPS = [
         { tab: 'Colors', key: 'style', label: 'Bar color', options: [
             ['orange', 'Orange', ''],
-            ['deep', 'Deep orange', { '--hdr-bg': mix(80, '#000'), '--hdr-on-accent': mix(80, '#000') }],
-            ['sunset', 'Sunset', { '--hdr-bg': `linear-gradient(90deg, ${B}, ${mix(55, '#ffb347')})` }],
-            ['ember', 'Ember', { '--hdr-bg': `linear-gradient(90deg, ${mix(75, '#000')}, ${B})` }],
-            ['peach', 'Peach', light(mix(12, '#fff'), mix(25, '#fff'))],
-            ['cream', 'Cream', light('#FFFCFA', '#f0e4d8')],
-            ['white', 'White', light('#fff', '#eee')],
-            ['glass', 'Frosted glass', light('rgba(255, 255, 255, 0.72)', 'rgba(0, 0, 0, 0.06)',
-                { '--hdr-backdrop': 'blur(14px) saturate(1.5)' })],
-            ['dark', 'Dark', dark('#1d1d1f')],
-            ['espresso', 'Espresso', dark('#2a1c13', { '--hdr-fg': '#f6ebe2' })]] },
+            ['deep', 'Deep orange', withFooter({ '--hdr-bg': mix(80, '#000'), '--hdr-on-accent': mix(80, '#000') })],
+            ['sunset', 'Sunset', withFooter({ '--hdr-bg': `linear-gradient(90deg, ${B}, ${mix(55, '#ffb347')})` })],
+            ['ember', 'Ember', withFooter({ '--hdr-bg': `linear-gradient(90deg, ${mix(75, '#000')}, ${B})` })],
+            ['peach', 'Peach', withFooter(light(mix(12, '#fff'), mix(25, '#fff')))],
+            ['cream', 'Cream', withFooter(light('#FFFCFA', '#f0e4d8'))],
+            ['white', 'White', withFooter(light('#fff', '#eee'))],
+            ['glass', 'Frosted glass', withFooter(light('rgba(255, 255, 255, 0.72)', 'rgba(0, 0, 0, 0.06)',
+                { '--hdr-backdrop': 'blur(14px) saturate(1.5)' }))],
+            ['dark', 'Dark', withFooter(dark('#1d1d1f'))],
+            ['espresso', 'Espresso', withFooter(dark('#2a1c13', { '--hdr-fg': '#f6ebe2' }))],
+            ['umber', 'Umber', withFooter(dark('#3a281e', { '--hdr-fg': '#f6ebe2' }))]] },
 
         // Text colors — after Bar color so they override that theme's text.
         { tab: 'Colors', key: 'tcolor', label: 'Title text', options: textColors('--hdr-wordmark') },
@@ -276,24 +287,34 @@
     function setHeaderClasses(v) {
         const header = document.querySelector('.site-header');
         if (!header) return;
+        // --ftr-* vars land on .site-footer instead of the header, so the
+        // footer bar can mirror the header's chosen color (see withFooter
+        // above) without every other header variable leaking onto it.
+        const footer = document.querySelector('.site-footer');
+        const targetFor = prop => (footer && prop.startsWith('--ftr-')) ? footer : header;
         VARIANT_GROUPS.forEach(g => g.options.forEach(([val, , effect]) => {
             const on = v[g.key] === val;
             if (typeof effect === 'string') {
                 if (effect) header.classList.toggle(effect, on);
             } else {
                 Object.keys(effect).forEach(prop => {
-                    if (on) header.style.setProperty(prop, effect[prop]);
+                    if (on) targetFor(prop).style.setProperty(prop, effect[prop]);
                 });
             }
         }));
         // Clear any variable the current choices don't set (left over from
         // a previous choice), so it falls back to the stylesheet default.
-        const keep = new Set();
+        const keep = new Set(), keepFooter = new Set();
         VARIANT_GROUPS.forEach(g => g.options.forEach(([val, , effect]) => {
-            if (v[g.key] === val && typeof effect !== 'string') Object.keys(effect).forEach(p => keep.add(p));
+            if (v[g.key] === val && typeof effect !== 'string') {
+                Object.keys(effect).forEach(p => (p.startsWith('--ftr-') ? keepFooter : keep).add(p));
+            }
         }));
         Array.from(header.style).forEach(prop => {
             if (prop.startsWith('--') && !keep.has(prop)) header.style.removeProperty(prop);
+        });
+        if (footer) Array.from(footer.style).forEach(prop => {
+            if (prop.startsWith('--') && !keepFooter.has(prop)) footer.style.removeProperty(prop);
         });
         syncHeaderHeight();
     }
