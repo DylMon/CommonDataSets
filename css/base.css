@@ -78,19 +78,22 @@ body.page-home {
     display: flex;
     flex-direction: column;
 
-    /* Header colors (orange bar by default). The .style-* variants below
-       just re-point these. */
-    --hdr-bg: var(--brand, #ed6d0b);
-    --hdr-fg: #fff;                             /* link text */
+    /* Header colors: Umber bar, orange block highlight (picked from the
+       header-option-3 preview panel). */
+    --hdr-bg: #3a281e;
+    --hdr-fg: #f6ebe2;                           /* link text */
     --hdr-wordmark: #fff;
-    --hdr-accent: #FFFCFA;                      /* fill behind a hovered/active link */
-    --hdr-on-accent: var(--brand, #ed6d0b);     /* text on that fill */
-    --hdr-line: #FFFCFA;                        /* underline/outline highlight */
+    --hdr-accent: var(--brand, #ed6d0b);        /* fill behind a hovered/active link */
+    --hdr-on-accent: #fff;                      /* text on that fill */
+    --hdr-line: var(--brand, #ed6d0b);          /* underline/outline highlight */
     --hdr-line-text: #fff;                      /* text with an underline/outline */
-    --hdr-divider: rgba(255, 255, 255, 0.5);
+    --hdr-divider: rgba(255, 255, 255, 0.25);
     --hdr-border: transparent;
     --logo-size: 68px;
     --bar-height: 84px;
+    --wordmark-font: 'Outfit', sans-serif;
+    --link-font: 'Outfit', sans-serif;
+    --link-weight: 500;
 }
 
 .site-header.site-header--hidden {
@@ -1906,11 +1909,9 @@ body.header-hidden .school-page-layout .right-sidebar {
 
 /* Footer */
 .site-footer {
-    /* Mirrors whatever Bar color is chosen in the header preview panel (see
-       --ftr-bg/--ftr-fg in js/header.js) — falls back to the site orange
-       when nothing overrides them, same as before. */
-    background: var(--ftr-bg, var(--brand, #ed6d0b));
-    color: var(--ftr-fg, #fff);
+    /* Matches the header's Umber bar. */
+    background: #3a281e;
+    color: #f6ebe2;
     padding: 28px 40px;
     display: flex;
     flex-wrap: wrap;
