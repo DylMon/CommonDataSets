@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-01",
+  "generated": "2026-10-02",
   "cds_year": "2025-26",
   "schools": [
     {
@@ -332,7 +332,9 @@
       },
       "slug": "amherst",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [
+        "liberal-arts"
+      ]
     },
     {
       "id": 3,
@@ -835,7 +837,9 @@
       },
       "slug": "barnard",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [
+        "liberal-arts"
+      ]
     },
     {
       "id": 6,
@@ -1716,7 +1720,9 @@
       },
       "slug": "bowdoin",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [
+        "liberal-arts"
+      ]
     },
     {
       "id": 11,
@@ -2589,7 +2595,9 @@
       },
       "slug": "carleton",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [
+        "liberal-arts"
+      ]
     },
     {
       "id": 16,
@@ -3104,7 +3112,9 @@
       },
       "slug": "claremont-mckenna",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [
+        "liberal-arts"
+      ]
     },
     {
       "id": 19,
@@ -5340,7 +5350,9 @@
       },
       "slug": "davidson",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [
+        "liberal-arts"
+      ]
     },
     {
       "id": 32,
@@ -7756,7 +7768,9 @@
       },
       "slug": "hamilton",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [
+        "liberal-arts"
+      ]
     },
     {
       "id": 46,
@@ -8113,7 +8127,9 @@
       },
       "slug": "harvey-mudd",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [
+        "liberal-arts"
+      ]
     },
     {
       "id": 48,
@@ -10821,7 +10837,7 @@
     },
     {
       "id": 64,
-      "name": "The University of North Carolina at Charlotte",
+      "name": "University of North Carolina at Charlotte",
       "data_year": "2025-26",
       "city": "Charlotte",
       "state": "NC",
@@ -11666,7 +11682,7 @@
     },
     {
       "id": 69,
-      "name": "The Ohio State University",
+      "name": "Ohio State University",
       "data_year": "2025-26",
       "city": "Columbus",
       "state": "OH",
@@ -13000,7 +13016,9 @@
       },
       "slug": "pomona",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [
+        "liberal-arts"
+      ]
     },
     {
       "id": 77,
@@ -15643,7 +15661,9 @@
       },
       "slug": "swarthmore",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [
+        "liberal-arts"
+      ]
     },
     {
       "id": 92,
@@ -15807,7 +15827,7 @@
     },
     {
       "id": 93,
-      "name": "University of Tennessee - Knoxville",
+      "name": "University of Tennessee, Knoxville",
       "data_year": "2025-26",
       "city": "Knoxville",
       "state": "TN",
@@ -16661,7 +16681,7 @@
     },
     {
       "id": 98,
-      "name": "The University of Alabama",
+      "name": "University of Alabama",
       "data_year": "2025-26",
       "city": "Tuscaloosa",
       "state": "AL",
@@ -17015,7 +17035,7 @@
     },
     {
       "id": 100,
-      "name": "University of California - Davis",
+      "name": "University of California, Davis",
       "data_year": "2025-26",
       "city": "Davis",
       "state": "CA",
@@ -17350,7 +17370,7 @@
     },
     {
       "id": 102,
-      "name": "University of California-Merced",
+      "name": "University of California, Merced",
       "data_year": "2025-26",
       "city": "Merced",
       "state": "CA",
@@ -18209,7 +18229,7 @@
     },
     {
       "id": 107,
-      "name": "The University of Chicago",
+      "name": "University of Chicago",
       "data_year": "2025-26",
       "city": "Chicago",
       "state": "IL",
@@ -22500,7 +22520,9 @@
       },
       "slug": "urichmond",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [
+        "liberal-arts"
+      ]
     },
     {
       "id": 132,
@@ -23014,7 +23036,7 @@
     },
     {
       "id": 135,
-      "name": "The University of Texas at Austin",
+      "name": "University of Texas at Austin",
       "data_year": "2025-26",
       "city": "Austin",
       "state": "TX",
@@ -23171,7 +23193,7 @@
     },
     {
       "id": 136,
-      "name": "The University of Texas at Dallas",
+      "name": "University of Texas at Dallas",
       "data_year": "2025-26",
       "city": "Richardson",
       "state": "TX",
@@ -24373,7 +24395,9 @@
       },
       "slug": "vassar",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [
+        "liberal-arts"
+      ]
     },
     {
       "id": 143,
@@ -25066,7 +25090,9 @@
       },
       "slug": "washington-and-lee",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [
+        "liberal-arts"
+      ]
     },
     {
       "id": 147,
@@ -25905,7 +25931,9 @@
       },
       "slug": "wellesley",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [
+        "liberal-arts"
+      ]
     },
     {
       "id": 152,
@@ -26075,7 +26103,9 @@
       },
       "slug": "wesleyan",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [
+        "liberal-arts"
+      ]
     },
     {
       "id": 153,
@@ -26426,7 +26456,9 @@
       },
       "slug": "williams",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [
+        "liberal-arts"
+      ]
     },
     {
       "id": 155,

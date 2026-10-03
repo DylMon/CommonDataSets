@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-29",
+  "generated": "2026-10-02",
   "cds_year": "2021-22",
   "schools": [
     {
@@ -163,7 +163,8 @@
         }
       },
       "slug": "saintlouisu",
-      "us_news_ranking": null
+      "us_news_ranking": null,
+      "categories": []
     }
   ]
 }
