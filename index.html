@@ -94,6 +94,7 @@
             <div class="page-layout">
             <div class="sidebar">
             <div class="controls-container">
+            <button class="reset-btn" id="reset-filters-btn">Reset All Filters</button>
             <div class="year-filter-bar">
                 <div class="sort-dropdown" id="year-dropdown">
                     <button class="year-filter-btn" id="year-dropdown-btn" type="button">
@@ -160,7 +161,6 @@
                     <input type="range" class="filter-range" id="earn-range" min="0" max="140000" value="0" step="5000">
                     <div class="range-ends"><span>$0</span><span>$140k</span></div>
                 </div>
-            <button class="reset-btn" id="reset-filters-btn">Reset All Filters</button>
             </div>
             </div>
             </div><!-- /.sidebar -->
@@ -178,13 +178,17 @@
             </div><!-- /.page-layout -->
         </div>
         <footer class="site-footer">
-            <a class="footer-brand" href="/">CommonDataSets</a>
-            <a class="footer-email" href="mailto:info@commondatasets.com">info@commondatasets.com</a>
+            <div class="footer-brand-col">
+                <a class="footer-brand" href="/">CommonDataSets</a>
+                <a class="footer-email" href="mailto:info@commondatasets.com">info@commondatasets.com</a>
+            </div>
             <nav class="footer-nav">
                 <a href="/">Data Sets</a>
                 <a href="/compare/">Compare</a>
                 <a href="/chanceme/">Chance Me</a>
                 <a href="/info/">About</a>
+            </nav>
+            <nav class="footer-nav">
                 <a href="/contact/">Contact Us</a>
                 <a href="/privacy/">Privacy Policy</a>
                 <a href="/terms/">Terms &amp; Conditions</a>
@@ -343,6 +347,20 @@
             }).filter(Boolean).join('');
         }
 
+        // Collapses the whole .right-sidebar (not just its two inner boxes)
+        // when neither has content — otherwise a first-time visitor with no
+        // favorites/history yet still pays its reserved width on every card
+        // row, which is cramped enough at some breakpoints to crush the
+        // school-name column down to a few characters.
+        function refreshRightSidebar() {
+            renderFavoritesBox();
+            renderHistory();
+            const sidebar = document.querySelector('.right-sidebar');
+            const empty = ['favorites-box', 'history-box']
+                .every(id => document.getElementById(id).style.display === 'none');
+            sidebar.style.display = empty ? 'none' : '';
+        }
+
         function renderDetailPanel(s) {
             const tuitionVal = s.tuition_out_of_state ?? s.tuition;
             const eaLabel = s.ea_ed_type === 'EA' ? 'Early Action'
@@ -367,13 +385,13 @@
                         <div class="detail-kv"><span>Retention Rate</span><span>${s.retention_rate != null ? (s.retention_rate * 100).toFixed(0) + '%' : '<span class="stat-na">n/a</span>'}</span></div>
                     </div>
                     <div class="detail-section">
+                        <div class="detail-section-title">Waitlist</div>
+                        ${waitlistBody}
+                    </div>
+                    <div class="detail-section">
                         <div class="detail-section-title">Outcomes</div>
                         <div class="detail-kv"><span>4yr Grad Rate</span><span>${s.graduation_rate_4yr != null ? (s.graduation_rate_4yr * 100).toFixed(0) + '%' : '<span class="stat-na">n/a</span>'}</span></div>
                         <div class="detail-kv"><span>Median Earn (6yr)</span><span>${fmtMoney(s.median_earnings_6yr)}</span></div>
-                    </div>
-                    <div class="detail-section">
-                        <div class="detail-section-title">Waitlist</div>
-                        ${waitlistBody}
                     </div>
                 </div>
                 <div class="detail-footer">
@@ -425,34 +443,38 @@
                         <img class="school-logo" src="${logoSrc(s.slug)}" alt="${s.name}" onerror="${LOGO_ONERR}" />
                         <div class="school-name">
                             <div class="school-name-main">
-                                <a class="school-name-link" href="/schools/${s.slug}/">${s.name}</a>
-                                ${s.data_year || s.location ? `<div class="school-meta-row">
-                                    ${s.data_year ? `<span class="school-data-year">${s.data_year}</span>` : ''}
-                                    ${s.location ? `<div class="school-location">
-                                        <svg class="location-pin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
-                                        ${s.location}
-                                    </div>` : ''}
-                                </div>` : ''}
+                                <div class="school-name-top">
+                                    <a class="school-name-link" href="/schools/${s.slug}/">${s.name}</a>
+                                    <button class="fav-btn${isFav ? ' favorited' : ''}" data-slug="${s.slug}" title="${isFav ? 'Remove from favorites' : 'Add to favorites'}">
+                                        <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                                    </button>
+                                </div>
+                                <div class="school-meta-row">
+                                    <div class="school-meta-left">
+                                        ${s.data_year ? `<span class="school-data-year">${s.data_year}</span>` : ''}
+                                        ${s.location ? `<div class="school-location">
+                                            <svg class="location-pin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+                                            ${s.location}
+                                        </div>` : ''}
+                                    </div>
+                                    <div class="school-stats">
+                                        <div class="stat-item">
+                                            <div class="stat-val">${fmtPct(s.acceptance_rate)}</div>
+                                            <div class="stat-label">Acceptance</div>
+                                        </div>
+                                        <div class="stat-item">
+                                            <div class="stat-val">${s.sat_avg ?? '<span class="stat-na">n/a</span>'}</div>
+                                            <div class="stat-label">SAT Avg</div>
+                                        </div>
+                                        <div class="stat-item">
+                                            <div class="stat-val">${actRange}</div>
+                                            <div class="stat-label">ACT Range</div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <button class="fav-btn${isFav ? ' favorited' : ''}" data-slug="${s.slug}" title="${isFav ? 'Remove from favorites' : 'Add to favorites'}">
-                                <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-                            </button>
                         </div>
                         <div class="school-row-end">
-                            <div class="school-stats">
-                                <div class="stat-item">
-                                    <div class="stat-val">${fmtPct(s.acceptance_rate)}</div>
-                                    <div class="stat-label">Acceptance</div>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-val">${s.sat_avg ?? '<span class="stat-na">n/a</span>'}</div>
-                                    <div class="stat-label">SAT Avg</div>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-val">${actRange}</div>
-                                    <div class="stat-label">ACT Range</div>
-                                </div>
-                            </div>
                             <button class="details-toggle" type="button" aria-expanded="false" aria-label="Show more details">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                             </button>
@@ -529,8 +551,7 @@
                 `Official Common Data Set submissions gathered directly from ${allSchools.length} top US universities, giving students and families one place to compare verified admissions statistics, test score ranges, cost of attendance, and enrollment data without the noise.`;
             renderCategoryBar();
             renderList(currentSort);
-            renderFavoritesBox();
-            renderHistory();
+            refreshRightSidebar();
         }
 
         async function init() {
@@ -659,7 +680,7 @@
                     btn.title = 'Remove from favorites';
                 }
                 saveFavorites();
-                renderFavoritesBox();
+                refreshRightSidebar();
                 if (currentSort === 'favorites') renderList('favorites');
             });
 
@@ -862,7 +883,107 @@
 
         init();
 
-        window.addEventListener('pageshow', () => { renderFavoritesBox(); renderHistory(); });
+        window.addEventListener('pageshow', refreshRightSidebar);
+
+        // ── Sticky filters-box reveal ────────────────────────────────────
+        // .sidebar sticks under the header via CSS, but once it's taller
+        // than the room left below the header, plain `position: sticky`
+        // only ever shows its top portion. Two ways to reveal the rest:
+        //   1. Scrolling anywhere else on the page shifts the box upward
+        //      automatically, purely as a function of scroll position, so
+        //      it "just follows" without the user needing to find it first.
+        //   2. Hovering the box directly and scrolling moves that same
+        //      shift independently, via the wheel, without scrolling the
+        //      page underneath it.
+        // Both drive the same `shift` value, so neither fights the other —
+        // whichever happened most recently wins.
+        (function () {
+            const stickySidebar = document.querySelector('.sidebar');
+            if (!stickySidebar) return;
+
+            const BOTTOM_GAP = 20;
+            const sidebarParent = stickySidebar.parentElement;
+            let shift = 0;
+            let ticking = false;
+
+            function metrics() {
+                const topOffset = parseFloat(getComputedStyle(stickySidebar).top) || 0;
+                const sidebarHeight = stickySidebar.offsetHeight;
+                const availableRoom = window.innerHeight - topOffset - BOTTOM_GAP;
+                const maxShift = Math.max(0, sidebarHeight - availableRoom);
+                return { topOffset, maxShift };
+            }
+
+            function applyShift(px) {
+                stickySidebar.style.transform = px > 0 ? `translateY(-${px}px)` : '';
+            }
+
+            // Driven by scrolling anywhere on the page: recomputes shift as
+            // a function of how far the page has scrolled past the point
+            // this stuck, so revealing the rest needs no special hovering.
+            // Always tracks instantly (no eased transition) so it doesn't
+            // visibly lag behind the scroll it's following.
+            function updateFromPageScroll() {
+                ticking = false;
+                stickySidebar.classList.remove('sidebar--smooth-wheel');
+
+                // Below the mobile breakpoint .sidebar is position:static
+                // (see base.css) and flows with the page like everything
+                // else — this mechanism is meaningless there.
+                if (getComputedStyle(stickySidebar).position !== 'sticky') {
+                    shift = 0;
+                    applyShift(0);
+                    return;
+                }
+
+                const { topOffset, maxShift } = metrics();
+                if (maxShift <= 0) {
+                    shift = 0;
+                    applyShift(0);
+                    return;
+                }
+
+                // Measured from the (non-sticky) parent rather than the
+                // sidebar itself: offsetTop/getBoundingClientRect on a
+                // position:sticky element reflect wherever it's CURRENTLY
+                // rendered, which moves as sticky engages — not a stable
+                // reference to compare scroll progress against. The parent
+                // has no such quirk, and the sidebar sits flush with its
+                // top edge, so this is an equivalent, scroll-stable stand-in
+                // for "how far past the engage point has this scrolled".
+                const parentTop = sidebarParent.getBoundingClientRect().top;
+                const scrolledPastEngage = Math.max(0, topOffset - parentTop);
+                shift = Math.min(maxShift, scrolledPastEngage);
+                applyShift(shift);
+            }
+
+            function onScrollOrResize() {
+                if (!ticking) {
+                    ticking = true;
+                    requestAnimationFrame(updateFromPageScroll);
+                }
+            }
+
+            window.addEventListener('scroll', onScrollOrResize, { passive: true });
+            window.addEventListener('resize', onScrollOrResize);
+            updateFromPageScroll();
+
+            // Hovering the box directly: the wheel adjusts its own reveal
+            // position instead of scrolling the page underneath it. Only
+            // takes over once there's actually something to reveal —
+            // otherwise the wheel passes through to the page as normal.
+            // Eased (see .sidebar--smooth-wheel) since a plain mouse wheel
+            // sends chunky ~100px deltas per notch that feel like jumping
+            // rather than scrolling if applied instantly.
+            stickySidebar.addEventListener('wheel', function (e) {
+                const { maxShift } = metrics();
+                if (maxShift <= 0) return;
+                e.preventDefault();
+                stickySidebar.classList.add('sidebar--smooth-wheel');
+                shift = Math.min(maxShift, Math.max(0, shift + e.deltaY));
+                applyShift(shift);
+            }, { passive: false });
+        })();
     </script>
 </body>
 </html>
