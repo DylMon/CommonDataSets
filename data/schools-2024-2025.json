@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-02",
+  "generated": "2026-10-03",
   "cds_year": "2024-25",
   "schools": [
     {
@@ -5424,7 +5424,7 @@
     {
       "id": 32,
       "slug": "ucla",
-      "name": "University of California, Los Angeles",
+      "name": "UCLA",
       "data_year": "2024-25",
       "city": "Los Angeles",
       "state": "CA",
@@ -5606,7 +5606,7 @@
     {
       "id": 33,
       "slug": "ucsb",
-      "name": "University of California, Santa Barbara",
+      "name": "UC Santa Barbara",
       "data_year": "2024-25",
       "city": "Santa Barbara",
       "state": "CA",

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-02",
+  "generated": "2026-10-03",
   "cds_year": "2025-26",
   "schools": [
     {
@@ -1011,7 +1011,7 @@
     },
     {
       "id": 7,
-      "name": "University of California, Berkeley",
+      "name": "UC Berkeley",
       "data_year": "2025-26",
       "city": "Berkeley",
       "state": "CA",
@@ -17035,7 +17035,7 @@
     },
     {
       "id": 100,
-      "name": "University of California, Davis",
+      "name": "UC Davis",
       "data_year": "2025-26",
       "city": "Davis",
       "state": "CA",
@@ -17207,7 +17207,7 @@
     },
     {
       "id": 101,
-      "name": "University of California, Irvine",
+      "name": "UC Irvine",
       "data_year": "2025-26",
       "city": "Irvine",
       "state": "CA",
@@ -17370,7 +17370,7 @@
     },
     {
       "id": 102,
-      "name": "University of California, Merced",
+      "name": "UC Merced",
       "data_year": "2025-26",
       "city": "Merced",
       "state": "CA",
@@ -17530,7 +17530,7 @@
     },
     {
       "id": 103,
-      "name": "University of California, Riverside",
+      "name": "UC Riverside",
       "data_year": "2025-26",
       "city": "Riverside",
       "state": "CA",
@@ -17702,7 +17702,7 @@
     },
     {
       "id": 104,
-      "name": "University of California, San Diego",
+      "name": "UC San Diego",
       "data_year": "2025-26",
       "city": "La Jolla",
       "state": "CA",
@@ -17880,7 +17880,7 @@
     },
     {
       "id": 105,
-      "name": "University of California, Santa Cruz",
+      "name": "UC Santa Cruz",
       "data_year": "2025-26",
       "city": "Santa Cruz",
       "state": "CA",
@@ -18398,7 +18398,7 @@
     },
     {
       "id": 108,
-      "name": "University of California, Los Angeles",
+      "name": "UCLA",
       "data_year": "2025-26",
       "city": "Los Angeles",
       "state": "CA",
@@ -18734,7 +18734,7 @@
     },
     {
       "id": 110,
-      "name": "University of California, Santa Barbara",
+      "name": "UC Santa Barbara",
       "data_year": "2025-26",
       "city": "Santa Barbara",
       "state": "CA",
