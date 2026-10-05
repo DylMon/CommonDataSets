@@ -1,28 +1,62 @@
 /* Chance Me page */
 
+/* Look-and-feel knobs, shared by the rules below: solid orange accent
+   with only a subtle neutral shadow (no gradients or orange glows), a warm
+   sand backdrop framing the form on the cream page, and white cards with
+   a faint shadow that lift slightly on hover. */
 .cm-wrapper {
-    max-width: 860px;
+    --cm-accent: #ed6d0b;
+    --cm-accent-fill: var(--cm-accent);
+    --cm-accent-glow: 0 1px 3px rgba(0, 0, 0, 0.18);   /* under accent-filled elements */
+    --cm-accent-soft: color-mix(in srgb, var(--cm-accent) 9%, #fff);
+    --cm-accent-line: color-mix(in srgb, var(--cm-accent) 30%, #fff);
+    --cm-page-bg: #f7f2ea;                       /* warm sand, behind the form */
+    --cm-card-bg: #fff;
+    --cm-card-border: #e6e6e6;
+    --cm-card-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    --cm-card-hover-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    --cm-lift: 2px;                              /* hover lift on cards */
+    --cm-inset-bg: #f8f9fb;                      /* example rows, target cards */
+    --cm-radius: 10px;
+    --cm-btn-radius: 8px;
+    --cm-input-radius: 6px;
+    --cm-text: #000;
+    --cm-muted: #6b6b6b;                         /* hints, captions, meta lines */
+    --cm-pad: 24px 26px;                         /* section padding */
+    --cm-gap: 18px;                              /* space between sections */
+    --cm-field-gap: 16px 20px;
+
+    /* 900px at the base 16px root size; in rem so it grows with the fluid
+       root font size on 2K/4K screens instead of squeezing the text. */
+    max-width: 56.25rem;
     margin: 32px auto;
-    padding: 28px 20px 60px;
+    padding: 28px 28px 48px;
     width: 100%;
-    background: linear-gradient(180deg, #fbf6f1 0%, #f7f8fa 220px);
-    border-radius: 18px;
+    background: var(--cm-page-bg);
+    border: 1px solid #ece3d5;
+    border-radius: 20px;
 }
 
-/* Section cards */
+/* Same cream as the home page background (body.page-home in base.css). */
+body.page-chanceme {
+    background: #FFFCFA;
+}
+
+/* Section cards — thin accent stripe along the top. */
 .cm-section {
-    background: white;
-    border: 1px solid #eee;
-    border-radius: 12px;
-    padding: 24px 26px;
-    margin-bottom: 18px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    background: var(--cm-card-bg);
+    border: 1px solid var(--cm-card-border);
+    border-top: 3px solid var(--cm-accent);
+    border-radius: var(--cm-radius);
+    padding: var(--cm-pad);
+    margin-bottom: var(--cm-gap);
+    box-shadow: var(--cm-card-shadow);
     transition: box-shadow 0.2s, transform 0.2s;
 }
 
 .cm-section:hover {
-    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-    transform: translateY(-2px);
+    box-shadow: var(--cm-card-hover-shadow);
+    transform: translateY(calc(var(--cm-lift) * -1));
 }
 
 .cm-section-head {
@@ -37,42 +71,42 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 42px;
-    height: 42px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #ed6d0b, #ff9a45);
-    box-shadow: 0 3px 10px rgba(237,109,11,0.4);
+    background: var(--cm-accent-fill);
+    box-shadow: var(--cm-accent-glow);
 }
 
 .cm-section-icon svg {
-    width: 20px;
-    height: 20px;
+    width: 17px;
+    height: 17px;
     color: white;
 }
 
 .cm-section-title {
     font-family: var(--font-display);
-    font-size: 1.15em;
-    font-weight: 400;
-    letter-spacing: 0.05em;
+    font-size: 1.22em;
+    font-weight: 600;
+    letter-spacing: 0.03em;
     text-transform: uppercase;
-    color: #ed6d0b;
+    color: var(--cm-accent);
     margin: 0;
 }
 
 .cm-section-hint {
     font-size: 0.93em;
     font-weight: 300;
-    color: #000;
+    color: var(--cm-muted);
     margin: 0 0 18px;
-    padding-left: 56px;
+    padding-left: 48px;   /* icon width + head gap, so hints line up with the title */
     line-height: 1.6;
 }
 
 .cm-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px 20px;
+    gap: var(--cm-field-gap);
 }
 
 .cm-field {
@@ -86,13 +120,13 @@
 .cm-label {
     font-size: 0.87em;
     font-weight: 400;
-    color: #000;
+    color: var(--cm-text);
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
 
 .cm-label .cm-optional {
-    color: #000;
+    color: var(--cm-text);
     text-transform: none;
     letter-spacing: 0;
     font-weight: 300;
@@ -105,9 +139,9 @@
     font-weight: 400;
     padding: 10px 12px;
     border: 1px solid #ddd;
-    border-radius: 6px;
+    border-radius: var(--cm-input-radius);
     background: white;
-    color: #000;
+    color: var(--cm-text);
     outline: none;
     transition: border-color 0.15s, box-shadow 0.15s;
     width: 100%;
@@ -118,7 +152,7 @@
     border-color: #ccc;
 }
 
-/* Class-rank slider — filled orange track shows the current value. */
+/* Class-rank slider — filled accent track shows the current value. */
 .cm-rank-slider {
     width: 100%;
     -webkit-appearance: none;
@@ -129,7 +163,6 @@
     outline: none;
     cursor: pointer;
     display: block;
-    box-shadow: inset 0 1px 2px rgba(0,0,0,0.12);
 }
 
 .cm-rank-slider::-webkit-slider-thumb {
@@ -138,20 +171,20 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #ed6d0b, #ff9a45);
+    background: var(--cm-accent-fill);
     cursor: pointer;
     border: 3px solid white;
-    box-shadow: 0 2px 6px rgba(237,109,11,0.55);
+    box-shadow: 0 0 0 1px var(--cm-accent-line), var(--cm-accent-glow);
 }
 
 .cm-rank-slider::-moz-range-thumb {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #ed6d0b, #ff9a45);
+    background: var(--cm-accent-fill);
     cursor: pointer;
     border: 3px solid white;
-    box-shadow: 0 2px 6px rgba(237,109,11,0.55);
+    box-shadow: 0 0 0 1px var(--cm-accent-line), var(--cm-accent-glow);
 }
 
 .cm-rank-slider::-moz-range-track {
@@ -163,27 +196,26 @@
 .cm-rank-slider::-moz-range-progress {
     height: 8px;
     border-radius: 999px;
-    background: linear-gradient(135deg, #ed6d0b, #ff9a45);
+    background: var(--cm-accent);
 }
 
 .cm-range-value {
     font-size: 0.95em;
     font-weight: 600;
-    color: #ed6d0b;
+    color: var(--cm-accent);
     margin-top: 8px;
 }
 
 .cm-input:focus,
 .cm-select:focus {
-    border-color: #ed6d0b;
-    box-shadow: 0 0 0 3px rgba(237,109,11,0.14);
+    border-color: var(--cm-accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--cm-accent) 14%, transparent);
 }
 
-/* Scale selector (1-5 / 1-10 pills) */
+/* Scale selector (1-5 / 1-10) — buttons joined into one segmented bar. */
 .cm-scale {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
 }
 
 .cm-scale-btn {
@@ -193,59 +225,113 @@
     font-size: 1em;
     font-weight: 600;
     padding: 10px 4px;
+    margin-left: -1px;
     border: 1px solid #ddd;
-    border-radius: 8px;
+    border-radius: 0;
     background: white;
-    color: #000;
+    color: var(--cm-text);
     cursor: pointer;
     transition: transform 0.12s, box-shadow 0.12s, border-color 0.12s, color 0.12s, background 0.12s;
 }
 
+.cm-scale-btn:first-child {
+    margin-left: 0;
+    border-radius: var(--cm-btn-radius) 0 0 var(--cm-btn-radius);
+}
+
+.cm-scale-btn:last-child {
+    border-radius: 0 var(--cm-btn-radius) var(--cm-btn-radius) 0;
+}
+
+/* Raise the hovered/active segment so its border shows over its neighbors. */
+.cm-scale-btn:hover,
+.cm-scale-btn.active {
+    position: relative;
+    z-index: 1;
+}
+
 .cm-scale-btn:hover {
-    border-color: #ed6d0b;
-    color: #ed6d0b;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(237,109,11,0.18);
+    border-color: var(--cm-accent);
+    color: var(--cm-accent);
 }
 
 .cm-scale-btn.active {
-    background: linear-gradient(135deg, #ed6d0b, #ff9a45);
-    border-color: #ed6d0b;
+    background: var(--cm-accent-fill);
+    border-color: var(--cm-accent);
     color: white;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 14px rgba(237,109,11,0.45);
+    box-shadow: var(--cm-accent-glow);
 }
 
 .cm-scale-caption {
     font-size: 0.95em;
     font-weight: 600;
-    color: #ed6d0b;
+    color: var(--cm-accent);
     min-height: 18px;
     margin-top: 8px;
 }
 
-/* Worked examples under a 1-10 self-rating scale */
+/* Worked examples under a 1-10 self-rating scale — a collapsed
+   "See examples" toggle that opens into the list. */
 .cm-scale-examples {
+    margin-top: 6px;
+}
+
+.cm-examples-toggle summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.93em;
+    font-weight: 600;
+    color: #555;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+}
+
+.cm-examples-toggle summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Chevron that points right when closed, down when open. */
+.cm-examples-toggle summary::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(-45deg);
+    transition: transform 0.15s;
+}
+
+.cm-examples-toggle[open] summary::before {
+    transform: rotate(45deg);
+}
+
+.cm-examples-toggle summary:hover {
+    text-decoration: underline;
+}
+
+.cm-scale-examples-list {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-top: 16px;
+    margin-top: 12px;
 }
 
 .cm-scale-example {
     display: flex;
     gap: 14px;
     align-items: flex-start;
-    background: #f8f9fb;
+    background: var(--cm-inset-bg);
     border: 1px solid #eee;
-    border-radius: 10px;
+    border-radius: var(--cm-radius);
     padding: 12px 16px;
     transition: background 0.15s, border-color 0.15s;
 }
 
 .cm-scale-example:hover {
-    background: #fdf3ea;
-    border-color: #f3d3b3;
+    background: var(--cm-accent-soft);
+    border-color: var(--cm-accent-line);
 }
 
 .cm-scale-example-badge {
@@ -256,17 +342,17 @@
     width: 28px;
     height: 28px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #ed6d0b, #ff9a45);
+    background: var(--cm-accent-fill);
     color: white;
     font-weight: 600;
     font-size: 0.9em;
-    box-shadow: 0 2px 6px rgba(237,109,11,0.35);
+    box-shadow: var(--cm-accent-glow);
 }
 
 .cm-scale-example-desc {
     font-size: 0.93em;
     font-weight: 300;
-    color: #000;
+    color: var(--cm-muted);
     line-height: 1.5;
 }
 
@@ -274,7 +360,7 @@
     flex-shrink: 0;
     border: none;
     background: none;
-    color: #000;
+    color: var(--cm-text);
     font-size: 1.25em;
     line-height: 1;
     cursor: pointer;
@@ -285,7 +371,7 @@
 
 .cm-list-empty {
     font-size: 0.95em;
-    color: #000;
+    color: var(--cm-muted);
     font-weight: 300;
     padding: 4px 0;
 }
@@ -302,8 +388,8 @@
     right: 0;
     background: white;
     border: 1px solid #e8e8e8;
-    border-radius: 10px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    border-radius: var(--cm-radius);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
     max-height: 320px;
     overflow-y: auto;
     z-index: 20;
@@ -321,7 +407,7 @@
     transition: background 0.12s;
 }
 
-.cm-school-option:hover { background: #fdf3ea; }
+.cm-school-option:hover { background: var(--cm-accent-soft); }
 .cm-school-option.disabled { opacity: 0.35; cursor: default; pointer-events: none; }
 
 .cm-school-option-logo {
@@ -342,16 +428,15 @@
 }
 
 .cm-target-card {
-    background: #f8f9fb;
+    background: var(--cm-inset-bg);
     border: 1px solid #eee;
-    border-radius: 10px;
+    border-radius: var(--cm-radius);
     padding: 14px 16px;
     transition: box-shadow 0.15s, border-color 0.15s;
 }
 
 .cm-target-card:hover {
-    border-color: #f3d3b3;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+    border-color: var(--cm-accent-line);
 }
 
 .cm-target-card-header {
@@ -366,7 +451,7 @@
     font-family: var(--font-display);
     font-size: 1.1em;
     font-weight: 400;
-    color: #000;
+    color: var(--cm-text);
 }
 
 .cm-target-remove {
@@ -386,12 +471,12 @@
     align-items: center;
     gap: 8px;
     font-size: 0.97em;
-    color: #000;
+    color: var(--cm-text);
     font-weight: 300;
     cursor: pointer;
 }
 
-.cm-checkbox-row input { width: 15px; height: 15px; cursor: pointer; }
+.cm-checkbox-row input { width: 15px; height: 15px; cursor: pointer; accent-color: var(--cm-accent); }
 
 /* Submit */
 .cm-submit-row {
@@ -412,21 +497,21 @@
     text-transform: uppercase;
     letter-spacing: 0.06em;
     padding: 15px 38px;
-    border: none;
-    border-radius: 999px;
-    background: linear-gradient(135deg, #ed6d0b, #ff9a45);
+    border: 2px solid var(--cm-accent);
+    border-radius: var(--cm-btn-radius);
+    background: var(--cm-accent-fill);
     color: white;
     cursor: pointer;
-    box-shadow: 0 4px 16px rgba(237,109,11,0.4);
-    transition: box-shadow 0.15s, transform 0.15s;
+    box-shadow: var(--cm-accent-glow);
+    transition: box-shadow 0.15s, transform 0.15s, filter 0.15s, background 0.15s, color 0.15s;
 }
 
 .cm-submit-btn:hover {
-    box-shadow: 0 6px 22px rgba(237,109,11,0.55);
-    transform: translateY(-2px);
+    filter: brightness(0.94);
+    transform: translateY(calc(var(--cm-lift) * -1));
 }
 
-.cm-submit-btn:disabled { background: #ccc; box-shadow: none; cursor: not-allowed; transform: none; }
+.cm-submit-btn:disabled { background: #ccc; border-color: #ccc; box-shadow: none; cursor: not-allowed; transform: none; filter: none; }
 
 .cm-form-error {
     font-size: 0.95em;
@@ -445,7 +530,7 @@
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    color: #000;
+    color: var(--cm-text);
     text-align: center;
     margin-bottom: 6px;
 }
@@ -454,28 +539,28 @@
     text-align: center;
     font-size: 0.95em;
     font-weight: 300;
-    color: #000;
+    color: var(--cm-muted);
     margin-bottom: 22px;
 }
 
 .cm-result-card {
-    background: white;
-    border: 1px solid #e8e8e8;
-    border-left: 6px solid #ccc;
-    border-radius: 10px;
+    background: var(--cm-card-bg);
+    border: 1px solid var(--cm-card-border);
+    border-left: 6px solid var(--tier, #ccc);
+    border-radius: var(--cm-radius);
     padding: 18px 22px;
     margin-bottom: 12px;
     display: flex;
     align-items: center;
     gap: 18px;
     flex-wrap: wrap;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    box-shadow: var(--cm-card-shadow);
     transition: box-shadow 0.2s, transform 0.2s;
 }
 
 .cm-result-card:hover {
-    box-shadow: 0 8px 22px rgba(0,0,0,0.12);
-    transform: translateY(-2px);
+    box-shadow: var(--cm-card-hover-shadow);
+    transform: translateY(calc(var(--cm-lift) * -1));
 }
 
 .cm-result-logo {
@@ -496,7 +581,7 @@
 
 .cm-result-meta {
     font-size: 0.9em;
-    color: #000;
+    color: var(--cm-muted);
     font-weight: 300;
 }
 
@@ -514,12 +599,12 @@
     padding: 6px 16px;
     border-radius: 999px;
     color: white;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+    background: var(--tier, #888);
 }
 
 .cm-result-pct {
     font-size: 0.85em;
-    color: #000;
+    color: var(--cm-muted);
     margin-top: 4px;
 }
 
@@ -534,21 +619,21 @@
 .cm-result-toggle button {
     background: none;
     border: none;
-    color: #000;
+    color: var(--cm-text);
     font-size: 0.87em;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     cursor: pointer;
 }
 
-.cm-result-toggle button:hover { color: #ed6d0b; }
+.cm-result-toggle button:hover { color: var(--cm-accent); }
 
 .cm-result-detail {
     width: 100%;
     display: none;
     padding-top: 10px;
     font-size: 0.95em;
-    color: #000;
+    color: var(--cm-text);
     font-weight: 300;
     line-height: 1.8;
 }
@@ -562,48 +647,41 @@
     padding: 3px 0;
 }
 
-.cm-result-detail .cm-detail-row span:last-child { font-weight: 600; color: #000; }
+.cm-result-detail .cm-detail-row span:last-child { font-weight: 600; color: var(--cm-text); }
 
 .cm-detail-note {
     margin-top: 8px;
     font-size: 1.05em;
-    color: #000;
+    color: var(--cm-text);
     font-style: italic;
 }
 
-/* Tier colors */
-.cm-tier-not-possible      { background: #7a2e2e; }
-.cm-tier-highly-unlikely   { background: #b23b3b; }
-.cm-tier-unlikely          { background: #c0785a; }
-.cm-tier-toss-up           { background: #b8974d; }
-.cm-tier-likely            { background: #4f8f6b; }
-.cm-tier-highly-likely     { background: #2f7d4f; }
-.cm-tier-almost-guaranteed { background: #1f5c38; }
-
-.cm-result-card.border-not-possible      { border-left-color: #7a2e2e; }
-.cm-result-card.border-highly-unlikely   { border-left-color: #b23b3b; }
-.cm-result-card.border-unlikely          { border-left-color: #c0785a; }
-.cm-result-card.border-toss-up           { border-left-color: #b8974d; }
-.cm-result-card.border-likely            { border-left-color: #4f8f6b; }
-.cm-result-card.border-highly-likely     { border-left-color: #2f7d4f; }
-.cm-result-card.border-almost-guaranteed { border-left-color: #1f5c38; }
+/* Tier colors — each tier class sets --tier, used for both the badge
+   fill and the result card's left border. */
+.cm-tier-not-possible,      .cm-result-card.border-not-possible      { --tier: #7a2e2e; }
+.cm-tier-highly-unlikely,   .cm-result-card.border-highly-unlikely   { --tier: #b23b3b; }
+.cm-tier-unlikely,          .cm-result-card.border-unlikely          { --tier: #c0785a; }
+.cm-tier-toss-up,           .cm-result-card.border-toss-up           { --tier: #b8974d; }
+.cm-tier-likely,            .cm-result-card.border-likely            { --tier: #4f8f6b; }
+.cm-tier-highly-likely,     .cm-result-card.border-highly-likely     { --tier: #2f7d4f; }
+.cm-tier-almost-guaranteed, .cm-result-card.border-almost-guaranteed { --tier: #1f5c38; }
 
 .cm-methodology {
     margin-top: 28px;
-    background: #f8f9fb;
+    background: var(--cm-inset-bg);
     border: 1px solid #eee;
-    border-radius: 10px;
+    border-radius: var(--cm-radius);
     padding: 16px 20px;
     font-size: 0.93em;
     font-weight: 300;
-    color: #000;
+    color: var(--cm-text);
     line-height: 1.8;
 }
 
 .cm-methodology summary {
     cursor: pointer;
     font-weight: 600;
-    color: #ed6d0b;
+    color: var(--cm-accent);
     text-transform: uppercase;
     letter-spacing: 0.04em;
     font-size: 1.1em;
@@ -619,7 +697,7 @@
     .cm-result-card { padding: 14px 16px; }
     .cm-result-tier-wrap { text-align: left; }
     .cm-section { padding: 20px; }
-    .cm-section-icon { width: 36px; height: 36px; }
-    .cm-section-icon svg { width: 17px; height: 17px; }
+    .cm-section-icon { width: 30px; height: 30px; }
+    .cm-section-icon svg { width: 15px; height: 15px; }
     .cm-section-hint { padding-left: 0; margin-top: 10px; }
 }
