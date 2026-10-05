@@ -15,10 +15,29 @@
     width: 100%;
 }
 
+/* Sticky under the header. When comparing enough schools that the stacked
+   cards are taller than the room available below the header, JS (see this
+   page's <script>) shifts it upward as the page scrolls — same mechanism
+   as the homepage's filters sidebar — so the lowest card stays reachable
+   instead of staying cut off until the page runs out of room to scroll
+   past it. Hovering it directly moves that same shift independently. */
 .compare-picker {
     grid-column: 1;
     position: sticky;
     top: calc(var(--header-height) + 24px);
+    /* Explicit and well below .site-header's 500 — see .sidebar in
+       base.css for why this is needed once the reveal shift's transform
+       pushes this far enough to overlap the header. */
+    z-index: 1;
+}
+
+/* Eased transition applied only while the wheel is driving the reveal
+   shift directly — see .sidebar--smooth-wheel in base.css for the full
+   rationale (chunky mouse-wheel deltas feel like jumping if applied
+   instantly; the page-scroll-driven updates skip this on purpose so they
+   still track scroll 1:1 instead of visibly lagging behind it). */
+.compare-picker.compare-picker--smooth-wheel {
+    transition: transform 0.2s ease-out;
 }
 
 /* html/body has overflow-x:clip, which per spec forces overflow-y to

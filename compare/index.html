@@ -773,11 +773,158 @@
         init();
 
         window.addEventListener('pageshow', () => { renderFavoritesBox(); renderHistory(); });
+
+        // ── Sticky picker reveal ──────────────────────────────────────────
+        // Same mechanism as the homepage's filters sidebar (see index.html):
+        // .compare-picker sticks under the header via CSS, but once comparing
+        // enough schools makes the stacked cards taller than the room left
+        // below the header, plain `position: sticky` only ever shows the top
+        // of the stack. Two ways to reveal the rest:
+        //   1. Scrolling anywhere else on the page shifts the picker upward
+        //      automatically, purely as a function of scroll position, so
+        //      the lowest card becomes reachable without hunting for it.
+        //   2. Hovering the picker directly and scrolling moves that same
+        //      shift independently, via the wheel, without scrolling the
+        //      page underneath it.
+        // The two compose instead of one overwriting the other: `shift` is
+        // always (scroll-derived baseline) + (manual wheel offset). Page
+        // scroll recomputes the baseline every frame; the wheel only ever
+        // adjusts the offset layered on top of it. Earlier this recomputed
+        // an absolute `shift` on every scroll event, so a manual wheel
+        // adjustment got silently discarded — and instantly, with no
+        // transition — the moment the page scrolled again, reading as an
+        // ugly snap back to wherever pure scroll tracking said it should be.
+        (function () {
+            const stickyPicker = document.querySelector('.compare-picker');
+            if (!stickyPicker) return;
+
+            const BOTTOM_GAP = 20;
+            // Must match the "+ 24px" in .compare-picker's own
+            // `top: calc(...)` (see compare.css) — see metrics()'s
+            // safeMaxShift for why.
+            const TOP_GAP = 24;
+            const pickerParent = stickyPicker.parentElement;
+            let manualOffset = 0;
+            let ticking = false;
+
+            function metrics() {
+                const topOffset = parseFloat(getComputedStyle(stickyPicker).top) || 0;
+                const pickerHeight = stickyPicker.offsetHeight;
+                const availableRoom = window.innerHeight - topOffset - BOTTOM_GAP;
+                const naturalMaxShift = Math.max(0, pickerHeight - availableRoom);
+
+                // Hard cap: never shift far enough for the rendered top edge
+                // to reach the header, regardless of how much taller the
+                // stacked cards are than the viewport — so it never crowds
+                // right up against the header's own edge, or spills past it
+                // once off-screen. For a comparison too tall to fully
+                // reveal within this cap, the remainder is reached by
+                // actually scrolling the page further instead, same as
+                // before this reveal mechanism existed.
+                //
+                // This is just TOP_GAP, not a live .site-header measurement:
+                // topOffset is `header-height + TOP_GAP` (see
+                // .compare-picker's CSS `top`), so capping shift at TOP_GAP
+                // is exactly "never rise above the header" — (topOffset -
+                // TOP_GAP) always equals the header's own height by
+                // definition. A live offsetHeight read here raced the
+                // header's own shrink-on-scroll CSS transition (offsetHeight
+                // updates continuously as it animates, while
+                // --header-height — and so topOffset — only updates once at
+                // transitionend), under-capping the shift for the ~150ms
+                // the two were out of sync with each other.
+                const safeMaxShift = TOP_GAP;
+
+                return { topOffset, maxShift: Math.min(naturalMaxShift, safeMaxShift) };
+            }
+
+            // Measured from the (non-sticky) parent rather than the picker
+            // itself: offsetTop/getBoundingClientRect on a position:sticky
+            // element reflect wherever it's CURRENTLY rendered, which moves
+            // as sticky engages — not a stable reference to compare scroll
+            // progress against. The parent has no such quirk, and the
+            // picker sits flush with its top edge, so this is an
+            // equivalent, scroll-stable stand-in for "how far past the
+            // engage point has this scrolled".
+            function scrollBaseline(topOffset, maxShift) {
+                if (maxShift <= 0) return 0;
+                const parentTop = pickerParent.getBoundingClientRect().top;
+                return Math.min(maxShift, Math.max(0, topOffset - parentTop));
+            }
+
+            function applyShift(px) {
+                stickyPicker.style.transform = px > 0 ? `translateY(-${px}px)` : '';
+            }
+
+            // Driven by scrolling anywhere on the page: recomputes the
+            // scroll-derived baseline as a function of how far the page has
+            // scrolled past the point this stuck, so revealing the rest
+            // needs no special hovering. Always tracks instantly (no eased
+            // transition) so it doesn't visibly lag behind the scroll it's
+            // following; manualOffset carries over unchanged, so a prior
+            // wheel adjustment keeps composing smoothly instead of
+            // vanishing the moment page scroll resumes.
+            function updateFromPageScroll() {
+                ticking = false;
+                stickyPicker.classList.remove('compare-picker--smooth-wheel');
+
+                // Below the 1080px breakpoint .compare-picker is
+                // position:static (see compare.css) and flows with the
+                // page like everything else — this mechanism is
+                // meaningless there.
+                if (getComputedStyle(stickyPicker).position !== 'sticky') {
+                    manualOffset = 0;
+                    applyShift(0);
+                    return;
+                }
+
+                const { topOffset, maxShift } = metrics();
+                if (maxShift <= 0) {
+                    manualOffset = 0;
+                    applyShift(0);
+                    return;
+                }
+
+                const base = scrollBaseline(topOffset, maxShift);
+                applyShift(Math.min(maxShift, Math.max(0, base + manualOffset)));
+            }
+
+            function onScrollOrResize() {
+                if (!ticking) {
+                    ticking = true;
+                    requestAnimationFrame(updateFromPageScroll);
+                }
+            }
+
+            window.addEventListener('scroll', onScrollOrResize, { passive: true });
+            window.addEventListener('resize', onScrollOrResize);
+            updateFromPageScroll();
+
+            // Hovering the picker directly: the wheel adjusts manualOffset
+            // instead of scrolling the page underneath it. Only takes over
+            // once there's actually something to reveal — otherwise the
+            // wheel passes through to the page as normal. Eased (see
+            // .compare-picker--smooth-wheel) since a plain mouse wheel
+            // sends chunky ~100px deltas per notch that feel like jumping
+            // rather than scrolling if applied instantly. manualOffset is
+            // clamped relative to the current baseline so the total never
+            // exceeds [0, maxShift], regardless of how it got there.
+            stickyPicker.addEventListener('wheel', function (e) {
+                const { topOffset, maxShift } = metrics();
+                if (maxShift <= 0) return;
+                e.preventDefault();
+                stickyPicker.classList.add('compare-picker--smooth-wheel');
+                const base = scrollBaseline(topOffset, maxShift);
+                manualOffset = Math.min(maxShift - base, Math.max(-base, manualOffset + e.deltaY));
+                applyShift(base + manualOffset);
+            }, { passive: false });
+        })();
     </script>
     <footer class="site-footer">
         <div class="footer-brand-col">
             <a class="footer-brand" href="/">CommonDataSets</a>
             <a class="footer-email" href="mailto:info@commondatasets.com">info@commondatasets.com</a>
+            <span class="footer-rights">&copy; 2026 CommonDataSets. All rights reserved.</span>
         </div>
         <nav class="footer-nav">
             <a href="/">Data Sets</a>

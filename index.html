@@ -17,7 +17,7 @@
     <meta name="description" content="Acceptance rates, SAT scores, GPA, tuition, and admissions data for 33 top US universities — all in one place. Updated through 2023–24.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=Spectral:wght@500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=Spectral:wght@500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/base.css?v=6">
     <script src="/js/scorecard-merge.js?v=6"></script>
     <script src="/js/header.js?v=6" defer></script>
@@ -181,6 +181,7 @@
             <div class="footer-brand-col">
                 <a class="footer-brand" href="/">CommonDataSets</a>
                 <a class="footer-email" href="mailto:info@commondatasets.com">info@commondatasets.com</a>
+                <span class="footer-rights">&copy; 2026 CommonDataSets. All rights reserved.</span>
             </div>
             <nav class="footer-nav">
                 <a href="/">Data Sets</a>
@@ -396,6 +397,7 @@
                 </div>
                 <div class="detail-footer">
                     <a class="detail-compare-btn" href="/compare/?school=${s.slug}">Compare</a>
+                    <a class="detail-compare-btn" href="/schools/${s.slug}/">View Full Data</a>
                 </div>`;
         }
 
@@ -459,16 +461,16 @@
                                     </div>
                                     <div class="school-stats">
                                         <div class="stat-item">
-                                            <div class="stat-val">${fmtPct(s.acceptance_rate)}</div>
                                             <div class="stat-label">Acceptance</div>
+                                            <div class="stat-val">${fmtPct(s.acceptance_rate)}</div>
                                         </div>
                                         <div class="stat-item">
-                                            <div class="stat-val">${s.sat_avg ?? '<span class="stat-na">n/a</span>'}</div>
                                             <div class="stat-label">SAT Avg</div>
+                                            <div class="stat-val">${s.sat_avg ?? '<span class="stat-na">n/a</span>'}</div>
                                         </div>
                                         <div class="stat-item">
-                                            <div class="stat-val">${actRange}</div>
                                             <div class="stat-label">ACT Range</div>
+                                            <div class="stat-val">${actRange}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -895,34 +897,83 @@
         //   2. Hovering the box directly and scrolling moves that same
         //      shift independently, via the wheel, without scrolling the
         //      page underneath it.
-        // Both drive the same `shift` value, so neither fights the other —
-        // whichever happened most recently wins.
+        // The two compose instead of one overwriting the other: `shift` is
+        // always (scroll-derived baseline) + (manual wheel offset). Page
+        // scroll recomputes the baseline every frame; the wheel only ever
+        // adjusts the offset layered on top of it. Earlier this recomputed
+        // an absolute `shift` on every scroll event, so a manual wheel
+        // adjustment got silently discarded — and instantly, with no
+        // transition — the moment the page scrolled again, reading as an
+        // ugly snap back to wherever pure scroll tracking said it should be.
         (function () {
             const stickySidebar = document.querySelector('.sidebar');
             if (!stickySidebar) return;
 
             const BOTTOM_GAP = 20;
+            // Must match the "+ 20px" in .sidebar's own `top: calc(...)`
+            // (see base.css) — see metrics()'s safeMaxShift for why.
+            const TOP_GAP = 20;
             const sidebarParent = stickySidebar.parentElement;
-            let shift = 0;
+            let manualOffset = 0;
             let ticking = false;
 
             function metrics() {
                 const topOffset = parseFloat(getComputedStyle(stickySidebar).top) || 0;
                 const sidebarHeight = stickySidebar.offsetHeight;
                 const availableRoom = window.innerHeight - topOffset - BOTTOM_GAP;
-                const maxShift = Math.max(0, sidebarHeight - availableRoom);
-                return { topOffset, maxShift };
+                const naturalMaxShift = Math.max(0, sidebarHeight - availableRoom);
+
+                // Hard cap: never shift far enough for the rendered top edge
+                // to reach the header, regardless of how much taller the
+                // content is than the viewport — so it never spills into
+                // whatever's above the header (the hero banner on this
+                // page) once off-screen, or crowds right up against the
+                // header's own edge. For content too tall to fully reveal
+                // within this cap, the remainder is reached by actually
+                // scrolling the page further instead, same as before this
+                // reveal mechanism existed.
+                //
+                // This is just TOP_GAP, not a live .site-header measurement:
+                // topOffset is `header-height + TOP_GAP` (see .sidebar's CSS
+                // `top`), so capping shift at TOP_GAP is exactly "never rise
+                // above the header" — (topOffset - TOP_GAP) always equals
+                // the header's own height by definition. A live offsetHeight
+                // read here raced the header's own shrink-on-scroll CSS
+                // transition (offsetHeight updates continuously as it
+                // animates, while --header-height — and so topOffset — only
+                // updates once at transitionend), under-capping the shift
+                // for the ~150ms the two were out of sync with each other.
+                const safeMaxShift = TOP_GAP;
+
+                return { topOffset, maxShift: Math.min(naturalMaxShift, safeMaxShift) };
+            }
+
+            // Measured from the (non-sticky) parent rather than the sidebar
+            // itself: offsetTop/getBoundingClientRect on a position:sticky
+            // element reflect wherever it's CURRENTLY rendered, which moves
+            // as sticky engages — not a stable reference to compare scroll
+            // progress against. The parent has no such quirk, and the
+            // sidebar sits flush with its top edge, so this is an
+            // equivalent, scroll-stable stand-in for "how far past the
+            // engage point has this scrolled".
+            function scrollBaseline(topOffset, maxShift) {
+                if (maxShift <= 0) return 0;
+                const parentTop = sidebarParent.getBoundingClientRect().top;
+                return Math.min(maxShift, Math.max(0, topOffset - parentTop));
             }
 
             function applyShift(px) {
                 stickySidebar.style.transform = px > 0 ? `translateY(-${px}px)` : '';
             }
 
-            // Driven by scrolling anywhere on the page: recomputes shift as
-            // a function of how far the page has scrolled past the point
-            // this stuck, so revealing the rest needs no special hovering.
-            // Always tracks instantly (no eased transition) so it doesn't
-            // visibly lag behind the scroll it's following.
+            // Driven by scrolling anywhere on the page: recomputes the
+            // scroll-derived baseline as a function of how far the page has
+            // scrolled past the point this stuck, so revealing the rest
+            // needs no special hovering. Always tracks instantly (no eased
+            // transition) so it doesn't visibly lag behind the scroll it's
+            // following; manualOffset carries over unchanged, so a prior
+            // wheel adjustment keeps composing smoothly instead of
+            // vanishing the moment page scroll resumes.
             function updateFromPageScroll() {
                 ticking = false;
                 stickySidebar.classList.remove('sidebar--smooth-wheel');
@@ -931,30 +982,20 @@
                 // (see base.css) and flows with the page like everything
                 // else — this mechanism is meaningless there.
                 if (getComputedStyle(stickySidebar).position !== 'sticky') {
-                    shift = 0;
+                    manualOffset = 0;
                     applyShift(0);
                     return;
                 }
 
                 const { topOffset, maxShift } = metrics();
                 if (maxShift <= 0) {
-                    shift = 0;
+                    manualOffset = 0;
                     applyShift(0);
                     return;
                 }
 
-                // Measured from the (non-sticky) parent rather than the
-                // sidebar itself: offsetTop/getBoundingClientRect on a
-                // position:sticky element reflect wherever it's CURRENTLY
-                // rendered, which moves as sticky engages — not a stable
-                // reference to compare scroll progress against. The parent
-                // has no such quirk, and the sidebar sits flush with its
-                // top edge, so this is an equivalent, scroll-stable stand-in
-                // for "how far past the engage point has this scrolled".
-                const parentTop = sidebarParent.getBoundingClientRect().top;
-                const scrolledPastEngage = Math.max(0, topOffset - parentTop);
-                shift = Math.min(maxShift, scrolledPastEngage);
-                applyShift(shift);
+                const base = scrollBaseline(topOffset, maxShift);
+                applyShift(Math.min(maxShift, Math.max(0, base + manualOffset)));
             }
 
             function onScrollOrResize() {
@@ -968,20 +1009,23 @@
             window.addEventListener('resize', onScrollOrResize);
             updateFromPageScroll();
 
-            // Hovering the box directly: the wheel adjusts its own reveal
-            // position instead of scrolling the page underneath it. Only
-            // takes over once there's actually something to reveal —
-            // otherwise the wheel passes through to the page as normal.
-            // Eased (see .sidebar--smooth-wheel) since a plain mouse wheel
-            // sends chunky ~100px deltas per notch that feel like jumping
-            // rather than scrolling if applied instantly.
+            // Hovering the box directly: the wheel adjusts manualOffset
+            // instead of scrolling the page underneath it. Only takes over
+            // once there's actually something to reveal — otherwise the
+            // wheel passes through to the page as normal. Eased (see
+            // .sidebar--smooth-wheel) since a plain mouse wheel sends
+            // chunky ~100px deltas per notch that feel like jumping rather
+            // than scrolling if applied instantly. manualOffset is clamped
+            // relative to the current baseline so the total never exceeds
+            // [0, maxShift], regardless of how it got there.
             stickySidebar.addEventListener('wheel', function (e) {
-                const { maxShift } = metrics();
+                const { topOffset, maxShift } = metrics();
                 if (maxShift <= 0) return;
                 e.preventDefault();
                 stickySidebar.classList.add('sidebar--smooth-wheel');
-                shift = Math.min(maxShift, Math.max(0, shift + e.deltaY));
-                applyShift(shift);
+                const base = scrollBaseline(topOffset, maxShift);
+                manualOffset = Math.min(maxShift - base, Math.max(-base, manualOffset + e.deltaY));
+                applyShift(base + manualOffset);
             }, { passive: false });
         })();
     </script>

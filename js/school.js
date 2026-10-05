@@ -297,14 +297,35 @@ function renderHero(s, slug, meta) {
 
 // ── Render: Floating hero pill (name/location/site + a large logo) ─────
 
-// yearCtx: { currentYearKey, availableYearKeys, latestAvailableKey }
-function renderHeroPill(s, slug, meta, yearCtx) {
+function renderHeroPill(s, slug, meta) {
   const logo = `<img class="hero-logo" src="${logoSrc(slug)}" alt="${s.name}" onerror="${LOGO_ONERR}">`;
   const metaParts = [s.location, s.school_type].filter(Boolean);
   const siteLink = s.website
     ? ` · <a class="hero-site-link" href="${/^https?:\/\//.test(s.website) ? '' : 'https://'}${s.website}" target="_blank" rel="noopener">Official Site →</a>`
     : '';
 
+  return `
+    <div class="hero-pill">
+      ${logo}
+      <div class="hero-text">
+        <h1 class="hero-name">
+          ${s.name}
+          <button class="fav-btn hero-fav-btn${getFavs().has(slug) ? ' favorited' : ''}" id="hero-fav-btn" title="${getFavs().has(slug) ? 'Remove from favorites' : 'Add to favorites'}">
+            <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          </button>
+        </h1>
+        <p class="hero-meta">${metaParts.join(' · ')}${siteLink}</p>
+      </div>
+    </div>`;
+}
+
+// ── Render: Year bar (switcher + missing-data notice) ──────────────────
+// Sits below the hero pill, ahead of any actual data (.quick-facts-strip
+// and the section grid) — not part of the title card itself, since it's
+// metadata about the data rather than about the school.
+
+// yearCtx: { currentYearKey, availableYearKeys, latestAvailableKey }
+function renderYearBar(yearCtx) {
   const { currentYearKey, availableYearKeys, latestAvailableKey } = yearCtx;
   const isCurrentTheLatestAvailable = currentYearKey === latestAvailableKey;
   const label = isCurrentTheLatestAvailable ? 'Currently showing most recent year' : 'Currently showing';
@@ -322,7 +343,7 @@ function renderHeroPill(s, slug, meta, yearCtx) {
   // at a glance which year's data they're looking at. The dropdown itself
   // only renders as interactive when there's actually more than one year
   // to pick from; otherwise it's plain text so it doesn't look clickable.
-  const yearBar = `<div class="hero-year-bar">
+  return `<div class="hero-year-bar">
       ${availableYearKeys.length > 1 ? `
       <div class="year-switcher" id="year-switcher">
         <button class="year-switcher-btn" id="year-switcher-btn" type="button">
@@ -335,21 +356,6 @@ function renderHeroPill(s, slug, meta, yearCtx) {
         <span>${label}: <strong>${shortYearLabel(currentYearKey)}</strong></span>
       </div>`}
       ${missingNotice}
-    </div>`;
-
-  return `
-    <div class="hero-pill">
-      ${logo}
-      <div class="hero-text">
-        <h1 class="hero-name">
-          ${s.name}
-          <button class="fav-btn hero-fav-btn${getFavs().has(slug) ? ' favorited' : ''}" id="hero-fav-btn" title="${getFavs().has(slug) ? 'Remove from favorites' : 'Add to favorites'}">
-            <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-          </button>
-        </h1>
-        <p class="hero-meta">${metaParts.join(' · ')}${siteLink}</p>
-        ${yearBar}
-      </div>
     </div>`;
 }
 
@@ -862,14 +868,19 @@ async function init() {
     document.querySelector('meta[name="description"]').content = descParts.join(' · ') + '.';
 
     document.getElementById('school-hero').innerHTML = renderHero(s, slug, meta);
-    document.getElementById('stats-strip').innerHTML =
-      renderHeroPill(s, slug, meta, { currentYearKey: yearKey, availableYearKeys, latestAvailableKey });
-    // .quick-facts-strip isn't in the static HTML template (only school-hero
-    // and stats-strip are) — inserted here so the generated pages don't all
-    // need editing for this one extra container. Replaced wholesale (not
-    // just once) since a year switch can change every value in it.
+    document.getElementById('stats-strip').innerHTML = renderHeroPill(s, slug, meta);
+    // .year-bar-strip and .quick-facts-strip aren't in the static HTML
+    // template (only school-hero and stats-strip are) — inserted here so
+    // the generated pages don't all need editing for these extra
+    // containers. Replaced wholesale (not just once) since a year switch
+    // can change every value in them. Year bar goes directly below the
+    // title card, ahead of quick-facts-strip — it's metadata about which
+    // year's data is showing, not data itself, so it precedes all of it.
+    document.querySelector('.year-bar-strip')?.remove();
     document.querySelector('.quick-facts-strip')?.remove();
-    document.getElementById('stats-strip')
+    document.getElementById('stats-strip').insertAdjacentHTML('afterend',
+      `<div class="year-bar-strip">${renderYearBar({ currentYearKey: yearKey, availableYearKeys, latestAvailableKey })}</div>`);
+    document.querySelector('.year-bar-strip')
       .insertAdjacentHTML('afterend', `<div class="quick-facts-strip">${renderQuickFacts(s)}</div>`);
 
     document.getElementById('hero-fav-btn').addEventListener('click', () => {
@@ -964,6 +975,16 @@ async function init() {
   back.href = '/';
   back.textContent = '← Schools';
   document.body.appendChild(back);
+
+  const printFab = document.createElement('button');
+  printFab.className = 'print-fab';
+  printFab.type = 'button';
+  printFab.setAttribute('aria-label', 'Print this data');
+  printFab.innerHTML = `
+    <span class="print-fab-label">Print this data</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>`;
+  printFab.addEventListener('click', () => window.print());
+  document.body.appendChild(printFab);
 }
 
 init();

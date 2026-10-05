@@ -1086,6 +1086,13 @@ body.page-info .hero-banner {
     gap: 12px;
     position: sticky;
     top: calc(var(--header-height) + 20px);
+    /* Explicit and well below .site-header's 500: the reveal shift (see
+       index.html) uses transform, which promotes this to its own stacking
+       context — without a real number here that context's implicit
+       z-index:auto was somehow winning against the header once shifted far
+       enough to overlap it, letting this paint over the header instead of
+       scrolling behind it like normal page content does. */
+    z-index: 1;
     align-self: flex-start;
 }
 
@@ -1491,12 +1498,13 @@ body.header-hidden .school-page-layout .right-sidebar {
     gap: 20px;
 }
 
-/* Three columns: an empty left gutter that mirrors the favorites/history
-   sidebar on the right, so the data column sits centered on the page
-   instead of being pushed left by the one-sided sidebar. */
+/* Two columns: data on the left, the favorites/history rail on the right.
+   Left-aligned to the page (the usual max-width + auto-margin + padding
+   container) rather than centered with a phantom gutter mirroring the
+   sidebar — that extra 230px was stealing width the data could use. */
 .school-page-layout {
     display: grid;
-    grid-template-columns: 230px minmax(0, 1fr) 230px;
+    grid-template-columns: minmax(0, 1fr) 230px;
     column-gap: 20px;
     align-items: start;
     width: 100%;
@@ -1507,14 +1515,14 @@ body.header-hidden .school-page-layout .right-sidebar {
 }
 
 .school-page-layout #school-sections {
-    grid-column: 2;
+    grid-column: 1;
     min-width: 0;
     margin: 0;
     max-width: none;
 }
 
 .school-page-layout .right-sidebar {
-    grid-column: 3;
+    grid-column: 2;
     padding-top: 24px;
 }
 
@@ -1691,7 +1699,7 @@ body.header-hidden .school-page-layout .right-sidebar {
        continuously with viewport width instead of jumping at breakpoints —
        keeps "Regular Decision"/"Median Earn (6yr)" etc. from outgrowing
        their half-width column at in-between sizes. */
-    font-size: clamp(0.7em, 0.6em + 0.6vw, 0.82em);
+    font-size: clamp(0.78em, 0.64em + 0.75vw, 1em);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.03em;
@@ -1732,6 +1740,7 @@ body.header-hidden .school-page-layout .right-sidebar {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    gap: 10px;
     padding-top: 10px;
     border-top: 1px solid #f0f0f0;
 }
@@ -1752,7 +1761,6 @@ body.header-hidden .school-page-layout .right-sidebar {
 .detail-compare-btn {
     display: inline-flex;
     align-items: center;
-    margin-left: auto;
     padding: 5px 14px;
     border: 1px solid #ed6d0b;
     border-radius: 3px;
@@ -1835,8 +1843,8 @@ body.header-hidden .school-page-layout .right-sidebar {
 }
 
 .school-logo {
-    height: 36px;
-    width: 60px;
+    height: 48px;
+    width: 80px;
     object-fit: contain;
     flex-shrink: 0;
 }
@@ -1963,6 +1971,18 @@ body.header-hidden .school-page-layout .right-sidebar {
     flex-shrink: 0;
 }
 
+/* Label-above-value here (the compare picker cards keep the shared
+   .stat-label's margin-top, since theirs still reads value-then-label). */
+.school-stats .stat-label {
+    margin-top: 0;
+    margin-bottom: 2px;
+    font-weight: 600;
+}
+
+.school-stats .stat-val {
+    font-weight: 300;
+}
+
 .stat-item {
     text-align: center;
     min-width: 70px;
@@ -2000,8 +2020,17 @@ body.header-hidden .school-page-layout .right-sidebar {
 .footer-brand-col {
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
     gap: 8px;
-    justify-self: start;
+    justify-self: end;
+}
+
+.footer-rights {
+    color: inherit;
+    font-size: 0.78em;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    opacity: 0.7;
 }
 
 .footer-brand {
@@ -2152,6 +2181,51 @@ body.header-hidden .school-page-layout .right-sidebar {
     transition: background 0.15s;
 }
 .floating-back:active { background: #000; }
+
+/* Floating print button (school pages) — an orange pill with its icon and
+   label always visible (the original design had the label reveal only on
+   hover; that read well enough that it's now the permanent look, with
+   hover/focus left as a plain lift+shadow instead). Hardcoded #ed6d0b
+   (not var(--brand)): school pages override --brand to that school's own
+   color, but this is site chrome, not school content, so it should always
+   read as the site's own orange regardless of which school's page it's on. */
+.print-fab {
+    display: inline-flex;
+    align-items: center;
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    height: 52px;
+    padding: 0 20px 0 18px;
+    background: #ed6d0b;
+    border: 2px solid #ed6d0b;
+    border-radius: 999px;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    z-index: 9999;
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.print-fab:hover,
+.print-fab:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.26);
+}
+
+.print-fab svg {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+}
+
+.print-fab-label {
+    font-family: 'Public Sans', sans-serif;
+    font-size: 0.9em;
+    font-weight: 600;
+    white-space: nowrap;
+    margin-right: 10px;
+}
 
 /* ── Responsive ── */
 
