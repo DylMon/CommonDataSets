@@ -42,10 +42,7 @@
 
             let cell;
             if (link && link.url) {
-                const uncertainMark = link.confidence === 'uncertain'
-                    ? `<span class="resources-uncertain" title="${escapeHtml(link.note || 'Found via search but could not be fully re-verified.')}">?</span>`
-                    : '';
-                cell = `<a class="resources-find-link" href="${link.url}" target="_blank" rel="noopener">Common Data Set${uncertainMark}
+                cell = `<a class="resources-find-link" href="${link.url}" target="_blank" rel="noopener">Common Data Set
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                    </a>`;
             } else if (homepageUrl) {
@@ -64,20 +61,41 @@
         }).join('');
     }
 
+    // Same list (and same "later file wins" merge rule) as index.html's
+    // ALL_YEAR_FILES/loadAllSchools(), so every school on the site shows up
+    // here with its most recent record — not just the ones with 2025-26 data.
+    const ALL_YEAR_FILES = [
+        '/data/schools-2021-2022.json',
+        '/data/schools-2022-2023.json',
+        '/data/schools-2023-2024.json',
+        '/data/schools-2024-2025.json',
+        '/data/schools-2025-2026.json',
+    ];
+
+    async function loadAllSchools() {
+        const years = await Promise.all(ALL_YEAR_FILES.map(async url => {
+            const res = await fetch(url);
+            if (!res.ok) throw new Error(`${url}: ${res.status}`);
+            return (await res.json()).schools || [];
+        }));
+        const bySlug = new Map();
+        years.flat().forEach(s => {
+            if (s.name != null) bySlug.set(s.slug, s);
+        });
+        return [...bySlug.values()];
+    }
+
     async function init() {
         let allSchools = [];
         let cdsLinks = {};
         try {
-            const [schoolsRes, linksRes] = await Promise.all([
-                fetch('/data/schools-2025-2026.json'),
+            const [schools, linksRes] = await Promise.all([
+                loadAllSchools(),
                 fetch('/data/school-cds-links.json'),
             ]);
-            const data = await schoolsRes.json();
             const linksList = await linksRes.json();
             cdsLinks = Object.fromEntries(linksList.map(l => [l.slug, l]));
-            allSchools = (data.schools || [])
-                .filter(s => s.name != null)
-                .sort((a, b) => a.name.localeCompare(b.name));
+            allSchools = schools.sort((a, b) => a.name.localeCompare(b.name));
         } catch {
             document.getElementById('resources-tbody').innerHTML =
                 '<tr><td colspan="3" class="resources-empty">Couldn\'t load the school list — try refreshing.</td></tr>';

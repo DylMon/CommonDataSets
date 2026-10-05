@@ -118,24 +118,6 @@
     flex-shrink: 0;
 }
 
-/* Verified-but-couldn't-re-fetch links (e.g. the school's domain blocks
-   automated requests) — the underlying page was found via search, this
-   just flags it as not independently re-confirmed. */
-.resources-uncertain {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 14px;
-    height: 14px;
-    margin-left: 2px;
-    border-radius: 50%;
-    background: #b8974d;
-    color: #fff;
-    font-size: 0.7em;
-    font-weight: 700;
-    cursor: help;
-}
-
 /* No dedicated CDS page could be found — falls back to the school's
    homepage, styled a touch more muted than a confirmed CDS link. */
 .resources-find-link--fallback {

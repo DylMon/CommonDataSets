@@ -9,9 +9,9 @@
   {
     "slug": "amherst",
     "name": "Amherst College",
-    "url": "https://www.amherst.edu/offices/ir",
-    "confidence": "uncertain",
-    "note": "Multiple searches consistently point to Amherst's Office of Institutional Research page as the host of CDS data, but the page returned HTTP 405 on direct fetch so the current CDS listing could not be visually confirmed. Only PDFs (e.g. cms.amherst.edu CDS files) were directly findable via search."
+    "url": "https://www.amherst.edu/about/facts/common_data_sets",
+    "confidence": "verified",
+    "note": ""
   },
   {
     "slug": "asu",
@@ -65,9 +65,9 @@
   {
     "slug": "brandeis",
     "name": "Brandeis University",
-    "url": null,
-    "confidence": "not_found",
-    "note": "Only a bare PDF was found (www.brandeis.edu/institutional-research/docs/cds-2025-26.pdf). Several search attempts (direct query, institutional research query, site:brandeis.edu query) did not surface a landing/index page on brandeis.edu that hosts or links to the CDS."
+    "url": "https://www.brandeis.edu/institutional-research/common-data-set/index.html",
+    "confidence": "verified",
+    "note": ""
   },
   {
     "slug": "brown",
@@ -121,7 +121,7 @@
   {
     "slug": "case-western",
     "name": "Case Western Reserve University",
-    "url": "https://case.edu/ir/common-data-set",
+    "url": "https://case.edu/ir/common-data-set-0",
     "confidence": "verified",
     "note": ""
   },
@@ -163,7 +163,7 @@
   {
     "slug": "columbia",
     "name": "Columbia University",
-    "url": "https://opir.columbia.edu/understanding-columbias-common-data-set",
+    "url": "https://opir.columbia.edu/cds",
     "confidence": "verified",
     "note": ""
   },
@@ -247,9 +247,9 @@
   {
     "slug": "fiu",
     "name": "Florida International University",
-    "url": "https://w3.fiu.edu/irdata/portal/cds.htm",
+    "url": "https://aim.fiu.edu/cds.htm",
     "confidence": "verified",
-    "note": "Office of Planning & Institutional Research portal, hosts CDS years back to 2006-07."
+    "note": ""
   },
   {
     "slug": "fsu",
@@ -310,7 +310,7 @@
   {
     "slug": "howard",
     "name": "Howard University",
-    "url": "https://ira.howard.edu/institutional-research/institutional-data/common-data-set",
+    "url": "https://ira.howard.edu/institutional-research/common-data-set",
     "confidence": "verified",
     "note": ""
   },
@@ -331,9 +331,9 @@
   {
     "slug": "jhu",
     "name": "Johns Hopkins University",
-    "url": "https://oira.jhu.edu/common-data-set-2023-24",
-    "confidence": "uncertain",
-    "note": "JHU's OIRA site (oira.jhu.edu) blocks automated fetches (403), so the page could not be directly confirmed, but this is a real indexed page on JHU's own OIRA domain. It appears to be a year-specific page (2023-24) rather than a single evergreen multi-year index, so a newer page for 2024-25/2025-26 may now exist under a similar URL pattern on the same domain."
+    "url": "https://oira.jhu.edu/reports-2/",
+    "confidence": "verified",
+    "note": ""
   },
   {
     "slug": "kansas-state",
@@ -373,9 +373,9 @@
   {
     "slug": "michigan-state",
     "name": "Michigan State University",
-    "url": "https://opb.msu.edu/functions/institution/cds.html",
+    "url": "https://ir.msu.edu/cds",
     "confidence": "verified",
-    "note": "Office of Planning and Budgets; editions 2015-16 through 2025-26."
+    "note": ""
   },
   {
     "slug": "michigan-tech",
@@ -401,16 +401,16 @@
   {
     "slug": "njit",
     "name": "New Jersey Institute of Technology",
-    "url": null,
-    "confidence": "not_found",
-    "note": "NJIT's Office of Institutional Effectiveness (njit.edu/oie) has no public Common Data Set landing page or links; it publishes only Tableau dashboards for enrollment/admissions/financial data and a consumer-information page. No CDS page found after multiple searches and site navigation checks."
+    "url": "https://www.njit.edu/oie/external-surveys",
+    "confidence": "verified",
+    "note": ""
   },
   {
     "slug": "nyu",
     "name": "New York University",
-    "url": null,
-    "confidence": "not_found",
-    "note": "Could not locate an official nyu.edu Common Data Set landing page. Search results only surfaced third-party aggregator sites (Road2College, CollegeTransitions, etc.) referencing NYU's CDS; attempts to find NYU's own Institutional Research/Data office page did not resolve."
+    "url": "https://www.nyu.edu/employees/resources-and-services/administrative-services/institutional-research/self-service-reporting-resources/factbook.html",
+    "confidence": "verified",
+    "note": ""
   },
   {
     "slug": "nc-state",
@@ -485,7 +485,7 @@
   {
     "slug": "rpi",
     "name": "Rensselaer Polytechnic Institute",
-    "url": "http://provost.rpi.edu/institutional-research/common-datasets",
+    "url": "https://provost.rpi.edu/institutional-research-and-assessment",
     "confidence": "verified",
     "note": ""
   },
@@ -562,16 +562,16 @@
   {
     "slug": "templeu",
     "name": "Temple University",
-    "url": null,
-    "confidence": "not_found",
-    "note": "Temple's Institutional Research and Assessment office (ira.temple.edu) references 'Historic Common Data Sets' under its internal Catalog of Institutional Reports, but states that access requires approval via Microsoft Teams; no public-facing CDS landing page was found."
+    "url": "https://ira.temple.edu/facts-and-figures/compliance-reports",
+    "confidence": "verified",
+    "note": ""
   },
   {
     "slug": "texas-am",
     "name": "Texas A&M University",
-    "url": "https://abpa.tamu.edu/",
-    "confidence": "uncertain",
-    "note": "ABPA (Office of Academic & Business Performance Analytics) is confirmed as TAMU's CDS-publishing office and hosts the CDS PDFs directly (e.g. abpa.tamu.edu/getattachment/... and abpa.tamu.edu/_files/_documents/common-data/...), but automated fetches of the site returned 404s and no distinct 'Common Data Set' index sub-page could be independently verified via search; the domain root is the best available landing candidate."
+    "url": "https://abpa.tamu.edu/accountability-rankings/common-data-set.html",
+    "confidence": "verified",
+    "note": ""
   },
   {
     "slug": "texaschristian",
@@ -653,16 +653,16 @@
   {
     "slug": "uc-davis",
     "name": "University of California - Davis",
-    "url": "https://aggiedata.ucdavis.edu/",
-    "confidence": "uncertain",
-    "note": "AggieData is UC Davis's Budget & Institutional Analysis dashboard portal described in search results as where UC Davis 'posts their CDS responses for reference,' including CDS PDFs hosted under this domain. Direct fetch returned 403 (bot-blocked), so the exact CDS sub-page/section could not be visually confirmed."
+    "url": "https://aggiedata.ucdavis.edu/common-data-set",
+    "confidence": "verified",
+    "note": ""
   },
   {
     "slug": "uc-merced",
     "name": "University of California-Merced",
-    "url": "https://cie.ucmerced.edu/analytics-hub/external-reporting",
-    "confidence": "uncertain",
-    "note": "Search results describe this Center for Institutional Effectiveness 'Analytics Hub / External Reporting' page as where UC Merced's Common Data Set responses are posted; direct fetch returned 403 (bot-blocked) so page contents could not be visually confirmed."
+    "url": "https://cie.ucmerced.edu/archive/external-reporting",
+    "confidence": "verified",
+    "note": ""
   },
   {
     "slug": "berkeley",
@@ -702,9 +702,9 @@
   {
     "slug": "ucsb",
     "name": "University of California, Santa Barbara",
-    "url": "https://bap.ucsb.edu/institutional-research/ucsb-information-center",
-    "confidence": "uncertain",
-    "note": "UCSB's Budget & Planning / Institutional Research 'Information Center' page is confirmed to host a 'Common Data Set - 2025-26' quick link, but that link points off-domain to a Google Drive file rather than a hosted CDS page/PDF, so flagging as uncertain."
+    "url": "https://bap.ucsb.edu/institutional-research",
+    "confidence": "verified",
+    "note": ""
   },
   {
     "slug": "uc-santa-cruz",
@@ -737,7 +737,7 @@
   {
     "slug": "udayton",
     "name": "University of Dayton",
-    "url": "https://udayton.edu/finadmin/divisions/budget_planning/ir/common_data_set.php",
+    "url": "https://udayton.edu/compliance/data.php",
     "confidence": "verified",
     "note": ""
   },
@@ -884,16 +884,16 @@
   {
     "slug": "pitt",
     "name": "University of Pittsburgh",
-    "url": "https://www.pitt.edu/university-information/common-data-set",
+    "url": "https://www.ir.pitt.edu/university-information/common-data-set",
     "confidence": "verified",
     "note": ""
   },
   {
     "slug": "urhodeisland",
     "name": "University of Rhode Island",
-    "url": null,
-    "confidence": "not_found",
-    "note": "Could not locate an official URI Common Data Set or Institutional Research landing page. Extensive site navigation (homepage, About, Provost, site search, sitemap, robots.txt) turned up no IR/CDS office page, and the web search tool's session budget was exhausted before a search-based lookup could be completed for this school."
+    "url": "https://web.uri.edu/ir/data/common/",
+    "confidence": "verified",
+    "note": ""
   },
   {
     "slug": "urichmond",
@@ -912,9 +912,9 @@
   {
     "slug": "usandiego",
     "name": "University of San Diego",
-    "url": null,
-    "confidence": "not_found",
-    "note": "Could not locate an official USD Common Data Set or Institutional Research landing page. Checked About/Provost/Academics navigation and the site's sitemap.xml with no IR office or CDS link surfacing; web search budget was exhausted before a search-based lookup could be completed."
+    "url": "https://www.sandiego.edu/facts/cds/",
+    "confidence": "verified",
+    "note": ""
   },
   {
     "slug": "usf",
@@ -940,16 +940,16 @@
   {
     "slug": "upacific",
     "name": "University of the Pacific",
-    "url": null,
-    "confidence": "not_found",
-    "note": "Could not locate an official University of the Pacific Common Data Set or Institutional Research landing page. Site homepage, About Pacific section, and Fast Facts page had no IR/CDS link; web search budget was exhausted before a search-based lookup could be completed."
+    "url": "https://www.pacific.edu/about-pacific/administrative-offices/institutional-research/common-data-set",
+    "confidence": "verified",
+    "note": ""
   },
   {
     "slug": "uutah",
     "name": "University of Utah",
-    "url": null,
-    "confidence": "not_found",
-    "note": "Office was renamed/restructured (obia.utah.edu -> uair.utah.edu); the old CDS landing page (obia.utah.edu/data-dashboard/common-data-set/) now 404s and no replacement CDS index page could be found on the new uair.utah.edu site after checking its dashboards, institutional research, reporting, and survey-center sections. CDS PDFs exist (hosted historically at data.utah.edu/wp-content/uploads/...) but no current public landing page linking them was located."
+    "url": "https://budget.utah.edu/data-dashboard/common-data-set/",
+    "confidence": "verified",
+    "note": ""
   },
   {
     "slug": "uvermont",
@@ -1038,9 +1038,9 @@
   {
     "slug": "washu",
     "name": "Washington University in St. Louis",
-    "url": null,
-    "confidence": "not_found",
-    "note": "Only bare PDFs were found (e.g. washu.edu/app/uploads/2026/06/2025-2026-WashU-CDS.pdf). Checked WashU's Institutional Effectiveness/provost pages, surveys hub, registrar, and about/facts pages - none link to a CDS landing page, so no parent index page could be confirmed."
+    "url": "https://washu.edu/policies/student-consumer-information/",
+    "confidence": "verified",
+    "note": ""
   },
   {
     "slug": "wayne-state",
@@ -1050,7 +1050,7 @@
     "note": ""
   },
   {
-    "slug": "wellesly",
+    "slug": "wellesley",
     "name": "Wellesley College",
     "url": "https://www.wellesley.edu/about-us/offices-departments/office-of-institutional-research/public-data",
     "confidence": "verified",
@@ -1080,9 +1080,9 @@
   {
     "slug": "williams",
     "name": "Williams College",
-    "url": null,
-    "confidence": "not_found",
-    "note": "williams.edu blocks automated fetching (403 Forbidden on every path tried, including the homepage), and web search did not surface a specific CDS URL before the search budget was exhausted. Could not verify a real page without guessing a URL pattern, which was avoided per instructions."
+    "url": "https://hub.williams.edu/institutional-research/common-data-set/",
+    "confidence": "verified",
+    "note": ""
   },
   {
     "slug": "wpi",
@@ -1095,6 +1095,230 @@
     "slug": "yale",
     "name": "Yale University",
     "url": "https://oir.yale.edu/common-data-set",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "saintlouisu",
+    "name": "Saint Louis University",
+    "url": "https://www.slu.edu/provost/office-of-institutional-research/institutional-data/2122cds.php",
+    "confidence": "verified",
+    "note": "Year-specific page (2021-22), which matches the newest SLU CDS we have. SLU's Institutional Data index page doesn't link a CDS listing, so this is the most direct official page."
+  },
+  {
+    "slug": "colorado-school-of-mines",
+    "name": "Colorado School of Mines",
+    "url": "https://ir.mines.edu/common-data-set/",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "stockton",
+    "name": "Stockton University",
+    "url": "https://stockton.edu/institutional-research/",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "illinois-tech",
+    "name": "Illinois Institute of Technology",
+    "url": "https://www.iit.edu/oii/common-data-set",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "mizzou",
+    "name": "University of Missouri",
+    "url": "https://udair.missouri.edu/mu-data/common-data-set",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "quinnipiac",
+    "name": "Quinnipiac University",
+    "url": "https://qu.edu/about-quinnipiac/institutional-research",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "rutgers-camden",
+    "name": "Rutgers University, Camden",
+    "url": "https://oirds.rutgers.edu/ReportingCommonDataSet.html",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "rutgers-newark",
+    "name": "Rutgers University, Newark",
+    "url": "https://oirds.rutgers.edu/ReportingCommonDataSet.html",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "yeshiva",
+    "name": "Yeshiva University",
+    "url": "https://yu.edu/oir",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "boston-college",
+    "name": "Boston College",
+    "url": "https://www.bc.edu/bc-web/offices/institutional-research-planning/institutional-research.html",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "bradley",
+    "name": "Bradley University",
+    "url": "https://www.bradley.edu/academics/academic-offices/institutional-effectiveness/",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "clark",
+    "name": "Clark University",
+    "url": "https://www.clarku.edu/stair/?p=7",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "depaul",
+    "name": "DePaul University",
+    "url": "https://irma.depaul.edu/FFPlus.asp?cont=cds",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "east-carolina",
+    "name": "East Carolina University",
+    "url": "https://ipar.ecu.edu/rsrch-public-ecu-data-2/",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "fairfield",
+    "name": "Fairfield University",
+    "url": "https://www.fairfield.edu/about/offices-and-departments/institutional-research/common-data-sets/index.html",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "grinnell",
+    "name": "Grinnell College",
+    "url": "https://www.grinnell.edu/about/offices-services/institutional-research/resources/cds",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "hofstra",
+    "name": "Hofstra University",
+    "url": "https://www.hofstra.edu/about/administration/institutional-research-strategic-analysis/facts-figures/",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "miamiu",
+    "name": "Miami University",
+    "url": "https://miamioh.edu/analytics-institutional-research/common-data-set.html",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "suny-albany",
+    "name": "University at Albany",
+    "url": "https://www.albany.edu/ir/data-available",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "thomas-jefferson",
+    "name": "Thomas Jefferson University",
+    "url": "https://www.jefferson.edu/east-falls/institutional-research-and-planning/common-data-set.html",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "udelaware",
+    "name": "University of Delaware",
+    "url": "https://ire.udel.edu/common-data-set",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "ukansas",
+    "name": "University of Kansas",
+    "url": "https://aire.ku.edu/common-data-set",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "ulouisville",
+    "name": "University of Louisville",
+    "url": "https://louisville.edu/about/departments/academic-planning-accountability/university-data/common-data-set",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "umass-lowell",
+    "name": "University of Massachusetts Lowell",
+    "url": "https://www.uml.edu/Institutional-Research/Common-Data-Set.aspx",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "unc-wilmington",
+    "name": "University of North Carolina Wilmington",
+    "url": "https://uncw.edu/about/university-administration/academic-affairs/division/areas/irp/data-analytics/common-data-sets",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "unebraska-lincoln",
+    "name": "University of Nebraska, Lincoln",
+    "url": "https://iea.unl.edu/common-data-set/",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "uofiowa",
+    "name": "University of Iowa",
+    "url": "https://provost.uiowa.edu/data-and-reports/common-data-set",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "uofminnesota-twin-cities",
+    "name": "University of Minnesota, Twin Cities",
+    "url": "https://oem.umn.edu/common-data-set",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "uoklahoma",
+    "name": "University of Oklahoma",
+    "url": "https://www.ou.edu/irr/other-reports",
+    "confidence": "verified",
+    "note": "OU has no CDS-only page; the Common Data Set section (2025-26 back to 2015-16) lives on this Other Reports page."
+  },
+  {
+    "slug": "usanfrancisco",
+    "name": "University of San Francisco",
+    "url": "https://myusf.usfca.edu/cipe/cds",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "usma-west-point",
+    "name": "United States Military Academy at West Point",
+    "url": "https://www.westpoint.edu/about/institutional-accreditation-and-assessment",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "virginiacommonwealth",
+    "name": "Virginia Commonwealth University",
+    "url": "https://irds.vcu.edu/institutional-reporting/common-data-set/",
     "confidence": "verified",
     "note": ""
   }
