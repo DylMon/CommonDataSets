@@ -42,11 +42,10 @@ body.page-chanceme {
     background: #FFFCFA;
 }
 
-/* Section cards — thin accent stripe along the top. */
+/* Section cards */
 .cm-section {
     background: var(--cm-card-bg);
     border: 1px solid var(--cm-card-border);
-    border-top: 3px solid var(--cm-accent);
     border-radius: var(--cm-radius);
     padding: var(--cm-pad);
     margin-bottom: var(--cm-gap);
