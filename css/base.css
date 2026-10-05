@@ -13,9 +13,9 @@
        school page — unlike Castoro it has a real bold, so headings can
        actually use font-weight: 600/700 now instead of being pinned to 400. */
     --font-display: 'Source Serif 4', Georgia, 'Times New Roman', serif;
-    /* .nav-wrapper's 64px min-height + .header-accent-bar's 40px min-height.
+    /* .nav-wrapper's min-height (the header is a single orange bar).
        Used to offset sticky sidebars/pickers below the fixed header. */
-    --header-height: 104px;
+    --header-height: 84px;
 }
 
 html {
@@ -70,49 +70,63 @@ body.page-home {
     position: sticky;
     top: 0;
     z-index: 500;
-    transition: transform 0.25s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    /* Same subtle depth as .school-card, so the header reads as floating
+       just slightly above the page content scrolling beneath it. */
+    box-shadow: var(--hdr-shadow, 0 2px 8px rgba(0, 0, 0, 0.22));
+    /* Column so the optional .header-sub-bar can sit above or below. */
+    display: flex;
+    flex-direction: column;
+
+    /* Header colors: Umber bar, orange block highlight (picked from the
+       header-option-3 preview panel). */
+    --hdr-bg: #3a281e;
+    --hdr-fg: #f6ebe2;                           /* link text */
+    --hdr-wordmark: #fff;
+    --hdr-accent: var(--brand, #ed6d0b);        /* fill behind a hovered/active link */
+    --hdr-on-accent: #fff;                      /* text on that fill */
+    --hdr-line: var(--brand, #ed6d0b);          /* underline/outline highlight */
+    --hdr-line-text: #fff;                      /* text with an underline/outline */
+    --hdr-divider: rgba(255, 255, 255, 0.25);
+    --hdr-border: transparent;
+    --logo-size: 68px;
+    --bar-height: 84px;
+    --wordmark-font: 'Outfit', sans-serif;
+    --link-font: 'Outfit', sans-serif;
+    --link-weight: 500;
 }
 
 .site-header.site-header--hidden {
     transform: translateY(-100%);
 }
 
-/* Crest badge in the header's top-left corner — sized to straddle both
-   the orange title bar and the white nav-links bar beneath it, rather
-   than being confined to either one. .site-header's own position:sticky
-   is what gives this its containing block. Needs an explicit z-index:
-   .nav-wrapper is also position:relative (for its own gradient overlay),
-   so without one, paint order falls back to DOM order among positioned
-   elements and .nav-wrapper's background — painted after, since it comes
-   second — covers the part of the badge over the top bar. */
-.site-logo-link {
-    position: absolute;
-    left: 24px;
-    top: 8px;
-    z-index: 2;
-    display: block;
-    line-height: 0;
-}
-
+/* Crest badge — sits inside the orange bar, left of the wordmark, as part
+   of the same .nav-brand link. */
 .site-logo {
-    height: 88px;
+    height: var(--logo-size);
     width: auto;
-    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35));
+    filter: var(--logo-filter, drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35)));
     transition: transform 0.15s ease;
 }
 
-.site-logo-link:hover .site-logo {
+.nav-brand:hover .site-logo {
     transform: scale(1.04);
 }
 
+/* Single orange bar: brand (logo + wordmark) on the left, page links
+   centered, About/Contact shortcuts on the right. */
 .nav-wrapper {
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    grid-template-columns: minmax(max-content, 1fr) auto minmax(max-content, 1fr);
+    column-gap: 24px;
     align-items: stretch;
-    min-height: 64px;
-    padding: 0 38px;
+    min-height: var(--bar-height);
+    padding: 0 24px;
     position: relative;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 45%, rgba(255, 255, 255, 0.16) 100%), var(--brand, #ed6d0b);
+    background: var(--hdr-bg);
+    -webkit-backdrop-filter: var(--hdr-backdrop, none);
+    backdrop-filter: var(--hdr-backdrop, none);
+    border-bottom: 1px solid var(--hdr-border);
     width: 100%;
 }
 
@@ -125,40 +139,27 @@ body.page-compare {
     --brand: #ed6d0b;
 }
 
-/* Secondary nav bar under the header — holds the page links (moved out of
-   .nav-wrapper). */
-.header-accent-bar {
-    min-height: 40px;
-    background: #FFFFFF;
-    display: flex;
-    align-items: stretch;
-    justify-content: center;
-    padding: 0 38px;
-    box-shadow: inset 0 -2px 0 0 #e8e8e8;
-}
-
 .nav-brand {
-    grid-column: 2;
+    grid-column: 1;
+    justify-self: start;
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 12px;
     /* FONT TEST: wordmark gets its own face (Spectral) instead of
        var(--font-display) — bigger and bolder than the rest of the site's
        headings on purpose, so the brand reads distinctly from section titles. */
-    font-family: 'Spectral', Georgia, 'Times New Roman', serif;
-    font-size: 1.7em;
-    font-weight: 700;
-    letter-spacing: 0.05em;
+    font-family: var(--wordmark-font, 'Spectral', Georgia, 'Times New Roman', serif);
+    font-size: var(--wordmark-size, 1.85em);
+    font-weight: var(--wordmark-weight, 700);
+    letter-spacing: var(--wordmark-spacing, 0.05em);
     text-transform: uppercase;
-    color: white;
+    color: var(--hdr-wordmark);
     white-space: nowrap;
     text-decoration: none;
 }
 
-/* Redundant shortcuts to /info/ and /contact/ — the real nav link for
-   About lives in .header-accent-bar below; these just save a trip down
-   for anyone already looking at the top bar. Plain text, side by side,
-   no box/border. */
+/* Redundant shortcuts to /info/ and /contact/ (both also live in the
+   footer). Plain text, side by side, no box/border. */
 .nav-corner-links {
     grid-column: 3;
     justify-self: end;
@@ -168,19 +169,23 @@ body.page-compare {
     gap: 20px;
 }
 
-.nav-corner-links a {
-    color: #fff;
-    font-size: 1.05em;
+/* Smaller and slightly faded so they rank below the main page links.
+   The span is the not-yet-built Resources page, shown as plain text. */
+.nav-corner-links :is(a, span) {
+    font-family: var(--link-font, inherit);
+    color: var(--hdr-corner, var(--hdr-fg));
+    font-size: 0.9em;
     font-weight: 400;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
     text-decoration: none;
     white-space: nowrap;
+    opacity: 0.8;
     transition: opacity 0.2s;
 }
 
 .nav-corner-links a:hover {
-    opacity: 0.7;
+    opacity: 1;
 }
 
 .legal-notice {
@@ -405,7 +410,7 @@ body.page-info .hero-banner {
     border: 1.5px solid #ed6d0b;
     border-radius: 999px;
     color: #ed6d0b;
-    font-family: var(--font-display);
+    font-family: 'Public Sans', sans-serif;
     font-size: 0.9em;
     font-weight: 400;
     text-transform: uppercase;
@@ -421,47 +426,562 @@ body.page-info .hero-banner {
 .category-btn.active {
     background: #ed6d0b;
     color: #fff;
+    gap: 6px;
+}
+
+.category-clear {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+    opacity: 0.85;
+    transition: opacity 0.15s;
+}
+
+.category-clear:hover {
+    opacity: 1;
+}
+
+.category-clear svg {
+    width: 100%;
+    height: 100%;
 }
 
 .page-intro-desc + .page-intro-desc {
     margin-top: 12px;
 }
 
+/* Page links, centered in the orange bar. Hover/active inverts each link
+   to a full-height cream block with orange text. */
 .left-side {
+    grid-column: 2;
     display: flex;
     align-items: stretch;
+    gap: var(--link-gap, 0px);
 }
 
 .nav-link-wrapper {
     display: flex;
     align-items: center;
-    padding: 0 10px;
+    padding: 0 20px;
     transition: background-color 0.25s ease;
 }
 
 .nav-link-wrapper:hover,
 .active-nav-link {
-    background: var(--brand, #ed6d0b);
+    background: var(--hdr-accent);
 }
 
 .nav-link-wrapper a {
-    color: #000;
+    color: var(--hdr-link, var(--hdr-fg));
     text-decoration: none;
     text-transform: uppercase;
-    font-size: 1.05em;
+    font-family: var(--link-font, inherit);
+    font-size: var(--link-size, 1.15em);
+    font-weight: var(--link-weight, 600);
+    letter-spacing: 0.06em;
+    white-space: nowrap;
     transition: color 0.25s ease;
 }
 
 .nav-link-wrapper:hover a,
 .active-nav-link a {
-    color: #fff;
+    color: var(--hdr-on-accent);
+}
+
+/* HEADER VARIANTS (preview) — the preview panel in js/header.js toggles
+   these classes on .site-header (and sets the --hdr-*, --link-*,
+   --wordmark-*, --sub-* variables directly for colors, fonts and sizes).
+   Once one combination is picked, fold it into the rules above and delete
+   the rest of this block. */
+
+/* Highlight — everything but Block drops the full-height block fill. */
+:is(.hl-pill, .hl-outline, .hl-underline, .hl-underline-close, .hl-dot) :is(.nav-link-wrapper, .nav-link-wrapper:hover) {
+    background: none;
+}
+
+/* Pill (filled) and Outline (ring only), with the bar showing around them. */
+:is(.hl-pill, .hl-outline) .nav-link-wrapper {
+    padding: 0 4px;
+}
+
+:is(.hl-pill, .hl-outline) .nav-link-wrapper a {
+    padding: 7px 16px;
+    border: var(--hl-line-w, 2px) solid transparent;
+    border-radius: 999px;
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.hl-pill .nav-link-wrapper:hover a,
+.hl-pill .active-nav-link a {
+    background: var(--hdr-accent);
+}
+
+.hl-outline .nav-link-wrapper:hover a,
+.hl-outline .active-nav-link a {
+    border-color: var(--hdr-line);
+    color: var(--hdr-line-text);
+}
+
+/* Underline: thick bar along the bottom edge of the header. */
+.hl-underline .nav-link-wrapper {
+    position: relative;
+}
+
+.hl-underline .nav-link-wrapper::after {
+    content: '';
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 0;
+    height: var(--hl-line-w, 4px);
+    border-radius: 2px 2px 0 0;
+    background: var(--hdr-line);
+    transform: scaleX(0);
+    transition: transform 0.25s ease;
+}
+
+.hl-underline .nav-link-wrapper:hover::after,
+.hl-underline .active-nav-link::after {
+    transform: scaleX(1);
+}
+
+.hl-underline .nav-link-wrapper:hover a,
+.hl-underline .active-nav-link a {
+    color: var(--hdr-line-text);
+}
+
+/* Close underline: sits just under the text instead of at the bar edge. */
+.hl-underline-close .nav-link-wrapper a {
+    position: relative;
+}
+
+.hl-underline-close .nav-link-wrapper a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -5px;
+    height: var(--hl-line-w, 3px);
+    border-radius: 2px;
+    background: var(--hdr-line);
+    transform: scaleX(0);
+    transition: transform 0.25s ease;
+}
+
+.hl-underline-close .nav-link-wrapper:hover a::after,
+.hl-underline-close .active-nav-link a::after {
+    transform: scaleX(1);
+}
+
+.hl-underline-close .nav-link-wrapper:hover a,
+.hl-underline-close .active-nav-link a {
+    color: var(--hdr-line-text);
+}
+
+/* Dot: small dot centered under the link. */
+.hl-dot .nav-link-wrapper {
+    position: relative;
+}
+
+.hl-dot .nav-link-wrapper::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 14%;
+    width: 7px;
+    height: 7px;
+    margin-left: -3.5px;
+    border-radius: 50%;
+    background: var(--hdr-line);
+    transform: scale(0);
+    transition: transform 0.2s ease;
+}
+
+.hl-dot .nav-link-wrapper:hover::after,
+.hl-dot .active-nav-link::after {
+    transform: scale(1);
+}
+
+.hl-dot .nav-link-wrapper:hover a,
+.hl-dot .active-nav-link a {
+    color: var(--hdr-line-text);
+}
+
+/* Contact Us as a button (filled pill or outlined). */
+:is(.cta-pill, .cta-outline) .nav-corner-links a:last-child {
+    padding: 7px 16px;
+    border: 1.5px solid transparent;
+    border-radius: 999px;
+    opacity: 1;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.cta-pill .nav-corner-links a:last-child {
+    background: var(--hdr-accent);
+    color: var(--hdr-on-accent);
+}
+
+.cta-outline .nav-corner-links a:last-child {
+    border-color: currentColor;
+}
+
+.cta-outline .nav-corner-links a:last-child:hover {
+    background: var(--hdr-accent);
+    border-color: var(--hdr-accent);
+    color: var(--hdr-on-accent);
+}
+
+/* Sub-bar: an optional solid strip below (or above) the main bar — the
+   old white accent bar, now any color/thickness. */
+.header-sub-bar {
+    display: var(--sub-display, none);
+    height: var(--sub-height, 6px);
+    background: var(--sub-bg, #fff);
+    flex-shrink: 0;
+}
+
+.sub-top .header-sub-bar {
+    order: -1;
+}
+
+/* Contained: bar stays full width, but its contents line up with a
+   centered 1200px column instead of running edge to edge. */
+.width-contained .nav-wrapper {
+    padding-left: max(24px, calc((100% - 1200px) / 2));
+    padding-right: max(24px, calc((100% - 1200px) / 2));
+}
+
+/* Hover effect on the page links, on top of the highlight. */
+:is(.hover-grow, .hover-lift, .hover-glow) .nav-link-wrapper a {
+    transition: color 0.25s ease, background-color 0.25s ease, border-color 0.25s ease,
+                transform 0.2s ease, text-shadow 0.2s ease;
+}
+
+.hover-grow .nav-link-wrapper:hover a {
+    transform: scale(1.07);
+}
+
+.hover-lift .nav-link-wrapper:hover a {
+    transform: translateY(-3px);
+}
+
+.hover-glow .nav-link-wrapper:hover a {
+    text-shadow: 0 0 14px var(--hdr-line), 0 0 2px var(--hdr-line);
+}
+
+/* Logo hover */
+.logo-spin .site-logo {
+    transition: transform 0.7s ease;
+}
+
+.logo-spin .nav-brand:hover .site-logo {
+    transform: rotate(360deg);
+}
+
+.logo-tilt .nav-brand:hover .site-logo {
+    transform: rotate(-10deg) scale(1.06);
+}
+
+.logo-still .nav-brand:hover .site-logo {
+    transform: none;
+}
+
+/* Shrink on scroll: js/header.js adds .is-scrolled once the page has
+   scrolled a little; the bar, logo and wordmark ease down to compact. */
+.scroll-shrink .nav-wrapper {
+    transition: min-height 0.25s ease;
+}
+
+.scroll-shrink .site-logo {
+    transition: transform 0.15s ease, height 0.25s ease, margin 0.25s ease;
+}
+
+.scroll-shrink .nav-brand {
+    transition: font-size 0.25s ease;
+}
+
+.scroll-shrink.is-scrolled {
+    --logo-size: 44px;
+    --bar-height: 60px;
+}
+
+.scroll-shrink.is-scrolled .nav-brand {
+    font-size: calc(var(--wordmark-size, 1.85em) * 0.8);
+}
+
+.scroll-shrink.is-scrolled .site-logo {
+    align-self: center;
+    margin: 0;
+}
+
+/* Wordmark hidden (logo only). */
+.brand-none .nav-brand span {
+    display: none;
+}
+
+/* Text: normal capitalization instead of ALL CAPS — everywhere, or
+   everywhere but the wordmark (.text-brand-caps). */
+.text-normal .nav-brand,
+:is(.text-normal, .text-brand-caps) .nav-link-wrapper a,
+:is(.text-normal, .text-brand-caps) .nav-corner-links :is(a, span) {
+    text-transform: none;
+    letter-spacing: 0.01em;
+}
+
+.text-normal .nav-brand {
+    letter-spacing: var(--wordmark-spacing, 0.01em);
+}
+
+/* Separators between the page links (dot or thin line). */
+:is(.sep-dot, .sep-line) .nav-link-wrapper + .nav-link-wrapper {
+    position: relative;
+}
+
+:is(.sep-dot, .sep-line) .nav-link-wrapper + .nav-link-wrapper::before {
+    content: "";
+    position: absolute;
+    left: calc(var(--link-gap, 0px) / -2);
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--hdr-divider);
+}
+
+.sep-dot .nav-link-wrapper + .nav-link-wrapper::before {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+}
+
+.sep-line .nav-link-wrapper + .nav-link-wrapper::before {
+    width: 1px;
+    height: 40%;
+}
+
+/* More logo hover effects. */
+@keyframes logo-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.12); }
+}
+
+@keyframes logo-bounce {
+    0%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-9px); }
+    55% { transform: translateY(0); }
+    75% { transform: translateY(-4px); }
+}
+
+@keyframes logo-wiggle {
+    0%, 100% { transform: rotate(0); }
+    20% { transform: rotate(-12deg); }
+    40% { transform: rotate(10deg); }
+    60% { transform: rotate(-7deg); }
+    80% { transform: rotate(4deg); }
+}
+
+@keyframes logo-swing {
+    0%, 100% { transform: rotate(0); }
+    50% { transform: rotate(-20deg); }
+}
+
+.logo-pulse .nav-brand:hover .site-logo {
+    animation: logo-pulse 0.9s ease-in-out infinite;
+}
+
+.logo-bounce .nav-brand:hover .site-logo {
+    animation: logo-bounce 0.8s ease;
+}
+
+.logo-wiggle .nav-brand:hover .site-logo {
+    animation: logo-wiggle 0.6s ease;
+}
+
+.logo-swing .site-logo {
+    transform-origin: 50% 0;
+}
+
+.logo-swing .nav-brand:hover .site-logo {
+    animation: logo-swing 1.2s ease-in-out infinite;
+}
+
+.logo-flip .site-logo {
+    transition: transform 0.7s ease;
+}
+
+.logo-flip .nav-brand:hover .site-logo {
+    transform: perspective(500px) rotateY(360deg);
+}
+
+.logo-pop .site-logo {
+    transition: transform 0.35s cubic-bezier(0.34, 1.7, 0.64, 1);
+}
+
+.logo-pop .nav-brand:hover .site-logo {
+    transform: scale(1.18);
+}
+
+.logo-glow .site-logo {
+    transition: transform 0.2s ease, filter 0.25s ease;
+}
+
+.logo-glow .nav-brand:hover .site-logo {
+    filter: drop-shadow(0 0 10px #FFFCFA) drop-shadow(0 0 18px color-mix(in srgb, var(--brand, #ed6d0b) 80%, #ffd27a));
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :is(.logo-pulse, .logo-bounce, .logo-wiggle, .logo-swing) .nav-brand:hover .site-logo {
+        animation: none;
+    }
+}
+
+/* Bar shape: rounded bottom corners, or a floating rounded bar inset
+   from the edges. Hang can't drop out of a clipped bar, so it stays in. */
+.site-header.shape-round {
+    border-radius: 0 0 18px 18px;
+    overflow: hidden;
+}
+
+.site-header.shape-float {
+    top: 10px;
+    margin: 10px 16px 0;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.shape-float.site-header--hidden {
+    transform: translateY(calc(-100% - 14px));
+}
+
+:is(.shape-round, .shape-float).logo-hang .site-logo {
+    align-self: center;
+    margin: 0;
+}
+
+/* Layout and logo size only apply on wide screens — below 961px every
+   variant falls back to the same stacked mobile header. */
+@media (min-width: 961px) {
+    /* Next to logo: links follow the brand, behind a thin divider. */
+    .nav-grouped .nav-wrapper {
+        grid-template-columns: max-content max-content 1fr;
+    }
+
+    .nav-grouped .left-side {
+        position: relative;
+        justify-self: start;
+        padding-left: 20px;
+    }
+
+    .nav-grouped .left-side::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 25%;
+        bottom: 25%;
+        width: 1px;
+        background: var(--hdr-divider);
+    }
+
+    /* Right: brand alone on the left, everything else on the right. */
+    .nav-right .nav-wrapper {
+        grid-template-columns: max-content 1fr max-content max-content;
+    }
+
+    .nav-right .left-side {
+        grid-column: 3;
+    }
+
+    .nav-right .nav-corner-links {
+        grid-column: 4;
+        padding-left: 20px;
+        border-left: 1px solid var(--hdr-divider);
+    }
+
+    /* Logo middle: links left, brand centered, About/Contact right. */
+    .nav-split .nav-brand {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .nav-split .left-side {
+        grid-column: 1;
+        grid-row: 1;
+        justify-self: start;
+    }
+
+    .nav-split .nav-corner-links {
+        grid-row: 1;
+    }
+
+    /* Stacked: brand centered on top, links centered on a row below. */
+    .nav-stacked .nav-wrapper {
+        grid-template-columns: minmax(max-content, 1fr) auto minmax(max-content, 1fr);
+        padding-top: 10px;
+    }
+
+    .nav-stacked .nav-brand {
+        grid-column: 2;
+        grid-row: 1;
+        justify-self: center;
+    }
+
+    .nav-stacked .nav-corner-links {
+        grid-column: 3;
+        grid-row: 1;
+    }
+
+    .nav-stacked .left-side {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        justify-self: center;
+    }
+
+    .nav-stacked .nav-link-wrapper {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .nav-stacked:is(.hl-pill, .hl-outline) .left-side {
+        padding: 4px 0 10px;
+    }
+
+    /* Logo size */
+    .logo-s {
+        --logo-size: 52px;
+        --bar-height: 72px;
+    }
+
+    .logo-l {
+        --logo-size: 84px;
+        --bar-height: 100px;
+    }
+
+    /* Hang: a big crest that drops below the bar, like the original
+       two-bar header. Negative bottom margin keeps the bar itself at the
+       normal height. */
+    .logo-hang {
+        --logo-size: 108px;
+    }
+
+    .logo-hang .site-logo {
+        align-self: flex-start;
+        margin: 12px 0 -36px;
+    }
+
+    /* Stacked has the links row right under the brand, so there's nowhere
+       for the crest to hang into — keep it big but inside the bar. */
+    .nav-stacked.logo-hang .site-logo {
+        align-self: center;
+        margin: 0;
+    }
 }
 
 /* Search bar — first thing in .content-wrapper, above the results count.
    Same width formula as a school card: content-wrapper's inner width minus
-   the two 200px sidebars and their two 20px gaps (see .sidebar / .page-layout). */
+   the two 230px sidebars and their two 20px gaps (see .sidebar / .page-layout). */
 .search-bar {
-    width: calc(100% - 440px);
+    width: calc(100% - 500px);
     max-width: none;
     margin: 0 auto 8px;
 }
@@ -546,16 +1066,39 @@ body.page-info .hero-banner {
     font-weight: 300;
 }
 
-/* Sidebar column */
+/* Sidebar column — sticks under the header. When it's taller than the room
+   available below the header, JS (see index.html) shifts it upward as the
+   page scrolls (anywhere) so the bottom controls become reachable without
+   scrolling all the way to the end of the page, and lets hovering it
+   directly move that shift independently via the wheel instead. No
+   max-height/overflow-y here — those would cap the box to exactly fit the
+   available room, leaving nothing for the shift to reveal. */
 .sidebar {
-    width: 200px;
+    width: 230px;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
     gap: 12px;
     position: sticky;
     top: calc(var(--header-height) + 20px);
+    /* Explicit and well below .site-header's 500: the reveal shift (see
+       index.html) uses transform, which promotes this to its own stacking
+       context — without a real number here that context's implicit
+       z-index:auto was somehow winning against the header once shifted far
+       enough to overlap it, letting this paint over the header instead of
+       scrolling behind it like normal page content does. */
+    z-index: 1;
     align-self: flex-start;
+}
+
+/* Eased transition applied only while the wheel is driving the reveal
+   shift directly (see index.html) — a plain mouse wheel sends chunky
+   ~100px deltas per notch, which snapped instantly feels like jumping
+   rather than scrolling. The page-scroll-driven updates intentionally
+   skip this (removed right before they apply) so the box still tracks
+   scroll 1:1 instead of visibly lagging behind it. */
+.sidebar.sidebar--smooth-wheel {
+    transition: transform 0.2s ease-out;
 }
 
 /* Sort + filter container */
@@ -568,7 +1111,7 @@ body.page-info .hero-banner {
 
 /* Right sidebar column */
 .right-sidebar {
-    width: 200px;
+    width: 230px;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
@@ -614,6 +1157,7 @@ body.header-hidden .school-page-layout .right-sidebar {
     font-size: 0.93em;
     font-weight: 400;
     transition: color 0.15s;
+    min-width: 0;
 }
 
 .history-item:last-child {
@@ -636,16 +1180,50 @@ body.header-hidden .school-page-layout .right-sidebar {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    min-width: 0;
 }
 
-/* Year toggle */
-.year-toggle-bar {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+/* Search-by-year filter — a blank combobox (not the bold .sort-dropdown-btn
+   look) since unlike Sort By, "unfiltered" is the normal/default state here. */
+.year-filter-bar {
     padding-bottom: 12px;
     margin-bottom: 12px;
     border-bottom: 1px solid #f0f0f0;
+}
+
+.year-filter-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    padding: 7px 10px;
+    background: #fff;
+    color: #000;
+    border: 1px solid #d0d0d0;
+    border-radius: 4px;
+    font-family: 'Public Sans', sans-serif;
+    /* Fixed px, not em: the sidebar stays a constant 200px regardless of
+       viewport, but html's root font-size (see :root's fluid clamp()) grows
+       on wide/high-res monitors — an em-scaled label here would outgrow
+       this box and wrap (e.g. "Search by Year" to 2 lines) even though
+       nothing about the box itself got any bigger. */
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: border-color 0.15s;
+}
+
+.year-filter-btn:hover {
+    border-color: #ed6d0b;
+}
+
+.year-filter-btn .year-filter-placeholder {
+    color: rgba(0, 0, 0, 0.55);
+    font-weight: 300;
+    text-transform: none;
+    letter-spacing: 0.02em;
 }
 
 /* Sort bar */
@@ -656,7 +1234,7 @@ body.header-hidden .school-page-layout .right-sidebar {
 
 .sort-label {
     display: block;
-    font-size: 0.9em;
+    font-size: 14px; /* fixed, not em — see .year-filter-btn's comment */
     font-weight: 300;
     color: #ed6d0b;
     text-transform: uppercase;
@@ -680,7 +1258,7 @@ body.header-hidden .school-page-layout .right-sidebar {
     border: none;
     border-radius: 4px;
     font-family: 'Public Sans', sans-serif;
-    font-size: 0.95em;
+    font-size: 15px; /* fixed, not em — see .year-filter-btn's comment */
     font-weight: 400;
     letter-spacing: 0.04em;
     text-transform: uppercase;
@@ -728,7 +1306,7 @@ body.header-hidden .school-page-layout .right-sidebar {
     background: none;
     border: none;
     font-family: 'Public Sans', sans-serif;
-    font-size: 0.93em;
+    font-size: 15px; /* fixed, not em — see .year-filter-btn's comment */
     font-weight: 400;
     letter-spacing: 0.03em;
     text-transform: uppercase;
@@ -767,7 +1345,7 @@ body.header-hidden .school-page-layout .right-sidebar {
 }
 
 .filter-group-label {
-    font-size: 0.87em;
+    font-size: 14px; /* fixed, not em — see .year-filter-btn's comment */
     font-weight: 300;
     color: #ed6d0b;
     text-transform: uppercase;
@@ -785,7 +1363,7 @@ body.header-hidden .school-page-layout .right-sidebar {
 
 .filter-btn {
     font-family: 'Public Sans', sans-serif;
-    font-size: 0.9em;
+    font-size: 14px; /* fixed, not em — see .year-filter-btn's comment */
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.04em;
@@ -813,22 +1391,24 @@ body.header-hidden .school-page-layout .right-sidebar {
 .reset-btn {
     display: block;
     width: 100%;
-    margin-top: 10px;
-    padding: 6px 0;
-    background: none;
-    border: none;
+    margin-bottom: 10px;
+    padding: 7px 10px;
+    background: #fff;
+    border: 1px solid #d0d0d0;
+    border-radius: 4px;
     color: #000;
     font-family: 'Public Sans', sans-serif;
-    font-size: 0.87em;
+    font-size: 14px; /* fixed, not em — see .year-filter-btn's comment */
     text-transform: uppercase;
     letter-spacing: 0.06em;
     cursor: pointer;
     text-align: center;
-    transition: color 0.15s;
+    transition: color 0.15s, border-color 0.15s;
 }
 
 .reset-btn:hover {
     color: #ed6d0b;
+    border-color: #ed6d0b;
 }
 
 .filter-range-wrap {
@@ -872,13 +1452,13 @@ body.header-hidden .school-page-layout .right-sidebar {
 .range-ends {
     display: flex;
     justify-content: space-between;
-    font-size: 0.83em;
+    font-size: 13px; /* fixed, not em — see .year-filter-btn's comment */
     color: #000;
 }
 
 .range-value-input {
     font-family: 'Public Sans', sans-serif;
-    font-size: 0.93em;
+    font-size: 15px; /* fixed, not em — see .year-filter-btn's comment */
     color: #ed6d0b;
     font-weight: 600;
     margin-left: 4px;
@@ -913,28 +1493,31 @@ body.header-hidden .school-page-layout .right-sidebar {
     gap: 20px;
 }
 
-/* Three columns: an empty left gutter that mirrors the favorites/history
-   sidebar on the right, so the data column sits centered on the page
-   instead of being pushed left by the one-sided sidebar. */
+/* Two columns: data on the left, the favorites/history rail on the right.
+   Left-aligned to the page (the usual max-width + auto-margin + padding
+   container) rather than centered with a phantom gutter mirroring the
+   sidebar — that extra 230px was stealing width the data could use. */
 .school-page-layout {
     display: grid;
-    grid-template-columns: 200px minmax(0, 1fr) 200px;
+    grid-template-columns: minmax(0, 1fr) 230px;
     column-gap: 20px;
     align-items: start;
+    width: 100%;
     max-width: 1440px;
     margin: 0 auto;
     padding: 0 24px;
+    box-sizing: border-box;
 }
 
 .school-page-layout #school-sections {
-    grid-column: 2;
+    grid-column: 1;
     min-width: 0;
     margin: 0;
     max-width: none;
 }
 
 .school-page-layout .right-sidebar {
-    grid-column: 3;
+    grid-column: 2;
     padding-top: 24px;
 }
 
@@ -1070,26 +1653,33 @@ body.header-hidden .school-page-layout .right-sidebar {
     transform: rotate(180deg);
 }
 
+/* Always a 2x2 grid — left column is Deadlines/Waitlist (both about the
+   application timeline), right column is Quick Facts/Outcomes (both
+   institutional stats) — rather than the old single flat row of 4, which
+   only wrapped to 2x2 as a narrow-screen fallback. */
 .detail-grid {
     display: grid;
-    /* Waitlist only needs two short rows, so it gives up some of its share
-       of the row to Test Scores, whose title otherwise wraps to 2 lines. */
-    grid-template-columns: 1fr 1.3fr 1fr 1fr 0.7fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 0;
     margin-bottom: 14px;
 }
 
 .detail-section {
-    padding: 0 20px;
+    padding: 10px 20px;
     border-right: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
 }
 
-.detail-section:first-child {
+.detail-section:nth-child(odd) {
     padding-left: 0;
 }
 
-.detail-section:last-child {
+.detail-section:nth-child(2n) {
     border-right: none;
+}
+
+.detail-section:nth-last-child(-n+2) {
+    border-bottom: none;
 }
 
 .detail-section-title {
@@ -1100,22 +1690,25 @@ body.header-hidden .school-page-layout .right-sidebar {
        the first rule in this file to actually render true bold now that
        the display face has one — under Castoro this was faux-bolded. */
     font-family: var(--font-display);
-    /* Bold + uppercase carries the hierarchy; kept just under the 0.93em
-       .detail-kv rows so "Test Scores (25–75th)" stays on one line in its
-       quarter-width column. */
-    font-size: 0.82em;
+    /* Fluid between the mobile and desktop sizes (below) so it scales
+       continuously with viewport width instead of jumping at breakpoints —
+       keeps "Regular Decision"/"Median Earn (6yr)" etc. from outgrowing
+       their half-width column at in-between sizes. */
+    font-size: clamp(0.78em, 0.64em + 0.75vw, 1em);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.03em;
     color: #000;
+    padding-bottom: 6px;
     margin-bottom: 8px;
+    border-bottom: 1px solid #f0f0f0;
 }
 
 .detail-kv {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    font-size: 0.93em;
+    font-size: clamp(0.76em, 0.64em + 0.7vw, 0.93em);
     padding: 3px 0;
     gap: 8px;
 }
@@ -1126,18 +1719,23 @@ body.header-hidden .school-page-layout .right-sidebar {
     color: #000;
     font-weight: 300;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
 }
 
 .detail-kv span:last-child {
     font-weight: 600;
     color: #000;
     text-align: right;
+    flex-shrink: 0;
 }
 
 .detail-footer {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    gap: 10px;
     padding-top: 10px;
     border-top: 1px solid #f0f0f0;
 }
@@ -1158,7 +1756,6 @@ body.header-hidden .school-page-layout .right-sidebar {
 .detail-compare-btn {
     display: inline-flex;
     align-items: center;
-    margin-left: auto;
     padding: 5px 14px;
     border: 1px solid #ed6d0b;
     border-radius: 3px;
@@ -1230,7 +1827,7 @@ body.header-hidden .school-page-layout .right-sidebar {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.3em;
+    font-size: 1.05em; /* slightly smaller so triple-digit ranks (100+) still fit comfortably */
     font-weight: 600;
     color: white;
     background: #ed6d0b;
@@ -1241,8 +1838,8 @@ body.header-hidden .school-page-layout .right-sidebar {
 }
 
 .school-logo {
-    height: 36px;
-    width: 60px;
+    height: 48px;
+    width: 80px;
     object-fit: contain;
     flex-shrink: 0;
 }
@@ -1252,18 +1849,26 @@ body.header-hidden .school-page-layout .right-sidebar {
     min-width: 0;
     display: flex;
     align-items: center;
-    gap: 10px;
 }
 
-/* Title + location stack vertically here; .fav-btn stays a plain sibling
-   so it stays vertically centered against the whole stack, not just the
-   title's own line. */
+/* Name (+ favorite star) on its own full line, then the meta-row of
+   year/location + stats below it — each line gets the whole row's width
+   to itself now, instead of the name sharing its line with the stats. */
 .school-name-main {
     flex: 1;
     min-width: 0;
     display: flex;
     flex-direction: column;
     gap: 2px;
+}
+
+/* First line: the name + its favorite star, so the star reads as part of
+   the title rather than floating off to the right past the stats. */
+.school-name-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
 }
 
 /* min-width:0 + overflow hidden so the longest names (e.g. "Massachusetts
@@ -1286,14 +1891,54 @@ body.header-hidden .school-page-layout .right-sidebar {
     color: #ed6d0b;
 }
 
+/* Second line of .school-name-main — year pill + location on the left,
+   the acceptance/SAT/ACT stats pushed to the right edge via space-between,
+   instead of those stats sharing the name's own line and eating into its
+   available width. Wraps (stats dropping to their own line below) once
+   the card is too narrow to fit both groups on one line. */
+.school-meta-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 6px 8px;
+    width: 100%;
+    min-width: 0;
+}
+
+.school-meta-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    flex: 1;
+}
+
+/* Which CDS reporting year this card's stats actually come from. */
+.school-data-year {
+    flex-shrink: 0;
+    font-family: 'Public Sans', sans-serif;
+    font-size: 0.75em;
+    font-weight: 500;
+    color: #c15a00;
+    background: #fdeee1;
+    border-radius: 999px;
+    padding: 3px 9px;
+    white-space: nowrap;
+}
+
 .school-location {
     display: flex;
     align-items: center;
     gap: 4px;
+    min-width: 0;
     font-family: 'Public Sans', sans-serif;
     font-size: 0.9em;
     font-weight: 400;
     color: #777;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .location-pin {
@@ -1321,6 +1966,18 @@ body.header-hidden .school-page-layout .right-sidebar {
     flex-shrink: 0;
 }
 
+/* Label-above-value here (the compare picker cards keep the shared
+   .stat-label's margin-top, since theirs still reads value-then-label). */
+.school-stats .stat-label {
+    margin-top: 0;
+    margin-bottom: 2px;
+    font-weight: 600;
+}
+
+.school-stats .stat-val {
+    font-weight: 300;
+}
+
 .stat-item {
     text-align: center;
     min-width: 70px;
@@ -1340,17 +1997,35 @@ body.header-hidden .school-page-layout .right-sidebar {
     margin-top: 2px;
 }
 
-/* Footer */
+/* Footer — three columns: brand+email, main nav, legal/contact nav. Grid
+   (not flex space-between) so the center column sits at a true visual
+   center rather than just being equally spaced from its neighbors. */
 .site-footer {
-    background: #ed6d0b;
-    color: white;
+    /* Matches the header's Umber bar. */
+    background: #3a281e;
+    color: #f6ebe2;
     padding: 28px 40px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px 24px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: start;
+    gap: 20px 40px;
     margin-top: auto;
+}
+
+.footer-brand-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    justify-self: end;
+}
+
+.footer-rights {
+    color: inherit;
+    font-size: 0.78em;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    opacity: 0.7;
 }
 
 .footer-brand {
@@ -1371,34 +2046,38 @@ body.header-hidden .school-page-layout .right-sidebar {
 
 .footer-nav {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px 28px;
+    flex-direction: column;
+    gap: 6px;
 }
 
 .footer-nav a {
-    color: #fff;
+    color: inherit;
     text-decoration: none;
-    font-size: 0.95em;
+    font-size: 0.72em;
     font-weight: 300;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    transition: color 0.15s;
+    opacity: 0.85;
+    transition: opacity 0.15s;
 }
 
 .footer-nav a:hover {
-    color: white;
+    opacity: 1;
 }
 
-/* Contact address sits inline between the brand and the nav links, in the
-   same row as the rest of the footer content (not a nav item, so no
-   uppercasing). Falls in with the column stack on mobile. */
+/* Contact address sits under the brand, left column. */
 .footer-email {
-    color: #fff;
+    color: inherit;
     font-size: 0.95em;
     font-weight: 300;
     letter-spacing: 0.02em;
     text-decoration: none;
-    transition: color 0.15s;
+    opacity: 0.85;
+    transition: opacity 0.15s;
+}
+
+.footer-email:hover {
+    opacity: 1;
 }
 
 /* Info page */
@@ -1498,67 +2177,62 @@ body.header-hidden .school-page-layout .right-sidebar {
 }
 .floating-back:active { background: #000; }
 
-/* ── Responsive ── */
-
-/* Mid-range: sidebars still side-by-side, but stats wrap under
-   the name instead of squeezing it once both side columns are present. */
-@media (max-width: 1300px) {
-    .school-row {
-        flex-wrap: wrap;
-    }
-
-    /* Switched from display:contents to a real flex box so the toggle
-       shares this line with the stats. Left as display:contents (its
-       default), the toggle has nothing to push it rightward once stats
-       no longer claims the full line for itself — it just wraps onto its
-       own line at the flex-start (left) edge. */
-    .school-row-end {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        justify-content: space-between;
-        margin-top: 4px;
-    }
-
-    .school-stats {
-        gap: 28px;
-    }
-
-    /* No longer the big edge-to-edge desktop zone (see the base rule,
-       meant for the single-line ≥1300px layout) — just a compact icon
-       button sharing the line with the stats. */
-    .details-toggle {
-        align-self: auto;
-        margin: 0;
-        padding: 4px;
-        border-left: none;
-        border-radius: 4px;
-    }
+/* Floating print button (school pages) — an orange pill with its icon and
+   label always visible (the original design had the label reveal only on
+   hover; that read well enough that it's now the permanent look, with
+   hover/focus left as a plain lift+shadow instead). Hardcoded #ed6d0b
+   (not var(--brand)): school pages override --brand to that school's own
+   color, but this is site chrome, not school content, so it should always
+   read as the site's own orange regardless of which school's page it's on. */
+.print-fab {
+    display: inline-flex;
+    align-items: center;
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    height: 52px;
+    padding: 0 20px 0 18px;
+    background: #ed6d0b;
+    border: 2px solid #ed6d0b;
+    border-radius: 999px;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    z-index: 9999;
+    transition: transform 0.15s, box-shadow 0.15s;
 }
 
-/* Below this, five equal detail-grid columns get too narrow and long
-   values (e.g. "$131,633") overflow their card, so wrap to 2 columns.
-   The 5th (Waitlist) section doesn't pair up, so it spans both columns
-   as a full-width row instead of leaving an empty cell beside it. */
-@media (max-width: 1100px) {
-    .detail-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+.print-fab:hover,
+.print-fab:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.26);
+}
 
+.print-fab svg {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+}
+
+.print-fab-label {
+    font-family: 'Public Sans', sans-serif;
+    font-size: 0.9em;
+    font-weight: 600;
+    white-space: nowrap;
+    margin-right: 10px;
+}
+
+/* ── Responsive ── */
+
+/* Tighter horizontal gutters once the detail grid shares room with the
+   (still-present, just narrower) sidebar rails — the 2x2 grid itself is
+   the base layout now, not just a narrow-screen fallback. */
+@media (max-width: 1100px) {
     .detail-section {
         padding: 10px 14px;
-        border-right: 1px solid #f0f0f0;
-        border-bottom: 1px solid #f0f0f0;
     }
 
-    .detail-section:nth-child(odd) { padding-left: 14px; }
-    .detail-section:nth-child(2n) { border-right: none; }
-
-    .detail-section--full {
-        grid-column: 1 / -1;
-        border-right: none;
-        border-bottom: none;
-    }
+    .detail-section:nth-child(odd) { padding-left: 0; }
 }
 
 /* The favorites/history rail plus its mirrored left gutter eat ~440px of
@@ -1585,6 +2259,7 @@ body.header-hidden .school-page-layout .right-sidebar {
 
     .school-page-layout .history-box {
         flex: 1 1 240px;
+        min-width: 0;
     }
 }
 
@@ -1611,13 +2286,35 @@ body.header-hidden .school-page-layout .right-sidebar {
     }
 
     /* #school-list is narrower here (two rails still present, just
-       thinner), so 3 stats + their gaps can outgrow the room .school-stats
-       shares with .details-toggle in .school-row-end. Let a stat wrap to
-       its own line instead of overflowing past the toggle. */
+       thinner), so 3 stats + the year pill/location can't all fit on one
+       .school-meta-row line. flex-basis:100% wraps .school-stats as one
+       unit onto its own line within the name column (still narrower than
+       the full card, unlike the old design's full-width stats row) —
+       and that column itself can be too narrow for all 3 stats even
+       alone, so flex-wrap/a smaller min-width let them wrap internally
+       too rather than overflow past the card edge. */
     .school-stats {
-        flex-shrink: 1;
+        flex-basis: 100%;
         flex-wrap: wrap;
-        row-gap: 4px;
+        justify-content: flex-start;
+        gap: 4px 16px;
+    }
+
+    .stat-item {
+        min-width: 0;
+    }
+
+    /* No longer the big edge-to-edge desktop zone — its ~40px of internal
+       padding alone was squeezing the name column further than any of the
+       fixes above could compensate for, to the point of the name text
+       collapsing to zero width just above the 640px tier. Just a compact
+       icon button instead, same as the mobile tier reuses below 540px. */
+    .details-toggle {
+        align-self: auto;
+        margin: 0;
+        padding: 4px;
+        border-left: none;
+        border-radius: 4px;
     }
 }
 
@@ -1628,6 +2325,14 @@ body.header-hidden .school-page-layout .right-sidebar {
 
     .page-layout {
         flex-direction: column;
+        /* Once stacked, the cross-axis flips to horizontal — the base
+           align-items:flex-start (meant for top-aligning row-layout
+           columns) would instead shrink each stacked child to its own
+           content width (e.g. #school-list sized to its widest school
+           name) rather than the column's full width, causing horizontal
+           overflow. Stretch fills the available width like a normal
+           block layout. */
+        align-items: stretch;
     }
 
     .sidebar,
@@ -1653,51 +2358,76 @@ body.header-hidden .school-page-layout .right-sidebar {
     }
 }
 
-@media (max-width: 540px) {
-    .site-footer {
-        flex-direction: column;
-        text-align: center;
-        padding: 24px 16px;
-    }
-
-    .footer-nav {
-        justify-content: center;
-    }
-
-    .nav-wrapper {
-        grid-template-columns: 1fr;
-        justify-items: center;
-        row-gap: 8px;
-        padding: 14px 16px;
-    }
-
-    .nav-brand {
-        grid-column: 1;
-        order: -1;
-        font-size: 1.45em;
-    }
-
-    /* The centered wordmark has no fixed home to leave clear at this width,
-       so the floating badge steps aside rather than risk overlapping it. */
-    .site-logo-link {
-        display: none;
-    }
-
-    /* Purely a convenience shortcut on wider screens — at this width both
-       are already one short scroll away in the stacked nav/footer below,
-       so drop the duplicates instead of adding more clutter. */
+/* Not enough room for brand + page links + shortcuts in one row — drop
+   the About/Contact shortcuts first (both are also in the footer). */
+@media (max-width: 1250px) {
     .nav-corner-links {
         display: none;
     }
 
-    .header-accent-bar {
-        padding: 6px 16px;
+    .nav-wrapper {
+        grid-template-columns: max-content 1fr;
     }
 
     .left-side {
-        justify-content: center;
-        flex-wrap: wrap;
+        justify-self: end;
+    }
+}
+
+/* Narrower still: stack the brand above the page links, both centered,
+   still inside the one orange bar. */
+@media (max-width: 960px) {
+    .nav-wrapper {
+        grid-template-columns: 1fr;
+        justify-items: center;
         row-gap: 6px;
+        padding: 10px 16px 0;
+    }
+
+    .nav-brand {
+        justify-self: center;
+    }
+
+    .left-side {
+        grid-column: 1;
+        justify-self: center;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-link-wrapper {
+        padding: 8px 12px;
+    }
+
+    :is(.hl-pill, .hl-outline) .left-side {
+        padding-bottom: 8px;
+    }
+}
+
+@media (max-width: 540px) {
+    .site-footer {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+        padding: 24px 16px;
+    }
+
+    .footer-brand-col {
+        justify-self: center;
+        align-items: center;
+    }
+
+    .nav-brand {
+        font-size: 1.3em;
+        gap: 8px;
+    }
+
+    .site-header {
+        --logo-size: 48px;
+    }
+
+    .nav-link-wrapper {
+        padding: 6px 10px;
     }
 
     .legal-notice {
@@ -1740,26 +2470,21 @@ body.header-hidden .school-page-layout .right-sidebar {
         padding: 0 12px;
     }
 
-    /* School rows: name wraps to its own line, then stats + the toggle
-       share a second line — stats at the left edge, toggle pinned right. */
+    /* School rows: .school-name handles its own internal wrapping (name
+       line, then the meta-row of year/location + stats below it), so this
+       outer row doesn't need to wrap itself — just tighter padding/gap. */
     .school-row {
-        flex-wrap: wrap;
         padding: 10px 12px;
         gap: 8px;
     }
 
-    /* .school-row-end/.details-toggle are already set up for this by the
-       1300px tier above — just add the divider this width wants between
-       the name row and the stats+toggle row. */
-    .school-row-end {
-        border-top: 1px solid #f0f0f0;
-        padding-top: 8px;
-    }
+    /* .details-toggle is already the compact icon form by this width (see
+       the 1024px tier) — nothing further needed here. */
 
     .school-rank {
         width: 26px;
         height: 26px;
-        font-size: 1.05em;
+        font-size: 0.8em; /* smaller circle than desktop, so scaled down further for the same triple-digit fit */
     }
 
     .school-logo {
@@ -1783,11 +2508,6 @@ body.header-hidden .school-page-layout .right-sidebar {
     .stat-val { font-size: 1em; }
     .stat-label { font-size: 0.73em; }
 
-    .detail-section {
-        padding: 10px 14px;
-    }
-
-    .detail-section:nth-child(odd) { padding-left: 14px; }
 }
 
 @media (max-width: 768px) {

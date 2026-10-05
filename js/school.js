@@ -184,7 +184,7 @@ const SCHOOL_META = {
   'urichmond': { color: '#990000' },
   'vassar': { color: '#951829' },
   'washington-and-lee': { color: '#003087' },
-  'wellesly': { color: '#002776' },
+  'wellesley': { color: '#002776' },
   'williams': { color: '#500082' },
   'wesleyan': { color: '#D72331' },
   'grinnell': { color: '#DA291C' },
@@ -316,6 +316,46 @@ function renderHeroPill(s, slug, meta) {
         </h1>
         <p class="hero-meta">${metaParts.join(' · ')}${siteLink}</p>
       </div>
+    </div>`;
+}
+
+// ── Render: Year bar (switcher + missing-data notice) ──────────────────
+// Sits below the hero pill, ahead of any actual data (.quick-facts-strip
+// and the section grid) — not part of the title card itself, since it's
+// metadata about the data rather than about the school.
+
+// yearCtx: { currentYearKey, availableYearKeys, latestAvailableKey }
+function renderYearBar(yearCtx) {
+  const { currentYearKey, availableYearKeys, latestAvailableKey } = yearCtx;
+  const isCurrentTheLatestAvailable = currentYearKey === latestAvailableKey;
+  const label = isCurrentTheLatestAvailable ? 'Currently showing most recent year' : 'Currently showing';
+  // Newest first in the menu, like the homepage's year dropdown.
+  const yearMenu = [...availableYearKeys].reverse().map(k =>
+    `<button type="button" class="sort-option${k === currentYearKey ? ' active' : ''}" data-year="${k}">${shortYearLabel(k)}</button>`
+  ).join('');
+
+  const missingNotice = latestAvailableKey !== SITE_LATEST_YEAR_KEY
+    ? `<p class="year-missing-notice">Notice, this school is missing CDS data for the most recent year. Displaying the most recent available data: ${shortYearLabel(latestAvailableKey)}.</p>`
+    : '';
+
+  // Always shown (not just when there's a missing-year notice or a choice
+  // of years to switch between) — a visitor should always be able to see
+  // at a glance which year's data they're looking at. The dropdown itself
+  // only renders as interactive when there's actually more than one year
+  // to pick from; otherwise it's plain text so it doesn't look clickable.
+  return `<div class="hero-year-bar">
+      ${availableYearKeys.length > 1 ? `
+      <div class="year-switcher" id="year-switcher">
+        <button class="year-switcher-btn" id="year-switcher-btn" type="button">
+          <span>${label}: <strong>${shortYearLabel(currentYearKey)}</strong></span>
+          <svg class="sort-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="year-switcher-menu" id="year-switcher-menu">${yearMenu}</div>
+      </div>` : `
+      <div class="year-switcher-btn" style="cursor:default;background:none;border:none;padding:4px 0;">
+        <span>${label}: <strong>${shortYearLabel(currentYearKey)}</strong></span>
+      </div>`}
+      ${missingNotice}
     </div>`;
 }
 
@@ -717,6 +757,67 @@ function renderStudentBodySection(s) {
 
 // ── Init ────────────────────────────────────────────────────────────────
 
+// Same list (and same "later file wins" merge rule) as index.html's
+// ALL_YEAR_FILES/loadAllSchools() — a school whose most recent CDS record
+// isn't from 2025-2026 would otherwise 404 here even though it correctly
+// shows up (with that older record) in the homepage list, since this used
+// to fetch only the latest year's file directly.
+const ALL_YEAR_FILES = [
+  '/data/schools-2021-2022.json',
+  '/data/schools-2022-2023.json',
+  '/data/schools-2023-2024.json',
+  '/data/schools-2024-2025.json',
+  '/data/schools-2025-2026.json',
+];
+const SITE_LATEST_YEAR_KEY = yearKeyFromUrl(ALL_YEAR_FILES[ALL_YEAR_FILES.length - 1]);
+
+// '/data/schools-2025-2026.json' -> '2025-2026'
+function yearKeyFromUrl(url) {
+  return url.match(/schools-(\d{4}-\d{4})\.json/)?.[1] ?? null;
+}
+
+// '2025-2026' -> '2025–26' (matches index.html's shortYearLabel)
+function shortYearLabel(key) {
+  const [start, end] = key.split('-');
+  return `${start}–${end.slice(2)}`;
+}
+
+// Loads every year file once and returns both (a) the one-record-per-slug
+// list the favorites/history rail needs (same merge rule as index.html:
+// each school's single most recent record) and (b) every year *this*
+// slug specifically has a record for, keyed by year, so the switcher
+// below can offer them all rather than just the latest.
+async function loadAllYears(targetSlug) {
+  const results = await Promise.all(ALL_YEAR_FILES.map(async url => {
+    const yearKey = yearKeyFromUrl(url);
+    try {
+      const res = await fetch(url);
+      if (!res.ok) return { yearKey, schools: [] };
+      const { schools } = await res.json();
+      return { yearKey, schools: schools.filter(s => s.name != null) };
+    } catch (err) {
+      console.error(`Failed to load ${url}:`, err);
+      return { yearKey, schools: [] };
+    }
+  }));
+
+  const bySlug = new Map();
+  const yearRecords = new Map();
+  for (const { yearKey, schools } of results) {
+    for (const s of schools) {
+      if (!s.slug) continue;
+      bySlug.set(s.slug, s); // later (newer) years overwrite, same as index.html
+      if (s.slug === targetSlug) yearRecords.set(yearKey, s);
+    }
+  }
+
+  return {
+    allSchools: [...bySlug.values()],
+    yearRecords,
+    availableYearKeys: ALL_YEAR_FILES.map(yearKeyFromUrl).filter(k => yearRecords.has(k)),
+  };
+}
+
 async function init() {
   const slug = window.SCHOOL_SLUG || new URLSearchParams(window.location.search).get('school');
 
@@ -732,74 +833,111 @@ async function init() {
   recentHistory = [slug, ...recentHistory.filter(s => s !== slug)].slice(0, 5);
   localStorage.setItem(historyKey, JSON.stringify(recentHistory));
 
-  const res = await fetch('/data/schools-2025-2026.json');
-  if (!res.ok) {
-    document.getElementById('school-sections').innerHTML =
-      '<p class="loading">Failed to load school data.</p>';
-    return;
-  }
-  const { schools } = await res.json();
-  const s = schools.find(school => school.slug === slug);
+  const { allSchools, yearRecords, availableYearKeys } = await loadAllYears(slug);
 
-  if (!s) {
+  if (availableYearKeys.length === 0) {
     document.getElementById('school-sections').innerHTML =
       `<p class="loading">School not found: <strong>${slug}</strong></p>`;
     return;
   }
 
   const meta = SCHOOL_META[slug] ?? { color: '#333', banner: null };
+  const latestAvailableKey = availableYearKeys[availableYearKeys.length - 1];
+  let currentYearKey = latestAvailableKey;
 
   document.documentElement.style.setProperty('--brand', meta.color);
-  document.title = `${s.name} Admissions Data — CommonDataSets`;
 
-  const pct = s.acceptance_rate != null ? (s.acceptance_rate * 100).toFixed(1) + '%' : null;
-  const descParts = [`${s.name} admissions data for ${s.data_year}`];
-  if (pct) descParts.push(`${pct} acceptance rate`);
-  const satRange = s.sat_composite_25 != null
-    ? `${s.sat_composite_25}–${s.sat_composite_75} SAT`
-    : null;
-  if (satRange) descParts.push(satRange);
-  if (s.location) descParts.push(s.location);
-  document.querySelector('meta[name="description"]').content = descParts.join(' · ') + '.';
+  // Everything that depends on which year is currently selected — rerun
+  // in full each time the switcher picks a different one. The one-time
+  // DOM restructuring below (layout wrapper, sidebar, back link) stays
+  // outside this since it only needs to happen once.
+  function renderForYear(yearKey) {
+    currentYearKey = yearKey;
+    const s = yearRecords.get(yearKey);
 
-  document.getElementById('school-hero').innerHTML = renderHero(s, slug, meta);
-  document.getElementById('stats-strip').innerHTML = renderHeroPill(s, slug, meta);
-  // .quick-facts-strip isn't in the static HTML template (only school-hero
-  // and stats-strip are) — inserted here so the generated pages don't all
-  // need editing for this one extra container.
-  document.getElementById('stats-strip')
-    .insertAdjacentHTML('afterend', `<div class="quick-facts-strip">${renderQuickFacts(s)}</div>`);
+    document.title = `${s.name} Admissions Data — CommonDataSets`;
 
-  document.getElementById('hero-fav-btn').addEventListener('click', () => {
-    const favs = getFavs();
-    const btn  = document.getElementById('hero-fav-btn');
-    if (favs.has(slug)) {
-      favs.delete(slug);
-      btn.classList.remove('favorited');
-      btn.title = 'Add to favorites';
-    } else {
-      favs.add(slug);
-      btn.classList.add('favorited');
-      btn.title = 'Remove from favorites';
+    const pct = s.acceptance_rate != null ? (s.acceptance_rate * 100).toFixed(1) + '%' : null;
+    const descParts = [`${s.name} admissions data for ${s.data_year}`];
+    if (pct) descParts.push(`${pct} acceptance rate`);
+    const satRange = s.sat_composite_25 != null
+      ? `${s.sat_composite_25}–${s.sat_composite_75} SAT`
+      : null;
+    if (satRange) descParts.push(satRange);
+    if (s.location) descParts.push(s.location);
+    document.querySelector('meta[name="description"]').content = descParts.join(' · ') + '.';
+
+    document.getElementById('school-hero').innerHTML = renderHero(s, slug, meta);
+    document.getElementById('stats-strip').innerHTML = renderHeroPill(s, slug, meta);
+    // .year-bar-strip and .quick-facts-strip aren't in the static HTML
+    // template (only school-hero and stats-strip are) — inserted here so
+    // the generated pages don't all need editing for these extra
+    // containers. Replaced wholesale (not just once) since a year switch
+    // can change every value in them. Year bar goes directly below the
+    // title card, ahead of quick-facts-strip — it's metadata about which
+    // year's data is showing, not data itself, so it precedes all of it.
+    document.querySelector('.year-bar-strip')?.remove();
+    document.querySelector('.quick-facts-strip')?.remove();
+    document.getElementById('stats-strip').insertAdjacentHTML('afterend',
+      `<div class="year-bar-strip">${renderYearBar({ currentYearKey: yearKey, availableYearKeys, latestAvailableKey })}</div>`);
+    document.querySelector('.year-bar-strip')
+      .insertAdjacentHTML('afterend', `<div class="quick-facts-strip">${renderQuickFacts(s)}</div>`);
+
+    document.getElementById('hero-fav-btn').addEventListener('click', () => {
+      const favs = getFavs();
+      const btn  = document.getElementById('hero-fav-btn');
+      if (favs.has(slug)) {
+        favs.delete(slug);
+        btn.classList.remove('favorited');
+        btn.title = 'Add to favorites';
+      } else {
+        favs.add(slug);
+        btn.classList.add('favorited');
+        btn.title = 'Remove from favorites';
+      }
+      saveFavs(favs);
+      refreshRail();
+    });
+
+    // Re-wired on every render since .stats-strip (hence #year-switcher)
+    // is rebuilt from scratch above.
+    const switcher = document.getElementById('year-switcher');
+    if (switcher) {
+      const btn = document.getElementById('year-switcher-btn');
+      btn.addEventListener('click', () => switcher.classList.toggle('open'));
+      switcher.querySelector('.year-switcher-menu').addEventListener('click', e => {
+        const opt = e.target.closest('.sort-option');
+        if (!opt || opt.dataset.year === currentYearKey) return;
+        renderForYear(opt.dataset.year);
+      });
     }
-    saveFavs(favs);
-    refreshRail();
+
+    document.getElementById('school-sections').innerHTML =
+      `<div class="school-section-row">
+        ${renderAdmissionsSummary(s)}
+        ${renderCostSection(s)}
+      </div>` +
+      renderSelectivitySection(s) +
+      renderAcademicProfileSection(s) +
+      renderClassRankSection(s) +
+      renderAdmissionFactorsSection(s) +
+      renderStudentBodySection(s);
+
+    renderGpaHistogram(document.getElementById('gpa-chart'), s.gpa_distribution, meta.color);
+    renderClassRankHistogram(document.getElementById('class-rank-chart'), s.class_rank, meta.color);
+  }
+
+  renderForYear(currentYearKey);
+
+  // Close the year-switcher menu on an outside click — delegated once at
+  // the document level since the menu itself is recreated on every render.
+  document.addEventListener('click', e => {
+    const switcher = document.getElementById('year-switcher');
+    if (switcher && !e.target.closest('#year-switcher')) switcher.classList.remove('open');
   });
-  document.getElementById('school-sections').innerHTML =
-    `<div class="school-section-row">
-      ${renderAdmissionsSummary(s)}
-      ${renderCostSection(s)}
-    </div>` +
-    renderSelectivitySection(s) +
-    renderAcademicProfileSection(s) +
-    renderClassRankSection(s) +
-    renderAdmissionFactorsSection(s) +
-    renderStudentBodySection(s);
 
-  renderGpaHistogram(document.getElementById('gpa-chart'), s.gpa_distribution, meta.color);
-  renderClassRankHistogram(document.getElementById('class-rank-chart'), s.class_rank, meta.color);
-
-  // Inject right sidebar alongside school-sections
+  // Inject right sidebar alongside school-sections — one-time DOM
+  // restructuring, not repeated on a year switch.
   const sectionsEl = document.getElementById('school-sections');
   const layout = document.createElement('div');
   layout.className = 'school-page-layout';
@@ -823,8 +961,8 @@ async function init() {
   // top border on narrow layouts) when the visitor has neither favorites
   // nor history yet. Hoisted so the hero favorite button can call it too.
   function refreshRail() {
-    renderFavoritesBox(schools);
-    renderHistoryBox(schools);
+    renderFavoritesBox(allSchools);
+    renderHistoryBox(allSchools);
     const railEmpty = ['school-fav-box', 'school-history-box']
       .every(id => document.getElementById(id).style.display === 'none');
     sidebar.style.display = railEmpty ? 'none' : '';
@@ -837,6 +975,16 @@ async function init() {
   back.href = '/';
   back.textContent = '← Schools';
   document.body.appendChild(back);
+
+  const printFab = document.createElement('button');
+  printFab.className = 'print-fab';
+  printFab.type = 'button';
+  printFab.setAttribute('aria-label', 'Print this data');
+  printFab.innerHTML = `
+    <span class="print-fab-label">Print this data</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>`;
+  printFab.addEventListener('click', () => window.print());
+  document.body.appendChild(printFab);
 }
 
 init();

@@ -49,6 +49,102 @@
 }
 .hero-site-link:hover { opacity: 0.7; }
 
+/* ── Per-school year switcher — lets a visitor browse older CDS years for
+   this school specifically, independent of the sitewide "Search by Year"
+   filter on the homepage. Reuses .sort-option/.sort-chevron from base.css
+   for the menu itself. Sits in its own strip below the title card (see
+   .year-bar-strip) rather than inside it — it's metadata about the data,
+   not about the school, so it precedes the data instead of living in the
+   card alongside the name/location. */
+.year-bar-strip {
+  /* Explicit width:100% (not just margin:auto to center it) — as a flex
+     item of .container, an auto horizontal margin without a definite
+     width shrink-wraps to this element's own (much narrower) content
+     instead of filling the available space before max-width clamps it. */
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 1040px;
+  margin: 14px auto 0;
+  padding: 0 20px;
+}
+
+.hero-year-bar {
+  display: flex;
+  flex-direction: column;
+  /* Centered, not left-aligned — .hero-pill above it is itself centered
+     (shrink-wrapped to its own content width, not full-width), so
+     left-aligning this to the full strip's edge would drift away from
+     the card's actual left edge, which shifts per school. Centering both
+     keeps them visually stacked regardless of either one's width. */
+  align-items: center;
+  gap: 6px;
+}
+
+.year-switcher {
+  position: relative;
+}
+
+.year-switcher-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: #f5f5f5;
+  color: #000;
+  border: 1px solid #ddd;
+  border-radius: 999px;
+  font-family: 'Public Sans', sans-serif;
+  font-size: 0.82em;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.year-switcher-btn:hover {
+  border-color: var(--brand);
+}
+
+.year-switcher-btn strong {
+  font-weight: 600;
+}
+
+.year-switcher-btn .sort-chevron {
+  width: 12px;
+  height: 12px;
+}
+
+.year-switcher-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  min-width: 100px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.16);
+  z-index: 10;
+  overflow: hidden;
+}
+
+.year-switcher.open .year-switcher-menu {
+  display: block;
+}
+
+.year-switcher.open .sort-chevron {
+  transform: rotate(180deg);
+}
+
+.year-missing-notice {
+  margin: 0;
+  color: #b3261e;
+  font-size: 0.85em;
+  font-weight: 500;
+  line-height: 1.4;
+  max-width: 420px;
+}
+
 /* ── Floating hero pill ── name/location/site + a large logo, overlapping
    the hero's bottom edge. Quick facts live separately in .quick-facts-strip
    below. Wrapper handles the centering/negative-margin overlap; .hero-pill
@@ -143,7 +239,12 @@
    instead of stacking. Collapses to one column when it would get cramped. */
 .cols-2 {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  /* minmax(0, 1fr), not bare 1fr — a bare 1fr track has an implicit
+     automatic minimum size equal to its content's min-content, so it
+     won't shrink below that regardless of how narrow the viewport gets
+     (no amount of min-width:0 on descendants fixes this — it's the track
+     itself that refuses to shrink). minmax(0, ...) removes that floor. */
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 20px 40px;
   align-items: start;
 }
@@ -151,13 +252,18 @@
 .cols-2 > div > :first-child { margin-top: 0; }
 
 @media (max-width: 720px) {
-  .cols-2 { grid-template-columns: 1fr; }
+  .cols-2 { grid-template-columns: minmax(0, 1fr); }
   .cols-2 > div + div { margin-top: 4px; }
 }
 
 .school-section-row .school-section {
   flex: 1 1 320px;
-  min-width: 320px;
+  /* min(320px, 100%) — the 320px floor is what makes flex-wrap trigger
+     the single-column stack once two side-by-side sections wouldn't fit;
+     capping it at 100% stops a single stacked section from still being
+     forced wider than its own container once the viewport itself drops
+     below ~320px (plus page padding). */
+  min-width: min(320px, 100%);
   margin-top: 0;
 }
 
@@ -261,6 +367,11 @@
 
 /* ── Tables ── */
 .tbl-wrap {
+  /* Was the primary fallback for a column too narrow for its own nowrap
+     header — now just a defensive backstop (a truly unbreakable token,
+     e.g. a very long unbroken number) now that table-layout:fixed +
+     wrapping headers + fluid font-size below mean a table's own columns
+     never need to force the wrapper wider in practice. */
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   margin: 4px 0 0;
@@ -268,8 +379,15 @@
 
 .tbl {
   border-collapse: collapse;
-  font-size: 1.03em;
+  /* Fluid with viewport width so columns shrink gracefully instead of
+     forcing .tbl-wrap's horizontal scroll at narrow widths. */
+  font-size: clamp(0.72em, 0.58em + 0.7vw, 1.03em);
   width: 100%;
+  /* Column widths come purely from this (equal shares by default) rather
+     than each column's own content — guarantees the table itself can
+     never be wider than .tbl-wrap, no matter how long a label or value
+     gets. Content wraps within its cell (overflow-wrap below) instead. */
+  table-layout: fixed;
   box-shadow: 0 1px 12px rgba(0,0,0,0.12);
   border-radius: 6px;
   overflow: hidden;
@@ -278,16 +396,28 @@
 .tbl thead tr { background: var(--brand); color: #fff; text-align: left; }
 /* overflow-wrap (not word-break) so a cell only splits mid-word when a
    single "word" truly can't fit — short labels like "Applied"/"Rate" wrap
-   at spaces or not at all instead of breaking arbitrarily. Headers never
-   wrap: .tbl-wrap's horizontal scroll is the fallback for a column too
-   narrow for its own label, not mangling the label into two lines. */
-.tbl th, .tbl td { padding: 10px 14px; overflow-wrap: break-word; }
+   at spaces or not at all instead of breaking arbitrarily. Padding is
+   fluid too: on a 4-column table (e.g. Applied/Admitted/Enrolled) the
+   fixed 10/14px padding alone could eat a third of a mobile-width cell,
+   leaving single-word headers no room and forcing an ugly mid-word break. */
+.tbl th, .tbl td {
+  padding: clamp(5px, 0.3em + 0.4vw, 10px) clamp(6px, 0.3em + 1vw, 14px);
+  overflow-wrap: break-word;
+}
+/* The first column is always a text label (expense name, round name…);
+   the rest are usually shorter figures, so it gets a modest edge rather
+   than an equal share — but not so much that a table whose OTHER columns
+   are themselves text (e.g. Applied/Admitted/Enrolled) gets starved. */
+.tbl th:first-child, .tbl td:first-child { width: 32%; }
 /* FONT CANDIDATE: both of these put dense data-table text (column headers,
    row labels) in the display serif rather than Public Sans. That split is
    intentional (see comment below) but worth re-auditing now that the data
    face has real weights of its own — a table is exactly the content type
    usually best served by the data/UI face throughout, not the headline face. */
-.tbl th { font-family: var(--font-display); font-weight: 400; letter-spacing: 0.03em; white-space: nowrap; }
+/* Headers now wrap (not nowrap) with table-layout:fixed — a header like
+   "Out-of-State" breaking to two lines beats forcing the whole table to
+   scroll horizontally just to keep one label on one line. */
+.tbl th { font-family: var(--font-display); font-weight: 400; letter-spacing: 0.03em; }
 /* First cell of every row is a label (round name, expense name, "Male"…); the
    remaining columns are figures and stay in the data face. */
 .tbl td:first-child { font-family: var(--font-display); }
@@ -296,13 +426,18 @@
 .tbl tbody tr:last-of-type { border-bottom: 2px solid var(--brand); }
 
 /* ── Score range bars ── */
-.score-rows { display: flex; flex-direction: column; gap: 14px; margin: 4px 0; }
+.score-rows { display: flex; flex-direction: column; gap: 14px; margin: 4px 0; min-width: 0; }
 
+/* min-width:0 — this is a flex item of .score-rows (itself possibly a grid
+   cell inside .cols-2); without it, a wide score-bar-vals value (a 3-digit
+   SAT subscore range like "720 – 770") can push this row's min-content
+   past its track's available width instead of being allowed to shrink. */
 .score-row {
   display: flex;
   align-items: center;
   gap: 16px;
   min-height: 28px;
+  min-width: 0;
 }
 
 .score-row-label {
@@ -345,7 +480,12 @@
 }
 
 .score-bar-vals {
-  width: 90px;
+  /* min- not a fixed width — a 4-digit SAT range ("1510 – 1580") needs
+     more than 90px to stay on one line; a flat width clipped/overflowed it
+     regardless of viewport, since this was never actually about available
+     space. min-width keeps rows visually aligned while still letting the
+     box grow for wider content. */
+  min-width: 90px;
   flex-shrink: 0;
   font-size: 1.03em;
   font-weight: 600;
@@ -361,7 +501,7 @@
   .cols-2 .score-row { gap: 10px; }
   .cols-2 .score-bar-wrap { gap: 10px; }
   .cols-2 .score-row-label { width: 140px; font-size: 0.98em; }
-  .cols-2 .score-bar-vals { width: 78px; font-size: 0.98em; }
+  .cols-2 .score-bar-vals { min-width: 78px; font-size: 0.98em; }
 }
 
 /* ── Admission factors: name + 4-dot importance meter ── */
@@ -426,7 +566,12 @@
 .demo-bar-row { display: flex; align-items: center; gap: 14px; }
 
 .demo-bar-label {
-  width: 230px;
+  /* Fluid instead of a flat 230px — the old fixed width only stepped down
+     at the 640px breakpoint below, leaving a dead zone above it (roughly
+     650–900px, once the right-sidebar rail stacks beneath the content
+     column) where 230px + the value column + the track's own min-width
+     added up to more than the available column width. */
+  width: clamp(120px, 18vw, 230px);
   flex-shrink: 0;
   font-family: var(--font-display);
   font-size: 1em;
@@ -500,6 +645,6 @@
   .funnel-step { min-width: 90px; padding: 14px 8px; }
   .funnel-val { font-size: 1.35em; }
   .score-row-label { width: 100px; font-size: 0.93em; }
-  .score-bar-vals { width: 72px; font-size: 0.95em; }
-  .demo-bar-label { width: 140px; font-size: 0.93em; }
+  .score-bar-vals { min-width: 72px; font-size: 0.95em; }
+  .demo-bar-label { font-size: 0.93em; }
 }

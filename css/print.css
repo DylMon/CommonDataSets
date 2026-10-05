@@ -1,0 +1,187 @@
+/* print.css — school detail page only, loaded via <link media="print">.
+   Goal: a clean, ink-friendly handout a parent or student can print (or
+   "Save as PDF") straight from the browser — no nav, no sidebar, no
+   interactive chrome, nothing that depends on a mouse — packed as
+   efficiently as the page allows (keeps the on-screen 2-column section
+   layout rather than stacking everything into one tall column). */
+
+@page {
+  /* Portrait regardless of the browser/printer's last-used setting — a
+     reading handout, not a wide table export. Size left unspecified (not
+     "letter portrait") so it still honors A4 for non-US printers; only
+     the orientation is opinionated. */
+  size: portrait;
+  margin: 0.5in;
+}
+
+/* Nearly every size in base.css/school-template.css is in em, cascading
+   from this root value (normally a fluid clamp() that bottoms out at
+   16px) — dropping it here shrinks headings, tables, score bars, etc. all
+   at once instead of overriding dozens of individual font-size rules. */
+html {
+  font-size: 12px;
+}
+
+body {
+  background: #fff;
+  color: #000;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+.container {
+  min-height: auto;
+}
+
+/* ── Chrome that only makes sense on screen ── */
+.site-header,
+.floating-back,
+.right-sidebar,
+.fav-btn,
+.print-fab,
+.year-switcher-btn .sort-chevron,
+.year-switcher-menu,
+.adsbygoogle {
+  display: none !important;
+}
+
+/* ── Hero: drop the photo banner (pure decoration, wastes ink/space) and
+   let the title card itself be the page's header instead. ── */
+.school-hero {
+  display: none;
+}
+
+.stats-strip {
+  margin: 0;
+  padding: 0;
+  max-width: none;
+}
+
+.hero-pill {
+  box-shadow: none;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px 16px;
+  gap: 12px;
+}
+
+/* Title card: a 76px logo and 1.6em name read fine as a floating card over
+   a photo, but here it's just the page's masthead — shrink it so it isn't
+   competing with the data below for space. */
+.hero-logo {
+  width: 42px;
+  height: 42px;
+}
+
+.hero-name {
+  font-size: 1.15em;
+}
+
+.hero-meta {
+  font-size: 0.8em;
+}
+
+/* ── Year bar: keep the text (useful context for later reference), lose
+   the interactive dropdown look. ── */
+.year-bar-strip {
+  max-width: none;
+  margin: 10px 0 0;
+  padding: 0;
+}
+
+.year-switcher-btn {
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  cursor: default;
+}
+
+.year-missing-notice {
+  max-width: none;
+}
+
+/* ── Layout: full width now that the sidebar's gone, but otherwise as
+   close to the on-screen layout as possible — the 2-column section body
+   (.cols-2) and side-by-side Admissions/Cost (.school-section-row) are
+   left alone (not collapsed to one column) so the page width is actually
+   used and the handout doesn't run any longer than it has to. ── */
+.quick-facts-strip {
+  max-width: none;
+  margin-top: 14px;
+}
+
+.stat-chip {
+  padding: 8px 14px;
+}
+
+.stat-chip-val {
+  font-size: 1.2em;
+}
+
+.stat-chip-label {
+  font-size: 0.72em;
+}
+
+.school-page-layout {
+  display: block;
+  max-width: none;
+  padding: 0;
+}
+
+#school-sections {
+  max-width: none;
+  padding: 0;
+}
+
+.school-section-row .school-section {
+  min-width: 0;
+}
+
+/* school-template.css collapses .cols-2 to one column below a 720px
+   viewport (@media max-width:720px) — a screen breakpoint, but a Letter
+   page at the 0.5in margins above lands right at ~720px of print content
+   width (A4 narrower still), so that rule would otherwise silently
+   collapse it here too. Same specificity, later in the cascade (this
+   file loads after school-template.css), so re-asserting it here wins
+   regardless of how narrow the physical page turns out to be. */
+.cols-2 {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+}
+
+/* ── Flatten decorative shadows/radii that don't print well. ── */
+.tbl,
+.funnel-step {
+  box-shadow: none;
+}
+
+/* ── Tighter vertical rhythm than the screen version — printed paper has
+   a hard page boundary, so the spacious screen margins (meant for a
+   scrolling viewport) just cost extra pages here for no readability
+   gain. ── */
+.school-section { margin-top: 22px; }
+.school-section-row { margin-top: 22px; gap: 28px; }
+.section-title { margin: 0 0 10px; padding-bottom: 6px; }
+.subsection-title { margin: 14px 0 6px; }
+.cols-2 { gap: 14px 28px; }
+.gpa-chart-wrap { height: 180px; }
+
+/* ── Keep small, atomic pieces of content together across a page break —
+   a table row or chart splitting mid-way looks broken. Deliberately NOT
+   applied to the section as a whole (.school-section): with the 2-column
+   layout preserved, forcing every section to stay intact would often
+   push a whole column to the next page over a couple of stray lines,
+   which costs far more paper than the section break itself would. ── */
+.tbl,
+tr,
+.score-row,
+.demo-bar-row,
+.factor-row,
+.funnel-step,
+.gpa-chart-wrap {
+  break-inside: avoid;
+}
+
+.section-title,
+.subsection-title {
+  break-after: avoid;
+}

@@ -17,7 +17,7 @@
     <meta name="description" content="Acceptance rates, SAT scores, GPA, tuition, and admissions data for 33 top US universities — all in one place. Updated through 2023–24.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=Spectral:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=Spectral:wght@500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/base.css?v=6">
     <script src="/js/scorecard-merge.js?v=6"></script>
     <script src="/js/header.js?v=6" defer></script>
@@ -94,17 +94,14 @@
             <div class="page-layout">
             <div class="sidebar">
             <div class="controls-container">
-            <div class="year-toggle-bar">
-                <span class="sort-label">Data Year</span>
+            <button class="reset-btn" id="reset-filters-btn">Reset All Filters</button>
+            <div class="year-filter-bar">
                 <div class="sort-dropdown" id="year-dropdown">
-                    <button class="sort-dropdown-btn" id="year-dropdown-btn">
-                        <span id="year-label-text">2025–26</span>
+                    <button class="year-filter-btn" id="year-dropdown-btn" type="button">
+                        <span id="year-filter-text" class="year-filter-placeholder">Search by Year</span>
                         <svg class="sort-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                     </button>
-                    <div class="sort-dropdown-menu" id="year-dropdown-menu">
-                        <button class="sort-option active" data-year="2025-2026">2025–26</button>
-                        <button class="sort-option" data-year="2024-2025">2024–25</button>
-                    </div>
+                    <div class="sort-dropdown-menu" id="year-dropdown-menu"></div>
                 </div>
             </div>
             <div class="sort-bar">
@@ -141,7 +138,7 @@
                     <div class="range-ends"><span>0</span><span>40k+</span></div>
                 </div>
                 <span class="filter-sep"></span>
-                <span class="filter-group-label">Acceptance Rate <input type="text" class="range-value-input" id="sel-val" value="All"></span>
+                <span class="filter-group-label">Acceptance <input type="text" class="range-value-input" id="sel-val" value="All"></span>
                 <div class="filter-range-wrap">
                     <input type="range" class="filter-range" id="sel-range" min="0" max="100" value="100" step="1">
                     <div class="range-ends"><span>0%</span><span>100%</span></div>
@@ -164,7 +161,6 @@
                     <input type="range" class="filter-range" id="earn-range" min="0" max="140000" value="0" step="5000">
                     <div class="range-ends"><span>$0</span><span>$140k</span></div>
                 </div>
-            <button class="reset-btn" id="reset-filters-btn">Reset All Filters</button>
             </div>
             </div>
             </div><!-- /.sidebar -->
@@ -182,13 +178,18 @@
             </div><!-- /.page-layout -->
         </div>
         <footer class="site-footer">
-            <a class="footer-brand" href="/">CommonDataSets</a>
-            <a class="footer-email" href="mailto:info@commondatasets.com">info@commondatasets.com</a>
+            <div class="footer-brand-col">
+                <a class="footer-brand" href="/">CommonDataSets</a>
+                <a class="footer-email" href="mailto:info@commondatasets.com">info@commondatasets.com</a>
+                <span class="footer-rights">&copy; 2026 CommonDataSets. All rights reserved.</span>
+            </div>
             <nav class="footer-nav">
                 <a href="/">Data Sets</a>
                 <a href="/compare/">Compare</a>
                 <a href="/chanceme/">Chance Me</a>
                 <a href="/info/">About</a>
+            </nav>
+            <nav class="footer-nav">
                 <a href="/contact/">Contact Us</a>
                 <a href="/resources/">Resources</a>
                 <a href="/privacy/">Privacy Policy</a>
@@ -209,7 +210,7 @@
             localStorage.setItem('cds_favorites', JSON.stringify([...favorites]));
         }
 
-        const activeFilters = { category: 'all', eaEd: 'all', size: 40000, selectivity: 100, tuition: 75000, sat: 1600, earnings: 0 };
+        const activeFilters = { category: 'all', year: 'all', eaEd: 'all', size: 40000, selectivity: 100, tuition: 75000, sat: 1600, earnings: 0 };
 
         // Human-readable labels for the data-driven tags in categories.json
         // (see data/categories.json / scripts/build-cds-json.py). A tag with
@@ -228,6 +229,7 @@
         function applyFilters(schools) {
             return schools.filter(s => {
                 if (activeFilters.category !== 'all' && !(s.categories ?? []).includes(activeFilters.category)) return false;
+                if (activeFilters.year !== 'all' && s._yearKey !== activeFilters.year) return false;
                 if (activeFilters.eaEd === 'ea' && s.ea_ed_type !== 'EA') return false;
                 if (activeFilters.eaEd === 'ed' && s.ea_ed_type !== 'ED') return false;
                 if (activeFilters.size < 40000 && (s.total_undergrads == null || s.total_undergrads > activeFilters.size)) return false;
@@ -239,12 +241,19 @@
             });
         }
 
+        const CATEGORY_CLEAR_ICON = `<span class="category-clear" data-clear="1" aria-label="Clear category filter">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </span>`;
+
         function renderCategoryBar() {
             const bar = document.getElementById('category-filter-bar');
             const tags = [...new Set(allSchools.flatMap(s => s.categories ?? []))].sort();
 
-            const btn = (value, label) =>
-                `<button type="button" class="category-btn${activeFilters.category === value ? ' active' : ''}" data-category="${value}">${label}</button>`;
+            const btn = (value, label) => {
+                const active = activeFilters.category === value;
+                const clear = active && value !== 'all' ? CATEGORY_CLEAR_ICON : '';
+                return `<button type="button" class="category-btn${active ? ' active' : ''}" data-category="${value}">${clear}${label}</button>`;
+            };
 
             bar.innerHTML = btn('all', 'All') + tags.map(t => btn(t, categoryLabel(t))).join('');
         }
@@ -274,26 +283,41 @@
         function fmtPct(val) { return val != null ? (val * 100).toFixed(1) + '%' : '<span class="stat-na">n/a</span>'; }
         function fmtMoney(val) { return val != null ? '$' + val.toLocaleString() : '<span class="stat-na">n/a</span>'; }
 
-        const PAGE_SIZE = 50;
+        const PAGE_SIZE = 25;
         let currentPage = 1;
         let allSchools = [];
         let searchQuery = '';
         let currentSort = 'us-news';
-        let currentYear = localStorage.getItem('cds_data_year') || '2025-2026';
-        const schoolsCache = {};
-        const YEAR_FILES = {
-            '2025-2026': '/data/schools-2025-2026.json',
-            '2024-2025': '/data/schools-2024-2025.json',
-        };
+
+        // Every year we've ever parsed CDS data for, oldest first. A school
+        // present in more than one of these (most are only in the latest)
+        // gets the record from whichever file appears last in this list — see
+        // loadAllSchools(). By default every school is shown exactly once,
+        // using its most recent data; the "Search by Year" dropdown (built
+        // from this same list, see renderYearFilter()) can filter that back
+        // down to schools whose most recent data happens to be a given year.
+        const ALL_YEAR_FILES = [
+            '/data/schools-2021-2022.json',
+            '/data/schools-2022-2023.json',
+            '/data/schools-2023-2024.json',
+            '/data/schools-2024-2025.json',
+            '/data/schools-2025-2026.json',
+        ];
         // Scorecard data lives in its own file, kept separate from CDS data,
         // and merged in here rather than pre-baked — only 2025-26 has one so far.
-        const SCORECARD_FILES = {
-            '2025-2026': '/data/scorecard-2025-2026.json',
-        };
-        const YEAR_LABELS = {
-            '2025-2026': '2025–2026',
-            '2024-2025': '2024–2025',
-        };
+        const SCORECARD_FILE = '/data/scorecard-2025-2026.json';
+
+        // '/data/schools-2025-2026.json' -> '2025-2026'
+        function yearKeyFromUrl(url) {
+            return url.match(/schools-(\d{4}-\d{4})\.json/)?.[1] ?? null;
+        }
+
+        // '2025-2026' -> '2025–26' (en dash, short second year — matches the
+        // data-year badge on each card and the site's other year labels)
+        function shortYearLabel(key) {
+            const [start, end] = key.split('-');
+            return `${start}–${end.slice(2)}`;
+        }
 
         function renderFavoritesBox() {
             const slugs = [...favorites];
@@ -325,6 +349,20 @@
             }).filter(Boolean).join('');
         }
 
+        // Collapses the whole .right-sidebar (not just its two inner boxes)
+        // when neither has content — otherwise a first-time visitor with no
+        // favorites/history yet still pays its reserved width on every card
+        // row, which is cramped enough at some breakpoints to crush the
+        // school-name column down to a few characters.
+        function refreshRightSidebar() {
+            renderFavoritesBox();
+            renderHistory();
+            const sidebar = document.querySelector('.right-sidebar');
+            const empty = ['favorites-box', 'history-box']
+                .every(id => document.getElementById(id).style.display === 'none');
+            sidebar.style.display = empty ? 'none' : '';
+        }
+
         function renderDetailPanel(s) {
             const tuitionVal = s.tuition_out_of_state ?? s.tuition;
             const eaLabel = s.ea_ed_type === 'EA' ? 'Early Action'
@@ -343,28 +381,24 @@
                         <div class="detail-kv"><span>Regular Decision</span><span>${s.rd_deadline ?? '<span class="stat-na">n/a</span>'}</span></div>
                     </div>
                     <div class="detail-section">
-                        <div class="detail-section-title">Test Scores (25–75th)</div>
-                        <div class="detail-kv"><span>SAT Composite</span><span>${s.sat_composite_25 != null ? `${s.sat_composite_25}–${s.sat_composite_75}` : '<span class="stat-na">n/a</span>'}</span></div>
-                        <div class="detail-kv"><span>ACT Composite</span><span>${s.act_composite_25 != null ? `${s.act_composite_25}–${s.act_composite_75}` : '<span class="stat-na">n/a</span>'}</span></div>
-                    </div>
-                    <div class="detail-section">
                         <div class="detail-section-title">Quick Facts</div>
                         <div class="detail-kv"><span>Tuition (OOS)</span><span>${fmtMoney(tuitionVal)}</span></div>
                         <div class="detail-kv"><span>Undergrads</span><span>${s.total_undergrads != null ? s.total_undergrads.toLocaleString() : '<span class="stat-na">n/a</span>'}</span></div>
                         <div class="detail-kv"><span>Retention Rate</span><span>${s.retention_rate != null ? (s.retention_rate * 100).toFixed(0) + '%' : '<span class="stat-na">n/a</span>'}</span></div>
                     </div>
                     <div class="detail-section">
+                        <div class="detail-section-title">Waitlist</div>
+                        ${waitlistBody}
+                    </div>
+                    <div class="detail-section">
                         <div class="detail-section-title">Outcomes</div>
                         <div class="detail-kv"><span>4yr Grad Rate</span><span>${s.graduation_rate_4yr != null ? (s.graduation_rate_4yr * 100).toFixed(0) + '%' : '<span class="stat-na">n/a</span>'}</span></div>
                         <div class="detail-kv"><span>Median Earn (6yr)</span><span>${fmtMoney(s.median_earnings_6yr)}</span></div>
                     </div>
-                    <div class="detail-section detail-section--full">
-                        <div class="detail-section-title">Waitlist</div>
-                        ${waitlistBody}
-                    </div>
                 </div>
                 <div class="detail-footer">
                     <a class="detail-compare-btn" href="/compare/?school=${s.slug}">Compare</a>
+                    <a class="detail-compare-btn" href="/schools/${s.slug}/">View Full Data</a>
                 </div>`;
         }
 
@@ -412,31 +446,38 @@
                         <img class="school-logo" src="${logoSrc(s.slug)}" alt="${s.name}" onerror="${LOGO_ONERR}" />
                         <div class="school-name">
                             <div class="school-name-main">
-                                <a class="school-name-link" href="/schools/${s.slug}/">${s.name}</a>
-                                ${s.location ? `<div class="school-location">
-                                    <svg class="location-pin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
-                                    ${s.location}
-                                </div>` : ''}
+                                <div class="school-name-top">
+                                    <a class="school-name-link" href="/schools/${s.slug}/">${s.name}</a>
+                                    <button class="fav-btn${isFav ? ' favorited' : ''}" data-slug="${s.slug}" title="${isFav ? 'Remove from favorites' : 'Add to favorites'}">
+                                        <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                                    </button>
+                                </div>
+                                <div class="school-meta-row">
+                                    <div class="school-meta-left">
+                                        ${s.data_year ? `<span class="school-data-year">${s.data_year}</span>` : ''}
+                                        ${s.location ? `<div class="school-location">
+                                            <svg class="location-pin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+                                            ${s.location}
+                                        </div>` : ''}
+                                    </div>
+                                    <div class="school-stats">
+                                        <div class="stat-item">
+                                            <div class="stat-label">Acceptance</div>
+                                            <div class="stat-val">${fmtPct(s.acceptance_rate)}</div>
+                                        </div>
+                                        <div class="stat-item">
+                                            <div class="stat-label">SAT Avg</div>
+                                            <div class="stat-val">${s.sat_avg ?? '<span class="stat-na">n/a</span>'}</div>
+                                        </div>
+                                        <div class="stat-item">
+                                            <div class="stat-label">ACT Range</div>
+                                            <div class="stat-val">${actRange}</div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <button class="fav-btn${isFav ? ' favorited' : ''}" data-slug="${s.slug}" title="${isFav ? 'Remove from favorites' : 'Add to favorites'}">
-                                <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-                            </button>
                         </div>
                         <div class="school-row-end">
-                            <div class="school-stats">
-                                <div class="stat-item">
-                                    <div class="stat-val">${fmtPct(s.acceptance_rate)}</div>
-                                    <div class="stat-label">Acceptance</div>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-val">${s.sat_avg ?? '<span class="stat-na">n/a</span>'}</div>
-                                    <div class="stat-label">SAT Avg</div>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-val">${actRange}</div>
-                                    <div class="stat-label">ACT Range</div>
-                                </div>
-                            </div>
                             <button class="details-toggle" type="button" aria-expanded="false" aria-label="Show more details">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                             </button>
@@ -460,61 +501,63 @@
             }));
         }
 
-        async function loadYear(year) {
+        async function loadAllSchools() {
             currentPage = 1;
-            if (!schoolsCache[year]) {
-                const res = await fetch(YEAR_FILES[year]);
-                if (!res.ok) {
-                    document.getElementById('school-list').innerHTML = '<p class="loading">Failed to load schools.</p>';
-                    return;
-                }
-                const { schools: rawSchools } = await res.json();
-                const schools = rawSchools.filter(s => s.name != null); // exclude records with no source data yet (e.g. bad/missing source PDF)
 
-                let merged = schools;
-                if (SCORECARD_FILES[year]) {
-                    try {
-                        const scRes = await fetch(SCORECARD_FILES[year]);
-                        if (scRes.ok) {
-                            const { schools: scSchools } = await scRes.json();
-                            merged = mergeScorecard(schools, scSchools);
-                        }
-                    } catch (err) {
-                        console.error('Scorecard fetch failed, showing CDS data without it:', err);
-                    }
+            const results = await Promise.all(ALL_YEAR_FILES.map(async url => {
+                const yearKey = yearKeyFromUrl(url);
+                try {
+                    const res = await fetch(url);
+                    if (!res.ok) return [];
+                    const { schools } = await res.json();
+                    return schools
+                        .filter(s => s.name != null) // exclude records with no source data yet (e.g. bad/missing source PDF)
+                        // _yearKey drives the "Search by Year" filter — pulled from
+                        // the filename rather than each record's own (inconsistently
+                        // formatted) data_year field, so filtering stays reliable
+                        // regardless of that formatting.
+                        .map(s => ({ ...s, _yearKey: yearKey }));
+                } catch (err) {
+                    console.error(`Failed to load ${url}:`, err);
+                    return [];
                 }
-                schoolsCache[year] = withSatAvg(merged);
+            }));
+
+            // ALL_YEAR_FILES is oldest-first, so a later file's record for the
+            // same slug simply overwrites the earlier one here — every school
+            // ends up with only its single most recent record.
+            const bySlug = new Map();
+            for (const yearSchools of results) {
+                for (const s of yearSchools) {
+                    if (s.slug) bySlug.set(s.slug, s);
+                }
             }
-            currentYear = year;
-            allSchools = schoolsCache[year];
-            localStorage.setItem('cds_data_year', year);
+            let merged = [...bySlug.values()];
+
+            if (merged.length === 0) {
+                document.getElementById('school-list').innerHTML = '<p class="loading">Failed to load schools.</p>';
+                return;
+            }
+
+            try {
+                const scRes = await fetch(SCORECARD_FILE);
+                if (scRes.ok) {
+                    const { schools: scSchools } = await scRes.json();
+                    merged = mergeScorecard(merged, scSchools);
+                }
+            } catch (err) {
+                console.error('Scorecard fetch failed, showing CDS data without it:', err);
+            }
+
+            allSchools = withSatAvg(merged);
             document.getElementById('page-intro-desc').textContent =
                 `Official Common Data Set submissions gathered directly from ${allSchools.length} top US universities, giving students and families one place to compare verified admissions statistics, test score ranges, cost of attendance, and enrollment data without the noise.`;
             renderCategoryBar();
             renderList(currentSort);
-            renderFavoritesBox();
-            renderHistory();
+            refreshRightSidebar();
         }
 
         async function init() {
-            const yearDropdown = document.getElementById('year-dropdown');
-            document.getElementById('year-dropdown-btn').addEventListener('click', () => {
-                yearDropdown.classList.toggle('open');
-            });
-            document.addEventListener('click', e => {
-                if (!e.target.closest('#year-dropdown')) yearDropdown.classList.remove('open');
-            });
-            document.querySelectorAll('#year-dropdown-menu .sort-option').forEach(opt => {
-                opt.classList.toggle('active', opt.dataset.year === currentYear);
-                opt.addEventListener('click', () => {
-                    document.querySelectorAll('#year-dropdown-menu .sort-option').forEach(o => o.classList.remove('active'));
-                    opt.classList.add('active');
-                    document.getElementById('year-label-text').textContent = opt.textContent;
-                    yearDropdown.classList.remove('open');
-                    if (opt.dataset.year !== currentYear) loadYear(opt.dataset.year);
-                });
-            });
-
             const searchInput = document.getElementById('school-search');
             const searchClear = document.getElementById('search-clear');
 
@@ -542,11 +585,46 @@
             // redraw this bar's contents — a plain per-button listener would
             // be lost the moment the markup it was attached to gets replaced.
             document.getElementById('category-filter-bar').addEventListener('click', e => {
-                const btn = e.target.closest('.category-btn');
-                if (!btn) return;
-                activeFilters.category = btn.dataset.category;
+                if (e.target.closest('.category-clear')) {
+                    activeFilters.category = 'all';
+                } else {
+                    const btn = e.target.closest('.category-btn');
+                    if (!btn) return;
+                    activeFilters.category = btn.dataset.category;
+                }
                 currentPage = 1;
                 renderCategoryBar();
+                renderList(currentSort);
+            });
+
+            // "Search by Year" — menu is generated from ALL_YEAR_FILES (not
+            // hardcoded in the HTML) so it always lists exactly the years we
+            // actually have data for, with no manual edit needed here when a
+            // new year gets added to that list.
+            const yearDropdown = document.getElementById('year-dropdown');
+            const yearMenu = document.getElementById('year-dropdown-menu');
+            const yearFilterText = document.getElementById('year-filter-text');
+            const yearKeys = ALL_YEAR_FILES.map(yearKeyFromUrl).reverse(); // newest first
+            yearMenu.innerHTML = '<button type="button" class="sort-option active" data-year="all">All Years</button>' +
+                yearKeys.map(k => `<button type="button" class="sort-option" data-year="${k}">${shortYearLabel(k)}</button>`).join('');
+
+            document.getElementById('year-dropdown-btn').addEventListener('click', () => {
+                yearDropdown.classList.toggle('open');
+            });
+            document.addEventListener('click', e => {
+                if (!e.target.closest('#year-dropdown')) yearDropdown.classList.remove('open');
+            });
+            yearMenu.addEventListener('click', e => {
+                const opt = e.target.closest('.sort-option');
+                if (!opt) return;
+                yearMenu.querySelectorAll('.sort-option').forEach(o => o.classList.remove('active'));
+                opt.classList.add('active');
+                activeFilters.year = opt.dataset.year;
+                const isAll = opt.dataset.year === 'all';
+                yearFilterText.textContent = isAll ? 'Search by Year' : opt.textContent;
+                yearFilterText.classList.toggle('year-filter-placeholder', isAll);
+                currentPage = 1;
+                yearDropdown.classList.remove('open');
                 renderList(currentSort);
             });
 
@@ -605,7 +683,7 @@
                     btn.title = 'Remove from favorites';
                 }
                 saveFavorites();
-                renderFavoritesBox();
+                refreshRightSidebar();
                 if (currentSort === 'favorites') renderList('favorites');
             });
 
@@ -799,7 +877,7 @@
             // succeeds, so a fetch failure can't silently break the search
             // bar, sort, or filters the way it did when this ran first.
             try {
-                await loadYear(currentYear);
+                await loadAllSchools();
             } catch (err) {
                 console.error('Failed to load school data:', err);
                 document.getElementById('school-list').innerHTML = '<p class="loading">Failed to load schools.</p>';
@@ -808,7 +886,149 @@
 
         init();
 
-        window.addEventListener('pageshow', () => { renderFavoritesBox(); renderHistory(); });
+        window.addEventListener('pageshow', refreshRightSidebar);
+
+        // ── Sticky filters-box reveal ────────────────────────────────────
+        // .sidebar sticks under the header via CSS, but once it's taller
+        // than the room left below the header, plain `position: sticky`
+        // only ever shows its top portion. Two ways to reveal the rest:
+        //   1. Scrolling anywhere else on the page shifts the box upward
+        //      automatically, purely as a function of scroll position, so
+        //      it "just follows" without the user needing to find it first.
+        //   2. Hovering the box directly and scrolling moves that same
+        //      shift independently, via the wheel, without scrolling the
+        //      page underneath it.
+        // The two compose instead of one overwriting the other: `shift` is
+        // always (scroll-derived baseline) + (manual wheel offset). Page
+        // scroll recomputes the baseline every frame; the wheel only ever
+        // adjusts the offset layered on top of it. Earlier this recomputed
+        // an absolute `shift` on every scroll event, so a manual wheel
+        // adjustment got silently discarded — and instantly, with no
+        // transition — the moment the page scrolled again, reading as an
+        // ugly snap back to wherever pure scroll tracking said it should be.
+        (function () {
+            const stickySidebar = document.querySelector('.sidebar');
+            if (!stickySidebar) return;
+
+            const BOTTOM_GAP = 20;
+            // Must match the "+ 20px" in .sidebar's own `top: calc(...)`
+            // (see base.css) — see metrics()'s safeMaxShift for why.
+            const TOP_GAP = 20;
+            const sidebarParent = stickySidebar.parentElement;
+            let manualOffset = 0;
+            let ticking = false;
+
+            function metrics() {
+                const topOffset = parseFloat(getComputedStyle(stickySidebar).top) || 0;
+                const sidebarHeight = stickySidebar.offsetHeight;
+                const availableRoom = window.innerHeight - topOffset - BOTTOM_GAP;
+                const naturalMaxShift = Math.max(0, sidebarHeight - availableRoom);
+
+                // Hard cap: never shift far enough for the rendered top edge
+                // to reach the header, regardless of how much taller the
+                // content is than the viewport — so it never spills into
+                // whatever's above the header (the hero banner on this
+                // page) once off-screen, or crowds right up against the
+                // header's own edge. For content too tall to fully reveal
+                // within this cap, the remainder is reached by actually
+                // scrolling the page further instead, same as before this
+                // reveal mechanism existed.
+                //
+                // This is just TOP_GAP, not a live .site-header measurement:
+                // topOffset is `header-height + TOP_GAP` (see .sidebar's CSS
+                // `top`), so capping shift at TOP_GAP is exactly "never rise
+                // above the header" — (topOffset - TOP_GAP) always equals
+                // the header's own height by definition. A live offsetHeight
+                // read here raced the header's own shrink-on-scroll CSS
+                // transition (offsetHeight updates continuously as it
+                // animates, while --header-height — and so topOffset — only
+                // updates once at transitionend), under-capping the shift
+                // for the ~150ms the two were out of sync with each other.
+                const safeMaxShift = TOP_GAP;
+
+                return { topOffset, maxShift: Math.min(naturalMaxShift, safeMaxShift) };
+            }
+
+            // Measured from the (non-sticky) parent rather than the sidebar
+            // itself: offsetTop/getBoundingClientRect on a position:sticky
+            // element reflect wherever it's CURRENTLY rendered, which moves
+            // as sticky engages — not a stable reference to compare scroll
+            // progress against. The parent has no such quirk, and the
+            // sidebar sits flush with its top edge, so this is an
+            // equivalent, scroll-stable stand-in for "how far past the
+            // engage point has this scrolled".
+            function scrollBaseline(topOffset, maxShift) {
+                if (maxShift <= 0) return 0;
+                const parentTop = sidebarParent.getBoundingClientRect().top;
+                return Math.min(maxShift, Math.max(0, topOffset - parentTop));
+            }
+
+            function applyShift(px) {
+                stickySidebar.style.transform = px > 0 ? `translateY(-${px}px)` : '';
+            }
+
+            // Driven by scrolling anywhere on the page: recomputes the
+            // scroll-derived baseline as a function of how far the page has
+            // scrolled past the point this stuck, so revealing the rest
+            // needs no special hovering. Always tracks instantly (no eased
+            // transition) so it doesn't visibly lag behind the scroll it's
+            // following; manualOffset carries over unchanged, so a prior
+            // wheel adjustment keeps composing smoothly instead of
+            // vanishing the moment page scroll resumes.
+            function updateFromPageScroll() {
+                ticking = false;
+                stickySidebar.classList.remove('sidebar--smooth-wheel');
+
+                // Below the mobile breakpoint .sidebar is position:static
+                // (see base.css) and flows with the page like everything
+                // else — this mechanism is meaningless there.
+                if (getComputedStyle(stickySidebar).position !== 'sticky') {
+                    manualOffset = 0;
+                    applyShift(0);
+                    return;
+                }
+
+                const { topOffset, maxShift } = metrics();
+                if (maxShift <= 0) {
+                    manualOffset = 0;
+                    applyShift(0);
+                    return;
+                }
+
+                const base = scrollBaseline(topOffset, maxShift);
+                applyShift(Math.min(maxShift, Math.max(0, base + manualOffset)));
+            }
+
+            function onScrollOrResize() {
+                if (!ticking) {
+                    ticking = true;
+                    requestAnimationFrame(updateFromPageScroll);
+                }
+            }
+
+            window.addEventListener('scroll', onScrollOrResize, { passive: true });
+            window.addEventListener('resize', onScrollOrResize);
+            updateFromPageScroll();
+
+            // Hovering the box directly: the wheel adjusts manualOffset
+            // instead of scrolling the page underneath it. Only takes over
+            // once there's actually something to reveal — otherwise the
+            // wheel passes through to the page as normal. Eased (see
+            // .sidebar--smooth-wheel) since a plain mouse wheel sends
+            // chunky ~100px deltas per notch that feel like jumping rather
+            // than scrolling if applied instantly. manualOffset is clamped
+            // relative to the current baseline so the total never exceeds
+            // [0, maxShift], regardless of how it got there.
+            stickySidebar.addEventListener('wheel', function (e) {
+                const { topOffset, maxShift } = metrics();
+                if (maxShift <= 0) return;
+                e.preventDefault();
+                stickySidebar.classList.add('sidebar--smooth-wheel');
+                const base = scrollBaseline(topOffset, maxShift);
+                manualOffset = Math.min(maxShift - base, Math.max(-base, manualOffset + e.deltaY));
+                applyShift(base + manualOffset);
+            }, { passive: false });
+        })();
     </script>
 </body>
 </html>

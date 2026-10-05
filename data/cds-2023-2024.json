@@ -1,11 +1,11 @@
 {
-  "generated": "2026-09-29",
+  "generated": "2026-10-02",
   "cds_year": "2023-24",
   "schools": [
     {
       "id": 1,
       "name": "Illinois Institute of Technology",
-      "data_year": "2023-2024",
+      "data_year": "2023-24",
       "city": "Chicago",
       "state": "IL",
       "location": "Chicago, IL",
@@ -168,12 +168,13 @@
         }
       },
       "slug": "illinois-tech",
-      "us_news_ranking": null
+      "us_news_ranking": null,
+      "categories": []
     },
     {
       "id": 2,
       "name": "University of Missouri",
-      "data_year": "2023-2024",
+      "data_year": "2023-24",
       "city": "Columbia",
       "state": "MO",
       "location": "Columbia, MO",
@@ -327,12 +328,13 @@
         }
       },
       "slug": "mizzou",
-      "us_news_ranking": null
+      "us_news_ranking": null,
+      "categories": []
     },
     {
       "id": 3,
-      "name": "The Ohio State University",
-      "data_year": "2023-2024",
+      "name": "Ohio State University",
+      "data_year": "2023-24",
       "city": "Columbus",
       "state": "OH",
       "location": "Columbus, OH",
@@ -494,12 +496,13 @@
         }
       },
       "slug": "ohio-state",
-      "us_news_ranking": 41
+      "us_news_ranking": 41,
+      "categories": []
     },
     {
       "id": 4,
       "name": "Quinnipiac University",
-      "data_year": "2023-2024",
+      "data_year": "2023-24",
       "city": "Hamden",
       "state": "CT",
       "location": "Hamden, CT",
@@ -678,12 +681,13 @@
         }
       },
       "slug": "quinnipiac",
-      "us_news_ranking": null
+      "us_news_ranking": null,
+      "categories": []
     },
     {
       "id": 5,
-      "name": "Rutgers University \u2013 Camden",
-      "data_year": "2023-2024",
+      "name": "Rutgers University, Camden",
+      "data_year": "2023-24",
       "city": "Camden",
       "state": "NJ",
       "location": "Camden, NJ",
@@ -837,12 +841,13 @@
         }
       },
       "slug": "rutgers-camden",
-      "us_news_ranking": null
+      "us_news_ranking": null,
+      "categories": []
     },
     {
       "id": 6,
-      "name": "RUTGERS UNIVERSITY \u2013 NEWARK",
-      "data_year": "2023-2024",
+      "name": "Rutgers University, Newark",
+      "data_year": "2023-24",
       "city": "Newark",
       "state": "NJ",
       "location": "Newark, NJ",
@@ -991,12 +996,13 @@
         }
       },
       "slug": "rutgers-newark",
-      "us_news_ranking": null
+      "us_news_ranking": null,
+      "categories": []
     },
     {
       "id": 7,
       "name": "Yeshiva University",
-      "data_year": "2023-2024",
+      "data_year": "2023-24",
       "city": "New York",
       "state": "NY",
       "location": "New York, NY",
@@ -1155,7 +1161,8 @@
         }
       },
       "slug": "yeshiva",
-      "us_news_ranking": null
+      "us_news_ranking": null,
+      "categories": []
     }
   ]
 }
