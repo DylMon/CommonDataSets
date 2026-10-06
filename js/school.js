@@ -1,4 +1,4 @@
-import { GPA_BUCKETS, renderGpaHistogram, normalizeGpaDistribution, classRankSegments, renderClassRankHistogram } from './charts.js?v=6';
+import { GPA_BUCKETS, renderGpaHistogram, normalizeGpaDistribution } from './charts.js?v=6';
 
 const SCHOOL_META = {
   'mit':          { color: '#a41931', banner: 'bannerMIT.png' },
@@ -253,6 +253,17 @@ function tableHtml(headers, rows) {
   return `<div class="tbl-wrap"><table class="tbl"><thead><tr>${th}</tr></thead><tbody>${tbody}</tbody></table></div>`;
 }
 
+// Every major section (Selectivity, Admissions, Cost, …) is its own boxed
+// card: title bar on top, body content in the outlined/padded box below it
+// (see .school-section / .school-section-body in school-template.css).
+function sectionWrap(title, bodyHtml) {
+  return `
+    <section class="school-section">
+      <h2 class="section-title">${title}</h2>
+      <div class="school-section-body">${bodyHtml}</div>
+    </section>`;
+}
+
 function scoreBarHtml(label, val25, val75, scaleMin, scaleMax) {
   if (val25 == null || val75 == null) {
     return `<div class="score-row">
@@ -404,11 +415,7 @@ function renderAdmissionsSummary(s) {
     ${kv('Application Fee',           s.application_fee != null ? '$' + s.application_fee : null)}
   </div>`;
 
-  return `
-    <section class="school-section">
-      <h2 class="section-title">Admissions</h2>
-      ${kvGrid}
-    </section>`;
+  return sectionWrap('Admissions', kvGrid);
 }
 
 // ── Render: Selectivity (funnel + admit rates by round and by gender) ───
@@ -439,13 +446,25 @@ function renderSelectivitySection(s) {
     poolsHtml = tableHtml(
       ['Round', 'Applied', 'Accepted', 'Rate'],
       [
-        ['Early Action / Decision', fmt(p.ea?.applied), fmt(p.ea?.admitted ?? p.ea?.accepted),
+        ['EA / ED', fmt(p.ea?.applied), fmt(p.ea?.admitted ?? p.ea?.accepted),
           p.ea?.rate != null ? (p.ea.rate * 100).toFixed(1) + '%' : '<span class="stat-na">n/a</span>'],
-        ['Regular Decision', fmt(p.rd?.applied), fmt(p.rd?.admitted ?? p.rd?.accepted),
+        ['RD', fmt(p.rd?.applied), fmt(p.rd?.admitted ?? p.rd?.accepted),
           p.rd?.rate != null ? (p.rd.rate * 100).toFixed(1) + '%' : '<span class="stat-na">n/a</span>'],
-        ['Waitlist Offered / Accepted', fmt(p.waitlist?.offered), fmt(p.waitlist?.accepted_spots), '<span class="stat-na">n/a</span>'],
       ]
     );
+  }
+
+  let waitlistHtml = '<p class="no-data">Data not yet available.</p>';
+  const wl = s.applicant_pools?.waitlist;
+  if (wl) {
+    waitlistHtml = `<div class="tbl-align-right">${tableHtml(
+      ['', 'Students'],
+      [
+        ['Offered a Spot',  fmt(wl.offered)],
+        ['Accepted a Spot', fmt(wl.accepted_spots)],
+        ['Admitted',        fmt(wl.enrolled)],
+      ]
+    )}</div>`;
   }
 
   let genderRoundsHtml = '<p class="no-data">Data not yet available.</p>';
@@ -460,21 +479,35 @@ function renderSelectivitySection(s) {
     );
   }
 
-  return `
-    <section class="school-section">
-      <h2 class="section-title">Selectivity</h2>
-      ${funnel}
-      <div class="cols-2">
-        <div>
-          <h3 class="subsection-title">By Round (EA vs RD)</h3>
-          ${poolsHtml}
-        </div>
-        <div>
-          <h3 class="subsection-title">By Gender</h3>
-          ${genderRoundsHtml}
-        </div>
+  let transferHtml = '<p class="no-data">Data not yet available.</p>';
+  if (s.transfer_stats) {
+    const t = s.transfer_stats;
+    transferHtml = tableHtml(
+      ['', 'Applied', 'Admitted', 'Enrolled'],
+      [
+        ['Male',   fmt(t.male?.applied),   fmt(t.male?.admitted),   fmt(t.male?.enrolled)],
+        ['Female', fmt(t.female?.applied), fmt(t.female?.admitted), fmt(t.female?.enrolled)],
+        ['Total',  fmt(t.total?.applied),  fmt(t.total?.admitted),  fmt(t.total?.enrolled)],
+      ]
+    );
+  }
+
+  return sectionWrap('Selectivity', `
+    ${funnel}
+    <div class="cols-2">
+      <div>
+        <h3 class="subsection-title">By Round (EA vs RD)</h3>
+        ${poolsHtml}
+        <h3 class="subsection-title">Waitlist</h3>
+        ${waitlistHtml}
       </div>
-    </section>`;
+      <div>
+        <h3 class="subsection-title">By Gender</h3>
+        ${genderRoundsHtml}
+        <h3 class="subsection-title">Transfer Admissions</h3>
+        ${transferHtml}
+      </div>
+    </div>`);
 }
 
 // ── Render: Academic Profile (test score ranges + GPA distribution) ─────
@@ -509,6 +542,7 @@ function renderAcademicProfileSection(s) {
         ${scoreBarHtml('English', s.act_english_25, s.act_english_75, 1, 36)}
       </div>
       ${submissionHtml}
+      ${classRankHtml(s)}
     </div>`;
 
   let gpaCol = `
@@ -539,29 +573,17 @@ function renderAcademicProfileSection(s) {
       </div>`;
   }
 
-  return `
-    <section class="school-section">
-      <h2 class="section-title">Academic Profile</h2>
-      <div class="cols-2">
-        ${scoresCol}
-        ${gpaCol}
-      </div>
-    </section>`;
+  return sectionWrap('Academic Profile', `
+    <div class="cols-2">
+      ${scoresCol}
+      ${gpaCol}
+    </div>`);
 }
 
-// ── Render: Class Rank (chart, when the school reports it) ──────────────
+// ── Class Rank — folded into Academic Profile, under Score Submission ───
 
-function renderClassRankSection(s) {
-  const cr = s.class_rank;
-  const segments = classRankSegments(cr);
-
-  if (!segments) {
-    return `
-      <section class="school-section">
-        <h2 class="section-title">Class Rank of Enrolled Students</h2>
-        <p class="no-data">Not reported in CDS — many high schools no longer calculate class rank.</p>
-      </section>`;
-  }
+function classRankHtml(s) {
+  const cr = s.class_rank ?? {};
 
   const rows = [
     ['Top 10%', cr.top10],
@@ -573,13 +595,13 @@ function renderClassRankSection(s) {
     .filter(([, v]) => v != null)
     .map(([label, v]) => [label, (v * 100).toFixed(0) + '%']);
 
+  const body = rows.length
+    ? tableHtml(['Percentile', 'Cumulative Share'], rows)
+    : '<p class="no-data">Not reported in CDS — many high schools no longer calculate class rank.</p>';
+
   return `
-    <section class="school-section">
-      <h2 class="section-title">Class Rank of Enrolled Students</h2>
-      <div class="gpa-chart-wrap"><canvas id="class-rank-chart"></canvas></div>
-      <p class="chart-caption">Reported as cumulative percentiles (e.g. "top 25%" includes the "top 10%" group), split here into the actual share of the class in each band.</p>
-      ${tableHtml(['Percentile', 'Cumulative Share'], rows)}
-    </section>`;
+    <h3 class="subsection-title">Class Rank of Enrolled Students</h3>
+    ${body}`;
 }
 
 // ── Render: Admission Factors (name + 4-dot importance meter, 2 columns) ─
@@ -629,11 +651,7 @@ function renderAdmissionFactorsSection(s) {
     }
   }
 
-  return `
-    <section class="school-section">
-      <h2 class="section-title">What Matters in the Decision</h2>
-      ${body}
-    </section>`;
+  return sectionWrap('What Matters in the Decision', body);
 }
 
 // ── Render: Cost section ────────────────────────────────────────────────
@@ -668,12 +686,9 @@ function renderCostSection(s) {
     ? `<p class="section-note" style="margin-top:14px">Application Fee: <strong>$${s.application_fee}</strong></p>`
     : '';
 
-  return `
-    <section class="school-section">
-      <h2 class="section-title">Cost</h2>
-      ${tableHtml(['', 'In-State', 'Out-of-State'], rows)}
-      ${appFee}
-    </section>`;
+  return sectionWrap('Cost', `
+    ${tableHtml(['', 'In-State', 'Out-of-State'], rows)}
+    ${appFee}`);
 }
 
 // ── Render: Student Body section ────────────────────────────────────────
@@ -717,42 +732,24 @@ function renderStudentBodySection(s) {
     </div>`;
   }
 
-  let transferHtml = '<p class="no-data">Data not yet available.</p>';
-  if (s.transfer_stats) {
-    const t = s.transfer_stats;
-    transferHtml = tableHtml(
-      ['', 'Applied', 'Admitted', 'Enrolled'],
-      [
-        ['Male',   fmt(t.male?.applied),   fmt(t.male?.admitted),   fmt(t.male?.enrolled)],
-        ['Female', fmt(t.female?.applied), fmt(t.female?.admitted), fmt(t.female?.enrolled)],
-        ['Total',  fmt(t.total?.applied),  fmt(t.total?.admitted),  fmt(t.total?.enrolled)],
-      ]
-    );
-  }
-
   const ugNote = s.total_undergrads != null
     ? `<p class="section-note">Total Undergraduates: <strong>${s.total_undergrads.toLocaleString()}</strong></p>`
     : '';
 
-  return `
-    <section class="school-section">
-      <h2 class="section-title">Student Body</h2>
-      ${ugNote}
-      <h3 class="subsection-title">Race / Ethnicity</h3>
-      ${raceHtml}
-      <div class="cols-2">
-        <div>
-          <h3 class="subsection-title">Gender</h3>
-          ${genderHtml}
-        </div>
-        <div>
-          <h3 class="subsection-title">Geographic Origin</h3>
-          ${geoHtml}
-        </div>
+  return sectionWrap('Student Body', `
+    ${ugNote}
+    <h3 class="subsection-title">Race / Ethnicity</h3>
+    ${raceHtml}
+    <div class="cols-2">
+      <div>
+        <h3 class="subsection-title">Gender</h3>
+        ${genderHtml}
       </div>
-      <h3 class="subsection-title">Transfer Admissions</h3>
-      ${transferHtml}
-    </section>`;
+      <div>
+        <h3 class="subsection-title">Geographic Origin</h3>
+        ${geoHtml}
+      </div>
+    </div>`);
 }
 
 // ── Init ────────────────────────────────────────────────────────────────
@@ -913,18 +910,16 @@ async function init() {
     }
 
     document.getElementById('school-sections').innerHTML =
+      renderSelectivitySection(s) +
       `<div class="school-section-row">
         ${renderAdmissionsSummary(s)}
         ${renderCostSection(s)}
       </div>` +
-      renderSelectivitySection(s) +
       renderAcademicProfileSection(s) +
-      renderClassRankSection(s) +
       renderAdmissionFactorsSection(s) +
       renderStudentBodySection(s);
 
     renderGpaHistogram(document.getElementById('gpa-chart'), s.gpa_distribution, meta.color);
-    renderClassRankHistogram(document.getElementById('class-rank-chart'), s.class_rank, meta.color);
   }
 
   renderForYear(currentYearKey);
