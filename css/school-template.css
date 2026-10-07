@@ -292,8 +292,8 @@
 
 /* The outlined box itself — padded interior below the title bar, inside
    .school-section's shared border (see above). White (not inherited) so
-   it reads as a raised card against body.page-school's cream background,
-   same as .hero-pill/.quick-facts-strip above. */
+   it reads as a raised card against the page's off-white background
+   (see body in base.css), same as .hero-pill/.quick-facts-strip above. */
 .school-section-body {
   padding: 20px;
   background: #fff;

@@ -28,26 +28,17 @@ html {
     font-size: clamp(16px, calc(4px + 0.625vw), 22px);
 }
 
+/* Off-white sitewide (not pure white) so explicit-white cards/sections —
+   .school-section-body, .hero-pill/.quick-facts-strip (school-template.css),
+   .cm-section, compare's cards, etc. — read as raised surfaces against the
+   page instead of blending into it. Applies to every page via this one
+   default rather than per-page overrides, so a page needs no special body
+   class to pick it up. */
 body {
     overflow-x: clip;
     width: 100%;
     margin: 0;
     font-family: 'Public Sans', sans-serif;
-    background: #FFFFFF;
-}
-
-/* Home page only — inverted from the sitewide default: the page behind
-   the filters/favorites/history/cards is cream, so those sections go
-   back to plain white to read as raised surfaces against it. */
-body.page-home {
-    background: #FFFCFA;
-}
-
-/* Same cream as the home page, same reasoning: .hero-pill/.quick-facts-strip
-   (school-template.css) are already explicit white, and .school-section-body
-   picks up white here too so every section card keeps reading as a raised
-   surface against the page instead of blending into it. */
-body.page-school {
     background: #FFFCFA;
 }
 
