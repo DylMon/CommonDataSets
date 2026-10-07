@@ -1994,7 +1994,12 @@ body.header-hidden .school-page-layout .right-sidebar {
     font-weight: 600;
     /* justify-self:center overrides the grid default (stretch), which
        would otherwise size this to the full (label-driven) column width
-       instead of snugly around just the value. */
+       instead of snugly around just the value. Deliberately NOT nowrap:
+       at the narrowest tiers (e.g. 4 equal columns at ~33px each) there
+       just isn't room for a value like "1520/1570" on one line no matter
+       the font size — letting it wrap (browsers treat "/" as a break
+       opportunity, so it splits cleanly after the slash) keeps it inside
+       its own pill instead of overlapping neighboring columns. */
     justify-self: center;
     font-size: 0.85em;
     background: #f0f0f0;
@@ -2021,27 +2026,44 @@ body.header-hidden .school-page-layout .right-sidebar {
     margin-top: 2px;
 }
 
-/* Footer — three columns: brand+email, main nav, legal/contact nav. Grid
-   (not flex space-between) so the center column sits at a true visual
-   center rather than just being equally spaced from its neighbors. */
+/* Footer — two groups pushed to opposite edges (brand/contact on the
+   left, nav links on the right) rather than evenly distributed columns,
+   so the wide empty middle reads as intentional breathing room instead
+   of being filled just because the grid had tracks to fill. */
 .site-footer {
     /* Matches the header's Umber bar. */
     background: #3a281e;
     color: #f6ebe2;
     padding: 28px 40px;
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: start;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
     gap: 20px 40px;
     margin-top: auto;
+}
+
+/* Left-hand group — brand alone and email/rights as their own two-line
+   column, side by side (one flex child of .site-footer, same as
+   .footer-links on the right, so space-between still has exactly two
+   groups to push apart rather than spreading three). */
+.footer-left {
+    display: flex;
+    gap: 40px;
 }
 
 .footer-brand-col {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
     gap: 8px;
-    justify-self: end;
+}
+
+/* The right-hand group — four two-item nav columns, wrapping as a unit
+   (not individually) once the footer itself wraps at a narrow width. */
+.footer-links {
+    display: flex;
+    gap: 20px 32px;
+    flex-wrap: wrap;
 }
 
 .footer-rights {
@@ -2087,6 +2109,20 @@ body.header-hidden .school-page-layout .right-sidebar {
 
 .footer-nav a:hover {
     opacity: 1;
+}
+
+/* Resources — same spot as the header's own placeholder (js/header.js):
+   a page that doesn't exist yet, so it's non-interactive rather than a
+   dead link. Same type treatment as a real footer link, just dimmer and
+   with no hover state to signal there's nothing to click yet. */
+.footer-nav-placeholder {
+    display: block;
+    font-size: 0.72em;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    opacity: 0.5;
+    cursor: default;
 }
 
 /* Contact address sits under the brand, left column. */
@@ -2453,14 +2489,23 @@ body.header-hidden .school-page-layout .right-sidebar {
 
 @media (max-width: 540px) {
     .site-footer {
-        grid-template-columns: 1fr;
-        justify-items: center;
+        flex-direction: column;
+        align-items: center;
         text-align: center;
         padding: 24px 16px;
     }
 
+    .footer-left {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .footer-links {
+        justify-content: center;
+    }
+
     .footer-brand-col {
-        justify-self: center;
         align-items: center;
     }
 

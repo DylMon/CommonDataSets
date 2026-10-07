@@ -239,7 +239,7 @@ function renderHistoryBox(allSchools) {
 // ── Helpers ────────────────────────────────────────────────────────────
 
 function fmt(val, type) {
-  if (val == null) return '<span class="stat-na">n/a</span>';
+  if (val == null) return '<span class="stat-na">N/A</span>';
   if (type === 'money') return '$' + Number(val).toLocaleString();
   if (type === 'pct')   return (val * 100).toFixed(1) + '%';
   return val;
@@ -375,7 +375,7 @@ function renderYearBar(yearCtx) {
 function renderQuickFacts(s) {
   const satVal   = s.sat_composite_25 != null && s.sat_composite_75 != null
     ? `${s.sat_composite_25}–${s.sat_composite_75}`
-    : '<span class="stat-na">n/a</span>';
+    : '<span class="stat-na">N/A</span>';
 
   const act25 = s.act_composite_25;
   const act75 = s.act_composite_75;
@@ -383,12 +383,12 @@ function renderQuickFacts(s) {
   const tuitionOOS = s.tuition_out_of_state ?? s.tuition;
 
   const chips = [
-    ['Acceptance Rate', s.acceptance_rate != null ? (s.acceptance_rate * 100).toFixed(1) + '%' : '<span class="stat-na">n/a</span>'],
+    ['Acceptance Rate', s.acceptance_rate != null ? (s.acceptance_rate * 100).toFixed(1) + '%' : '<span class="stat-na">N/A</span>'],
     ['SAT Range',       satVal],
-    ['ACT Range',       act25 != null && act75 != null ? `${act25}–${act75}` : '<span class="stat-na">n/a</span>'],
+    ['ACT Range',       act25 != null && act75 != null ? `${act25}–${act75}` : '<span class="stat-na">N/A</span>'],
     ['Avg GPA (W)',     s.avg_gpa_weighted != null ? parseFloat(s.avg_gpa_weighted).toFixed(2) : 'Not reported'],
-    ['Undergrads',      s.total_undergrads != null ? s.total_undergrads.toLocaleString() : '<span class="stat-na">n/a</span>'],
-    ['Tuition (OOS)',   tuitionOOS != null ? '$' + tuitionOOS.toLocaleString() : '<span class="stat-na">n/a</span>'],
+    ['Undergrads',      s.total_undergrads != null ? s.total_undergrads.toLocaleString() : '<span class="stat-na">N/A</span>'],
+    ['Tuition (OOS)',   tuitionOOS != null ? '$' + tuitionOOS.toLocaleString() : '<span class="stat-na">N/A</span>'],
   ];
   return chips.map((c, i) =>
     (i > 0 ? '<div class="stat-divider"></div>' : '') +
@@ -403,7 +403,7 @@ function renderQuickFacts(s) {
 
 function renderAdmissionsSummary(s) {
   function kv(label, val) {
-    return `<div class="kv-label">${label}</div><div class="kv-val">${val ?? '<span class="stat-na">n/a</span>'}</div>`;
+    return `<div class="kv-label">${label}</div><div class="kv-val">${val ?? '<span class="stat-na">N/A</span>'}</div>`;
   }
 
   const kvGrid = `<div class="kv-grid">
@@ -424,18 +424,18 @@ function renderSelectivitySection(s) {
   const ratePct = s.acceptance_rate != null ? (s.acceptance_rate * 100).toFixed(1) + '%' : null;
   const funnel = `<div class="funnel">
     <div class="funnel-step">
-      <div class="funnel-val">${s.applicants_total != null ? s.applicants_total.toLocaleString() : '<span class="stat-na">n/a</span>'}</div>
+      <div class="funnel-val">${s.applicants_total != null ? s.applicants_total.toLocaleString() : '<span class="stat-na">N/A</span>'}</div>
       <div class="funnel-label">Applied</div>
     </div>
     <div class="funnel-arrow">→</div>
     <div class="funnel-step">
-      <div class="funnel-val">${s.admitted_total != null ? s.admitted_total.toLocaleString() : '<span class="stat-na">n/a</span>'}</div>
+      <div class="funnel-val">${s.admitted_total != null ? s.admitted_total.toLocaleString() : '<span class="stat-na">N/A</span>'}</div>
       <div class="funnel-label">Admitted</div>
       ${ratePct ? `<div class="funnel-pct">${ratePct} rate</div>` : ''}
     </div>
     <div class="funnel-arrow">→</div>
     <div class="funnel-step">
-      <div class="funnel-val">${s.enrolled_total != null ? s.enrolled_total.toLocaleString() : '<span class="stat-na">n/a</span>'}</div>
+      <div class="funnel-val">${s.enrolled_total != null ? s.enrolled_total.toLocaleString() : '<span class="stat-na">N/A</span>'}</div>
       <div class="funnel-label">Enrolled</div>
     </div>
   </div>`;
@@ -447,9 +447,9 @@ function renderSelectivitySection(s) {
       ['Round', 'Applied', 'Accepted', 'Rate'],
       [
         ['EA / ED', fmt(p.ea?.applied), fmt(p.ea?.admitted ?? p.ea?.accepted),
-          p.ea?.rate != null ? (p.ea.rate * 100).toFixed(1) + '%' : '<span class="stat-na">n/a</span>'],
+          p.ea?.rate != null ? (p.ea.rate * 100).toFixed(1) + '%' : '<span class="stat-na">N/A</span>'],
         ['RD', fmt(p.rd?.applied), fmt(p.rd?.admitted ?? p.rd?.accepted),
-          p.rd?.rate != null ? (p.rd.rate * 100).toFixed(1) + '%' : '<span class="stat-na">n/a</span>'],
+          p.rd?.rate != null ? (p.rd.rate * 100).toFixed(1) + '%' : '<span class="stat-na">N/A</span>'],
       ]
     );
   }
@@ -521,8 +521,8 @@ function renderAcademicProfileSection(s) {
       ${tableHtml(
         ['Test', 'Submitted', '% of Enrolled'],
         [
-          ['SAT', b.sat_submitted_count != null ? b.sat_submitted_count.toLocaleString() : '<span class="stat-na">n/a</span>', b.sat_submitted_pct != null ? (b.sat_submitted_pct * 100).toFixed(0) + '%' : '<span class="stat-na">n/a</span>'],
-          ['ACT', b.act_submitted_count != null ? b.act_submitted_count.toLocaleString() : '<span class="stat-na">n/a</span>', b.act_submitted_pct != null ? (b.act_submitted_pct * 100).toFixed(0) + '%' : '<span class="stat-na">n/a</span>'],
+          ['SAT', b.sat_submitted_count != null ? b.sat_submitted_count.toLocaleString() : '<span class="stat-na">N/A</span>', b.sat_submitted_pct != null ? (b.sat_submitted_pct * 100).toFixed(0) + '%' : '<span class="stat-na">N/A</span>'],
+          ['ACT', b.act_submitted_count != null ? b.act_submitted_count.toLocaleString() : '<span class="stat-na">N/A</span>', b.act_submitted_pct != null ? (b.act_submitted_pct * 100).toFixed(0) + '%' : '<span class="stat-na">N/A</span>'],
         ]
       )}`;
   }
@@ -553,7 +553,7 @@ function renderAcademicProfileSection(s) {
   const g = normalizeGpaDistribution(s.gpa_distribution);
   if (g) {
     const rows = GPA_BUCKETS.slice().reverse().map(([key, label]) =>
-      [label, g[key] != null ? (g[key] * 100).toFixed(0) + '%' : '<span class="stat-na">n/a</span>']);
+      [label, g[key] != null ? (g[key] * 100).toFixed(0) + '%' : '<span class="stat-na">N/A</span>']);
     const gpaDistHtml = tableHtml(['GPA Range', '% of Enrolled'], rows);
 
     const chartPoints = GPA_BUCKETS
@@ -620,7 +620,7 @@ const FACTOR_LABELS = {
 };
 
 const FACTOR_SCORE = { very_important: 4, important: 3, considered: 2, not_considered: 1 };
-const FACTOR_SCORE_LABEL = ['n/a', 'Not considered', 'Considered', 'Important', 'Very important'];
+const FACTOR_SCORE_LABEL = ['N/A', 'Not considered', 'Considered', 'Important', 'Very important'];
 
 function factorMeter(score) {
   const dots = [1, 2, 3, 4]
@@ -677,8 +677,8 @@ function renderCostSection(s) {
     ['Other Expenses',                fmt(otherIn, 'money'),         fmt(otherOut, 'money')],
     [
       '<strong>Total Cost of Attendance</strong>',
-      inTotal  > 0 ? `<strong>$${inTotal.toLocaleString()}</strong>`  : '<span class="stat-na">n/a</span>',
-      outTotal > 0 ? `<strong>$${outTotal.toLocaleString()}</strong>` : '<span class="stat-na">n/a</span>',
+      inTotal  > 0 ? `<strong>$${inTotal.toLocaleString()}</strong>`  : '<span class="stat-na">N/A</span>',
+      outTotal > 0 ? `<strong>$${outTotal.toLocaleString()}</strong>` : '<span class="stat-na">N/A</span>',
     ],
   ];
 

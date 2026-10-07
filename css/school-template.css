@@ -307,6 +307,12 @@
   letter-spacing: 0.08em;
   color: #000;
   margin: 24px 0 8px;
+  padding-bottom: 6px;
+  /* Same weight/role as .tbl thead tr's brand-color rule (school-template.css)
+     one level up, in black rather than the brand color — these headings sit
+     above their table, not inside one, so they're not tied to a school's
+     own brand color the way a table header tinted by it is. */
+  border-bottom: 2px solid #000;
 }
 
 .section-note {
@@ -395,13 +401,23 @@
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   margin: 4px 0 0;
+  /* Query container for .tbl/.tbl th's cqw-based font-size below — a vw
+     unit only tracks the viewport, not how much a table has actually
+     been squeezed by its own layout context (two side rails plus a
+     .cols-2 split can leave a table far narrower than its viewport width
+     alone would suggest), so the same vw value could read as comfortably
+     sized in one nesting depth and cramped in another. cqw tracks this
+     element's own rendered width instead, so it shrinks exactly when the
+     table itself is actually tight, regardless of how it got that way. */
+  container-type: inline-size;
 }
 
 .tbl {
   border-collapse: collapse;
-  /* Fluid with viewport width so columns shrink gracefully instead of
-     forcing .tbl-wrap's horizontal scroll at narrow widths. */
-  font-size: clamp(0.72em, 0.58em + 0.7vw, 1.03em);
+  /* Fluid with this table's own rendered width (see .tbl-wrap's cqw note
+     above) so columns shrink gracefully instead of forcing .tbl-wrap's
+     horizontal scroll at narrow widths. */
+  font-size: clamp(0.6em, 0.48em + 1.3cqw, 1.03em);
   width: 100%;
   /* Column widths come purely from this (equal shares by default) rather
      than each column's own content — guarantees the table itself can
@@ -440,8 +456,18 @@
    usually best served by the data/UI face throughout, not the headline face. */
 /* Headers now wrap (not nowrap) with table-layout:fixed — a header like
    "Out-of-State" breaking to two lines beats forcing the whole table to
-   scroll horizontally just to keep one label on one line. */
-.tbl th { font-family: var(--font-display); font-weight: 600; letter-spacing: 0.03em; }
+   scroll horizontally just to keep one label on one line. That's fine for
+   a label with a natural break point, but a short unbroken word like
+   "Applied" or "Enrolled" has nowhere clean to wrap — it just strands a
+   lone hanging letter on its own line. Headers get their own smaller fluid
+   scale (below .tbl's own, not just inheriting it) so those words have
+   enough room to stay on one line before resorting to that wrap. */
+.tbl th {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  font-size: clamp(0.5em, 0.4em + 1.1cqw, 0.85em);
+}
 /* First cell of every row is a label (round name, expense name, "Male"…); the
    remaining columns are figures and stay in the data face. */
 .tbl td:first-child { font-family: var(--font-display); }

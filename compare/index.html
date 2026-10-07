@@ -119,19 +119,19 @@
         }
 
         function fmtPct(val) {
-            return val != null ? (val * 100).toFixed(1) + '%' : '<span class="stat-na">n/a</span>';
+            return val != null ? (val * 100).toFixed(1) + '%' : '<span class="stat-na">N/A</span>';
         }
 
         function fmtMoney(val) {
-            return val != null ? '$' + val.toLocaleString() : '<span class="stat-na">n/a</span>';
+            return val != null ? '$' + val.toLocaleString() : '<span class="stat-na">N/A</span>';
         }
 
         function fmtGpa(val) {
-            return val != null ? parseFloat(val).toFixed(2) : '<span class="stat-na">n/a</span>';
+            return val != null ? parseFloat(val).toFixed(2) : '<span class="stat-na">N/A</span>';
         }
 
         function fmtNum(val) {
-            return val != null ? val.toLocaleString() : '<span class="stat-na">n/a</span>';
+            return val != null ? val.toLocaleString() : '<span class="stat-na">N/A</span>';
         }
 
         const FACTOR_LABELS = {
@@ -285,9 +285,9 @@
         // is what's displayed — ACT shows a range but ranks on its midpoint.
         const PICKER_STATS = [
             { key: 'acceptance', label: 'Acceptance',   text: s => fmtPct(s.acceptance_rate),                       val: s => s.acceptance_rate },
-            { key: 'sat',        label: 'SAT Avg',       text: s => s.sat_avg != null ? s.sat_avg : '<span class="stat-na">n/a</span>',            val: s => s.sat_avg },
-            { key: 'act',        label: 'ACT Range',     text: s => (s.act_composite_25 != null && s.act_composite_75 != null) ? `${s.act_composite_25}–${s.act_composite_75}` : '<span class="stat-na">n/a</span>', val: s => actMid(s) },
-            { key: 'undergrads', label: 'Undergrads',    text: s => s.total_undergrads != null ? s.total_undergrads.toLocaleString() : '<span class="stat-na">n/a</span>', val: s => s.total_undergrads },
+            { key: 'sat',        label: 'SAT Avg',       text: s => s.sat_avg != null ? s.sat_avg : '<span class="stat-na">N/A</span>',            val: s => s.sat_avg },
+            { key: 'act',        label: 'ACT Range',     text: s => (s.act_composite_25 != null && s.act_composite_75 != null) ? `${s.act_composite_25}–${s.act_composite_75}` : '<span class="stat-na">N/A</span>', val: s => actMid(s) },
+            { key: 'undergrads', label: 'Undergrads',    text: s => s.total_undergrads != null ? s.total_undergrads.toLocaleString() : '<span class="stat-na">N/A</span>', val: s => s.total_undergrads },
             { key: 'gpa',        label: 'Avg GPA',       text: s => fmtGpa(s.avg_gpa_weighted),                     val: s => s.avg_gpa_weighted },
             { key: 'tuition',    label: 'Tuition (OOS)', text: s => fmtMoney(s.tuition_out_of_state ?? s.tuition),  val: s => s.tuition_out_of_state ?? s.tuition, lowerIsBetter: true },
         ];
@@ -530,11 +530,11 @@
         // read down a column to compare one school, across a row to compare a
         // factor. Rows where no selected school reports the factor are dropped.
         const CMP_FACTOR_SCORE = { very_important: 4, important: 3, considered: 2, not_considered: 1 };
-        const CMP_FACTOR_SCORE_LABEL = ['n/a', 'Not considered', 'Considered', 'Important', 'Very important'];
+        const CMP_FACTOR_SCORE_LABEL = ['N/A', 'Not considered', 'Considered', 'Important', 'Very important'];
 
         function cmpFactorMeter(score, color, schoolName, factorLabel) {
             if (!score) {
-                return `<span class="cmp-factor-na" title="${schoolName} — ${factorLabel}: not reported">n/a</span>`;
+                return `<span class="cmp-factor-na" title="${schoolName} — ${factorLabel}: not reported">N/A</span>`;
             }
             const dots = [1, 2, 3, 4].map(n => n <= score
                 ? `<span class="factor-dot on" style="border-color:${color};background:${color}"></span>`
@@ -921,22 +921,33 @@
         })();
     </script>
     <footer class="site-footer">
-        <div class="footer-brand-col">
-            <a class="footer-brand" href="/">CommonDataSets</a>
-            <a class="footer-email" href="mailto:info@commondatasets.com">info@commondatasets.com</a>
-            <span class="footer-rights">&copy; 2026 CommonDataSets. All rights reserved.</span>
+        <div class="footer-left">
+            <div class="footer-brand-col">
+                <a class="footer-brand" href="/">CommonDataSets</a>
+            </div>
+            <div class="footer-nav">
+                <a class="footer-email" href="mailto:info@commondatasets.com">info@commondatasets.com</a>
+                <span class="footer-rights">&copy; 2026 CommonDataSets. All rights reserved.</span>
+            </div>
         </div>
-        <nav class="footer-nav">
-            <a href="/">Data Sets</a>
-            <a href="/compare/">Compare</a>
-            <a href="/chanceme/">Chance Me</a>
-            <a href="/info/">About</a>
-        </nav>
-        <nav class="footer-nav">
-            <a href="/contact/">Contact Us</a>
-            <a href="/privacy/">Privacy Policy</a>
-            <a href="/terms/">Terms &amp; Conditions</a>
-        </nav>
+        <div class="footer-links">
+            <nav class="footer-nav">
+                <a href="/">Data Sets</a>
+                <a href="/compare/">Compare</a>
+            </nav>
+            <nav class="footer-nav">
+                <a href="/chanceme/">Chance Me</a>
+                <a href="/info/">About</a>
+            </nav>
+            <nav class="footer-nav">
+                <a href="/contact/">Contact Us</a>
+                <a href="/privacy/">Privacy Policy</a>
+            </nav>
+            <div class="footer-nav">
+                <a href="/terms/">Terms &amp; Conditions</a>
+                <span class="footer-nav-placeholder">Resources</span>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
