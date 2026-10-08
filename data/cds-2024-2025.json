@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-03",
+  "generated": "2026-10-07",
   "cds_year": "2024-25",
   "schools": [
     {
@@ -3335,7 +3335,7 @@
     {
       "id": 20,
       "name": "Miami University",
-      "data_year": "2025-26",
+      "data_year": "2024-25",
       "city": "Oxford",
       "state": "OH",
       "location": "Oxford, OH",
@@ -4891,7 +4891,7 @@
     {
       "id": 29,
       "name": "Thomas Jefferson University",
-      "data_year": "2025-26",
+      "data_year": "2024-25",
       "city": "Philadelphia",
       "state": "PA",
       "location": "Philadelphia, PA",
@@ -7128,7 +7128,7 @@
     {
       "id": 42,
       "name": "University of Nebraska, Lincoln",
-      "data_year": "2025-26",
+      "data_year": "2024-25",
       "city": "Lincoln",
       "state": "NE",
       "location": "Lincoln, NE",
@@ -9383,6 +9383,164 @@
       "categories": [
         "ivy-league"
       ]
+    },
+    {
+      "id": 55,
+      "name": "University of Idaho",
+      "data_year": "2024-25",
+      "city": "Moscow",
+      "state": "ID",
+      "location": "Moscow, ID",
+      "school_type": "Public",
+      "website": "www.uidaho.edu",
+      "applicants_total": 12222,
+      "applicants_men": 6000,
+      "applicants_women": 6222,
+      "admitted_total": 9666,
+      "admitted_men": 4539,
+      "admitted_women": 5127,
+      "enrolled_total": 1869,
+      "enrolled_men": 913,
+      "enrolled_women": 956,
+      "acceptance_rate": 0.7909,
+      "application_fee": 50.0,
+      "avg_gpa_weighted": 3.4,
+      "rd_deadline": null,
+      "waitlist_offered": null,
+      "waitlist_accepted": null,
+      "waitlist_admitted": null,
+      "ea_ed_type": "None",
+      "ea_ed_deadline": null,
+      "ea_ed_notification": null,
+      "ea_apps_received": null,
+      "ea_apps_admitted": null,
+      "sat_submitted_pct": 0.64,
+      "sat_submitted_count": 1088,
+      "act_submitted_pct": 0.06,
+      "act_submitted_count": 101,
+      "sat_composite_25": 950,
+      "sat_composite_75": 1200,
+      "sat_reading_25": 490,
+      "sat_reading_75": 610,
+      "sat_math_25": 460,
+      "sat_math_75": 590,
+      "act_composite_25": 20,
+      "act_composite_75": 29,
+      "act_math_25": 19,
+      "act_math_75": 29,
+      "act_english_25": 19,
+      "act_english_75": 28,
+      "total_undergrads": 9269,
+      "undergrads_male": 4542,
+      "undergrads_female": 4727,
+      "retention_rate": 0.75,
+      "tuition": null,
+      "tuition_in_state": null,
+      "tuition_out_of_state": null,
+      "required_fees": null,
+      "room_and_board": null,
+      "books_supplies": null,
+      "other_expenses": null,
+      "pct_out_of_state": 0.299,
+      "pct_on_campus_housing": 0.865,
+      "applicant_pools": null,
+      "gender_breakdown": {
+        "applied": {
+          "male": 6000,
+          "female": 6222
+        },
+        "accepted": {
+          "male": 4539,
+          "female": 5127
+        },
+        "enrolled": {
+          "male": 913,
+          "female": 956
+        }
+      },
+      "demographics_detail": {
+        "first_year": null,
+        "undergrad": {
+          "nonresident_aliens": 399,
+          "hispanic": 837,
+          "black": 100,
+          "white": 6864,
+          "american_indian": 111,
+          "asian": 149,
+          "pacific_islander": 16,
+          "two_or_more": 402,
+          "unknown": 391,
+          "total": 9269
+        }
+      },
+      "geographic_breakdown": {
+        "out_of_state_pct": 0.299,
+        "international_pct": null
+      },
+      "sat_act_breakdown": {
+        "sat_submitted_count": 1088,
+        "sat_submitted_pct": 0.64,
+        "act_submitted_count": 101,
+        "act_submitted_pct": 0.06
+      },
+      "class_rank": {
+        "top10": 0.156,
+        "top25": 0.367,
+        "top50": 0.671,
+        "bottom50": 0.329,
+        "bottom25": 0.09
+      },
+      "gpa_distribution": {
+        "gpa_40": 0.074,
+        "gpa_375_399": 0.257,
+        "gpa_350_374": 0.187,
+        "gpa_325_349": 0.166,
+        "gpa_300_324": 0.136,
+        "gpa_250_299": 0.146,
+        "gpa_200_249": 0.032,
+        "gpa_100_199": 0.002
+      },
+      "admission_factors": {
+        "rigor": "not_considered",
+        "class_rank": "not_considered",
+        "academic_gpa": "very_important",
+        "test_scores": "very_important",
+        "essay": "not_considered",
+        "recommendations": "not_considered",
+        "interview": "not_considered",
+        "extracurriculars": "not_considered",
+        "talent": "not_considered",
+        "character": "not_considered",
+        "first_gen": "not_considered",
+        "alumni_relation": "not_considered",
+        "geo_residence": "not_considered",
+        "state_residence": "not_considered",
+        "religious": "not_considered",
+        "racial_ethnic": null,
+        "volunteer": "not_considered",
+        "work_experience": "not_considered",
+        "applicant_interest": "not_considered"
+      },
+      "transfer_stats": {
+        "male": {
+          "applied": 687,
+          "admitted": 455,
+          "enrolled": 257
+        },
+        "female": {
+          "applied": 624,
+          "admitted": 414,
+          "enrolled": 233
+        },
+        "total": {
+          "applied": 1311,
+          "admitted": 869,
+          "enrolled": 490
+        }
+      },
+      "slug": "uidaho",
+      "us_news_ranking": null,
+      "categories": []
     }
   ]
 }
