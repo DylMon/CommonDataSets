@@ -16,14 +16,11 @@
     /* .nav-wrapper's min-height (the header is a single orange bar).
        Used to offset sticky sidebars/pickers below the fixed header. */
     --header-height: 84px;
-    /* .rail-tab's height — it sits directly above .rail-drawer, touching
-       but not overlapping it, so the two read as one fixed silhouette: a
-       wide rectangle with a narrower tab-shaped protrusion at its top
-       corner, like a folder tab — not two independently-positioned
-       pieces. Both are pinned to #school-hero (position: relative), not
-       the viewport, so they scroll away with the hero rather than
-       floating for the whole page. */
-    --rail-tab-h: 56px;
+    /* .rail-tab's diameter (it's a circle). Pinned to #school-hero
+       (position: relative), not the viewport, so it scrolls away with
+       the hero rather than floating for the whole page. .rail-drawer
+       shares its top so it pops out from directly underneath it. */
+    --rail-tab-h: 44px;
 }
 
 html {
@@ -1145,13 +1142,19 @@ body.page-resources .hero-banner {
    Reuses the same star glyph as .fav-btn so it reads as "your
    favorites live here" at a glance.
 
-   Sits directly above .rail-drawer, touching but not overlapping it —
-   together they read as one fixed shape: a wide rectangle with a
-   narrower tab-shaped protrusion at its top corner, not two
-   independently-positioned pieces that merely end up adjacent. It
-   keeps its own background/border/z-index (9999 > drawer's 9998) so
-   it's still a clearly-clickable, visible control even while the
-   drawer itself is collapsed to nothing and closed. */
+   Styled like the header's Contact Us button (.cta-outline .nav-corner-
+   links a:last-child in this file): an outlined pill that fills solid
+   orange on hover. Round here (border-radius: 50%) rather than a text
+   pill since there's no label, just the icon.
+
+   Shares .rail-drawer's top (see below) and sits above it in the
+   stacking order (z-index 9999 > drawer's 9998) — the drawer pops out
+   from underneath it rather than starting at the tab's bottom edge, so
+   the tab reads as a fixed control the drawer slides out from behind,
+   not a separate piece stacked on top of it. Keeps its own background/
+   border regardless, so it's still a clearly-clickable, visible
+   control even while the drawer itself is collapsed to nothing and
+   closed. */
 .rail-tab {
     position: absolute;
     top: 100%;
@@ -1159,21 +1162,22 @@ body.page-resources .hero-banner {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 44px;
+    width: var(--rail-tab-h);
     height: var(--rail-tab-h);
     background: #fff;
-    border: 2px solid #d0d0d0;
-    border-right: none;
-    color: #666;
+    border: 1.5px solid #ed6d0b;
+    border-radius: 50%;
+    color: #ed6d0b;
     cursor: pointer;
     box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.1);
     z-index: 9999;
-    transition: width 0.15s, border-color 0.15s;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .rail-tab:hover {
-    width: 48px;
+    background: #ed6d0b;
     border-color: #ed6d0b;
+    color: #fff;
 }
 
 .rail-tab svg {
@@ -1182,22 +1186,16 @@ body.page-resources .hero-banner {
     fill: currentColor;
 }
 
-/* Right edge shared with .rail-tab above, top directly below it —
-   animates via max-width (0 closed, full open) instead of sliding in
-   from off-screen via transform. The right edge never moves in either
-   state, so the drawer is always anchored at exactly the tab's
-   position: it reads as pulling straight out from directly beneath
-   the tab rather than arriving from elsewhere and happening to end up
-   adjacent to it. overflow-x hidden is what makes the collapse
-   actually invisible (not just clipped-looking) — combined with the
-   global border-box reset, max-width: 0 forces the rendered box,
-   border included, to true zero width.
-
-   No top border — .rail-tab's own bottom border sits flush against
-   this box's top edge, so a second border there would double up into
-   a visibly thicker seam instead of the single hairline that actually
-   reads as "one shape with a protrusion." All corners are square
-   (no border-radius) on both pieces.
+/* Same top/right as .rail-tab above (not below it) — the tab's higher
+   z-index means it visually sits in front of this box's top-right
+   corner, so the drawer reads as popping out from underneath the tab
+   as it animates open (max-width: 0 -> full) rather than sliding in
+   from off-screen via transform, or starting at the tab's bottom edge.
+   The right edge never moves in either state, so it's always anchored
+   at exactly the tab's position. overflow-x hidden is what makes the
+   collapse actually invisible (not just clipped-looking) — combined
+   with the global border-box reset, max-width: 0 forces the rendered
+   box, border included, to true zero width.
 
    .rail-drawer-inner (below) holds the fixed 230px width + padding
    that used to live directly on this element — needed as a separate
@@ -1213,7 +1211,7 @@ body.page-resources .hero-banner {
    overflow-y scrolling whatever doesn't fit. */
 .rail-drawer {
     position: absolute;
-    top: calc(100% + var(--rail-tab-h));
+    top: 100%;
     right: 0;
     max-width: 0;
     max-height: calc(100vh - 220px);
@@ -1221,7 +1219,6 @@ body.page-resources .hero-banner {
     overflow-y: auto;
     background: #FFFCFA;
     border: 2px solid #d0d0d0;
-    border-top: none;
     box-shadow: -2px 2px 16px rgba(0, 0, 0, 0.15);
     z-index: 9998;
     transition: max-width 0.2s ease;
