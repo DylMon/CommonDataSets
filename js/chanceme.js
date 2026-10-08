@@ -34,24 +34,32 @@ export const SCALE_5_LABELS = [
     'Weak', 'Below Average', 'Average', 'Strong', 'Exceptional',
 ];
 
-// Worked examples at the 3/5/8 marks, calibrated against the kind of profiles
-// actually admitted to the selective schools we track (not a generic curve).
+// Worked examples at the 1/3/5/8/10 marks, calibrated against the kind of
+// profiles actually admitted to the selective schools we track (not a
+// generic curve). Display only — shown in a collapsible "See examples"
+// list under each 1-10 scale; the formula never reads them.
 export const ACTIVITY_SCALE_EXAMPLES = [
+    { score: 1, desc: 'Little or nothing outside the classroom — no clubs, teams, jobs, or regular volunteering.' },
     { score: 3, desc: 'General member of 1–2 clubs or a rec team; casual volunteering (~1 hr/wk); no leadership, minimal time commitment.' },
     { score: 5, desc: 'Club officer, JV/varsity athlete, or part-time job (~5–8 hrs/wk) sustained 2+ years — solid but not stand-out.' },
     { score: 8, desc: 'President/founder/captain of a club, team, or venture; sustained research or a leadership volunteer role; 15+ hrs/wk over multiple years with a measurable result — grew a club, published research, ran a nonprofit.' },
+    { score: 10, desc: 'Nationally recognized impact — founded something with real reach (a nonprofit or venture serving thousands), a recruited Division I athlete, or nationally recognized research, backed by years of deep commitment.' },
 ];
 
 export const AWARD_SCALE_EXAMPLES = [
+    { score: 1, desc: 'No awards or honors yet.' },
     { score: 3, desc: 'School-level honor — Honor Roll, a departmental award, JV MVP, a school-wide competition win.' },
     { score: 5, desc: 'Regional or state-level recognition — All-State music/athletics, a state science-fair placement, a district honor.' },
     { score: 8, desc: 'National or international recognition — National Merit Semifinalist/Finalist, an Olympiad qualifier, a national championship, published or patented work.' },
+    { score: 10, desc: 'Top national or international winner — an International Olympiad medalist, a Regeneron STS or ISEF top-award winner, a national champion, or a U.S. Presidential Scholar.' },
 ];
 
 export const ESSAY_SCALE_EXAMPLES = [
+    { score: 1, desc: 'Rushed or off-topic — reads like a résumé or list, with errors and no real story or reflection.' },
     { score: 3, desc: 'Generic and surface-level — tells rather than shows, with little personal voice or reflection.' },
     { score: 5, desc: 'Clear and well-organized with some specific detail and genuine voice, but limited depth of insight.' },
     { score: 8, desc: 'Distinctive and vivid — concrete specific details, a strong personal voice, and real self-reflection that shows who you are.' },
+    { score: 10, desc: 'Unforgettable — a fresh angle on a meaningful story, beautifully written, with insight an admissions reader would remember long after.' },
 ];
 
 // Class-rank slider bands: 20 five-point bands, top-of-class first. `topPct`
@@ -558,7 +566,7 @@ if (typeof document !== 'undefined') {
         const position = Number(slider.value) || 0;
         document.getElementById('cm-class-rank-band-value').textContent = classRankBandLabel(position);
         const pct = (position / (Number(slider.max) || 20)) * 100;
-        slider.style.background = `linear-gradient(to right, #ed6d0b 0%, #ed6d0b ${pct}%, #ddd ${pct}%, #ddd 100%)`;
+        slider.style.background = `linear-gradient(to right, var(--cm-accent) 0%, var(--cm-accent) ${pct}%, #ddd ${pct}%, #ddd 100%)`;
     }
 
     // ── Scale pickers (activities / awards / essay / LOR) ──
@@ -588,11 +596,19 @@ if (typeof document !== 'undefined') {
     function renderScaleExamples(containerId, examples) {
         const el = document.getElementById(containerId);
         if (!el) return;
-        el.innerHTML = examples.map(ex => `
-            <div class="cm-scale-example">
-                <span class="cm-scale-example-badge">${ex.score}</span>
-                <span class="cm-scale-example-desc">${ex.desc}</span>
-            </div>`).join('');
+        // Collapsed by default — the scale itself stays front and center, and
+        // anyone unsure what a number means can open the examples.
+        el.innerHTML = `
+            <details class="cm-examples-toggle">
+                <summary>See examples</summary>
+                <div class="cm-scale-examples-list">
+                    ${examples.map(ex => `
+                    <div class="cm-scale-example">
+                        <span class="cm-scale-example-badge">${ex.score}</span>
+                        <span class="cm-scale-example-desc">${ex.desc}</span>
+                    </div>`).join('')}
+                </div>
+            </details>`;
     }
 
     // ── Target schools ──
