@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-03",
+  "generated": "2026-10-05",
   "cds_year": "2025-26",
   "schools": [
     {
@@ -1673,9 +1673,9 @@
         "act_submitted_pct": 0.1728
       },
       "class_rank": {
-        "top10": 89.05,
-        "top25": 100,
-        "top50": 100,
+        "top10": 0.8905,
+        "top25": 1,
+        "top50": 1,
         "bottom50": 0,
         "bottom25": 0
       },
@@ -2098,7 +2098,7 @@
       "enrolled_women": 2396,
       "acceptance_rate": 0.806,
       "application_fee": 50,
-      "avg_gpa_weighted": 91.6,
+      "avg_gpa_weighted": null,
       "rd_deadline": null,
       "waitlist_offered": 2355,
       "waitlist_accepted": 857,
@@ -14641,9 +14641,9 @@
       "ea_ed_notification": "12/31",
       "ea_apps_received": 528,
       "ea_apps_admitted": 424,
-      "sat_submitted_pct": 9.4,
+      "sat_submitted_pct": 0.094,
       "sat_submitted_count": 161,
-      "act_submitted_pct": 8.6,
+      "act_submitted_pct": 0.086,
       "act_submitted_count": 148,
       "sat_composite_25": 1360,
       "sat_composite_75": 1470,
@@ -14660,7 +14660,7 @@
       "total_undergrads": 7545,
       "undergrads_male": 3730,
       "undergrads_female": 3815,
-      "retention_rate": 91,
+      "retention_rate": 0.91,
       "tuition": 63736,
       "tuition_in_state": null,
       "tuition_out_of_state": null,
@@ -14668,8 +14668,8 @@
       "room_and_board": 20950,
       "books_supplies": 800,
       "other_expenses": 1600,
-      "pct_out_of_state": 56.91,
-      "pct_on_campus_housing": 96.33,
+      "pct_out_of_state": 0.5691,
+      "pct_on_campus_housing": 0.9633,
       "applicant_pools": {
         "ea": null,
         "rd": null,
@@ -14720,30 +14720,30 @@
         }
       },
       "geographic_breakdown": {
-        "out_of_state_pct": 56.91,
+        "out_of_state_pct": 0.5691,
         "international_pct": null
       },
       "sat_act_breakdown": {
         "sat_submitted_count": 161,
-        "sat_submitted_pct": 9.4,
+        "sat_submitted_pct": 0.094,
         "act_submitted_count": 148,
-        "act_submitted_pct": 8.6
+        "act_submitted_pct": 0.086
       },
       "class_rank": {
-        "top10": 48.7,
-        "top25": 78.8,
-        "top50": 93.5,
-        "bottom50": 6.5,
-        "bottom25": 0.7
+        "top10": 0.487,
+        "top25": 0.788,
+        "top50": 0.935,
+        "bottom50": 0.065,
+        "bottom25": 0.007
       },
       "gpa_distribution": {
-        "gpa_40": 24.3,
-        "gpa_375_399": 30.2,
-        "gpa_350_374": 22.2,
-        "gpa_325_349": 12.0,
-        "gpa_300_324": 7.1,
-        "gpa_250_299": 4.0,
-        "gpa_200_249": 0.2,
+        "gpa_40": 0.243,
+        "gpa_375_399": 0.302,
+        "gpa_350_374": 0.222,
+        "gpa_325_349": 0.12,
+        "gpa_300_324": 0.071,
+        "gpa_250_299": 0.04,
+        "gpa_200_249": 0.002,
         "gpa_100_199": null
       },
       "admission_factors": {
@@ -15540,7 +15540,7 @@
       "total_undergrads": 1631,
       "undergrads_male": 766,
       "undergrads_female": 865,
-      "retention_rate": 98.1,
+      "retention_rate": 0.981,
       "tuition": 68766,
       "tuition_in_state": null,
       "tuition_out_of_state": null,
@@ -15548,8 +15548,8 @@
       "room_and_board": 21466,
       "books_supplies": 785,
       "other_expenses": 1695,
-      "pct_out_of_state": 85.91,
-      "pct_on_campus_housing": 100.0,
+      "pct_out_of_state": 0.8591,
+      "pct_on_campus_housing": 1.0,
       "applicant_pools": {
         "ea": null,
         "rd": {
@@ -15604,19 +15604,19 @@
         }
       },
       "geographic_breakdown": {
-        "out_of_state_pct": 85.91,
+        "out_of_state_pct": 0.8591,
         "international_pct": null
       },
       "sat_act_breakdown": {
         "sat_submitted_count": 171,
-        "sat_submitted_pct": 40.14,
+        "sat_submitted_pct": 0.4014,
         "act_submitted_count": 63,
-        "act_submitted_pct": 14.79
+        "act_submitted_pct": 0.1479
       },
       "class_rank": {
-        "top10": 86.72,
-        "top25": 97.66,
-        "top50": 100.0,
+        "top10": 0.8672,
+        "top25": 0.9766,
+        "top50": 1.0,
         "bottom50": 0.0,
         "bottom25": 0.0
       },
@@ -22464,20 +22464,20 @@
         "act_submitted_pct": 0.145
       },
       "class_rank": {
-        "top10": 63,
-        "top25": 89,
-        "top50": 99,
-        "bottom50": 1,
+        "top10": 0.63,
+        "top25": 0.89,
+        "top50": 0.99,
+        "bottom50": 0.01,
         "bottom25": null
       },
       "gpa_distribution": {
-        "gpa_40": 23,
-        "gpa_375_399": 47,
-        "gpa_350_374": 25,
-        "gpa_325_349": 2.5,
-        "gpa_300_324": 1,
-        "gpa_250_299": 1,
-        "gpa_200_249": 0.5,
+        "gpa_40": 0.23,
+        "gpa_375_399": 0.47,
+        "gpa_350_374": 0.25,
+        "gpa_325_349": 0.025,
+        "gpa_300_324": 0.01,
+        "gpa_250_299": 0.01,
+        "gpa_200_249": 0.005,
         "gpa_100_199": null
       },
       "admission_factors": {
@@ -25712,14 +25712,14 @@
       },
       "class_rank": null,
       "gpa_distribution": {
-        "gpa_40": 14.67,
-        "gpa_375_399": 19.51,
-        "gpa_350_374": 15.96,
-        "gpa_325_349": 14.02,
-        "gpa_300_324": 14.12,
-        "gpa_250_299": 20.26,
-        "gpa_200_249": 1.43,
-        "gpa_100_199": 0.03
+        "gpa_40": 0.1467,
+        "gpa_375_399": 0.1951,
+        "gpa_350_374": 0.1596,
+        "gpa_325_349": 0.1402,
+        "gpa_300_324": 0.1412,
+        "gpa_250_299": 0.2026,
+        "gpa_200_249": 0.0143,
+        "gpa_100_199": 0.0003
       },
       "admission_factors": {
         "rigor": "considered",

@@ -143,6 +143,7 @@
   font-weight: 500;
   line-height: 1.4;
   max-width: 420px;
+  text-align: center;
 }
 
 /* ── Floating hero pill ── name/location/site + a large logo, overlapping
@@ -221,7 +222,17 @@
 }
 
 /* ── Section ── */
-.school-section { margin-top: 40px; }
+/* Each major section is now its own card: the title keeps its solid
+   brand-color bar flush across the top, and .school-section-body (see
+   below) is the actual outlined/padded box underneath it — border lives
+   here, on the outer element, so it wraps both as one continuous unit
+   rather than needing to match two separate boxes up edge to edge. */
+.school-section {
+  margin-top: 40px;
+  border: 1px solid var(--brand);
+  border-radius: 8px;
+  overflow: hidden;
+}
 
 /* Two sections placed side by side (e.g. Admissions summary + Cost) to use
    horizontal space instead of stacking everything in one narrow column.
@@ -273,20 +284,35 @@
   font-weight: 400;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  margin: 0 0 20px;
-  padding-bottom: 10px;
-  border-bottom: 3px solid var(--brand);
-  color: #000;
+  margin: 0;
+  padding: 10px 18px;
+  background: var(--brand);
+  color: #fff;
+}
+
+/* The outlined box itself — padded interior below the title bar, inside
+   .school-section's shared border (see above). White (not inherited) so
+   it reads as a raised card against the page's off-white background
+   (see body in base.css), same as .hero-pill/.quick-facts-strip above. */
+.school-section-body {
+  padding: 20px;
+  background: #fff;
 }
 
 .subsection-title {
   font-family: var(--font-display);
-  font-size: 0.9em;
-  font-weight: 400;
+  font-size: 1.1em;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: #000;
   margin: 24px 0 8px;
+  padding-bottom: 6px;
+  /* Same weight/role as .tbl thead tr's brand-color rule (school-template.css)
+     one level up, in black rather than the brand color — these headings sit
+     above their table, not inside one, so they're not tied to a school's
+     own brand color the way a table header tinted by it is. */
+  border-bottom: 2px solid #000;
 }
 
 .section-note {
@@ -375,13 +401,23 @@
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   margin: 4px 0 0;
+  /* Query container for .tbl/.tbl th's cqw-based font-size below — a vw
+     unit only tracks the viewport, not how much a table has actually
+     been squeezed by its own layout context (two side rails plus a
+     .cols-2 split can leave a table far narrower than its viewport width
+     alone would suggest), so the same vw value could read as comfortably
+     sized in one nesting depth and cramped in another. cqw tracks this
+     element's own rendered width instead, so it shrinks exactly when the
+     table itself is actually tight, regardless of how it got that way. */
+  container-type: inline-size;
 }
 
 .tbl {
   border-collapse: collapse;
-  /* Fluid with viewport width so columns shrink gracefully instead of
-     forcing .tbl-wrap's horizontal scroll at narrow widths. */
-  font-size: clamp(0.72em, 0.58em + 0.7vw, 1.03em);
+  /* Fluid with this table's own rendered width (see .tbl-wrap's cqw note
+     above) so columns shrink gracefully instead of forcing .tbl-wrap's
+     horizontal scroll at narrow widths. */
+  font-size: clamp(0.6em, 0.48em + 1.3cqw, 1.03em);
   width: 100%;
   /* Column widths come purely from this (equal shares by default) rather
      than each column's own content — guarantees the table itself can
@@ -393,7 +429,11 @@
   overflow: hidden;
 }
 
-.tbl thead tr { background: var(--brand); color: #fff; text-align: left; }
+/* The thick filled brand-color bar is reserved for major section titles
+   (.section-title's solid background) — these inner table headers sit
+   one level down, so they get a plain bottom rule instead of repeating
+   that same heavy treatment at a smaller scale. */
+.tbl thead tr { background: none; color: var(--brand); text-align: left; border-bottom: 2px solid var(--brand); }
 /* overflow-wrap (not word-break) so a cell only splits mid-word when a
    single "word" truly can't fit — short labels like "Applied"/"Rate" wrap
    at spaces or not at all instead of breaking arbitrarily. Padding is
@@ -416,14 +456,33 @@
    usually best served by the data/UI face throughout, not the headline face. */
 /* Headers now wrap (not nowrap) with table-layout:fixed — a header like
    "Out-of-State" breaking to two lines beats forcing the whole table to
-   scroll horizontally just to keep one label on one line. */
-.tbl th { font-family: var(--font-display); font-weight: 400; letter-spacing: 0.03em; }
+   scroll horizontally just to keep one label on one line. That's fine for
+   a label with a natural break point, but a short unbroken word like
+   "Applied" or "Enrolled" has nowhere clean to wrap — it just strands a
+   lone hanging letter on its own line. Headers get their own smaller fluid
+   scale (below .tbl's own, not just inheriting it) so those words have
+   enough room to stay on one line before resorting to that wrap. */
+.tbl th {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  font-size: clamp(0.5em, 0.4em + 1.1cqw, 0.85em);
+}
 /* First cell of every row is a label (round name, expense name, "Male"…); the
    remaining columns are figures and stay in the data face. */
 .tbl td:first-child { font-family: var(--font-display); }
 .tbl tbody tr { border-bottom: 1px solid #f0f0f0; }
 .tbl tbody tr:nth-of-type(even) { background: #f9f9f9; }
 .tbl tbody tr:last-of-type { border-bottom: 2px solid var(--brand); }
+
+/* Opt-in utility (not a default .tbl behavior — most tables here are 3-4
+   columns of figures that read fine left-aligned) for a table like
+   Waitlist's single data column, where right-aligning it under its own
+   "Students" header reads as a cleaner number column. */
+.tbl-align-right .tbl th:last-child,
+.tbl-align-right .tbl td:last-child {
+  text-align: right;
+}
 
 /* ── Score range bars ── */
 .score-rows { display: flex; flex-direction: column; gap: 14px; margin: 4px 0; min-width: 0; }

@@ -48,7 +48,7 @@
   "total_undergrads": 1631,
   "undergrads_male": 766,
   "undergrads_female": 865,
-  "retention_rate": 98.1,
+  "retention_rate": 0.981,
   "tuition": 68766,
   "tuition_in_state": null,
   "tuition_out_of_state": null,
@@ -56,8 +56,8 @@
   "room_and_board": 21466,
   "books_supplies": 785,
   "other_expenses": 1695,
-  "pct_out_of_state": 85.91,
-  "pct_on_campus_housing": 100.0,
+  "pct_out_of_state": 0.8591,
+  "pct_on_campus_housing": 1.0,
   "applicant_pools": {
     "ea": null,
     "rd": {
@@ -112,19 +112,19 @@
     }
   },
   "geographic_breakdown": {
-    "out_of_state_pct": 85.91,
+    "out_of_state_pct": 0.8591,
     "international_pct": null
   },
   "sat_act_breakdown": {
     "sat_submitted_count": 171,
-    "sat_submitted_pct": 40.14,
+    "sat_submitted_pct": 0.4014,
     "act_submitted_count": 63,
-    "act_submitted_pct": 14.79
+    "act_submitted_pct": 0.1479
   },
   "class_rank": {
-    "top10": 86.72,
-    "top25": 97.66,
-    "top50": 100.0,
+    "top10": 0.8672,
+    "top25": 0.9766,
+    "top50": 1.0,
     "bottom50": 0.0,
     "bottom25": 0.0
   },

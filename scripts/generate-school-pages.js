@@ -65,7 +65,7 @@ function pageHtml(slug, name, description) {
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js" defer></script>
   <script type="module" src="/js/school.js?v=6"></script>
 </head>
-<body>
+<body class="page-school">
   <div class="container">
     <div id="school-hero"></div>
     <div class="stats-strip" id="stats-strip"></div>

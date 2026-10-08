@@ -28,18 +28,17 @@ html {
     font-size: clamp(16px, calc(4px + 0.625vw), 22px);
 }
 
+/* Off-white sitewide (not pure white) so explicit-white cards/sections —
+   .school-section-body, .hero-pill/.quick-facts-strip (school-template.css),
+   .cm-section, compare's cards, etc. — read as raised surfaces against the
+   page instead of blending into it. Applies to every page via this one
+   default rather than per-page overrides, so a page needs no special body
+   class to pick it up. */
 body {
     overflow-x: clip;
     width: 100%;
     margin: 0;
     font-family: 'Public Sans', sans-serif;
-    background: #FFFFFF;
-}
-
-/* Home page only — inverted from the sitewide default: the page behind
-   the filters/favorites/history/cards is cream, so those sections go
-   back to plain white to read as raised surfaces against it. */
-body.page-home {
     background: #FFFCFA;
 }
 
@@ -1071,13 +1070,13 @@ body.page-info .hero-banner {
     font-weight: 300;
 }
 
-/* Sidebar column — sticks under the header. When it's taller than the room
-   available below the header, JS (see index.html) shifts it upward as the
-   page scrolls (anywhere) so the bottom controls become reachable without
-   scrolling all the way to the end of the page, and lets hovering it
-   directly move that shift independently via the wheel instead. No
-   max-height/overflow-y here — those would cap the box to exactly fit the
-   available room, leaving nothing for the shift to reveal. */
+/* Sidebar column — sticks under the header while scrolling down. Once
+   taller than the room below the header, CSS sticky alone only ever
+   shows its top portion, permanently — see index.html's scroll handler,
+   which shifts it upward (transform) the rest of the way as the page
+   scrolls further, so the bottom becomes reachable, then sinks it back
+   down again as the page scrolls back up, purely as a function of
+   scroll position (so reversing is automatic, not a separate case). */
 .sidebar {
     width: 230px;
     flex-shrink: 0;
@@ -1086,24 +1085,12 @@ body.page-info .hero-banner {
     gap: 12px;
     position: sticky;
     top: calc(var(--header-height) + 20px);
-    /* Explicit and well below .site-header's 500: the reveal shift (see
-       index.html) uses transform, which promotes this to its own stacking
-       context — without a real number here that context's implicit
-       z-index:auto was somehow winning against the header once shifted far
-       enough to overlap it, letting this paint over the header instead of
-       scrolling behind it like normal page content does. */
+    /* Explicit and well below .site-header's 500: the reveal shift uses
+       transform, which promotes this to its own stacking context — once
+       shifted enough to pass behind the header's own Y-range, it needs
+       to actually lose to the header there instead of painting over it. */
     z-index: 1;
     align-self: flex-start;
-}
-
-/* Eased transition applied only while the wheel is driving the reveal
-   shift directly (see index.html) — a plain mouse wheel sends chunky
-   ~100px deltas per notch, which snapped instantly feels like jumping
-   rather than scrolling. The page-scroll-driven updates intentionally
-   skip this (removed right before they apply) so the box still tracks
-   scroll 1:1 instead of visibly lagging behind it. */
-.sidebar.sidebar--smooth-wheel {
-    transition: transform 0.2s ease-out;
 }
 
 /* Sort + filter container */
@@ -1350,11 +1337,11 @@ body.header-hidden .school-page-layout .right-sidebar {
 }
 
 .filter-group-label {
-    font-size: 14px; /* fixed, not em — see .year-filter-btn's comment */
+    font-size: 13px; /* fixed, not em — see .year-filter-btn's comment */
     font-weight: 300;
     color: #ed6d0b;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.03em;
     white-space: nowrap;
     margin-right: 2px;
 }
@@ -1864,7 +1851,7 @@ body.header-hidden .school-page-layout .right-sidebar {
     min-width: 0;
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 8px;
 }
 
 /* First line: the name + its favorite star, so the star reads as part of
@@ -1896,27 +1883,33 @@ body.header-hidden .school-page-layout .right-sidebar {
     color: #ed6d0b;
 }
 
-/* Second line of .school-name-main — year pill + location on the left,
-   the acceptance/SAT/ACT stats pushed to the right edge via space-between,
-   instead of those stats sharing the name's own line and eating into its
-   available width. Wraps (stats dropping to their own line below) once
-   the card is too narrow to fit both groups on one line. */
-.school-meta-row {
-    display: flex;
+/* Second+third "line" of .school-name-main — a single grid rather than
+   two stacked flex rows: year pill + location sit in column 1 (spanning
+   both grid rows), the 4 stat labels share row 1 with them, and the 4
+   values hang in row 2 directly underneath their own label — not tied to
+   location/year's width the way the old space-between row was, and the
+   values stay aligned under their labels regardless of how wide any one
+   of them is. */
+.school-stats-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) repeat(4, auto);
+    grid-template-rows: auto auto;
+    column-gap: 20px;
+    row-gap: 2px;
     align-items: center;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 6px 8px;
     width: 100%;
     min-width: 0;
 }
 
 .school-meta-left {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    align-self: start;
     display: flex;
     align-items: center;
-    gap: 8px;
+    flex-wrap: wrap;
+    gap: 6px 8px;
     min-width: 0;
-    flex: 1;
 }
 
 /* Which CDS reporting year this card's stats actually come from. */
@@ -1953,34 +1946,56 @@ body.header-hidden .school-page-layout .right-sidebar {
     color: #999;
 }
 
-/* Invisible to layout by default — .school-stats and .details-toggle
-   behave as plain direct children of .school-row. Below 540px this
-   becomes a real flex box instead (see the mobile breakpoint), which is
-   what reliably forces a line break there: .school-name's flex:1 has a
-   flex-basis of 0, so the wrap algorithm's line-fitting check (done
-   against hypothetical pre-growth sizes) can't be trusted to push a
-   plain sibling of .school-name onto its own line — an explicit
-   full-width box sidesteps that instead of fighting it. */
+/* Invisible to layout by default — .details-toggle behaves as a plain
+   direct child of .school-row. Below 540px this becomes a real flex box
+   instead (see the mobile breakpoint), which is what reliably forces a
+   line break there: .school-name's flex:1 has a flex-basis of 0, so the
+   wrap algorithm's line-fitting check (done against hypothetical
+   pre-growth sizes) can't be trusted to push a plain sibling of
+   .school-name onto its own line — an explicit full-width box sidesteps
+   that instead of fighting it. */
 .school-row-end {
     display: contents;
 }
 
-.school-stats {
-    display: flex;
-    gap: 24px;
-    flex-shrink: 0;
-}
+/* The 4 stats (Acceptance, SAT Avg, ACT Range, GPA), always in that
+   order — explicit grid placement via the .stat-col-N classes on each
+   label/value (set in index.html) rather than :nth-of-type, which counts
+   by element tag, not class: since .school-meta-left is itself a div and
+   comes first, :nth-of-type(1) would've matched it instead of the first
+   .stat-label, throwing every label/value pair one column off. */
+.school-stats-grid > .stat-col-1 { grid-column: 2; }
+.school-stats-grid > .stat-col-2 { grid-column: 3; }
+.school-stats-grid > .stat-col-3 { grid-column: 4; }
+.school-stats-grid > .stat-col-4 { grid-column: 5; }
 
-/* Label-above-value here (the compare picker cards keep the shared
-   .stat-label's margin-top, since theirs still reads value-then-label). */
-.school-stats .stat-label {
+.school-stats-grid > .stat-label { grid-row: 1; }
+.school-stats-grid > .stat-val { grid-row: 2; }
+
+.school-stats-grid .stat-label {
+    text-align: center;
+    font-weight: 500;
     margin-top: 0;
-    margin-bottom: 2px;
-    font-weight: 600;
+    color: #666;
+    font-size: 0.7em;
 }
 
-.school-stats .stat-val {
-    font-weight: 300;
+.school-stats-grid .stat-val {
+    text-align: center;
+    font-weight: 600;
+    /* justify-self:center overrides the grid default (stretch), which
+       would otherwise size this to the full (label-driven) column width
+       instead of snugly around just the value. Deliberately NOT nowrap:
+       at the narrowest tiers (e.g. 4 equal columns at ~33px each) there
+       just isn't room for a value like "1520/1570" on one line no matter
+       the font size — letting it wrap (browsers treat "/" as a break
+       opportunity, so it splits cleanly after the slash) keeps it inside
+       its own pill instead of overlapping neighboring columns. */
+    justify-self: center;
+    font-size: 0.85em;
+    background: #f0f0f0;
+    border-radius: 999px;
+    padding: 3px 9px;
 }
 
 .stat-item {
@@ -2002,27 +2017,44 @@ body.header-hidden .school-page-layout .right-sidebar {
     margin-top: 2px;
 }
 
-/* Footer — three columns: brand+email, main nav, legal/contact nav. Grid
-   (not flex space-between) so the center column sits at a true visual
-   center rather than just being equally spaced from its neighbors. */
+/* Footer — two groups pushed to opposite edges (brand/contact on the
+   left, nav links on the right) rather than evenly distributed columns,
+   so the wide empty middle reads as intentional breathing room instead
+   of being filled just because the grid had tracks to fill. */
 .site-footer {
     /* Matches the header's Umber bar. */
     background: #3a281e;
     color: #f6ebe2;
     padding: 28px 40px;
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: start;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
     gap: 20px 40px;
     margin-top: auto;
+}
+
+/* Left-hand group — brand alone and email/rights as their own two-line
+   column, side by side (one flex child of .site-footer, same as
+   .footer-links on the right, so space-between still has exactly two
+   groups to push apart rather than spreading three). */
+.footer-left {
+    display: flex;
+    gap: 40px;
 }
 
 .footer-brand-col {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
     gap: 8px;
-    justify-self: end;
+}
+
+/* The right-hand group — four two-item nav columns, wrapping as a unit
+   (not individually) once the footer itself wraps at a narrow width. */
+.footer-links {
+    display: flex;
+    gap: 20px 32px;
+    flex-wrap: wrap;
 }
 
 .footer-rights {
@@ -2068,6 +2100,20 @@ body.header-hidden .school-page-layout .right-sidebar {
 
 .footer-nav a:hover {
     opacity: 1;
+}
+
+/* Resources — same spot as the header's own placeholder (js/header.js):
+   a page that doesn't exist yet, so it's non-interactive rather than a
+   dead link. Same type treatment as a real footer link, just dimmer and
+   with no hover state to signal there's nothing to click yet. */
+.footer-nav-placeholder {
+    display: block;
+    font-size: 0.72em;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    opacity: 0.5;
+    cursor: default;
 }
 
 /* Contact address sits under the brand, left column. */
@@ -2240,12 +2286,16 @@ body.header-hidden .school-page-layout .right-sidebar {
     .detail-section:nth-child(odd) { padding-left: 0; }
 }
 
-/* The favorites/history rail plus its mirrored left gutter eat ~440px of
-   horizontal space. Below this width the two .cols-2 halves inside each
-   section would get cramped, so drop the grid, let the data span a
-   comfortable centered reading measure, and move the rail beneath it as a
-   horizontal strip. */
-@media (max-width: 1280px) {
+/* Below this width, the sidebar (230px + 20px gap — no mirrored left
+   gutter anymore, that was removed when the layout went from 3 columns
+   to 2) plus a comfortable .cols-2 reading measure no longer both fit, so
+   drop the grid and move the rail beneath the content as a horizontal
+   strip instead. Deliberately well under 1280px: at 150% Windows display
+   scaling — the default Windows suggests for most 1920x1080 panels — a
+   1920px-wide monitor reports a 1280px CSS viewport, which used to land
+   exactly on this breakpoint and stack the rail below ~4000px of content,
+   making it effectively invisible without scrolling past everything. */
+@media (max-width: 1040px) {
     .school-page-layout {
         display: block;
         max-width: 1000px;
@@ -2290,24 +2340,43 @@ body.header-hidden .school-page-layout .right-sidebar {
         width: calc(100% - 348px);
     }
 
-    /* #school-list is narrower here (two rails still present, just
-       thinner), so 3 stats + the year pill/location can't all fit on one
-       .school-meta-row line. flex-basis:100% wraps .school-stats as one
-       unit onto its own line within the name column (still narrower than
-       the full card, unlike the old design's full-width stats row) —
-       and that column itself can be too narrow for all 3 stats even
-       alone, so flex-wrap/a smaller min-width let them wrap internally
-       too rather than overflow past the card edge. */
-    .school-stats {
-        flex-basis: 100%;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        gap: 4px 16px;
+    /* At 160px even the shortest labels ("Student Body") run past the
+       column's content width in one line — shrinking font-size alone
+       can't close that gap without becoming illegible, so let the
+       longer ones wrap to a second line instead of overflowing it. */
+    .filter-group-label {
+        font-size: 11.5px;
+        white-space: normal;
+        line-height: 1.3;
     }
 
-    .stat-item {
-        min-width: 0;
+    /* #school-list is narrower here (two rails still present, just
+       thinner) — not enough room for location/year plus 4 auto-sized
+       stat columns sharing one row without the stat labels' own
+       min-content forcing an overflow (the same "auto column won't
+       shrink below its content" trap as a bare 1fr track). Drop back to
+       3 stacked rows instead: meta spans the full width on its own line,
+       then labels/values split that width into 4 *equal* columns (so
+       they're free to actually shrink) rather than auto-sized ones. */
+    .school-stats-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-rows: auto auto auto;
+        row-gap: 4px;
     }
+
+    .school-meta-left {
+        grid-column: 1 / -1;
+        grid-row: 1;
+        align-self: auto;
+    }
+
+    .school-stats-grid > .stat-label { grid-row: 2; }
+    .school-stats-grid > .stat-val { grid-row: 3; }
+
+    .school-stats-grid > .stat-col-1 { grid-column: 1; }
+    .school-stats-grid > .stat-col-2 { grid-column: 2; }
+    .school-stats-grid > .stat-col-3 { grid-column: 3; }
+    .school-stats-grid > .stat-col-4 { grid-column: 4; }
 
     /* No longer the big edge-to-edge desktop zone — its ~40px of internal
        padding alone was squeezing the name column further than any of the
@@ -2411,14 +2480,23 @@ body.header-hidden .school-page-layout .right-sidebar {
 
 @media (max-width: 540px) {
     .site-footer {
-        grid-template-columns: 1fr;
-        justify-items: center;
+        flex-direction: column;
+        align-items: center;
         text-align: center;
         padding: 24px 16px;
     }
 
+    .footer-left {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .footer-links {
+        justify-content: center;
+    }
+
     .footer-brand-col {
-        justify-self: center;
         align-items: center;
     }
 
@@ -2501,13 +2579,32 @@ body.header-hidden .school-page-layout .right-sidebar {
         font-size: 1.05em;
     }
 
-    .school-stats {
-        gap: 24px;
+    /* 2x2 instead of 4-across here — at this width even 4 equal columns
+       are too narrow for labels like "Acceptance"/"ACT Range". Meta still
+       spans the full width on its own row; the 4 stats then pair up two
+       per row, each still label-above-value. */
+    .school-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto auto auto auto auto;
+        row-gap: 2px;
+        column-gap: 20px;
     }
 
-    .stat-item {
-        min-width: unset;
-        flex: 1;
+    .school-stats-grid > .stat-label.stat-col-1 { grid-column: 1; grid-row: 2; }
+    .school-stats-grid > .stat-val.stat-col-1   { grid-column: 1; grid-row: 3; }
+    .school-stats-grid > .stat-label.stat-col-2 { grid-column: 2; grid-row: 2; }
+    .school-stats-grid > .stat-val.stat-col-2   { grid-column: 2; grid-row: 3; }
+    .school-stats-grid > .stat-label.stat-col-3 { grid-column: 1; grid-row: 4; }
+    .school-stats-grid > .stat-val.stat-col-3   { grid-column: 1; grid-row: 5; }
+    .school-stats-grid > .stat-label.stat-col-4 { grid-column: 2; grid-row: 4; }
+    .school-stats-grid > .stat-val.stat-col-4   { grid-column: 2; grid-row: 5; }
+
+    /* Separates the two stat-pair rows from each other without also
+       widening the tight label-to-its-own-value gap (row-gap applies to
+       every row boundary equally, so this is done with margin instead). */
+    .school-stats-grid > .stat-label.stat-col-3,
+    .school-stats-grid > .stat-label.stat-col-4 {
+        margin-top: 8px;
     }
 
     .stat-val { font-size: 1em; }

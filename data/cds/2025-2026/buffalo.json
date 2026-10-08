@@ -17,7 +17,7 @@
   "enrolled_women": 2396,
   "acceptance_rate": 0.806,
   "application_fee": 50,
-  "avg_gpa_weighted": 91.6,
+  "avg_gpa_weighted": null,
   "rd_deadline": null,
   "waitlist_offered": 2355,
   "waitlist_accepted": 857,
