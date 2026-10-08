@@ -19,6 +19,13 @@
     /* .rail-tab's height, shared with .rail-drawer's position/sizing math
        (see both below) so the two stay flush against each other. */
     --rail-tab-h: 56px;
+    /* Shared top anchor for .rail-tab/.rail-drawer — just below the
+       header rather than viewport-centered, so the drawer's max-height
+       (see .rail-drawer) gets nearly the full viewport to work with
+       instead of only the bottom half. calc()-based, so it's already
+       "dynamic for mobile" without a media query: it's relative to
+       --header-height and the viewport, not a fixed breakpoint. */
+    --rail-top: calc(var(--header-height) + 40px);
 }
 
 html {
@@ -1125,12 +1132,12 @@ body.page-resources .hero-banner {
 }
 
 /* Favorites/history pullout tab (school pages) — a fixed tab on the right
-   viewport edge, anchored near vertical center so it's reachable
-   regardless of scroll position or the header's hidden/shown state.
-   Replaces the old always-visible right-sidebar rail, freeing its
-   ~250px (width + gap) for #school-sections instead. Reuses the same
-   star glyph as .fav-btn so it reads as "your favorites live here" at
-   a glance.
+   viewport edge, anchored near the top (see --rail-top) so it's
+   reachable regardless of scroll position or the header's hidden/shown
+   state. Replaces the old always-visible right-sidebar rail, freeing
+   its ~250px (width + gap) for #school-sections instead. Reuses the
+   same star glyph as .fav-btn so it reads as "your favorites live
+   here" at a glance.
 
    Same top as .rail-drawer below (not stacked directly above it) so
    it sits right over the drawer's top-right corner once open — reads
@@ -1140,7 +1147,7 @@ body.page-resources .hero-banner {
    control even while the drawer itself is off-screen and closed. */
 .rail-tab {
     position: fixed;
-    top: 50%;
+    top: var(--rail-top);
     right: 0;
     display: flex;
     align-items: center;
@@ -1191,14 +1198,17 @@ body.page-resources .hero-banner {
    (no vertical centering transform to combine it with), which also
    means a plain 100% translate is enough to clear the viewport.
 
-   max-height is capped well short of 50vh so the drawer's bottom edge
-   can't reach .print-fab's footprint (bottom: 24px + height: 52px =
-   76px from the viewport bottom) regardless of content length or
-   viewport height — overflow-y below scrolls anything that doesn't
-   fit instead. */
+   max-height runs from --rail-top all the way down to just above
+   .print-fab's footprint (bottom: 24px + height: 52px = 76px from the
+   viewport bottom, +16px clearance) — nearly the full viewport instead
+   of just the bottom half, which is what actually needed increasing.
+   Both terms are calc()/vh-based, so this is already "dynamic for
+   mobile": a short viewport shrinks the available room automatically
+   and overflow-y below scrolls whatever doesn't fit, rather than
+   needing a separate breakpoint-specific value. */
 .rail-drawer {
     position: fixed;
-    top: 50%;
+    top: var(--rail-top);
     right: 0;
     transform: translateX(100%);
     display: flex;
@@ -1206,7 +1216,7 @@ body.page-resources .hero-banner {
     gap: 12px;
     width: 230px;
     max-width: calc(100vw - 32px);
-    max-height: calc(50vh - 92px);
+    max-height: calc(100vh - var(--rail-top) - 92px);
     overflow-y: auto;
     padding: 16px;
     background: #FFFCFA;
