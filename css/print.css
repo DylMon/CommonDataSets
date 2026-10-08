@@ -181,6 +181,35 @@ tr,
   break-inside: avoid;
 }
 
+/* One step further up from individual rows/boxes: keep each *column* of
+   a two-column section (e.g. Selectivity's "By Round + Waitlist" vs "By
+   Gender + Transfer Admissions") together as one unit, and keep the
+   three-box applicant funnel from splitting between its boxes. Still
+   short of forcing the whole .school-section to avoid a break — a column
+   is usually well under a page tall on its own, so this stops the
+   mid-column splits that read as "cut off" without risking the bigger
+   section-level cost (a short section stranding a near-empty tail page
+   because the browser couldn't fit the whole thing above a break).
+
+   Explicitly NOT .factor-list (What Matters in the Decision): confirmed
+   via an actual print-to-PDF render that forcing its ~10-row column whole
+   stranded the section's title + legend alone at the bottom of one page
+   while shoving the entire list to the next, wasting most of a page.
+   Each .factor-row already has its own break-inside: avoid above, which
+   is all a long flat list of same-weight rows needs — same reasoning as
+   not forcing whole tables/sections to avoid a break. */
+.cols-2 > div:not(.factor-list),
+.funnel {
+  break-inside: avoid;
+}
+
+/* The Admissions/Cost pair (see .school-section-row above) is short
+   enough in practice to always keep together — unlike the taller
+   sections above, there's no real paper cost to being strict here. */
+.school-section-row {
+  break-inside: avoid;
+}
+
 .section-title,
 .subsection-title {
   break-after: avoid;
