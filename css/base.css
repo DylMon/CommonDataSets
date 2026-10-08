@@ -1191,12 +1191,21 @@ body.page-resources .hero-banner {
     fill: currentColor;
 }
 
-/* Same top as .rail-tab above (not a gap below it) — the tab overlaps
-   this box's top-right corner once open, both flush against the
-   actual viewport edge (right: 0, no inset/margin) rather than
-   floating as a separately-positioned card. Only a horizontal slide
-   (no vertical centering transform to combine it with), which also
-   means a plain 100% translate is enough to clear the viewport.
+/* Same top AND right as .rail-tab above — animates via max-width (0
+   closed, full open) instead of sliding in from off-screen via
+   transform. Its right edge never moves, in either state, so the
+   drawer is always anchored at exactly the tab's position: it reads
+   as pulling out from directly behind/under the tab rather than
+   arriving from elsewhere and happening to end up adjacent to it.
+   overflow-x hidden is what makes the collapse actually invisible
+   (not just clipped-looking) — combined with the global border-box
+   reset, max-width: 0 forces the rendered box, border included, to
+   true zero width.
+
+   .rail-drawer-inner (below) holds the fixed 230px width + padding
+   that used to live directly on this element — needed as a separate
+   child so collapsing *this* element's max-width doesn't also squeeze
+   and reflow the content itself before it's clipped.
 
    max-height runs from --rail-top all the way down to just above
    .print-fab's footprint (bottom: 24px + height: 52px = 76px from the
@@ -1210,25 +1219,30 @@ body.page-resources .hero-banner {
     position: fixed;
     top: var(--rail-top);
     right: 0;
-    transform: translateX(100%);
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width: 230px;
-    max-width: calc(100vw - 32px);
+    max-width: 0;
     max-height: calc(100vh - var(--rail-top) - 92px);
+    overflow-x: hidden;
     overflow-y: auto;
-    padding: 16px;
     background: #FFFCFA;
     border: 2px solid #d0d0d0;
     border-radius: 10px 0 0 10px;
     box-shadow: -2px 2px 16px rgba(0, 0, 0, 0.15);
     z-index: 9998;
-    transition: transform 0.2s ease;
+    transition: max-width 0.2s ease;
 }
 
 .rail-drawer.open {
-    transform: translateX(0);
+    max-width: calc(100vw - 32px);
+}
+
+.rail-drawer-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 230px;
+    max-width: calc(100vw - 32px);
+    padding: 16px;
+    box-sizing: border-box;
 }
 
 /* History / Favorites boxes */

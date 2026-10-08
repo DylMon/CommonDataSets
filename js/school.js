@@ -969,13 +969,15 @@ async function init() {
   const railDrawer = document.createElement('div');
   railDrawer.className = 'rail-drawer';
   railDrawer.innerHTML = `
-    <div class="history-box" id="school-fav-box" style="display:none">
-      <div class="history-title">Favorites</div>
-      <div id="school-fav-list"></div>
-    </div>
-    <div class="history-box" id="school-history-box" style="display:none">
-      <div class="history-title">History</div>
-      <div id="school-history-list"></div>
+    <div class="rail-drawer-inner">
+      <div class="history-box" id="school-fav-box" style="display:none">
+        <div class="history-title">Favorites</div>
+        <div id="school-fav-list"></div>
+      </div>
+      <div class="history-box" id="school-history-box" style="display:none">
+        <div class="history-title">History</div>
+        <div id="school-history-list"></div>
+      </div>
     </div>`;
   document.body.appendChild(railDrawer);
 
