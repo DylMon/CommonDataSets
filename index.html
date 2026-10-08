@@ -221,6 +221,8 @@
     </div>
 
     <script type="module">
+        import { splitGpa } from '/js/gpa-classification.js?v=1';
+
         // Logos live at images/logos/<slug>.png. A few schools have none yet;
         // the onerror hook hides the broken <img> instead of a torn-image icon.
         const logoSrc = slug => `/images/logos/${slug}.png`;
@@ -463,6 +465,13 @@
             document.getElementById('school-list').innerHTML = pageItems.map(s => {
                 const actRange = s.act_composite_25 != null && s.act_composite_75 != null ? `${s.act_composite_25}–${s.act_composite_75}` : '<span class="stat-na">N/A</span>';
                 const isFav = favorites.has(s.slug);
+                // See js/gpa-classification.js -- the CDS never records whether a
+                // school's single reported GPA is weighted or unweighted, so we
+                // classify it into one slot and show N/A for the other for now.
+                const { unweighted: gpaUw, weighted: gpaW } = splitGpa(s.slug, s.avg_gpa_weighted);
+                const gpaDisplay = (gpaUw != null || gpaW != null)
+                    ? `${gpaUw != null ? gpaUw.toFixed(2) : 'NA'}/${gpaW != null ? gpaW.toFixed(2) : 'NA'}`
+                    : '<span class="stat-na">N/A</span>';
                 return `
                 <div class="school-card">
                     <div class="school-row">
@@ -487,11 +496,11 @@
                                     <div class="stat-label stat-col-1">Acceptance</div>
                                     <div class="stat-label stat-col-2">SAT Range</div>
                                     <div class="stat-label stat-col-3">ACT Range</div>
-                                    <div class="stat-label stat-col-4">GPA</div>
+                                    <div class="stat-label stat-col-4">GPA <span class="stat-label-sub">(UW/W)</span></div>
                                     <div class="stat-val stat-col-1">${fmtPct(s.acceptance_rate)}</div>
                                     <div class="stat-val stat-col-2">${s.sat_composite_25 != null && s.sat_composite_75 != null ? `${s.sat_composite_25}–${s.sat_composite_75}` : '<span class="stat-na">N/A</span>'}</div>
                                     <div class="stat-val stat-col-3">${actRange}</div>
-                                    <div class="stat-val stat-col-4">${s.avg_gpa_weighted != null ? Number(s.avg_gpa_weighted).toFixed(2) : '<span class="stat-na">N/A</span>'}</div>
+                                    <div class="stat-val stat-col-4">${gpaDisplay}</div>
                                 </div>
                             </div>
                         </div>

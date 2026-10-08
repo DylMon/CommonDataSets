@@ -229,6 +229,12 @@
   white-space: nowrap;
 }
 
+/* GPA's "(UW/W)" qualifier -- smaller than the rest of the label it sits
+   beside, inheriting everything else (uppercase, color, font) from it. */
+.stat-chip-label-sub {
+  font-size: 0.75em;
+}
+
 .stat-divider {
   width: 1px;
   background: #eee;

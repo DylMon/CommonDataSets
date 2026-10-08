@@ -1,4 +1,5 @@
 import { GPA_BUCKETS, renderGpaHistogram, normalizeGpaDistribution } from './charts.js?v=6';
+import { splitGpa } from './gpa-classification.js?v=1';
 
 const SCHOOL_META = {
   'mit': { color: '#a41931', banner: 'mit.jpg', y: 50, credit: { author: 'Scutter', license: 'CC BY-NC-ND 2.0', url: 'https://www.flickr.com/photos/scutter/38005464/' } },
@@ -396,11 +397,19 @@ function renderQuickFacts(s) {
 
   const tuitionOOS = s.tuition_out_of_state ?? s.tuition;
 
+  // The CDS form never records whether a school's reported GPA is weighted
+  // or unweighted (see js/gpa-classification.js) -- we classify the single
+  // reported number into one slot or the other and show "N/A" for whichever
+  // side isn't covered, rather than mislabeling it.
+  const { unweighted, weighted } = splitGpa(s.slug, s.avg_gpa_weighted != null ? parseFloat(s.avg_gpa_weighted) : null);
+  const gpaUwStr = unweighted != null ? unweighted.toFixed(2) : 'NA';
+  const gpaWStr = weighted != null ? weighted.toFixed(2) : 'NA';
+
   const chips = [
     ['Acceptance Rate', s.acceptance_rate != null ? (s.acceptance_rate * 100).toFixed(1) + '%' : '<span class="stat-na">N/A</span>'],
     ['SAT Range',       satVal],
     ['ACT Range',       act25 != null && act75 != null ? `${act25}–${act75}` : '<span class="stat-na">N/A</span>'],
-    ['Avg GPA (W)',     s.avg_gpa_weighted != null ? parseFloat(s.avg_gpa_weighted).toFixed(2) : 'Not reported'],
+    ['Avg GPA <span class="stat-chip-label-sub">(UW/W)</span>', (unweighted != null || weighted != null) ? `${gpaUwStr}/${gpaWStr}` : 'Not reported'],
     ['Undergrads',      s.total_undergrads != null ? s.total_undergrads.toLocaleString() : '<span class="stat-na">N/A</span>'],
     ['Tuition (OOS)',   tuitionOOS != null ? '$' + tuitionOOS.toLocaleString() : '<span class="stat-na">N/A</span>'],
   ];

@@ -2013,6 +2013,12 @@ body.header-hidden .school-page-layout .right-sidebar {
     margin-top: 2px;
 }
 
+/* GPA's "(UW/W)" qualifier -- smaller than "GPA" itself, inheriting
+   everything else (uppercase, color) from .stat-label. */
+.stat-label-sub {
+    font-size: 0.8em;
+}
+
 /* Footer — two groups pushed to opposite edges (brand/contact on the
    left, nav links on the right) rather than evenly distributed columns,
    so the wide empty middle reads as intentional breathing room instead
