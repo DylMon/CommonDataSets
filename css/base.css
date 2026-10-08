@@ -1104,7 +1104,11 @@ body.page-resources .hero-banner {
     padding: 14px 16px;
 }
 
-/* Right sidebar column */
+/* Favorites/history rail — compare page only now (see compare.css's
+   .compare-layout .right-sidebar). School pages used this same class
+   until it was replaced below by .rail-tab/.rail-drawer, a pullout
+   instead of an always-visible column; left as-is here since compare's
+   layout/needs weren't part of that change. */
 .right-sidebar {
     width: 230px;
     flex-shrink: 0;
@@ -1117,11 +1121,90 @@ body.page-resources .hero-banner {
     transition: top 0.25s ease;
 }
 
-/* School pages only: js/header.js toggles body.header-hidden in step with
-   .site-header--hidden, so the sidebar rises to claim the space the header
-   just vacated instead of leaving it sitting under a phantom gap. */
-body.header-hidden .school-page-layout .right-sidebar {
-    top: 20px;
+/* Favorites/history pullout tab (school pages) — a fixed tab on the right
+   viewport edge, vertically centered so it's reachable regardless of
+   scroll position or the header's hidden/shown state. Replaces the old
+   always-visible right-sidebar rail, freeing its ~250px (width + gap) for
+   #school-sections instead. Reuses the same star glyph as .fav-btn so it
+   reads as "your favorites live here" at a glance. */
+.rail-tab {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 56px;
+    background: #fff;
+    border: 2px solid #d0d0d0;
+    border-right: none;
+    border-radius: 10px 0 0 10px;
+    color: #000;
+    cursor: pointer;
+    box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    transition: width 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.rail-tab:hover {
+    width: 48px;
+    border-color: #ed6d0b;
+}
+
+/* Same filled-gold treatment as an already-favorited .fav-btn — a hint
+   that there's something worth opening, not just an empty drawer. */
+.rail-tab.has-favorites {
+    color: #f4b942;
+    border-color: #f4b942;
+}
+
+.rail-tab svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.rail-tab.has-favorites svg {
+    fill: currentColor;
+}
+
+/* Slides in from under the tab rather than the tab moving with it — the
+   tab stays put as a fixed landmark on the edge so it's easy to find
+   again to close. Width/gap match the old .right-sidebar's box so the
+   two .history-box children don't need their own size adjustment. */
+.rail-drawer {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    /* 100% alone isn't enough to clear the viewport — margin-right below
+       (the gap left for .rail-tab) sits inside the "right: 0" box, so a
+       plain 100% translate leaves exactly that much still on-screen. */
+    transform: translate(calc(100% + 44px), -50%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 230px;
+    max-width: calc(100vw - 32px);
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    padding: 16px;
+    margin-right: 44px;
+    background: #FFFCFA;
+    border: 2px solid #d0d0d0;
+    border-radius: 10px;
+    box-shadow: -2px 2px 16px rgba(0, 0, 0, 0.15);
+    z-index: 9998;
+    transition: transform 0.2s ease;
+}
+
+.rail-drawer.open {
+    transform: translate(0, -50%);
 }
 
 /* History / Favorites boxes */
@@ -1488,15 +1571,11 @@ body.header-hidden .school-page-layout .right-sidebar {
     gap: 20px;
 }
 
-/* Two columns: data on the left, the favorites/history rail on the right.
-   Left-aligned to the page (the usual max-width + auto-margin + padding
-   container) rather than centered with a phantom gutter mirroring the
-   sidebar — that extra 230px was stealing width the data could use. */
+/* Single column now that favorites/history live in the .rail-tab/
+   .rail-drawer pullout (fixed overlays, outside this layout entirely)
+   instead of a right-hand grid column — #school-sections gets the full
+   width this container has to give. */
 .school-page-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 230px;
-    column-gap: 20px;
-    align-items: start;
     width: 100%;
     max-width: 1440px;
     margin: 0 auto;
@@ -1505,15 +1584,9 @@ body.header-hidden .school-page-layout .right-sidebar {
 }
 
 .school-page-layout #school-sections {
-    grid-column: 1;
     min-width: 0;
     margin: 0;
     max-width: none;
-}
-
-.school-page-layout .right-sidebar {
-    grid-column: 2;
-    padding-top: 24px;
 }
 
 #school-list {
@@ -2275,47 +2348,25 @@ body.header-hidden .school-page-layout .right-sidebar {
     .detail-section:nth-child(odd) { padding-left: 0; }
 }
 
-/* Below this width, the sidebar (230px + 20px gap — no mirrored left
-   gutter anymore, that was removed when the layout went from 3 columns
-   to 2) plus a comfortable .cols-2 reading measure no longer both fit, so
-   drop the grid and move the rail beneath the content as a horizontal
-   strip instead. Deliberately well under 1280px: at 150% Windows display
-   scaling — the default Windows suggests for most 1920x1080 panels — a
-   1920px-wide monitor reports a 1280px CSS viewport, which used to land
-   exactly on this breakpoint and stack the rail below ~4000px of content,
-   making it effectively invisible without scrolling past everything. */
+/* The rail is a fixed overlay now (.rail-tab/.rail-drawer), not a layout
+   column, so #school-sections no longer competes with it for width —
+   just narrow the container's own max-width to match this tier's other
+   content-width adjustments. */
 @media (max-width: 1040px) {
     .school-page-layout {
-        display: block;
         max-width: 1000px;
         padding: 0 20px;
     }
-
-    .school-page-layout .right-sidebar {
-        width: 100%;
-        position: static;
-        padding-top: 28px;
-        margin-top: 28px;
-        border-top: 1px solid #eee;
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-
-    .school-page-layout .history-box {
-        flex: 1 1 240px;
-        min-width: 0;
-    }
 }
 
-/* Tablet-width tier: narrow the two 200px rails instead of stacking them.
-   This is the band a large monitor lands in at high OS/browser zoom (e.g. a
-   2K display at 200% scaling), as well as real tablets in portrait (iPad is
-   768 wide) — both get more room for #school-list without losing the
-   3-column layout outright. Full stacking is reserved for the 640px tier
-   below, where a row layout no longer has room to make sense. */
+/* Tablet-width tier: narrow the homepage filter rail instead of stacking
+   it. This is the band a large monitor lands in at high OS/browser zoom
+   (e.g. a 2K display at 200% scaling), as well as real tablets in
+   portrait (iPad is 768 wide) — gets more room for #school-list without
+   losing the layout outright. Full stacking is reserved for the 640px
+   tier below, where a row layout no longer has room to make sense. */
 @media (max-width: 1024px) {
-    .sidebar,
-    .right-sidebar {
+    .sidebar {
         width: 160px;
     }
 
@@ -2398,8 +2449,7 @@ body.header-hidden .school-page-layout .right-sidebar {
         align-items: stretch;
     }
 
-    .sidebar,
-    .right-sidebar {
+    .sidebar {
         width: 100%;
         position: static;
     }

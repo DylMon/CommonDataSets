@@ -86,9 +86,6 @@
                 } else if (Math.abs(y - lastY) > 5) {
                     const shouldHide = y > lastY && y > header.offsetHeight;
                     header.classList.toggle('site-header--hidden', shouldHide);
-                    // Mirrored on <body> so the sticky right-sidebar (see
-                    // css/base.css) can rise into the space the header
-                    // just vacated instead of leaving it empty above it.
                     document.body.classList.toggle('header-hidden', shouldHide);
                 }
                 if (Math.abs(y - lastY) > 5) lastY = y;

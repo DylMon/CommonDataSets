@@ -945,17 +945,30 @@ async function init() {
     if (switcher && !e.target.closest('#year-switcher')) switcher.classList.remove('open');
   });
 
-  // Inject right sidebar alongside school-sections — one-time DOM
-  // restructuring, not repeated on a year switch.
+  // Wrap school-sections in the max-width/padding container it's always
+  // used — one-time DOM restructuring, not repeated on a year switch.
   const sectionsEl = document.getElementById('school-sections');
   const layout = document.createElement('div');
   layout.className = 'school-page-layout';
   sectionsEl.parentElement.insertBefore(layout, sectionsEl);
   layout.appendChild(sectionsEl);
 
-  const sidebar = document.createElement('div');
-  sidebar.className = 'right-sidebar';
-  sidebar.innerHTML = `
+  // Favorites/history: a pullout tab fixed to the right viewport edge
+  // (not part of the layout flow above — it's an overlay, same idea as
+  // .floating-back/.print-fab below) rather than an always-visible
+  // sidebar column, so #school-sections keeps the full content width.
+  // Reuses the same star glyph as .fav-btn elsewhere on the site.
+  const railTab = document.createElement('button');
+  railTab.type = 'button';
+  railTab.className = 'rail-tab';
+  railTab.setAttribute('aria-label', 'Favorites and recently viewed');
+  railTab.setAttribute('aria-expanded', 'false');
+  railTab.innerHTML = `<svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>`;
+  document.body.appendChild(railTab);
+
+  const railDrawer = document.createElement('div');
+  railDrawer.className = 'rail-drawer';
+  railDrawer.innerHTML = `
     <div class="history-box" id="school-fav-box" style="display:none">
       <div class="history-title">Favorites</div>
       <div id="school-fav-list"></div>
@@ -964,17 +977,32 @@ async function init() {
       <div class="history-title">History</div>
       <div id="school-history-list"></div>
     </div>`;
-  layout.appendChild(sidebar);
+  document.body.appendChild(railDrawer);
 
-  // Re-render both rail boxes and collapse the whole rail (along with its
-  // top border on narrow layouts) when the visitor has neither favorites
-  // nor history yet. Hoisted so the hero favorite button can call it too.
+  function setDrawerOpen(open) {
+    railDrawer.classList.toggle('open', open);
+    railTab.setAttribute('aria-expanded', String(open));
+  }
+
+  railTab.addEventListener('click', () => setDrawerOpen(!railDrawer.classList.contains('open')));
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.rail-drawer') && !e.target.closest('.rail-tab')) setDrawerOpen(false);
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') setDrawerOpen(false); });
+
+  // Re-render both rail boxes, hide the tab entirely (closing the drawer
+  // too) when the visitor has neither favorites nor history yet, and tint
+  // the tab's star gold — same look as an already-favorited .fav-btn —
+  // as a hint there's something to open. Hoisted so the hero favorite
+  // button can call it too.
   function refreshRail() {
     renderFavoritesBox(allSchools);
     renderHistoryBox(allSchools);
     const railEmpty = ['school-fav-box', 'school-history-box']
       .every(id => document.getElementById(id).style.display === 'none');
-    sidebar.style.display = railEmpty ? 'none' : '';
+    railTab.style.display = railEmpty ? 'none' : '';
+    if (railEmpty) setDrawerOpen(false);
+    railTab.classList.toggle('has-favorites', getFavs().size > 0);
   }
 
   refreshRail();

@@ -36,7 +36,8 @@ body {
 /* ── Chrome that only makes sense on screen ── */
 .site-header,
 .floating-back,
-.right-sidebar,
+.rail-tab,
+.rail-drawer,
 .fav-btn,
 .print-fab,
 .year-switcher-btn .sort-chevron,
