@@ -222,7 +222,8 @@ body.page-compare {
    school pages have their own .school-hero sizing and are untouched. */
 body.page-compare .hero-banner,
 body.page-chanceme .hero-banner,
-body.page-info .hero-banner {
+body.page-info .hero-banner,
+body.page-resources .hero-banner {
     padding: 28px 0 18px;
     min-height: 195px;
 }
@@ -631,11 +632,6 @@ body.page-info .hero-banner {
     background: var(--hdr-accent);
     border-color: var(--hdr-accent);
     color: var(--hdr-on-accent);
-}
-
-/* Not-yet-built Resources page: plain text, nothing to click. */
-.nav-placeholder {
-    cursor: default;
 }
 
 /* Sub-bar: an optional solid strip below (or above) the main bar — the
@@ -2102,20 +2098,6 @@ body.header-hidden .school-page-layout .right-sidebar {
     opacity: 1;
 }
 
-/* Resources — same spot as the header's own placeholder (js/header.js):
-   a page that doesn't exist yet, so it's non-interactive rather than a
-   dead link. Same type treatment as a real footer link, just dimmer and
-   with no hover state to signal there's nothing to click yet. */
-.footer-nav-placeholder {
-    display: block;
-    font-size: 0.72em;
-    font-weight: 300;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    opacity: 0.5;
-    cursor: default;
-}
-
 /* Contact address sits under the brand, left column. */
 .footer-email {
     color: inherit;
@@ -2525,7 +2507,8 @@ body.header-hidden .school-page-layout .right-sidebar {
 
     body.page-compare .hero-banner,
     body.page-chanceme .hero-banner,
-    body.page-info .hero-banner {
+    body.page-info .hero-banner,
+    body.page-resources .hero-banner {
         padding: 16px 0 12px;
         min-height: 225px;
     }
