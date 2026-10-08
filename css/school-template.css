@@ -257,6 +257,19 @@
   overflow: hidden;
 }
 
+/* No print stylesheet existed before this — sections (e.g. "What Matters
+   in the Decision") were splitting across page breaks mid-list, with the
+   banner/legend stranded on one page and the rest on the next. Keep each
+   section whole; it'll just start on a fresh page if it doesn't fit the
+   remaining space on the current one. page-break-inside is the legacy
+   name for the same thing, kept for older print engines. */
+@media print {
+  .school-section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
+
 /* Two sections placed side by side (e.g. Admissions summary + Cost) to use
    horizontal space instead of stacking everything in one narrow column.
    Wraps to a single column once either side would drop below ~320px. */
