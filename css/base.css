@@ -1140,7 +1140,9 @@ body.page-resources .hero-banner {
    of the hero banner (#school-hero) rather than the viewport, so it
    scrolls away with the hero instead of floating for the whole page.
    Reuses the same star glyph as .fav-btn so it reads as "your
-   favorites live here" at a glance.
+   favorites live here" at a glance. Inset 12px from the hero's bottom-
+   right corner (not flush) so it has breathing room from both edges
+   instead of sitting jammed into them.
 
    Styled like the header's Contact Us button (.cta-outline .nav-corner-
    links a:last-child in this file): an outlined pill that fills solid
@@ -1157,8 +1159,8 @@ body.page-resources .hero-banner {
    closed. */
 .rail-tab {
     position: absolute;
-    top: 100%;
-    right: 0;
+    top: calc(100% + 12px);
+    right: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1211,8 +1213,8 @@ body.page-resources .hero-banner {
    overflow-y scrolling whatever doesn't fit. */
 .rail-drawer {
     position: absolute;
-    top: 100%;
-    right: 0;
+    top: calc(100% + 12px);
+    right: 12px;
     max-width: 0;
     max-height: calc(100vh - 220px);
     overflow-x: hidden;
