@@ -904,11 +904,9 @@ async function init() {
   });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') setDrawerOpen(false); });
 
-  // Re-render both rail boxes, hide the tab entirely (closing the drawer
-  // too) when the visitor has neither favorites nor history yet, and tint
-  // the tab's star gold — same look as an already-favorited .fav-btn —
-  // as a hint there's something to open. Hoisted so the hero favorite
-  // button can call it too.
+  // Re-render both rail boxes and hide the tab entirely (closing the
+  // drawer too) when the visitor has neither favorites nor history yet.
+  // Hoisted so the hero favorite button can call it too.
   function refreshRail() {
     renderFavoritesBox(allSchools);
     renderHistoryBox(allSchools);
@@ -916,7 +914,6 @@ async function init() {
       .every(id => document.getElementById(id).style.display === 'none');
     railTab.style.display = railEmpty ? 'none' : '';
     if (railEmpty) setDrawerOpen(false);
-    railTab.classList.toggle('has-favorites', getFavs().size > 0);
   }
 
   // Everything that depends on which year is currently selected — rerun

@@ -1164,12 +1164,11 @@ body.page-resources .hero-banner {
     background: #fff;
     border: 2px solid #d0d0d0;
     border-right: none;
-    border-radius: 10px 0 0 0;
-    color: #000;
+    color: #666;
     cursor: pointer;
     box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.1);
     z-index: 9999;
-    transition: width 0.15s, color 0.15s, border-color 0.15s;
+    transition: width 0.15s, border-color 0.15s;
 }
 
 .rail-tab:hover {
@@ -1177,24 +1176,9 @@ body.page-resources .hero-banner {
     border-color: #ed6d0b;
 }
 
-/* Same filled-gold treatment as an already-favorited .fav-btn — a hint
-   that there's something worth opening, not just an empty drawer. */
-.rail-tab.has-favorites {
-    color: #f4b942;
-    border-color: #f4b942;
-}
-
 .rail-tab svg {
     width: 20px;
     height: 20px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.rail-tab.has-favorites svg {
     fill: currentColor;
 }
 
@@ -1212,10 +1196,8 @@ body.page-resources .hero-banner {
    No top border — .rail-tab's own bottom border sits flush against
    this box's top edge, so a second border there would double up into
    a visibly thicker seam instead of the single hairline that actually
-   reads as "one shape with a protrusion." Top-left corner is square
-   to match: it's the concave inside corner of that same silhouette
-   (picture a folder tab), not an outer corner that wants rounding —
-   only the bottom-left, the shape's one remaining outer corner, does.
+   reads as "one shape with a protrusion." All corners are square
+   (no border-radius) on both pieces.
 
    .rail-drawer-inner (below) holds the fixed 230px width + padding
    that used to live directly on this element — needed as a separate
@@ -1240,7 +1222,6 @@ body.page-resources .hero-banner {
     background: #FFFCFA;
     border: 2px solid #d0d0d0;
     border-top: none;
-    border-radius: 0 0 0 10px;
     box-shadow: -2px 2px 16px rgba(0, 0, 0, 0.15);
     z-index: 9998;
     transition: max-width 0.2s ease;
