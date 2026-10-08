@@ -386,6 +386,21 @@ function renderYearBar(yearCtx) {
 
 // ── Render: Quick facts strip (flat bar below the pill) ─────────────────
 
+// Small ⓘ next to a stat label. Tip shows on hover (mouse) or tap (touch) —
+// see the delegated click handler below. Kept distinct from the * used to
+// mark data that comes from outside the CDS.
+function infoTip(text) {
+  return `<button type="button" class="stat-info" aria-label="${escapeHtml(text)}">i<span class="stat-info-tip" role="tooltip">${escapeHtml(text)}</span></button>`;
+}
+
+// One listener for every ⓘ (the strip is re-rendered on each year switch):
+// tapping one toggles it, tapping anywhere else closes any that are open.
+document.addEventListener('click', e => {
+  const tip = e.target.closest('.stat-info');
+  document.querySelectorAll('.stat-info.open').forEach(b => { if (b !== tip) b.classList.remove('open'); });
+  if (tip) tip.classList.toggle('open');
+});
+
 function renderQuickFacts(s) {
   const satVal   = s.sat_composite_25 != null && s.sat_composite_75 != null
     ? `${s.sat_composite_25}–${s.sat_composite_75}`
@@ -400,7 +415,10 @@ function renderQuickFacts(s) {
     ['Acceptance Rate', s.acceptance_rate != null ? (s.acceptance_rate * 100).toFixed(1) + '%' : '<span class="stat-na">N/A</span>'],
     ['SAT Range',       satVal],
     ['ACT Range',       act25 != null && act75 != null ? `${act25}–${act75}` : '<span class="stat-na">N/A</span>'],
-    ['Avg GPA (W)',     s.avg_gpa_weighted != null ? parseFloat(s.avg_gpa_weighted).toFixed(2) : 'Not reported'],
+    // The CDS never says whether a school's average GPA is weighted or
+    // unweighted (avg_gpa_weighted is just the column name), so don't claim either.
+    ['Avg GPA' + infoTip('The Common Data Set does not state whether this GPA is weighted or unweighted.'),
+                        s.avg_gpa_weighted != null ? parseFloat(s.avg_gpa_weighted).toFixed(2) : 'Not reported'],
     ['Undergrads',      s.total_undergrads != null ? s.total_undergrads.toLocaleString() : '<span class="stat-na">N/A</span>'],
     ['Tuition (OOS)',   tuitionOOS != null ? '$' + tuitionOOS.toLocaleString() : '<span class="stat-na">N/A</span>'],
   ];
