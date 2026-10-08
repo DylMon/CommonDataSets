@@ -39,7 +39,8 @@ body {
 /* Home page only — inverted from the sitewide default: the page behind
    the filters/favorites/history/cards is cream, so those sections go
    back to plain white to read as raised surfaces against it. */
-body.page-home {
+body.page-home,
+body.page-resources {
     background: #FFFCFA;
 }
 
@@ -223,7 +224,8 @@ body.page-compare {
    school pages have their own .school-hero sizing and are untouched. */
 body.page-compare .hero-banner,
 body.page-chanceme .hero-banner,
-body.page-info .hero-banner {
+body.page-info .hero-banner,
+body.page-resources .hero-banner {
     padding: 28px 0 18px;
     min-height: 195px;
 }
@@ -2442,7 +2444,8 @@ body.header-hidden .school-page-layout .right-sidebar {
 
     body.page-compare .hero-banner,
     body.page-chanceme .hero-banner,
-    body.page-info .hero-banner {
+    body.page-info .hero-banner,
+    body.page-resources .hero-banner {
         padding: 16px 0 12px;
         min-height: 225px;
     }
