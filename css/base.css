@@ -78,13 +78,18 @@ body {
     flex-direction: column;
 
     /* Header colors: Umber bar, orange block highlight (picked from the
-       header-option-3 preview panel). */
+       header-option-3 preview panel). Accent/line are hardcoded #ed6d0b,
+       not var(--brand): school pages override --brand to that school's
+       own color for the page's tables/underlines, but the header is site
+       chrome, not school content — it should always read as the site's
+       own orange regardless of which school's page it's on (same
+       reasoning as .print-fab below). */
     --hdr-bg: #3a281e;
     --hdr-fg: #f6ebe2;                           /* link text */
     --hdr-wordmark: #fff;
-    --hdr-accent: var(--brand, #ed6d0b);        /* fill behind a hovered/active link */
+    --hdr-accent: #ed6d0b;                      /* fill behind a hovered/active link */
     --hdr-on-accent: #fff;                      /* text on that fill */
-    --hdr-line: var(--brand, #ed6d0b);          /* underline/outline highlight */
+    --hdr-line: #ed6d0b;                        /* underline/outline highlight */
     --hdr-line-text: #fff;                      /* text with an underline/outline */
     --hdr-divider: rgba(255, 255, 255, 0.25);
     --hdr-border: transparent;
@@ -827,7 +832,9 @@ body.page-resources .hero-banner {
 }
 
 .logo-glow .nav-brand:hover .site-logo {
-    filter: drop-shadow(0 0 10px #FFFCFA) drop-shadow(0 0 18px color-mix(in srgb, var(--brand, #ed6d0b) 80%, #ffd27a));
+    /* #ed6d0b not var(--brand) — same reasoning as --hdr-accent/--hdr-line
+       above: header chrome stays the site's own orange on school pages. */
+    filter: drop-shadow(0 0 10px #FFFCFA) drop-shadow(0 0 18px color-mix(in srgb, #ed6d0b 80%, #ffd27a));
 }
 
 @media (prefers-reduced-motion: reduce) {
