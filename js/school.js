@@ -451,24 +451,121 @@ const feeText = fee => fee == null ? null
   : typeof fee === 'number' ? '$' + fee
   : /\$/.test(fee) ? fee : '$' + fee;
 
-// Bubble timeline of deadlines. Rounds sharing a date share one bubble
-// ("ED II · RD"); "Rolling" gets a hollow bubble since it has no fixed date.
+// Day of an "m/d" date within an application cycle that runs Sep 1..Aug 31,
+// so ordering and "is this deadline behind us?" work across the new year.
+// Same ordering as data/admission-plans.json. Non-dates ("Rolling") → null.
+const CYCLE_MONTH_START = { 9: 0, 10: 30, 11: 61, 12: 91, 1: 122, 2: 153, 3: 181, 4: 212, 5: 242, 6: 273, 7: 303, 8: 334 };
+function cycleDay(md) {
+  const m = String(md).match(/^(\d{1,2})\/(\d{1,2})$/);
+  if (!m || CYCLE_MONTH_START[+m[1]] == null) return null;
+  return CYCLE_MONTH_START[+m[1]] + +m[2] - 1;
+}
+
+// Deadline timeline: date pills on a track. Rounds sharing a date share a
+// pill ("ED II · RD"). Deadlines already past in this cycle go grey, the
+// track fills up to today, and the next open deadline is tagged "Next up".
+// Rolling has no fixed date, so it's a dashed pill at the end that never
+// goes grey.
+//
+// Placement: the track always spans a season window (at least mid-Oct to
+// mid-Feb, wider if a school's dates reach past it), so one- or two-date
+// schools still read as a timeline. Each item sits halfway between its true
+// date position and an even spread, then gets nudged apart to a minimum gap:
+// close dates sit closer, far ones spread out, and nothing overlaps.
+//
+// Landmark: a faint ring at Jan 1, or Dec 1 / Feb 1 if a deadline falls
+// within 10 days of Jan 1 (then of Dec 1). It's laid out as one more item,
+// so the spacing makes room for it even when it's near a pill on screen.
+// A Rolling-only school has no dates, so its track gets Jan 1 and Dec 31 at
+// the ends (a whole year of rolling) with the Rolling pill in the middle.
 function deadlineTimelineHtml(rounds) {
   const dated = rounds.filter(r => r.date);
-  if (!dated.length) return '<p class="deadline-none">No application deadlines reported.</p>';
+  if (!dated.length) return '<div class="deadline-area"><p class="deadline-none">No application deadlines reported.</p></div>';
   const stops = [];
   for (const r of dated) {
     const last = stops[stops.length - 1];
     if (last && last.date === r.date) last.types.push(r.type);
-    else stops.push({ date: r.date, types: [r.type] });
+    else stops.push({ date: r.date, types: [r.type], day: cycleDay(r.date) });
   }
-  return `<ol class="deadline-timeline" aria-label="Application deadlines">
-    ${stops.map(st => `<li class="deadline-stop${st.date === 'Rolling' ? ' rolling' : ''}">
-      <span class="deadline-date">${escapeHtml(st.date)}</span>
-      <span class="deadline-dot" aria-hidden="true"></span>
-      <span class="deadline-type">${st.types.map(escapeHtml).join(' · ')}</span>
-    </li>`).join('')}
-  </ol>`;
+
+  const now = new Date();
+  const today = cycleDay(`${now.getMonth() + 1}/${now.getDate()}`);
+  stops.forEach(st => { st.passed = st.day != null && st.day < today; });
+  const nextIdx = stops.findIndex(st => !st.passed);
+
+  const fixed = stops.filter(st => st.day != null);
+  const hasRolling = fixed.length < stops.length;
+  // Dated items share [0, span]; a trailing Rolling pill takes the far end.
+  const span = hasRolling ? (fixed.length ? 0.74 : 0) : 1;
+
+  const LANDMARK_DATES = [['1/1', 'Jan 1'], ['12/1', 'Dec 1'], ['2/1', 'Feb 1']];
+  const landmarks = [];
+  if (fixed.length) {
+    const pick = LANDMARK_DATES
+      .map(([md, label]) => ({ day: cycleDay(md), label, landmark: true }))
+      .find(m => fixed.every(st => Math.abs(st.day - m.day) > 10));
+    if (pick) landmarks.push(pick);
+  }
+
+  // Lay out pills and landmark together, in date order.
+  const items = [...fixed, ...landmarks].sort((a, b) => a.day - b.day);
+  const lo = Math.min(items[0]?.day ?? Infinity, cycleDay('10/15'));
+  const hi = Math.max(items[items.length - 1]?.day ?? -Infinity, cycleDay('2/15'));
+  const scaled = d => (d - lo) / (hi - lo);
+
+  const n = items.length;
+  // Minimum center-to-center gap: pill to pill is wider than pill to
+  // landmark (the ring is small). Shrink them all if they can't fit.
+  const gaps = items.slice(1).map((it, i) => (it.landmark || items[i].landmark) ? 0.16 : 0.24);
+  const gapSum = gaps.reduce((a, g) => a + g, 0);
+  if (gapSum > 1) gaps.forEach((g, i) => { gaps[i] = g / gapSum; });
+  const pos = items.map((it, i) => 0.5 * scaled(it.day) + 0.5 * (n > 1 ? i / (n - 1) : 0.5));
+  for (let i = 1; i < n; i++) pos[i] = Math.max(pos[i], pos[i - 1] + gaps[i - 1]);
+  if (n && pos[n - 1] > 1) {
+    pos[n - 1] = 1;
+    for (let i = n - 2; i >= 0; i--) pos[i] = Math.min(pos[i], pos[i + 1] - gaps[i]);
+  }
+  items.forEach((it, i) => { it.p = Math.max(0, pos[i]) * span; });
+  stops.forEach(st => { if (st.day == null) st.p = fixed.length ? 1 : 0.5; });
+  if (!fixed.length) landmarks.push({ p: 0, label: 'Jan 1' }, { p: 1, label: 'Dec 31' });
+
+  // Any date → track position, interpolating between the placed items
+  // (anchored to the window's ends) so "today" lines up with them.
+  const anchors = [
+    ...(n && lo < items[0].day ? [[lo, 0]] : []),
+    ...items.map(it => [it.day, it.p / (span || 1)]),
+    ...(n && hi > items[n - 1].day ? [[hi, 1]] : []),
+  ];
+  function at(day) {
+    if (!anchors.length || day <= anchors[0][0]) return 0;
+    for (let i = 1; i < anchors.length; i++) {
+      const [d0, p0] = anchors[i - 1], [d1, p1] = anchors[i];
+      if (day <= d1) return (p0 + (p1 - p0) * (day - d0) / (d1 - d0)) * span;
+    }
+    return span;
+  }
+
+  const allPassed = stops.every(st => st.passed);
+  const fill = allPassed ? 1 : fixed.length ? Math.min(at(today), span) : 0;
+
+  const pct = p => `--p:${p.toFixed(3)}`;
+  return `<div class="deadline-area">
+    <div class="deadline-timeline">
+      <div class="deadline-track" aria-hidden="true"><span class="deadline-fill" style="${fill > 0 ? pct(fill) : '--p:-1'}"></span></div>
+      ${landmarks.map(m => `<span class="deadline-jan" style="${pct(m.p)}" aria-hidden="true"><span class="deadline-jan-dot"></span><span class="deadline-jan-label">${m.label}</span></span>`).join('')}
+      <ol class="deadline-stops" aria-label="Application deadlines">
+        ${stops.map((st, i) => {
+          const cls = ['deadline-stop', st.day == null && 'rolling', st.passed && 'passed', i === nextIdx && 'next'].filter(Boolean).join(' ');
+          const status = st.passed ? ' (passed)' : i === nextIdx ? ' (next deadline)' : '';
+          return `<li class="${cls}" style="${pct(st.p)}">
+            ${i === nextIdx ? '<span class="deadline-next-tag" aria-hidden="true">Next up</span>' : ''}
+            <span class="deadline-pill">${escapeHtml(st.date)}<span class="visually-hidden">${status}</span></span>
+            <span class="deadline-type">${st.types.map(escapeHtml).join(' · ')}</span>
+          </li>`;
+        }).join('')}
+      </ol>
+    </div>
+  </div>`;
 }
 
 function renderAdmissionsSummary(s, rounds = cdsRounds(s)) {
@@ -482,7 +579,11 @@ function renderAdmissionsSummary(s, rounds = cdsRounds(s)) {
     ${kv('Location',          s.location)}
     ${kv('School Type',       s.school_type)}
     ${kv('Early Admissions',  early.length ? early.map(escapeHtml).join(', ') : 'No Early Admission Program')}
-    ${kv('Application Fee',   feeText(s.application_fee) && escapeHtml(feeText(s.application_fee)))}
+    ${kv('Application Fee',   feeText(s.application_fee) && (feeText(s.application_fee).length > 24
+      // Long text fees ("$80 ($95 International)") in smaller type so they
+      // wrap less and leave room for the deadline timeline.
+      ? `<span class="kv-val-long">${escapeHtml(feeText(s.application_fee))}</span>`
+      : escapeHtml(feeText(s.application_fee))))}
   </div>`;
 
   return sectionWrap('Admissions', kvGrid + deadlineTimelineHtml(rounds));
@@ -765,13 +866,8 @@ function renderCostSection(s) {
     ],
   ];
 
-  const appFee = s.application_fee != null
-    ? `<p class="section-note" style="margin-top:14px">Application Fee: <strong>${escapeHtml(feeText(s.application_fee))}</strong></p>`
-    : '';
-
-  return sectionWrap('Cost', `
-    ${tableHtml(['', 'In-State', 'Out-of-State'], rows)}
-    ${appFee}`);
+  // Application fee lives in the Admissions box beside this one.
+  return sectionWrap('Cost', tableHtml(['', 'In-State', 'Out-of-State'], rows));
 }
 
 // ── Render: Student Body section ────────────────────────────────────────
@@ -927,6 +1023,14 @@ async function init() {
   let currentYearKey = latestAvailableKey;
 
   document.documentElement.style.setProperty('--brand', meta.color);
+  // Text color that stays readable on a --brand fill (light brands like
+  // Harvey Mudd's gold need dark text).
+  {
+    const hex = /^#?([0-9a-f]{6})$/i.exec(meta.color || '')?.[1];
+    const [r, g, b] = hex ? [0, 2, 4].map(i => parseInt(hex.slice(i, i + 2), 16) / 255) : [0, 0, 0];
+    const lum = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    document.documentElement.style.setProperty('--brand-ink', lum > 0.6 ? '#111' : '#fff');
+  }
 
   // Everything that depends on which year is currently selected — rerun
   // in full each time the switcher picks a different one. The one-time

@@ -299,6 +299,15 @@
   width: 100%;
 }
 
+/* Paired boxes (Admissions + Cost) stretch to the taller one; the body
+   grows with them so the white interior reaches the bottom edge. Its own
+   flex column lets the Admissions timeline take the leftover room. */
+.school-section-row .school-section-body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
 /* ── Section ── */
 /* Each major section is now its own card: the title keeps its solid
    brand-color bar flush across the top, and .school-section-body (see
@@ -347,6 +356,8 @@
 
 .school-section-row .school-section {
   flex: 1 1 320px;
+  display: flex;
+  flex-direction: column;
   /* min(320px, 100%) — the 320px floor is what makes flex-wrap trigger
      the single-column stack once two side-by-side sections wouldn't fit;
      capping it at 100% stops a single stacked section from still being
@@ -423,79 +434,193 @@
 }
 
 .kv-val { color: #000; font-weight: 400; }
+.kv-val-long { display: block; font-size: 0.86em; line-height: 1.35; }
 
 /* ── Deadline timeline (bottom of the Admissions box) ──
-   Bubbles spread evenly along one rule rather than spaced by date: rounds
-   cluster in Nov and Jan, so true-to-scale spacing would stack labels.
-   Compact on purpose: it fills the room the two old deadline rows freed,
-   so the Admissions box stays no taller than the Cost box beside it. */
-.deadline-timeline {
-  position: relative;
+   Pills are placed by date but softened (see deadlineTimelineHtml in
+   school.js), along a track that spans the whole width. --p (0..1) is each
+   item's spot between the two insets, which keep end pills inside the box.
+   .deadline-area takes the room left under Application Fee (the Admissions
+   box is stretched to the Cost box's height) and centers the timeline in
+   it, so it fills the box without making it any taller. */
+.deadline-area {
+  flex: 1 1 auto;
   display: flex;
-  justify-content: space-between;
-  gap: 4px;
-  list-style: none;
-  margin: 22px 0 0;
-  padding: 0;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 2px;
 }
 
-/* The rule runs between the first and last dot centers, at dot height
-   (date line 1.3em + dot half-height). */
-.deadline-timeline::before {
-  content: '';
-  position: absolute;
-  left: 8%;
-  right: 8%;
-  top: calc(0.95em * 1.3 + 6px + 7px);
-  border-top: 2px solid #e2e2e2;
-}
-
-.deadline-stop {
+.deadline-timeline {
+  --pill-h: 28px;
+  --tag-h: 18px;
+  --inset: 32px;
   position: relative;
-  flex: 1 1 0;
-  min-width: 0;
+  container-type: inline-size;
+  height: calc(var(--tag-h) + var(--pill-h) + 22px);
+}
+
+.deadline-track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(var(--tag-h) + var(--pill-h) / 2 - 3px);
+  height: 6px;
+  border-radius: 3px;
+  background: #ececec;
+  overflow: hidden;
+}
+
+/* --brand fill = how far through this cycle we are. */
+.deadline-fill {
+  display: block;
+  height: 100%;
+  width: calc(var(--inset) + var(--p) * (100% - 2 * var(--inset)));
+  background: var(--brand);
+  opacity: 0.55;
+  border-radius: 3px;
+}
+
+/* Faint Jan 1 landmark on the track. */
+.deadline-jan {
+  position: absolute;
+  top: calc(var(--tag-h) + var(--pill-h) / 2 - 6px);
+  left: calc(var(--inset) + var(--p) * (100% - 2 * var(--inset)));
+  transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
-  text-align: center;
+  gap: 9px;
+  pointer-events: none;
 }
 
-.deadline-date {
-  font-size: 0.95em;
-  font-weight: 700;
-  line-height: 1.3;
-  color: #000;
-  font-variant-numeric: tabular-nums;
+.deadline-jan-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #cfcfcf;
+  box-sizing: border-box;
+}
+
+.deadline-jan-label {
+  font-size: 0.7em;
+  letter-spacing: 0.04em;
+  color: #9a9a9a;
   white-space: nowrap;
 }
 
-.deadline-dot {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--brand);
-  box-shadow: 0 0 0 3px #fff;
+.deadline-stops {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.deadline-stop.rolling .deadline-dot {
+.deadline-stop {
+  position: absolute;
+  top: var(--tag-h);
+  left: calc(var(--inset) + var(--p) * (100% - 2 * var(--inset)));
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 96px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  text-align: center;
+}
+
+.deadline-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--pill-h);
+  padding: 0 7px;
+  border-radius: calc(var(--pill-h) / 2);
+  background: var(--brand);
+  color: var(--brand-ink, #fff);
+  font-size: 0.9em;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  box-shadow: 0 0 0 3px #fff, 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.15s ease;
+}
+
+.deadline-stop:hover .deadline-pill { transform: translateY(-2px) scale(1.06); }
+
+.deadline-stop.passed .deadline-pill {
+  background: #e4e4e4;
+  color: #8a8a8a;
+  box-shadow: 0 0 0 3px #fff;
+}
+.deadline-stop.passed .deadline-type { color: #9a9a9a; }
+
+.deadline-stop.rolling .deadline-pill {
   background: #fff;
-  border: 2px solid var(--brand);
-  box-sizing: border-box;
+  color: #000;
+  border: 2px dashed var(--brand);
+}
+
+/* The next open deadline: a soft brand-colored halo that breathes. */
+.deadline-stop.next .deadline-pill {
+  animation: deadline-pulse 2.2s ease-out infinite;
+}
+
+@keyframes deadline-pulse {
+  0%   { box-shadow: 0 0 0 3px #fff, 0 0 0 3px color-mix(in srgb, var(--brand) 45%, transparent); }
+  70%  { box-shadow: 0 0 0 3px #fff, 0 0 0 11px color-mix(in srgb, var(--brand) 0%, transparent); }
+  100% { box-shadow: 0 0 0 3px #fff, 0 0 0 3px color-mix(in srgb, var(--brand) 0%, transparent); }
+}
+
+.deadline-next-tag {
+  position: absolute;
+  top: calc(-1 * var(--tag-h));
+  font-size: 0.68em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: var(--tag-h);
+  /* Darkened so light brands (gold, sky blue) stay readable on white. */
+  color: color-mix(in srgb, var(--brand) 65%, #000);
+  white-space: nowrap;
 }
 
 .deadline-type {
   font-family: var(--font-display);
   font-size: 0.88em;
   line-height: 1.25;
-  color: #444;
+  color: #333;
   overflow-wrap: anywhere;
 }
 
 .deadline-none {
-  margin: 16px 0 0;
+  margin: 0;
   font-size: 0.95em;
   color: #666;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Narrow timelines (two boxes side by side on a small laptop): smaller
+   pills and wrapping labels so crowded schools (Auburn's five rounds,
+   Georgia Tech's long labels) don't touch. */
+@container (max-width: 360px) {
+  .deadline-pill { padding: 0 5px; font-size: 0.8em; }
+  .deadline-stop { max-width: 70px; }
+  .deadline-type { font-size: 0.8em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .deadline-stop.next .deadline-pill { animation: none; }
+  .deadline-pill { transition: none; }
 }
 
 /* ── Applicant funnel ── */

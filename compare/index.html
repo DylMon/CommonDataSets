@@ -126,6 +126,14 @@
             return val != null ? '$' + val.toLocaleString() : '<span class="stat-na">N/A</span>';
         }
 
+        // Most fees are numbers; a few CDS fees are text that already carries
+        // its own "$" ("Residents: $50; Nonresidents: $80"), so show it as written.
+        function fmtFee(val) {
+            if (typeof val !== 'string') return fmtMoney(val);
+            const text = val.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+            return val.includes('$') ? text : '$' + text;
+        }
+
         function fmtGpa(val) {
             return val != null ? parseFloat(val).toFixed(2) : '<span class="stat-na">N/A</span>';
         }
@@ -233,16 +241,18 @@
         // is worse, not better. Keyed by slot so callers can look up a
         // specific school's class by its slot number.
         function bestWorstClasses(items, lowerIsBetter) {
-            const withVal = items.filter(i => i.value != null);
+            // Only numeric values compete: a fee given as text ("$80 ($95
+            // International)") has no single number to rank.
+            const withVal = items.filter(i => i.value != null && !Number.isNaN(Number(i.value)));
             if (withVal.length < 2) return {};
-            const values = withVal.map(i => i.value);
+            const values = withVal.map(i => Number(i.value));
             const best = lowerIsBetter ? Math.min(...values) : Math.max(...values);
             const worst = lowerIsBetter ? Math.max(...values) : Math.min(...values);
             if (best === worst) return {};
             const classes = {};
             withVal.forEach(i => {
-                if (i.value === best) classes[i.slot] = 'stat-higher';
-                else if (i.value === worst) classes[i.slot] = 'stat-lower';
+                if (Number(i.value) === best) classes[i.slot] = 'stat-higher';
+                else if (Number(i.value) === worst) classes[i.slot] = 'stat-lower';
             });
             return classes;
         }
@@ -595,7 +605,7 @@
                 multiRow('Other Expenses',          schools, s => s.other_expenses,  fmtMoney, { lowerIsBetter: true }),
                 multiRow('Total Cost (In-State)',     schools, s => totalCOA(s, 'in'),  fmtMoney, { lowerIsBetter: true, strong: true }),
                 multiRow('Total Cost (Out-of-State)', schools, s => totalCOA(s, 'out'), fmtMoney, { lowerIsBetter: true, strong: true }),
-                multiRow('Application Fee',         schools, s => s.application_fee, fmtMoney, { lowerIsBetter: true }),
+                multiRow('Application Fee',         schools, s => s.application_fee, fmtFee, { lowerIsBetter: true }),
             ];
             return sectionHtml('Cost', tableHtml(headerRow(schools), rows, colTints(schools)));
         }
