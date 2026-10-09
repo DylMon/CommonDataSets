@@ -403,23 +403,25 @@ document.addEventListener('click', e => {
   if (tip) tip.classList.toggle('open');
 });
 
-// Symbol + explanation for a GPA that didn't come from this year's CDS
-// (data/outside-gpa.json): † = published by the school itself, ≈ = our
-// estimate from third-party sources. Same hover/tap tip as the ⓘ.
+// A GPA that didn't come from this year's CDS (data/outside-gpa.json) gets
+// a "≈" before the number; its hover/tap tip (same as the ⓘ) says where it
+// came from: published by the school itself, or our third-party estimate.
 const OUTSIDE_GPA_NOTE = {
-  school: ['†', "This average GPA isn't in this year's Common Data Set. It comes from figures the school itself has published, such as an earlier Common Data Set or a class profile."],
-  estimate: ['≈', "This school doesn't publish an average GPA. This is our best estimate, based on comparing several third-party sources."],
+  school: "This average GPA isn't in this year's Common Data Set. It comes from figures the school itself has published, such as an earlier Common Data Set or a class profile.",
+  estimate: "This school doesn't publish an average GPA. This is our best estimate, based on comparing several third-party sources.",
 };
 
 function outsideGpaMark(source) {
-  const [symbol, text] = OUTSIDE_GPA_NOTE[source];
-  return `<button type="button" class="stat-info gpa-source" aria-label="${escapeHtml(text)}">${symbol}<span class="stat-info-tip" role="tooltip">${escapeHtml(text)}</span></button>`;
+  const text = OUTSIDE_GPA_NOTE[source];
+  return `<button type="button" class="stat-info gpa-source" aria-label="${escapeHtml(text)}">≈<span class="stat-info-tip" role="tooltip">${escapeHtml(text)}</span></button>`;
 }
 
 // outside: {gpa, source} for a school whose CDS (this year) has no GPA.
 function renderQuickFacts(s, outside = null) {
   const gpaVal = s.avg_gpa_weighted != null ? parseFloat(s.avg_gpa_weighted).toFixed(2)
-    : outside ? Number(outside.gpa).toFixed(2) + outsideGpaMark(outside.source)
+    // The anchor span keeps the number centered under its label; the ≈
+    // hangs off its left edge (see .stat-anchor in school-template.css).
+    : outside ? `<span class="stat-anchor">${outsideGpaMark(outside.source)}${Number(outside.gpa).toFixed(2)}</span>`
     : 'Not reported';
   const satVal   = s.sat_composite_25 != null && s.sat_composite_75 != null
     ? `${s.sat_composite_25}–${s.sat_composite_75}`
@@ -436,7 +438,7 @@ function renderQuickFacts(s, outside = null) {
     ['ACT Range',       act25 != null && act75 != null ? `${act25}–${act75}` : '<span class="stat-na">N/A</span>'],
     // The CDS never says whether a school's average GPA is weighted or
     // unweighted (avg_gpa_weighted is just the column name), so don't claim either.
-    ['Avg GPA' + infoTip('The Common Data Set does not state whether this GPA is weighted or unweighted.'),
+    [`<span class="stat-anchor">Avg GPA${infoTip('The Common Data Set does not state whether this GPA is weighted or unweighted.')}</span>`,
                         gpaVal],
     ['Undergrads',      s.total_undergrads != null ? s.total_undergrads.toLocaleString() : '<span class="stat-na">N/A</span>'],
     ['Tuition (OOS)',   tuitionOOS != null ? '$' + tuitionOOS.toLocaleString() : '<span class="stat-na">N/A</span>'],

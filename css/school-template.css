@@ -263,7 +263,7 @@
   top: calc(100% + 8px);
   left: 50%;
   transform: translateX(-50%);
-  width: 220px;
+  width: 240px;
   padding: 8px 10px;
   background: #222;
   color: #fff;
@@ -284,17 +284,37 @@
   .stat-info:hover .stat-info-tip { display: block; }
 }
 
-/* † / ≈ after a GPA that isn't from this year's CDS: the same tip as the
-   ⓘ, but a bare raised symbol beside the number instead of a ringed icon. */
+/* Wraps a stat's text so an attached symbol (the ⓘ after "Avg GPA", the ≈
+   before an outside GPA) can hang outside it: the text itself stays
+   centered exactly like the neighboring stats. */
+.stat-anchor {
+  position: relative;
+  display: inline-block;
+}
+/* Centered with a negative margin, not a transform: a transform would trap
+   the symbol's tooltip in its own layer, under the next symbol on the page. */
+.stat-anchor > .stat-info {
+  position: absolute;
+  top: 50%;
+  margin-top: -7px;
+}
+.stat-anchor > .stat-info:not(.gpa-source) { left: 100%; }
+.stat-info.open,
+.stat-info:hover,
+.stat-info:focus-visible { z-index: 30; }
+
+/* ≈ before a GPA that isn't from this year's CDS: the same tip as the ⓘ,
+   but a bare symbol centered on the number instead of a ringed icon. */
 .stat-info.gpa-source {
+  right: 100%;
+  top: 56%;
   width: auto;
   height: auto;
-  margin-left: 2px;
-  vertical-align: super;
+  margin: -0.5em 3px 0 0;
   border: none;
   border-radius: 0;
   color: #777;
-  font: 600 0.5em/1 'Public Sans', sans-serif;
+  font: 600 0.55em/1 'Public Sans', sans-serif;
 }
 .stat-info.gpa-source .stat-info-tip { top: calc(100% + 10px); }
 

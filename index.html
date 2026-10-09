@@ -495,7 +495,7 @@
                                     <div class="stat-label stat-col-1">Acceptance</div>
                                     <div class="stat-label stat-col-2">SAT Range</div>
                                     <div class="stat-label stat-col-3">ACT Range</div>
-                                    <div class="stat-label stat-col-4">GPA${s._gpaOutside ? '<span class="gpa-mark" title="Not from the school\'s Common Data Set">*</span>' : ''}</div>
+                                    <div class="stat-label stat-col-4"><span class="gpa-anchor">GPA${s._gpaOutside ? '<span class="gpa-mark" title="Not from the school\'s Common Data Set">*</span>' : ''}</span></div>
                                     <div class="stat-val stat-col-1">${fmtPct(s.acceptance_rate)}</div>
                                     <div class="stat-val stat-col-2">${s.sat_composite_25 != null && s.sat_composite_75 != null ? `${s.sat_composite_25}–${s.sat_composite_75}` : '<span class="stat-na">N/A</span>'}</div>
                                     <div class="stat-val stat-col-3">${actRange}</div>

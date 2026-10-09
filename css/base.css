@@ -1005,6 +1005,19 @@ body.page-resources .hero-banner {
     color: #ed6d0b;
 }
 
+/* Home card "GPA" label: the asterisk hangs off the word's right edge so
+   "GPA" itself stays centered over its value, like the other labels. */
+.gpa-anchor {
+    position: relative;
+}
+.gpa-anchor .gpa-mark {
+    position: absolute;
+    left: 100%;
+    top: -0.2em;
+    vertical-align: baseline;
+    line-height: 1;
+}
+
 /* Asterisk and text side by side, so a wrapped second line lines up
    under the text rather than under the asterisk. */
 .gpa-legend {

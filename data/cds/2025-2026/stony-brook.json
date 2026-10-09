@@ -2,7 +2,7 @@
   "name": "Stony Brook University", "data_year": "2025-26", "city": "Stony Brook", "state": "NY", "location": "Stony Brook, NY",
   "school_type": "Public", "website": "stonybrook.edu", "applicants_total": 64197, "applicants_men": 29393, "applicants_women": 34762,
   "admitted_total": 30930, "admitted_men": 13746, "admitted_women": 17167, "enrolled_total": 3964, "enrolled_men": 2024, "enrolled_women": 1940,
-  "acceptance_rate": 0.482, "application_fee": 50, "avg_gpa_weighted": 94.48, "rd_deadline": "1/15", "waitlist_offered": 10563,
+  "acceptance_rate": 0.482, "application_fee": 50, "avg_gpa_weighted": 3.78, "rd_deadline": "1/15", "waitlist_offered": 10563,
   "waitlist_accepted": 5191, "waitlist_admitted": 3462, "ea_ed_type": "EA", "ea_ed_deadline": "11/1", "ea_ed_notification": "1/31",
   "ea_apps_received": null, "ea_apps_admitted": null, "sat_submitted_pct": 0.38, "sat_submitted_count": 1507, "act_submitted_pct": 0.04,
   "act_submitted_count": 158, "sat_composite_25": 1350, "sat_composite_75": 1470, "sat_reading_25": 650, "sat_reading_75": 730,
