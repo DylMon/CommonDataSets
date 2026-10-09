@@ -1,4 +1,6 @@
 import { GPA_BUCKETS, renderGpaHistogram, normalizeGpaDistribution } from './charts.js?v=6';
+import { loadAdmissionPlans, cdsRounds } from './admission-plans.js?v=1';
+import { loadOutsideGpa } from './outside-gpa.js?v=1';
 
 const SCHOOL_META = {
   'mit': { color: '#a41931', banner: 'mit.jpg', y: 50, credit: { author: 'Scutter', license: 'CC BY-NC-ND 2.0', url: 'https://www.flickr.com/photos/scutter/38005464/' } },
@@ -401,7 +403,24 @@ document.addEventListener('click', e => {
   if (tip) tip.classList.toggle('open');
 });
 
-function renderQuickFacts(s) {
+// Symbol + explanation for a GPA that didn't come from this year's CDS
+// (data/outside-gpa.json): † = published by the school itself, ≈ = our
+// estimate from third-party sources. Same hover/tap tip as the ⓘ.
+const OUTSIDE_GPA_NOTE = {
+  school: ['†', "This average GPA isn't in this year's Common Data Set. It comes from figures the school itself has published, such as an earlier Common Data Set or a class profile."],
+  estimate: ['≈', "This school doesn't publish an average GPA. This is our best estimate, based on comparing several third-party sources."],
+};
+
+function outsideGpaMark(source) {
+  const [symbol, text] = OUTSIDE_GPA_NOTE[source];
+  return `<button type="button" class="stat-info gpa-source" aria-label="${escapeHtml(text)}">${symbol}<span class="stat-info-tip" role="tooltip">${escapeHtml(text)}</span></button>`;
+}
+
+// outside: {gpa, source} for a school whose CDS (this year) has no GPA.
+function renderQuickFacts(s, outside = null) {
+  const gpaVal = s.avg_gpa_weighted != null ? parseFloat(s.avg_gpa_weighted).toFixed(2)
+    : outside ? Number(outside.gpa).toFixed(2) + outsideGpaMark(outside.source)
+    : 'Not reported';
   const satVal   = s.sat_composite_25 != null && s.sat_composite_75 != null
     ? `${s.sat_composite_25}–${s.sat_composite_75}`
     : '<span class="stat-na">N/A</span>';
@@ -418,7 +437,7 @@ function renderQuickFacts(s) {
     // The CDS never says whether a school's average GPA is weighted or
     // unweighted (avg_gpa_weighted is just the column name), so don't claim either.
     ['Avg GPA' + infoTip('The Common Data Set does not state whether this GPA is weighted or unweighted.'),
-                        s.avg_gpa_weighted != null ? parseFloat(s.avg_gpa_weighted).toFixed(2) : 'Not reported'],
+                        gpaVal],
     ['Undergrads',      s.total_undergrads != null ? s.total_undergrads.toLocaleString() : '<span class="stat-na">N/A</span>'],
     ['Tuition (OOS)',   tuitionOOS != null ? '$' + tuitionOOS.toLocaleString() : '<span class="stat-na">N/A</span>'],
   ];
@@ -433,16 +452,9 @@ function renderQuickFacts(s) {
 
 // ── Render: Admissions summary (paired side-by-side with Cost) ─────────
 
-// Application rounds as [{type, date}] in cycle order. The current cycle's
+// Application rounds are [{type, date}] in cycle order. The current cycle's
 // verified rounds come from data/admission-plans.json (passed in as `rounds`);
-// an older year falls back to what that year's CDS recorded.
-function cdsRounds(s) {
-  const rounds = [];
-  if (s.ea_ed_type && s.ea_ed_type !== 'None') rounds.push({ type: s.ea_ed_type, date: s.ea_ed_deadline || null });
-  if (s.rd_deadline) rounds.push({ type: 'RD', date: s.rd_deadline });
-  return rounds;
-}
-
+// an older year falls back to cdsRounds(), what that year's CDS recorded.
 const isEarlyRound = type => /^(ED|EA|REA)\b/.test(type);
 
 // Most fees are numbers, but a few schools' CDS give text that already
@@ -587,19 +599,6 @@ function renderAdmissionsSummary(s, rounds = cdsRounds(s)) {
   </div>`;
 
   return sectionWrap('Admissions', kvGrid + deadlineTimelineHtml(rounds));
-}
-
-// Verified current-cycle rounds per slug; {} if the file is missing so the
-// page still renders from the CDS fields.
-async function loadAdmissionPlans() {
-  try {
-    const res = await fetch('/data/admission-plans.json');
-    if (!res.ok) return {};
-    return (await res.json()).plans ?? {};
-  } catch (err) {
-    console.error('Failed to load admission plans:', err);
-    return {};
-  }
 }
 
 // ── Render: Selectivity (funnel + admit rates by round and by gender) ───
@@ -1009,8 +1008,8 @@ async function init() {
   recentHistory = [slug, ...recentHistory.filter(s => s !== slug)].slice(0, 5);
   localStorage.setItem(historyKey, JSON.stringify(recentHistory));
 
-  const [{ allSchools, yearRecords, availableYearKeys }, admissionPlans] =
-    await Promise.all([loadAllYears(slug), loadAdmissionPlans()]);
+  const [{ allSchools, yearRecords, availableYearKeys }, admissionPlans, outsideGpa] =
+    await Promise.all([loadAllYears(slug), loadAdmissionPlans(), loadOutsideGpa()]);
 
   if (availableYearKeys.length === 0) {
     document.getElementById('school-sections').innerHTML =
@@ -1066,7 +1065,7 @@ async function init() {
     document.getElementById('stats-strip').insertAdjacentHTML('afterend',
       `<div class="year-bar-strip">${renderYearBar({ currentYearKey: yearKey, availableYearKeys, latestAvailableKey })}</div>`);
     document.querySelector('.year-bar-strip')
-      .insertAdjacentHTML('afterend', `<div class="quick-facts-strip">${renderQuickFacts(s)}</div>`);
+      .insertAdjacentHTML('afterend', `<div class="quick-facts-strip">${renderQuickFacts(s, yearKey === latestAvailableKey ? outsideGpa[slug] : null)}</div>`);
 
     document.getElementById('hero-fav-btn').addEventListener('click', () => {
       const favs = getFavs();

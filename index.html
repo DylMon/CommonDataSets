@@ -91,6 +91,7 @@
             </div>
             <div class="category-filter-bar" id="category-filter-bar"></div>
             <p class="results-count" id="results-count"></p>
+            <p class="gpa-legend" id="gpa-legend" hidden><span class="gpa-mark" aria-hidden="true">*</span><span>marks data that isn't from the school's Common Data Set</span></p>
             <div class="page-layout">
             <div class="sidebar">
             <div class="controls-container">
@@ -221,6 +222,9 @@
     </div>
 
     <script type="module">
+        import { loadAdmissionPlans, cdsRounds, deadlineRows, offersEarlyAction, offersEarlyDecision } from '/js/admission-plans.js?v=1';
+        import { loadOutsideGpa, withOutsideGpa } from '/js/outside-gpa.js?v=1';
+
         // Logos live at images/logos/<slug>.png. A few schools have none yet;
         // the onerror hook hides the broken <img> instead of a torn-image icon.
         const logoSrc = slug => `/images/logos/${slug}.png`;
@@ -252,8 +256,9 @@
             return schools.filter(s => {
                 if (activeFilters.category !== 'all' && !(s.categories ?? []).includes(activeFilters.category)) return false;
                 if (activeFilters.year !== 'all' && s._yearKey !== activeFilters.year) return false;
-                if (activeFilters.eaEd === 'ea' && s.ea_ed_type !== 'EA') return false;
-                if (activeFilters.eaEd === 'ed' && s.ea_ed_type !== 'ED') return false;
+                // Any EA/REA (or ED) round counts, so ED I & II, EA I-IV etc. match.
+                if (activeFilters.eaEd === 'ea' && !offersEarlyAction(s._rounds)) return false;
+                if (activeFilters.eaEd === 'ed' && !offersEarlyDecision(s._rounds)) return false;
                 if (activeFilters.size < 40000 && (s.total_undergrads == null || s.total_undergrads > activeFilters.size)) return false;
                 if (activeFilters.selectivity < 100 && (s.acceptance_rate == null || s.acceptance_rate * 100 > activeFilters.selectivity)) return false;
                 if (activeFilters.tuition < 75000 && ((s.tuition_out_of_state ?? s.tuition) == null || (s.tuition_out_of_state ?? s.tuition) > activeFilters.tuition)) return false;
@@ -389,9 +394,12 @@
 
         function renderDetailPanel(s) {
             const tuitionVal = s.tuition_out_of_state ?? s.tuition;
-            const eaLabel = s.ea_ed_type === 'EA' ? 'Early Action'
-                          : s.ea_ed_type === 'ED' ? 'Early Decision'
-                          : s.ea_ed_type;
+            // One row per round family (ED, EA/REA, RD): at most three, the
+            // same height as Quick Facts beside it.
+            const rows = deadlineRows(s._rounds);
+            const deadlinesBody = rows.length
+                ? rows.map(([label, value]) => `<div class="detail-kv"><span>${label}</span><span>${value}</span></div>`).join('')
+                : `<div class="detail-kv"><span>Not reported</span><span></span></div>`;
             const waitlistBody = s.waitlist_offered != null
                 ? `<div class="detail-kv"><span>Offered</span><span>${s.waitlist_offered.toLocaleString()}</span></div>
                    <div class="detail-kv"><span>Admitted</span><span>${s.waitlist_admitted != null ? s.waitlist_admitted.toLocaleString() : '<span class="stat-na">N/A</span>'}</span></div>`
@@ -401,8 +409,7 @@
                 <div class="detail-grid">
                     <div class="detail-section">
                         <div class="detail-section-title">Deadlines</div>
-                        ${eaLabel ? `<div class="detail-kv"><span>${eaLabel}</span><span>${s.ea_ed_deadline ?? '<span class="stat-na">N/A</span>'}</span></div>` : ''}
-                        <div class="detail-kv"><span>Regular Decision</span><span>${s.rd_deadline ?? '<span class="stat-na">N/A</span>'}</span></div>
+                        ${deadlinesBody}
                     </div>
                     <div class="detail-section">
                         <div class="detail-section-title">Quick Facts</div>
@@ -460,6 +467,7 @@
             document.getElementById('results-count').textContent = sorted.length
                 ? `Showing ${pageStart + 1}–${Math.min(pageStart + PAGE_SIZE, sorted.length)} of ${sorted.length} institutions`
                 : `Showing 0 of ${allSchools.length} institutions`;
+            document.getElementById('gpa-legend').hidden = !pageItems.some(s => s._gpaOutside);
             document.getElementById('school-list').innerHTML = pageItems.map(s => {
                 const actRange = s.act_composite_25 != null && s.act_composite_75 != null ? `${s.act_composite_25}–${s.act_composite_75}` : '<span class="stat-na">N/A</span>';
                 const isFav = favorites.has(s.slug);
@@ -487,7 +495,7 @@
                                     <div class="stat-label stat-col-1">Acceptance</div>
                                     <div class="stat-label stat-col-2">SAT Range</div>
                                     <div class="stat-label stat-col-3">ACT Range</div>
-                                    <div class="stat-label stat-col-4">GPA</div>
+                                    <div class="stat-label stat-col-4">GPA${s._gpaOutside ? '<span class="gpa-mark" title="Not from the school\'s Common Data Set">*</span>' : ''}</div>
                                     <div class="stat-val stat-col-1">${fmtPct(s.acceptance_rate)}</div>
                                     <div class="stat-val stat-col-2">${s.sat_composite_25 != null && s.sat_composite_75 != null ? `${s.sat_composite_25}–${s.sat_composite_75}` : '<span class="stat-na">N/A</span>'}</div>
                                     <div class="stat-val stat-col-3">${actRange}</div>
@@ -551,6 +559,13 @@
                 }
             }
             let merged = [...bySlug.values()];
+
+            // Verified current-cycle application rounds (data/admission-plans.json),
+            // falling back to the CDS fields for a school the file doesn't cover.
+            const [plans, outsideGpa] = await Promise.all([loadAdmissionPlans(), loadOutsideGpa()]);
+            merged = merged.map(s => ({ ...s, _rounds: plans[s.slug] ?? cdsRounds(s) }));
+            // GPAs from outside the CDS for schools whose latest CDS left it blank.
+            merged = withOutsideGpa(merged, outsideGpa);
 
             if (merged.length === 0) {
                 document.getElementById('school-list').innerHTML = '<p class="loading">Failed to load schools.</p>';

@@ -45,6 +45,7 @@
                      remove it; an empty cell is a search box; a trailing
                      dashed cell adds the next slot. -->
                 <div class="compare-grid" id="compare-grid"></div>
+                <p class="gpa-legend compare-gpa-legend" id="gpa-legend" hidden><span class="gpa-mark" aria-hidden="true">*</span><span>marks data that isn't from the school's Common Data Set</span></p>
             </aside>
             <div class="compare-main">
                 <div id="compare-sections">
@@ -66,6 +67,7 @@
 
     <script type="module">
         import { renderGpaComparisonChart } from '/js/charts.js?v=6';
+        import { loadOutsideGpa, withOutsideGpa } from '/js/outside-gpa.js?v=1';
 
         // Fixed per-slot colors rather than each school's own brand color —
         // brand hexes are arbitrary and sometimes literally identical
@@ -298,7 +300,7 @@
             { key: 'sat',        label: 'SAT Avg',       text: s => s.sat_avg != null ? s.sat_avg : '<span class="stat-na">N/A</span>',            val: s => s.sat_avg },
             { key: 'act',        label: 'ACT Range',     text: s => (s.act_composite_25 != null && s.act_composite_75 != null) ? `${s.act_composite_25}–${s.act_composite_75}` : '<span class="stat-na">N/A</span>', val: s => actMid(s) },
             { key: 'undergrads', label: 'Undergrads',    text: s => s.total_undergrads != null ? s.total_undergrads.toLocaleString() : '<span class="stat-na">N/A</span>', val: s => s.total_undergrads },
-            { key: 'gpa',        label: 'Avg GPA',       text: s => fmtGpa(s.avg_gpa_weighted),                     val: s => s.avg_gpa_weighted },
+            { key: 'gpa',        label: 'Avg GPA',       text: s => fmtGpa(s.avg_gpa_weighted) + (s._gpaOutside && s.avg_gpa_weighted != null ? '<span class="gpa-mark" title="Not from the school\'s Common Data Set">*</span>' : ''), val: s => s.avg_gpa_weighted },
             { key: 'tuition',    label: 'Tuition (OOS)', text: s => fmtMoney(s.tuition_out_of_state ?? s.tuition),  val: s => s.tuition_out_of_state ?? s.tuition, lowerIsBetter: true },
         ];
 
@@ -363,6 +365,7 @@
                 : searchCellHtml(slot));
             if (activeSlots.length < MAX_SLOTS) cells.push(addCellHtml());
             grid.innerHTML = cells.join('');
+            document.getElementById('gpa-legend').hidden = !activeSchoolEntries().some(({ school }) => school._gpaOutside);
         }
 
         function renderDropdown(slot) {
@@ -750,7 +753,9 @@
                 } catch (err) {
                     console.error('Scorecard fetch failed, showing CDS data without it:', err);
                 }
-                allSchools = merged;
+                // GPAs from outside the CDS for schools whose CDS left it blank
+                // (this page only uses the 2025-26 file, each school's latest).
+                allSchools = withOutsideGpa(merged, await loadOutsideGpa());
             } catch (err) {
                 console.error('Failed to load school data:', err);
             }

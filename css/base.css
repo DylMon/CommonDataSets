@@ -994,6 +994,44 @@ body.page-resources .hero-banner {
     letter-spacing: 0.02em;
 }
 
+/* Marks a GPA that didn't come from the school's Common Data Set
+   (data/outside-gpa.json), plus the one-line legend explaining it. */
+.gpa-mark {
+    margin-left: 1px;
+    font-size: 1.15em;
+    font-weight: 800;
+    vertical-align: super;
+    line-height: 0;
+    color: #ed6d0b;
+}
+
+/* Asterisk and text side by side, so a wrapped second line lines up
+   under the text rather than under the asterisk. */
+.gpa-legend {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 3px;
+    font-size: 0.82em;
+    line-height: 1.35;
+    color: #6b6b6b;
+    margin: -8px 0 14px;
+}
+.gpa-legend[hidden] { display: none; }
+
+.gpa-legend .gpa-mark {
+    flex: none;
+    margin: 0;
+    font-size: 1.2em;
+    vertical-align: baseline;
+    line-height: inherit;
+}
+
+.gpa-legend.compare-gpa-legend {
+    justify-content: flex-start;
+    margin: 10px 0 0;
+}
+
 .search-wrap {
     position: relative;
     display: flex;

@@ -284,6 +284,20 @@
   .stat-info:hover .stat-info-tip { display: block; }
 }
 
+/* † / ≈ after a GPA that isn't from this year's CDS: the same tip as the
+   ⓘ, but a bare raised symbol beside the number instead of a ringed icon. */
+.stat-info.gpa-source {
+  width: auto;
+  height: auto;
+  margin-left: 2px;
+  vertical-align: super;
+  border: none;
+  border-radius: 0;
+  color: #777;
+  font: 600 0.5em/1 'Public Sans', sans-serif;
+}
+.stat-info.gpa-source .stat-info-tip { top: calc(100% + 10px); }
+
 .stat-divider {
   width: 1px;
   background: #eee;

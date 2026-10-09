@@ -1,0 +1,218 @@
+{
+  "generated": "2026-10-09",
+  "note": "Average GPAs for schools whose most recent Common Data Set leaves GPA blank, chosen by hand in the Missing GPA Research doc (https://claude.ai/code/artifact/71172a2b-800c-483a-bc2f-d99373b67d75). source \"school\" = published by the school itself (an earlier CDS, class profile or fact sheet); \"estimate\" = best estimate from comparing third-party sites. Applied only to a school's latest record, and only when that record has no CDS GPA.",
+  "gpa": {
+    "american": {
+      "gpa": 3.79,
+      "source": "school"
+    },
+    "amherst": {
+      "gpa": 4.13,
+      "source": "estimate"
+    },
+    "barnard": {
+      "gpa": 4.13,
+      "source": "estimate"
+    },
+    "baylor": {
+      "gpa": 3.72,
+      "source": "estimate"
+    },
+    "boston-college": {
+      "gpa": 3.85,
+      "source": "estimate"
+    },
+    "bowdoin": {
+      "gpa": 4.13,
+      "source": "estimate"
+    },
+    "brown": {
+      "gpa": 3.94,
+      "source": "estimate"
+    },
+    "buffalo": {
+      "gpa": 3.7,
+      "source": "school"
+    },
+    "caltech": {
+      "gpa": 3.97,
+      "source": "estimate"
+    },
+    "carleton": {
+      "gpa": 4.11,
+      "source": "estimate"
+    },
+    "chapman": {
+      "gpa": 3.78,
+      "source": "school"
+    },
+    "claremont-mckenna": {
+      "gpa": 4.11,
+      "source": "estimate"
+    },
+    "clemson": {
+      "gpa": 4,
+      "source": "school"
+    },
+    "cornell": {
+      "gpa": 3.94,
+      "source": "estimate"
+    },
+    "dartmouth": {
+      "gpa": 3.94,
+      "source": "estimate"
+    },
+    "duke": {
+      "gpa": 4.18,
+      "source": "estimate"
+    },
+    "georgetown": {
+      "gpa": 3.94,
+      "source": "school"
+    },
+    "grinnell": {
+      "gpa": 4.07,
+      "source": "estimate"
+    },
+    "gwu": {
+      "gpa": 3.66,
+      "source": "school"
+    },
+    "hamilton": {
+      "gpa": 4.07,
+      "source": "estimate"
+    },
+    "harvey-mudd": {
+      "gpa": 4.13,
+      "source": "estimate"
+    },
+    "indiana-bloomington": {
+      "gpa": 4,
+      "source": "school"
+    },
+    "lehigh": {
+      "gpa": 3.89,
+      "source": "estimate"
+    },
+    "mit": {
+      "gpa": 4.18,
+      "source": "estimate"
+    },
+    "mizzou": {
+      "gpa": 3.62,
+      "source": "estimate"
+    },
+    "northwestern": {
+      "gpa": 4.15,
+      "source": "estimate"
+    },
+    "notre-dame": {
+      "gpa": 4.11,
+      "source": "estimate"
+    },
+    "ohio-state": {
+      "gpa": 3.85,
+      "source": "estimate"
+    },
+    "pomona": {
+      "gpa": 4.09,
+      "source": "estimate"
+    },
+    "rice": {
+      "gpa": 3.95,
+      "source": "estimate"
+    },
+    "rutgers-camden": {
+      "gpa": 3.45,
+      "source": "estimate"
+    },
+    "rutgers-newark": {
+      "gpa": 3.45,
+      "source": "estimate"
+    },
+    "swarthmore": {
+      "gpa": 4.14,
+      "source": "estimate"
+    },
+    "templeu": {
+      "gpa": 3.42,
+      "source": "school"
+    },
+    "texas-am": {
+      "gpa": 3.67,
+      "source": "estimate"
+    },
+    "texaschristian": {
+      "gpa": 3.82,
+      "source": "school"
+    },
+    "tufts": {
+      "gpa": 4.12,
+      "source": "estimate"
+    },
+    "uc-irvine": {
+      "gpa": 4.19,
+      "source": "school"
+    },
+    "uconn": {
+      "gpa": 3.81,
+      "source": "estimate"
+    },
+    "uiuc": {
+      "gpa": 3.85,
+      "source": "school"
+    },
+    "uofminnesota-twin-cities": {
+      "gpa": 3.73,
+      "source": "school"
+    },
+    "ut-austin": {
+      "gpa": 3.84,
+      "source": "estimate"
+    },
+    "ut-dallas": {
+      "gpa": 3.73,
+      "source": "estimate"
+    },
+    "uva": {
+      "gpa": 4.32,
+      "source": "estimate"
+    },
+    "uvermont": {
+      "gpa": 3.85,
+      "source": "school"
+    },
+    "vassar": {
+      "gpa": 3.9,
+      "source": "school"
+    },
+    "wake-forest": {
+      "gpa": 4.01,
+      "source": "estimate"
+    },
+    "washington-and-lee": {
+      "gpa": 4.06,
+      "source": "estimate"
+    },
+    "washu": {
+      "gpa": 4.19,
+      "source": "school"
+    },
+    "wellesley": {
+      "gpa": 3.9,
+      "source": "estimate"
+    },
+    "wesleyan": {
+      "gpa": 3.95,
+      "source": "estimate"
+    },
+    "williams": {
+      "gpa": 4.13,
+      "source": "estimate"
+    },
+    "yale": {
+      "gpa": 3.96,
+      "source": "estimate"
+    }
+  }
+}
