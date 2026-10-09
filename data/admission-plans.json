@@ -1,0 +1,2160 @@
+{
+  "generated": "2026-10-09",
+  "note": "Application rounds and deadlines for the current cycle, verified against each school's own admissions site and reviewed by hand in the Admissions Plan Audit (https://claude.ai/artifact/Dti67GJV2EZMyvGt8jGy3q). Not CDS data: the school page uses these for its latest year and falls back to the CDS fields for older years. \"Rolling\" = no fixed deadline; \"RD Final\" = a rolling/final deadline after the main RD date.",
+  "plans": {
+    "american": [
+      {
+        "type": "ED I",
+        "date": "11/1"
+      },
+      {
+        "type": "ED II",
+        "date": "1/15"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "amherst": [
+      {
+        "type": "ED",
+        "date": "11/9"
+      },
+      {
+        "type": "RD",
+        "date": "1/5"
+      }
+    ],
+    "asu": [
+      {
+        "type": "RD",
+        "date": "Rolling"
+      }
+    ],
+    "auburn": [
+      {
+        "type": "EA I",
+        "date": "9/15"
+      },
+      {
+        "type": "EA II",
+        "date": "10/15"
+      },
+      {
+        "type": "EA III",
+        "date": "11/15"
+      },
+      {
+        "type": "EA IV",
+        "date": "12/1"
+      },
+      {
+        "type": "RD",
+        "date": "2/1"
+      }
+    ],
+    "barnard": [
+      {
+        "type": "ED",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/1"
+      }
+    ],
+    "baylor": [
+      {
+        "type": "ED",
+        "date": "11/1"
+      },
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "2/1"
+      }
+    ],
+    "berkeley": [
+      {
+        "type": "RD",
+        "date": "11/30"
+      }
+    ],
+    "binghamton": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "boston-college": [
+      {
+        "type": "ED I",
+        "date": "11/1"
+      },
+      {
+        "type": "ED II",
+        "date": "1/4"
+      },
+      {
+        "type": "RD",
+        "date": "1/4"
+      }
+    ],
+    "boston-university": [
+      {
+        "type": "ED I",
+        "date": "11/2"
+      },
+      {
+        "type": "ED II",
+        "date": "1/5"
+      },
+      {
+        "type": "RD",
+        "date": "1/5"
+      }
+    ],
+    "bowdoin": [
+      {
+        "type": "ED I",
+        "date": "11/15"
+      },
+      {
+        "type": "ED II",
+        "date": "1/5"
+      },
+      {
+        "type": "RD",
+        "date": "1/5"
+      }
+    ],
+    "bradley": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "2/1"
+      }
+    ],
+    "brandeis": [
+      {
+        "type": "ED I",
+        "date": "11/3"
+      },
+      {
+        "type": "ED II",
+        "date": "1/15"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "brown": [
+      {
+        "type": "ED",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/5"
+      }
+    ],
+    "buffalo": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "2/1"
+      }
+    ],
+    "caltech": [
+      {
+        "type": "REA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/4"
+      }
+    ],
+    "carleton": [
+      {
+        "type": "ED I",
+        "date": "11/15"
+      },
+      {
+        "type": "ED II",
+        "date": "1/15"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "case-western": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "ED I",
+        "date": "11/1"
+      },
+      {
+        "type": "ED II",
+        "date": "1/15"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "chapman": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "ED I",
+        "date": "11/1"
+      },
+      {
+        "type": "ED II",
+        "date": "1/15"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "claremont-mckenna": [
+      {
+        "type": "ED I",
+        "date": "11/1"
+      },
+      {
+        "type": "ED II",
+        "date": "1/10"
+      },
+      {
+        "type": "RD",
+        "date": "1/10"
+      }
+    ],
+    "clark": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "ED I",
+        "date": "11/1"
+      },
+      {
+        "type": "ED II",
+        "date": "1/15"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "clarkson": [
+      {
+        "type": "ED",
+        "date": "12/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "clemson": [
+      {
+        "type": "EA",
+        "date": "10/15"
+      },
+      {
+        "type": "RD",
+        "date": "1/1"
+      }
+    ],
+    "cmu": [
+      {
+        "type": "ED",
+        "date": "11/2"
+      },
+      {
+        "type": "RD",
+        "date": "1/4"
+      }
+    ],
+    "colorado-school-of-mines": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "colorado-state": [
+      {
+        "type": "EA",
+        "date": "11/15"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "coloradoboulder": [
+      {
+        "type": "EA",
+        "date": "11/15"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "columbia": [
+      {
+        "type": "ED",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/1"
+      }
+    ],
+    "cornell": [
+      {
+        "type": "ED",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/2"
+      }
+    ],
+    "creighton": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "csufullerton": [
+      {
+        "type": "RD",
+        "date": "11/30"
+      }
+    ],
+    "csulb": [
+      {
+        "type": "RD",
+        "date": "11/30"
+      }
+    ],
+    "csusb": [
+      {
+        "type": "RD",
+        "date": "1/31"
+      }
+    ],
+    "dartmouth": [
+      {
+        "type": "ED",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/1"
+      }
+    ],
+    "davidson": [
+      {
+        "type": "ED I",
+        "date": "11/15"
+      },
+      {
+        "type": "ED II",
+        "date": "1/4"
+      },
+      {
+        "type": "RD",
+        "date": "1/11"
+      }
+    ],
+    "depaul": [
+      {
+        "type": "EA",
+        "date": "11/15"
+      },
+      {
+        "type": "RD",
+        "date": "2/1"
+      }
+    ],
+    "drexel": [
+      {
+        "type": "ED",
+        "date": "11/15"
+      },
+      {
+        "type": "EA",
+        "date": "11/15"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "duke": [
+      {
+        "type": "ED",
+        "date": "11/2"
+      },
+      {
+        "type": "RD",
+        "date": "1/4"
+      }
+    ],
+    "duquesne": [
+      {
+        "type": "EA",
+        "date": "11/15"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "east-carolina": [
+      {
+        "type": "RD",
+        "date": "4/1"
+      }
+    ],
+    "elon": [
+      {
+        "type": "ED",
+        "date": "11/1"
+      },
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/10"
+      }
+    ],
+    "emory": [
+      {
+        "type": "ED I",
+        "date": "11/1"
+      },
+      {
+        "type": "ED II",
+        "date": "1/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/1"
+      }
+    ],
+    "fairfield": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "ED I",
+        "date": "11/15"
+      },
+      {
+        "type": "ED II",
+        "date": "1/15"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "famu": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "2/1"
+      },
+      {
+        "type": "RD Final",
+        "date": "5/1"
+      }
+    ],
+    "fiu": [
+      {
+        "type": "EA",
+        "date": "11/2"
+      },
+      {
+        "type": "RD",
+        "date": "3/2"
+      }
+    ],
+    "florida-atlantic": [
+      {
+        "type": "EA",
+        "date": "10/15"
+      },
+      {
+        "type": "RD",
+        "date": "3/12"
+      }
+    ],
+    "fsu": [
+      {
+        "type": "ED",
+        "date": "10/15"
+      },
+      {
+        "type": "EA",
+        "date": "10/15"
+      },
+      {
+        "type": "RD",
+        "date": "12/1"
+      },
+      {
+        "type": "RD Final",
+        "date": "3/1"
+      }
+    ],
+    "georgetown": [
+      {
+        "type": "REA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/1"
+      }
+    ],
+    "georgia-state": [
+      {
+        "type": "EA",
+        "date": "11/15"
+      },
+      {
+        "type": "RD",
+        "date": "5/1"
+      }
+    ],
+    "georgia-tech": [
+      {
+        "type": "EA (GA)",
+        "date": "10/15"
+      },
+      {
+        "type": "EA (non-GA)",
+        "date": "11/2"
+      },
+      {
+        "type": "RD",
+        "date": "1/6"
+      }
+    ],
+    "grinnell": [
+      {
+        "type": "ED I",
+        "date": "11/15"
+      },
+      {
+        "type": "ED II",
+        "date": "1/5"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "gwu": [
+      {
+        "type": "ED I",
+        "date": "11/1"
+      },
+      {
+        "type": "ED II",
+        "date": "1/5"
+      },
+      {
+        "type": "RD",
+        "date": "1/5"
+      }
+    ],
+    "hamilton": [
+      {
+        "type": "ED I",
+        "date": "11/15"
+      },
+      {
+        "type": "ED II",
+        "date": "1/4"
+      },
+      {
+        "type": "RD",
+        "date": "1/4"
+      }
+    ],
+    "harvard": [
+      {
+        "type": "REA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/1"
+      }
+    ],
+    "harvey-mudd": [
+      {
+        "type": "ED I",
+        "date": "11/15"
+      },
+      {
+        "type": "ED II",
+        "date": "1/5"
+      },
+      {
+        "type": "RD",
+        "date": "1/5"
+      }
+    ],
+    "hofstra": [
+      {
+        "type": "EA I",
+        "date": "11/15"
+      },
+      {
+        "type": "EA II",
+        "date": "12/15"
+      },
+      {
+        "type": "RD",
+        "date": "Rolling"
+      }
+    ],
+    "howard": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "ED",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "2/1"
+      }
+    ],
+    "illinois-tech": [
+      {
+        "type": "ED",
+        "date": "11/1"
+      },
+      {
+        "type": "EA",
+        "date": "11/15"
+      },
+      {
+        "type": "RD",
+        "date": "2/1"
+      }
+    ],
+    "indiana-bloomington": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "2/1"
+      }
+    ],
+    "iowa-state-science-tech": [
+      {
+        "type": "RD",
+        "date": "Rolling"
+      }
+    ],
+    "jhu": [
+      {
+        "type": "ED I",
+        "date": "11/1"
+      },
+      {
+        "type": "ED II",
+        "date": "1/2"
+      },
+      {
+        "type": "RD",
+        "date": "1/2"
+      }
+    ],
+    "kansas-state": [
+      {
+        "type": "RD",
+        "date": "Rolling"
+      }
+    ],
+    "lehigh": [
+      {
+        "type": "ED I",
+        "date": "11/1"
+      },
+      {
+        "type": "ED II",
+        "date": "1/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/1"
+      }
+    ],
+    "loyola-marymount": [
+      {
+        "type": "ED I",
+        "date": "11/1"
+      },
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "ED II",
+        "date": "1/8"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "marquette": [
+      {
+        "type": "EA",
+        "date": "11/15"
+      },
+      {
+        "type": "RD",
+        "date": "2/1"
+      }
+    ],
+    "miami": [
+      {
+        "type": "ED I",
+        "date": "11/1"
+      },
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "ED II",
+        "date": "1/5"
+      },
+      {
+        "type": "RD",
+        "date": "1/5"
+      }
+    ],
+    "miamiu": [
+      {
+        "type": "ED",
+        "date": "11/1"
+      },
+      {
+        "type": "EA I",
+        "date": "11/1"
+      },
+      {
+        "type": "EA II",
+        "date": "12/1"
+      },
+      {
+        "type": "RD",
+        "date": "2/1"
+      }
+    ],
+    "michigan-state": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "4/1"
+      }
+    ],
+    "michigan-tech": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "2/1"
+      },
+      {
+        "type": "RD Final",
+        "date": "Rolling"
+      }
+    ],
+    "missourri-s&t": [
+      {
+        "type": "RD",
+        "date": "7/1"
+      }
+    ],
+    "mit": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/4"
+      }
+    ],
+    "mizzou": [
+      {
+        "type": "RD",
+        "date": "7/1"
+      }
+    ],
+    "montclair-state": [
+      {
+        "type": "EA",
+        "date": "12/1"
+      },
+      {
+        "type": "RD",
+        "date": "3/1"
+      }
+    ],
+    "nc-state": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "njit": [
+      {
+        "type": "EA",
+        "date": "11/15"
+      },
+      {
+        "type": "EA II",
+        "date": "12/15"
+      },
+      {
+        "type": "RD",
+        "date": "3/1"
+      }
+    ],
+    "north-carolina-charolette": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "2/1"
+      }
+    ],
+    "northeastern": [
+      {
+        "type": "ED I",
+        "date": "11/1"
+      },
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "ED II",
+        "date": "1/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/1"
+      }
+    ],
+    "northwestern": [
+      {
+        "type": "ED",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/4"
+      }
+    ],
+    "notre-dame": [
+      {
+        "type": "REA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/4"
+      }
+    ],
+    "nyu": [
+      {
+        "type": "ED I",
+        "date": "11/1"
+      },
+      {
+        "type": "ED II",
+        "date": "1/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/5"
+      }
+    ],
+    "ohio-state": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "oklahoma-state": [
+      {
+        "type": "RD",
+        "date": "Rolling"
+      }
+    ],
+    "olemiss": [
+      {
+        "type": "RD",
+        "date": "Rolling"
+      }
+    ],
+    "oregon-state": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "8/25"
+      }
+    ],
+    "penn-state": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "Rolling"
+      }
+    ],
+    "pepperdine": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "ED I",
+        "date": "11/1"
+      },
+      {
+        "type": "ED II",
+        "date": "1/15"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "pitt": [
+      {
+        "type": "RD",
+        "date": "Rolling"
+      }
+    ],
+    "pomona": [
+      {
+        "type": "ED I",
+        "date": "11/8"
+      },
+      {
+        "type": "ED II",
+        "date": "1/8"
+      },
+      {
+        "type": "RD",
+        "date": "1/8"
+      }
+    ],
+    "princeton": [
+      {
+        "type": "REA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/1"
+      }
+    ],
+    "purdue": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "quinnipiac": [
+      {
+        "type": "ED I",
+        "date": "11/1"
+      },
+      {
+        "type": "EA",
+        "date": "11/15"
+      },
+      {
+        "type": "ED II",
+        "date": "1/15"
+      },
+      {
+        "type": "RD",
+        "date": "2/1"
+      }
+    ],
+    "rice": [
+      {
+        "type": "ED I",
+        "date": "11/1"
+      },
+      {
+        "type": "ED II",
+        "date": "1/4"
+      },
+      {
+        "type": "RD",
+        "date": "1/4"
+      }
+    ],
+    "rit": [
+      {
+        "type": "ED I",
+        "date": "11/1"
+      },
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "ED II",
+        "date": "1/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "rochester": [
+      {
+        "type": "ED I",
+        "date": "11/1"
+      },
+      {
+        "type": "ED II",
+        "date": "1/5"
+      },
+      {
+        "type": "RD",
+        "date": "1/5"
+      }
+    ],
+    "rowan": [
+      {
+        "type": "RD",
+        "date": "3/1"
+      }
+    ],
+    "rpi": [
+      {
+        "type": "ED I",
+        "date": "11/1"
+      },
+      {
+        "type": "ED II",
+        "date": "1/6"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "rutgers-camden": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "12/1"
+      }
+    ],
+    "rutgers-newark": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "12/1"
+      }
+    ],
+    "saintlouisu": [
+      {
+        "type": "ED I",
+        "date": "11/2"
+      },
+      {
+        "type": "EA",
+        "date": "12/1"
+      },
+      {
+        "type": "ED II",
+        "date": "1/19"
+      },
+      {
+        "type": "RD",
+        "date": "4/1"
+      }
+    ],
+    "santa-clara": [
+      {
+        "type": "ED I",
+        "date": "11/1"
+      },
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "ED II",
+        "date": "1/7"
+      },
+      {
+        "type": "RD",
+        "date": "1/7"
+      }
+    ],
+    "sdsu": [
+      {
+        "type": "RD",
+        "date": "11/30"
+      }
+    ],
+    "smu": [
+      {
+        "type": "ED I",
+        "date": "11/1"
+      },
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "ED II",
+        "date": "1/15"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "stanford": [
+      {
+        "type": "REA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/5"
+      }
+    ],
+    "stevens": [
+      {
+        "type": "ED I",
+        "date": "11/15"
+      },
+      {
+        "type": "EA",
+        "date": "12/1"
+      },
+      {
+        "type": "ED II",
+        "date": "1/5"
+      },
+      {
+        "type": "RD",
+        "date": "1/5"
+      }
+    ],
+    "stockton": [
+      {
+        "type": "RD",
+        "date": "Rolling"
+      }
+    ],
+    "stony-brook": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "suny-albany": [
+      {
+        "type": "EA",
+        "date": "11/15"
+      },
+      {
+        "type": "RD",
+        "date": "2/1"
+      }
+    ],
+    "suny-esf": [
+      {
+        "type": "EA",
+        "date": "11/15"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "swarthmore": [
+      {
+        "type": "ED I",
+        "date": "11/15"
+      },
+      {
+        "type": "ED II",
+        "date": "1/4"
+      },
+      {
+        "type": "RD",
+        "date": "1/4"
+      }
+    ],
+    "templeu": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "2/1"
+      }
+    ],
+    "tennessee-knoxville": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/5"
+      }
+    ],
+    "texas-am": [
+      {
+        "type": "RD",
+        "date": "12/1"
+      }
+    ],
+    "texaschristian": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "ED I",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "2/1"
+      },
+      {
+        "type": "ED II",
+        "date": "2/1"
+      }
+    ],
+    "thomas-jefferson": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "3/1"
+      }
+    ],
+    "tufts": [
+      {
+        "type": "ED I",
+        "date": "11/2"
+      },
+      {
+        "type": "ED II",
+        "date": "1/4"
+      },
+      {
+        "type": "RD",
+        "date": "1/4"
+      }
+    ],
+    "tulane": [
+      {
+        "type": "ED I",
+        "date": "11/1"
+      },
+      {
+        "type": "EA",
+        "date": "11/10"
+      },
+      {
+        "type": "ED II",
+        "date": "1/15"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "ualabama": [
+      {
+        "type": "RD",
+        "date": "12/4"
+      }
+    ],
+    "uarkansas": [
+      {
+        "type": "RD",
+        "date": "8/1"
+      }
+    ],
+    "uc-davis": [
+      {
+        "type": "RD",
+        "date": "11/30"
+      }
+    ],
+    "uc-irvine": [
+      {
+        "type": "RD",
+        "date": "11/30"
+      }
+    ],
+    "uc-merced": [
+      {
+        "type": "RD",
+        "date": "11/30"
+      }
+    ],
+    "uc-riverside": [
+      {
+        "type": "RD",
+        "date": "11/30"
+      }
+    ],
+    "uc-san-diego": [
+      {
+        "type": "RD",
+        "date": "11/30"
+      }
+    ],
+    "uc-santa-cruz": [
+      {
+        "type": "RD",
+        "date": "11/30"
+      }
+    ],
+    "ucentralflorida": [
+      {
+        "type": "EA",
+        "date": "10/15"
+      },
+      {
+        "type": "RD",
+        "date": "5/1"
+      }
+    ],
+    "uchicago": [
+      {
+        "type": "EA",
+        "date": "11/2"
+      },
+      {
+        "type": "ED I",
+        "date": "11/2"
+      },
+      {
+        "type": "ED II",
+        "date": "1/4"
+      },
+      {
+        "type": "RD",
+        "date": "1/4"
+      }
+    ],
+    "ucla": [
+      {
+        "type": "RD",
+        "date": "11/30"
+      }
+    ],
+    "uconn": [
+      {
+        "type": "ED",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "ucsb": [
+      {
+        "type": "RD",
+        "date": "11/30"
+      }
+    ],
+    "udayton": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "2/1"
+      }
+    ],
+    "udelaware": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "udenver": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "ED I",
+        "date": "11/1"
+      },
+      {
+        "type": "ED II",
+        "date": "1/15"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "uf": [
+      {
+        "type": "ED",
+        "date": "10/15"
+      },
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "uga": [
+      {
+        "type": "EA",
+        "date": "10/15"
+      },
+      {
+        "type": "RD",
+        "date": "1/1"
+      }
+    ],
+    "uhouston": [
+      {
+        "type": "RD",
+        "date": "5/31"
+      }
+    ],
+    "uic": [
+      {
+        "type": "EA",
+        "date": "11/2"
+      },
+      {
+        "type": "RD",
+        "date": "2/1"
+      }
+    ],
+    "uidaho": [
+      {
+        "type": "RD",
+        "date": "Rolling"
+      }
+    ],
+    "uiuc": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/5"
+      }
+    ],
+    "ukansas": [
+      {
+        "type": "RD",
+        "date": "Rolling"
+      }
+    ],
+    "ukentucky": [
+      {
+        "type": "EA",
+        "date": "12/1"
+      },
+      {
+        "type": "RD",
+        "date": "2/15"
+      }
+    ],
+    "ulouisville": [
+      {
+        "type": "RD",
+        "date": "2/15"
+      }
+    ],
+    "umass-amherst": [
+      {
+        "type": "EA",
+        "date": "11/5"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "umass-lowell": [
+      {
+        "type": "EA",
+        "date": "11/5"
+      },
+      {
+        "type": "EA II",
+        "date": "1/15"
+      },
+      {
+        "type": "RD",
+        "date": "2/15"
+      }
+    ],
+    "umbc": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "2/1"
+      }
+    ],
+    "umich": [
+      {
+        "type": "ED",
+        "date": "11/1"
+      },
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "2/1"
+      }
+    ],
+    "unc": [
+      {
+        "type": "EA",
+        "date": "10/15"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "unc-wilmington": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "unebraska-lincoln": [
+      {
+        "type": "RD",
+        "date": "5/1"
+      }
+    ],
+    "unevada-reno": [
+      {
+        "type": "EA",
+        "date": "11/15"
+      },
+      {
+        "type": "RD",
+        "date": "4/7"
+      }
+    ],
+    "unewhampshire": [
+      {
+        "type": "EA",
+        "date": "11/15"
+      },
+      {
+        "type": "RD",
+        "date": "2/1"
+      }
+    ],
+    "university-maryland-college-park": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/20"
+      }
+    ],
+    "uofiowa": [
+      {
+        "type": "EA",
+        "date": "11/2"
+      },
+      {
+        "type": "RD",
+        "date": "2/1"
+      }
+    ],
+    "uofminnesota-twin-cities": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/1"
+      }
+    ],
+    "uoklahoma": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "2/1"
+      }
+    ],
+    "uoregon": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "upacific": [
+      {
+        "type": "EA",
+        "date": "11/15"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "upenn": [
+      {
+        "type": "ED",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/5"
+      }
+    ],
+    "urhodeisland": [
+      {
+        "type": "ED",
+        "date": "11/1"
+      },
+      {
+        "type": "EA",
+        "date": "12/1"
+      },
+      {
+        "type": "RD",
+        "date": "2/1"
+      }
+    ],
+    "urichmond": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "ED",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/1"
+      }
+    ],
+    "usandiego": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "ED I",
+        "date": "11/1"
+      },
+      {
+        "type": "ED II",
+        "date": "1/5"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "usanfrancisco": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "ED I",
+        "date": "11/1"
+      },
+      {
+        "type": "ED II",
+        "date": "1/15"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "usc": [
+      {
+        "type": "ED",
+        "date": "11/1"
+      },
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/10"
+      }
+    ],
+    "usf": [
+      {
+        "type": "EA",
+        "date": "11/2"
+      },
+      {
+        "type": "RD",
+        "date": "12/16"
+      },
+      {
+        "type": "RD Final",
+        "date": "3/1"
+      }
+    ],
+    "usma-west-point": [
+      {
+        "type": "RD",
+        "date": "1/31"
+      }
+    ],
+    "ut-austin": [
+      {
+        "type": "EA",
+        "date": "10/15"
+      },
+      {
+        "type": "RD",
+        "date": "12/1"
+      }
+    ],
+    "ut-dallas": [
+      {
+        "type": "RD",
+        "date": "5/1"
+      }
+    ],
+    "uutah": [
+      {
+        "type": "EA",
+        "date": "12/1"
+      },
+      {
+        "type": "RD",
+        "date": "4/1"
+      }
+    ],
+    "uva": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "ED",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/5"
+      }
+    ],
+    "uvermont": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "ED I",
+        "date": "11/1"
+      },
+      {
+        "type": "ED II",
+        "date": "1/15"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "valparaiso": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "Rolling"
+      }
+    ],
+    "vanderbilt": [
+      {
+        "type": "ED I",
+        "date": "11/1"
+      },
+      {
+        "type": "ED II",
+        "date": "1/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/1"
+      }
+    ],
+    "vassar": [
+      {
+        "type": "ED I",
+        "date": "11/15"
+      },
+      {
+        "type": "ED II",
+        "date": "1/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/1"
+      }
+    ],
+    "villanova": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "ED I",
+        "date": "11/1"
+      },
+      {
+        "type": "ED II",
+        "date": "1/15"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "virginia-tech": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "virginiacommonwealth": [
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "wake-forest": [
+      {
+        "type": "ED I",
+        "date": "11/15"
+      },
+      {
+        "type": "EA",
+        "date": "11/15"
+      },
+      {
+        "type": "ED II",
+        "date": "1/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/1"
+      }
+    ],
+    "washington-and-lee": [
+      {
+        "type": "ED I",
+        "date": "11/1"
+      },
+      {
+        "type": "ED II",
+        "date": "1/5"
+      },
+      {
+        "type": "RD",
+        "date": "1/5"
+      }
+    ],
+    "washington-seattle": [
+      {
+        "type": "RD",
+        "date": "11/15"
+      }
+    ],
+    "washington-stateu": [
+      {
+        "type": "RD",
+        "date": "3/31"
+      }
+    ],
+    "washu": [
+      {
+        "type": "EA",
+        "date": "11/2"
+      },
+      {
+        "type": "ED I",
+        "date": "11/2"
+      },
+      {
+        "type": "ED II",
+        "date": "1/4"
+      },
+      {
+        "type": "RD",
+        "date": "1/4"
+      }
+    ],
+    "wayne-state": [
+      {
+        "type": "RD",
+        "date": "8/1"
+      }
+    ],
+    "wellesley": [
+      {
+        "type": "ED I",
+        "date": "11/1"
+      },
+      {
+        "type": "ED II",
+        "date": "1/5"
+      },
+      {
+        "type": "RD",
+        "date": "1/8"
+      }
+    ],
+    "wesleyan": [
+      {
+        "type": "ED I",
+        "date": "11/15"
+      },
+      {
+        "type": "ED II",
+        "date": "1/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/1"
+      }
+    ],
+    "william-mary": [
+      {
+        "type": "ED I",
+        "date": "11/1"
+      },
+      {
+        "type": "ED II",
+        "date": "1/5"
+      },
+      {
+        "type": "RD",
+        "date": "1/5"
+      }
+    ],
+    "williams": [
+      {
+        "type": "ED",
+        "date": "11/15"
+      },
+      {
+        "type": "RD",
+        "date": "1/5"
+      }
+    ],
+    "wisconsin-madison": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/15"
+      }
+    ],
+    "wpi": [
+      {
+        "type": "ED I",
+        "date": "11/1"
+      },
+      {
+        "type": "EA I",
+        "date": "11/1"
+      },
+      {
+        "type": "ED II",
+        "date": "1/5"
+      },
+      {
+        "type": "EA II",
+        "date": "1/5"
+      },
+      {
+        "type": "RD",
+        "date": "2/1"
+      }
+    ],
+    "yale": [
+      {
+        "type": "REA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "1/2"
+      }
+    ],
+    "yeshiva": [
+      {
+        "type": "ED",
+        "date": "11/2"
+      },
+      {
+        "type": "RD",
+        "date": "2/1"
+      }
+    ]
+  }
+}

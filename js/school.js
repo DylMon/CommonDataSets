@@ -433,21 +433,72 @@ function renderQuickFacts(s) {
 
 // ── Render: Admissions summary (paired side-by-side with Cost) ─────────
 
-function renderAdmissionsSummary(s) {
+// Application rounds as [{type, date}] in cycle order. The current cycle's
+// verified rounds come from data/admission-plans.json (passed in as `rounds`);
+// an older year falls back to what that year's CDS recorded.
+function cdsRounds(s) {
+  const rounds = [];
+  if (s.ea_ed_type && s.ea_ed_type !== 'None') rounds.push({ type: s.ea_ed_type, date: s.ea_ed_deadline || null });
+  if (s.rd_deadline) rounds.push({ type: 'RD', date: s.rd_deadline });
+  return rounds;
+}
+
+const isEarlyRound = type => /^(ED|EA|REA)\b/.test(type);
+
+// Most fees are numbers, but a few schools' CDS give text that already
+// carries its own "$" ("$80 ($95 International)") — don't prefix another.
+const feeText = fee => fee == null ? null
+  : typeof fee === 'number' ? '$' + fee
+  : /\$/.test(fee) ? fee : '$' + fee;
+
+// Bubble timeline of deadlines. Rounds sharing a date share one bubble
+// ("ED II · RD"); "Rolling" gets a hollow bubble since it has no fixed date.
+function deadlineTimelineHtml(rounds) {
+  const dated = rounds.filter(r => r.date);
+  if (!dated.length) return '<p class="deadline-none">No application deadlines reported.</p>';
+  const stops = [];
+  for (const r of dated) {
+    const last = stops[stops.length - 1];
+    if (last && last.date === r.date) last.types.push(r.type);
+    else stops.push({ date: r.date, types: [r.type] });
+  }
+  return `<ol class="deadline-timeline" aria-label="Application deadlines">
+    ${stops.map(st => `<li class="deadline-stop${st.date === 'Rolling' ? ' rolling' : ''}">
+      <span class="deadline-date">${escapeHtml(st.date)}</span>
+      <span class="deadline-dot" aria-hidden="true"></span>
+      <span class="deadline-type">${st.types.map(escapeHtml).join(' · ')}</span>
+    </li>`).join('')}
+  </ol>`;
+}
+
+function renderAdmissionsSummary(s, rounds = cdsRounds(s)) {
   function kv(label, val) {
     return `<div class="kv-label">${label}</div><div class="kv-val">${val ?? '<span class="stat-na">N/A</span>'}</div>`;
   }
 
+  const early = [...new Set(rounds.filter(r => isEarlyRound(r.type)).map(r => r.type))];
+
   const kvGrid = `<div class="kv-grid">
-    ${kv('Location',                  s.location)}
-    ${kv('School Type',               s.school_type)}
-    ${kv('Early Action / Decision',   s.ea_ed_type)}
-    ${kv('EA/ED Deadline',            s.ea_ed_deadline)}
-    ${kv('Regular Decision Deadline', s.rd_deadline)}
-    ${kv('Application Fee',           s.application_fee != null ? '$' + s.application_fee : null)}
+    ${kv('Location',          s.location)}
+    ${kv('School Type',       s.school_type)}
+    ${kv('Early Admissions',  early.length ? early.map(escapeHtml).join(', ') : 'No Early Admission Program')}
+    ${kv('Application Fee',   feeText(s.application_fee) && escapeHtml(feeText(s.application_fee)))}
   </div>`;
 
-  return sectionWrap('Admissions', kvGrid);
+  return sectionWrap('Admissions', kvGrid + deadlineTimelineHtml(rounds));
+}
+
+// Verified current-cycle rounds per slug; {} if the file is missing so the
+// page still renders from the CDS fields.
+async function loadAdmissionPlans() {
+  try {
+    const res = await fetch('/data/admission-plans.json');
+    if (!res.ok) return {};
+    return (await res.json()).plans ?? {};
+  } catch (err) {
+    console.error('Failed to load admission plans:', err);
+    return {};
+  }
 }
 
 // ── Render: Selectivity (funnel + admit rates by round and by gender) ───
@@ -715,7 +766,7 @@ function renderCostSection(s) {
   ];
 
   const appFee = s.application_fee != null
-    ? `<p class="section-note" style="margin-top:14px">Application Fee: <strong>$${s.application_fee}</strong></p>`
+    ? `<p class="section-note" style="margin-top:14px">Application Fee: <strong>${escapeHtml(feeText(s.application_fee))}</strong></p>`
     : '';
 
   return sectionWrap('Cost', `
@@ -862,7 +913,8 @@ async function init() {
   recentHistory = [slug, ...recentHistory.filter(s => s !== slug)].slice(0, 5);
   localStorage.setItem(historyKey, JSON.stringify(recentHistory));
 
-  const { allSchools, yearRecords, availableYearKeys } = await loadAllYears(slug);
+  const [{ allSchools, yearRecords, availableYearKeys }, admissionPlans] =
+    await Promise.all([loadAllYears(slug), loadAdmissionPlans()]);
 
   if (availableYearKeys.length === 0) {
     document.getElementById('school-sections').innerHTML =
@@ -944,7 +996,7 @@ async function init() {
     document.getElementById('school-sections').innerHTML =
       renderSelectivitySection(s) +
       `<div class="school-section-row">
-        ${renderAdmissionsSummary(s)}
+        ${renderAdmissionsSummary(s, yearKey === latestAvailableKey && admissionPlans[slug] ? admissionPlans[slug] : cdsRounds(s))}
         ${renderCostSection(s)}
       </div>` +
       renderAcademicProfileSection(s) +
