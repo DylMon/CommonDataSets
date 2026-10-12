@@ -737,6 +737,15 @@
 .funnel-arrow { color: #000; font-size: 1.45em; flex-shrink: 0; }
 
 /* ── Tables ── */
+/* A table holding an ⓘ (e.g. By Round's "EA + RD" / "Total") lets its tip
+   hang outside; the scrolling backstop below would clip it to a sliver.
+   Those tables are small enough never to need the scroll. */
+.tbl-wrap:has(.stat-info),
+.tbl:has(.stat-info) { overflow: visible; }
+/* An ⓘ in a row label sits near the box's left edge: open its tip
+   rightward from the icon instead of centered on it. */
+.tbl td:first-child .stat-info-tip { left: -10px; transform: none; }
+
 .tbl-wrap {
   /* Was the primary fallback for a column too narrow for its own nowrap
      header — now just a defensive backstop (a truly unbreakable token,

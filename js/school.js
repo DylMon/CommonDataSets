@@ -1,5 +1,5 @@
 import { GPA_BUCKETS, renderGpaHistogram, normalizeGpaDistribution } from './charts.js?v=6';
-import { loadAdmissionPlans, cdsRounds } from './admission-plans.js?v=1';
+import { loadAdmissionPlans, cdsRounds, roundFamily } from './admission-plans.js?v=1';
 import { loadOutsideGpa } from './outside-gpa.js?v=1';
 import { loadOutsideCosts, withOutsideCost, isOutsideCost } from './outside-costs.js?v=1';
 
@@ -626,7 +626,48 @@ function renderAdmissionsSummary(s, rounds = cdsRounds(s)) {
 
 // ── Render: Selectivity (funnel + admit rates by round and by gender) ───
 
-function renderSelectivitySection(s) {
+// By Round rows. The CDS counts only one early round on its own (C21 is Early
+// Decision; Early Action has no counts), so the second row is what's left:
+//   - an RD pool the CDS reports → "RD"
+//   - total minus the early round → "RD" when that's the school's only early
+//     round, "EA + RD" when it also has Early Action / REA
+//   - no early counts → "Total" (every applicant), with an ⓘ saying why
+// Display only: Chance Me still uses just the RD rates schools report.
+const ROUND_TIP = {
+  eaRd: "The Common Data Set only counts Early Decision applicants on their own, so this row combines Early Action and Regular Decision.",
+  total: "This school doesn't report its early applicants separately, so this is the total for all applicants.",
+  totalNoEarly: "This school has no early round, so this is the total for all applicants.",
+};
+function byRoundRows(s, rounds) {
+  const p = s.applicant_pools ?? {};
+  const fam = new Set(rounds.map(r => roundFamily(r.type)));
+  const early = {
+    applied: p.ea?.applied ?? s.ea_apps_received,
+    admitted: p.ea?.admitted ?? p.ea?.accepted ?? s.ea_apps_admitted,
+  };
+  const hasEarly = early.applied != null && early.admitted != null;
+  const tA = s.applicants_total, tD = s.admitted_total;
+
+  let second = null;
+  const rd = { applied: p.rd?.applied, admitted: p.rd?.admitted ?? p.rd?.accepted };
+  // Some records' "RD" is just the overall total copied over (no early
+  // counts beside it) — that's a Total row, not RD.
+  const rdIsTotal = !hasEarly && rd.applied === tA && rd.admitted === tD;
+  if (rd.applied != null && rd.admitted != null && !rdIsTotal) {
+    second = { label: 'RD', ...rd };
+  } else if (hasEarly && tA != null && tD != null && early.applied < tA && early.admitted <= tD) {
+    const lumped = fam.has('ED') && (fam.has('EA') || fam.has('REA'));
+    second = { label: lumped ? 'EA + RD' : 'RD', tip: lumped ? ROUND_TIP.eaRd : null,
+               applied: tA - early.applied, admitted: tD - early.admitted };
+  } else if (!hasEarly && tA != null && tD != null) {
+    const offersEarly = fam.has('ED') || fam.has('EA') || fam.has('REA');
+    second = { label: 'Total', tip: offersEarly ? ROUND_TIP.total : ROUND_TIP.totalNoEarly, applied: tA, admitted: tD };
+  }
+  if (!hasEarly && !second) return null;
+  return [{ label: 'EA / ED', ...early }, second ?? { label: 'RD', applied: null, admitted: null }];
+}
+
+function renderSelectivitySection(s, rounds) {
   const ratePct = s.acceptance_rate != null ? (s.acceptance_rate * 100).toFixed(1) + '%' : null;
   const funnel = `<div class="funnel">
     <div class="funnel-step">
@@ -646,23 +687,27 @@ function renderSelectivitySection(s) {
     </div>
   </div>`;
 
-  let poolsHtml = '<p class="no-data">Data not yet available.</p>';
-  if (s.applicant_pools) {
-    const p = s.applicant_pools;
-    poolsHtml = tableHtml(
-      ['Round', 'Applied', 'Accepted', 'Rate'],
-      [
-        ['EA / ED', fmt(p.ea?.applied), fmt(p.ea?.admitted ?? p.ea?.accepted),
-          p.ea?.rate != null ? (p.ea.rate * 100).toFixed(1) + '%' : '<span class="stat-na">N/A</span>'],
-        ['RD', fmt(p.rd?.applied), fmt(p.rd?.admitted ?? p.rd?.accepted),
-          p.rd?.rate != null ? (p.rd.rate * 100).toFixed(1) + '%' : '<span class="stat-na">N/A</span>'],
-      ]
-    );
-  }
+  const rows = byRoundRows(s, rounds);
+  const poolsHtml = rows
+    ? tableHtml(['Round', 'Applied', 'Accepted', 'Rate'], rows.map(r => [
+        r.label + (r.tip ? infoTip(r.tip) : ''), fmt(r.applied), fmt(r.admitted),
+        r.applied && r.admitted != null ? (r.admitted / r.applied * 100).toFixed(1) + '%' : '<span class="stat-na">N/A</span>',
+      ]))
+    : '<p class="no-data">Data not yet available.</p>';
 
   let waitlistHtml = '<p class="no-data">Data not yet available.</p>';
-  const wl = s.applicant_pools?.waitlist;
-  if (wl) {
+  // Some records hold the waitlist only in the flat waitlist_* fields (no
+  // applicant_pools.waitlist, or one left blank), so fall back field by field.
+  const pw = s.applicant_pools?.waitlist ?? {};
+  const wl = {
+    offered:        pw.offered        ?? s.waitlist_offered,
+    accepted_spots: pw.accepted_spots ?? s.waitlist_accepted,
+    enrolled:       pw.enrolled       ?? s.waitlist_admitted,
+  };
+  // A school whose CDS says it has no waitlist (data/no-waitlist.json).
+  if (s._noWaitlist && Object.values(wl).every(v => v == null)) {
+    waitlistHtml = '<p class="no-data">No waitlist</p>';
+  } else if (s.applicant_pools?.waitlist || Object.values(wl).some(v => v != null)) {
     waitlistHtml = `<div class="tbl-align-right">${tableHtml(
       ['', 'Students'],
       [
@@ -1046,8 +1091,9 @@ async function init() {
   recentHistory = [slug, ...recentHistory.filter(s => s !== slug)].slice(0, 5);
   localStorage.setItem(historyKey, JSON.stringify(recentHistory));
 
-  const [{ allSchools, yearRecords, availableYearKeys }, admissionPlans, outsideGpa, outsideCosts] =
-    await Promise.all([loadAllYears(slug), loadAdmissionPlans(), loadOutsideGpa(), loadOutsideCosts()]);
+  const [{ allSchools, yearRecords, availableYearKeys }, admissionPlans, outsideGpa, outsideCosts, noWaitlist] =
+    await Promise.all([loadAllYears(slug), loadAdmissionPlans(), loadOutsideGpa(), loadOutsideCosts(),
+      fetch('/data/no-waitlist.json').then(r => (r.ok ? r.json() : {})).then(j => j.slugs ?? {}).catch(() => ({}))]);
 
   if (availableYearKeys.length === 0) {
     document.getElementById('school-sections').innerHTML =
@@ -1060,6 +1106,8 @@ async function init() {
   // Current prices from the school's own cost page fill the cost fields its
   // latest CDS left blank (older years keep exactly what their CDS said).
   yearRecords.set(latestAvailableKey, withOutsideCost(yearRecords.get(latestAvailableKey), outsideCosts));
+  // Its CDS says it doesn't use a waitlist: the Waitlist box says so.
+  if (noWaitlist[slug]) yearRecords.set(latestAvailableKey, { ...yearRecords.get(latestAvailableKey), _noWaitlist: true });
   let currentYearKey = latestAvailableKey;
 
   document.documentElement.style.setProperty('--brand', meta.color);
@@ -1137,10 +1185,11 @@ async function init() {
       });
     }
 
+    const rounds = yearKey === latestAvailableKey && admissionPlans[slug] ? admissionPlans[slug] : cdsRounds(s);
     document.getElementById('school-sections').innerHTML =
-      renderSelectivitySection(s) +
+      renderSelectivitySection(s, rounds) +
       `<div class="school-section-row">
-        ${renderAdmissionsSummary(s, yearKey === latestAvailableKey && admissionPlans[slug] ? admissionPlans[slug] : cdsRounds(s))}
+        ${renderAdmissionsSummary(s, rounds)}
         ${renderCostSection(s)}
       </div>` +
       renderAcademicProfileSection(s) +
