@@ -224,6 +224,7 @@
     <script type="module">
         import { loadAdmissionPlans, cdsRounds, deadlineRows, offersEarlyAction, offersEarlyDecision } from '/js/admission-plans.js?v=1';
         import { loadOutsideGpa, withOutsideGpa } from '/js/outside-gpa.js?v=1';
+        import { loadOutsideCosts, withOutsideCosts, isOutsideCost } from '/js/outside-costs.js?v=1';
 
         // Logos live at images/logos/<slug>.png. A few schools have none yet;
         // the onerror hook hides the broken <img> instead of a torn-image icon.
@@ -413,7 +414,7 @@
                     </div>
                     <div class="detail-section">
                         <div class="detail-section-title">Quick Facts</div>
-                        <div class="detail-kv"><span>Tuition (OOS)</span><span>${fmtMoney(tuitionVal)}</span></div>
+                        <div class="detail-kv"><span>Tuition (OOS)</span><span>${fmtMoney(tuitionVal)}${tuitionVal != null && isOutsideCost(s, s.tuition_out_of_state != null ? 'tuition_out_of_state' : 'tuition') ? '<span class="gpa-mark" title="Not from the school\'s Common Data Set">*</span>' : ''}</span></div>
                         <div class="detail-kv"><span>Undergrads</span><span>${s.total_undergrads != null ? s.total_undergrads.toLocaleString() : '<span class="stat-na">N/A</span>'}</span></div>
                         <div class="detail-kv"><span>Retention Rate</span><span>${s.retention_rate != null ? (s.retention_rate * 100).toFixed(0) + '%' : '<span class="stat-na">N/A</span>'}</span></div>
                     </div>
@@ -467,7 +468,7 @@
             document.getElementById('results-count').textContent = sorted.length
                 ? `Showing ${pageStart + 1}–${Math.min(pageStart + PAGE_SIZE, sorted.length)} of ${sorted.length} institutions`
                 : `Showing 0 of ${allSchools.length} institutions`;
-            document.getElementById('gpa-legend').hidden = !pageItems.some(s => s._gpaOutside);
+            document.getElementById('gpa-legend').hidden = !pageItems.some(s => s._gpaOutside || s._costOutside);
             document.getElementById('school-list').innerHTML = pageItems.map(s => {
                 const actRange = s.act_composite_25 != null && s.act_composite_75 != null ? `${s.act_composite_25}–${s.act_composite_75}` : '<span class="stat-na">N/A</span>';
                 const isFav = favorites.has(s.slug);
@@ -562,10 +563,12 @@
 
             // Verified current-cycle application rounds (data/admission-plans.json),
             // falling back to the CDS fields for a school the file doesn't cover.
-            const [plans, outsideGpa] = await Promise.all([loadAdmissionPlans(), loadOutsideGpa()]);
+            const [plans, outsideGpa, outsideCosts] = await Promise.all([loadAdmissionPlans(), loadOutsideGpa(), loadOutsideCosts()]);
             merged = merged.map(s => ({ ...s, _rounds: plans[s.slug] ?? cdsRounds(s) }));
             // GPAs from outside the CDS for schools whose latest CDS left it blank.
             merged = withOutsideGpa(merged, outsideGpa);
+            // Cost fields the CDS left blank, from each school's own cost page.
+            merged = withOutsideCosts(merged, outsideCosts);
 
             if (merged.length === 0) {
                 document.getElementById('school-list').innerHTML = '<p class="loading">Failed to load schools.</p>';

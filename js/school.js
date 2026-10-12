@@ -1,6 +1,7 @@
 import { GPA_BUCKETS, renderGpaHistogram, normalizeGpaDistribution } from './charts.js?v=6';
 import { loadAdmissionPlans, cdsRounds } from './admission-plans.js?v=1';
 import { loadOutsideGpa } from './outside-gpa.js?v=1';
+import { loadOutsideCosts, withOutsideCost, isOutsideCost } from './outside-costs.js?v=1';
 
 const SCHOOL_META = {
   'mit': { color: '#a41931', banner: 'mit.jpg', y: 50, credit: { author: 'Scutter', license: 'CC BY-NC-ND 2.0', url: 'https://www.flickr.com/photos/scutter/38005464/' } },
@@ -287,12 +288,15 @@ function scoreBarHtml(label, val25, val75, scaleMin, scaleMax) {
   </div>`;
 }
 
-function demoBarHtml(label, val) {
+// fullLabel: the official CDS name, shown on hover when `label` is a
+// shortened form that fits on one line.
+function demoBarHtml(label, val, fullLabel = null) {
   if (val == null) return '';
   const pct = (val * 100);
   const barWidth = Math.max(pct, 0.3).toFixed(1);
+  const labelHtml = fullLabel ? `<abbr class="short-label" title="${fullLabel}">${label}</abbr>` : label;
   return `<div class="demo-bar-row">
-    <div class="demo-bar-label">${label}</div>
+    <div class="demo-bar-label">${labelHtml}</div>
     <div class="demo-bar-track"><div class="demo-bar-fill" style="width:${barWidth}%"></div></div>
     <div class="demo-bar-pct">${pct.toFixed(1)}%</div>
   </div>`;
@@ -416,6 +420,10 @@ function outsideGpaMark(source) {
   return `<button type="button" class="stat-info gpa-source" aria-label="${escapeHtml(text)}">≈<span class="stat-info-tip" role="tooltip">${escapeHtml(text)}</span></button>`;
 }
 
+// A cost from the school's own cost page (data/outside-costs.json) rather
+// than its CDS — the same orange * Home and Compare use for non-CDS data.
+const OUTSIDE_COST_MARK = `<span class="gpa-mark" title="From the school's cost of attendance page, not its Common Data Set">*</span>`;
+
 // outside: {gpa, source} for a school whose CDS (this year) has no GPA.
 function renderQuickFacts(s, outside = null) {
   const gpaVal = s.avg_gpa_weighted != null ? parseFloat(s.avg_gpa_weighted).toFixed(2)
@@ -441,7 +449,9 @@ function renderQuickFacts(s, outside = null) {
     [`<span class="stat-anchor">Avg GPA${infoTip('The Common Data Set does not state whether this GPA is weighted or unweighted.')}</span>`,
                         gpaVal],
     ['Undergrads',      s.total_undergrads != null ? s.total_undergrads.toLocaleString() : '<span class="stat-na">N/A</span>'],
-    ['Tuition (OOS)',   tuitionOOS != null ? '$' + tuitionOOS.toLocaleString() : '<span class="stat-na">N/A</span>'],
+    ['Tuition (OOS)',   tuitionOOS != null
+      ? '$' + tuitionOOS.toLocaleString() + (isOutsideCost(s, s.tuition_out_of_state != null ? 'tuition_out_of_state' : 'tuition') ? OUTSIDE_COST_MARK : '')
+      : '<span class="stat-na">N/A</span>'],
   ];
   return chips.map((c, i) =>
     (i > 0 ? '<div class="stat-divider"></div>' : '') +
@@ -464,6 +474,20 @@ const isEarlyRound = type => /^(ED|EA|REA)\b/.test(type);
 const feeText = fee => fee == null ? null
   : typeof fee === 'number' ? '$' + fee
   : /\$/.test(fee) ? fee : '$' + fee;
+
+// A few CDS fees are text listing a fee per applicant type ("$0 UT
+// residents, $55 Domestic, Non-UT resident, $65 International"). Those show
+// as a range on one line, with the school's own wording in an ⓘ.
+function feeHtml(fee) {
+  const text = feeText(fee);
+  if (text == null) return null;
+  const amounts = typeof fee === 'string'
+    ? [...fee.matchAll(/\$\s*(\d[\d,]*)/g)].map(m => Number(m[1].replace(/,/g, '')))
+    : [];
+  const lo = Math.min(...amounts), hi = Math.max(...amounts);
+  if (amounts.length < 2 || lo === hi) return escapeHtml(text);
+  return `$${lo}–$${hi}${infoTip(`Varies by applicant: ${text}`)}`;
+}
 
 // Day of an "m/d" date within an application cycle that runs Sep 1..Aug 31,
 // so ordering and "is this deadline behind us?" work across the new year.
@@ -564,6 +588,7 @@ function deadlineTimelineHtml(rounds) {
 
   const pct = p => `--p:${p.toFixed(3)}`;
   return `<div class="deadline-area">
+    <div class="deadline-caption">Deadlines</div>
     <div class="deadline-timeline">
       <div class="deadline-track" aria-hidden="true"><span class="deadline-fill" style="${fill > 0 ? pct(fill) : '--p:-1'}"></span></div>
       ${landmarks.map(m => `<span class="deadline-jan" style="${pct(m.p)}" aria-hidden="true"><span class="deadline-jan-dot"></span><span class="deadline-jan-label">${m.label}</span></span>`).join('')}
@@ -593,11 +618,7 @@ function renderAdmissionsSummary(s, rounds = cdsRounds(s)) {
     ${kv('Location',          s.location)}
     ${kv('School Type',       s.school_type)}
     ${kv('Early Admissions',  early.length ? early.map(escapeHtml).join(', ') : 'No Early Admission Program')}
-    ${kv('Application Fee',   feeText(s.application_fee) && (feeText(s.application_fee).length > 24
-      // Long text fees ("$80 ($95 International)") in smaller type so they
-      // wrap less and leave room for the deadline timeline.
-      ? `<span class="kv-val-long">${escapeHtml(feeText(s.application_fee))}</span>`
-      : escapeHtml(feeText(s.application_fee))))}
+    ${kv('Application Fee',   feeHtml(s.application_fee))}
   </div>`;
 
   return sectionWrap('Admissions', kvGrid + deadlineTimelineHtml(rounds));
@@ -842,33 +863,48 @@ function renderAdmissionFactorsSection(s) {
 // ── Render: Cost section ────────────────────────────────────────────────
 
 function renderCostSection(s) {
-  const tuitionIn  = s.tuition_in_state  ?? s.tuition;
-  const tuitionOut = s.tuition_out_of_state ?? s.tuition;
-  const feesIn     = s.required_fees;
-  const feesOut    = s.required_fees;
-  const otherIn    = s.other_expenses;
-  const otherOut   = s.other_expenses;
+  const inField  = s.tuition_in_state     != null ? 'tuition_in_state'     : 'tuition';
+  const outField = s.tuition_out_of_state != null ? 'tuition_out_of_state' : 'tuition';
+  const tuitionIn  = s[inField];
+  const tuitionOut = s[outField];
 
-  const inTotal  = [tuitionIn,  s.room_and_board, s.books_supplies, feesIn,  otherIn]
-    .reduce((a, v) => a + (v || 0), 0);
-  const outTotal = [tuitionOut, s.room_and_board, s.books_supplies, feesOut, otherOut]
-    .reduce((a, v) => a + (v || 0), 0);
+  // A value from data/outside-costs.json gets the orange *.
+  const cell = field =>
+    fmt(s[field], 'money') + (s[field] != null && isOutsideCost(s, field) ? OUTSIDE_COST_MARK : '');
+
+  // Some schools' out-of-state budgets list a different Other (usually more
+  // transportation); data/outside-costs.json can carry that separately.
+  const otherOutField = s.other_expenses_out_of_state != null ? 'other_expenses_out_of_state' : 'other_expenses';
+
+  const shared = ['room_and_board', 'books_supplies', 'required_fees'];
+  const total = (tuitionField, otherField) => {
+    const vals = [s[tuitionField], ...shared.map(f => s[f]), s[otherField]];
+    // Any reported value (even $0, e.g. West Point) makes a total worth showing.
+    return vals.some(v => v != null) ? vals.reduce((a, v) => a + (v || 0), 0) : null;
+  };
+  const inTotal = total(inField, 'other_expenses'), outTotal = total(outField, otherOutField);
 
   const rows = [
-    ['Tuition',                       fmt(tuitionIn, 'money'),      fmt(tuitionOut, 'money')],
-    ['Room &amp; Board',              fmt(s.room_and_board, 'money'), fmt(s.room_and_board, 'money')],
-    ['Books &amp; Supplies',          fmt(s.books_supplies, 'money'), fmt(s.books_supplies, 'money')],
-    ['Required Fees',                 fmt(feesIn, 'money'),          fmt(feesOut, 'money')],
-    ['Other Expenses',                fmt(otherIn, 'money'),         fmt(otherOut, 'money')],
+    ['Tuition',                       cell(inField),            cell(outField)],
+    ['Room &amp; Board',              cell('room_and_board'),   cell('room_and_board')],
+    ['Books &amp; Supplies',          cell('books_supplies'),   cell('books_supplies')],
+    ['Required Fees',                 cell('required_fees'),    cell('required_fees')],
+    ['Other Expenses',                cell('other_expenses'),   cell(otherOutField)],
     [
       '<strong>Total Cost of Attendance</strong>',
-      inTotal  > 0 ? `<strong>$${inTotal.toLocaleString()}</strong>`  : '<span class="stat-na">N/A</span>',
-      outTotal > 0 ? `<strong>$${outTotal.toLocaleString()}</strong>` : '<span class="stat-na">N/A</span>',
+      inTotal  != null ? `<strong>$${inTotal.toLocaleString()}</strong>`  : '<span class="stat-na">N/A</span>',
+      outTotal != null ? `<strong>$${outTotal.toLocaleString()}</strong>` : '<span class="stat-na">N/A</span>',
     ],
   ];
 
+  const o = s._costOutside;
+  const legend = o
+    ? `<p class="cost-source"><span class="gpa-mark" aria-hidden="true">*</span>
+        <span>From the school's <a href="${escapeHtml(o.source)}" target="_blank" rel="noopener">${escapeHtml(o.year)} cost of attendance page</a>, not its Common Data Set.${o.note ? ' ' + escapeHtml(o.note) : ''}</span></p>`
+    : '';
+
   // Application fee lives in the Admissions box beside this one.
-  return sectionWrap('Cost', tableHtml(['', 'In-State', 'Out-of-State'], rows));
+  return sectionWrap('Cost', tableHtml(['', 'In-State', 'Out-of-State'], rows) + legend);
 }
 
 // ── Render: Student Body section ────────────────────────────────────────
@@ -884,11 +920,11 @@ function renderStudentBodySection(s) {
       ${demoBarHtml('Asian',                            d.asian            != null ? d.asian            / total : null)}
       ${demoBarHtml('White',                            d.white            != null ? d.white            / total : null)}
       ${demoBarHtml('Hispanic / Latino',                d.hispanic         != null ? d.hispanic         / total : null)}
-      ${demoBarHtml('Black / African American',         d.black            != null ? d.black            / total : null)}
+      ${demoBarHtml('Black / A-A',                      d.black            != null ? d.black            / total : null, 'Black / African American')}
       ${demoBarHtml('Nonresident Aliens',               d.nonresident_aliens != null ? d.nonresident_aliens / total : null)}
       ${demoBarHtml('Two or More Races',                d.two_or_more      != null ? d.two_or_more      / total : null)}
-      ${demoBarHtml('American Indian / Alaska Native',  d.american_indian  != null ? d.american_indian  / total : null)}
-      ${demoBarHtml('Native Hawaiian / Pac. Islander',  d.pacific_islander != null ? d.pacific_islander / total : null)}
+      ${demoBarHtml('Native American',                  d.american_indian  != null ? d.american_indian  / total : null, 'American Indian / Alaska Native')}
+      ${demoBarHtml('Pacific Islander',                 d.pacific_islander != null ? d.pacific_islander / total : null, 'Native Hawaiian / Pacific Islander')}
       ${demoBarHtml('Unknown',                          d.unknown          != null ? d.unknown          / total : null)}
     </div>`;
   }
@@ -1010,8 +1046,8 @@ async function init() {
   recentHistory = [slug, ...recentHistory.filter(s => s !== slug)].slice(0, 5);
   localStorage.setItem(historyKey, JSON.stringify(recentHistory));
 
-  const [{ allSchools, yearRecords, availableYearKeys }, admissionPlans, outsideGpa] =
-    await Promise.all([loadAllYears(slug), loadAdmissionPlans(), loadOutsideGpa()]);
+  const [{ allSchools, yearRecords, availableYearKeys }, admissionPlans, outsideGpa, outsideCosts] =
+    await Promise.all([loadAllYears(slug), loadAdmissionPlans(), loadOutsideGpa(), loadOutsideCosts()]);
 
   if (availableYearKeys.length === 0) {
     document.getElementById('school-sections').innerHTML =
@@ -1021,6 +1057,9 @@ async function init() {
 
   const meta = SCHOOL_META[slug] ?? { color: '#333', banner: null };
   const latestAvailableKey = availableYearKeys[availableYearKeys.length - 1];
+  // Current prices from the school's own cost page fill the cost fields its
+  // latest CDS left blank (older years keep exactly what their CDS said).
+  yearRecords.set(latestAvailableKey, withOutsideCost(yearRecords.get(latestAvailableKey), outsideCosts));
   let currentYearKey = latestAvailableKey;
 
   document.documentElement.style.setProperty('--brand', meta.color);
