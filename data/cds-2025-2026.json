@@ -13734,17 +13734,17 @@
       "admitted_men": 418,
       "admitted_women": 471,
       "enrolled_total": 421,
-      "enrolled_men": 199,
-      "enrolled_women": 221,
+      "enrolled_men": 221,
+      "enrolled_women": 199,
       "acceptance_rate": 0.0714,
       "application_fee": 80,
       "avg_gpa_weighted": null,
       "rd_deadline": "1/8",
-      "waitlist_offered": 1017,
-      "waitlist_accepted": 716,
+      "waitlist_offered": 716,
+      "waitlist_accepted": 1017,
       "waitlist_admitted": 31,
       "ea_ed_type": "ED I & II",
-      "ea_ed_deadline": "11/8",
+      "ea_ed_deadline": "11/15",
       "ea_ed_notification": "12/15",
       "ea_apps_received": 1656,
       "ea_apps_admitted": 227,
@@ -13755,17 +13755,17 @@
       "sat_composite_25": 1490,
       "sat_composite_50": 1520,
       "sat_composite_75": 1550,
-      "sat_reading_25": 730,
-      "sat_reading_75": 770,
-      "sat_math_25": 740,
-      "sat_math_75": 790,
-      "act_composite_25": 33,
-      "act_composite_50": 34,
-      "act_composite_75": 35,
-      "act_math_25": 29,
+      "sat_reading_25": 755,
+      "sat_reading_75": 790,
+      "sat_math_25": 730,
+      "sat_math_75": 770,
+      "act_composite_25": 34,
+      "act_composite_50": 35,
+      "act_composite_75": 36,
+      "act_math_25": 33,
       "act_math_75": 35,
-      "act_english_25": 34,
-      "act_english_75": 36,
+      "act_english_25": 32,
+      "act_english_75": 35,
       "total_undergrads": 1617,
       "undergrads_male": 733,
       "undergrads_female": 884,
@@ -13780,19 +13780,15 @@
       "pct_out_of_state": 0.62,
       "pct_on_campus_housing": 1.0,
       "applicant_pools": {
-        "ea": {
-          "applied": 1656,
-          "admitted": 227,
-          "rate": 0.1371
-        },
+        "ea": null,
         "rd": {
           "applied": 10814,
           "admitted": 663,
           "rate": 0.0613
         },
         "waitlist": {
-          "offered": 1017,
-          "accepted_spots": 716,
+          "offered": 716,
+          "accepted_spots": 1017,
           "enrolled": 31
         }
       },
@@ -13806,8 +13802,8 @@
           "female": 471
         },
         "enrolled": {
-          "male": 199,
-          "female": 221
+          "male": 221,
+          "female": 199
         }
       },
       "demographics_detail": {
@@ -13852,22 +13848,22 @@
         "rigor": "very_important",
         "class_rank": "very_important",
         "academic_gpa": "very_important",
-        "test_scores": "considered",
+        "test_scores": "very_important",
         "essay": "very_important",
-        "recommendations": "very_important",
-        "interview": "not_considered",
+        "recommendations": "considered",
+        "interview": "very_important",
         "extracurriculars": "very_important",
         "talent": "very_important",
-        "character": "very_important",
-        "first_gen": "considered",
+        "character": "not_considered",
+        "first_gen": "not_considered",
         "alumni_relation": "not_considered",
-        "geo_residence": "considered",
+        "geo_residence": "not_considered",
         "state_residence": "not_considered",
-        "religious": "not_considered",
+        "religious": "considered",
         "racial_ethnic": null,
         "volunteer": "considered",
         "work_experience": "considered",
-        "applicant_interest": "not_considered"
+        "applicant_interest": "considered"
       },
       "transfer_stats": {
         "male": {
