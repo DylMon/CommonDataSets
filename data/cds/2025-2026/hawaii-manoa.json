@@ -1,0 +1,165 @@
+{
+  "name": "University of Hawaiʻi at Mānoa",
+  "data_year": "2025-26",
+  "city": "Honolulu",
+  "state": "HI",
+  "location": "Honolulu, HI",
+  "school_type": "Public",
+  "website": "manoa.hawaii.edu",
+  "applicants_total": 17389,
+  "applicants_men": 5451,
+  "applicants_women": 11870,
+  "admitted_total": 15297,
+  "admitted_men": 4752,
+  "admitted_women": 10488,
+  "enrolled_total": 3319,
+  "enrolled_men": 1329,
+  "enrolled_women": 1979,
+  "acceptance_rate": 0.8797,
+  "application_fee": 70,
+  "avg_gpa_weighted": 3.67,
+  "rd_deadline": "1/5",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": null,
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": null,
+  "sat_submitted_count": null,
+  "act_submitted_pct": null,
+  "act_submitted_count": null,
+  "sat_composite_25": null,
+  "sat_composite_75": null,
+  "sat_reading_25": null,
+  "sat_reading_75": null,
+  "sat_math_25": null,
+  "sat_math_75": null,
+  "act_composite_25": null,
+  "act_composite_75": null,
+  "act_math_25": null,
+  "act_math_75": null,
+  "act_english_25": null,
+  "act_english_75": null,
+  "total_undergrads": 15735,
+  "undergrads_male": 6526,
+  "undergrads_female": 9022,
+  "retention_rate": 0.8,
+  "tuition": null,
+  "tuition_in_state": 11760,
+  "tuition_out_of_state": 33792,
+  "required_fees": 914,
+  "room_and_board": 15690,
+  "books_supplies": 1330,
+  "other_expenses": 2698,
+  "pct_out_of_state": 0.36,
+  "pct_on_campus_housing": 0.19,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": null
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 5451,
+      "female": 11870
+    },
+    "accepted": {
+      "male": 4752,
+      "female": 10488
+    },
+    "enrolled": {
+      "male": 1329,
+      "female": 1979
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 63,
+      "hispanic": 52,
+      "black": 71,
+      "white": 880,
+      "american_indian": 26,
+      "asian": 1091,
+      "pacific_islander": 555,
+      "two_or_more": 550,
+      "unknown": 6,
+      "total": 3294
+    },
+    "undergrad": {
+      "nonresident_aliens": 467,
+      "hispanic": 257,
+      "black": 318,
+      "white": 3779,
+      "american_indian": 119,
+      "asian": 5177,
+      "pacific_islander": 2647,
+      "two_or_more": 2516,
+      "unknown": 61,
+      "total": 15341
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.36,
+    "international_pct": 0.0304
+  },
+  "sat_act_breakdown": null,
+  "class_rank": {
+    "top10": 0.278,
+    "top25": 0.486,
+    "top50": 0.818,
+    "bottom50": 0.182,
+    "bottom25": 0.019
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.259,
+    "gpa_375_399": 0.227,
+    "gpa_350_374": 0.19,
+    "gpa_325_349": 0.162,
+    "gpa_300_324": 0.112,
+    "gpa_250_299": 0.05,
+    "gpa_200_249": null,
+    "gpa_100_199": null
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "considered",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "not_considered",
+    "first_gen": "not_considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "important",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "not_considered",
+    "work_experience": "not_considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1516,
+      "admitted": 1232,
+      "enrolled": 562
+    },
+    "female": {
+      "applied": 2548,
+      "admitted": 2073,
+      "enrolled": 744
+    },
+    "total": {
+      "applied": 4088,
+      "admitted": 3327,
+      "enrolled": 1317
+    }
+  },
+  "slug": "hawaii-manoa"
+}

@@ -1,0 +1,174 @@
+{
+  "name": "Syracuse University",
+  "data_year": "2025-26",
+  "city": "Syracuse",
+  "state": "NY",
+  "location": "Syracuse, NY",
+  "school_type": "Private",
+  "website": "www.syracuse.edu",
+  "applicants_total": 46645,
+  "applicants_men": 18168,
+  "applicants_women": 28476,
+  "admitted_total": 22756,
+  "admitted_men": 8888,
+  "admitted_women": 13868,
+  "enrolled_total": 3969,
+  "enrolled_men": 1645,
+  "enrolled_women": 2324,
+  "acceptance_rate": 0.4878,
+  "application_fee": 85,
+  "avg_gpa_weighted": 3.71,
+  "rd_deadline": "1/5",
+  "waitlist_offered": 14242,
+  "waitlist_accepted": 6530,
+  "waitlist_admitted": 2039,
+  "ea_ed_type": "ED",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "1/1",
+  "ea_apps_received": 2654,
+  "ea_apps_admitted": 1478,
+  "sat_submitted_pct": 0.23,
+  "sat_submitted_count": 929,
+  "act_submitted_pct": 0.08,
+  "act_submitted_count": 327,
+  "sat_composite_25": 1300,
+  "sat_composite_75": 1410,
+  "sat_reading_25": 650,
+  "sat_reading_75": 720,
+  "sat_math_25": 640,
+  "sat_math_75": 710,
+  "act_composite_25": 29,
+  "act_composite_75": 33,
+  "act_math_25": 26,
+  "act_math_75": 31,
+  "act_english_25": 29,
+  "act_english_75": 35,
+  "total_undergrads": 16149,
+  "undergrads_male": 7014,
+  "undergrads_female": 9128,
+  "retention_rate": 0.9202,
+  "tuition": 69180,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 1869,
+  "room_and_board": 20580,
+  "books_supplies": 1847,
+  "other_expenses": 1294,
+  "pct_out_of_state": 0.643,
+  "pct_on_campus_housing": 0.51,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": {
+      "offered": 14242,
+      "accepted_spots": 6530,
+      "enrolled": 2039
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 18168,
+      "female": 28476
+    },
+    "accepted": {
+      "male": 8888,
+      "female": 13868
+    },
+    "enrolled": {
+      "male": 1645,
+      "female": 2324
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 178,
+      "hispanic": 597,
+      "black": 370,
+      "white": 2256,
+      "american_indian": 10,
+      "asian": 281,
+      "pacific_islander": 1,
+      "two_or_more": 221,
+      "unknown": 55,
+      "total": 3969
+    },
+    "undergrad": {
+      "nonresident_aliens": 1113,
+      "hispanic": 2091,
+      "black": 1323,
+      "white": 8929,
+      "american_indian": 93,
+      "asian": 1132,
+      "pacific_islander": 13,
+      "two_or_more": 747,
+      "unknown": 204,
+      "total": 15645
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.643,
+    "international_pct": 0.0711
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 929,
+    "sat_submitted_pct": 0.23,
+    "act_submitted_count": 327,
+    "act_submitted_pct": 0.08
+  },
+  "class_rank": {
+    "top10": 0.361,
+    "top25": 0.686,
+    "top50": 0.918,
+    "bottom50": 0.082,
+    "bottom25": 0.004
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.2946,
+    "gpa_375_399": 0.2043,
+    "gpa_350_374": 0.2185,
+    "gpa_325_349": 0.1502,
+    "gpa_300_324": 0.1042,
+    "gpa_250_299": 0.0243,
+    "gpa_200_249": 0.004,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "important",
+    "academic_gpa": "very_important",
+    "test_scores": "important",
+    "essay": "very_important",
+    "recommendations": "very_important",
+    "interview": "considered",
+    "extracurriculars": "very_important",
+    "talent": "very_important",
+    "character": "very_important",
+    "first_gen": "important",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "important",
+    "work_experience": "important",
+    "applicant_interest": "important"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 770,
+      "admitted": 396,
+      "enrolled": 178
+    },
+    "female": {
+      "applied": 838,
+      "admitted": 409,
+      "enrolled": 142
+    },
+    "total": {
+      "applied": 1608,
+      "admitted": 805,
+      "enrolled": 320
+    }
+  },
+  "slug": "syracuse"
+}
