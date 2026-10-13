@@ -36,10 +36,25 @@
                     ${navLink('/compare/', 'Compare', 'compare')}
                     ${navLink('/chanceme/', 'Chance Me', 'chanceme')}
                 </div>
-                <div class="nav-corner-links">
-                    <a href="/resources/">Resources</a>
-                    <a href="/info/">About Us</a>
-                    <a href="/contact/">Contact Us</a>
+                <div class="nav-right-group">
+                    ${active === 'index' ? `
+                    <div class="header-search" id="header-search">
+                        <button type="button" class="header-search-toggle" id="header-search-toggle" aria-label="Search schools" aria-expanded="false">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        </button>
+                        <div class="search-wrap">
+                            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                            <input type="text" id="school-search" class="search-input" placeholder="Search schools…" autocomplete="off">
+                            <button type="button" class="search-clear" id="search-clear" aria-label="Clear search" hidden>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                            </button>
+                        </div>
+                    </div>` : ''}
+                    <div class="nav-corner-links">
+                        <a href="/resources/">Resources</a>
+                        <a href="/info/">About Us</a>
+                        <a href="/contact/">Contact Us</a>
+                    </div>
                 </div>
             </div>
             <div class="header-sub-bar"></div>
@@ -62,6 +77,26 @@
 
         const container = document.querySelector('.container');
         if (container) container.insertAdjacentHTML('afterbegin', nav);
+
+        // Homepage only (see the `active === 'index'` check above): the
+        // search bar collapses to a round icon below ~1250px (the same
+        // breakpoint .nav-corner-links already hides at — see css/base.css)
+        // since there's no longer room for it inline. The toggle reveals it
+        // as a dropdown instead of fighting the cramped row for space.
+        const searchToggle = document.getElementById('header-search-toggle');
+        const headerSearch = document.getElementById('header-search');
+        if (searchToggle && headerSearch) {
+            function setSearchExpanded(open) {
+                headerSearch.classList.toggle('expanded', open);
+                searchToggle.setAttribute('aria-expanded', String(open));
+                if (open) document.getElementById('school-search')?.focus();
+            }
+            searchToggle.addEventListener('click', () => setSearchExpanded(!headerSearch.classList.contains('expanded')));
+            document.addEventListener('click', e => {
+                if (!e.target.closest('#header-search')) setSearchExpanded(false);
+            });
+            document.addEventListener('keydown', e => { if (e.key === 'Escape') setSearchExpanded(false); });
+        }
 
         syncHeaderHeight();
         window.addEventListener('resize', syncHeaderHeight);
