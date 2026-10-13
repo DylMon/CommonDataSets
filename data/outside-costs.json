@@ -1,0 +1,214 @@
+{
+  "generated": "2026-10-12",
+  "note": "Cost-of-attendance values for schools whose most recent Common Data Set leaves cost fields blank, taken from each school's own cost-of-attendance or tuition page (on-campus, first-year budget), reviewed in the Cost Data Review doc (https://claude.ai/code/artifact/43000218-46c8-4f06-9258-a385e6430578). Applied only to a school's latest record, and only to fields that record leaves null. room_and_board = on-campus housing + food; required_fees = mandatory fees; other_expenses = everything else the school's budget lists that the table has no row for (personal, transportation, health insurance, loan fees, orientation), so the table's total matches the school's published total. 'override' entries replace the CDS values too (when old CDS numbers mixed with current prices matched nothing); other_expenses_out_of_state is used when a school's out-of-state budget lists a different Other. 'quiet' entries fill silently (no * or source line), e.g. a $0 fee that's part of tuition. application_fee is filled the same way (null only) but never marked: the user wants plain values there, $0 for schools with no fee.",
+  "costs": {
+    "harvard": {
+      "year": "2026-27",
+      "source": "https://college.harvard.edu/financial-aid/how-aid-works",
+      "values": { "tuition": 62226, "required_fees": 6216, "room_and_board": 23192, "books_supplies": 1000, "other_expenses": 2500 }
+    },
+    "wellesley": {
+      "year": "2026-27",
+      "source": "https://www.wellesley.edu/admission-aid/student-financial-services/tuition-cost",
+      "values": { "tuition": 72570, "required_fees": 360, "room_and_board": 23206, "books_supplies": 800, "other_expenses": 1250, "application_fee": 0 }
+    },
+    "tufts": {
+      "year": "2026-27",
+      "source": "https://students.tufts.edu/financial-services/undergrad-aid/award-letter/undergraduate-cost-attendance",
+      "values": { "tuition": 74862, "required_fees": 1696, "room_and_board": 20594, "books_supplies": 1000, "other_expenses": 1846 }
+    },
+    "claremont-mckenna": {
+      "year": "2026-27",
+      "source": "https://claremontmckenna.edu/student-accounts/tuition",
+      "values": { "tuition": 75300, "required_fees": 420, "room_and_board": 23270, "other_expenses": 3000 }
+    },
+    "clark": {
+      "year": "2026-27",
+      "source": "https://www.clarku.edu/undergraduate-admissions/cost-and-financial-aid/",
+      "values": { "tuition": 62070, "required_fees": 1140, "room_and_board": 14360, "books_supplies": 900, "other_expenses": 4283 }
+    },
+    "illinois-tech": {
+      "year": "2026-27",
+      "source": "https://www.iit.edu/financial-aid/tuition-fees-and-costs",
+      "values": { "tuition": 53198, "required_fees": 1850, "room_and_board": 18548, "books_supplies": 1340, "other_expenses": 5752, "application_fee": 0 }
+    },
+    "yeshiva": {
+      "year": "2026-27",
+      "source": "https://www.yu.edu/osf/tuition-fees/undergraduate",
+      "values": { "tuition": 49550, "required_fees": 4950, "room_and_board": 14625, "other_expenses": 6654 }
+    },
+    "usma-west-point": {
+      "year": "2026-27",
+      "source": "https://www.westpoint.edu/admissions/tuition-and-service-commitment",
+      "values": { "tuition_in_state": 0, "tuition_out_of_state": 0, "required_fees": 0, "room_and_board": 0, "application_fee": 0 },
+      "note": "West Point charges no tuition, fees, or room and board; cadets are paid a salary."
+    },
+    "ucla": {
+      "year": "2026-27",
+      "source": "https://admission.ucla.edu/tuition-aid/tuition-fees",
+      "values": { "tuition_in_state": 14202, "tuition_out_of_state": 53472, "required_fees": 2228, "room_and_board": 19867, "books_supplies": 1588, "other_expenses": 7615 }
+    },
+    "uc-irvine": {
+      "year": "2026-27",
+      "source": "https://www.ofas.uci.edu/cost/undergraduate-costs/new-students.php",
+      "values": { "tuition_in_state": 14202, "tuition_out_of_state": 53472, "required_fees": 2903, "room_and_board": 19376, "books_supplies": 1512, "other_expenses": 7213 }
+    },
+    "uc-riverside": {
+      "year": "2026-27",
+      "source": "https://financialaid.ucr.edu/cost",
+      "values": { "tuition_in_state": 14202, "tuition_out_of_state": 53472, "required_fees": 2588, "room_and_board": 21075, "books_supplies": 1700, "other_expenses": 6974 }
+    },
+    "clemson": {
+      "year": "2026-27",
+      "source": "https://www.clemson.edu/financial-aid/cost/estimated-cost-of-attendance.html",
+      "values": { "tuition_in_state": 14038, "tuition_out_of_state": 42020, "required_fees": 1832, "room_and_board": 14880, "books_supplies": 1576, "other_expenses": 5872 }
+    },
+    "olemiss": {
+      "year": "2026-27",
+      "source": "https://olemiss.edu/admissions/cost-of-attendance/",
+      "values": { "tuition_in_state": 10278, "tuition_out_of_state": 31068, "required_fees": 160, "room_and_board": 13610, "books_supplies": 1200, "other_expenses": 6900 }
+    },
+    "suny-esf": {
+      "year": "2026-27",
+      "source": "https://www.esf.edu/tuition-aid/bursar/costs.php",
+      "values": { "tuition_in_state": 7070, "tuition_out_of_state": 21020, "required_fees": 2309, "books_supplies": 1260, "other_expenses": 1050, "other_expenses_out_of_state": 1250 }
+    },
+    "uofminnesota-twin-cities": {
+      "year": "2026-27",
+      "source": "https://onestop.umn.edu/finances/costs/cost-attendance",
+      "values": { "tuition_in_state": 16744, "tuition_out_of_state": 40780, "required_fees": 2568, "room_and_board": 15552, "books_supplies": 1000, "other_expenses": 2362, "other_expenses_out_of_state": 3862 }
+    },
+    "uoklahoma": {
+      "year": "2026-27",
+      "source": "https://www.ou.edu/admissions/affordability/cost",
+      "values": { "tuition_in_state": 5532, "tuition_out_of_state": 24210, "required_fees": 9971, "room_and_board": 16381, "books_supplies": 800, "other_expenses": 7461 }
+    },
+    "umass-lowell": {
+      "year": "2026-27",
+      "source": "https://www.uml.edu/thesolutioncenter/financial-aid/apply/undergrad-coa-odd-year.aspx",
+      "values": { "tuition_in_state": 17402, "tuition_out_of_state": 36610, "required_fees": 850, "room_and_board": 17482, "books_supplies": 1200, "other_expenses": 1468 }
+    },
+    "uidaho": {
+      "year": "2026-27",
+      "source": "https://www.uidaho.edu/financial-aid/cost-of-attendance",
+      "values": { "tuition_in_state": 9824, "tuition_out_of_state": 29300, "room_and_board": 12995, "books_supplies": 1260, "other_expenses": 6712 },
+      "note": "Idaho bills tuition and fees as one charge, so the tuition shown includes fees."
+    },
+    "wisconsin-madison": {
+      "year": "2026-27",
+      "source": "https://financialaid.wisc.edu/cost-of-attendance/",
+      "values": { "tuition_in_state": 10833, "tuition_out_of_state": 43819, "required_fees": 1699, "room_and_board": 14994, "books_supplies": 700, "other_expenses": 3298, "other_expenses_out_of_state": 3908 }
+    },
+    "indiana-bloomington": {
+      "year": "2026-27",
+      "source": "https://bloomington.iu.edu/cost-aid/cost-attendance/undergraduate.html",
+      "values": { "other_expenses": 2714, "other_expenses_out_of_state": 4536 }
+    },
+    "unevada-reno": {
+      "year": "2026-27",
+      "source": "https://www.unr.edu/financial-aid/cost-of-attendance/resident",
+      "override": true,
+      "values": { "tuition_in_state": 9384, "tuition_out_of_state": 29572, "required_fees": 1698, "room_and_board": 15952, "books_supplies": 1200, "other_expenses": 3136, "application_fee": "$0 domestic, $95 international" }
+    },
+    "duquesne": {
+      "values": { "required_fees": 0, "application_fee": 0 },
+      "quiet": true
+    },
+    "pomona": {
+      "values": { "books_supplies": 0 },
+      "quiet": true
+    },
+    "georgia-state": {
+      "year": "2026-27",
+      "source": "https://sfs.gsu.edu/resources/coa/2026-2027-cost-of-attendance/",
+      "override": true,
+      "values": { "tuition_in_state": 9270, "tuition_out_of_state": 30900, "required_fees": 1320, "room_and_board": 16330, "books_supplies": 2066, "other_expenses": 5564 }
+    },
+    "uc-merced": {
+      "year": "2026-27",
+      "source": "https://financialaid.ucmerced.edu/cost-attendance",
+      "override": true,
+      "values": { "tuition_in_state": 14202, "tuition_out_of_state": 53472, "required_fees": 2822, "room_and_board": 23180, "books_supplies": 1148, "other_expenses": 7302 }
+    },
+    "nc-state": {
+      "year": "2026-27",
+      "source": "https://studentservices.ncsu.edu/finances/estimated-cost-of-attendance/undergraduate-student-estimated-cost-of-attendance/",
+      "values": { "other_expenses": 3179, "other_expenses_out_of_state": 3754 }
+    },
+    "templeu": {
+      "year": "2026-27",
+      "source": "https://sfs.temple.edu/eligibility/your-financial-aid-offer/cost-attendance",
+      "values": { "other_expenses": 5720 }
+    },
+    "florida-atlantic": {
+      "values": { "required_fees": 0 },
+      "quiet": true
+    },
+    "nyu": {
+      "values": { "required_fees": 0 },
+      "quiet": true
+    },
+    "urichmond": {
+      "values": { "required_fees": 0 },
+      "quiet": true
+    },
+    "ut-austin": {
+      "values": { "required_fees": 0 },
+      "quiet": true
+    },
+    "binghamton": {
+      "year": "2026-27",
+      "source": "https://www.binghamton.edu/financial-aid/cost.html",
+      "values": { "room_and_board": 20179, "other_expenses": 1000, "other_expenses_out_of_state": 1200 }
+    },
+    "case-western": {
+      "year": "2026-27",
+      "source": "https://case.edu/financialaid/undergraduates/estimated-costs-attendance-2026-27",
+      "values": { "required_fees": 696, "room_and_board": 20288 }
+    },
+    "dartmouth": {
+      "values": { "application_fee": 85 },
+      "quiet": true
+    },
+    "boston-college": {
+      "values": { "application_fee": 85 },
+      "quiet": true
+    },
+    "gwu": {
+      "values": { "application_fee": 80 },
+      "quiet": true
+    },
+    "baylor": {
+      "values": { "application_fee": 0 },
+      "quiet": true
+    },
+    "grinnell": {
+      "values": { "application_fee": 0 },
+      "quiet": true
+    },
+    "udayton": {
+      "values": { "application_fee": 0 },
+      "quiet": true
+    },
+    "marquette": {
+      "values": { "application_fee": 0 },
+      "quiet": true
+    },
+    "missourri-s&t": {
+      "values": { "application_fee": 0 },
+      "quiet": true
+    },
+    "valparaiso": {
+      "values": { "application_fee": 0 },
+      "quiet": true
+    },
+    "bradley": {
+      "values": { "application_fee": 0 },
+      "quiet": true
+    },
+    "michigan-tech": {
+      "values": { "application_fee": "$0 domestic, $35 international" },
+      "quiet": true
+    }
+  }
+}

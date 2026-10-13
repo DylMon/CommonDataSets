@@ -3,6 +3,7 @@
 // nothing typed into the form is ever transmitted anywhere.
 
 import { normalizeGpaDistribution } from './charts.js?v=6';
+import { loadAdmissionPlans, cdsRounds } from './admission-plans.js?v=1';
 
 // Logos live at images/logos/<slug>.png. A few schools have none yet; the
 // onerror hook hides the broken <img> rather than showing a torn-image icon.
@@ -412,18 +413,20 @@ export function firstGenModifier(school, firstGenFlag) {
 
 // ── Application plan (RD / EA / ED / ED II…) ────────────────────────────
 
+// Plans come from the school's verified current-cycle rounds (_rounds, from
+// data/admission-plans.json, attached at load), so a school with ED I, ED II
+// and EA offers all three. Earliest plan first; the first option is the
+// default for a newly added school. Several EA rounds (Auburn's EA I-IV)
+// share one "ea" option since the estimate treats them alike.
 export function schoolPlanOptions(school) {
-    const opts = [{ value: 'rd', label: 'Regular Decision' }];
-    switch (school.ea_ed_type) {
-        case 'REA': opts.unshift({ value: 'ea', label: 'Restrictive Early Action (REA)' }); break;
-        case 'EA':  opts.unshift({ value: 'ea', label: 'Early Action (EA)' }); break;
-        case 'ED':  opts.unshift({ value: 'ed', label: 'Early Decision (ED)' }); break;
-        case 'ED I & II':
-            opts.unshift({ value: 'ed2', label: 'Early Decision II (ED II)' });
-            opts.unshift({ value: 'ed', label: 'Early Decision I (ED I)' });
-            break;
-        default: break;
-    }
+    const rounds = school._rounds ?? cdsRounds(school);
+    const has = re => rounds.some(r => re.test(r.type));
+    const opts = [];
+    if (has(/^ED( I)?$/)) opts.push({ value: 'ed', label: has(/^ED II$/) ? 'Early Decision I (ED I)' : 'Early Decision (ED)' });
+    if (has(/^ED II$/))   opts.push({ value: 'ed2', label: 'Early Decision II (ED II)' });
+    if (has(/^REA\b/))    opts.push({ value: 'ea', label: 'Restrictive Early Action (REA)' });
+    else if (has(/^EA\b/)) opts.push({ value: 'ea', label: 'Early Action (EA)' });
+    opts.push({ value: 'rd', label: 'Regular Decision' });
     return opts;
 }
 
@@ -779,11 +782,21 @@ if (typeof document !== 'undefined') {
         stateSelect.innerHTML = '<option value="">Select state…</option>' +
             US_STATES.map(([code, name]) => `<option value="${code}">${name}</option>`).join('');
 
-        const res = await fetch('/data/schools-2025-2026.json');
-        const { schools } = await res.json();
-        allSchools = schools.filter(s => s.name != null); // exclude records with no source data yet (e.g. bad/missing source PDF)
+        const [{ schools }, plans] = await Promise.all([
+            fetch('/data/schools-2025-2026.json').then(res => res.json()),
+            loadAdmissionPlans(),
+        ]);
+        allSchools = schools
+            .filter(s => s.name != null) // exclude records with no source data yet (e.g. bad/missing source PDF)
+            .map(s => ({ ...s, _rounds: plans[s.slug] ?? cdsRounds(s) }));
 
         loadDraft();
+        // A saved draft may name a plan a school no longer offers (its plans
+        // were corrected since); fall back to that school's default plan.
+        for (const t of state.targetSchools) {
+            const school = allSchools.find(s => s.slug === t.slug);
+            if (school && !schoolPlanOptions(school).some(o => o.value === t.plan)) t.plan = schoolPlanOptions(school)[0].value;
+        }
         toggleStateField();
         toggleCourseTrackFields();
         toggleDualEnrollmentCount();

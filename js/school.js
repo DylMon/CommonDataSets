@@ -1,4 +1,7 @@
 import { GPA_BUCKETS, renderGpaHistogram, normalizeGpaDistribution } from './charts.js?v=6';
+import { loadAdmissionPlans, cdsRounds, roundFamily } from './admission-plans.js?v=1';
+import { loadOutsideGpa } from './outside-gpa.js?v=1';
+import { loadOutsideCosts, withOutsideCost, isOutsideCost } from './outside-costs.js?v=1';
 
 const SCHOOL_META = {
   'mit': { color: '#a41931', banner: 'mit.jpg', y: 50, credit: { author: 'Scutter', license: 'CC BY-NC-ND 2.0', url: 'https://www.flickr.com/photos/scutter/38005464/' } },
@@ -285,12 +288,15 @@ function scoreBarHtml(label, val25, val75, scaleMin, scaleMax) {
   </div>`;
 }
 
-function demoBarHtml(label, val) {
+// fullLabel: the official CDS name, shown on hover when `label` is a
+// shortened form that fits on one line.
+function demoBarHtml(label, val, fullLabel = null) {
   if (val == null) return '';
   const pct = (val * 100);
   const barWidth = Math.max(pct, 0.3).toFixed(1);
+  const labelHtml = fullLabel ? `<abbr class="short-label" title="${fullLabel}">${label}</abbr>` : label;
   return `<div class="demo-bar-row">
-    <div class="demo-bar-label">${label}</div>
+    <div class="demo-bar-label">${labelHtml}</div>
     <div class="demo-bar-track"><div class="demo-bar-fill" style="width:${barWidth}%"></div></div>
     <div class="demo-bar-pct">${pct.toFixed(1)}%</div>
   </div>`;
@@ -386,7 +392,45 @@ function renderYearBar(yearCtx) {
 
 // ── Render: Quick facts strip (flat bar below the pill) ─────────────────
 
-function renderQuickFacts(s) {
+// Small ⓘ next to a stat label. Tip shows on hover (mouse) or tap (touch) —
+// see the delegated click handler below. Kept distinct from the * used to
+// mark data that comes from outside the CDS.
+function infoTip(text) {
+  return `<button type="button" class="stat-info" aria-label="${escapeHtml(text)}">i<span class="stat-info-tip" role="tooltip">${escapeHtml(text)}</span></button>`;
+}
+
+// One listener for every ⓘ (the strip is re-rendered on each year switch):
+// tapping one toggles it, tapping anywhere else closes any that are open.
+document.addEventListener('click', e => {
+  const tip = e.target.closest('.stat-info');
+  document.querySelectorAll('.stat-info.open').forEach(b => { if (b !== tip) b.classList.remove('open'); });
+  if (tip) tip.classList.toggle('open');
+});
+
+// A GPA that didn't come from this year's CDS (data/outside-gpa.json) gets
+// a "≈" before the number; its hover/tap tip (same as the ⓘ) says where it
+// came from: published by the school itself, or our third-party estimate.
+const OUTSIDE_GPA_NOTE = {
+  school: "This average GPA isn't in this year's Common Data Set. It comes from figures the school itself has published, such as an earlier Common Data Set or a class profile.",
+  estimate: "This school doesn't publish an average GPA. This is our best estimate, based on comparing several third-party sources.",
+};
+
+function outsideGpaMark(source) {
+  const text = OUTSIDE_GPA_NOTE[source];
+  return `<button type="button" class="stat-info gpa-source" aria-label="${escapeHtml(text)}">≈<span class="stat-info-tip" role="tooltip">${escapeHtml(text)}</span></button>`;
+}
+
+// A cost from the school's own cost page (data/outside-costs.json) rather
+// than its CDS — the same orange * Home and Compare use for non-CDS data.
+const OUTSIDE_COST_MARK = `<span class="gpa-mark" title="From the school's cost of attendance page, not its Common Data Set">*</span>`;
+
+// outside: {gpa, source} for a school whose CDS (this year) has no GPA.
+function renderQuickFacts(s, outside = null) {
+  const gpaVal = s.avg_gpa_weighted != null ? parseFloat(s.avg_gpa_weighted).toFixed(2)
+    // The anchor span keeps the number centered under its label; the ≈
+    // hangs off its left edge (see .stat-anchor in school-template.css).
+    : outside ? `<span class="stat-anchor">${outsideGpaMark(outside.source)}${Number(outside.gpa).toFixed(2)}</span>`
+    : 'Not reported';
   const satVal   = s.sat_composite_25 != null && s.sat_composite_75 != null
     ? `${s.sat_composite_25}–${s.sat_composite_75}`
     : '<span class="stat-na">N/A</span>';
@@ -400,9 +444,14 @@ function renderQuickFacts(s) {
     ['Acceptance Rate', s.acceptance_rate != null ? (s.acceptance_rate * 100).toFixed(1) + '%' : '<span class="stat-na">N/A</span>'],
     ['SAT Range',       satVal],
     ['ACT Range',       act25 != null && act75 != null ? `${act25}–${act75}` : '<span class="stat-na">N/A</span>'],
-    ['Avg GPA (W)',     s.avg_gpa_weighted != null ? parseFloat(s.avg_gpa_weighted).toFixed(2) : 'Not reported'],
+    // The CDS never says whether a school's average GPA is weighted or
+    // unweighted (avg_gpa_weighted is just the column name), so don't claim either.
+    [`<span class="stat-anchor">Avg GPA${infoTip('The Common Data Set does not state whether this GPA is weighted or unweighted.')}</span>`,
+                        gpaVal],
     ['Undergrads',      s.total_undergrads != null ? s.total_undergrads.toLocaleString() : '<span class="stat-na">N/A</span>'],
-    ['Tuition (OOS)',   tuitionOOS != null ? '$' + tuitionOOS.toLocaleString() : '<span class="stat-na">N/A</span>'],
+    ['Tuition (OOS)',   tuitionOOS != null
+      ? '$' + tuitionOOS.toLocaleString() + (isOutsideCost(s, s.tuition_out_of_state != null ? 'tuition_out_of_state' : 'tuition') ? OUTSIDE_COST_MARK : '')
+      : '<span class="stat-na">N/A</span>'],
   ];
   return chips.map((c, i) =>
     (i > 0 ? '<div class="stat-divider"></div>' : '') +
@@ -415,26 +464,210 @@ function renderQuickFacts(s) {
 
 // ── Render: Admissions summary (paired side-by-side with Cost) ─────────
 
-function renderAdmissionsSummary(s) {
+// Application rounds are [{type, date}] in cycle order. The current cycle's
+// verified rounds come from data/admission-plans.json (passed in as `rounds`);
+// an older year falls back to cdsRounds(), what that year's CDS recorded.
+const isEarlyRound = type => /^(ED|EA|REA)\b/.test(type);
+
+// Most fees are numbers, but a few schools' CDS give text that already
+// carries its own "$" ("$80 ($95 International)") — don't prefix another.
+const feeText = fee => fee == null ? null
+  : typeof fee === 'number' ? '$' + fee
+  : /\$/.test(fee) ? fee : '$' + fee;
+
+// A few CDS fees are text listing a fee per applicant type ("$0 UT
+// residents, $55 Domestic, Non-UT resident, $65 International"). Those show
+// as a range on one line, with the school's own wording in an ⓘ.
+function feeHtml(fee) {
+  const text = feeText(fee);
+  if (text == null) return null;
+  const amounts = typeof fee === 'string'
+    ? [...fee.matchAll(/\$\s*(\d[\d,]*)/g)].map(m => Number(m[1].replace(/,/g, '')))
+    : [];
+  const lo = Math.min(...amounts), hi = Math.max(...amounts);
+  if (amounts.length < 2 || lo === hi) return escapeHtml(text);
+  return `$${lo}–$${hi}${infoTip(`Varies by applicant: ${text}`)}`;
+}
+
+// Day of an "m/d" date within an application cycle that runs Sep 1..Aug 31,
+// so ordering and "is this deadline behind us?" work across the new year.
+// Same ordering as data/admission-plans.json. Non-dates ("Rolling") → null.
+const CYCLE_MONTH_START = { 9: 0, 10: 30, 11: 61, 12: 91, 1: 122, 2: 153, 3: 181, 4: 212, 5: 242, 6: 273, 7: 303, 8: 334 };
+function cycleDay(md) {
+  const m = String(md).match(/^(\d{1,2})\/(\d{1,2})$/);
+  if (!m || CYCLE_MONTH_START[+m[1]] == null) return null;
+  return CYCLE_MONTH_START[+m[1]] + +m[2] - 1;
+}
+
+// Deadline timeline: date pills on a track. Rounds sharing a date share a
+// pill ("ED II · RD"). Deadlines already past in this cycle go grey, the
+// track fills up to today, and the next open deadline is tagged "Next up".
+// Rolling has no fixed date, so it's a dashed pill at the end that never
+// goes grey.
+//
+// Placement: the track always spans a season window (at least mid-Oct to
+// mid-Feb, wider if a school's dates reach past it), so one- or two-date
+// schools still read as a timeline. Each item sits halfway between its true
+// date position and an even spread, then gets nudged apart to a minimum gap:
+// close dates sit closer, far ones spread out, and nothing overlaps.
+//
+// Landmark: a faint ring at Jan 1, or Dec 1 / Feb 1 if a deadline falls
+// within 10 days of Jan 1 (then of Dec 1). It's laid out as one more item,
+// so the spacing makes room for it even when it's near a pill on screen.
+// A Rolling-only school has no dates, so its track gets Jan 1 and Dec 31 at
+// the ends (a whole year of rolling) with the Rolling pill in the middle.
+function deadlineTimelineHtml(rounds) {
+  const dated = rounds.filter(r => r.date);
+  if (!dated.length) return '<div class="deadline-area"><p class="deadline-none">No application deadlines reported.</p></div>';
+  const stops = [];
+  for (const r of dated) {
+    const last = stops[stops.length - 1];
+    if (last && last.date === r.date) last.types.push(r.type);
+    else stops.push({ date: r.date, types: [r.type], day: cycleDay(r.date) });
+  }
+
+  const now = new Date();
+  const today = cycleDay(`${now.getMonth() + 1}/${now.getDate()}`);
+  stops.forEach(st => { st.passed = st.day != null && st.day < today; });
+  const nextIdx = stops.findIndex(st => !st.passed);
+
+  const fixed = stops.filter(st => st.day != null);
+  const hasRolling = fixed.length < stops.length;
+  // Dated items share [0, span]; a trailing Rolling pill takes the far end.
+  const span = hasRolling ? (fixed.length ? 0.74 : 0) : 1;
+
+  const LANDMARK_DATES = [['1/1', 'Jan 1'], ['12/1', 'Dec 1'], ['2/1', 'Feb 1']];
+  const landmarks = [];
+  if (fixed.length) {
+    const pick = LANDMARK_DATES
+      .map(([md, label]) => ({ day: cycleDay(md), label, landmark: true }))
+      .find(m => fixed.every(st => Math.abs(st.day - m.day) > 10));
+    if (pick) landmarks.push(pick);
+  }
+
+  // Lay out pills and landmark together, in date order.
+  const items = [...fixed, ...landmarks].sort((a, b) => a.day - b.day);
+  const lo = Math.min(items[0]?.day ?? Infinity, cycleDay('10/15'));
+  const hi = Math.max(items[items.length - 1]?.day ?? -Infinity, cycleDay('2/15'));
+  const scaled = d => (d - lo) / (hi - lo);
+
+  const n = items.length;
+  // Minimum center-to-center gap: pill to pill is wider than pill to
+  // landmark (the ring is small). Shrink them all if they can't fit.
+  const gaps = items.slice(1).map((it, i) => (it.landmark || items[i].landmark) ? 0.16 : 0.24);
+  const gapSum = gaps.reduce((a, g) => a + g, 0);
+  if (gapSum > 1) gaps.forEach((g, i) => { gaps[i] = g / gapSum; });
+  const pos = items.map((it, i) => 0.5 * scaled(it.day) + 0.5 * (n > 1 ? i / (n - 1) : 0.5));
+  for (let i = 1; i < n; i++) pos[i] = Math.max(pos[i], pos[i - 1] + gaps[i - 1]);
+  if (n && pos[n - 1] > 1) {
+    pos[n - 1] = 1;
+    for (let i = n - 2; i >= 0; i--) pos[i] = Math.min(pos[i], pos[i + 1] - gaps[i]);
+  }
+  items.forEach((it, i) => { it.p = Math.max(0, pos[i]) * span; });
+  stops.forEach(st => { if (st.day == null) st.p = fixed.length ? 1 : 0.5; });
+  if (!fixed.length) landmarks.push({ p: 0, label: 'Jan 1' }, { p: 1, label: 'Dec 31' });
+
+  // Any date → track position, interpolating between the placed items
+  // (anchored to the window's ends) so "today" lines up with them.
+  const anchors = [
+    ...(n && lo < items[0].day ? [[lo, 0]] : []),
+    ...items.map(it => [it.day, it.p / (span || 1)]),
+    ...(n && hi > items[n - 1].day ? [[hi, 1]] : []),
+  ];
+  function at(day) {
+    if (!anchors.length || day <= anchors[0][0]) return 0;
+    for (let i = 1; i < anchors.length; i++) {
+      const [d0, p0] = anchors[i - 1], [d1, p1] = anchors[i];
+      if (day <= d1) return (p0 + (p1 - p0) * (day - d0) / (d1 - d0)) * span;
+    }
+    return span;
+  }
+
+  const allPassed = stops.every(st => st.passed);
+  const fill = allPassed ? 1 : fixed.length ? Math.min(at(today), span) : 0;
+
+  const pct = p => `--p:${p.toFixed(3)}`;
+  return `<div class="deadline-area">
+    <div class="deadline-caption">Deadlines</div>
+    <div class="deadline-timeline">
+      <div class="deadline-track" aria-hidden="true"><span class="deadline-fill" style="${fill > 0 ? pct(fill) : '--p:-1'}"></span></div>
+      ${landmarks.map(m => `<span class="deadline-jan" style="${pct(m.p)}" aria-hidden="true"><span class="deadline-jan-dot"></span><span class="deadline-jan-label">${m.label}</span></span>`).join('')}
+      <ol class="deadline-stops" aria-label="Application deadlines">
+        ${stops.map((st, i) => {
+          const cls = ['deadline-stop', st.day == null && 'rolling', st.passed && 'passed', i === nextIdx && 'next'].filter(Boolean).join(' ');
+          const status = st.passed ? ' (passed)' : i === nextIdx ? ' (next deadline)' : '';
+          return `<li class="${cls}" style="${pct(st.p)}">
+            ${i === nextIdx ? '<span class="deadline-next-tag" aria-hidden="true">Next up</span>' : ''}
+            <span class="deadline-pill">${escapeHtml(st.date)}<span class="visually-hidden">${status}</span></span>
+            <span class="deadline-type">${st.types.map(escapeHtml).join(' · ')}</span>
+          </li>`;
+        }).join('')}
+      </ol>
+    </div>
+  </div>`;
+}
+
+function renderAdmissionsSummary(s, rounds = cdsRounds(s)) {
   function kv(label, val) {
     return `<div class="kv-label">${label}</div><div class="kv-val">${val ?? '<span class="stat-na">N/A</span>'}</div>`;
   }
 
+  const early = [...new Set(rounds.filter(r => isEarlyRound(r.type)).map(r => r.type))];
+
   const kvGrid = `<div class="kv-grid">
-    ${kv('Location',                  s.location)}
-    ${kv('School Type',               s.school_type)}
-    ${kv('Early Action / Decision',   s.ea_ed_type)}
-    ${kv('EA/ED Deadline',            s.ea_ed_deadline)}
-    ${kv('Regular Decision Deadline', s.rd_deadline)}
-    ${kv('Application Fee',           s.application_fee != null ? '$' + s.application_fee : null)}
+    ${kv('Location',          s.location)}
+    ${kv('School Type',       s.school_type)}
+    ${kv('Early Admissions',  early.length ? early.map(escapeHtml).join(', ') : 'No Early Admission Program')}
+    ${kv('Application Fee',   feeHtml(s.application_fee))}
   </div>`;
 
-  return sectionWrap('Admissions', kvGrid);
+  return sectionWrap('Admissions', kvGrid + deadlineTimelineHtml(rounds));
 }
 
 // ── Render: Selectivity (funnel + admit rates by round and by gender) ───
 
-function renderSelectivitySection(s) {
+// By Round rows. The CDS counts only one early round on its own (C21 is Early
+// Decision; Early Action has no counts), so the second row is what's left:
+//   - an RD pool the CDS reports → "RD"
+//   - total minus the early round → "RD" when that's the school's only early
+//     round, "EA + RD" when it also has Early Action / REA
+//   - no early counts → "Total" (every applicant), with an ⓘ saying why
+// Display only: Chance Me still uses just the RD rates schools report.
+const ROUND_TIP = {
+  eaRd: "The Common Data Set only counts Early Decision applicants on their own, so this row combines Early Action and Regular Decision.",
+  total: "This school doesn't report its early applicants separately, so this is the total for all applicants.",
+  totalNoEarly: "This school has no early round, so this is the total for all applicants.",
+};
+function byRoundRows(s, rounds) {
+  const p = s.applicant_pools ?? {};
+  const fam = new Set(rounds.map(r => roundFamily(r.type)));
+  const early = {
+    applied: p.ea?.applied ?? s.ea_apps_received,
+    admitted: p.ea?.admitted ?? p.ea?.accepted ?? s.ea_apps_admitted,
+  };
+  const hasEarly = early.applied != null && early.admitted != null;
+  const tA = s.applicants_total, tD = s.admitted_total;
+
+  let second = null;
+  const rd = { applied: p.rd?.applied, admitted: p.rd?.admitted ?? p.rd?.accepted };
+  // Some records' "RD" is just the overall total copied over (no early
+  // counts beside it) — that's a Total row, not RD.
+  const rdIsTotal = !hasEarly && rd.applied === tA && rd.admitted === tD;
+  if (rd.applied != null && rd.admitted != null && !rdIsTotal) {
+    second = { label: 'RD', ...rd };
+  } else if (hasEarly && tA != null && tD != null && early.applied < tA && early.admitted <= tD) {
+    const lumped = fam.has('ED') && (fam.has('EA') || fam.has('REA'));
+    second = { label: lumped ? 'EA + RD' : 'RD', tip: lumped ? ROUND_TIP.eaRd : null,
+               applied: tA - early.applied, admitted: tD - early.admitted };
+  } else if (!hasEarly && tA != null && tD != null) {
+    const offersEarly = fam.has('ED') || fam.has('EA') || fam.has('REA');
+    second = { label: 'Total', tip: offersEarly ? ROUND_TIP.total : ROUND_TIP.totalNoEarly, applied: tA, admitted: tD };
+  }
+  if (!hasEarly && !second) return null;
+  return [{ label: 'EA / ED', ...early }, second ?? { label: 'RD', applied: null, admitted: null }];
+}
+
+function renderSelectivitySection(s, rounds) {
   const ratePct = s.acceptance_rate != null ? (s.acceptance_rate * 100).toFixed(1) + '%' : null;
   const funnel = `<div class="funnel">
     <div class="funnel-step">
@@ -454,23 +687,27 @@ function renderSelectivitySection(s) {
     </div>
   </div>`;
 
-  let poolsHtml = '<p class="no-data">Data not yet available.</p>';
-  if (s.applicant_pools) {
-    const p = s.applicant_pools;
-    poolsHtml = tableHtml(
-      ['Round', 'Applied', 'Accepted', 'Rate'],
-      [
-        ['EA / ED', fmt(p.ea?.applied), fmt(p.ea?.admitted ?? p.ea?.accepted),
-          p.ea?.rate != null ? (p.ea.rate * 100).toFixed(1) + '%' : '<span class="stat-na">N/A</span>'],
-        ['RD', fmt(p.rd?.applied), fmt(p.rd?.admitted ?? p.rd?.accepted),
-          p.rd?.rate != null ? (p.rd.rate * 100).toFixed(1) + '%' : '<span class="stat-na">N/A</span>'],
-      ]
-    );
-  }
+  const rows = byRoundRows(s, rounds);
+  const poolsHtml = rows
+    ? tableHtml(['Round', 'Applied', 'Accepted', 'Rate'], rows.map(r => [
+        r.label + (r.tip ? infoTip(r.tip) : ''), fmt(r.applied), fmt(r.admitted),
+        r.applied && r.admitted != null ? (r.admitted / r.applied * 100).toFixed(1) + '%' : '<span class="stat-na">N/A</span>',
+      ]))
+    : '<p class="no-data">Data not yet available.</p>';
 
   let waitlistHtml = '<p class="no-data">Data not yet available.</p>';
-  const wl = s.applicant_pools?.waitlist;
-  if (wl) {
+  // Some records hold the waitlist only in the flat waitlist_* fields (no
+  // applicant_pools.waitlist, or one left blank), so fall back field by field.
+  const pw = s.applicant_pools?.waitlist ?? {};
+  const wl = {
+    offered:        pw.offered        ?? s.waitlist_offered,
+    accepted_spots: pw.accepted_spots ?? s.waitlist_accepted,
+    enrolled:       pw.enrolled       ?? s.waitlist_admitted,
+  };
+  // A school whose CDS says it has no waitlist (data/no-waitlist.json).
+  if (s._noWaitlist && Object.values(wl).every(v => v == null)) {
+    waitlistHtml = '<p class="no-data">No waitlist</p>';
+  } else if (s.applicant_pools?.waitlist || Object.values(wl).some(v => v != null)) {
     waitlistHtml = `<div class="tbl-align-right">${tableHtml(
       ['', 'Students'],
       [
@@ -671,38 +908,48 @@ function renderAdmissionFactorsSection(s) {
 // ── Render: Cost section ────────────────────────────────────────────────
 
 function renderCostSection(s) {
-  const tuitionIn  = s.tuition_in_state  ?? s.tuition;
-  const tuitionOut = s.tuition_out_of_state ?? s.tuition;
-  const feesIn     = s.required_fees;
-  const feesOut    = s.required_fees;
-  const otherIn    = s.other_expenses;
-  const otherOut   = s.other_expenses;
+  const inField  = s.tuition_in_state     != null ? 'tuition_in_state'     : 'tuition';
+  const outField = s.tuition_out_of_state != null ? 'tuition_out_of_state' : 'tuition';
+  const tuitionIn  = s[inField];
+  const tuitionOut = s[outField];
 
-  const inTotal  = [tuitionIn,  s.room_and_board, s.books_supplies, feesIn,  otherIn]
-    .reduce((a, v) => a + (v || 0), 0);
-  const outTotal = [tuitionOut, s.room_and_board, s.books_supplies, feesOut, otherOut]
-    .reduce((a, v) => a + (v || 0), 0);
+  // A value from data/outside-costs.json gets the orange *.
+  const cell = field =>
+    fmt(s[field], 'money') + (s[field] != null && isOutsideCost(s, field) ? OUTSIDE_COST_MARK : '');
+
+  // Some schools' out-of-state budgets list a different Other (usually more
+  // transportation); data/outside-costs.json can carry that separately.
+  const otherOutField = s.other_expenses_out_of_state != null ? 'other_expenses_out_of_state' : 'other_expenses';
+
+  const shared = ['room_and_board', 'books_supplies', 'required_fees'];
+  const total = (tuitionField, otherField) => {
+    const vals = [s[tuitionField], ...shared.map(f => s[f]), s[otherField]];
+    // Any reported value (even $0, e.g. West Point) makes a total worth showing.
+    return vals.some(v => v != null) ? vals.reduce((a, v) => a + (v || 0), 0) : null;
+  };
+  const inTotal = total(inField, 'other_expenses'), outTotal = total(outField, otherOutField);
 
   const rows = [
-    ['Tuition',                       fmt(tuitionIn, 'money'),      fmt(tuitionOut, 'money')],
-    ['Room &amp; Board',              fmt(s.room_and_board, 'money'), fmt(s.room_and_board, 'money')],
-    ['Books &amp; Supplies',          fmt(s.books_supplies, 'money'), fmt(s.books_supplies, 'money')],
-    ['Required Fees',                 fmt(feesIn, 'money'),          fmt(feesOut, 'money')],
-    ['Other Expenses',                fmt(otherIn, 'money'),         fmt(otherOut, 'money')],
+    ['Tuition',                       cell(inField),            cell(outField)],
+    ['Room &amp; Board',              cell('room_and_board'),   cell('room_and_board')],
+    ['Books &amp; Supplies',          cell('books_supplies'),   cell('books_supplies')],
+    ['Required Fees',                 cell('required_fees'),    cell('required_fees')],
+    ['Other Expenses',                cell('other_expenses'),   cell(otherOutField)],
     [
       '<strong>Total Cost of Attendance</strong>',
-      inTotal  > 0 ? `<strong>$${inTotal.toLocaleString()}</strong>`  : '<span class="stat-na">N/A</span>',
-      outTotal > 0 ? `<strong>$${outTotal.toLocaleString()}</strong>` : '<span class="stat-na">N/A</span>',
+      inTotal  != null ? `<strong>$${inTotal.toLocaleString()}</strong>`  : '<span class="stat-na">N/A</span>',
+      outTotal != null ? `<strong>$${outTotal.toLocaleString()}</strong>` : '<span class="stat-na">N/A</span>',
     ],
   ];
 
-  const appFee = s.application_fee != null
-    ? `<p class="section-note" style="margin-top:14px">Application Fee: <strong>$${s.application_fee}</strong></p>`
+  const o = s._costOutside;
+  const legend = o
+    ? `<p class="cost-source"><span class="gpa-mark" aria-hidden="true">*</span>
+        <span>From the school's <a href="${escapeHtml(o.source)}" target="_blank" rel="noopener">${escapeHtml(o.year)} cost of attendance page</a>, not its Common Data Set.${o.note ? ' ' + escapeHtml(o.note) : ''}</span></p>`
     : '';
 
-  return sectionWrap('Cost', `
-    ${tableHtml(['', 'In-State', 'Out-of-State'], rows)}
-    ${appFee}`);
+  // Application fee lives in the Admissions box beside this one.
+  return sectionWrap('Cost', tableHtml(['', 'In-State', 'Out-of-State'], rows) + legend);
 }
 
 // ── Render: Student Body section ────────────────────────────────────────
@@ -718,11 +965,11 @@ function renderStudentBodySection(s) {
       ${demoBarHtml('Asian',                            d.asian            != null ? d.asian            / total : null)}
       ${demoBarHtml('White',                            d.white            != null ? d.white            / total : null)}
       ${demoBarHtml('Hispanic / Latino',                d.hispanic         != null ? d.hispanic         / total : null)}
-      ${demoBarHtml('Black / African American',         d.black            != null ? d.black            / total : null)}
+      ${demoBarHtml('Black / A-A',                      d.black            != null ? d.black            / total : null, 'Black / African American')}
       ${demoBarHtml('Nonresident Aliens',               d.nonresident_aliens != null ? d.nonresident_aliens / total : null)}
       ${demoBarHtml('Two or More Races',                d.two_or_more      != null ? d.two_or_more      / total : null)}
-      ${demoBarHtml('American Indian / Alaska Native',  d.american_indian  != null ? d.american_indian  / total : null)}
-      ${demoBarHtml('Native Hawaiian / Pac. Islander',  d.pacific_islander != null ? d.pacific_islander / total : null)}
+      ${demoBarHtml('Native American',                  d.american_indian  != null ? d.american_indian  / total : null, 'American Indian / Alaska Native')}
+      ${demoBarHtml('Pacific Islander',                 d.pacific_islander != null ? d.pacific_islander / total : null, 'Native Hawaiian / Pacific Islander')}
       ${demoBarHtml('Unknown',                          d.unknown          != null ? d.unknown          / total : null)}
     </div>`;
   }
@@ -844,7 +1091,9 @@ async function init() {
   recentHistory = [slug, ...recentHistory.filter(s => s !== slug)].slice(0, 5);
   localStorage.setItem(historyKey, JSON.stringify(recentHistory));
 
-  const { allSchools, yearRecords, availableYearKeys } = await loadAllYears(slug);
+  const [{ allSchools, yearRecords, availableYearKeys }, admissionPlans, outsideGpa, outsideCosts, noWaitlist] =
+    await Promise.all([loadAllYears(slug), loadAdmissionPlans(), loadOutsideGpa(), loadOutsideCosts(),
+      fetch('/data/no-waitlist.json').then(r => (r.ok ? r.json() : {})).then(j => j.slugs ?? {}).catch(() => ({}))]);
 
   if (availableYearKeys.length === 0) {
     document.getElementById('school-sections').innerHTML =
@@ -854,9 +1103,80 @@ async function init() {
 
   const meta = SCHOOL_META[slug] ?? { color: '#333', banner: null };
   const latestAvailableKey = availableYearKeys[availableYearKeys.length - 1];
+  // Current prices from the school's own cost page fill the cost fields its
+  // latest CDS left blank (older years keep exactly what their CDS said).
+  yearRecords.set(latestAvailableKey, withOutsideCost(yearRecords.get(latestAvailableKey), outsideCosts));
+  // Its CDS says it doesn't use a waitlist: the Waitlist box says so.
+  if (noWaitlist[slug]) yearRecords.set(latestAvailableKey, { ...yearRecords.get(latestAvailableKey), _noWaitlist: true });
   let currentYearKey = latestAvailableKey;
 
   document.documentElement.style.setProperty('--brand', meta.color);
+  // Text color that stays readable on a --brand fill (light brands like
+  // Harvey Mudd's gold need dark text).
+  {
+    const hex = /^#?([0-9a-f]{6})$/i.exec(meta.color || '')?.[1];
+    const [r, g, b] = hex ? [0, 2, 4].map(i => parseInt(hex.slice(i, i + 2), 16) / 255) : [0, 0, 0];
+    const lum = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    document.documentElement.style.setProperty('--brand-ink', lum > 0.6 ? '#111' : '#fff');
+  }
+
+  // Favorites/history: a pullout tab pinned to the bottom of the hero
+  // banner (position: absolute inside #school-hero — see css/base.css)
+  // rather than an always-visible sidebar column, so #school-sections
+  // keeps the full content width and the control scrolls away with the
+  // hero instead of floating for the whole page. Reuses the same star
+  // glyph as .fav-btn elsewhere on the site.
+  //
+  // Created once, here, before the first renderForYear() call below —
+  // but #school-hero's own innerHTML gets fully replaced on every call
+  // (a year switch rebuilds the hero from scratch), which would silently
+  // detach these two if they were appended just once. renderForYear
+  // re-appends (not re-creates) them after that reset instead, which
+  // just moves the existing nodes back into place and preserves their
+  // listeners/open-closed state.
+  const railTab = document.createElement('button');
+  railTab.type = 'button';
+  railTab.className = 'rail-tab';
+  railTab.setAttribute('aria-label', 'Favorites and recently viewed');
+  railTab.setAttribute('aria-expanded', 'false');
+  railTab.innerHTML = `<svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>`;
+
+  const railDrawer = document.createElement('div');
+  railDrawer.className = 'rail-drawer';
+  railDrawer.innerHTML = `
+    <div class="rail-drawer-inner">
+      <div class="history-box" id="school-fav-box" style="display:none">
+        <div class="history-title">Favorites</div>
+        <div id="school-fav-list"></div>
+      </div>
+      <div class="history-box" id="school-history-box" style="display:none">
+        <div class="history-title">History</div>
+        <div id="school-history-list"></div>
+      </div>
+    </div>`;
+
+  function setDrawerOpen(open) {
+    railDrawer.classList.toggle('open', open);
+    railTab.setAttribute('aria-expanded', String(open));
+  }
+
+  railTab.addEventListener('click', () => setDrawerOpen(!railDrawer.classList.contains('open')));
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.rail-drawer') && !e.target.closest('.rail-tab')) setDrawerOpen(false);
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') setDrawerOpen(false); });
+
+  // Re-render both rail boxes and hide the tab entirely (closing the
+  // drawer too) when the visitor has neither favorites nor history yet.
+  // Hoisted so the hero favorite button can call it too.
+  function refreshRail() {
+    renderFavoritesBox(allSchools);
+    renderHistoryBox(allSchools);
+    const railEmpty = ['school-fav-box', 'school-history-box']
+      .every(id => document.getElementById(id).style.display === 'none');
+    railTab.style.display = railEmpty ? 'none' : '';
+    if (railEmpty) setDrawerOpen(false);
+  }
 
   // Everything that depends on which year is currently selected — rerun
   // in full each time the switcher picks a different one. The one-time
@@ -878,7 +1198,13 @@ async function init() {
     if (s.location) descParts.push(s.location);
     document.querySelector('meta[name="description"]').content = descParts.join(' · ') + '.';
 
-    document.getElementById('school-hero').innerHTML = renderHero(s, slug, meta);
+    const heroEl = document.getElementById('school-hero');
+    heroEl.innerHTML = renderHero(s, slug, meta);
+    // innerHTML above just wiped out any previous children — re-append
+    // (not re-create) the tab/drawer so they land back inside the new
+    // content instead of staying orphaned off in the detached old one.
+    heroEl.appendChild(railTab);
+    heroEl.appendChild(railDrawer);
     document.getElementById('stats-strip').innerHTML = renderHeroPill(s, slug, meta);
     // .year-bar-strip and .quick-facts-strip aren't in the static HTML
     // template (only school-hero and stats-strip are) — inserted here so
@@ -892,7 +1218,7 @@ async function init() {
     document.getElementById('stats-strip').insertAdjacentHTML('afterend',
       `<div class="year-bar-strip">${renderYearBar({ currentYearKey: yearKey, availableYearKeys, latestAvailableKey })}</div>`);
     document.querySelector('.year-bar-strip')
-      .insertAdjacentHTML('afterend', `<div class="quick-facts-strip">${renderQuickFacts(s)}</div>`);
+      .insertAdjacentHTML('afterend', `<div class="quick-facts-strip">${renderQuickFacts(s, yearKey === latestAvailableKey ? outsideGpa[slug] : null)}</div>`);
 
     document.getElementById('hero-fav-btn').addEventListener('click', () => {
       const favs = getFavs();
@@ -923,10 +1249,11 @@ async function init() {
       });
     }
 
+    const rounds = yearKey === latestAvailableKey && admissionPlans[slug] ? admissionPlans[slug] : cdsRounds(s);
     document.getElementById('school-sections').innerHTML =
-      renderSelectivitySection(s) +
+      renderSelectivitySection(s, rounds) +
       `<div class="school-section-row">
-        ${renderAdmissionsSummary(s)}
+        ${renderAdmissionsSummary(s, rounds)}
         ${renderCostSection(s)}
       </div>` +
       renderAcademicProfileSection(s) +
@@ -945,37 +1272,13 @@ async function init() {
     if (switcher && !e.target.closest('#year-switcher')) switcher.classList.remove('open');
   });
 
-  // Inject right sidebar alongside school-sections — one-time DOM
-  // restructuring, not repeated on a year switch.
+  // Wrap school-sections in the max-width/padding container it's always
+  // used — one-time DOM restructuring, not repeated on a year switch.
   const sectionsEl = document.getElementById('school-sections');
   const layout = document.createElement('div');
   layout.className = 'school-page-layout';
   sectionsEl.parentElement.insertBefore(layout, sectionsEl);
   layout.appendChild(sectionsEl);
-
-  const sidebar = document.createElement('div');
-  sidebar.className = 'right-sidebar';
-  sidebar.innerHTML = `
-    <div class="history-box" id="school-fav-box" style="display:none">
-      <div class="history-title">Favorites</div>
-      <div id="school-fav-list"></div>
-    </div>
-    <div class="history-box" id="school-history-box" style="display:none">
-      <div class="history-title">History</div>
-      <div id="school-history-list"></div>
-    </div>`;
-  layout.appendChild(sidebar);
-
-  // Re-render both rail boxes and collapse the whole rail (along with its
-  // top border on narrow layouts) when the visitor has neither favorites
-  // nor history yet. Hoisted so the hero favorite button can call it too.
-  function refreshRail() {
-    renderFavoritesBox(allSchools);
-    renderHistoryBox(allSchools);
-    const railEmpty = ['school-fav-box', 'school-history-box']
-      .every(id => document.getElementById(id).style.display === 'none');
-    sidebar.style.display = railEmpty ? 'none' : '';
-  }
 
   refreshRail();
 

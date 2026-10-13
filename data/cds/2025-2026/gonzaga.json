@@ -1,0 +1,135 @@
+{
+  "name": "Gonzaga University",
+  "data_year": "2025-26",
+  "city": "Spokane",
+  "state": "WA",
+  "location": "Spokane, WA",
+  "school_type": "Private",
+  "website": "www.gonzaga.edu",
+  "applicants_total": 8906,
+  "applicants_men": 4015,
+  "applicants_women": 4891,
+  "admitted_total": 7091,
+  "admitted_men": 3229,
+  "admitted_women": 3862,
+  "enrolled_total": 1130,
+  "enrolled_men": 538,
+  "enrolled_women": 592,
+  "acceptance_rate": 0.7962,
+  "application_fee": 60,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "2/1",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/15",
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.19,
+  "sat_submitted_count": 218,
+  "act_submitted_pct": 0.06,
+  "act_submitted_count": 73,
+  "sat_composite_25": 1230,
+  "sat_composite_75": 1383,
+  "sat_reading_25": 630,
+  "sat_reading_75": 710,
+  "sat_math_25": 590,
+  "sat_math_75": 690,
+  "act_composite_25": 29,
+  "act_composite_75": 32,
+  "act_math_25": 27,
+  "act_math_75": 31,
+  "act_english_25": 27,
+  "act_english_75": 34,
+  "total_undergrads": 4976,
+  "undergrads_male": 2347,
+  "undergrads_female": 2629,
+  "retention_rate": 0.9,
+  "tuition": 58390,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 1120,
+  "room_and_board": 17135,
+  "books_supplies": null,
+  "other_expenses": 2035,
+  "pct_out_of_state": 0.48,
+  "pct_on_campus_housing": 0.52,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": null
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 4015,
+      "female": 4891
+    },
+    "accepted": {
+      "male": 3229,
+      "female": 3862
+    },
+    "enrolled": {
+      "male": 538,
+      "female": 592
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 18,
+      "hispanic": 172,
+      "black": 15,
+      "white": 716,
+      "american_indian": 5,
+      "asian": 75,
+      "pacific_islander": 5,
+      "two_or_more": 112,
+      "unknown": 12,
+      "total": 1130
+    },
+    "undergrad": {
+      "nonresident_aliens": 203,
+      "hispanic": 747,
+      "black": 66,
+      "white": 3052,
+      "american_indian": 29,
+      "asian": 320,
+      "pacific_islander": 18,
+      "two_or_more": 427,
+      "unknown": 100,
+      "total": 4962
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.48,
+    "international_pct": 0.0409
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 218,
+    "sat_submitted_pct": 0.19,
+    "act_submitted_count": 73,
+    "act_submitted_pct": 0.06
+  },
+  "class_rank": null,
+  "gpa_distribution": null,
+  "admission_factors": null,
+  "transfer_stats": {
+    "male": {
+      "applied": 183,
+      "admitted": 118,
+      "enrolled": 69
+    },
+    "female": {
+      "applied": 163,
+      "admitted": 100,
+      "enrolled": 51
+    },
+    "total": {
+      "applied": 346,
+      "admitted": 218,
+      "enrolled": 120
+    }
+  },
+  "slug": "gonzaga"
+}

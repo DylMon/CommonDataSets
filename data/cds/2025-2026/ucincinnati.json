@@ -1,0 +1,170 @@
+{
+  "name": "University of Cincinnati",
+  "data_year": "2025-26",
+  "city": "Cincinnati",
+  "state": "OH",
+  "location": "Cincinnati, OH",
+  "school_type": "Public",
+  "website": "www.uc.edu",
+  "applicants_total": 33750,
+  "applicants_men": 15233,
+  "applicants_women": 18508,
+  "admitted_total": 29715,
+  "admitted_men": 13470,
+  "admitted_women": 16240,
+  "enrolled_total": 6497,
+  "enrolled_men": 3209,
+  "enrolled_women": 3288,
+  "acceptance_rate": 0.8804,
+  "application_fee": 50,
+  "avg_gpa_weighted": 3.67,
+  "rd_deadline": "3/1",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": null,
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.0897,
+  "sat_submitted_count": 583,
+  "act_submitted_pct": 0.2453,
+  "act_submitted_count": 1594,
+  "sat_composite_25": 1160,
+  "sat_composite_75": 1340,
+  "sat_reading_25": 580,
+  "sat_reading_75": 680,
+  "sat_math_25": 580,
+  "sat_math_75": 680,
+  "act_composite_25": 24,
+  "act_composite_75": 30,
+  "act_math_25": 24,
+  "act_math_75": 29,
+  "act_english_25": 22,
+  "act_english_75": 30,
+  "total_undergrads": 34447,
+  "undergrads_male": 16784,
+  "undergrads_female": 17651,
+  "retention_rate": 0.864,
+  "tuition": null,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": null,
+  "room_and_board": null,
+  "books_supplies": null,
+  "other_expenses": null,
+  "pct_out_of_state": 0.2145,
+  "pct_on_campus_housing": 0.2065,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": null
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 15233,
+      "female": 18508
+    },
+    "accepted": {
+      "male": 13470,
+      "female": 16240
+    },
+    "enrolled": {
+      "male": 3209,
+      "female": 3288
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 303,
+      "hispanic": 462,
+      "black": 758,
+      "white": 4167,
+      "american_indian": 3,
+      "asian": 355,
+      "pacific_islander": 1,
+      "two_or_more": 396,
+      "unknown": 52,
+      "total": 6497
+    },
+    "undergrad": {
+      "nonresident_aliens": 1558,
+      "hispanic": 1800,
+      "black": 3207,
+      "white": 20806,
+      "american_indian": 34,
+      "asian": 1654,
+      "pacific_islander": 15,
+      "two_or_more": 1598,
+      "unknown": 285,
+      "total": 30957
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.2145,
+    "international_pct": 0.0503
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 583,
+    "sat_submitted_pct": 0.0897,
+    "act_submitted_count": 1594,
+    "act_submitted_pct": 0.2453
+  },
+  "class_rank": {
+    "top10": 0.221,
+    "top25": 0.4728,
+    "top50": 0.8132,
+    "bottom50": 0.1868,
+    "bottom25": 0.0293
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.248,
+    "gpa_375_399": 0.2083,
+    "gpa_350_374": 0.1845,
+    "gpa_325_349": 0.1486,
+    "gpa_300_324": 0.114,
+    "gpa_250_299": 0.0912,
+    "gpa_200_249": 0.0044,
+    "gpa_100_199": 0.0011
+  },
+  "admission_factors": {
+    "rigor": "important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "considered",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "very_important",
+    "character": "considered",
+    "first_gen": "not_considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1826,
+      "admitted": 1003,
+      "enrolled": 503
+    },
+    "female": {
+      "applied": 3255,
+      "admitted": 1565,
+      "enrolled": 799
+    },
+    "total": {
+      "applied": 5084,
+      "admitted": 2569,
+      "enrolled": 1302
+    }
+  },
+  "slug": "ucincinnati"
+}

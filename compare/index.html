@@ -45,6 +45,7 @@
                      remove it; an empty cell is a search box; a trailing
                      dashed cell adds the next slot. -->
                 <div class="compare-grid" id="compare-grid"></div>
+                <p class="gpa-legend compare-gpa-legend" id="gpa-legend" hidden><span class="gpa-mark" aria-hidden="true">*</span><span>marks data that isn't from the school's Common Data Set</span></p>
             </aside>
             <div class="compare-main">
                 <div id="compare-sections">
@@ -66,6 +67,8 @@
 
     <script type="module">
         import { renderGpaComparisonChart } from '/js/charts.js?v=6';
+        import { loadOutsideGpa, withOutsideGpa } from '/js/outside-gpa.js?v=1';
+        import { loadOutsideCosts, withOutsideCosts, isOutsideCost } from '/js/outside-costs.js?v=1';
 
         // Fixed per-slot colors rather than each school's own brand color —
         // brand hexes are arbitrary and sometimes literally identical
@@ -126,6 +129,21 @@
             return val != null ? '$' + val.toLocaleString() : '<span class="stat-na">N/A</span>';
         }
 
+        // Most fees are numbers; a few CDS fees are text that already carries
+        // its own "$". Text listing a fee per applicant type ("Residents: $50;
+        // Nonresidents: $80") shows as a range, with the full text on hover
+        // (same as the school page).
+        function fmtFee(val) {
+            if (typeof val !== 'string') return fmtMoney(val);
+            const text = val.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+            const amounts = [...val.matchAll(/\$\s*(\d[\d,]*)/g)].map(m => Number(m[1].replace(/,/g, '')));
+            const lo = Math.min(...amounts), hi = Math.max(...amounts);
+            if (amounts.length >= 2 && lo !== hi) {
+                return `<abbr class="short-label" title="Varies by applicant: ${text}">$${lo}–$${hi}</abbr>`;
+            }
+            return val.includes('$') ? text : '$' + text;
+        }
+
         function fmtGpa(val) {
             return val != null ? parseFloat(val).toFixed(2) : '<span class="stat-na">N/A</span>';
         }
@@ -147,11 +165,14 @@
             applicant_interest: "Level of Applicant's Interest",
         };
 
+        // Optional third entry: the full CDS name, shown on hover when the
+        // label is shortened to fit on one line (same labels as school pages).
         const RACE_LABELS = [
             ['asian', 'Asian'], ['white', 'White'], ['hispanic', 'Hispanic / Latino'],
-            ['black', 'Black / African American'], ['two_or_more', 'Two or More Races'],
-            ['nonresident_aliens', 'Nonresident Aliens'], ['american_indian', 'American Indian / Alaska Native'],
-            ['pacific_islander', 'Native Hawaiian / Pac. Islander'], ['unknown', 'Unknown'],
+            ['black', 'Black / A-A', 'Black / African American'], ['two_or_more', 'Two or More Races'],
+            ['nonresident_aliens', 'Nonresident Aliens'],
+            ['american_indian', 'Native American', 'American Indian / Alaska Native'],
+            ['pacific_islander', 'Pacific Islander', 'Native Hawaiian / Pacific Islander'], ['unknown', 'Unknown'],
         ];
 
         // colColors (optional): one solid hex per school data column, in
@@ -233,16 +254,18 @@
         // is worse, not better. Keyed by slot so callers can look up a
         // specific school's class by its slot number.
         function bestWorstClasses(items, lowerIsBetter) {
-            const withVal = items.filter(i => i.value != null);
+            // Only numeric values compete: a fee given as text ("$80 ($95
+            // International)") has no single number to rank.
+            const withVal = items.filter(i => i.value != null && !Number.isNaN(Number(i.value)));
             if (withVal.length < 2) return {};
-            const values = withVal.map(i => i.value);
+            const values = withVal.map(i => Number(i.value));
             const best = lowerIsBetter ? Math.min(...values) : Math.max(...values);
             const worst = lowerIsBetter ? Math.max(...values) : Math.min(...values);
             if (best === worst) return {};
             const classes = {};
             withVal.forEach(i => {
-                if (i.value === best) classes[i.slot] = 'stat-higher';
-                else if (i.value === worst) classes[i.slot] = 'stat-lower';
+                if (Number(i.value) === best) classes[i.slot] = 'stat-higher';
+                else if (Number(i.value) === worst) classes[i.slot] = 'stat-lower';
             });
             return classes;
         }
@@ -252,10 +275,10 @@
         }
 
         function multiRow(label, schools, valueFn, fmtFn, opts = {}) {
-            const items = schools.map(({ slot, school }) => ({ slot, value: valueFn(school) }));
+            const items = schools.map(({ slot, school }) => ({ slot, school, value: valueFn(school) }));
             const classes = opts.noColor ? {} : bestWorstClasses(items, !!opts.lowerIsBetter);
             const wrap = s => opts.strong ? `<strong>${s}</strong>` : s;
-            const cells = items.map(i => wrap(`<span class="${classes[i.slot] || ''}">${fmtFn(i.value)}</span>`));
+            const cells = items.map(i => wrap(`<span class="${classes[i.slot] || ''}">${fmtFn(i.value, i.school)}</span>`));
             return [label, ...cells];
         }
 
@@ -288,8 +311,8 @@
             { key: 'sat',        label: 'SAT Avg',       text: s => s.sat_avg != null ? s.sat_avg : '<span class="stat-na">N/A</span>',            val: s => s.sat_avg },
             { key: 'act',        label: 'ACT Range',     text: s => (s.act_composite_25 != null && s.act_composite_75 != null) ? `${s.act_composite_25}–${s.act_composite_75}` : '<span class="stat-na">N/A</span>', val: s => actMid(s) },
             { key: 'undergrads', label: 'Undergrads',    text: s => s.total_undergrads != null ? s.total_undergrads.toLocaleString() : '<span class="stat-na">N/A</span>', val: s => s.total_undergrads },
-            { key: 'gpa',        label: 'Avg GPA',       text: s => fmtGpa(s.avg_gpa_weighted),                     val: s => s.avg_gpa_weighted },
-            { key: 'tuition',    label: 'Tuition (OOS)', text: s => fmtMoney(s.tuition_out_of_state ?? s.tuition),  val: s => s.tuition_out_of_state ?? s.tuition, lowerIsBetter: true },
+            { key: 'gpa',        label: 'Avg GPA',       text: s => fmtGpa(s.avg_gpa_weighted) + (s._gpaOutside && s.avg_gpa_weighted != null ? '<span class="gpa-mark" title="Not from the school\'s Common Data Set">*</span>' : ''), val: s => s.avg_gpa_weighted },
+            { key: 'tuition',    label: 'Tuition (OOS)', text: s => fmtCost(outTuitionField)(s.tuition_out_of_state ?? s.tuition, s),  val: s => s.tuition_out_of_state ?? s.tuition, lowerIsBetter: true },
         ];
 
         function statClassMap(schools) {
@@ -353,6 +376,7 @@
                 : searchCellHtml(slot));
             if (activeSlots.length < MAX_SLOTS) cells.push(addCellHtml());
             grid.innerHTML = cells.join('');
+            document.getElementById('gpa-legend').hidden = !activeSchoolEntries().some(({ school }) => school._gpaOutside || school._costOutside);
         }
 
         function renderDropdown(slot) {
@@ -580,22 +604,39 @@
             const tuition = variant === 'in'
                 ? (s.tuition_in_state ?? s.tuition)
                 : (s.tuition_out_of_state ?? s.tuition);
-            const total = [tuition, s.room_and_board, s.books_supplies, s.required_fees, s.other_expenses]
-                .reduce((sum, v) => sum + (v || 0), 0);
-            return total > 0 ? total : null;
+            // Some budgets list a different out-of-state Other (see outside-costs.json).
+            const other = variant === 'in' ? s.other_expenses : (s.other_expenses_out_of_state ?? s.other_expenses);
+            const vals = [tuition, s.room_and_board, s.books_supplies, s.required_fees, other];
+            // Any reported value (even $0, e.g. West Point) makes a total worth showing.
+            return vals.some(v => v != null) ? vals.reduce((sum, v) => sum + (v || 0), 0) : null;
         }
+
+        // A cost from the school's own cost page (data/outside-costs.json)
+        // gets the same * as an outside GPA. field may be a function of the
+        // school (tuition lives in tuition_in_state for publics, tuition for
+        // privates).
+        const NON_CDS_MARK = '<span class="gpa-mark" title="Not from the school\'s Common Data Set">*</span>';
+        const fmtCost = field => (val, s) => {
+            const f = typeof field === 'function' ? field(s) : field;
+            return fmtMoney(val) + (val != null && isOutsideCost(s, f) ? NON_CDS_MARK : '');
+        };
+        const inTuitionField  = s => s.tuition_in_state     != null ? 'tuition_in_state'     : 'tuition';
+        const outTuitionField = s => s.tuition_out_of_state != null ? 'tuition_out_of_state' : 'tuition';
 
         function renderCostCompare(schools) {
             const rows = [
-                multiRow('Tuition (In-State)',     schools, s => s.tuition_in_state ?? s.tuition,     fmtMoney, { lowerIsBetter: true }),
-                multiRow('Tuition (Out-of-State)',  schools, s => s.tuition_out_of_state ?? s.tuition, fmtMoney, { lowerIsBetter: true }),
-                multiRow('Room & Board',            schools, s => s.room_and_board,  fmtMoney, { lowerIsBetter: true }),
-                multiRow('Books & Supplies',        schools, s => s.books_supplies,  fmtMoney, { lowerIsBetter: true }),
-                multiRow('Required Fees',           schools, s => s.required_fees,   fmtMoney, { lowerIsBetter: true }),
-                multiRow('Other Expenses',          schools, s => s.other_expenses,  fmtMoney, { lowerIsBetter: true }),
+                multiRow('Tuition (In-State)',     schools, s => s.tuition_in_state ?? s.tuition,     fmtCost(inTuitionField),  { lowerIsBetter: true }),
+                multiRow('Tuition (Out-of-State)',  schools, s => s.tuition_out_of_state ?? s.tuition, fmtCost(outTuitionField), { lowerIsBetter: true }),
+                multiRow('Room & Board',            schools, s => s.room_and_board,  fmtCost('room_and_board'), { lowerIsBetter: true }),
+                multiRow('Books & Supplies',        schools, s => s.books_supplies,  fmtCost('books_supplies'), { lowerIsBetter: true }),
+                multiRow('Required Fees',           schools, s => s.required_fees,   fmtCost('required_fees'),  { lowerIsBetter: true }),
+                // In-state / out-of-state when a school's budget lists them differently.
+                multiRow('Other Expenses',          schools, s => s.other_expenses,
+                    (v, s) => fmtCost('other_expenses')(v, s) + (s?.other_expenses_out_of_state != null && s.other_expenses_out_of_state !== v ? ' / ' + fmtCost('other_expenses_out_of_state')(s.other_expenses_out_of_state, s) : ''),
+                    { lowerIsBetter: true }),
                 multiRow('Total Cost (In-State)',     schools, s => totalCOA(s, 'in'),  fmtMoney, { lowerIsBetter: true, strong: true }),
                 multiRow('Total Cost (Out-of-State)', schools, s => totalCOA(s, 'out'), fmtMoney, { lowerIsBetter: true, strong: true }),
-                multiRow('Application Fee',         schools, s => s.application_fee, fmtMoney, { lowerIsBetter: true }),
+                multiRow('Application Fee',         schools, s => s.application_fee, fmtFee, { lowerIsBetter: true }),
             ];
             return sectionHtml('Cost', tableHtml(headerRow(schools), rows, colTints(schools)));
         }
@@ -638,7 +679,9 @@
 
             const raceRows = RACE_LABELS
                 .filter(([key]) => schools.some(({ school }) => racePct(school, key) != null))
-                .map(([key, label]) => multiRow(label, schools, s => racePct(s, key), fmtPct, { noColor: true }));
+                .map(([key, label, full]) => multiRow(
+                    full ? `<abbr class="short-label" title="${full}">${label}</abbr>` : label,
+                    schools, s => racePct(s, key), fmtPct, { noColor: true }));
 
             const tints = colTints(schools);
 
@@ -740,7 +783,11 @@
                 } catch (err) {
                     console.error('Scorecard fetch failed, showing CDS data without it:', err);
                 }
-                allSchools = merged;
+                // GPAs from outside the CDS for schools whose CDS left it blank
+                // (this page only uses the 2025-26 file, each school's latest).
+                allSchools = withOutsideGpa(merged, await loadOutsideGpa());
+                // Cost fields the CDS left blank, from each school's own cost page.
+                allSchools = withOutsideCosts(allSchools, await loadOutsideCosts());
             } catch (err) {
                 console.error('Failed to load school data:', err);
             }
