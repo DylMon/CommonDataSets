@@ -1,0 +1,170 @@
+{
+  "name": "The University of Alabama at Birmingham",
+  "data_year": "2025-26",
+  "city": "Birmingham",
+  "state": "AL",
+  "location": "Birmingham, AL",
+  "school_type": "Public",
+  "website": "www.uab.edu",
+  "applicants_total": 11119,
+  "applicants_men": 3895,
+  "applicants_women": 7172,
+  "admitted_total": 10474,
+  "admitted_men": 3628,
+  "admitted_women": 6796,
+  "enrolled_total": 2519,
+  "enrolled_men": 798,
+  "enrolled_women": 1703,
+  "acceptance_rate": 0.942,
+  "application_fee": 40,
+  "avg_gpa_weighted": 3.82,
+  "rd_deadline": "6/1",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": null,
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.05,
+  "sat_submitted_count": 117,
+  "act_submitted_pct": 0.47,
+  "act_submitted_count": 1176,
+  "sat_composite_25": 1250,
+  "sat_composite_75": 1420,
+  "sat_reading_25": 620,
+  "sat_reading_75": 720,
+  "sat_math_25": 600,
+  "sat_math_75": 730,
+  "act_composite_25": 23,
+  "act_composite_75": 30,
+  "act_math_25": 20,
+  "act_math_75": 27,
+  "act_english_25": 23,
+  "act_english_75": 32,
+  "total_undergrads": 12100,
+  "undergrads_male": 4355,
+  "undergrads_female": 7701,
+  "retention_rate": 0.8,
+  "tuition": null,
+  "tuition_in_state": 11970,
+  "tuition_out_of_state": 29820,
+  "required_fees": 500,
+  "room_and_board": 14720,
+  "books_supplies": 1200,
+  "other_expenses": 3186,
+  "pct_out_of_state": 0.14,
+  "pct_on_campus_housing": 0.28,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": null
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 3895,
+      "female": 7172
+    },
+    "accepted": {
+      "male": 3628,
+      "female": 6796
+    },
+    "enrolled": {
+      "male": 798,
+      "female": 1703
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 48,
+      "hispanic": 267,
+      "black": 797,
+      "white": 971,
+      "american_indian": 1,
+      "asian": 275,
+      "pacific_islander": 2,
+      "two_or_more": 142,
+      "unknown": 23,
+      "total": 2526
+    },
+    "undergrad": {
+      "nonresident_aliens": 312,
+      "hispanic": 1065,
+      "black": 3411,
+      "white": 5203,
+      "american_indian": 10,
+      "asian": 1104,
+      "pacific_islander": 7,
+      "two_or_more": 631,
+      "unknown": 81,
+      "total": 11824
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.14,
+    "international_pct": 0.0264
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 117,
+    "sat_submitted_pct": 0.05,
+    "act_submitted_count": 1176,
+    "act_submitted_pct": 0.47
+  },
+  "class_rank": {
+    "top10": 0.19,
+    "top25": 0.35,
+    "top50": 0.45,
+    "bottom50": 0.55,
+    "bottom25": 0.16
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.4518,
+    "gpa_375_399": 0.1783,
+    "gpa_350_374": 0.133,
+    "gpa_325_349": 0.0979,
+    "gpa_300_324": 0.0701,
+    "gpa_250_299": 0.0673,
+    "gpa_200_249": 0.0016,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "not_considered",
+    "recommendations": "not_considered",
+    "interview": "not_considered",
+    "extracurriculars": "not_considered",
+    "talent": "not_considered",
+    "character": "not_considered",
+    "first_gen": "not_considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "not_considered",
+    "work_experience": "not_considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 825,
+      "admitted": 689,
+      "enrolled": 430
+    },
+    "female": {
+      "applied": 1366,
+      "admitted": 1145,
+      "enrolled": 696
+    },
+    "total": {
+      "applied": 2217,
+      "admitted": 1859,
+      "enrolled": 1138
+    }
+  },
+  "slug": "alabama-birmingham"
+}

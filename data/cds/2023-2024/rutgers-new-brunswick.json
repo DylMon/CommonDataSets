@@ -1,0 +1,157 @@
+{
+  "name": "Rutgers University–New Brunswick",
+  "data_year": "2023-24",
+  "city": "New Brunswick",
+  "state": "NJ",
+  "location": "New Brunswick, NJ",
+  "school_type": "Public",
+  "website": "newbrunswick.rutgers.edu",
+  "applicants_total": 43347,
+  "applicants_men": 20326,
+  "applicants_women": 23021,
+  "admitted_total": 28326,
+  "admitted_men": 13052,
+  "admitted_women": 15274,
+  "enrolled_total": 7681,
+  "enrolled_men": 3711,
+  "enrolled_women": 3970,
+  "acceptance_rate": 0.6535,
+  "application_fee": 70,
+  "avg_gpa_weighted": null,
+  "rd_deadline": "12/1",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": "EA",
+  "ea_ed_deadline": "11/1",
+  "ea_ed_notification": "1/31",
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.509,
+  "sat_submitted_count": 3908,
+  "act_submitted_pct": 0.054,
+  "act_submitted_count": 414,
+  "sat_composite_25": 1270,
+  "sat_composite_75": 1480,
+  "sat_reading_25": 630,
+  "sat_reading_75": 720,
+  "sat_math_25": 640,
+  "sat_math_75": 760,
+  "act_composite_25": 28,
+  "act_composite_75": 33,
+  "act_math_25": 26,
+  "act_math_75": 33,
+  "act_english_25": 27,
+  "act_english_75": 34,
+  "total_undergrads": 36588,
+  "undergrads_male": 18239,
+  "undergrads_female": 18349,
+  "retention_rate": 0.93,
+  "tuition": null,
+  "tuition_in_state": 14222,
+  "tuition_out_of_state": 33734,
+  "required_fees": 3707,
+  "room_and_board": 15714,
+  "books_supplies": 1418,
+  "other_expenses": 3492,
+  "pct_out_of_state": 0.07,
+  "pct_on_campus_housing": 0.41,
+  "applicant_pools": null,
+  "gender_breakdown": {
+    "applied": {
+      "male": 20326,
+      "female": 23021
+    },
+    "accepted": {
+      "male": 13052,
+      "female": 15274
+    },
+    "enrolled": {
+      "male": 3711,
+      "female": 3970
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 531,
+      "hispanic": 1150,
+      "black": 474,
+      "white": 2202,
+      "american_indian": 8,
+      "asian": 2830,
+      "pacific_islander": 3,
+      "two_or_more": 272,
+      "unknown": 211,
+      "total": 7681
+    },
+    "undergrad": {
+      "nonresident_aliens": 2484,
+      "hispanic": 5682,
+      "black": 2454,
+      "white": 11434,
+      "american_indian": 29,
+      "asian": 12155,
+      "pacific_islander": 26,
+      "two_or_more": 1312,
+      "unknown": 781,
+      "total": 36357
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.07,
+    "international_pct": 0.0683
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 3908,
+    "sat_submitted_pct": 0.509,
+    "act_submitted_count": 414,
+    "act_submitted_pct": 0.054
+  },
+  "class_rank": {
+    "top10": 0.3,
+    "top25": 0.66,
+    "top50": 0.92,
+    "bottom50": 0.08,
+    "bottom25": 0.01
+  },
+  "gpa_distribution": null,
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "important",
+    "recommendations": "not_considered",
+    "interview": "considered",
+    "extracurriculars": "important",
+    "talent": "considered",
+    "character": "important",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 3603,
+      "admitted": 2099,
+      "enrolled": 1111
+    },
+    "female": {
+      "applied": 3611,
+      "admitted": 2054,
+      "enrolled": 1021
+    },
+    "total": {
+      "applied": 7214,
+      "admitted": 4153,
+      "enrolled": 2132
+    }
+  },
+  "slug": "rutgers-new-brunswick"
+}

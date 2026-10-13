@@ -1,0 +1,164 @@
+{
+  "name": "Brigham Young University",
+  "data_year": "2025-26",
+  "city": "Provo",
+  "state": "UT",
+  "location": "Provo, UT",
+  "school_type": "Private",
+  "website": "www.byu.edu",
+  "applicants_total": 12141,
+  "applicants_men": 5831,
+  "applicants_women": 6310,
+  "admitted_total": 8331,
+  "admitted_men": 3541,
+  "admitted_women": 4790,
+  "enrolled_total": 6743,
+  "enrolled_men": 2890,
+  "enrolled_women": 3853,
+  "acceptance_rate": 0.6862,
+  "application_fee": 35,
+  "avg_gpa_weighted": 3.89,
+  "rd_deadline": "12/16",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": null,
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.11,
+  "sat_submitted_count": 771,
+  "act_submitted_pct": 0.43,
+  "act_submitted_count": 2918,
+  "sat_composite_25": 1290,
+  "sat_composite_75": 1430,
+  "sat_reading_25": 650,
+  "sat_reading_75": 730,
+  "sat_math_25": 630,
+  "sat_math_75": 720,
+  "act_composite_25": 28,
+  "act_composite_75": 32,
+  "act_math_25": 26,
+  "act_math_75": 31,
+  "act_english_25": 27,
+  "act_english_75": 34,
+  "total_undergrads": 34354,
+  "undergrads_male": 16912,
+  "undergrads_female": 17442,
+  "retention_rate": 0.9132,
+  "tuition": 7096,
+  "tuition_in_state": null,
+  "tuition_out_of_state": null,
+  "required_fees": 0,
+  "room_and_board": 11200,
+  "books_supplies": 416,
+  "other_expenses": 2088,
+  "pct_out_of_state": null,
+  "pct_on_campus_housing": null,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": null
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 5831,
+      "female": 6310
+    },
+    "accepted": {
+      "male": 3541,
+      "female": 4790
+    },
+    "enrolled": {
+      "male": 2890,
+      "female": 3853
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 90,
+      "hispanic": 297,
+      "black": 15,
+      "white": 5484,
+      "american_indian": 12,
+      "asian": 77,
+      "pacific_islander": 46,
+      "two_or_more": 322,
+      "unknown": 401,
+      "total": 6744
+    },
+    "undergrad": {
+      "nonresident_aliens": 985,
+      "hispanic": 2411,
+      "black": 244,
+      "white": 27613,
+      "american_indian": 52,
+      "asian": 495,
+      "pacific_islander": 183,
+      "two_or_more": 1545,
+      "unknown": 826,
+      "total": 34354
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": null,
+    "international_pct": 0.0287
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 771,
+    "sat_submitted_pct": 0.11,
+    "act_submitted_count": 2918,
+    "act_submitted_pct": 0.43
+  },
+  "class_rank": null,
+  "gpa_distribution": {
+    "gpa_40": 0.2818,
+    "gpa_375_399": 0.5903,
+    "gpa_350_374": 0.1013,
+    "gpa_325_349": 0.021,
+    "gpa_300_324": 0.0041,
+    "gpa_250_299": 0.0012,
+    "gpa_200_249": 0.0003,
+    "gpa_100_199": 0.0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "very_important",
+    "essay": "very_important",
+    "recommendations": "very_important",
+    "interview": "not_considered",
+    "extracurriculars": "very_important",
+    "talent": "very_important",
+    "character": "very_important",
+    "first_gen": "important",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "very_important",
+    "racial_ethnic": null,
+    "volunteer": "very_important",
+    "work_experience": "very_important",
+    "applicant_interest": "considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 1143,
+      "admitted": 710,
+      "enrolled": 641
+    },
+    "female": {
+      "applied": 1086,
+      "admitted": 684,
+      "enrolled": 546
+    },
+    "total": {
+      "applied": 2229,
+      "admitted": 1394,
+      "enrolled": 1187
+    }
+  },
+  "slug": "byu"
+}

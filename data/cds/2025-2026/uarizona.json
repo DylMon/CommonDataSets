@@ -1,0 +1,170 @@
+{
+  "name": "The University of Arizona",
+  "data_year": "2025-26",
+  "city": "Tucson",
+  "state": "AZ",
+  "location": "Tucson, AZ",
+  "school_type": "Public",
+  "website": "www.arizona.edu",
+  "applicants_total": 56376,
+  "applicants_men": 24482,
+  "applicants_women": 31894,
+  "admitted_total": 47080,
+  "admitted_men": 19584,
+  "admitted_women": 27496,
+  "enrolled_total": 7492,
+  "enrolled_men": 3113,
+  "enrolled_women": 4379,
+  "acceptance_rate": 0.8351,
+  "application_fee": 50,
+  "avg_gpa_weighted": 3.43,
+  "rd_deadline": "5/1",
+  "waitlist_offered": null,
+  "waitlist_accepted": null,
+  "waitlist_admitted": null,
+  "ea_ed_type": null,
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": 0.12,
+  "sat_submitted_count": 889,
+  "act_submitted_pct": 0.23,
+  "act_submitted_count": 1696,
+  "sat_composite_25": 1090,
+  "sat_composite_75": 1320,
+  "sat_reading_25": 550,
+  "sat_reading_75": 680,
+  "sat_math_25": 530,
+  "sat_math_75": 660,
+  "act_composite_25": 20,
+  "act_composite_75": 28,
+  "act_math_25": 20,
+  "act_math_75": 28,
+  "act_english_25": 20,
+  "act_english_75": 28,
+  "total_undergrads": 43294,
+  "undergrads_male": 19632,
+  "undergrads_female": 23662,
+  "retention_rate": 0.83,
+  "tuition": null,
+  "tuition_in_state": 12168,
+  "tuition_out_of_state": 41330,
+  "required_fees": 1738,
+  "room_and_board": 17300,
+  "books_supplies": 600,
+  "other_expenses": 2500,
+  "pct_out_of_state": 0.45,
+  "pct_on_campus_housing": 0.05,
+  "applicant_pools": {
+    "ea": null,
+    "rd": null,
+    "waitlist": null
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 24482,
+      "female": 31894
+    },
+    "accepted": {
+      "male": 19584,
+      "female": 27496
+    },
+    "enrolled": {
+      "male": 3113,
+      "female": 4379
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 189,
+      "hispanic": 2370,
+      "black": 345,
+      "white": 3353,
+      "american_indian": 108,
+      "asian": 380,
+      "pacific_islander": 18,
+      "two_or_more": 439,
+      "unknown": 275,
+      "total": 7477
+    },
+    "undergrad": {
+      "nonresident_aliens": 1557,
+      "hispanic": 11965,
+      "black": 1967,
+      "white": 18461,
+      "american_indian": 648,
+      "asian": 1963,
+      "pacific_islander": 104,
+      "two_or_more": 2230,
+      "unknown": 2352,
+      "total": 41247
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.45,
+    "international_pct": 0.0378
+  },
+  "sat_act_breakdown": {
+    "sat_submitted_count": 889,
+    "sat_submitted_pct": 0.12,
+    "act_submitted_count": 1696,
+    "act_submitted_pct": 0.23
+  },
+  "class_rank": {
+    "top10": 0.33,
+    "top25": 0.62,
+    "top50": 0.88,
+    "bottom50": 0.12,
+    "bottom25": 0.02
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.12,
+    "gpa_375_399": 0.22,
+    "gpa_350_374": 0.18,
+    "gpa_325_349": 0.14,
+    "gpa_300_324": 0.13,
+    "gpa_250_299": 0.19,
+    "gpa_200_249": 0.02,
+    "gpa_100_199": null
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "considered",
+    "recommendations": "not_considered",
+    "interview": "not_considered",
+    "extracurriculars": "important",
+    "talent": "important",
+    "character": "important",
+    "first_gen": "not_considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "important"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 4928,
+      "admitted": 3337,
+      "enrolled": 1698
+    },
+    "female": {
+      "applied": 4789,
+      "admitted": 3073,
+      "enrolled": 1532
+    },
+    "total": {
+      "applied": 9717,
+      "admitted": 6410,
+      "enrolled": 3230
+    }
+  },
+  "slug": "uarizona"
+}
