@@ -2690,11 +2690,12 @@ body.page-resources .hero-banner {
 
     .nav-link-wrapper {
         padding: 14px 24px;
+        justify-content: center;
     }
 
     .nav-right-group {
         flex-direction: column;
-        align-items: stretch;
+        align-items: center;
         width: 100%;
         gap: 16px;
         padding: 18px 24px 22px;
@@ -2703,7 +2704,7 @@ body.page-resources .hero-banner {
 
     .nav-corner-links {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         gap: 12px;
     }
 
