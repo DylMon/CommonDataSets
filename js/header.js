@@ -4,7 +4,6 @@
     // level, since every page now lives one or two directories deep
     // (/compare/, /schools/{slug}/) under the clean-URL convention.
     const path = window.location.pathname;
-    const onSchoolPage = path.includes('/schools/');
 
     const active = path.includes('compare')   ? 'compare'
                  : path.includes('chanceme')  ? 'chanceme'
@@ -67,10 +66,11 @@
         window.addEventListener('resize', syncHeaderHeight);
         window.addEventListener('load', syncHeaderHeight);
 
-        // School pages (or any page with the "Hide" scroll variant): hide the
-        // header on scroll down, bring it back on scroll up. Everywhere else
-        // it just stays put (sticky to top). .is-scrolled drives the
-        // "Shrink" scroll variant.
+        // Pages with the "Hide" scroll variant (the .scroll-hide class):
+        // hide the header on scroll down, bring it back on scroll up.
+        // Everywhere else — including school pages — it just stays put
+        // (sticky to top). .is-scrolled drives the "Shrink" scroll variant,
+        // which applies everywhere.
         const header = document.querySelector('.site-header');
         if (header) {
             let lastY = window.scrollY;
@@ -78,8 +78,12 @@
 
             function updateHeader() {
                 const y = window.scrollY;
-                header.classList.toggle('is-scrolled', y > 30);
-                const hides = onSchoolPage || header.classList.contains('scroll-hide');
+                // Hysteresis band (not a single y > 30 cutoff) so the
+                // shrink/grow toggle can't flap back and forth when the
+                // scroll position settles right at the boundary.
+                if (y > 40) header.classList.add('is-scrolled');
+                else if (y < 15) header.classList.remove('is-scrolled');
+                const hides = header.classList.contains('scroll-hide');
                 if (!hides) {
                     header.classList.remove('site-header--hidden');
                     document.body.classList.remove('header-hidden');

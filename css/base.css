@@ -69,6 +69,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 500;
+    overflow-anchor: none;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
     /* Same subtle depth as .school-card, so the header reads as floating
        just slightly above the page content scrolling beneath it. */
@@ -136,6 +137,16 @@ body {
    so pin it back to the site orange explicitly. */
 body.page-compare {
     --brand: #ed6d0b;
+}
+
+/* Same deal as .print-fab further down: school pages override --brand to
+   that school's own color for the banner/buttons/charts (see js/school.js),
+   but the header is site chrome, not school content, so pin it back to the
+   site orange regardless of which school's page it's on. */
+body.page-school .site-header {
+    --hdr-bg: #3a281e;
+    --hdr-accent: #ed6d0b;
+    --hdr-line: #ed6d0b;
 }
 
 .nav-brand {
