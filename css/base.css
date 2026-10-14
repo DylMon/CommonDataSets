@@ -197,22 +197,22 @@ body.page-compare {
    into the header (js/header.js only includes this markup when
    active === 'index') — sits in .nav-right-group before .nav-corner-
    links. Collapsed to just the round toggle icon by default at every
-   width; clicking it drops the real input down as a floating overlay
-   instead of claiming permanent space in the header row. */
+   width; clicking it expands the real input in place over the same row
+   instead of claiming permanent space in the header. */
 .header-search {
     position: relative;
     display: flex;
     align-items: center;
     flex: 0 0 auto;
     /* Stretches to .nav-right-group's full (bar-height) box instead of
-       shrinking to the 36px toggle — two reasons: (1) .search-wrap is
-       position:absolute (out of flow), so the toggle would otherwise be
-       this box's only flow child, and hiding it on expand would collapse
-       the box to 0 height and re-center it mid-bar; (2) anchoring
-       .search-wrap's "top: 100%" to the full bar height (rather than just
-       the icon's own small box) is what puts the dropdown flush below the
-       whole header instead of partway up into it. align-items: center
-       above still keeps the icon itself centered within this taller box. */
+       shrinking to the 36px toggle — .search-wrap is position:absolute
+       (out of flow), so the toggle would otherwise be this box's only
+       flow child, and hiding it on expand would collapse the box to 0
+       height and re-center it mid-bar instead of staying put where the
+       icon was. align-items: center above keeps the icon itself centered
+       within this taller box, and .search-wrap below centers on that
+       same point when expanded, so it's vertically flush with the icon
+       rather than overlapping the header or dropping below it. */
     align-self: stretch;
 }
 
@@ -227,8 +227,9 @@ body.page-compare {
 .header-search.expanded .search-wrap {
     display: flex;
     position: absolute;
-    top: calc(100% + 10px);
+    top: 50%;
     right: 0;
+    transform: translateY(-50%);
     width: 260px;
     z-index: 20;
 }
