@@ -674,16 +674,56 @@
         async function init() {
             const searchInput = document.getElementById('school-search');
             const searchClear = document.getElementById('search-clear');
+            const searchDropdown = document.getElementById('search-dropdown');
 
             function updateSearchClear() {
                 searchClear.hidden = searchInput.value.length === 0;
             }
+
+            // One row of the dropdown — same logo/name markup as the
+            // favorites/history sidebar's .history-item, just wrapped in
+            // .search-dropdown-item for its own hover/padding instead.
+            function dropdownItemHtml(slug) {
+                const school = allSchools.find(s => s.slug === slug);
+                if (!school) return '';
+                return `<a class="search-dropdown-item" href="/schools/${slug}/">
+                    <img class="history-logo" src="${logoSrc(slug)}" alt="" onerror="${LOGO_ONERR}">
+                    <span class="history-name">${school.name}</span>
+                </a>`;
+            }
+
+            // Empty query, just focused: recently-viewed schools (same
+            // localStorage key school.js's own history rail reads/writes).
+            // Non-empty query: live autocomplete, reusing schoolMatchesSearch
+            // — the exact same name/alias matcher renderList() already
+            // filters the grid with, so the dropdown never suggests a
+            // school the grid itself wouldn't also show. Capped at 8 so a
+            // broad query (e.g. a single common letter) doesn't produce an
+            // unreadably long list.
+            function updateSearchDropdown() {
+                const q = searchInput.value.trim().toLowerCase();
+                if (!q) {
+                    const slugs = JSON.parse(localStorage.getItem('cds_recently_viewed') ?? '[]');
+                    const items = slugs.map(dropdownItemHtml).filter(Boolean);
+                    if (!items.length) { searchDropdown.hidden = true; return; }
+                    searchDropdown.innerHTML = `<div class="search-dropdown-label">Recently Viewed</div>${items.join('')}`;
+                    searchDropdown.hidden = false;
+                    return;
+                }
+                const matches = allSchools.filter(s => schoolMatchesSearch(s, q)).slice(0, 8);
+                if (!matches.length) { searchDropdown.hidden = true; return; }
+                searchDropdown.innerHTML = matches.map(s => dropdownItemHtml(s.slug)).join('');
+                searchDropdown.hidden = false;
+            }
+
+            searchInput.addEventListener('focus', updateSearchDropdown);
 
             searchInput.addEventListener('input', e => {
                 searchQuery = e.target.value.trim();
                 currentPage = 1;
                 updateSearchClear();
                 renderList(currentSort);
+                updateSearchDropdown();
             });
 
             searchClear.addEventListener('click', () => {
@@ -693,6 +733,16 @@
                 updateSearchClear();
                 renderList(currentSort);
                 searchInput.focus();
+                updateSearchDropdown();
+            });
+
+            // Delegated the same way as the year/sort dropdowns elsewhere
+            // on this page — closes on any outside click or Escape.
+            document.addEventListener('click', e => {
+                if (!e.target.closest('#header-search')) searchDropdown.hidden = true;
+            });
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape') searchDropdown.hidden = true;
             });
 
             // Delegated (not bound per-button) since renderCategoryBar() can
