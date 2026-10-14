@@ -190,6 +190,12 @@ body.page-compare {
     color: #fff;
     cursor: pointer;
     transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    /* .nav-wrapper's align-items: stretch is a grid-level default that
+       only takes effect on an item with no fixed size — this button's
+       own explicit height opts it out of being stretched, but without
+       this it still defaults to start-aligned (flush against the
+       header's top edge) rather than centered in its grid row. */
+    align-self: center;
 }
 
 .nav-hamburger svg {
