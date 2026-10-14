@@ -53,16 +53,6 @@
                     <p class="compare-placeholder">Search for a school on the left to see its data.</p>
                 </div>
             </div>
-            <div class="right-sidebar">
-                <div class="history-box" id="favorites-box" style="display:none">
-                    <div class="history-title">Favorites</div>
-                    <div id="favorites-list"></div>
-                </div>
-                <div class="history-box" id="history-box" style="display:none">
-                    <div class="history-title">History</div>
-                    <div id="history-list"></div>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -88,39 +78,6 @@
 
         let allSchools = [];
         const selected = { 1: null, 2: null, 3: null, 4: null };
-
-        // ── Favorites & History rail (same behavior as the index page) ──
-        let favorites = new Set(JSON.parse(localStorage.getItem('cds_favorites') ?? '[]'));
-
-        function renderFavoritesBox() {
-            const slugs = [...favorites];
-            const box = document.getElementById('favorites-box');
-            if (!slugs.length) { box.style.display = 'none'; return; }
-            box.style.display = '';
-            document.getElementById('favorites-list').innerHTML = slugs.map(slug => {
-                const school = allSchools.find(s => s.slug === slug);
-                if (!school) return '';
-                return `<a class="history-item" href="/schools/${slug}/">
-                    <img class="history-logo" src="${logoSrc(slug)}" alt="" onerror="${LOGO_ONERR}">
-                    <span class="history-name">${school.name}</span>
-                </a>`;
-            }).filter(Boolean).join('');
-        }
-
-        function renderHistory() {
-            const slugs = JSON.parse(localStorage.getItem('cds_recently_viewed') ?? '[]');
-            const box = document.getElementById('history-box');
-            if (!slugs.length) { box.style.display = 'none'; return; }
-            box.style.display = '';
-            document.getElementById('history-list').innerHTML = slugs.map(slug => {
-                const school = allSchools.find(s => s.slug === slug);
-                if (!school) return '';
-                return `<a class="history-item" href="/schools/${slug}/">
-                    <img class="history-logo" src="${logoSrc(slug)}" alt="" onerror="${LOGO_ONERR}">
-                    <span class="history-name">${school.name}</span>
-                </a>`;
-            }).filter(Boolean).join('');
-        }
 
         function fmtPct(val) {
             return val != null ? (val * 100).toFixed(1) + '%' : '<span class="stat-na">N/A</span>';
@@ -814,13 +771,9 @@
             // succeeds; dropdowns fill from allSchools on the next keystroke.
             await loadSchools();
             preselectFromUrl();
-            renderFavoritesBox();
-            renderHistory();
         }
 
         init();
-
-        window.addEventListener('pageshow', () => { renderFavoritesBox(); renderHistory(); });
 
         // ── Sticky picker reveal ──────────────────────────────────────────
         // Same mechanism as the homepage's filters sidebar (see index.html):

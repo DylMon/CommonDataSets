@@ -1385,64 +1385,12 @@ body.page-resources .hero-banner {
     transform: rotate(180deg);
 }
 
-/* Favorites/history rail — compare page only (see compare.css's
-   .compare-layout .right-sidebar). The homepage and school pages both
-   used this same class once too; both have since moved their favorites/
-   history display into the header search dropdown instead (see
-   js/header-search.js), leaving this as compare's own standalone
-   right-hand column. */
-.right-sidebar {
-    width: 230px;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    position: sticky;
-    top: calc(var(--header-height) + 20px);
-    align-self: flex-start;
-    transition: top 0.25s ease;
-}
-
-/* History / Favorites boxes */
-.history-box {
-    background: #fff;
-    border: 2px solid #d0d0d0;
-    border-radius: 8px;
-    padding: 14px 16px;
-}
-
-.history-title {
-    font-size: 0.75em;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
-    color: #ed6d0b;
-    margin-bottom: 10px;
-}
-
-.history-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 0;
-    text-decoration: none;
-    color: #000;
-    border-bottom: 1px solid #f5f5f5;
-    font-size: 0.93em;
-    font-weight: 400;
-    transition: color 0.15s;
-    min-width: 0;
-}
-
-.history-item:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-}
-
-.history-item:hover {
-    color: #ed6d0b;
-}
-
+/* .history-logo/.history-name are still used by the header search
+   dropdown's items (js/header-search.js) — .right-sidebar/.history-box/
+   .history-title/.history-item (the standalone favorites/history rail
+   those used to live in, on the homepage, school pages, and compare)
+   are gone now that all three show favorites/history via that dropdown
+   instead, so those four are removed rather than left as dead CSS. */
 .history-logo {
     width: 28px;
     height: 18px;
