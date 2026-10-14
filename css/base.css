@@ -2663,8 +2663,13 @@ body.page-resources .hero-banner {
        rather than just clipped-looking. A generous fixed max-height
        (rather than measuring the content's real height in JS) is the
        simplest way to animate an accordion whose open height depends on
-       content neither side needs to calculate; .filter-bar/.filter-group
-       wrap at this width (see below), so this comfortably covers it. */
+       content neither side needs to calculate. .filter-bar/.filter-group
+       are left at their base column layout here (not overridden to a
+       wrapping row — that row layout was making each filter's slider
+       track stop at a different width/right edge, since a row-wrap flex
+       item with no explicit flex-basis sizes to its own content instead
+       of stretching full-width), so every filter group still stacks as
+       one full-width row with a uniformly aligned slider underneath it. */
     .controls-container {
         max-height: 0;
         overflow: hidden;
@@ -2679,22 +2684,6 @@ body.page-resources .hero-banner {
         padding-top: 14px;
         padding-bottom: 14px;
         border-width: 2px;
-    }
-
-    .filter-bar {
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-
-    .filter-group {
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-
-    .filter-sep {
-        width: 1px;
-        height: 16px;
-        margin: 0 6px;
     }
 }
 
