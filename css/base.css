@@ -2661,6 +2661,14 @@ body.page-resources .hero-banner {
         display: flex;
     }
 
+    /* Only matches once index.html's JS has relocated #category-filter-bar
+       in here (see the matchMedia listener in init()) — adds the gap
+       before Reset All Filters that its own margin (top-only, meant for
+       its original spot above .page-layout) doesn't provide on its own. */
+    #controls-container .category-filter-bar {
+        margin-bottom: 18px;
+    }
+
     /* Collapsed by default — overflow: hidden clips the content, and
        max-height: 0 is what actually makes that collapse invisible
        rather than just clipped-looking. A generous fixed max-height
