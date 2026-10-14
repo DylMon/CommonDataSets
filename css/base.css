@@ -2589,8 +2589,16 @@ body.page-resources .hero-banner {
 }
 
 @media (max-width: 640px) {
+    /* .content-wrapper's own margin-top shrinks to 16px at the 540px
+       tier below — against the hero photo's dark edge that reads as
+       barely any gap at all, cramped next to how much breathing room
+       everything else on this row gets. Give the search bar its own
+       explicit top margin so it's not solely at the mercy of
+       .content-wrapper's (which other pages without a search bar as
+       their first child also depend on, so it's left alone here). */
     .search-bar {
         width: 100%;
+        margin-top: 20px;
     }
 
     .page-layout {
