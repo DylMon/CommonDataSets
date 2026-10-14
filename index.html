@@ -707,21 +707,28 @@
                 </a>`;
             }
 
-            // Empty query, just focused: recently-viewed schools (same
-            // localStorage key school.js's own history rail reads/writes).
-            // Non-empty query: live autocomplete, reusing schoolMatchesSearch
-            // — the exact same name/alias matcher renderList() already
-            // filters the grid with, so the dropdown never suggests a
-            // school the grid itself wouldn't also show. Capped at 8 so a
-            // broad query (e.g. a single common letter) doesn't produce an
-            // unreadably long list.
+            // Empty query, just focused: recently-viewed schools, then
+            // favorites, each under their own label — same localStorage
+            // key / `favorites` Set school.js's own rail and this page's
+            // right-sidebar already read/write, so toggling a favorite
+            // anywhere stays in sync with what shows up here. Non-empty
+            // query: live autocomplete, reusing schoolMatchesSearch — the
+            // exact same name/alias matcher renderList() already filters
+            // the grid with, so the dropdown never suggests a school the
+            // grid itself wouldn't also show. Capped at 8 so a broad query
+            // (e.g. a single common letter) doesn't produce an unreadably
+            // long list.
             function updateSearchDropdown() {
                 const q = searchInput.value.trim().toLowerCase();
                 if (!q) {
-                    const slugs = JSON.parse(localStorage.getItem('cds_recently_viewed') ?? '[]');
-                    const items = slugs.map(dropdownItemHtml).filter(Boolean);
-                    if (!items.length) { searchDropdown.hidden = true; return; }
-                    searchDropdown.innerHTML = `<div class="search-dropdown-label">Recently Viewed</div>${items.join('')}`;
+                    const historySlugs = JSON.parse(localStorage.getItem('cds_recently_viewed') ?? '[]');
+                    const historyItems = historySlugs.map(dropdownItemHtml).filter(Boolean);
+                    const favoriteItems = [...favorites].map(dropdownItemHtml).filter(Boolean);
+                    const sections = [];
+                    if (historyItems.length) sections.push(`<div class="search-dropdown-label">Recently Viewed</div>${historyItems.join('')}`);
+                    if (favoriteItems.length) sections.push(`<div class="search-dropdown-label">Favorites</div>${favoriteItems.join('')}`);
+                    if (!sections.length) { searchDropdown.hidden = true; return; }
+                    searchDropdown.innerHTML = sections.join('');
                     searchDropdown.hidden = false;
                     return;
                 }
