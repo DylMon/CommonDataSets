@@ -64,6 +64,7 @@ function pageHtml(slug, name, description) {
   <script src="/js/header-search.js?v=1" defer></script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2245119166025427" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js" defer></script>
+  <script src="/js/scorecard-merge.js?v=6"></script>
   <script type="module" src="/js/school.js?v=6"></script>
 </head>
 <body class="page-school">
