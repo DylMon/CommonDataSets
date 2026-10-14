@@ -920,6 +920,24 @@ function renderCostSection(s) {
   return sectionWrap('Cost', tableHtml(['', 'In-State', 'Out-of-State'], rows) + legend);
 }
 
+// ── Render: Outcomes section ─────────────────────────────────────────────
+// Same field set as compare/index.html's renderOutcomesCompare. retention_rate
+// comes from CDS; the rest are College Scorecard-only fields merged in by
+// mergeScorecard() before this ever gets called (see loadScorecardBySlug()).
+
+function renderOutcomesSection(s) {
+  const rows = [
+    ['Graduation Rate (4-Year)',       fmt(s.graduation_rate_4yr, 'pct')],
+    ['Graduation Rate (6-Year)',       fmt(s.graduation_rate_6yr, 'pct')],
+    ['Retention Rate',                 fmt(s.retention_rate, 'pct')],
+    ['Median Earnings (6 Yrs Out)',    fmt(s.median_earnings_6yr, 'money')],
+    ['Median Earnings (10 Yrs Out)',   fmt(s.median_earnings_10yr, 'money')],
+    ['Median Debt (Graduates)',        fmt(s.median_debt_graduates, 'money')],
+    ['% Borrowing',                    fmt(s.pct_borrowing, 'pct')],
+  ];
+  return sectionWrap('Outcomes', tableHtml(['', 'Value'], rows));
+}
+
 // ── Render: Student Body section ────────────────────────────────────────
 
 function renderStudentBodySection(s) {
@@ -997,6 +1015,31 @@ const ALL_YEAR_FILES = [
 ];
 const SITE_LATEST_YEAR_KEY = yearKeyFromUrl(ALL_YEAR_FILES[ALL_YEAR_FILES.length - 1]);
 
+// Same per-year Scorecard files index.html merges in, by-slug map built the
+// same way (later file's row wins — Scorecard's API only ever returns one
+// current snapshot anyway, so "later" is just "most recently fetched").
+const ALL_SCORECARD_FILES = ALL_YEAR_FILES.map(url => url.replace('/schools-', '/scorecard-'));
+
+async function loadScorecardBySlug() {
+  const scBySlug = new Map();
+  try {
+    const scResults = await Promise.all(ALL_SCORECARD_FILES.map(async url => {
+      const res = await fetch(url);
+      if (!res.ok) return [];
+      const { schools } = await res.json();
+      return schools;
+    }));
+    for (const scSchools of scResults) {
+      for (const s of scSchools) {
+        if (s.slug) scBySlug.set(s.slug, s);
+      }
+    }
+  } catch (err) {
+    console.error('Failed to load Scorecard data:', err);
+  }
+  return scBySlug;
+}
+
 // '/data/schools-2025-2026.json' -> '2025-2026'
 function yearKeyFromUrl(url) {
   return url.match(/schools-(\d{4}-\d{4})\.json/)?.[1] ?? null;
@@ -1052,14 +1095,24 @@ async function init() {
   recentHistory = [slug, ...recentHistory.filter(s => s !== slug)].slice(0, 5);
   localStorage.setItem(historyKey, JSON.stringify(recentHistory));
 
-  const [{ yearRecords, availableYearKeys }, admissionPlans, outsideGpa, outsideCosts, noWaitlist] =
+  const [{ yearRecords, availableYearKeys }, admissionPlans, outsideGpa, outsideCosts, noWaitlist, scBySlug] =
     await Promise.all([loadAllYears(slug), loadAdmissionPlans(), loadOutsideGpa(), loadOutsideCosts(),
-      fetch('/data/no-waitlist.json').then(r => (r.ok ? r.json() : {})).then(j => j.slugs ?? {}).catch(() => ({}))]);
+      fetch('/data/no-waitlist.json').then(r => (r.ok ? r.json() : {})).then(j => j.slugs ?? {}).catch(() => ({})),
+      loadScorecardBySlug()]);
 
   if (availableYearKeys.length === 0) {
     document.getElementById('school-sections').innerHTML =
       `<p class="loading">School not found: <strong>${slug}</strong></p>`;
     return;
+  }
+
+  // Same mergeScorecard() the homepage uses (js/scorecard-merge.js) — CDS
+  // wins on collision — applied to every year's record for this school.
+  const scRecord = scBySlug.get(slug);
+  if (scRecord) {
+    for (const yearKey of availableYearKeys) {
+      yearRecords.set(yearKey, mergeScorecard([yearRecords.get(yearKey)], [scRecord])[0]);
+    }
   }
 
   const meta = SCHOOL_META[slug] ?? { color: '#333', banner: null };
@@ -1161,7 +1214,8 @@ async function init() {
       </div>` +
       renderAcademicProfileSection(s) +
       renderAdmissionFactorsSection(s) +
-      renderStudentBodySection(s);
+      renderStudentBodySection(s) +
+      renderOutcomesSection(s);
 
     renderGpaHistogram(document.getElementById('gpa-chart'), s.gpa_distribution, meta.color);
   }

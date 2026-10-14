@@ -415,9 +415,12 @@
             '/data/schools-2024-2025.json',
             '/data/schools-2025-2026.json',
         ];
-        // Scorecard data lives in its own file, kept separate from CDS data,
-        // and merged in here rather than pre-baked — only 2025-26 has one so far.
-        const SCORECARD_FILE = '/data/scorecard-2025-2026.json';
+        // Scorecard data lives in its own file per year, kept separate from
+        // CDS data and merged in here rather than pre-baked. Scorecard's
+        // latest.* fields return its one current snapshot regardless of
+        // which year's file asked for it, so which of these actually has a
+        // given school doesn't matter — fetch them all and merge the union.
+        const ALL_SCORECARD_FILES = ALL_YEAR_FILES.map(url => url.replace('/schools-', '/scorecard-'));
 
         // '/data/schools-2025-2026.json' -> '2025-2026'
         function yearKeyFromUrl(url) {
@@ -620,11 +623,23 @@
             }
 
             try {
-                const scRes = await fetch(SCORECARD_FILE);
-                if (scRes.ok) {
-                    const { schools: scSchools } = await scRes.json();
-                    merged = mergeScorecard(merged, scSchools);
+                const scResults = await Promise.all(ALL_SCORECARD_FILES.map(async url => {
+                    const res = await fetch(url);
+                    if (!res.ok) return [];
+                    const { schools } = await res.json();
+                    return schools;
+                }));
+                // Oldest-first like ALL_YEAR_FILES, though in practice a school
+                // in more than one of these has identical data in each (it's
+                // all the same "latest" snapshot) — last-one-wins is just for
+                // determinism, not because the values actually differ.
+                const scBySlug = new Map();
+                for (const scSchools of scResults) {
+                    for (const s of scSchools) {
+                        if (s.slug) scBySlug.set(s.slug, s);
+                    }
                 }
+                merged = mergeScorecard(merged, [...scBySlug.values()]);
             } catch (err) {
                 console.error('Scorecard fetch failed, showing CDS data without it:', err);
             }
