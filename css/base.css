@@ -2693,28 +2693,37 @@ body.page-resources .hero-banner {
         justify-content: center;
     }
 
+    /* display: contents (same trick as .nav-drawer itself on desktop) so
+       .header-search and .nav-corner-links become direct flex children
+       of .nav-drawer — true siblings of .left-side instead of nested a
+       level deeper — which is what lets the order property below move
+       the search bar above the nav links independent of either one. */
     .nav-right-group {
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        gap: 16px;
-        padding: 18px 24px 22px;
-        border-top: 1px solid var(--hdr-divider);
+        display: contents;
     }
 
     .nav-corner-links {
         flex-direction: column;
         align-items: center;
         gap: 12px;
+        padding: 16px 24px 22px;
+        border-top: 1px solid var(--hdr-divider);
     }
 
     /* Search collapses to icon-only everywhere else (see .header-search
        above) — inside the drawer there's no width pressure forcing that,
        so show the real input directly instead of making a visitor tap
-       twice (once to open the drawer, again to open the search). */
+       twice (once to open the drawer, again to open the search).
+       order: -1 puts it first — the highest element in the drawer,
+       above the nav links — with its own border-bottom standing in for
+       the divider that used to sit above this whole section when it
+       was below the nav links instead of above them. */
     .nav-drawer .header-search {
         width: 100%;
         align-self: stretch;
+        order: -1;
+        padding: 18px 24px 16px;
+        border-bottom: 1px solid var(--hdr-divider);
     }
 
     .nav-drawer .header-search-toggle {
