@@ -698,6 +698,30 @@
                 filtersToggle.setAttribute('aria-expanded', String(open));
             });
 
+            // Mobile only: physically relocates #category-filter-bar into
+            // the collapsible filters panel instead of leaving it in its
+            // desktop spot above .page-layout — CSS alone can't do this
+            // since the two positions are in unrelated branches of the
+            // DOM, not just different layouts of the same container. The
+            // node itself (not a clone) moves, so its existing click
+            // listener/active-category state carries over automatically
+            // wherever it currently lives. Re-runs on every breakpoint
+            // crossing, not just once on load, so resizing the window
+            // (or rotating a tablet) across 640px keeps it in the right
+            // place either direction.
+            const categoryFilterBar = document.getElementById('category-filter-bar');
+            const resultsCount = document.getElementById('results-count');
+            const mobileQuery = window.matchMedia('(max-width: 640px)');
+            function placeCategoryFilterBar(isMobile) {
+                if (isMobile) {
+                    controlsContainer.prepend(categoryFilterBar);
+                } else {
+                    resultsCount.parentElement.insertBefore(categoryFilterBar, resultsCount);
+                }
+            }
+            placeCategoryFilterBar(mobileQuery.matches);
+            mobileQuery.addEventListener('change', e => placeCategoryFilterBar(e.matches));
+
             // Delegated (not bound per-button) since renderCategoryBar() can
             // redraw this bar's contents — a plain per-button listener would
             // be lost the moment the markup it was attached to gets replaced.
