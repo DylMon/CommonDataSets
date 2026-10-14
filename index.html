@@ -305,14 +305,13 @@
         const PAGE_SIZE = 25;
         let currentPage = 1;
         let allSchools = [];
-        let searchQuery = '';
         let currentSort = 'us-news';
 
         // Common acronyms/nicknames that don't already appear as a substring
         // of the school's official name (so searching them wouldn't
-        // otherwise match anything) — keyed by slug, see renderList()'s
-        // search filter. Not exhaustive; add to a school's array as more
-        // come up.
+        // otherwise match anything) — keyed by slug, see the header
+        // search dropdown's schoolMatchesSearch() filter. Not exhaustive;
+        // add to a school's array as more come up.
         const SCHOOL_ALIASES = {
             'american': ['AU'],
             'asu': ['Arizona State'],
@@ -526,9 +525,7 @@
         }
 
         function renderList(sortKey) {
-            const q = searchQuery.toLowerCase();
-            let source = q ? allSchools.filter(s => schoolMatchesSearch(s, q)) : allSchools;
-            source = applyFilters(source);
+            const source = applyFilters(allSchools);
             const sorted = [...source].sort(SORTERS[sortKey]);
 
             // The rank badge always reflects a school's true position across
@@ -718,20 +715,14 @@
 
             searchInput.addEventListener('focus', updateSearchDropdown);
 
-            searchInput.addEventListener('input', e => {
-                searchQuery = e.target.value.trim();
-                currentPage = 1;
+            searchInput.addEventListener('input', () => {
                 updateSearchClear();
-                renderList(currentSort);
                 updateSearchDropdown();
             });
 
             searchClear.addEventListener('click', () => {
                 searchInput.value = '';
-                searchQuery = '';
-                currentPage = 1;
                 updateSearchClear();
-                renderList(currentSort);
                 searchInput.focus();
                 updateSearchDropdown();
             });
