@@ -1,26 +1,37 @@
 #!/usr/bin/env python3
 """
-fetch-scorecard-2025-2026.py — Resolve Scorecard IDs for all 80 schools in
-data/schools-2025-2026.json and fetch the same automatable College Scorecard
+fetch-scorecard-2025-2026.py — Resolve Scorecard IDs for every school in
+data/schools-{year}.json and fetch the same automatable College Scorecard
 fields already used for the original 33 (data/scorecard/manual.json), writing
-data/scorecard-2025-2026.json as its own file (kept separate from CDS data —
+data/scorecard-{year}.json as its own file (kept separate from CDS data —
 merged at render time by the frontend, not baked into one file).
+
+Originally hardcoded to 2025-2026 (hence the filename); takes --year now so
+it covers every year we have a schools-{year}.json for. Note this does NOT
+pull a historically-accurate Scorecard snapshot per year — the API's
+latest.* fields always return Scorecard's single most current figure
+regardless of which CDS year you're matching schools from (CDS admissions
+cycles and Scorecard's 6/10-years-after-entry earnings cohorts don't line
+up on the same calendar anyway). Running this per year just gets Scorecard
+data to schools whose most recent CDS happens to be an older year — it
+doesn't get you a year-over-year time series.
 
 Manual-only fields (us_news_rank, us_news_rank_year, test_policy,
 endowment_total, endowment_per_student) are NOT available from the API at
-all — they're hand-curated. They're carried over from manual.json for the
-25 schools that overlap with the original 33; the other 55 schools simply
-don't have this data available and are left null for those fields only.
+all — they're hand-curated. They're carried over from manual.json for
+schools that overlap with the original 33; everyone else simply doesn't
+have this data available and is left null for those fields only.
 
 Schools whose Scorecard ID can't be confidently resolved (ambiguous or no
 name+state match) are skipped entirely rather than guessed — printed at the
 end for manual review.
 
 Usage:
-    python scripts/fetch-scorecard-2025-2026.py
+    python scripts/fetch-scorecard-2025-2026.py [--year 2024-2025] [--force]
 
 Requires SCORECARD_API_KEY in .env (already set for this project).
 """
+import argparse
 import json
 import sys
 import time
@@ -38,9 +49,7 @@ if not API_KEY:
     sys.exit('SCORECARD_API_KEY not set in .env')
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-SCHOOLS_2526 = REPO_ROOT / 'data' / 'schools-2025-2026.json'
 MANUAL_JSON = REPO_ROOT / 'data' / 'scorecard' / 'manual.json'
-OUT_PATH = REPO_ROOT / 'data' / 'scorecard-2025-2026.json'
 
 BASE_URL = 'https://api.data.gov/ed/collegescorecard/v1/schools'
 
@@ -139,24 +148,34 @@ def resolve_id(slug, name, city, state):
 
 
 def main():
-    schools = json.loads(SCHOOLS_2526.read_text(encoding='utf-8'))['schools']
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--year', default='2025-2026', help='CDS year, e.g. 2024-2025')
+    parser.add_argument('--force', action='store_true', help='Re-fetch schools already in the output file')
+    args = parser.parse_args()
+
+    schools_path = REPO_ROOT / 'data' / f'schools-{args.year}.json'
+    out_path = REPO_ROOT / 'data' / f'scorecard-{args.year}.json'
+    if not schools_path.exists():
+        sys.exit(f'{schools_path} does not exist')
+
+    schools = json.loads(schools_path.read_text(encoding='utf-8'))['schools']
     manual = json.loads(MANUAL_JSON.read_text(encoding='utf-8'))
     manual_by_slug = {m['slug']: m for m in manual}
 
-    force = '--force' in sys.argv
+    force = args.force
     rows = []
     done_slugs = set()
-    if OUT_PATH.exists() and not force:
-        existing = json.loads(OUT_PATH.read_text(encoding='utf-8'))
+    if out_path.exists() and not force:
+        existing = json.loads(out_path.read_text(encoding='utf-8'))
         rows = existing.get('schools', [])
         done_slugs = {r['slug'] for r in rows}
         if done_slugs:
-            print(f'Resuming: {len(done_slugs)} school(s) already in {OUT_PATH.name}, skipping those.\n')
+            print(f'Resuming: {len(done_slugs)} school(s) already in {out_path.name}, skipping those.\n')
 
     unresolved = []
 
     def save():
-        OUT_PATH.write_text(
+        out_path.write_text(
             json.dumps({'generated': date.today().isoformat(), 'schools': rows}, indent=2),
             encoding='utf-8',
         )
@@ -219,7 +238,7 @@ def main():
             unresolved.append((slug, name, state, f'error: {e}'))
             save()
 
-    print(f'\nWrote {len(rows)} schools -> {OUT_PATH}')
+    print(f'\nWrote {len(rows)} schools -> {out_path}')
 
     if unresolved:
         print(f'\n{len(unresolved)} unresolved/errored — no Scorecard data, left out of output entirely:')

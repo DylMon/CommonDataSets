@@ -1,0 +1,53 @@
+{
+  "generated": "2026-10-13",
+  "schools": [
+    {
+      "slug": "colorado-school-of-mines",
+      "name": "Colorado School of Mines",
+      "scorecard_id": 126775,
+      "us_news_rank": null,
+      "us_news_rank_year": null,
+      "test_policy": null,
+      "endowment_total": null,
+      "endowment_per_student": null,
+      "graduation_rate_4yr": 0.8094,
+      "graduation_rate_6yr": 0.8343,
+      "median_earnings_6yr": 82950,
+      "median_earnings_10yr": 97335,
+      "median_debt_graduates": 23000,
+      "median_debt_all": 8750,
+      "pct_borrowing": null,
+      "pell_grant_pct": 0.1357,
+      "avg_net_price_0_30k": null,
+      "avg_net_price_30_48k": null,
+      "avg_net_price_48_75k": null,
+      "avg_net_price_75_110k": null,
+      "avg_net_price_110k_plus": null,
+      "student_faculty_ratio": 18
+    },
+    {
+      "slug": "stockton",
+      "name": "Stockton University",
+      "scorecard_id": 186876,
+      "us_news_rank": null,
+      "us_news_rank_year": null,
+      "test_policy": null,
+      "endowment_total": null,
+      "endowment_per_student": null,
+      "graduation_rate_4yr": 0.7024,
+      "graduation_rate_6yr": 0.7639,
+      "median_earnings_6yr": 48223,
+      "median_earnings_10yr": 57602,
+      "median_debt_graduates": 20500,
+      "median_debt_all": 8250,
+      "pct_borrowing": null,
+      "pell_grant_pct": 0.4228,
+      "avg_net_price_0_30k": null,
+      "avg_net_price_30_48k": null,
+      "avg_net_price_48_75k": null,
+      "avg_net_price_75_110k": null,
+      "avg_net_price_110k_plus": null,
+      "student_faculty_ratio": 17
+    }
+  ]
+}
