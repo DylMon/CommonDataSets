@@ -84,6 +84,13 @@ def norm(s):
 # "The " that no record's name field contains). Hand-verified overrides.
 NAME_OVERRIDES = {
     'penn-state': 'Pennsylvania State University',
+    # CDS name carries Hawaiian diacritics (ʻokina/macron) that Scorecard's
+    # own search doesn't index — plain ASCII finds exactly one match.
+    'hawaii-manoa': 'University of Hawaii at Manoa',
+    # "UC Merced" doesn't match the official IPEDS name closely enough for
+    # the fuzzy fallback to pick it out from two unrelated same-city
+    # schools (Merced College, Milan Institute-Merced).
+    'uc-merced': 'University of California-Merced',
 }
 
 # Administrative divisions that share a physical campus's city but aren't
