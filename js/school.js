@@ -208,38 +208,6 @@ const HISTORY_KEY = 'cds_recently_viewed';
 function getFavs()     { return new Set(JSON.parse(localStorage.getItem(FAV_KEY) ?? '[]')); }
 function saveFavs(set) { localStorage.setItem(FAV_KEY, JSON.stringify([...set])); }
 
-function renderFavoritesBox(allSchools) {
-  const slugs = [...getFavs()];
-  const box = document.getElementById('school-fav-box');
-  if (!box) return;
-  if (!slugs.length) { box.style.display = 'none'; return; }
-  box.style.display = '';
-  document.getElementById('school-fav-list').innerHTML = slugs.map(sl => {
-    const school = allSchools.find(s => s.slug === sl);
-    if (!school) return '';
-    return `<a class="history-item" href="/schools/${sl}/">
-      <img class="history-logo" src="${logoSrc(sl)}" alt="" onerror="${LOGO_ONERR}">
-      <span class="history-name">${school.name}</span>
-    </a>`;
-  }).filter(Boolean).join('');
-}
-
-function renderHistoryBox(allSchools) {
-  const slugs = JSON.parse(localStorage.getItem(HISTORY_KEY) ?? '[]');
-  const box = document.getElementById('school-history-box');
-  if (!box) return;
-  if (!slugs.length) { box.style.display = 'none'; return; }
-  box.style.display = '';
-  document.getElementById('school-history-list').innerHTML = slugs.map(sl => {
-    const school = allSchools.find(s => s.slug === sl);
-    if (!school) return '';
-    return `<a class="history-item" href="/schools/${sl}/">
-      <img class="history-logo" src="${logoSrc(sl)}" alt="" onerror="${LOGO_ONERR}">
-      <span class="history-name">${school.name}</span>
-    </a>`;
-  }).filter(Boolean).join('');
-}
-
 // ── Helpers ────────────────────────────────────────────────────────────
 
 function fmt(val, type) {
@@ -1040,11 +1008,9 @@ function shortYearLabel(key) {
   return `${start}–${end.slice(2)}`;
 }
 
-// Loads every year file once and returns both (a) the one-record-per-slug
-// list the favorites/history rail needs (same merge rule as index.html:
-// each school's single most recent record) and (b) every year *this*
-// slug specifically has a record for, keyed by year, so the switcher
-// below can offer them all rather than just the latest.
+// Loads every year file once and returns every year *targetSlug*
+// specifically has a record for, keyed by year, so the switcher below
+// can offer them all rather than just the latest.
 async function loadAllYears(targetSlug) {
   const results = await Promise.all(ALL_YEAR_FILES.map(async url => {
     const yearKey = yearKeyFromUrl(url);
@@ -1059,18 +1025,13 @@ async function loadAllYears(targetSlug) {
     }
   }));
 
-  const bySlug = new Map();
   const yearRecords = new Map();
   for (const { yearKey, schools } of results) {
-    for (const s of schools) {
-      if (!s.slug) continue;
-      bySlug.set(s.slug, s); // later (newer) years overwrite, same as index.html
-      if (s.slug === targetSlug) yearRecords.set(yearKey, s);
-    }
+    const s = schools.find(s => s.slug === targetSlug);
+    if (s) yearRecords.set(yearKey, s);
   }
 
   return {
-    allSchools: [...bySlug.values()],
     yearRecords,
     availableYearKeys: ALL_YEAR_FILES.map(yearKeyFromUrl).filter(k => yearRecords.has(k)),
   };
@@ -1091,7 +1052,7 @@ async function init() {
   recentHistory = [slug, ...recentHistory.filter(s => s !== slug)].slice(0, 5);
   localStorage.setItem(historyKey, JSON.stringify(recentHistory));
 
-  const [{ allSchools, yearRecords, availableYearKeys }, admissionPlans, outsideGpa, outsideCosts, noWaitlist] =
+  const [{ yearRecords, availableYearKeys }, admissionPlans, outsideGpa, outsideCosts, noWaitlist] =
     await Promise.all([loadAllYears(slug), loadAdmissionPlans(), loadOutsideGpa(), loadOutsideCosts(),
       fetch('/data/no-waitlist.json').then(r => (r.ok ? r.json() : {})).then(j => j.slugs ?? {}).catch(() => ({}))]);
 
@@ -1120,63 +1081,11 @@ async function init() {
     document.documentElement.style.setProperty('--brand-ink', lum > 0.6 ? '#111' : '#fff');
   }
 
-  // Favorites/history: a pullout tab pinned to the bottom of the hero
-  // banner (position: absolute inside #school-hero — see css/base.css)
-  // rather than an always-visible sidebar column, so #school-sections
-  // keeps the full content width and the control scrolls away with the
-  // hero instead of floating for the whole page. Reuses the same star
-  // glyph as .fav-btn elsewhere on the site.
-  //
-  // Created once, here, before the first renderForYear() call below —
-  // but #school-hero's own innerHTML gets fully replaced on every call
-  // (a year switch rebuilds the hero from scratch), which would silently
-  // detach these two if they were appended just once. renderForYear
-  // re-appends (not re-creates) them after that reset instead, which
-  // just moves the existing nodes back into place and preserves their
-  // listeners/open-closed state.
-  const railTab = document.createElement('button');
-  railTab.type = 'button';
-  railTab.className = 'rail-tab';
-  railTab.setAttribute('aria-label', 'Favorites and recently viewed');
-  railTab.setAttribute('aria-expanded', 'false');
-  railTab.innerHTML = `<svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>`;
-
-  const railDrawer = document.createElement('div');
-  railDrawer.className = 'rail-drawer';
-  railDrawer.innerHTML = `
-    <div class="rail-drawer-inner">
-      <div class="history-box" id="school-fav-box" style="display:none">
-        <div class="history-title">Favorites</div>
-        <div id="school-fav-list"></div>
-      </div>
-      <div class="history-box" id="school-history-box" style="display:none">
-        <div class="history-title">History</div>
-        <div id="school-history-list"></div>
-      </div>
-    </div>`;
-
-  function setDrawerOpen(open) {
-    railDrawer.classList.toggle('open', open);
-    railTab.setAttribute('aria-expanded', String(open));
-  }
-
-  railTab.addEventListener('click', () => setDrawerOpen(!railDrawer.classList.contains('open')));
-  document.addEventListener('click', e => {
-    if (!e.target.closest('.rail-drawer') && !e.target.closest('.rail-tab')) setDrawerOpen(false);
-  });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') setDrawerOpen(false); });
-
-  // Re-render both rail boxes and hide the tab entirely (closing the
-  // drawer too) when the visitor has neither favorites nor history yet.
-  // Hoisted so the hero favorite button can call it too.
-  function refreshRail() {
-    renderFavoritesBox(allSchools);
-    renderHistoryBox(allSchools);
-    const railEmpty = ['school-fav-box', 'school-history-box']
-      .every(id => document.getElementById(id).style.display === 'none');
-    railTab.style.display = railEmpty ? 'none' : '';
-    if (railEmpty) setDrawerOpen(false);
-  }
+  // Favorites/history used to also show here via a pullout rail tab/
+  // drawer pinned to the hero — removed now that the header search
+  // dropdown (see js/header-search.js) shows the same two lists on every
+  // page. hero-fav-btn below still lets a visitor favorite/unfavorite
+  // this school from its own page.
 
   // Everything that depends on which year is currently selected — rerun
   // in full each time the switcher picks a different one. The one-time
@@ -1200,11 +1109,6 @@ async function init() {
 
     const heroEl = document.getElementById('school-hero');
     heroEl.innerHTML = renderHero(s, slug, meta);
-    // innerHTML above just wiped out any previous children — re-append
-    // (not re-create) the tab/drawer so they land back inside the new
-    // content instead of staying orphaned off in the detached old one.
-    heroEl.appendChild(railTab);
-    heroEl.appendChild(railDrawer);
     document.getElementById('stats-strip').innerHTML = renderHeroPill(s, slug, meta);
     // .year-bar-strip and .quick-facts-strip aren't in the static HTML
     // template (only school-hero and stats-strip are) — inserted here so
@@ -1233,7 +1137,6 @@ async function init() {
         btn.title = 'Remove from favorites';
       }
       saveFavs(favs);
-      refreshRail();
     });
 
     // Re-wired on every render since .stats-strip (hence #year-switcher)
@@ -1279,8 +1182,6 @@ async function init() {
   layout.className = 'school-page-layout';
   sectionsEl.parentElement.insertBefore(layout, sectionsEl);
   layout.appendChild(sectionsEl);
-
-  refreshRail();
 
   const back = document.createElement('a');
   back.className = 'floating-back';

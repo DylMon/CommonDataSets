@@ -179,16 +179,6 @@
             </div>
             </div><!-- /.sidebar -->
             <div id="school-list"><p class="loading">Loading…</p></div>
-            <div class="right-sidebar">
-                <div class="history-box" id="favorites-box" style="display:none">
-                    <div class="history-title">Favorites</div>
-                    <div id="favorites-list"></div>
-                </div>
-                <div class="history-box" id="history-box" style="display:none">
-                    <div class="history-title">History</div>
-                    <div id="history-list"></div>
-                </div>
-            </div>
             </div><!-- /.page-layout -->
         </div>
         <footer class="site-footer">
@@ -437,50 +427,6 @@
             return `${start}–${end.slice(2)}`;
         }
 
-        function renderFavoritesBox() {
-            const slugs = [...favorites];
-            const box = document.getElementById('favorites-box');
-            if (!slugs.length) { box.style.display = 'none'; return; }
-            box.style.display = '';
-            document.getElementById('favorites-list').innerHTML = slugs.map(slug => {
-                const school = allSchools.find(s => s.slug === slug);
-                if (!school) return '';
-                return `<a class="history-item" href="/schools/${slug}/">
-                    <img class="history-logo" src="${logoSrc(slug)}" alt="" onerror="${LOGO_ONERR}">
-                    <span class="history-name">${school.name}</span>
-                </a>`;
-            }).filter(Boolean).join('');
-        }
-
-        function renderHistory() {
-            const slugs = JSON.parse(localStorage.getItem('cds_recently_viewed') ?? '[]');
-            const box = document.getElementById('history-box');
-            if (!slugs.length) { box.style.display = 'none'; return; }
-            box.style.display = '';
-            document.getElementById('history-list').innerHTML = slugs.map(slug => {
-                const school = allSchools.find(s => s.slug === slug);
-                if (!school) return '';
-                return `<a class="history-item" href="/schools/${slug}/">
-                    <img class="history-logo" src="${logoSrc(slug)}" alt="" onerror="${LOGO_ONERR}">
-                    <span class="history-name">${school.name}</span>
-                </a>`;
-            }).filter(Boolean).join('');
-        }
-
-        // Collapses the whole .right-sidebar (not just its two inner boxes)
-        // when neither has content — otherwise a first-time visitor with no
-        // favorites/history yet still pays its reserved width on every card
-        // row, which is cramped enough at some breakpoints to crush the
-        // school-name column down to a few characters.
-        function refreshRightSidebar() {
-            renderFavoritesBox();
-            renderHistory();
-            const sidebar = document.querySelector('.right-sidebar');
-            const empty = ['favorites-box', 'history-box']
-                .every(id => document.getElementById(id).style.display === 'none');
-            sidebar.style.display = empty ? 'none' : '';
-        }
-
         function renderDetailPanel(s) {
             const tuitionVal = s.tuition_out_of_state ?? s.tuition;
             // One row per round family (ED, EA/REA, RD): at most three, the
@@ -684,7 +630,6 @@
                 `Official Common Data Set submissions gathered directly from ${allSchools.length} top US universities, giving students and families one place to compare verified admissions statistics, test score ranges, cost of attendance, and enrollment data without the noise.`;
             renderCategoryBar();
             renderList(currentSort);
-            refreshRightSidebar();
         }
 
         async function init() {
@@ -825,7 +770,6 @@
                     btn.title = 'Remove from favorites';
                 }
                 saveFavorites();
-                refreshRightSidebar();
                 if (currentSort === 'favorites') renderList('favorites');
             });
 
@@ -1102,8 +1046,6 @@
         // therefore fires) before this one — the header exists by the time
         // init() looks for #school-search.
         document.addEventListener('DOMContentLoaded', init);
-
-        window.addEventListener('pageshow', refreshRightSidebar);
 
         // CSS `position: sticky` on .sidebar (see base.css) pins it under
         // the header, but once it's taller than the room left below the

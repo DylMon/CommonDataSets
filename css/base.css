@@ -16,11 +16,6 @@
     /* .nav-wrapper's min-height (the header is a single orange bar).
        Used to offset sticky sidebars/pickers below the fixed header. */
     --header-height: 84px;
-    /* .rail-tab's diameter (it's a circle). Pinned to #school-hero
-       (position: relative), not the viewport, so it scrolls away with
-       the hero rather than floating for the whole page. .rail-drawer
-       shares its top so it pops out from directly underneath it. */
-    --rail-tab-h: 44px;
 }
 
 html {
@@ -1139,10 +1134,11 @@ body.page-resources .hero-banner {
    drives its own dropdown, not this grid) so both coexist: this one
    still filters #school-list directly via searchQuery/renderList().
    Same width formula as a school card: content-wrapper's inner width
-   minus the two 230px sidebars and their two 20px gaps (see .sidebar /
-   .page-layout). */
+   minus the one remaining 230px sidebar and its 20px gap (see .sidebar
+   / .page-layout — .right-sidebar is gone now that favorites/history
+   live in the header search dropdown instead). */
 .search-bar {
-    width: calc(100% - 500px);
+    width: calc(100% - 250px);
     max-width: none;
     margin: 0 auto 8px;
 }
@@ -1309,11 +1305,12 @@ body.page-resources .hero-banner {
     padding: 14px 16px;
 }
 
-/* Favorites/history rail — compare page only now (see compare.css's
-   .compare-layout .right-sidebar). School pages used this same class
-   until it was replaced below by .rail-tab/.rail-drawer, a pullout
-   instead of an always-visible column; left as-is here since compare's
-   layout/needs weren't part of that change. */
+/* Favorites/history rail — compare page only (see compare.css's
+   .compare-layout .right-sidebar). The homepage and school pages both
+   used this same class once too; both have since moved their favorites/
+   history display into the header search dropdown instead (see
+   js/header-search.js), leaving this as compare's own standalone
+   right-hand column. */
 .right-sidebar {
     width: 230px;
     flex-shrink: 0;
@@ -1324,120 +1321,6 @@ body.page-resources .hero-banner {
     top: calc(var(--header-height) + 20px);
     align-self: flex-start;
     transition: top 0.25s ease;
-}
-
-/* Positioning context for .rail-tab/.rail-drawer below — they're
-   children of this wrapper (not document.body), so "position: absolute"
-   on them is relative to it. #school-hero itself is stable across a
-   year switch (only its content — the inner .school-hero div — gets
-   replaced), unlike that inner div, so it's the anchor rather than the
-   element that actually owns the banner's own height/background. */
-#school-hero {
-    position: relative;
-}
-
-/* Favorites/history pullout tab (school pages) — pinned to the bottom
-   of the hero banner (#school-hero) rather than the viewport, so it
-   scrolls away with the hero instead of floating for the whole page.
-   Reuses the same star glyph as .fav-btn so it reads as "your
-   favorites live here" at a glance. Inset 12px from the hero's bottom-
-   right corner (not flush) so it has breathing room from both edges
-   instead of sitting jammed into them.
-
-   Styled like the header's Contact Us button (.cta-outline .nav-corner-
-   links a:last-child in this file): an outlined pill that fills solid
-   orange on hover. Round here (border-radius: 50%) rather than a text
-   pill since there's no label, just the icon.
-
-   Shares .rail-drawer's top (see below) and sits above it in the
-   stacking order (z-index 9999 > drawer's 9998) — the drawer pops out
-   from underneath it rather than starting at the tab's bottom edge, so
-   the tab reads as a fixed control the drawer slides out from behind,
-   not a separate piece stacked on top of it. Keeps its own background/
-   border regardless, so it's still a clearly-clickable, visible
-   control even while the drawer itself is collapsed to nothing and
-   closed. */
-.rail-tab {
-    position: absolute;
-    top: calc(100% + 12px);
-    right: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: var(--rail-tab-h);
-    height: var(--rail-tab-h);
-    background: #fff;
-    border: 1.5px solid #ed6d0b;
-    border-radius: 50%;
-    color: #ed6d0b;
-    cursor: pointer;
-    box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 9999;
-    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-}
-
-.rail-tab:hover {
-    background: #ed6d0b;
-    border-color: #ed6d0b;
-    color: #fff;
-}
-
-.rail-tab svg {
-    width: 20px;
-    height: 20px;
-    fill: currentColor;
-}
-
-/* Same top/right as .rail-tab above (not below it) — the tab's higher
-   z-index means it visually sits in front of this box's top-right
-   corner, so the drawer reads as popping out from underneath the tab
-   as it animates open (max-width: 0 -> full) rather than sliding in
-   from off-screen via transform, or starting at the tab's bottom edge.
-   The right edge never moves in either state, so it's always anchored
-   at exactly the tab's position. overflow-x hidden is what makes the
-   collapse actually invisible (not just clipped-looking) — combined
-   with the global border-box reset, max-width: 0 forces the rendered
-   box, border included, to true zero width.
-
-   .rail-drawer-inner (below) holds the fixed 230px width + padding
-   that used to live directly on this element — needed as a separate
-   child so collapsing *this* element's max-width doesn't also squeeze
-   and reflow the content itself before it's clipped.
-
-   max-height is a generic "don't grow absurdly tall and bury the
-   content below the hero" cap, not tuned against any specific fixed
-   element the way it was when this was viewport-pinned — pinned to
-   the hero now, it scrolls out of view with the page rather than
-   competing with .print-fab for the same on-screen space. Still
-   vh-based, so a short viewport still shrinks it automatically, with
-   overflow-y scrolling whatever doesn't fit. */
-.rail-drawer {
-    position: absolute;
-    top: calc(100% + 12px);
-    right: 12px;
-    max-width: 0;
-    max-height: calc(100vh - 220px);
-    overflow-x: hidden;
-    overflow-y: auto;
-    background: #FFFCFA;
-    border: 2px solid #d0d0d0;
-    box-shadow: -2px 2px 16px rgba(0, 0, 0, 0.15);
-    z-index: 9998;
-    transition: max-width 0.2s ease;
-}
-
-.rail-drawer.open {
-    max-width: calc(100vw - 32px);
-}
-
-.rail-drawer-inner {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width: 230px;
-    max-width: calc(100vw - 32px);
-    padding: 16px;
-    box-sizing: border-box;
 }
 
 /* History / Favorites boxes */
@@ -1804,10 +1687,10 @@ body.page-resources .hero-banner {
     gap: 20px;
 }
 
-/* Single column now that favorites/history live in the .rail-tab/
-   .rail-drawer pullout (fixed overlays, outside this layout entirely)
-   instead of a right-hand grid column — #school-sections gets the full
-   width this container has to give. */
+/* Single column — favorites/history for this school's own page live in
+   the header search dropdown now (see js/header-search.js), not a
+   right-hand column here, so #school-sections gets the full width this
+   container has to give. */
 .school-page-layout {
     width: 100%;
     max-width: 1440px;
@@ -2581,10 +2464,9 @@ body.page-resources .hero-banner {
     .detail-section:nth-child(odd) { padding-left: 0; }
 }
 
-/* The rail is a fixed overlay now (.rail-tab/.rail-drawer), not a layout
-   column, so #school-sections no longer competes with it for width —
-   just narrow the container's own max-width to match this tier's other
-   content-width adjustments. */
+/* #school-sections is single-column with no competing rail column (see
+   .school-page-layout above) — just narrow the container's own
+   max-width to match this tier's other content-width adjustments. */
 @media (max-width: 1040px) {
     .school-page-layout {
         max-width: 1000px;
@@ -2608,9 +2490,9 @@ body.page-resources .hero-banner {
     }
 
     /* Same formula as the default .search-bar rule, updated for this
-       tier's narrower 160px sidebars + 14px gaps (160+14+160+14 = 348). */
+       tier's narrower 160px sidebar + 14px gap (160+14 = 174). */
     .search-bar {
-        width: calc(100% - 348px);
+        width: calc(100% - 174px);
     }
 
     /* At 160px even the shortest labels ("Student Body") run past the
