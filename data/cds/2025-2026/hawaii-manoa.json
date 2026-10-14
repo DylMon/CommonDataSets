@@ -22,7 +22,7 @@
   "waitlist_offered": null,
   "waitlist_accepted": null,
   "waitlist_admitted": null,
-  "ea_ed_type": null,
+  "ea_ed_type": "None",
   "ea_ed_deadline": null,
   "ea_ed_notification": null,
   "ea_apps_received": null,
@@ -120,8 +120,8 @@
     "gpa_325_349": 0.162,
     "gpa_300_324": 0.112,
     "gpa_250_299": 0.05,
-    "gpa_200_249": null,
-    "gpa_100_199": null
+    "gpa_200_249": 0,
+    "gpa_100_199": 0
   },
   "admission_factors": {
     "rigor": "very_important",

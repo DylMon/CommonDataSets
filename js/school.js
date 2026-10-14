@@ -2,6 +2,8 @@ import { GPA_BUCKETS, renderGpaHistogram, normalizeGpaDistribution } from './cha
 import { loadAdmissionPlans, cdsRounds, roundFamily } from './admission-plans.js?v=1';
 import { loadOutsideGpa } from './outside-gpa.js?v=1';
 import { loadOutsideCosts, withOutsideCost, isOutsideCost } from './outside-costs.js?v=1';
+import { loadOutsideTests, withOutsideTest, isOutsideTest } from './outside-tests.js?v=1';
+import { withSatEstimate, SAT_ESTIMATE_NOTE } from './sat-estimate.js?v=1';
 
 const SCHOOL_META = {
   'mit': { color: '#a41931', banner: 'mit.jpg', y: 50, credit: { author: 'Scutter', license: 'CC BY-NC-ND 2.0', url: 'https://www.flickr.com/photos/scutter/38005464/' } },
@@ -193,6 +195,17 @@ const SCHOOL_META = {
   'loyola-marymount': { color: '#80777a', banner: 'loyola-marymount.jpg', y: 50, credit: { author: 'Rami Ammoun', license: 'CC BY 3.0', url: 'https://commons.wikimedia.org/wiki/File:Downtown_La_At_Sunrise_(250094139).jpeg' } },
   'suny-esf': { color: '#a8aea7', banner: 'suny-esf.jpg', y: 55, credit: { author: 'SUNY ESF', license: 'CC BY-NC-SA 2.0', url: 'https://www.flickr.com/photos/sunyesf/11424070635/' } },
   'depaul': { color: '#6c675d', banner: 'depaul.jpg', y: 50, credit: { author: 'quinntheislander', license: 'CC0', url: 'https://commons.wikimedia.org/wiki/File:Chicago-illinois-skyline-skyscrapers-161963.jpg' } },
+  'alabama-birmingham': { color: '#1e6b52', banner: 'alabama-birmingham.jpg', y: 45, credit: { author: 'Jaymay', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:University_of_Alabama_at_Birmingham_Campus_from_Vulcan.jpg' } },
+  'byu': { color: '#002e5d', banner: 'byu.jpg', y: 18, credit: { author: 'Pastelitodepapa', license: 'CC0', url: 'https://commons.wikimedia.org/wiki/File:BYU_mountain_view.JPG' } },
+  'georgemason': { color: '#006633', banner: 'georgemason.jpg', y: 97, credit: { author: 'Tony Webster', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:George_Mason_University_-_Arlington,_Virginia_(14306711841).jpg' } },
+  'gonzaga': { color: '#041e42', banner: 'gonzaga.jpg', y: 50, credit: { author: 'SCUMATT', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Gonzaga_University_Library.jpg' } },
+  'hawaii-manoa': { color: '#024731', banner: 'hawaii-manoa.jpg', y: 42, credit: { author: 'Sdkb', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Manoa_from_ridge.jpg' } },
+  'james-madison': { color: '#450084', banner: 'james-madison.jpg', y: 34, credit: { author: 'Ben Schumin', license: 'CC BY-SA 2.5', url: 'https://commons.wikimedia.org/wiki/File:Keezell_Hall_(JMU).jpg' } },
+  'rutgers-new-brunswick': { color: '#cc0033', banner: 'rutgers-new-brunswick.jpg', y: 60, credit: { author: 'Bjoertvedt', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:New_Brunswick_-_Raritan_River_IMG_2299_Rutgers_University.jpg' } },
+  'syracuse': { color: '#f76900', banner: 'syracuse.jpg', y: 36, credit: { author: 'Kiran891', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Hall_of_Languages_Syracuse_University.jpg' } },
+  'texas-tech': { color: '#cc0000', banner: 'texas-tech.jpg', y: 58, credit: { author: 'Johan Hendrikse', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:TTU_English_Philosophy_Building.jpg' } },
+  'uarizona': { color: '#0c234b', banner: 'uarizona.jpg', y: 50, credit: { author: 'Michael Barera', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:University_of_Arizona_May_2019_39_(Meinel_Optical_Sciences).jpg' } },
+  'ucincinnati': { color: '#e00122', banner: 'ucincinnati.jpg', y: 75, credit: { author: 'Abhijith Athreya Mysore Gopinath', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Tangeman_University_Center_at_the_University_of_Cincinnati.jpg' } },
 };
 
 // Logos live at images/logos/<slug>.png. A few schools have none yet; the
@@ -416,8 +429,42 @@ const OUTSIDE_GPA_NOTE = {
 };
 
 function outsideGpaMark(source) {
-  const text = OUTSIDE_GPA_NOTE[source];
+  return outsideMark(OUTSIDE_GPA_NOTE[source]);
+}
+
+function outsideMark(text) {
   return `<button type="button" class="stat-info gpa-source" aria-label="${escapeHtml(text)}">≈<span class="stat-info-tip" role="tooltip">${escapeHtml(text)}</span></button>`;
+}
+
+// SAT/ACT ranges from data/outside-tests.json get the same "≈" as an
+// outside GPA, with a tip saying where they came from.
+// An entry with a source URL (or marked official) is the school's own
+// published figures; any other came from outside sources.
+function outsideTestNote(s) {
+  const o = s._testsOutside;
+  const from = o.source || o.official
+    ? `From the school's published figures${o.year ? ` (${o.year})` : ''}, not its Common Data Set.`
+    : "From outside sources, not the school's Common Data Set.";
+  return `${from}${o.note ? ' ' + o.note : ''}`;
+}
+
+function outsideTestSourceLine(s) {
+  const o = s._testsOutside;
+  const where = o.source
+    ? `Composite ranges from the school's <a href="${escapeHtml(o.source)}" target="_blank" rel="noopener">admissions page</a>, not its Common Data Set.`
+    : o.official
+      ? 'Composite ranges from figures the school has published, not its Common Data Set.'
+      : 'Composite ranges from outside sources, not the school\'s Common Data Set.';
+  return `<p class="cost-source"><span class="gpa-mark" aria-hidden="true">≈</span>
+        <span>${where}${o.note ? ' ' + escapeHtml(o.note) : ''}</span></p>`;
+}
+
+// A range value for the quick-facts strip, with the "≈" when both ends came
+// from outside the CDS.
+function rangeVal(s, f25, f75) {
+  if (s[f25] == null || s[f75] == null) return '<span class="stat-na">N/A</span>';
+  const range = `${s[f25]}–${s[f75]}`;
+  return isOutsideTest(s, f25, f75) ? `<span class="stat-anchor">${outsideMark(outsideTestNote(s))}${range}</span>` : range;
 }
 
 // A cost from the school's own cost page (data/outside-costs.json) rather
@@ -431,19 +478,13 @@ function renderQuickFacts(s, outside = null) {
     // hangs off its left edge (see .stat-anchor in school-template.css).
     : outside ? `<span class="stat-anchor">${outsideGpaMark(outside.source)}${Number(outside.gpa).toFixed(2)}</span>`
     : 'Not reported';
-  const satVal   = s.sat_composite_25 != null && s.sat_composite_75 != null
-    ? `${s.sat_composite_25}–${s.sat_composite_75}`
-    : '<span class="stat-na">N/A</span>';
-
-  const act25 = s.act_composite_25;
-  const act75 = s.act_composite_75;
-
   const tuitionOOS = s.tuition_out_of_state ?? s.tuition;
 
   const chips = [
     ['Acceptance Rate', s.acceptance_rate != null ? (s.acceptance_rate * 100).toFixed(1) + '%' : '<span class="stat-na">N/A</span>'],
-    ['SAT Range',       satVal],
-    ['ACT Range',       act25 != null && act75 != null ? `${act25}–${act75}` : '<span class="stat-na">N/A</span>'],
+    [s._satEstimated ? `<span class="stat-anchor">SAT Range${infoTip(SAT_ESTIMATE_NOTE)}</span>` : 'SAT Range',
+                        rangeVal(s, 'sat_composite_25', 'sat_composite_75')],
+    ['ACT Range',       rangeVal(s, 'act_composite_25', 'act_composite_75')],
     // The CDS never says whether a school's average GPA is weighted or
     // unweighted (avg_gpa_weighted is just the column name), so don't claim either.
     [`<span class="stat-anchor">Avg GPA${infoTip('The Common Data Set does not state whether this GPA is weighted or unweighted.')}</span>`,
@@ -782,7 +823,7 @@ function renderAcademicProfileSection(s) {
     <div>
       <h3 class="subsection-title">SAT — 25th to 75th Percentile</h3>
       <div class="score-rows">
-        ${scoreBarHtml('Composite', s.sat_composite_25, s.sat_composite_75, 400, 1600)}
+        ${scoreBarHtml(s._satEstimated ? `<span class="stat-anchor">Composite${infoTip(SAT_ESTIMATE_NOTE)}</span>` : 'Composite', s.sat_composite_25, s.sat_composite_75, 400, 1600)}
         ${scoreBarHtml('Reading &amp; Writing', s.sat_reading_25, s.sat_reading_75, 200, 800)}
         ${scoreBarHtml('Math', s.sat_math_25, s.sat_math_75, 200, 800)}
       </div>
@@ -792,6 +833,7 @@ function renderAcademicProfileSection(s) {
         ${scoreBarHtml('Math', s.act_math_25, s.act_math_75, 1, 36)}
         ${scoreBarHtml('English', s.act_english_25, s.act_english_75, 1, 36)}
       </div>
+      ${s._testsOutside ? outsideTestSourceLine(s) : ''}
       ${submissionHtml}
       ${classRankHtml(s)}
     </div>`;
@@ -1091,8 +1133,8 @@ async function init() {
   recentHistory = [slug, ...recentHistory.filter(s => s !== slug)].slice(0, 5);
   localStorage.setItem(historyKey, JSON.stringify(recentHistory));
 
-  const [{ allSchools, yearRecords, availableYearKeys }, admissionPlans, outsideGpa, outsideCosts, noWaitlist] =
-    await Promise.all([loadAllYears(slug), loadAdmissionPlans(), loadOutsideGpa(), loadOutsideCosts(),
+  const [{ allSchools, yearRecords, availableYearKeys }, admissionPlans, outsideGpa, outsideCosts, outsideTests, noWaitlist] =
+    await Promise.all([loadAllYears(slug), loadAdmissionPlans(), loadOutsideGpa(), loadOutsideCosts(), loadOutsideTests(),
       fetch('/data/no-waitlist.json').then(r => (r.ok ? r.json() : {})).then(j => j.slugs ?? {}).catch(() => ({}))]);
 
   if (availableYearKeys.length === 0) {
@@ -1106,6 +1148,11 @@ async function init() {
   // Current prices from the school's own cost page fill the cost fields its
   // latest CDS left blank (older years keep exactly what their CDS said).
   yearRecords.set(latestAvailableKey, withOutsideCost(yearRecords.get(latestAvailableKey), outsideCosts));
+  // Same for SAT/ACT ranges the school publishes itself (data/outside-tests.json).
+  yearRecords.set(latestAvailableKey, withOutsideTest(yearRecords.get(latestAvailableKey), outsideTests));
+  // Any year whose CDS has SAT section scores but no composite gets an
+  // estimated composite (marked with an ⓘ; see js/sat-estimate.js).
+  for (const [key, rec] of yearRecords) yearRecords.set(key, withSatEstimate(rec));
   // Its CDS says it doesn't use a waitlist: the Waitlist box says so.
   if (noWaitlist[slug]) yearRecords.set(latestAvailableKey, { ...yearRecords.get(latestAvailableKey), _noWaitlist: true });
   let currentYearKey = latestAvailableKey;

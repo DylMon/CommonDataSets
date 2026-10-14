@@ -22,7 +22,7 @@
   "waitlist_offered": null,
   "waitlist_accepted": null,
   "waitlist_admitted": null,
-  "ea_ed_type": null,
+  "ea_ed_type": "None",
   "ea_ed_deadline": null,
   "ea_ed_notification": null,
   "ea_apps_received": null,

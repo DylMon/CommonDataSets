@@ -40,8 +40,7 @@
     "usma-west-point": {
       "year": "2026-27",
       "source": "https://www.westpoint.edu/admissions/tuition-and-service-commitment",
-      "values": { "tuition_in_state": 0, "tuition_out_of_state": 0, "required_fees": 0, "room_and_board": 0, "application_fee": 0 },
-      "note": "West Point charges no tuition, fees, or room and board; cadets are paid a salary."
+      "values": { "tuition_in_state": 0, "tuition_out_of_state": 0, "required_fees": 0, "room_and_board": 0, "application_fee": 0 }
     },
     "ucla": {
       "year": "2026-27",
@@ -91,8 +90,7 @@
     "uidaho": {
       "year": "2026-27",
       "source": "https://www.uidaho.edu/financial-aid/cost-of-attendance",
-      "values": { "tuition_in_state": 9824, "tuition_out_of_state": 29300, "room_and_board": 12995, "books_supplies": 1260, "other_expenses": 6712 },
-      "note": "Idaho bills tuition and fees as one charge, so the tuition shown includes fees."
+      "values": { "tuition_in_state": 9824, "tuition_out_of_state": 29300, "room_and_board": 12995, "books_supplies": 1260, "other_expenses": 6712 }
     },
     "wisconsin-madison": {
       "year": "2026-27",
@@ -209,6 +207,26 @@
     "michigan-tech": {
       "values": { "application_fee": "$0 domestic, $35 international" },
       "quiet": true
+    },
+    "georgemason": {
+      "year": "2026-27",
+      "source": "https://www.gmu.edu/admissions-aid/cost-attendance",
+      "values": { "tuition_in_state": 14807, "tuition_out_of_state": 39803, "required_fees": 350, "room_and_board": 15020, "books_supplies": 1380, "other_expenses": 3764 }
+    },
+    "james-madison": {
+      "year": "2026-27",
+      "source": "https://www.jmu.edu/admissions/tuition-financial-aid-and-scholarships.shtml",
+      "values": { "tuition_in_state": 14768, "tuition_out_of_state": 32576, "room_and_board": 15220 }
+    },
+    "texas-tech": {
+      "year": "2026-27",
+      "source": "https://www.depts.ttu.edu/financialaid/costtoattend.php",
+      "values": { "tuition_in_state": 11852, "tuition_out_of_state": 24451, "room_and_board": 12000 }
+    },
+    "ucincinnati": {
+      "year": "2026-27",
+      "source": "https://www.uc.edu/about/bursar/tuition-fees.html",
+      "values": { "tuition_in_state": 14824, "tuition_out_of_state": 30158, "room_and_board": 16511, "books_supplies": 1300, "other_expenses": 8424, "other_expenses_out_of_state": 9424 }
     }
   }
 }

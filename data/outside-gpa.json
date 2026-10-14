@@ -90,6 +90,10 @@
       "gpa": 4,
       "source": "school"
     },
+    "james-madison": {
+      "gpa": 3.65,
+      "source": "estimate"
+    },
     "lehigh": {
       "gpa": 3.89,
       "source": "estimate"
@@ -125,6 +129,10 @@
     "rutgers-camden": {
       "gpa": 3.45,
       "source": "estimate"
+    },
+    "rutgers-new-brunswick": {
+      "gpa": 3.9,
+      "source": "school"
     },
     "rutgers-newark": {
       "gpa": 3.45,

@@ -46,7 +46,7 @@ body {
    (school cards, detail panels, comparison tables) — lighter than the
    surrounding black text so a real value still reads as the primary
    content. Matches .cmp-factor-na's existing #999. !important because it
-   nests inside value containers (e.g. .detail-kv span:last-child) whose
+   nests inside value containers (e.g. .detail-kv > span:last-child) whose
    own descendant-span color rules would otherwise outrank it. */
 .stat-na {
     color: #999 !important;
@@ -1754,7 +1754,7 @@ body.header-hidden .school-page-layout .right-sidebar {
 
 /* Label + value both in the data (sans) face; only the .detail-section-title
    headers above them stay in the display serif. */
-.detail-kv span:first-child {
+.detail-kv > span:first-child {
     color: #000;
     font-weight: 300;
     white-space: nowrap;
@@ -1763,7 +1763,15 @@ body.header-hidden .school-page-layout .right-sidebar {
     min-width: 0;
 }
 
-.detail-kv span:last-child {
+/* Non-CDS asterisk on a label: kept on the baseline (the glyph already sits
+   high) because the label's overflow: hidden would clip a superscript;
+   line-height 0 keeps the larger glyph from making the row taller. */
+.detail-kv > span:first-child .gpa-mark {
+    vertical-align: baseline;
+    line-height: 0;
+}
+
+.detail-kv > span:last-child {
     font-weight: 600;
     color: #000;
     text-align: right;
@@ -2170,6 +2178,27 @@ body.header-hidden .school-page-layout .right-sidebar {
     border: 1px solid #e8e8e8;
     box-shadow: 0 4px 16px rgba(0,0,0,0.12);
     padding: 32px;
+}
+
+/* Contact page: both boxes are capped and centered rather than spanning the
+   full content width, so the Zoho form (whose fields are ~450px wide on a
+   gray page) doesn't sit in a wide band of empty gray. */
+.contact-page .info-box {
+    max-width: 740px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Second box holding the embedded form. Less padding than .info-box since
+   the form's own page already has inner margins. */
+.contact-form-box {
+    margin-top: 24px;
+    padding: 16px;
+}
+.contact-form-box iframe {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
 }
 
 .info-updated {
