@@ -162,12 +162,53 @@ body.page-compare {
     text-decoration: none;
 }
 
+/* Wraps .left-side + .nav-right-group — exists purely so the mobile
+   hamburger drawer (see the max-width: 1250px block below) has one
+   element to collapse into a panel. display: contents here (desktop/
+   tablet) removes this wrapper from layout entirely, so its two
+   children land directly in .nav-wrapper's grid at their own explicit
+   grid-column values exactly as if it weren't there — zero effect on
+   that layout. Only the mobile breakpoint turns it into a real,
+   independently-positioned element. */
+.nav-drawer {
+    display: contents;
+}
+
+/* Hamburger button that opens .nav-drawer below the mobile breakpoint —
+   hidden above it (see .nav-hamburger display: flex in that block).
+   Same outlined-circle treatment as .header-search-toggle. */
+.nav-hamburger {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 1.5px solid #fff;
+    background: none;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-hamburger svg {
+    width: 20px;
+    height: 20px;
+}
+
+.nav-hamburger:hover {
+    background: var(--hdr-accent);
+    border-color: var(--hdr-accent);
+    color: var(--hdr-on-accent);
+}
+
 /* Redundant shortcuts to /info/ and /contact/ (both also live in the
    footer). Plain text, side by side, no box/border. */
-/* Wraps .header-search (homepage only) + .nav-corner-links — this is
-   what actually occupies grid-column 3 now, so the search bar can sit
-   in the gap to the left of the links and grow/shrink to fill whatever
-   room is left, rather than the links alone owning that column. */
+/* Wraps .header-search + .nav-corner-links — this is what actually
+   occupies grid-column 3 now, so the search bar can sit in the gap to
+   the left of the links and grow/shrink to fill whatever room is left,
+   rather than the links alone owning that column. */
 .nav-right-group {
     grid-column: 3;
     justify-self: end;
@@ -2586,56 +2627,94 @@ body.page-resources .hero-banner {
     }
 }
 
-/* Not enough room for brand + page links + shortcuts in one row — drop
-   the About/Contact shortcuts first (both are also in the footer).
-   .nav-right-group keeps its own column rather than disappearing with
-   them, since on the homepage it still holds the (always icon-only —
-   see .header-search above) search toggle. */
+/* Not enough room for brand + page links + search + shortcuts in one
+   row — collapse everything but the brand into a hamburger-triggered
+   drawer instead of progressively stacking/hiding pieces (previously:
+   corner links vanished outright here with no replacement, then the
+   brand/links stacked into two centered rows at 960px — both replaced
+   by this single breakpoint). .nav-drawer switches from display:
+   contents (desktop, see above) to a real collapsible panel; its
+   children (.left-side, .nav-right-group) stop being grid items (their
+   grid-column values are simply ignored once their parent isn't
+   display: grid) and become a plain stacked flex column instead. */
 @media (max-width: 1250px) {
-    .nav-corner-links {
-        display: none;
-    }
-
     .nav-wrapper {
-        grid-template-columns: max-content 1fr auto;
+        grid-template-columns: max-content 1fr max-content;
     }
 
-    .left-side {
-        justify-self: end;
-    }
-
-    .nav-right-group {
+    .nav-hamburger {
+        display: flex;
         grid-column: 3;
     }
-}
 
-/* Narrower still: stack the brand above the page links, both centered,
-   still inside the one orange bar. */
-@media (max-width: 960px) {
-    .nav-wrapper {
-        grid-template-columns: 1fr;
-        justify-items: center;
-        row-gap: 6px;
-        padding: 10px 16px 0;
+    .nav-drawer {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        max-height: 0;
+        overflow: hidden;
+        background: var(--hdr-bg);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        transition: max-height 0.25s ease;
+        z-index: 400;
     }
 
-    .nav-brand {
-        justify-self: center;
+    .nav-drawer.open {
+        max-height: calc(100vh - var(--bar-height));
+        overflow-y: auto;
     }
 
     .left-side {
-        grid-column: 1;
-        justify-self: center;
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        gap: 0;
     }
 
     .nav-link-wrapper {
-        padding: 8px 12px;
+        padding: 14px 24px;
     }
 
-    :is(.hl-pill, .hl-outline) .left-side {
-        padding-bottom: 8px;
+    .nav-right-group {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        gap: 16px;
+        padding: 18px 24px 22px;
+        border-top: 1px solid var(--hdr-divider);
+    }
+
+    .nav-corner-links {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    /* Search collapses to icon-only everywhere else (see .header-search
+       above) — inside the drawer there's no width pressure forcing that,
+       so show the real input directly instead of making a visitor tap
+       twice (once to open the drawer, again to open the search). */
+    .nav-drawer .header-search {
+        width: 100%;
+        align-self: stretch;
+    }
+
+    .nav-drawer .header-search-toggle {
+        display: none;
+    }
+
+    /* position stays the inherited "relative" from .search-wrap's base
+       rule (not overridden here) — .search-dropdown below anchors its
+       "top: 100%" to this element specifically, not whatever ancestor
+       happens to be positioned, and .header-search-toggle (the only way
+       .expanded ever gets set) is hidden above, so the .expanded
+       absolute-overlay rule never actually applies inside the drawer. */
+    .nav-drawer .header-search .search-wrap {
+        display: flex;
+        width: 100%;
     }
 }
 
