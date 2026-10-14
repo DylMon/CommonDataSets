@@ -37,7 +37,6 @@
                     ${navLink('/chanceme/', 'Chance Me', 'chanceme')}
                 </div>
                 <div class="nav-right-group">
-                    ${active === 'index' ? `
                     <div class="header-search" id="header-search">
                         <button type="button" class="header-search-toggle" id="header-search-toggle" aria-label="Search schools" aria-expanded="false">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -50,7 +49,7 @@
                             </button>
                             <div class="search-dropdown" id="search-dropdown" hidden></div>
                         </div>
-                    </div>` : ''}
+                    </div>
                     <div class="nav-corner-links">
                         <a href="/resources/">Resources</a>
                         <a href="/info/">About Us</a>
