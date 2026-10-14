@@ -176,7 +176,10 @@ body.page-compare {
 .nav-right-group {
     grid-column: 3;
     justify-self: end;
-    align-self: center;
+    /* No align-self override — inherits .nav-wrapper's align-items:
+       stretch, so this spans the bar's full height (see .header-search
+       below, which relies on that same stretch to anchor its dropdown
+       flush under the whole header rather than just its own icon). */
     display: flex;
     align-items: center;
     gap: 20px;
@@ -201,6 +204,16 @@ body.page-compare {
     display: flex;
     align-items: center;
     flex: 0 0 auto;
+    /* Stretches to .nav-right-group's full (bar-height) box instead of
+       shrinking to the 36px toggle — two reasons: (1) .search-wrap is
+       position:absolute (out of flow), so the toggle would otherwise be
+       this box's only flow child, and hiding it on expand would collapse
+       the box to 0 height and re-center it mid-bar; (2) anchoring
+       .search-wrap's "top: 100%" to the full bar height (rather than just
+       the icon's own small box) is what puts the dropdown flush below the
+       whole header instead of partway up into it. align-items: center
+       above still keeps the icon itself centered within this taller box. */
+    align-self: stretch;
 }
 
 .header-search .search-wrap {
