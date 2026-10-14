@@ -193,24 +193,31 @@ body.page-compare {
 /* Homepage-only search bar, relocated from the top of .content-wrapper
    into the header (js/header.js only includes this markup when
    active === 'index') — sits in .nav-right-group before .nav-corner-
-   links, growing to fill whatever space is left between "Chance Me"
-   and "Resources" rather than claiming a fixed width.
-
-   .header-search-toggle (the round icon button) is hidden by default —
-   only the @media block below (same breakpoint .nav-corner-links
-   itself already disappears at) shows it in place of the full input,
-   once there's genuinely no room left for an inline search box. */
+   links. Collapsed to just the round toggle icon by default at every
+   width; clicking it drops the real input down as a floating overlay
+   instead of claiming permanent space in the header row. */
 .header-search {
     position: relative;
     display: flex;
     align-items: center;
-    flex: 1 1 160px;
-    min-width: 0;
-    max-width: 320px;
+    flex: 0 0 auto;
 }
 
 .header-search .search-wrap {
-    width: 100%;
+    display: none;
+}
+
+.header-search.expanded .header-search-toggle {
+    display: none;
+}
+
+.header-search.expanded .search-wrap {
+    display: flex;
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    width: 260px;
+    z-index: 20;
 }
 
 .header-search .search-input {
@@ -276,16 +283,16 @@ body.page-compare {
 }
 
 .header-search-toggle {
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: center;
     width: 36px;
     height: 36px;
     flex-shrink: 0;
     border-radius: 50%;
-    border: 1.5px solid var(--hdr-fg);
+    border: 1.5px solid #fff;
     background: none;
-    color: var(--hdr-fg);
+    color: #fff;
     cursor: pointer;
     transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
@@ -293,44 +300,13 @@ body.page-compare {
 .header-search-toggle svg {
     width: 16px;
     height: 16px;
+    fill: none;
 }
 
 .header-search-toggle:hover {
     background: var(--hdr-accent);
     border-color: var(--hdr-accent);
     color: var(--hdr-on-accent);
-}
-
-/* Not enough room for brand + page links + shortcuts + a usable search
-   box — collapse to just the round toggle. Expanding it (JS adds
-   .expanded) drops the real input down as a floating overlay instead
-   of fighting the same cramped row for space. */
-@media (max-width: 1250px) {
-    .header-search-toggle {
-        display: flex;
-    }
-
-    .header-search {
-        flex: 0 0 auto;
-        max-width: none;
-    }
-
-    .header-search .search-wrap {
-        display: none;
-    }
-
-    .header-search.expanded .header-search-toggle {
-        display: none;
-    }
-
-    .header-search.expanded .search-wrap {
-        display: flex;
-        position: absolute;
-        top: calc(100% + 10px);
-        right: 0;
-        width: 260px;
-        z-index: 20;
-    }
 }
 
 /* Smaller and slightly faded so they rank below the main page links.
@@ -2694,8 +2670,8 @@ body.page-resources .hero-banner {
 /* Not enough room for brand + page links + shortcuts in one row — drop
    the About/Contact shortcuts first (both are also in the footer).
    .nav-right-group keeps its own column rather than disappearing with
-   them, since on the homepage it still holds the (now icon-only —
-   see the .header-search @media block above) search toggle. */
+   them, since on the homepage it still holds the (always icon-only —
+   see .header-search above) search toggle. */
 @media (max-width: 1250px) {
     .nav-corner-links {
         display: none;
