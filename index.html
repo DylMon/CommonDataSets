@@ -78,6 +78,17 @@
             })();
         </script>
         <div class="content-wrapper">
+            <div class="search-bar">
+                <div class="search-wrap">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                    </svg>
+                    <input type="text" id="home-search-input" class="search-input" placeholder="Search schools…" autocomplete="off">
+                    <button type="button" class="search-clear" id="home-search-clear" aria-label="Clear search" hidden>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    </button>
+                </div>
+            </div>
             <div class="category-filter-bar" id="category-filter-bar"></div>
             <p class="results-count" id="results-count"></p>
             <p class="gpa-legend" id="gpa-legend" hidden><span class="gpa-mark" aria-hidden="true">*</span><span>marks data that isn't from the school's Common Data Set</span></p>
@@ -306,6 +317,11 @@
         let currentPage = 1;
         let allSchools = [];
         let currentSort = 'us-news';
+        // Drives renderList()'s grid filtering — fed by the page's own
+        // .search-bar input (#home-search-input), separate from the
+        // header search's #school-search, which only drives its dropdown
+        // (recently-viewed/autocomplete) and never touches this.
+        let searchQuery = '';
 
         // Common acronyms/nicknames that don't already appear as a substring
         // of the school's official name (so searching them wouldn't
@@ -525,7 +541,9 @@
         }
 
         function renderList(sortKey) {
-            const source = applyFilters(allSchools);
+            const q = searchQuery.toLowerCase();
+            const matched = q ? allSchools.filter(s => schoolMatchesSearch(s, q)) : allSchools;
+            const source = applyFilters(matched);
             const sorted = [...source].sort(SORTERS[sortKey]);
 
             // The rank badge always reflects a school's true position across
@@ -725,6 +743,35 @@
                 updateSearchClear();
                 searchInput.focus();
                 updateSearchDropdown();
+            });
+
+            // Restored page-level search bar (.search-bar, above the
+            // category filter bar) — independent of the header search
+            // above: this one drives searchQuery/renderList() to filter
+            // the visible grid directly, same as it did before the header
+            // search dropdown was added. Separate ids (#home-search-*)
+            // so the two coexist without colliding.
+            const homeSearchInput = document.getElementById('home-search-input');
+            const homeSearchClear = document.getElementById('home-search-clear');
+
+            function updateHomeSearchClear() {
+                homeSearchClear.hidden = homeSearchInput.value.length === 0;
+            }
+
+            homeSearchInput.addEventListener('input', e => {
+                searchQuery = e.target.value.trim();
+                currentPage = 1;
+                updateHomeSearchClear();
+                renderList(currentSort);
+            });
+
+            homeSearchClear.addEventListener('click', () => {
+                homeSearchInput.value = '';
+                searchQuery = '';
+                currentPage = 1;
+                updateHomeSearchClear();
+                renderList(currentSort);
+                homeSearchInput.focus();
             });
 
             // Delegated the same way as the year/sort dropdowns elsewhere

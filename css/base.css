@@ -1120,6 +1120,19 @@ body.page-resources .hero-banner {
     }
 }
 
+/* Page-level search bar — first thing in .content-wrapper, above the
+   results count. Restored alongside the header search (which now only
+   drives its own dropdown, not this grid) so both coexist: this one
+   still filters #school-list directly via searchQuery/renderList().
+   Same width formula as a school card: content-wrapper's inner width
+   minus the two 230px sidebars and their two 20px gaps (see .sidebar /
+   .page-layout). */
+.search-bar {
+    width: calc(100% - 500px);
+    max-width: none;
+    margin: 0 auto 8px;
+}
+
 .results-count {
     text-align: center;
     font-size: 0.97em;
@@ -2580,6 +2593,12 @@ body.page-resources .hero-banner {
         gap: 14px;
     }
 
+    /* Same formula as the default .search-bar rule, updated for this
+       tier's narrower 160px sidebars + 14px gaps (160+14+160+14 = 348). */
+    .search-bar {
+        width: calc(100% - 348px);
+    }
+
     /* At 160px even the shortest labels ("Student Body") run past the
        column's content width in one line — shrinking font-size alone
        can't close that gap without becoming illegible, so let the
@@ -2633,6 +2652,10 @@ body.page-resources .hero-banner {
 }
 
 @media (max-width: 640px) {
+    .search-bar {
+        width: 100%;
+    }
+
     .page-layout {
         flex-direction: column;
         /* Once stacked, the cross-axis flips to horizontal — the base
