@@ -95,7 +95,11 @@
             <p class="gpa-legend" id="gpa-legend" hidden><span class="gpa-mark" aria-hidden="true">*</span><span>marks data that isn't from the school's Common Data Set</span></p>
             <div class="page-layout">
             <div class="sidebar">
-            <div class="controls-container">
+            <button type="button" class="filters-toggle" id="filters-toggle" aria-expanded="false" aria-controls="controls-container">
+                <span>Filters</span>
+                <svg class="sort-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="controls-container" id="controls-container">
             <button class="reset-btn" id="reset-filters-btn">Reset All Filters</button>
             <div class="year-filter-bar">
                 <div class="sort-dropdown" id="year-dropdown">
@@ -666,6 +670,17 @@
                 updateHomeSearchClear();
                 renderList(currentSort);
                 homeSearchInput.focus();
+            });
+
+            // Mobile only (see css/base.css's max-width: 640px block) —
+            // .filters-toggle is hidden entirely above that breakpoint, so
+            // this listener just never fires on desktop/tablet.
+            const filtersToggle = document.getElementById('filters-toggle');
+            const controlsContainer = document.getElementById('controls-container');
+            filtersToggle.addEventListener('click', () => {
+                const open = !controlsContainer.classList.contains('open');
+                controlsContainer.classList.toggle('open', open);
+                filtersToggle.setAttribute('aria-expanded', String(open));
             });
 
             // Delegated (not bound per-button) since renderCategoryBar() can
