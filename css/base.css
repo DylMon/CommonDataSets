@@ -214,10 +214,25 @@ body.page-school .site-header {
     height: 20px;
 }
 
-.nav-hamburger:hover {
+/* Tied to aria-expanded (which the click handler in js/header.js already
+   keeps in sync with .nav-drawer.open), not :hover — this button only
+   ever renders below the mobile breakpoint, where a tap simulates
+   :hover with no real pointer to move away and clear it afterward, so
+   a hover-only rule stayed visually "stuck" open after the second tap
+   closed the drawer. hover: hover scopes real mouse-hover feedback to
+   devices that actually have a pointer capable of triggering mouseout. */
+.nav-hamburger[aria-expanded="true"] {
     background: var(--hdr-accent);
     border-color: var(--hdr-accent);
     color: var(--hdr-on-accent);
+}
+
+@media (hover: hover) {
+    .nav-hamburger:hover {
+        background: var(--hdr-accent);
+        border-color: var(--hdr-accent);
+        color: var(--hdr-on-accent);
+    }
 }
 
 /* Redundant shortcuts to /info/ and /contact/ (both also live in the
