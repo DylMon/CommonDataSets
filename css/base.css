@@ -2388,27 +2388,6 @@ body.page-contact .hero-banner {
     opacity: 1;
 }
 
-/* Hovering a row inside any of these position:absolute dropdowns (header
-   search, chanceme's target-school picker, compare's school picker) makes
-   .site-footer's own nav text bleed through the dropdown's white
-   background, faint and ghosted, right where the mouse is — confirmed in
-   real Chrome, not just headless testing. Paint order is already correct
-   (each dropdown's ancestor carries its own elevated z-index, so the
-   footer — position: static, z-index: auto — never outright overlaps it);
-   this is a hover-triggered GPU compositing/raster bug, not a stacking
-   bug. None of the usual layer-isolation properties stop it — contain:
-   paint, isolation: isolate, transform, backdrop-filter and will-change
-   were all tried and verified applied (via computed styles) with no
-   effect, which rules out an ordinary CSS fix. Simplest reliable
-   workaround: nothing can bleed through if the footer isn't painted while
-   a dropdown sits on top of it. visibility (not display) so no layout
-   shift when it reappears. */
-body:has(.search-dropdown:not([hidden])) .site-footer,
-body:has(.cm-school-dropdown.open) .site-footer,
-body:has(.compare-dropdown.open) .site-footer {
-    visibility: hidden;
-}
-
 /* Info page */
 .info-box {
     background: white;
