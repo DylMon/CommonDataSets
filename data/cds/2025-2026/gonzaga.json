@@ -17,11 +17,11 @@
   "enrolled_women": 592,
   "acceptance_rate": 0.7962,
   "application_fee": 60,
-  "avg_gpa_weighted": null,
+  "avg_gpa_weighted": 3.7,
   "rd_deadline": "2/1",
-  "waitlist_offered": null,
-  "waitlist_accepted": null,
-  "waitlist_admitted": null,
+  "waitlist_offered": 676,
+  "waitlist_accepted": 241,
+  "waitlist_admitted": 66,
   "ea_ed_type": "EA",
   "ea_ed_deadline": "11/15",
   "ea_ed_notification": null,
@@ -52,14 +52,18 @@
   "tuition_out_of_state": null,
   "required_fees": 1120,
   "room_and_board": 17135,
-  "books_supplies": null,
+  "books_supplies": 1188,
   "other_expenses": 2035,
   "pct_out_of_state": 0.48,
   "pct_on_campus_housing": 0.52,
   "applicant_pools": {
     "ea": null,
     "rd": null,
-    "waitlist": null
+    "waitlist": {
+      "offered": 676,
+      "accepted_spots": 241,
+      "enrolled": 66
+    }
   },
   "gender_breakdown": {
     "applied": {
@@ -111,9 +115,44 @@
     "act_submitted_count": 73,
     "act_submitted_pct": 0.06
   },
-  "class_rank": null,
-  "gpa_distribution": null,
-  "admission_factors": null,
+  "class_rank": {
+    "top10": 0.3607,
+    "top25": 0.6872,
+    "top50": 0.9041,
+    "bottom50": 0.0936,
+    "bottom25": 0.0068
+  },
+  "gpa_distribution": {
+    "gpa_40": 0.1,
+    "gpa_375_399": 0.4259,
+    "gpa_350_374": 0.258,
+    "gpa_325_349": 0.1304,
+    "gpa_300_324": 0.0688,
+    "gpa_250_299": 0.0169,
+    "gpa_200_249": 0,
+    "gpa_100_199": 0
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "considered",
+    "essay": "considered",
+    "recommendations": "important",
+    "interview": "considered",
+    "extracurriculars": "important",
+    "talent": "not_considered",
+    "character": "considered",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "important"
+  },
   "transfer_stats": {
     "male": {
       "applied": 183,

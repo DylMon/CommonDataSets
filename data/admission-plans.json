@@ -1292,6 +1292,24 @@
         "date": "1/4"
       }
     ],
+    "syracuse": [
+      {
+        "type": "ED I",
+        "date": "11/1"
+      },
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "ED II",
+        "date": "1/5"
+      },
+      {
+        "type": "RD",
+        "date": "1/5"
+      }
+    ],
     "templeu": [
       {
         "type": "EA",
@@ -1316,6 +1334,12 @@
       {
         "type": "RD",
         "date": "12/1"
+      }
+    ],
+    "texas-tech": [
+      {
+        "type": "RD",
+        "date": "5/1"
       }
     ],
     "texaschristian": [
@@ -1382,6 +1406,16 @@
       {
         "type": "RD",
         "date": "12/4"
+      }
+    ],
+    "uarizona": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "5/1"
       }
     ],
     "uarkansas": [
@@ -1452,6 +1486,16 @@
       {
         "type": "RD",
         "date": "1/4"
+      }
+    ],
+    "ucincinnati": [
+      {
+        "type": "EA",
+        "date": "11/1"
+      },
+      {
+        "type": "RD",
+        "date": "3/1"
       }
     ],
     "ucla": [

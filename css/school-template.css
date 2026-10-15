@@ -66,7 +66,7 @@
 }
 
 .hero-site-link {
-  color: var(--brand);
+  color: #1a73e8;
   text-decoration: underline;
   transition: opacity 0.2s;
 }
@@ -317,6 +317,17 @@
   font: 600 0.55em/1 'Public Sans', sans-serif;
 }
 .stat-info.gpa-source .stat-info-tip { top: calc(100% + 10px); }
+
+/* An ⓘ on a score-row label (e.g. an estimated SAT "Composite") sits near the
+   section's left edge, and sections clip overflow — so instead of centering
+   the tip on the icon, start it at the label's left edge and let it extend
+   right into the row. */
+.score-row-label .stat-info-tip {
+  left: auto;
+  right: auto;
+  transform: none;
+  left: -80px;
+}
 
 .stat-divider {
   width: 1px;

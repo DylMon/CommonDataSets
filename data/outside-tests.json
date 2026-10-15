@@ -1,0 +1,37 @@
+{
+  "generated": "2026-10-13",
+  "note": "SAT/ACT ranges for schools whose most recent Common Data Set leaves test scores blank, chosen by hand in the Missing SAT/ACT Composites doc (https://claude.ai/code/artifact/c96e5444-ac11-4d6b-b2b9-ec461049c6b2). An entry with a source URL, or marked official, is the school's own published figures; any other came from outside sources. Applied only to a school's latest record, and only to fields that record leaves null. Marked like outside GPAs: an asterisk on Home and Compare, a ≈ with an explanation on the school page.",
+  "tests": {
+    "asu": {
+      "values": { "sat_composite_25": 1110, "sat_composite_75": 1360, "act_composite_25": 21, "act_composite_75": 28 }
+    },
+    "colorado-state": {
+      "values": { "sat_composite_25": 1060, "sat_composite_75": 1290, "act_composite_25": 22, "act_composite_75": 29 }
+    },
+    "hawaii-manoa": {
+      "year": "Fall 2025",
+      "source": "https://manoa.hawaii.edu/admissions/freshman/",
+      "values": { "sat_composite_25": 1130, "sat_composite_75": 1350, "act_composite_25": 21, "act_composite_75": 29 },
+      "note": "Range for admitted students."
+    },
+    "montclair-state": {
+      "values": { "act_composite_25": 18, "act_composite_75": 24 }
+    },
+    "rutgers-newark": {
+      "values": { "sat_composite_25": 1060, "sat_composite_75": 1290, "act_composite_25": 21, "act_composite_75": 30 }
+    },
+    "saintlouisu": {
+      "values": { "sat_composite_25": 1120, "sat_composite_75": 1380, "act_composite_25": 23, "act_composite_75": 31 }
+    },
+    "ut-austin": {
+      "values": { "sat_composite_25": 1230, "sat_composite_75": 1500, "act_composite_25": 29, "act_composite_75": 34 }
+    },
+    "valparaiso": {
+      "values": { "sat_composite_25": 1140, "sat_composite_75": 1360, "act_composite_25": 25, "act_composite_75": 30 }
+    },
+    "wpi": {
+      "official": true,
+      "values": { "sat_composite_25": 1340, "sat_composite_75": 1480, "act_composite_25": 30, "act_composite_75": 34 }
+    }
+  }
+}

@@ -2,6 +2,8 @@ import { GPA_BUCKETS, renderGpaHistogram, normalizeGpaDistribution } from './cha
 import { loadAdmissionPlans, cdsRounds, roundFamily } from './admission-plans.js?v=1';
 import { loadOutsideGpa } from './outside-gpa.js?v=1';
 import { loadOutsideCosts, withOutsideCost, isOutsideCost } from './outside-costs.js?v=1';
+import { loadOutsideTests, withOutsideTest, isOutsideTest } from './outside-tests.js?v=1';
+import { withSatEstimate, SAT_ESTIMATE_NOTE } from './sat-estimate.js?v=1';
 
 const SCHOOL_META = {
   'mit': { color: '#a41931', banner: 'mit.jpg', y: 50, credit: { author: 'Scutter', license: 'CC BY-NC-ND 2.0', url: 'https://www.flickr.com/photos/scutter/38005464/' } },
@@ -9,100 +11,100 @@ const SCHOOL_META = {
   'stanford': { color: '#8c1515', banner: 'stanford.jpg', y: 50, credit: { author: 'King of Hearts', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Stanford_University_Main_Quad_(cropped).jpg' } },
   'princeton': { color: '#ed6d0b', banner: 'princeton.jpg', y: 49, credit: { author: 'Billy Wilson Photography', license: 'CC BY-NC 2.0', url: 'https://www.flickr.com/photos/billy_wilson/52549207512/' } },
   'yale': { color: '#00356b', banner: 'yale.jpg', y: 50, credit: { author: 'Kenneth C. Zirkel', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Yale_University_Humanities_Quadrangle.jpg' } },
-  'columbia': { color: '#6dabe4', banner: 'columbia.jpg', credit: { author: 'Beyond My Ken', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:2014_Columbia_University_Morningside_Heights_campus_from_southwest_.jpg' } },
+  'columbia': { color: '#519bdf', banner: 'columbia.jpg', credit: { author: 'Beyond My Ken', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:2014_Columbia_University_Morningside_Heights_campus_from_southwest_.jpg' } },
   'upenn': { color: '#00144d', banner: 'upenn.jpg', credit: { author: 'Mefman00', license: 'CC0 1.0', url: 'https://commons.wikimedia.org/wiki/File:Philadelphia_skyline_from_South_Street_Bridge.jpg' } },
-  'caltech': { color: '#ff6e1e', banner: 'caltech.jpg', y: 45, credit: { author: 'Canon.vs.nikon', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Caltech_Entrance.jpg' } },
-  'duke': { color: '#363d2e', banner: 'duke.jpg', credit: { author: 'Warren LeMay', license: 'CC0 1.0', url: 'https://commons.wikimedia.org/wiki/File:Davidson_Building,_West_Campus,_Duke_University,_Durham,_NC_(48961119992).jpg' } },
-  'jhu': { color: '#918f88', banner: 'jhu.jpg', credit: { author: 'Jerry (Flickr user, Flickr ID 14976045@N02)', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Baltimore_Inner_Harbor_Sunny_Day_360_Panorama_(2942076916).jpg' } },
+  'caltech': { color: '#f96818', banner: 'caltech.jpg', y: 45, credit: { author: 'Canon.vs.nikon', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Caltech_Entrance.jpg' } },
+  'duke': { color: '#303078', banner: 'duke.jpg', credit: { author: 'Warren LeMay', license: 'CC0 1.0', url: 'https://commons.wikimedia.org/wiki/File:Davidson_Building,_West_Campus,_Duke_University,_Durham,_NC_(48961119992).jpg' } },
+  'jhu': { color: '#183060', banner: 'jhu.jpg', credit: { author: 'Jerry (Flickr user, Flickr ID 14976045@N02)', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Baltimore_Inner_Harbor_Sunny_Day_360_Panorama_(2942076916).jpg' } },
   'northwestern': { color: '#4e2686', banner: 'northwestern.jpg', y: 45, credit: { author: 'Joshsukoff', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Northwestern_University_Aerial.jpg' } },
   'dartmouth': { color: '#00693e', banner: 'dartmouth.jpg', credit: { author: 'Šarūnas Burdulis', license: 'CC BY-SA 2.0', url: 'https://commons.wikimedia.org/wiki/File:Baker_Tower_Panorama_(10292276743).jpg' } },
-  'brown': { color: '#a9afb4', banner: 'brown.jpg', y: 55, credit: { author: 'Chris Rycroft', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Main_Green_at_Brown_University.jpg' } },
-  'vanderbilt': { color: '#aeb1b7', banner: 'vanderbilt.jpg', y: 50, credit: { author: 'Jschnake', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Nashville_Skyline_from_Ft_Negly_2024.jpg' } },
+  'brown': { color: '#d80018', banner: 'brown.jpg', y: 55, credit: { author: 'Chris Rycroft', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Main_Green_at_Brown_University.jpg' } },
+  'vanderbilt': { color: '#bda56d', banner: 'vanderbilt.jpg', y: 50, credit: { author: 'Jschnake', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Nashville_Skyline_from_Ft_Negly_2024.jpg' } },
   'rice': { color: '#002169', banner: 'rice.jpg', y: 50, credit: { author: 'faungg\'s photos', license: 'CC BY-ND 2.0', url: 'https://www.flickr.com/photos/44534236@N00/6259498328/' } },
   'washu': { color: '#a60c10', banner: 'washu.jpg', credit: { author: 'Bohao Zhao', license: 'CC BY 3.0', url: 'https://commons.wikimedia.org/wiki/File:St._Louis_Skyline_from_Illinois_-_panoramio.jpg' } },
-  'notre-dame': { color: '#7f8883', banner: 'notre-dame.jpg', y: 20, credit: { author: 'picryl', license: 'Public domain', url: 'https://picryl.com/media/ndu-main-building-0bf487' } },
+  'notre-dame': { color: '#181848', banner: 'notre-dame.jpg', y: 20, credit: { author: 'picryl', license: 'Public domain', url: 'https://picryl.com/media/ndu-main-building-0bf487' } },
   'cornell': { color: '#b31b1b', banner: 'cornell.jpg', y: 58, credit: { author: 'matt.hintsa', license: 'CC BY-NC-ND 2.0', url: 'https://www.flickr.com/photos/matt_hintsa/3447149391/' } },
   'uchicago': { color: '#a6152c', banner: 'uchicago.jpg', y: 50, credit: { author: 'Trey Ratcliff', license: 'CC BY-NC-SA 2.0', url: 'https://www.flickr.com/photos/stuckincustoms/409484853/' } },
   'cmu': { color: '#c41230', banner: 'cmu.jpg', credit: { author: 'Dllu', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Pittsburgh_city_pano_2015.jpg' } },
-  'georgetown': { color: '#041e42', banner: 'georgetown.jpg', credit: { author: 'User:Tomf688 (Tom)', license: 'CC BY-SA 2.5', url: 'https://commons.wikimedia.org/wiki/File:Skyline_of_Washington,_seen_from_Saint_Elizabeths,_August_23,_2006.jpg' } },
+  'georgetown': { color: '#05244e', banner: 'georgetown.jpg', credit: { author: 'User:Tomf688 (Tom)', license: 'CC BY-SA 2.5', url: 'https://commons.wikimedia.org/wiki/File:Skyline_of_Washington,_seen_from_Saint_Elizabeths,_August_23,_2006.jpg' } },
   'emory': { color: '#002878', banner: 'emory.jpg', credit: { author: 'London looks', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Downtown_Atlanta_skyline_panorama.jpg' } },
-  'wake-forest': { color: '#919392', banner: 'wake-forest.jpg', y: 50, credit: { author: 'AL904', license: 'CC BY-NC-ND 2.0', url: 'https://www.flickr.com/photos/al904/14304857788/' } },
+  'wake-forest': { color: '#9d7f39', banner: 'wake-forest.jpg', y: 50, credit: { author: 'AL904', license: 'CC BY-NC-ND 2.0', url: 'https://www.flickr.com/photos/al904/14304857788/' } },
   'tufts': { color: '#3172ae', banner: 'tufts.jpg', y: 50, credit: { author: 'John Phelan', license: 'CC BY 3.0', url: 'https://commons.wikimedia.org/wiki/File:Medford_Square,_Medford_MA.jpg' } },
   'ucla': { color: '#017dc3', banner: 'ucla.jpg', y: 45, credit: { author: 'Beyond My Ken', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:2019_UCLA_Royce_Hall_and_Haines_Hall.jpg' } },
   'berkeley': { color: '#193460', banner: 'berkeley.jpg', y: 50, credit: { author: 'Berkeley Lab', license: 'CC BY-NC-ND 2.0', url: 'https://www.flickr.com/photos/berkeleylab/3523153613/' } },
-  'ucsb': { color: '#7a4b40', banner: 'ucsb.jpg', y: 50, credit: { author: 'Coolcaesar', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:UCSB_University_Center_and_Storke_Tower.jpg' } },
+  'ucsb': { color: '#181848', banner: 'ucsb.jpg', y: 50, credit: { author: 'Coolcaesar', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:UCSB_University_Center_and_Storke_Tower.jpg' } },
   'uva': { color: '#232d4b', banner: 'uva.jpg', credit: { author: 'Quintin Soloviev', license: 'CC BY 4.0', url: 'https://commons.wikimedia.org/wiki/File:Charlottesville,_Virginia.jpg' } },
   'umich': { color: '#00274c', banner: 'umich.jpg', y: 45, credit: { author: 'Natecation', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:University_of_Michigan_North_Campus.jpg' } },
-  'unc': { color: '#9e8879', banner: 'unc.jpg', y: 43, credit: { author: 'yeungb', license: 'CC BY 2.0', url: 'https://www.flickr.com/photos/yeungb/9432559054/' } },
-  'uf': { color: '#83a3cb', banner: 'uf.jpg', y: 29, credit: { author: 'StevenM_61', license: 'CC BY-NC-ND 2.0', url: 'https://www.flickr.com/photos/stevenm_61/51817032991/' } },
+  'unc': { color: '#63a0cc', banner: 'unc.jpg', y: 43, credit: { author: 'yeungb', license: 'CC BY 2.0', url: 'https://www.flickr.com/photos/yeungb/9432559054/' } },
+  'uf': { color: '#6c92c2', banner: 'uf.jpg', y: 29, credit: { author: 'StevenM_61', license: 'CC BY-NC-ND 2.0', url: 'https://www.flickr.com/photos/stevenm_61/51817032991/' } },
   'usc': { color: '#990000', banner: 'usc.jpg', y: 50, credit: { author: 'EEJCC', license: 'CC0', url: 'https://commons.wikimedia.org/wiki/File:USC_globe_tower_and_Waite_Phillips_Hall.jpg' } },
   'nyu': { color: '#58078d', banner: 'nyu.jpg', credit: { author: 'King of Hearts', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Lower_Manhattan_from_Governors_Island_August_2017_panorama.jpg' } },
   'american': { color: '#004fa2', banner: 'american.jpg', y: 50, credit: { author: 'afagen', license: 'CC BY-NC-SA 2.0', url: 'https://www.flickr.com/photos/afagen/53579422920/' } },
-  'baylor': { color: '#5d5a3a', banner: 'baylor.jpg', y: 50, credit: { author: 'Michael Barera', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Baylor_University_June_2016_16_(Founders_Mall_and_Pat_Neff_Hall).jpg' } },
+  'baylor': { color: '#02493e', banner: 'baylor.jpg', y: 50, credit: { author: 'Michael Barera', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Baylor_University_June_2016_16_(Founders_Mall_and_Pat_Neff_Hall).jpg' } },
   'binghamton': { color: '#005a43', banner: 'binghamton.jpg', y: 50, credit: { author: 'Quintin Soloviev', license: 'CC BY 4.0', url: 'https://commons.wikimedia.org/wiki/File:Binghamton,_New_York_skyline.jpg' } },
   'boston-university': { color: '#cc0000', banner: 'boston-university.jpg', y: 50, credit: { author: 'Nick Allen', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Boston_University_Bridge_aerial.JPG' } },
   'brandeis': { color: '#003478', banner: 'brandeis.jpg', credit: { author: 'Nick Allen (Nickknack00)', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Brandeis_University_aerial_1.JPG' } },
   'buffalo': { color: '#005bbb', banner: 'buffalo.jpg', y: 66, credit: { author: 'Quintin Soloviev', license: 'CC BY 4.0', url: 'https://commons.wikimedia.org/wiki/File:Buffalo,_NY_skyline.jpg' } },
   'case-western': { color: '#003071', banner: 'case-western.jpg', y: 40, credit: { author: 'Erik Drost Derivative work: ForestCityCle216', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Cleveland_Skyline_May_2017.jpg' } },
-  'clemson': { color: '#6c645b', banner: 'clemson.jpg', y: 50, credit: { author: 'Daderot', license: 'CC0', url: 'https://commons.wikimedia.org/wiki/File:Clemson_Memorial_Stadium_-_Clemson_University_-_DSC07484.JPG' } },
+  'clemson': { color: '#ff4800', banner: 'clemson.jpg', y: 50, credit: { author: 'Daderot', license: 'CC0', url: 'https://commons.wikimedia.org/wiki/File:Clemson_Memorial_Stadium_-_Clemson_University_-_DSC07484.JPG' } },
   'drexel': { color: '#07294d', banner: 'drexel.jpg', credit: { author: 'Pierre Blaché', license: 'CC0 1.0', url: 'https://commons.wikimedia.org/wiki/File:Philadelphia_skyline_panorama.jpg' } },
   'fiu': { color: '#081e3f', banner: 'fiu.jpg', credit: { author: 'Denis Santana', license: 'CC BY-SA 2.0', url: 'https://commons.wikimedia.org/wiki/File:Downtown_Miami_skyline_from_PortMiami_2011_wide.jpg' } },
   'fsu': { color: '#782f40', banner: 'fsu.jpg', credit: { author: 'Urbantallahassee', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Tallahassee_Skyline_2023.jpg' } },
-  'georgia-tech': { color: '#606a6b', banner: 'georgia-tech.jpg', credit: { author: 'Marc Merlin', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Panorama_of_the_Atlanta_skyline_viewed_from_the_Jackson_Street_Bridge,_June_2015.jpg' } },
+  'georgia-tech': { color: '#bca357', banner: 'georgia-tech.jpg', credit: { author: 'Marc Merlin', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Panorama_of_the_Atlanta_skyline_viewed_from_the_Jackson_Street_Bridge,_June_2015.jpg' } },
   'gwu': { color: '#033c5a', banner: 'gwu.jpg', y: 59, credit: { author: 'Ingfbruno', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:USA-The_George_Washington_University.JPG' } },
   'howard': { color: '#003a63', banner: 'howard.jpg', y: 45, credit: { author: 'euthman', license: 'CC BY-SA 2.0', url: 'https://www.flickr.com/photos/euthman/150285269/' } },
   'indiana-bloomington': { color: '#990000', banner: 'indiana-bloomington.jpg', y: 50, credit: { author: 'SUZUKI Hironobu', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Indiana_University_Bloomington_Sample_Gates_-_panoramio.jpg' } },
   'lehigh': { color: '#502d0e', banner: 'lehigh.jpg', credit: { author: 'Tim Kiser (Malepheasant)', license: 'CC BY-SA 2.5', url: 'https://commons.wikimedia.org/wiki/File:Bethlehem_Pennsylvania_downtown.jpg' } },
-  'marquette': { color: '#3e3435', banner: 'marquette.jpg', y: 50, credit: { author: 'Danielggpeters', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Marquette_University.jpg' } },
+  'marquette': { color: '#001860', banner: 'marquette.jpg', y: 50, credit: { author: 'Danielggpeters', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Marquette_University.jpg' } },
   'miami': { color: '#f47321', banner: 'miami.jpg', credit: { author: 'Marc Averette', license: 'CC0/Public Domain', url: 'https://commons.wikimedia.org/wiki/File:Miami_skyline_(1).jpg' } },
-  'michigan-state': { color: '#c3d2ea', banner: 'michigan-state.jpg', y: 37, credit: { author: 'Ken Lund', license: 'CC BY-SA 2.0', url: 'https://www.flickr.com/photos/kenlund/21097692614/' } },
-  'nc-state': { color: '#998779', banner: 'nc-state.jpg', credit: { author: 'Abhiram Juvvadi', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Raleigh_Skyline.jpg' } },
-  'njit': { color: '#7c6c4c', banner: 'njit.jpg', credit: { author: 'King of Hearts', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Newark_October_2016_panorama.jpg' } },
+  'michigan-state': { color: '#184830', banner: 'michigan-state.jpg', y: 37, credit: { author: 'Ken Lund', license: 'CC BY-SA 2.0', url: 'https://www.flickr.com/photos/kenlund/21097692614/' } },
+  'nc-state': { color: '#a83030', banner: 'nc-state.jpg', credit: { author: 'Abhiram Juvvadi', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Raleigh_Skyline.jpg' } },
+  'njit': { color: '#d80000', banner: 'njit.jpg', credit: { author: 'King of Hearts', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Newark_October_2016_panorama.jpg' } },
   'northeastern': { color: '#c8102e', banner: 'northeastern.jpg', credit: { author: 'King of Hearts', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Boston_skyline_from_Longfellow_Bridge_September_2017_panorama_2.jpg' } },
   'ohio-state': { color: '#bb0000', banner: 'ohio-state.jpg', y: 45, credit: { author: 'Jsjessee', license: 'CC BY-SA 2.0', url: 'https://commons.wikimedia.org/wiki/File:Columbus,_Ohio_JJ_71.jpg' } },
-  'penn-state': { color: '#001e44', banner: 'penn-state.jpg', credit: { author: 'Goonsnick', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Penn_State_Campus.jpg' } },
+  'penn-state': { color: '#022450', banner: 'penn-state.jpg', credit: { author: 'Goonsnick', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Penn_State_Campus.jpg' } },
   'pepperdine': { color: '#1e2859', banner: 'pepperdine.jpg', credit: { author: 'Kristina D.C. Hoeppner', license: 'CC BY-SA 2.0', url: 'https://commons.wikimedia.org/wiki/File:Pepperdine_University_2011.jpg' } },
   'pitt': { color: '#003594', banner: 'pitt.jpg', credit: { author: 'Dllu', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Pittsburgh_skyline_panorama_daytime.jpg' } },
-  'purdue': { color: '#cfb991', banner: 'purdue.jpg', credit: { author: 'Diego Delso', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Purdue_University,_West_Lafayette,_Indiana,_Estados_Unidos,_2012-10-15,_DD_23.jpg' } },
-  'rit': { color: '#8a7864', banner: 'rit.jpg', y: 50, credit: { author: 'Christopher Tomkins-Tinch', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Rit_aerial_aug_17_2007.jpg' } },
-  'rochester': { color: '#a2a09d', banner: 'rochester.jpg', y: 50, credit: { author: 'Tomwsulcer', license: 'CC0', url: 'https://commons.wikimedia.org/wiki/File:Main_quad_looking_east_at_the_University_of_Rochester.jpg' } },
+  'purdue': { color: '#c4a875', banner: 'purdue.jpg', credit: { author: 'Diego Delso', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Purdue_University,_West_Lafayette,_Indiana,_Estados_Unidos,_2012-10-15,_DD_23.jpg' } },
+  'rit': { color: '#967958', banner: 'rit.jpg', y: 50, credit: { author: 'Christopher Tomkins-Tinch', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Rit_aerial_aug_17_2007.jpg' } },
+  'rochester': { color: '#10427a', banner: 'rochester.jpg', y: 50, credit: { author: 'Tomwsulcer', license: 'CC0', url: 'https://commons.wikimedia.org/wiki/File:Main_quad_looking_east_at_the_University_of_Rochester.jpg' } },
   'rpi': { color: '#d6001c', banner: 'rpi.jpg', y: 50, credit: { author: 'Wesley Fryer', license: 'CC BY 2.0', url: 'https://www.flickr.com/photos/wfryer/22392839289/' } },
-  'santa-clara': { color: '#8c8e90', banner: 'santa-clara.jpg', credit: { author: 'XAtsukex', license: 'CC BY 3.0', url: 'https://commons.wikimedia.org/wiki/File:Panoramic_Downtown_San_Jose.jpg' } },
-  'smu': { color: '#dbdcdd', banner: 'smu.jpg', y: 51, credit: { author: 'Michael Barera', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Southern_Methodist_University_July_2016_064_(Gail_O._and_R._Gerald_Turner_Pavilion_and_Blanton_Student_Services_Building).jpg' } },
+  'santa-clara': { color: '#a81830', banner: 'santa-clara.jpg', credit: { author: 'XAtsukex', license: 'CC BY 3.0', url: 'https://commons.wikimedia.org/wiki/File:Panoramic_Downtown_San_Jose.jpg' } },
+  'smu': { color: '#d80030', banner: 'smu.jpg', y: 51, credit: { author: 'Michael Barera', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Southern_Methodist_University_July_2016_064_(Gail_O._and_R._Gerald_Turner_Pavilion_and_Blanton_Student_Services_Building).jpg' } },
   'stevens': { color: '#9d1535', banner: 'stevens.jpg', y: 49, credit: { author: 'Jeffrey Vock Photography', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:ViewSouthFromHowe.jpg' } },
   'stony-brook': { color: '#990000', banner: 'stony-brook.jpg', y: 45, credit: { author: 'ali eminov', license: 'CC BY-NC 2.0', url: 'https://www.flickr.com/photos/aliarda/40830810933/' } },
-  'texas-am': { color: '#150c05', banner: 'texas-am.jpg', y: 60, credit: { author: 'AndreDaGamer', license: 'CC BY 4.0', url: 'https://commons.wikimedia.org/wiki/File:Main_Campus_Texas_A%26M.jpg' } },
-  'tulane': { color: '#dd95b1', banner: 'tulane.jpg', y: 85, credit: { author: 'Tulane Public Relations', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Tulane_University_(5248829709).jpg' } },
+  'texas-am': { color: '#500000', banner: 'texas-am.jpg', y: 60, credit: { author: 'AndreDaGamer', license: 'CC BY 4.0', url: 'https://commons.wikimedia.org/wiki/File:Main_Campus_Texas_A%26M.jpg' } },
+  'tulane': { color: '#214a3c', banner: 'tulane.jpg', y: 85, credit: { author: 'Tulane Public Relations', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Tulane_University_(5248829709).jpg' } },
   'uc-davis': { color: '#022851', banner: 'uc-davis.jpg', credit: { author: 'Justin Smith (J.smith)', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Sacramento_Skyline.jpg' } },
-  'uc-irvine': { color: '#938562', banner: 'uc-irvine.jpg', y: 50, credit: { author: 'David Eppstein', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:SciencePlaza.jpg' } },
+  'uc-irvine': { color: '#0766a0', banner: 'uc-irvine.jpg', y: 50, credit: { author: 'David Eppstein', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:SciencePlaza.jpg' } },
   'uc-merced': { color: '#002856', banner: 'uc-merced.jpg', y: 45, credit: { author: 'Qymekkam', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Ansel_adams.JPG' } },
-  'uc-riverside': { color: '#757e85', banner: 'uc-riverside.jpg', y: 49, credit: { author: 'Xsolidsnail', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:UCR_Belltower_night.JPG' } },
+  'uc-riverside': { color: '#003da5', banner: 'uc-riverside.jpg', y: 49, credit: { author: 'Xsolidsnail', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:UCR_Belltower_night.JPG' } },
   'uc-san-diego': { color: '#182b49', banner: 'uc-san-diego.jpg', y: 50, credit: { author: 'Leandro\'s World Tour', license: 'CC BY 2.0', url: 'https://www.flickr.com/photos/leandrociuffo/6484576619/' } },
-  'uc-santa-cruz': { color: '#7f7d6b', banner: 'uc-santa-cruz.jpg', y: 50, credit: { author: 'dconvertini', license: 'CC BY-SA 2.0', url: 'https://commons.wikimedia.org/wiki/File:Santa_Cruz,_California,_USA18.jpg' } },
-  'uconn': { color: '#000e2f', banner: 'uconn.jpg', y: 50, credit: { author: 'jimmywayne', license: 'CC BY-NC-ND 2.0', url: 'https://www.flickr.com/photos/auvet/9762148961/' } },
+  'uc-santa-cruz': { color: '#0060a8', banner: 'uc-santa-cruz.jpg', y: 50, credit: { author: 'dconvertini', license: 'CC BY-SA 2.0', url: 'https://commons.wikimedia.org/wiki/File:Santa_Cruz,_California,_USA18.jpg' } },
+  'uconn': { color: '#021543', banner: 'uconn.jpg', y: 50, credit: { author: 'jimmywayne', license: 'CC BY-NC-ND 2.0', url: 'https://www.flickr.com/photos/auvet/9762148961/' } },
   'uga': { color: '#ba0c2f', banner: 'uga.jpg', y: 34, credit: { author: 'publicdomainpictures.net', license: 'CC0', url: 'https://www.publicdomainpictures.net/pictures/290000/velka/university-of-georgia-arch.jpg' } },
   'uic': { color: '#d50032', banner: 'uic.jpg', credit: { author: 'Wiknown77', license: 'CC0 1.0', url: 'https://commons.wikimedia.org/wiki/File:Downtown_Chicago_View_From_UIC_University_Hall.jpg' } },
-  'uiuc': { color: '#6b585e', banner: 'uiuc.jpg', y: 45, credit: { author: 'University of Illinois Research Park', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:University_of_Illinois_Research_Park_Aerial_View_2017.jpg' } },
+  'uiuc': { color: '#ff5f05', banner: 'uiuc.jpg', y: 45, credit: { author: 'University of Illinois Research Park', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:University_of_Illinois_Research_Park_Aerial_View_2017.jpg' } },
   'umass-amherst': { color: '#881c1c', banner: 'umass-amherst.jpg', y: 50, credit: { author: 'Eraboin at English Wikipedia', license: 'CC BY 2.5', url: 'https://commons.wikimedia.org/wiki/File:Umass_Amherst_Skyline.jpg' } },
-  'usf': { color: '#9bac9a', banner: 'usf.jpg', y: 50, credit: { author: 'Clément Bardot', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Downtown_Tampa,_Florida.jpg' } },
+  'usf': { color: '#006747', banner: 'usf.jpg', y: 50, credit: { author: 'Clément Bardot', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Downtown_Tampa,_Florida.jpg' } },
   'ut-austin': { color: '#bf5700', banner: 'ut-austin.jpg', credit: { author: 'Larry D. Moore (Nv8200pa)', license: 'CC BY 4.0', url: 'https://commons.wikimedia.org/wiki/File:Austin_Skyline_from_the_Southeast_2022.jpg' } },
   'villanova': { color: '#002664', banner: 'villanova.jpg', y: 50, credit: { author: 'abbike18', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Villanova_Church.jpg' } },
-  'virginia-tech': { color: '#423834', banner: 'virginia-tech.jpg', y: 50, credit: { author: 'Idawriter', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Downtown,_Blacksburg,_VA,_USA_-_panoramio_(1).jpg' } },
+  'virginia-tech': { color: '#6a2c3e', banner: 'virginia-tech.jpg', y: 50, credit: { author: 'Idawriter', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Downtown,_Blacksburg,_VA,_USA_-_panoramio_(1).jpg' } },
   'washington-seattle': { color: '#4b2e83', banner: 'washington-seattle.jpg', credit: { author: 'SounderBruce', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Seattle_skyline_from_Kerry_Park,_March_2019.jpg' } },
   'william-mary': { color: '#004e38', banner: 'william-mary.jpg', y: 50, credit: { author: 'Pbritti', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Alumni_House_at_the_College_of_William_and_Mary,_2020.jpg' } },
   'wisconsin-madison': { color: '#c5050c', banner: 'wisconsin-madison.jpg', credit: { author: 'James Steakley', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Henry_Mall,_University_of_Wisconsin.jpg' } },
   'wpi': { color: '#a6192e', banner: 'wpi.jpg', credit: { author: 'Anthonyt31201', license: 'CC0 1.0', url: 'https://commons.wikimedia.org/wiki/File:Worcester_Skyline,_November_2024.jpg' } },
-  'asu': { color: '#6e6363', banner: 'asu.jpg', y: 50, credit: { author: 'Hunter Trick (TrickHunter)', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:231118-10_ASU_Research_Park.jpg' } },
-  'chapman': { color: '#a97a8b', banner: 'chapman.jpg', y: 50, credit: { author: 'Bobak Ha\'Eri', license: 'CC BY 3.0', url: 'https://commons.wikimedia.org/wiki/File:2008-0614-LA-OC-005-Chapman.jpg' } },
+  'asu': { color: '#ffd800', banner: 'asu.jpg', y: 50, credit: { author: 'Hunter Trick (TrickHunter)', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:231118-10_ASU_Research_Park.jpg' } },
+  'chapman': { color: '#ad6881', banner: 'chapman.jpg', y: 50, credit: { author: 'Bobak Ha\'Eri', license: 'CC BY 3.0', url: 'https://commons.wikimedia.org/wiki/File:2008-0614-LA-OC-005-Chapman.jpg' } },
   'clarkson': { color: '#0D433B', banner: 'clarkson.jpg', y: 50, credit: { author: 'John Marino', license: 'CC0', url: 'https://commons.wikimedia.org/wiki/File:Potsdam_New_York.jpg' } },
-  'coloradoboulder': { color: '#6e7e21', banner: 'coloradoboulder.jpg', y: 50, credit: { author: 'cuboulder', license: 'CC0', url: 'https://commons.wikimedia.org/wiki/File:Aerial8_(23928920228).jpg' } },
-  'colorado-state': { color: '#515f48', banner: 'colorado-state.jpg', credit: { author: 'LUSportsFan', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Moby_Arena.JPG' } },
-  'creighton': { color: '#6a7972', banner: 'creighton.jpg', y: 64, credit: { author: 'Tony Webster', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Creighton_University_-_Omaha,_Nebraska_(44209349534).jpg' } },
+  'coloradoboulder': { color: '#d1b45f', banner: 'coloradoboulder.jpg', y: 50, credit: { author: 'cuboulder', license: 'CC0', url: 'https://commons.wikimedia.org/wiki/File:Aerial8_(23928920228).jpg' } },
+  'colorado-state': { color: '#4f683f', banner: 'colorado-state.jpg', credit: { author: 'LUSportsFan', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Moby_Arena.JPG' } },
+  'creighton': { color: '#001860', banner: 'creighton.jpg', y: 64, credit: { author: 'Tony Webster', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Creighton_University_-_Omaha,_Nebraska_(44209349534).jpg' } },
   'famu': { color: '#D44500', banner: 'famu.jpg', credit: { author: 'Urbantallahassee', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Tallahassee_Skyline_2023.jpg' } },
   'florida-atlantic': { color: '#003366', banner: 'florida-atlantic.jpg', y: 51, credit: { author: 'Kmgcoolguy4', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:FAU_Parliament_Hall.JPG' } },
-  'iowa-state-science-tech': { color: '#d0ced7', banner: 'iowa-state-science-tech.jpg', y: 50, credit: { author: 'Tim Kiser (w:User:Malepheasant)', license: 'CC BY-SA 2.5', url: 'https://commons.wikimedia.org/wiki/File:Ames_Iowa_Main_Street_banner.jpg' } },
-  'kansas-state': { color: '#6d746d', banner: 'kansas-state.jpg', y: 46, credit: { author: 'Kzollman', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:KSU_Bluemont_Bell_and_Dickens.jpg' } },
-  'csulb': { color: '#7f6f68', banner: 'csulb.jpg', y: 45, credit: { author: 'Christophe.Finot', license: 'CC BY-SA 2.5', url: 'https://commons.wikimedia.org/wiki/File:Long_Beach_07.jpg' } },
+  'iowa-state-science-tech': { color: '#c01830', banner: 'iowa-state-science-tech.jpg', y: 50, credit: { author: 'Tim Kiser (w:User:Malepheasant)', license: 'CC BY-SA 2.5', url: 'https://commons.wikimedia.org/wiki/File:Ames_Iowa_Main_Street_banner.jpg' } },
+  'kansas-state': { color: '#301860', banner: 'kansas-state.jpg', y: 46, credit: { author: 'Kzollman', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:KSU_Bluemont_Bell_and_Dickens.jpg' } },
+  'csulb': { color: '#ecab01', banner: 'csulb.jpg', y: 45, credit: { author: 'Christophe.Finot', license: 'CC BY-SA 2.5', url: 'https://commons.wikimedia.org/wiki/File:Long_Beach_07.jpg' } },
   'csusb': { color: '#0065BD', banner: 'csusb.jpg', y: 88, credit: { author: 'Amerique', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:University_Ave_Entrance,_CSUSB.JPG' } },
   'montclair-state': { color: '#D1190D', banner: 'montclair-state.jpg', y: 55, credit: { author: 'Adam Moss from Tonawanda, New York, United States', license: 'CC BY-SA 2.0', url: 'https://commons.wikimedia.org/wiki/File:Montclair_State_University_(8563826766).jpg' } },
   'oklahoma-state': { color: '#fe5c00', banner: 'oklahoma-state.jpg', credit: { author: 'Helluvamatt', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Edmon_Low_Library.jpg' } },
@@ -112,14 +114,14 @@ const SCHOOL_META = {
   'sdsu': { color: '#D41736', banner: 'sdsu.jpg', y: 50, credit: { author: 'StuSeeger', license: 'CC BY 2.0', url: 'https://www.flickr.com/photos/stuseeger/9190187882/' } },
   'templeu': { color: '#9E1B34', banner: 'templeu.jpg', y: 55, credit: { author: 'ajay_suresh', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:The_Liacouras_Center_-_Temple_University_(53564503499).jpg' } },
   'tennessee-knoxville': { color: '#ff8200', banner: 'tennessee-knoxville.jpg', y: 50, credit: { author: 'jpellgen (@1105_jp)', license: 'CC BY-NC-ND 2.0', url: 'https://www.flickr.com/photos/jpellgen/49986329311/' } },
-  'texaschristian': { color: '#a0a7af', banner: 'texaschristian.jpg', y: 50, credit: { author: 'Adam Stanford', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Fort_Worth_Skyline1.jpg' } },
-  'ualabama': { color: '#7b7778', banner: 'ualabama.jpg', y: 50, credit: { author: 'Joel יוֹאֵל', license: 'CC BY-SA 2.0', url: 'https://commons.wikimedia.org/wiki/File:University_of_Alabama_Bryant-Denny_Stadium_Panorama.jpg' } },
-  'uarkansas': { color: '#f7f8e9', banner: 'uarkansas.jpg', y: 50, credit: { author: 'Brandonrush', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Mount_Sequoyah_and_Fayetteville_from_University_of_Arkansas.jpg' } },
-  'ucentralflorida': { color: '#74724e', banner: 'ucentralflorida.jpg', credit: { author: 'Dclemens1971', license: 'CC BY 4.0', url: 'https://commons.wikimedia.org/wiki/File:UCF_Center_for_Emerging_Media.jpg' } },
-  'udenver': { color: '#a2706d', banner: 'udenver.jpg', y: 48, credit: { author: 'Flickr user', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Full_Denver_skyline.jpg' } },
-  'ukentucky': { color: '#a4988a', banner: 'ukentucky.jpg', y: 50, credit: { author: 'John.Nash', license: 'CC BY 2.0', url: 'https://www.flickr.com/photos/illiac1/49920499391/' } },
+  'texaschristian': { color: '#592187', banner: 'texaschristian.jpg', y: 50, credit: { author: 'Adam Stanford', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Fort_Worth_Skyline1.jpg' } },
+  'ualabama': { color: '#d81830', banner: 'ualabama.jpg', y: 50, credit: { author: 'Joel יוֹאֵל', license: 'CC BY-SA 2.0', url: 'https://commons.wikimedia.org/wiki/File:University_of_Alabama_Bryant-Denny_Stadium_Panorama.jpg' } },
+  'uarkansas': { color: '#a81848', banner: 'uarkansas.jpg', y: 50, credit: { author: 'Brandonrush', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Mount_Sequoyah_and_Fayetteville_from_University_of_Arkansas.jpg' } },
+  'ucentralflorida': { color: '#7d7a45', banner: 'ucentralflorida.jpg', credit: { author: 'Dclemens1971', license: 'CC BY 4.0', url: 'https://commons.wikimedia.org/wiki/File:UCF_Center_for_Emerging_Media.jpg' } },
+  'udenver': { color: '#a9645f', banner: 'udenver.jpg', y: 48, credit: { author: 'Flickr user', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Full_Denver_skyline.jpg' } },
+  'ukentucky': { color: '#0030a8', banner: 'ukentucky.jpg', y: 50, credit: { author: 'John.Nash', license: 'CC BY 2.0', url: 'https://www.flickr.com/photos/illiac1/49920499391/' } },
   'umbc': { color: '#fdb515', banner: 'umbc.jpg', y: 50, credit: { author: 'Quintin Soloviev', license: 'CC BY 4.0', url: 'https://commons.wikimedia.org/wiki/File:Baltimore,_Maryland_skyline.jpg' } },
-  'unevada-reno': { color: '#041E42', banner: 'unevada-reno.jpg', y: 50, credit: { author: 'NevadaMarCom', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:University_of_Nevada,_Reno_Campus_Image.jpg' } },
+  'unevada-reno': { color: '#05244e', banner: 'unevada-reno.jpg', y: 50, credit: { author: 'NevadaMarCom', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:University_of_Nevada,_Reno_Campus_Image.jpg' } },
   'usandiego': { color: '#002868', banner: 'usandiego.jpg', credit: { author: 'ewen and donabel', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:SanDiegoSkyline.jpg' } },
   'ut-dallas': { color: '#e87500', banner: 'ut-dallas.jpg', y: 62, credit: { author: 'Blogger799', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:UTdallas_flag.jpg' } },
   'uvermont': { color: '#154734', banner: 'uvermont.jpg', y: 50, credit: { author: 'AlexiusHoratius', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:University_of_Vermont_9.jpg' } },
@@ -127,72 +129,83 @@ const SCHOOL_META = {
   'boston-college': { color: '#98002E', banner: 'boston-college.jpg', credit: { author: 'Quintin Soloviev', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Boston_College_campus_aerial_from_above_(Quintin_Soloviev).png' } },
   'bradley': { color: '#e11837', banner: 'bradley.jpg', credit: { author: 'AscendedAnathema', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Bradley_Hall,_Bradley_University.jpg' } },
   'clark': { color: '#ee2e24', banner: 'clark.jpg', y: 28, credit: { author: 'Kenneth C. Zirkel', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Clark_University_campus_scene,_Worcester_Massachusetts.jpg' } },
-  'east-carolina': { color: '#706d6d', banner: 'east-carolina.jpg', y: 75, credit: { author: 'Aaron Hines', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:ECU_Student_Center.jpg' } },
-  'fairfield': { color: '#80a7b1', banner: 'fairfield.jpg', y: 50, credit: { author: 'Stagophile', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Fairfield_Entrance.JPG' } },
+  'east-carolina': { color: '#604890', banner: 'east-carolina.jpg', y: 75, credit: { author: 'Aaron Hines', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:ECU_Student_Center.jpg' } },
+  'fairfield': { color: '#d81830', banner: 'fairfield.jpg', y: 50, credit: { author: 'Stagophile', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Fairfield_Entrance.JPG' } },
   'hofstra': { color: '#0B1E73', banner: 'hofstra.jpg', y: 27, credit: { author: 'Antony-22', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Hofstra_University_dormitories_2021.jpg' } },
-  'suny-albany': { color: '#8491a6', banner: 'suny-albany.jpg', y: 50, credit: { author: 'UpstateNYer', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:UAlbanyNanoscienceCenter.jpg' } },
+  'suny-albany': { color: '#46166b', banner: 'suny-albany.jpg', y: 50, credit: { author: 'UpstateNYer', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:UAlbanyNanoscienceCenter.jpg' } },
   'udelaware': { color: '#00539f', banner: 'udelaware.jpg', y: 50, credit: { author: 'Parkpay2000', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:University_of_Delaware_-_The_Mall.jpg' } },
-  'ukansas': { color: '#8d806e', banner: 'ukansas.jpg', y: 49, credit: { author: 'brent flanders', license: 'CC BY-NC-ND 2.0', url: 'https://www.flickr.com/photos/proforged/26077090956/' } },
+  'ukansas': { color: '#e9000c', banner: 'ukansas.jpg', y: 49, credit: { author: 'brent flanders', license: 'CC BY-NC-ND 2.0', url: 'https://www.flickr.com/photos/proforged/26077090956/' } },
   'ulouisville': { color: '#AD0000', banner: 'ulouisville.jpg', y: 50, credit: { author: 'Ken Lund', license: 'CC BY-SA 2.0', url: 'https://www.flickr.com/photos/kenlund/95106009/' } },
   'umass-lowell': { color: '#0067B1', banner: 'umass-lowell.jpg', y: 50, credit: { author: 'Ktr101', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Tsongas_Center_at_UMass_Lowell.jpg' } },
   'unc-wilmington': { color: '#007680', banner: 'unc-wilmington.jpg', y: 31, credit: { author: 'DiscoA340', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:University_of_North_Carolina_Wilmington_Main_Campus_(15_August_2023)_176.jpg' } },
   'uofiowa': { color: '#FFCD00', banner: 'uofiowa.jpg', y: 43, credit: { author: 'Tony Webster from Minneapolis, Minnesota', license: 'CC BY-SA 2.0', url: 'https://commons.wikimedia.org/wiki/File:Iowa_Memorial_Union_along_the_Iowa_River_-_University_of_Iowa_(24299238840).jpg' } },
   'uofminnesota-twin-cities': { color: '#7a0019', banner: 'uofminnesota-twin-cities.jpg', credit: { author: 'Guywelch2000', license: 'CC BY 4.0', url: 'https://commons.wikimedia.org/wiki/File:Downtown_Minneapolis_skyline_across_the_Mississippi_River.jpg' } },
   'uoklahoma': { color: '#841617', banner: 'uoklahoma.jpg', y: 50, credit: { author: 'Michael Barera', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:University_of_Oklahoma_July_2019_69_(Bizzell_Memorial_Library).jpg' } },
-  'usanfrancisco': { color: '#8a897d', banner: 'usanfrancisco.jpg', y: 49, credit: { author: 'Lightandtruth', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:San_Francisco_from_the_Marin_Headlands_in_August_2022.jpg' } },
-  'virginiacommonwealth': { color: '#7c8c99', banner: 'virginiacommonwealth.jpg', credit: { author: 'Bruce Emmerling', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:A_view_of_downtown_Richmond_2_(cropped).jpg' } },
+  'usanfrancisco': { color: '#f8b322', banner: 'usanfrancisco.jpg', y: 49, credit: { author: 'Lightandtruth', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:San_Francisco_from_the_Marin_Headlands_in_August_2022.jpg' } },
+  'virginiacommonwealth': { color: '#ffba00', banner: 'virginiacommonwealth.jpg', credit: { author: 'Bruce Emmerling', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:A_view_of_downtown_Richmond_2_(cropped).jpg' } },
   'illinois-tech': { color: '#CC0000', banner: 'illinois-tech.jpg', credit: { author: 'Buphoff', license: 'CC BY-SA 3.0 (also dual-licensed 2.5/2.0/1.0)', url: 'https://commons.wikimedia.org/wiki/File:Chicago_Skyline_Hi-Res.jpg' } },
-  'mizzou': { color: '#7a5453', banner: 'mizzou.jpg', y: 50, credit: { author: 'Don J Schulte', license: 'CC BY-NC-SA 2.0', url: 'https://www.flickr.com/photos/oxherder/4737035215/' } },
+  'mizzou': { color: '#f0c030', banner: 'mizzou.jpg', y: 50, credit: { author: 'Don J Schulte', license: 'CC BY-NC-SA 2.0', url: 'https://www.flickr.com/photos/oxherder/4737035215/' } },
   'quinnipiac': { color: '#0C2340', banner: 'quinnipiac.jpg', y: 50, credit: { author: 'Ethan Long', license: 'CC BY-SA 2.0', url: 'https://commons.wikimedia.org/wiki/File:Quinnipiac_University,_Mount_Carmel_Campus,_Hamden,_Connecticut_(53950787945).jpg' } },
   'rutgers-camden': { color: '#cc0033', banner: 'rutgers-camden.jpg', y: 28, credit: { author: 'Adam Moss', license: 'CC BY-SA 2.0', url: 'https://commons.wikimedia.org/wiki/File:Cooper_Street-Rutgers_University_Station.jpg' } },
   'rutgers-newark': { color: '#cc0033', banner: 'rutgers-newark.jpg', y: 30, credit: { author: 'King of Hearts', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Newark_October_2016_panorama.jpg' } },
-  'stockton': { color: '#0d6bad', banner: 'stockton.jpg', y: 50, credit: { author: 'SnowFire', license: 'CC BY 4.0', url: 'https://commons.wikimedia.org/wiki/File:Stockton_University_Campus_Center_September_2024.jpg' } },
+  'stockton': { color: '#57ace3', banner: 'stockton.jpg', y: 50, credit: { author: 'SnowFire', license: 'CC BY 4.0', url: 'https://commons.wikimedia.org/wiki/File:Stockton_University_Campus_Center_September_2024.jpg' } },
   'colorado-school-of-mines': { color: '#21314D', banner: 'colorado-school-of-mines.jpg', y: 53, credit: { author: 'pxhere', license: 'CC0', url: 'https://pxhere.com/en/photo/223389' } },
   'saintlouisu': { color: '#00244D', banner: 'saintlouisu.jpg', y: 34, credit: { author: 'pasa47', license: 'CC BY 2.0', url: 'https://www.flickr.com/photos/pasa/23537204776/' } },
-  'duquesne': { color: '#8690a3', banner: 'duquesne.jpg', credit: { author: 'Dllu', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Pittsburgh_skyline_panorama_daytime.jpg' } },
-  'udayton': { color: '#004B8D', banner: 'udayton.jpg', credit: { author: 'Nheyob', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Chapel_of_the_Immaculate_Conception_(University_of_Dayton)_-_exterior.JPG' } },
+  'duquesne': { color: '#6f83a9', banner: 'duquesne.jpg', credit: { author: 'Dllu', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Pittsburgh_skyline_panorama_daytime.jpg' } },
+  'udayton': { color: '#ce1141', banner: 'udayton.jpg', credit: { author: 'Nheyob', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Chapel_of_the_Immaculate_Conception_(University_of_Dayton)_-_exterior.JPG' } },
   'uidaho': { color: '#F1B300', banner: 'uidaho.jpg', y: 50, credit: { author: 'Spicypepper999', license: 'CC0', url: 'https://commons.wikimedia.org/wiki/File:Moscow_Idaho_aerial,_May_2023.png' } },
-  'unewhampshire': { color: '#606350', banner: 'unewhampshire.jpg', y: 50, credit: { author: 'AcrossTheAtlantic', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Thompson_Hall,_UNH_Sunset.jpg' } },
-  'uoregon': { color: '#d1d9eb', banner: 'uoregon.jpg', y: 63, credit: { author: 'Visitor7', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Lillis_Complex_(University_of_Oregon).jpg' } },
+  'unewhampshire': { color: '#001c51', banner: 'unewhampshire.jpg', y: 50, credit: { author: 'AcrossTheAtlantic', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Thompson_Hall,_UNH_Sunset.jpg' } },
+  'uoregon': { color: '#004f39', banner: 'uoregon.jpg', y: 63, credit: { author: 'Visitor7', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Lillis_Complex_(University_of_Oregon).jpg' } },
   'upacific': { color: '#D86018', banner: 'upacific.jpg', credit: { author: 'Quintin Soloviev (Quintinsoloviev)', license: 'CC BY 4.0', url: 'https://commons.wikimedia.org/wiki/File:Aerial_view_of_Stockton,_California_skyline.jpg' } },
-  'urhodeisland': { color: '#002147', banner: 'urhodeisland.jpg', y: 50, credit: { author: 'University of Rhode Island Photos', license: 'CC BY 2.0', url: 'https://www.flickr.com/photos/universityofrhodeisland/28287778062/' } },
+  'urhodeisland': { color: '#022751', banner: 'urhodeisland.jpg', y: 50, credit: { author: 'University of Rhode Island Photos', license: 'CC BY 2.0', url: 'https://www.flickr.com/photos/universityofrhodeisland/28287778062/' } },
   'uutah': { color: '#cc0000', banner: 'uutah.jpg', y: 46, credit: { author: 'MrSchmidt', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Presidents_Circle_.jpg' } },
-  'valparaiso': { color: '#381e0e', banner: 'valparaiso.jpg', y: 34, credit: { author: 'Runner1928', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Victory_Bell_of_Valparaiso_University_by_Athletics_and_Recreation_Center.jpg' } },
+  'valparaiso': { color: '#422311', banner: 'valparaiso.jpg', y: 34, credit: { author: 'Runner1928', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Victory_Bell_of_Valparaiso_University_by_Athletics_and_Recreation_Center.jpg' } },
   'wayne-state': { color: '#0c5449', banner: 'wayne-state.jpg', y: 56, credit: { author: 'TheWxResearcher', license: 'CC0', url: 'https://commons.wikimedia.org/wiki/File:Detroit_Skyline_from_Windsor_2025-09-01.jpg' } },
   'csufullerton': { color: '#00244E', banner: 'csufullerton.jpg', y: 55, credit: { author: 'CSUF Photos', license: 'CC BY-NC-SA 2.0', url: 'https://www.flickr.com/photos/csufnewsphotos/51737992728/' } },
   'elon': { color: '#73000a', banner: 'elon.jpg', y: 50, credit: { author: 'bobbsled', license: 'CC BY-SA 2.0', url: 'https://www.flickr.com/photos/mpd01605/3310919534/' } },
   'georgia-state': { color: '#0039a6', banner: 'georgia-state.jpg', credit: { author: 'Marc Merlin', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Atlanta_skyline_from_Jackson_Street_Bridge_2020.jpg' } },
-  'michigan-tech': { color: '#9195a2', banner: 'michigan-tech.jpg', y: 49, credit: { author: 'Jcvertin', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Michigan_Tech_campus,_fall_2018..jpg' } },
-  'missourri-s&t': { color: '#6e7a65', banner: 'missourri-s&t.jpg', y: 27, credit: { author: 'Steveewatkins', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Havener_Student_Center_at_Missouri_S%26T.jpg' } },
-  'north-carolina-charolette': { color: '#9b9fa3', banner: 'north-carolina-charolette.jpg', credit: { author: 'chucka_nc', license: 'CC BY-SA 2.0', url: 'https://commons.wikimedia.org/wiki/File:UNC_Charlotte_-_8617213059.jpg' } },
+  'michigan-tech': { color: '#f0d818', banner: 'michigan-tech.jpg', y: 49, credit: { author: 'Jcvertin', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Michigan_Tech_campus,_fall_2018..jpg' } },
+  'missourri-s&t': { color: '#184830', banner: 'missourri-s&t.jpg', y: 27, credit: { author: 'Steveewatkins', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Havener_Student_Center_at_Missouri_S%26T.jpg' } },
+  'north-carolina-charolette': { color: '#006030', banner: 'north-carolina-charolette.jpg', credit: { author: 'chucka_nc', license: 'CC BY-SA 2.0', url: 'https://commons.wikimedia.org/wiki/File:UNC_Charlotte_-_8617213059.jpg' } },
   'uhouston': { color: '#c8102e', banner: 'uhouston.jpg', y: 50, credit: { author: 'Jason Villanueva', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Buildings-city-houston-skyline-1870617.jpg' } },
   'university-maryland-college-park': { color: '#CE1126', banner: 'university-maryland-college-park.jpg', y: 50, credit: { author: 'Blacktupelo', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:McKeldin_Library_Mall_University_Maryland_College_Park.jpg' } },
-  'miamiu': { color: '#62584f', banner: 'miamiu.jpg', y: 50, credit: { author: '636Buster', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Benton_Hall,_Miami_University_5-8-2022.jpg' } },
+  'miamiu': { color: '#c01830', banner: 'miamiu.jpg', y: 50, credit: { author: '636Buster', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Benton_Hall,_Miami_University_5-8-2022.jpg' } },
   'thomas-jefferson': { color: '#1A2650', banner: 'thomas-jefferson.jpg', y: 50, credit: { author: 'Mefman00 - modifications by Maps and stuff (Brian W. Schaller)', license: 'CC0', url: 'https://commons.wikimedia.org/wiki/File:Philadelphia_skyline_from_the_southwest_2015.jpg' } },
   'unebraska-lincoln': { color: '#E41C38', banner: 'unebraska-lincoln.jpg', credit: { author: 'Hanyou23', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Skyline_of_Downtown_Lincoln,_Nebraska,_U.S._(2021_photograph).jpg' } },
   'yeshiva': { color: '#035596', banner: 'yeshiva.jpg', y: 50, credit: { author: 'Beyond My Ken', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Yeshiva_University_Wilf_Campus_marker_and_Max_Stern_Athletic_Center.jpg' } },
   'amherst': { color: '#3f1f69', banner: 'amherst.jpg', y: 35, credit: { author: 'Quintin Soloviev', license: 'CC BY 4.0', url: 'https://commons.wikimedia.org/wiki/File:Amherst,_MA_(cropped).jpg' } },
   'barnard': { color: '#002F6C', banner: 'barnard.jpg', y: 50, credit: { author: 'ajay_suresh', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Barnard_College_of_Columbia_University_(52008382627).jpg' } },
-  'bowdoin': { color: '#827d7f', banner: 'bowdoin.jpg', y: 45, credit: { author: 'Ilove2run', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Bowdoin_College_Quad.jpg' } },
+  'bowdoin': { color: '#3e3e3e', banner: 'bowdoin.jpg', y: 45, credit: { author: 'Ilove2run', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Bowdoin_College_Quad.jpg' } },
   'carleton': { color: '#173a79', banner: 'carleton.jpg', y: 47, credit: { author: 'Roy Luck', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Carleton_College_from_Laird_Stadium.jpg' } },
   'claremont-mckenna': { color: '#60001E', banner: 'claremont-mckenna.jpg', y: 24, credit: { author: 'CMC Media Team', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:North_Mall_Claremont_McKenna_College.jpg' } },
-  'davidson': { color: '#2a3615', banner: 'davidson.jpg', credit: { author: 'Michael Mauney', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Toast_on_Main_Street.jpg' } },
+  'davidson': { color: '#d81848', banner: 'davidson.jpg', credit: { author: 'Michael Mauney', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Toast_on_Main_Street.jpg' } },
   'hamilton': { color: '#002f86', banner: 'hamilton.jpg', credit: { author: 'Kenneth C. Zirkel', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Hamilton_College_Burke_Library.jpg' } },
   'harvey-mudd': { color: '#fdb913', banner: 'harvey-mudd.jpg', y: 50, credit: { author: 'Imagine at English Wikipedia', license: 'CC BY 2.5', url: 'https://commons.wikimedia.org/wiki/File:Hmc-dartmouth_entrance.jpg' } },
   'pomona': { color: '#005499', banner: 'pomona.jpg', y: 50, credit: { author: 'Nostalgicwisdom', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Mason_Hall_and_the_Academic_Quadrangle,_Pomona_College.jpg' } },
   'swarthmore': { color: '#84000D', banner: 'swarthmore.jpg', y: 50, credit: { author: 'Tlönorbis', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Building_at_Swarthmore_College.JPG' } },
   'urichmond': { color: '#990000', banner: 'urichmond.jpg', credit: { author: 'Jim (Flickr user 10673321@N06)', license: 'CC BY-SA 2.0', url: 'https://commons.wikimedia.org/wiki/File:Skyline_of_Richmond,_Virginia.jpg' } },
-  'vassar': { color: '#81878a', banner: 'vassar.jpg', y: 50, credit: { author: 'Akarenbon', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Vassar_College_Main_Building_College_Center_1.jpg' } },
-  'washington-and-lee': { color: '#676361', banner: 'washington-and-lee.jpg', y: 50, credit: { author: 'Bobak Ha\'Eri', license: 'CC BY 3.0', url: 'https://commons.wikimedia.org/wiki/File:2008-0831-WashingtonandLeeUniversity.jpg' } },
-  'wellesley': { color: '#57546a', banner: 'wellesley.jpg', credit: { author: 'Todd Van Hoosear', license: 'CC BY-SA 2.0', url: 'https://commons.wikimedia.org/wiki/File:Wellesley_College_(26714214645).jpg' } },
-  'williams': { color: '#8c9ba2', banner: 'williams.jpg', y: 50, credit: { author: 'Tim4403224246', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Morgan_Hall_of_Williams_College_in_the_fall_(27_October_2010).jpg' } },
-  'wesleyan': { color: '#5b5959', banner: 'wesleyan.jpg', y: 57, credit: { author: 'Joe Mabel', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Wesleyan_University_-_North_and_South_College_01.jpg' } },
+  'vassar': { color: '#800000', banner: 'vassar.jpg', y: 50, credit: { author: 'Akarenbon', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Vassar_College_Main_Building_College_Center_1.jpg' } },
+  'washington-and-lee': { color: '#00529b', banner: 'washington-and-lee.jpg', y: 50, credit: { author: 'Bobak Ha\'Eri', license: 'CC BY 3.0', url: 'https://commons.wikimedia.org/wiki/File:2008-0831-WashingtonandLeeUniversity.jpg' } },
+  'wellesley': { color: '#4f4876', banner: 'wellesley.jpg', credit: { author: 'Todd Van Hoosear', license: 'CC BY-SA 2.0', url: 'https://commons.wikimedia.org/wiki/File:Wellesley_College_(26714214645).jpg' } },
+  'williams': { color: '#441776', banner: 'williams.jpg', y: 50, credit: { author: 'Tim4403224246', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Morgan_Hall_of_Williams_College_in_the_fall_(27_October_2010).jpg' } },
+  'wesleyan': { color: '#d82327', banner: 'wesleyan.jpg', y: 57, credit: { author: 'Joe Mabel', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Wesleyan_University_-_North_and_South_College_01.jpg' } },
   'grinnell': { color: '#DA291C', banner: 'grinnell.jpg', y: 50, credit: { author: 'Smallbones', license: 'CC0', url: 'https://commons.wikimedia.org/wiki/File:Goodnow_Hall_Grinnell_IA.jpg' } },
-  'usma-west-point': { color: '#000000', banner: 'usma-west-point.jpg', credit: { author: 'Juliancolton', license: 'Public domain (PD-self)', url: 'https://commons.wikimedia.org/wiki/File:West_Point_US_9W_panorama.jpg' } },
-  'auburn': { color: '#7d7976', banner: 'auburn.jpg', credit: { author: 'AuburnPilot', license: 'PD-self (public domain)', url: 'https://commons.wikimedia.org/wiki/File:AuburnALAbove.jpg' } },
-  'loyola-marymount': { color: '#80777a', banner: 'loyola-marymount.jpg', y: 50, credit: { author: 'Rami Ammoun', license: 'CC BY 3.0', url: 'https://commons.wikimedia.org/wiki/File:Downtown_La_At_Sunrise_(250094139).jpeg' } },
-  'suny-esf': { color: '#a8aea7', banner: 'suny-esf.jpg', y: 55, credit: { author: 'SUNY ESF', license: 'CC BY-NC-SA 2.0', url: 'https://www.flickr.com/photos/sunyesf/11424070635/' } },
-  'depaul': { color: '#6c675d', banner: 'depaul.jpg', y: 50, credit: { author: 'quinntheislander', license: 'CC0', url: 'https://commons.wikimedia.org/wiki/File:Chicago-illinois-skyline-skyscrapers-161963.jpg' } },
+  'usma-west-point': { color: '#c8ac71', banner: 'usma-west-point.jpg', credit: { author: 'Juliancolton', license: 'Public domain (PD-self)', url: 'https://commons.wikimedia.org/wiki/File:West_Point_US_9W_panorama.jpg' } },
+  'auburn': { color: '#003060', banner: 'auburn.jpg', credit: { author: 'AuburnPilot', license: 'PD-self (public domain)', url: 'https://commons.wikimedia.org/wiki/File:AuburnALAbove.jpg' } },
+  'loyola-marymount': { color: '#0090c0', banner: 'loyola-marymount.jpg', y: 50, credit: { author: 'Rami Ammoun', license: 'CC BY 3.0', url: 'https://commons.wikimedia.org/wiki/File:Downtown_La_At_Sunrise_(250094139).jpeg' } },
+  'suny-esf': { color: '#006030', banner: 'suny-esf.jpg', y: 55, credit: { author: 'SUNY ESF', license: 'CC BY-NC-SA 2.0', url: 'https://www.flickr.com/photos/sunyesf/11424070635/' } },
+  'depaul': { color: '#0060c0', banner: 'depaul.jpg', y: 50, credit: { author: 'quinntheislander', license: 'CC0', url: 'https://commons.wikimedia.org/wiki/File:Chicago-illinois-skyline-skyscrapers-161963.jpg' } },
+  'alabama-birmingham': { color: '#1e6b52', banner: 'alabama-birmingham.jpg', y: 45, credit: { author: 'Jaymay', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:University_of_Alabama_at_Birmingham_Campus_from_Vulcan.jpg' } },
+  'byu': { color: '#002e5d', banner: 'byu.jpg', y: 18, credit: { author: 'Pastelitodepapa', license: 'CC0', url: 'https://commons.wikimedia.org/wiki/File:BYU_mountain_view.JPG' } },
+  'georgemason': { color: '#006633', banner: 'georgemason.jpg', y: 97, credit: { author: 'Tony Webster', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:George_Mason_University_-_Arlington,_Virginia_(14306711841).jpg' } },
+  'gonzaga': { color: '#05244e', banner: 'gonzaga.jpg', y: 50, credit: { author: 'SCUMATT', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Gonzaga_University_Library.jpg' } },
+  'hawaii-manoa': { color: '#035138', banner: 'hawaii-manoa.jpg', y: 42, credit: { author: 'Sdkb', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Manoa_from_ridge.jpg' } },
+  'james-madison': { color: '#450084', banner: 'james-madison.jpg', y: 34, credit: { author: 'Ben Schumin', license: 'CC BY-SA 2.5', url: 'https://commons.wikimedia.org/wiki/File:Keezell_Hall_(JMU).jpg' } },
+  'rutgers-new-brunswick': { color: '#cc0033', banner: 'rutgers-new-brunswick.jpg', y: 60, credit: { author: 'Bjoertvedt', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:New_Brunswick_-_Raritan_River_IMG_2299_Rutgers_University.jpg' } },
+  'syracuse': { color: '#f76900', banner: 'syracuse.jpg', y: 36, credit: { author: 'Kiran891', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Hall_of_Languages_Syracuse_University.jpg' } },
+  'texas-tech': { color: '#cc0000', banner: 'texas-tech.jpg', y: 58, credit: { author: 'Johan Hendrikse', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:TTU_English_Philosophy_Building.jpg' } },
+  'uarizona': { color: '#0c234b', banner: 'uarizona.jpg', y: 50, credit: { author: 'Michael Barera', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:University_of_Arizona_May_2019_39_(Meinel_Optical_Sciences).jpg' } },
+  'ucincinnati': { color: '#e00122', banner: 'ucincinnati.jpg', y: 75, credit: { author: 'Abhijith Athreya Mysore Gopinath', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Tangeman_University_Center_at_the_University_of_Cincinnati.jpg' } },
 };
 
 // Logos live at images/logos/<slug>.png. A few schools have none yet; the
@@ -384,8 +397,42 @@ const OUTSIDE_GPA_NOTE = {
 };
 
 function outsideGpaMark(source) {
-  const text = OUTSIDE_GPA_NOTE[source];
+  return outsideMark(OUTSIDE_GPA_NOTE[source]);
+}
+
+function outsideMark(text) {
   return `<button type="button" class="stat-info gpa-source" aria-label="${escapeHtml(text)}">≈<span class="stat-info-tip" role="tooltip">${escapeHtml(text)}</span></button>`;
+}
+
+// SAT/ACT ranges from data/outside-tests.json get the same "≈" as an
+// outside GPA, with a tip saying where they came from.
+// An entry with a source URL (or marked official) is the school's own
+// published figures; any other came from outside sources.
+function outsideTestNote(s) {
+  const o = s._testsOutside;
+  const from = o.source || o.official
+    ? `From the school's published figures${o.year ? ` (${o.year})` : ''}, not its Common Data Set.`
+    : "From outside sources, not the school's Common Data Set.";
+  return `${from}${o.note ? ' ' + o.note : ''}`;
+}
+
+function outsideTestSourceLine(s) {
+  const o = s._testsOutside;
+  const where = o.source
+    ? `Composite ranges from the school's <a href="${escapeHtml(o.source)}" target="_blank" rel="noopener">admissions page</a>, not its Common Data Set.`
+    : o.official
+      ? 'Composite ranges from figures the school has published, not its Common Data Set.'
+      : 'Composite ranges from outside sources, not the school\'s Common Data Set.';
+  return `<p class="cost-source"><span class="gpa-mark" aria-hidden="true">≈</span>
+        <span>${where}${o.note ? ' ' + escapeHtml(o.note) : ''}</span></p>`;
+}
+
+// A range value for the quick-facts strip, with the "≈" when both ends came
+// from outside the CDS.
+function rangeVal(s, f25, f75) {
+  if (s[f25] == null || s[f75] == null) return '<span class="stat-na">N/A</span>';
+  const range = `${s[f25]}–${s[f75]}`;
+  return isOutsideTest(s, f25, f75) ? `<span class="stat-anchor">${outsideMark(outsideTestNote(s))}${range}</span>` : range;
 }
 
 // A cost from the school's own cost page (data/outside-costs.json) rather
@@ -399,19 +446,13 @@ function renderQuickFacts(s, outside = null) {
     // hangs off its left edge (see .stat-anchor in school-template.css).
     : outside ? `<span class="stat-anchor">${outsideGpaMark(outside.source)}${Number(outside.gpa).toFixed(2)}</span>`
     : 'Not reported';
-  const satVal   = s.sat_composite_25 != null && s.sat_composite_75 != null
-    ? `${s.sat_composite_25}–${s.sat_composite_75}`
-    : '<span class="stat-na">N/A</span>';
-
-  const act25 = s.act_composite_25;
-  const act75 = s.act_composite_75;
-
   const tuitionOOS = s.tuition_out_of_state ?? s.tuition;
 
   const chips = [
     ['Acceptance Rate', s.acceptance_rate != null ? (s.acceptance_rate * 100).toFixed(1) + '%' : '<span class="stat-na">N/A</span>'],
-    ['SAT Range',       satVal],
-    ['ACT Range',       act25 != null && act75 != null ? `${act25}–${act75}` : '<span class="stat-na">N/A</span>'],
+    [s._satEstimated ? `<span class="stat-anchor">SAT Range${infoTip(SAT_ESTIMATE_NOTE)}</span>` : 'SAT Range',
+                        rangeVal(s, 'sat_composite_25', 'sat_composite_75')],
+    ['ACT Range',       rangeVal(s, 'act_composite_25', 'act_composite_75')],
     // The CDS never says whether a school's average GPA is weighted or
     // unweighted (avg_gpa_weighted is just the column name), so don't claim either.
     [`<span class="stat-anchor">Avg GPA${infoTip('The Common Data Set does not state whether this GPA is weighted or unweighted.')}</span>`,
@@ -750,7 +791,7 @@ function renderAcademicProfileSection(s) {
     <div>
       <h3 class="subsection-title">SAT — 25th to 75th Percentile</h3>
       <div class="score-rows">
-        ${scoreBarHtml('Composite', s.sat_composite_25, s.sat_composite_75, 400, 1600)}
+        ${scoreBarHtml(s._satEstimated ? `<span class="stat-anchor">Composite${infoTip(SAT_ESTIMATE_NOTE)}</span>` : 'Composite', s.sat_composite_25, s.sat_composite_75, 400, 1600)}
         ${scoreBarHtml('Reading &amp; Writing', s.sat_reading_25, s.sat_reading_75, 200, 800)}
         ${scoreBarHtml('Math', s.sat_math_25, s.sat_math_75, 200, 800)}
       </div>
@@ -760,6 +801,7 @@ function renderAcademicProfileSection(s) {
         ${scoreBarHtml('Math', s.act_math_25, s.act_math_75, 1, 36)}
         ${scoreBarHtml('English', s.act_english_25, s.act_english_75, 1, 36)}
       </div>
+      ${s._testsOutside ? outsideTestSourceLine(s) : ''}
       ${submissionHtml}
       ${classRankHtml(s)}
     </div>`;
@@ -1095,8 +1137,8 @@ async function init() {
   recentHistory = [slug, ...recentHistory.filter(s => s !== slug)].slice(0, 5);
   localStorage.setItem(historyKey, JSON.stringify(recentHistory));
 
-  const [{ yearRecords, availableYearKeys }, admissionPlans, outsideGpa, outsideCosts, noWaitlist, scBySlug] =
-    await Promise.all([loadAllYears(slug), loadAdmissionPlans(), loadOutsideGpa(), loadOutsideCosts(),
+  const [{ yearRecords, availableYearKeys }, admissionPlans, outsideGpa, outsideCosts, outsideTests, noWaitlist, scBySlug] =
+    await Promise.all([loadAllYears(slug), loadAdmissionPlans(), loadOutsideGpa(), loadOutsideCosts(), loadOutsideTests(),
       fetch('/data/no-waitlist.json').then(r => (r.ok ? r.json() : {})).then(j => j.slugs ?? {}).catch(() => ({})),
       loadScorecardBySlug()]);
 
@@ -1120,6 +1162,11 @@ async function init() {
   // Current prices from the school's own cost page fill the cost fields its
   // latest CDS left blank (older years keep exactly what their CDS said).
   yearRecords.set(latestAvailableKey, withOutsideCost(yearRecords.get(latestAvailableKey), outsideCosts));
+  // Same for SAT/ACT ranges the school publishes itself (data/outside-tests.json).
+  yearRecords.set(latestAvailableKey, withOutsideTest(yearRecords.get(latestAvailableKey), outsideTests));
+  // Any year whose CDS has SAT section scores but no composite gets an
+  // estimated composite (marked with an ⓘ; see js/sat-estimate.js).
+  for (const [key, rec] of yearRecords) yearRecords.set(key, withSatEstimate(rec));
   // Its CDS says it doesn't use a waitlist: the Waitlist box says so.
   if (noWaitlist[slug]) yearRecords.set(latestAvailableKey, { ...yearRecords.get(latestAvailableKey), _noWaitlist: true });
   let currentYearKey = latestAvailableKey;
