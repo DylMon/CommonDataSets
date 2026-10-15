@@ -2911,14 +2911,14 @@ body.page-resources .hero-banner {
     }
 
     .school-rank {
-        width: 26px;
-        height: 26px;
-        font-size: 0.8em; /* smaller circle than desktop, so scaled down further for the same triple-digit fit */
+        width: 34px;
+        height: 34px;
+        font-size: 0.95em; /* smaller circle than desktop, so scaled down further for the same triple-digit fit */
     }
 
     .school-logo {
-        height: 26px;
-        width: 38px;
+        height: 34px;
+        width: 52px;
     }
 
     .school-name-link {
