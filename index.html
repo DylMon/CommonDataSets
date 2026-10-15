@@ -228,6 +228,20 @@
         const logoSrc = slug => `/images/logos/${slug}.png`;
         const LOGO_ONERR = "this.style.display='none'";
 
+        // Maps links for a school's location — name + city + state (not just
+        // city/state) so the pin lands on the actual campus rather than just
+        // the city center. Defaults to Google Maps (works everywhere, and
+        // auto-opens the Google Maps app itself via universal links on
+        // iOS/Android when installed); the delegated click handler below
+        // swaps the destination to Apple Maps at click-time on iOS
+        // specifically, since the href needs to stay a plain, shareable,
+        // always-valid Google Maps link for when JS doesn't run.
+        const mapsQuery = s => encodeURIComponent(`${s.name}, ${s.city}, ${s.state}`);
+        const googleMapsUrl = s => `https://www.google.com/maps/search/?api=1&query=${mapsQuery(s)}`;
+        const appleMapsUrl = s => `https://maps.apple.com/?q=${mapsQuery(s)}`;
+        const isIOS = () => /iPad|iPhone|iPod/.test(navigator.userAgent)
+            || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
         let favorites = new Set(JSON.parse(localStorage.getItem('cds_favorites') ?? '[]'));
 
         function saveFavorites() {
@@ -549,10 +563,10 @@
                                 <div class="school-stats-grid">
                                     <div class="school-meta-left">
                                         ${s.data_year ? `<span class="school-data-year">${s.data_year}</span>` : ''}
-                                        ${s.location ? `<div class="school-location">
+                                        ${s.location ? `<a class="school-location" href="${googleMapsUrl(s)}" target="_blank" rel="noopener" data-apple-maps-url="${appleMapsUrl(s)}">
                                             <svg class="location-pin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
                                             ${s.location}
-                                        </div>` : ''}
+                                        </a>` : ''}
                                     </div>
                                     <div class="stat-label stat-col-1">Acceptance</div>
                                     <div class="stat-label stat-col-2"><span class="gpa-anchor">SAT Range${s._satEstimated ? nonCdsMark(true, SAT_ESTIMATE_TITLE) : nonCdsMark(isOutsideTest(s, 'sat_composite_25', 'sat_composite_75'))}</span></div>
@@ -813,6 +827,15 @@
                     currentPage = parseInt(pageBtn.dataset.page, 10);
                     renderList(currentSort);
                     document.getElementById('school-list').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    return;
+                }
+
+                const locationLink = e.target.closest('.school-location');
+                if (locationLink) {
+                    if (isIOS()) {
+                        e.preventDefault();
+                        window.open(locationLink.dataset.appleMapsUrl, '_blank', 'noopener');
+                    }
                     return;
                 }
 

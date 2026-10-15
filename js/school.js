@@ -213,6 +213,23 @@ const SCHOOL_META = {
 const logoSrc = slug => `/images/logos/${slug}.png`;
 const LOGO_ONERR = "this.style.display='none'";
 
+// Maps links for a school's location — name + city + state (not just
+// city/state) so the pin lands on the actual campus rather than just the
+// city center. Defaults to Google Maps (works everywhere, and auto-opens
+// the Google Maps app itself via universal links on iOS/Android when
+// installed); the delegated click handler near the bottom of this file
+// swaps the destination to Apple Maps at click-time on iOS specifically,
+// since the href needs to stay a plain, shareable, always-valid Google
+// Maps link for when JS doesn't run. Same helpers as index.html's own copy.
+const mapsQuery = s => encodeURIComponent(`${s.name}, ${s.city}, ${s.state}`);
+const googleMapsUrl = s => `https://www.google.com/maps/search/?api=1&query=${mapsQuery(s)}`;
+const appleMapsUrl = s => `https://maps.apple.com/?q=${mapsQuery(s)}`;
+const isIOS = () => /iPad|iPhone|iPod/.test(navigator.userAgent)
+  || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+function locationLinkHtml(s) {
+  return `<a class="location-link" href="${googleMapsUrl(s)}" target="_blank" rel="noopener" data-apple-maps-url="${appleMapsUrl(s)}">${s.location}</a>`;
+}
+
 // ── Favorites & History ────────────────────────────────────────────────
 
 const FAV_KEY     = 'cds_favorites';
@@ -311,7 +328,7 @@ function renderHero(s, slug, meta) {
 
 function renderHeroPill(s, slug, meta) {
   const logo = `<img class="hero-logo" src="${logoSrc(slug)}" alt="${s.name}" onerror="${LOGO_ONERR}">`;
-  const metaParts = [s.location, s.school_type].filter(Boolean);
+  const metaParts = [s.location ? locationLinkHtml(s) : null, s.school_type].filter(Boolean);
   const siteLink = s.website
     ? ` · <a class="hero-site-link" href="${/^https?:\/\//.test(s.website) ? '' : 'https://'}${s.website}" target="_blank" rel="noopener">Official Site →</a>`
     : '';
@@ -642,7 +659,7 @@ function renderAdmissionsSummary(s, rounds = cdsRounds(s)) {
   const early = [...new Set(rounds.filter(r => isEarlyRound(r.type)).map(r => r.type))];
 
   const kvGrid = `<div class="kv-grid">
-    ${kv('Location',          s.location)}
+    ${kv('Location',          s.location ? locationLinkHtml(s) : null)}
     ${kv('School Type',       s.school_type)}
     ${kv('Early Admissions',  early.length ? early.map(escapeHtml).join(', ') : 'No Early Admission Program')}
     ${kv('Application Fee',   feeHtml(s.application_fee))}
@@ -1138,6 +1155,19 @@ async function loadAllYears(targetSlug) {
     availableYearKeys: ALL_YEAR_FILES.map(yearKeyFromUrl).filter(k => yearRecords.has(k)),
   };
 }
+
+// Delegated once at document level (rather than re-attached per render)
+// since .location-link appears in two places that get replaced wholesale
+// on every year switch (the hero pill and the kv-grid) — on iOS, swap the
+// destination to Apple Maps at click-time; everywhere else the href's own
+// Google Maps link already does the right thing with no JS needed.
+document.addEventListener('click', e => {
+  const link = e.target.closest('.location-link');
+  if (link && isIOS()) {
+    e.preventDefault();
+    window.open(link.dataset.appleMapsUrl, '_blank', 'noopener');
+  }
+});
 
 // Print only: folds .quick-facts-strip into .hero-pill as its last child
 // (so the printout reads as one unified card — name/location + the 6 stat

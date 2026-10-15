@@ -337,6 +337,13 @@
             document.getElementById('gpa-legend').hidden = !activeSchoolEntries().some(({ school }) => school._gpaOutside || school._costOutside || school._testsOutside);
         }
 
+        function compareOptionHtml(slot, school) {
+            return `<div class="compare-option" data-slug="${school.slug}" data-slot="${slot}">
+                <img class="compare-option-logo" src="${logoSrc(school.slug)}" alt="" onerror="${LOGO_ONERR}">
+                <span class="compare-option-name">${school.name}</span>
+            </div>`;
+        }
+
         function renderDropdown(slot) {
             const input = document.querySelector(`.compare-input[data-slot="${slot}"]`);
             const dropdown = document.querySelector(`.compare-dropdown[data-slot="${slot}"]`);
@@ -348,18 +355,35 @@
                     .filter(([s, school]) => Number(s) !== slot && school)
                     .map(([, school]) => school.slug)
             );
+            const available = allSchools.filter(s => !chosenElsewhere.has(s.slug));
 
-            const results = allSchools
-                .filter(s => !chosenElsewhere.has(s.slug))
+            // Empty query, just focused: Recently Viewed then Favorites, same
+            // as the header search dropdown (js/header-search.js) — falls
+            // through to the full browsable list below when neither exists,
+            // same as this dropdown always did before favorites/history.
+            if (query === '') {
+                const bySlug = new Map(available.map(s => [s.slug, s]));
+                const historySlugs = JSON.parse(localStorage.getItem('cds_recently_viewed') ?? '[]');
+                const favoriteSlugs = JSON.parse(localStorage.getItem('cds_favorites') ?? '[]');
+                const historyItems = historySlugs.map(s => bySlug.get(s)).filter(Boolean);
+                const favoriteItems = favoriteSlugs.map(s => bySlug.get(s)).filter(Boolean);
+                const sections = [];
+                if (historyItems.length) sections.push(`<div class="search-dropdown-label">Recently Viewed</div>${historyItems.map(s => compareOptionHtml(slot, s)).join('')}`);
+                if (favoriteItems.length) sections.push(`<div class="search-dropdown-label">Favorites</div>${favoriteItems.map(s => compareOptionHtml(slot, s)).join('')}`);
+                if (sections.length) {
+                    dropdown.innerHTML = sections.join('');
+                    dropdown.classList.add('open');
+                    updatePickerPadding();
+                    return;
+                }
+            }
+
+            const results = available
                 .filter(s => query === '' || matches(s, query))
                 .sort((a, b) => a.name.localeCompare(b.name));
 
             dropdown.innerHTML = results.length
-                ? results.map(s => `
-                    <div class="compare-option" data-slug="${s.slug}" data-slot="${slot}">
-                        <img class="compare-option-logo" src="${logoSrc(s.slug)}" alt="" onerror="${LOGO_ONERR}">
-                        <span class="compare-option-name">${s.name}</span>
-                    </div>`).join('')
+                ? results.map(s => compareOptionHtml(slot, s)).join('')
                 : `<div class="compare-empty">No schools found.</div>`;
 
             dropdown.classList.add('open');

@@ -22,9 +22,9 @@
     },
     "auburn": {
       "name": "Auburn University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "data/cds-pdfs/2025-2026/auburn.pdf"
     },
     "barnard": {
       "name": "Barnard College",
@@ -118,9 +118,9 @@
     },
     "cmu": {
       "name": "Carnegie Mellon University",
-      "sat": "blind",
-      "act": "blind",
-      "source": "data/cds-pdfs/2025-2026/cmu-2526.pdf"
+      "sat": null,
+      "act": null,
+      "source": null
     },
     "case-western": {
       "name": "Case Western Reserve University",
@@ -166,9 +166,9 @@
     },
     "colorado-state": {
       "name": "Colorado State University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "blind",
+      "act": "blind",
+      "source": "data/cds-pdfs/2025-2026/colorado-state.pdf"
     },
     "columbia": {
       "name": "Columbia University",
@@ -184,9 +184,9 @@
     },
     "creighton": {
       "name": "Creighton University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "data/cds-pdfs/2025-2026/creighton.pdf"
     },
     "dartmouth": {
       "name": "Dartmouth College",
@@ -310,9 +310,9 @@
     },
     "grinnell": {
       "name": "Grinnell College",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "data/cds-pdfs/2024-2025/grinnell.pdf"
     },
     "hamilton": {
       "name": "Hamilton College",
@@ -346,15 +346,15 @@
     },
     "illinois-tech": {
       "name": "Illinois Institute of Technology",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "data/cds-pdfs/2023-2024/illinois-tech.pdf"
     },
     "indiana-bloomington": {
       "name": "Indiana University Bloomington",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "data/cds-pdfs/2025-2026/indiana-bloomington-2526.pdf"
     },
     "iowa-state-science-tech": {
       "name": "Iowa State University",
@@ -448,9 +448,9 @@
     },
     "nc-state": {
       "name": "North Carolina State University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "data/cds-pdfs/2025-2026/nc-state-2526.pdf"
     },
     "northeastern": {
       "name": "Northeastern University",
@@ -460,9 +460,9 @@
     },
     "northwestern": {
       "name": "Northwestern University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "data/cds-pdfs/2025-2026/northwestern-2526.pdf"
     },
     "ohio-state": {
       "name": "Ohio State University",
@@ -496,9 +496,9 @@
     },
     "pomona": {
       "name": "Pomona College",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "data/cds-pdfs/2025-2026/pomona.pdf"
     },
     "princeton": {
       "name": "Princeton University",
@@ -532,9 +532,9 @@
     },
     "rowan": {
       "name": "Rowan University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "data/cds-pdfs/2025-2026/rowan.pdf"
     },
     "rutgers-camden": {
       "name": "Rutgers University, Camden",
@@ -556,9 +556,9 @@
     },
     "suny-esf": {
       "name": "SUNY Environmental Science and Forestry",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "data/cds-pdfs/2025-2026/suny-esf.pdf"
     },
     "saintlouisu": {
       "name": "Saint Louis University",
@@ -598,9 +598,9 @@
     },
     "stockton": {
       "name": "Stockton University",
-      "sat": "blind",
-      "act": "blind",
-      "source": "data/cds-pdfs/2022-2023/stockton.pdf"
+      "sat": null,
+      "act": null,
+      "source": null
     },
     "stony-brook": {
       "name": "Stony Brook University",
@@ -628,9 +628,9 @@
     },
     "texas-am": {
       "name": "Texas A&M University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "data/cds-pdfs/2025-2026/texas-am-2526.pdf"
     },
     "texaschristian": {
       "name": "Texas Christian University",
@@ -742,9 +742,9 @@
     },
     "buffalo": {
       "name": "University at Buffalo",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "data/cds-pdfs/2025-2026/buffalo-2526.pdf"
     },
     "ualabama": {
       "name": "University of Alabama",
@@ -790,9 +790,9 @@
     },
     "udayton": {
       "name": "University of Dayton",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "data/cds-pdfs/2025-2026/udayton.pdf"
     },
     "udelaware": {
       "name": "University of Delaware",
@@ -868,9 +868,9 @@
     },
     "ulouisville": {
       "name": "University of Louisville",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "data/cds-pdfs/2024-2025/ulouisville.pdf"
     },
     "university-maryland-college-park": {
       "name": "University of Maryland",
@@ -904,9 +904,9 @@
     },
     "umich": {
       "name": "University of Michigan",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "data/cds-pdfs/2025-2026/umich.pdf"
     },
     "uofminnesota-twin-cities": {
       "name": "University of Minnesota, Twin Cities",
@@ -988,9 +988,9 @@
     },
     "pitt": {
       "name": "University of Pittsburgh",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "data/cds-pdfs/2025-2026/pitt-2526.pdf"
     },
     "urhodeisland": {
       "name": "University of Rhode Island",
@@ -1138,9 +1138,9 @@
     },
     "washu": {
       "name": "Washington University in St. Louis",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "data/cds-pdfs/2025-2026/washu-2526.pdf"
     },
     "washington-and-lee": {
       "name": "Washington and Lee University",
@@ -1180,21 +1180,21 @@
     },
     "williams": {
       "name": "Williams College",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "data/cds-pdfs/2025-2026/williams.pdf"
     },
     "wpi": {
       "name": "Worcester Polytechnic Institute",
-      "sat": "blind",
-      "act": "blind",
-      "source": "data/cds-pdfs/2025-2026/wpi-2526.pdf"
-    },
-    "yale": {
-      "name": "Yale University",
       "sat": null,
       "act": null,
       "source": null
+    },
+    "yale": {
+      "name": "Yale University",
+      "sat": "optional",
+      "act": "optional",
+      "source": "data/cds-pdfs/2025-2026/yale-2526.pdf"
     },
     "yeshiva": {
       "name": "Yeshiva University",

@@ -378,6 +378,12 @@ body.page-chanceme {
 /* Target school picker */
 .cm-school-search {
     position: relative;
+    /* Without its own stacking context, the dropdown's z-index: 20 only
+       wins against its own siblings — .site-footer has none either, so
+       being later in the DOM it would otherwise paint over the open
+       dropdown instead of behind it (same fix .compare-picker already
+       needed in css/compare.css, for the same underlying reason). */
+    z-index: 1;
 }
 
 .cm-school-dropdown {
