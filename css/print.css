@@ -101,6 +101,32 @@ body {
   font-size: 0.8em;
 }
 
+/* "Official Site →" is a link affordance — meaningless on paper where
+   nothing's clickable. font-size: 0 hides the original text node
+   without removing it (so the href-reading tool/assistive copy-paste
+   still has real link text if the page is ever read digitally from a
+   saved PDF); ::after showing attr(href) is the actual visible content
+   in print, sized back up on its own since it doesn't inherit the
+   zeroed font-size. */
+.hero-site-link {
+  font-size: 0;
+}
+.hero-site-link::after {
+  content: attr(href);
+  /* rem, not em — em here would resolve against .hero-site-link's own
+     (zeroed) font-size and collapse to 0 right along with it. rem is
+     relative to the document root (12px in this stylesheet), not the
+     parent, so it's unaffected. */
+  font-size: 0.75rem;
+}
+
+/* ⓘ/≈ tooltip-trigger buttons (hover/tap-to-reveal source notes) — the
+   tooltip itself never shows on paper anyway since nothing can hover
+   or tap, so the bare icon would just be inert clutter. */
+.stat-info {
+  display: none !important;
+}
+
 /* ── Year bar: keep the text (useful context for later reference), lose
    the interactive dropdown look. ── */
 .year-bar-strip {
