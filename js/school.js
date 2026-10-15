@@ -331,7 +331,7 @@ function renderHeroPill(s, slug, meta) {
     </div>`;
 }
 
-// ── Render: Year bar (switcher + missing-data notice) ──────────────────
+// ── Render: Year bar (switcher) ──────────────────────────────────────
 // Sits below the hero pill, ahead of any actual data (.quick-facts-strip
 // and the section grid) — not part of the title card itself, since it's
 // metadata about the data rather than about the school.
@@ -346,11 +346,7 @@ function renderYearBar(yearCtx) {
     `<button type="button" class="sort-option${k === currentYearKey ? ' active' : ''}" data-year="${k}">${shortYearLabel(k)}</button>`
   ).join('');
 
-  const missingNotice = latestAvailableKey !== SITE_LATEST_YEAR_KEY
-    ? `<p class="year-missing-notice">Notice, this school is missing CDS data for the most recent year. Displaying the most recent available data: ${shortYearLabel(latestAvailableKey)}.</p>`
-    : '';
-
-  // Always shown (not just when there's a missing-year notice or a choice
+  // Always shown (not just when there's a choice
   // of years to switch between) — a visitor should always be able to see
   // at a glance which year's data they're looking at. The dropdown itself
   // only renders as interactive when there's actually more than one year
@@ -367,7 +363,6 @@ function renderYearBar(yearCtx) {
       <div class="year-switcher-btn" style="cursor:default;background:none;border:none;padding:4px 0;">
         <span>${label}: <strong>${shortYearLabel(currentYearKey)}</strong></span>
       </div>`}
-      ${missingNotice}
     </div>`;
 }
 
@@ -1055,7 +1050,6 @@ const ALL_YEAR_FILES = [
   '/data/schools-2024-2025.json',
   '/data/schools-2025-2026.json',
 ];
-const SITE_LATEST_YEAR_KEY = yearKeyFromUrl(ALL_YEAR_FILES[ALL_YEAR_FILES.length - 1]);
 
 // Same per-year Scorecard files index.html merges in, by-slug map built the
 // same way (later file's row wins — Scorecard's API only ever returns one

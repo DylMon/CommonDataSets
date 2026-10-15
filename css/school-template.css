@@ -159,16 +159,6 @@
   transform: rotate(180deg);
 }
 
-.year-missing-notice {
-  margin: 0;
-  color: #b3261e;
-  font-size: 0.85em;
-  font-weight: 500;
-  line-height: 1.4;
-  max-width: 420px;
-  text-align: center;
-}
-
 /* ── Floating hero pill ── name/location/site + a large logo, overlapping
    the hero's bottom edge. Quick facts live separately in .quick-facts-strip
    below. Wrapper handles the centering/negative-margin overlap; .hero-pill

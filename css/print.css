@@ -95,10 +95,6 @@ body {
   cursor: default;
 }
 
-.year-missing-notice {
-  max-width: none;
-}
-
 /* ── Layout: full width now that the sidebar's gone, but otherwise as
    close to the on-screen layout as possible — the 2-column section body
    (.cols-2) and side-by-side Admissions/Cost (.school-section-row) are
