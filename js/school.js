@@ -331,6 +331,20 @@ function renderHeroPill(s, slug, meta) {
     </div>`;
 }
 
+// ── Render: Admissions-page CTA ──────────────────────────────────────
+// Sits directly below the hero pill, ahead of the year bar — a visitor
+// deciding whether to apply should see this before the data-year
+// metadata below it. url comes from data/admissions-links.json (not
+// CDS data — a separately maintained, school-keyed lookup of each
+// school's real admissions page); renders nothing when a slug has no
+// entry there rather than guessing a URL.
+function renderAdmissionsCta(url) {
+  if (!url) return '';
+  return `<div class="admissions-cta-strip">
+      <a class="hero-cta-btn" href="${url}" target="_blank" rel="noopener">Visit Admissions Page →</a>
+    </div>`;
+}
+
 // ── Render: Year bar (switcher) ──────────────────────────────────────
 // Sits below the hero pill, ahead of any actual data (.quick-facts-strip
 // and the section grid) — not part of the title card itself, since it's
@@ -1131,10 +1145,11 @@ async function init() {
   recentHistory = [slug, ...recentHistory.filter(s => s !== slug)].slice(0, 5);
   localStorage.setItem(historyKey, JSON.stringify(recentHistory));
 
-  const [{ yearRecords, availableYearKeys }, admissionPlans, outsideGpa, outsideCosts, outsideTests, noWaitlist, scBySlug] =
+  const [{ yearRecords, availableYearKeys }, admissionPlans, outsideGpa, outsideCosts, outsideTests, noWaitlist, scBySlug, admissionsLinks] =
     await Promise.all([loadAllYears(slug), loadAdmissionPlans(), loadOutsideGpa(), loadOutsideCosts(), loadOutsideTests(),
       fetch('/data/no-waitlist.json').then(r => (r.ok ? r.json() : {})).then(j => j.slugs ?? {}).catch(() => ({})),
-      loadScorecardBySlug()]);
+      loadScorecardBySlug(),
+      fetch('/data/admissions-links.json').then(r => (r.ok ? r.json() : {})).then(j => j.slugs ?? {}).catch(() => ({}))]);
 
   if (availableYearKeys.length === 0) {
     document.getElementById('school-sections').innerHTML =
@@ -1211,10 +1226,16 @@ async function init() {
     // can change every value in them. Year bar goes directly below the
     // title card, ahead of quick-facts-strip — it's metadata about which
     // year's data is showing, not data itself, so it precedes all of it.
+    document.querySelector('.admissions-cta-strip')?.remove();
     document.querySelector('.year-bar-strip')?.remove();
     document.querySelector('.quick-facts-strip')?.remove();
     document.getElementById('stats-strip').insertAdjacentHTML('afterend',
       `<div class="year-bar-strip">${renderYearBar({ currentYearKey: yearKey, availableYearKeys, latestAvailableKey })}</div>`);
+    // insertAdjacentHTML('afterend') on the same anchor (#stats-strip)
+    // lands each new call immediately after it — doing this one *after*
+    // the year-bar-strip insertion above is what puts it between
+    // stats-strip and year-bar-strip rather than after year-bar-strip.
+    document.getElementById('stats-strip').insertAdjacentHTML('afterend', renderAdmissionsCta(admissionsLinks[slug]));
     document.querySelector('.year-bar-strip')
       .insertAdjacentHTML('afterend', `<div class="quick-facts-strip">${renderQuickFacts(s, yearKey === latestAvailableKey ? outsideGpa[slug] : null)}</div>`);
 

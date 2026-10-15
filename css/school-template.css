@@ -72,6 +72,22 @@
 }
 .hero-site-link:hover { opacity: 0.7; }
 
+/* ── Admissions-page CTA — sits directly below the title card, ahead of
+   the year bar (see js/school.js's renderAdmissionsCta): a visitor
+   deciding whether to apply should see this before the data-year
+   metadata underneath it. Reuses .hero-cta-btn (base.css) rather than
+   its own button style — same solid-orange-pill CTA language as the
+   homepage hero's own buttons. Renders nothing (no empty gap) for a
+   school with no entry in data/admissions-links.json. */
+.admissions-cta-strip {
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 1040px;
+  margin: 18px auto 0;
+  padding: 0 20px;
+  text-align: center;
+}
+
 /* ── Per-school year switcher — lets a visitor browse older CDS years for
    this school specifically, independent of the sitewide "Search by Year"
    filter on the homepage. Reuses .sort-option/.sort-chevron from base.css
