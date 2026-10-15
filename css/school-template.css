@@ -72,20 +72,28 @@
 }
 .hero-site-link:hover { opacity: 0.7; }
 
-/* ── Admissions-page CTA — sits directly below the title card, ahead of
-   the year bar (see js/school.js's renderAdmissionsCta): a visitor
-   deciding whether to apply should see this before the data-year
-   metadata underneath it. Reuses .hero-cta-btn (base.css) rather than
-   its own button style — same solid-orange-pill CTA language as the
-   homepage hero's own buttons. Renders nothing (no empty gap) for a
-   school with no entry in data/admissions-links.json. */
+/* ── CTA strip (admissions button + print icon) — sits directly below
+   the title card, ahead of the year bar (see js/school.js's
+   renderCtaStrip): a visitor deciding whether to apply should see the
+   admissions button before the data-year metadata underneath it.
+   Reuses .hero-cta-btn (base.css) for the admissions button — same
+   solid-orange-pill CTA language as the homepage hero's own buttons.
+   Flex row (not just text-align: center) so the print icon sits beside
+   it and the pair stays centered as a group even though they're two
+   separate inline elements, not one block. The admissions button is
+   omitted (no empty gap) for a school with no entry in
+   data/admissions-links.json — the print icon still renders alone,
+   centered on its own, since printing isn't conditional on that data. */
 .admissions-cta-strip {
   width: 100%;
   box-sizing: border-box;
   max-width: 1040px;
   margin: 18px auto 0;
   padding: 0 20px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
 }
 
 /* ── Per-school year switcher — lets a visitor browse older CDS years for

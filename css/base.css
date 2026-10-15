@@ -2499,49 +2499,42 @@ body.page-resources .hero-banner {
 }
 .floating-back:active { background: #000; }
 
-/* Floating print button (school pages) — an orange pill with its icon and
-   label always visible (the original design had the label reveal only on
-   hover; that read well enough that it's now the permanent look, with
-   hover/focus left as a plain lift+shadow instead). Hardcoded #ed6d0b
-   (not var(--brand)): school pages override --brand to that school's own
-   color, but this is site chrome, not school content, so it should always
-   read as the site's own orange regardless of which school's page it's on. */
+/* Print button (school pages) — icon-only outline circle, sized to sit
+   beside .hero-cta-btn (the admissions CTA) inside .admissions-cta-strip.
+   Used to be its own position: fixed pill in the corner of the viewport
+   with a visible "Print this data" label; moved inline next to the
+   admissions button and trimmed to icon-only since the pairing with a
+   labeled button already makes its purpose clear without repeating text.
+   Outline (not solid) so it reads as the secondary action next to the
+   solid-filled admissions button. Hardcoded #ed6d0b (not var(--brand)):
+   school pages override --brand to that school's own color, but this is
+   site chrome, not school content, so it should always read as the
+   site's own orange regardless of which school's page it's on. */
 .print-fab {
     display: inline-flex;
     align-items: center;
-    position: fixed;
-    right: 24px;
-    bottom: 24px;
-    height: 52px;
-    padding: 0 20px 0 18px;
-    background: #ed6d0b;
-    border: 2px solid #ed6d0b;
-    border-radius: 999px;
-    color: #fff;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    background: #fff;
+    border: 1.5px solid #ed6d0b;
+    border-radius: 50%;
+    color: #ed6d0b;
     cursor: pointer;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
-    z-index: 9999;
-    transition: transform 0.15s, box-shadow 0.15s;
+    transition: background-color 0.15s, color 0.15s;
 }
 
 .print-fab:hover,
 .print-fab:focus-visible {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.26);
+    background: #ed6d0b;
+    color: #fff;
 }
 
 .print-fab svg {
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
     flex-shrink: 0;
-}
-
-.print-fab-label {
-    font-family: 'Public Sans', sans-serif;
-    font-size: 0.9em;
-    font-weight: 600;
-    white-space: nowrap;
-    margin-right: 10px;
 }
 
 /* ── Responsive ── */

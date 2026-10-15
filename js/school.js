@@ -331,17 +331,26 @@ function renderHeroPill(s, slug, meta) {
     </div>`;
 }
 
-// ── Render: Admissions-page CTA ──────────────────────────────────────
+// ── Render: CTA strip (admissions-page button + print icon) ────────────
 // Sits directly below the hero pill, ahead of the year bar — a visitor
 // deciding whether to apply should see this before the data-year
-// metadata below it. url comes from data/admissions-links.json (not
-// CDS data — a separately maintained, school-keyed lookup of each
-// school's real admissions page); renders nothing when a slug has no
-// entry there rather than guessing a URL.
-function renderAdmissionsCta(url) {
-  if (!url) return '';
+// metadata below it. Admissions url comes from data/admissions-links.json
+// (not CDS data — a separately maintained, school-keyed lookup of each
+// school's real admissions page); that button is omitted when a slug has
+// no entry there rather than guessing a URL, but the print button still
+// renders regardless — printing isn't conditional on that data file.
+// Used to be its own position: fixed button in the corner of the
+// viewport; moved in here (and down to icon-only) to sit next to the
+// admissions button instead.
+function renderCtaStrip(url) {
+  const admissionsBtn = url
+    ? `<a class="hero-cta-btn" href="${url}" target="_blank" rel="noopener">Visit Admissions Page →</a>`
+    : '';
   return `<div class="admissions-cta-strip">
-      <a class="hero-cta-btn" href="${url}" target="_blank" rel="noopener">Visit Admissions Page →</a>
+      ${admissionsBtn}
+      <button type="button" class="print-fab" id="print-fab-btn" aria-label="Print this data">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      </button>
     </div>`;
 }
 
@@ -1235,9 +1244,13 @@ async function init() {
     // lands each new call immediately after it — doing this one *after*
     // the year-bar-strip insertion above is what puts it between
     // stats-strip and year-bar-strip rather than after year-bar-strip.
-    document.getElementById('stats-strip').insertAdjacentHTML('afterend', renderAdmissionsCta(admissionsLinks[slug]));
+    document.getElementById('stats-strip').insertAdjacentHTML('afterend', renderCtaStrip(admissionsLinks[slug]));
     document.querySelector('.year-bar-strip')
       .insertAdjacentHTML('afterend', `<div class="quick-facts-strip">${renderQuickFacts(s, yearKey === latestAvailableKey ? outsideGpa[slug] : null)}</div>`);
+
+    // Re-wired on every render since .admissions-cta-strip (hence this
+    // button) is rebuilt from scratch above, same as hero-fav-btn below.
+    document.getElementById('print-fab-btn').addEventListener('click', () => window.print());
 
     document.getElementById('hero-fav-btn').addEventListener('click', () => {
       const favs = getFavs();
@@ -1304,16 +1317,6 @@ async function init() {
   back.href = '/';
   back.textContent = '← Schools';
   document.body.appendChild(back);
-
-  const printFab = document.createElement('button');
-  printFab.className = 'print-fab';
-  printFab.type = 'button';
-  printFab.setAttribute('aria-label', 'Print this data');
-  printFab.innerHTML = `
-    <span class="print-fab-label">Print this data</span>
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>`;
-  printFab.addEventListener('click', () => window.print());
-  document.body.appendChild(printFab);
 }
 
 init();
