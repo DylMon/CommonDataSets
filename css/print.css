@@ -62,6 +62,27 @@ body {
   border-radius: 8px;
   padding: 10px 16px;
   gap: 12px;
+  /* Lets .quick-facts-strip (moved in here as a 3rd flex child just
+     before printing — see the beforeprint listener in js/school.js)
+     wrap onto its own row below the logo+name row instead of squeezing
+     in beside them. */
+  flex-wrap: wrap;
+}
+
+/* Only matches once .quick-facts-strip has actually been moved inside
+   .hero-pill (see js/school.js's beforeprint listener) — drops its
+   standalone-card styling (own border/background/top-margin) now that
+   it's sharing the hero pill's card instead of being one of its own,
+   and flex-basis: 100% is what forces it onto a new line: wider than
+   any space left after the logo+name row above it, so it can't help
+   but wrap. */
+.hero-pill > .quick-facts-strip {
+  flex: 1 1 100%;
+  margin: 10px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+  border-bottom: none;
+  background: none;
 }
 
 /* Title card: a 76px logo and 1.6em name read fine as a floating card over

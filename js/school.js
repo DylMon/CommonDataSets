@@ -1139,6 +1139,29 @@ async function loadAllYears(targetSlug) {
   };
 }
 
+// Print only: folds .quick-facts-strip into .hero-pill as its last child
+// (so the printout reads as one unified card — name/location + the 6 stat
+// chips — instead of two separate boxes) and moves it back out once
+// printing ends. CSS alone can't do this: print.css can only restyle
+// existing nodes, not reparent a sibling into another element's box, and
+// .year-bar-strip sits between them in the DOM, so there's no clean
+// "two adjoining boxes" illusion either — moving the actual node is the
+// only way. insertAdjacentElement moves (not clones) an existing element,
+// so this is safe to call every time without leaving a stray duplicate.
+// Queries fresh at fire time rather than caching references, since a year
+// switch replaces both .hero-pill and .quick-facts-strip wholesale.
+window.addEventListener('beforeprint', () => {
+  const heroPill = document.querySelector('.hero-pill');
+  const quickFacts = document.querySelector('.quick-facts-strip');
+  if (heroPill && quickFacts) heroPill.insertAdjacentElement('beforeend', quickFacts);
+});
+
+window.addEventListener('afterprint', () => {
+  const yearBar = document.querySelector('.year-bar-strip');
+  const quickFacts = document.querySelector('.quick-facts-strip');
+  if (yearBar && quickFacts) yearBar.insertAdjacentElement('afterend', quickFacts);
+});
+
 async function init() {
   const slug = window.SCHOOL_SLUG || new URLSearchParams(window.location.search).get('school');
 
