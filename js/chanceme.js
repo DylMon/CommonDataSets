@@ -4,6 +4,7 @@
 
 import { normalizeGpaDistribution } from './charts.js?v=6';
 import { loadAdmissionPlans, cdsRounds } from './admission-plans.js?v=1';
+import { loadSchoolNames, nameMatches } from './school-names.js?v=1';
 
 // Logos live at images/logos/<slug>.png. A few schools have none yet; the
 // onerror hook hides the broken <img> rather than showing a torn-image icon.
@@ -40,27 +41,27 @@ export const SCALE_5_LABELS = [
 // generic curve). Display only — shown in a collapsible "See examples"
 // list under each 1-10 scale; the formula never reads them.
 export const ACTIVITY_SCALE_EXAMPLES = [
-    { score: 1, desc: 'Little or nothing outside the classroom — no clubs, teams, jobs, or regular volunteering.' },
+    { score: 1, desc: 'Little or nothing outside the classroom - no clubs, teams, jobs, or regular volunteering.' },
     { score: 3, desc: 'General member of 1–2 clubs or a rec team; casual volunteering (~1 hr/wk); no leadership, minimal time commitment.' },
-    { score: 5, desc: 'Club officer, JV/varsity athlete, or part-time job (~5–8 hrs/wk) sustained 2+ years — solid but not stand-out.' },
-    { score: 8, desc: 'President/founder/captain of a club, team, or venture; sustained research or a leadership volunteer role; 15+ hrs/wk over multiple years with a measurable result — grew a club, published research, ran a nonprofit.' },
-    { score: 10, desc: 'Nationally recognized impact — founded something with real reach (a nonprofit or venture serving thousands), a recruited Division I athlete, or nationally recognized research, backed by years of deep commitment.' },
+    { score: 5, desc: 'Club officer, JV/varsity athlete, or part-time job (~5–8 hrs/wk) sustained 2+ years - solid but not stand-out.' },
+    { score: 8, desc: 'President/founder/captain of a club, team, or venture; sustained research or a leadership volunteer role; 15+ hrs/wk over multiple years with a measurable result - grew a club, published research, ran a nonprofit.' },
+    { score: 10, desc: 'Nationally recognized impact - founded something with real reach (a nonprofit or venture serving thousands), a recruited Division I athlete, or nationally recognized research, backed by years of deep commitment.' },
 ];
 
 export const AWARD_SCALE_EXAMPLES = [
     { score: 1, desc: 'No awards or honors yet.' },
-    { score: 3, desc: 'School-level honor — Honor Roll, a departmental award, JV MVP, a school-wide competition win.' },
-    { score: 5, desc: 'Regional or state-level recognition — All-State music/athletics, a state science-fair placement, a district honor.' },
-    { score: 8, desc: 'National or international recognition — National Merit Semifinalist/Finalist, an Olympiad qualifier, a national championship, published or patented work.' },
-    { score: 10, desc: 'Top national or international winner — an International Olympiad medalist, a Regeneron STS or ISEF top-award winner, a national champion, or a U.S. Presidential Scholar.' },
+    { score: 3, desc: 'School-level honor - Honor Roll, a departmental award, JV MVP, a school-wide competition win.' },
+    { score: 5, desc: 'Regional or state-level recognition - All-State music/athletics, a state science-fair placement, a district honor.' },
+    { score: 8, desc: 'National or international recognition - National Merit Semifinalist/Finalist, an Olympiad qualifier, a national championship, published or patented work.' },
+    { score: 10, desc: 'Top national or international winner - an International Olympiad medalist, a Regeneron STS or ISEF top-award winner, a national champion, or a U.S. Presidential Scholar.' },
 ];
 
 export const ESSAY_SCALE_EXAMPLES = [
-    { score: 1, desc: 'Rushed or off-topic — reads like a résumé or list, with errors and no real story or reflection.' },
-    { score: 3, desc: 'Generic and surface-level — tells rather than shows, with little personal voice or reflection.' },
+    { score: 1, desc: 'Rushed or off-topic - reads like a résumé or list, with errors and no real story or reflection.' },
+    { score: 3, desc: 'Generic and surface-level - tells rather than shows, with little personal voice or reflection.' },
     { score: 5, desc: 'Clear and well-organized with some specific detail and genuine voice, but limited depth of insight.' },
-    { score: 8, desc: 'Distinctive and vivid — concrete specific details, a strong personal voice, and real self-reflection that shows who you are.' },
-    { score: 10, desc: 'Unforgettable — a fresh angle on a meaningful story, beautifully written, with insight an admissions reader would remember long after.' },
+    { score: 8, desc: 'Distinctive and vivid - concrete specific details, a strong personal voice, and real self-reflection that shows who you are.' },
+    { score: 10, desc: 'Unforgettable - a fresh angle on a meaningful story, beautifully written, with insight an admissions reader would remember long after.' },
 ];
 
 // Class-rank slider bands: 20 five-point bands, top-of-class first. `topPct`
@@ -506,6 +507,8 @@ if (typeof document !== 'undefined') {
     };
 
     let allSchools = [];
+    // Search aliases (data/school-names.json), so "ASU" or "UVA" finds the school.
+    let schoolNames = {};
 
     function loadDraft() {
         try {
@@ -647,7 +650,7 @@ if (typeof document !== 'undefined') {
         }
 
         const results = allSchools
-            .filter(s => query === '' || s.name.toLowerCase().includes(query.toLowerCase()))
+            .filter(s => query === '' || nameMatches(s, query.toLowerCase(), schoolNames))
             .sort((a, b) => a.name.localeCompare(b.name));
 
         dropdown.innerHTML = results.length
@@ -764,7 +767,7 @@ if (typeof document !== 'undefined') {
                 <img class="cm-result-logo" src="${logoSrc(school.slug)}" alt="" onerror="${LOGO_ONERR}">
                 <div class="cm-result-body">
                     <div class="cm-result-name">${school.name}</div>
-                    <div class="cm-result-meta">${planLabel}${result.planSourced ? '' : ' (school-specific round data unavailable — generic estimate)'} · Base rate used: ${pctLabel(result.effectiveBaseRate)}${result.competitiveMajor ? ' (competitive-major adjustment applied)' : ''}${result.sourced ? '' : ' · limited CDS data — generic academic/holistic weighting used'}</div>
+                    <div class="cm-result-meta">${planLabel}${result.planSourced ? '' : ' (school-specific round data unavailable - generic estimate)'} · Base rate used: ${pctLabel(result.effectiveBaseRate)}${result.competitiveMajor ? ' (competitive-major adjustment applied)' : ''}${result.sourced ? '' : ' · limited CDS data - generic academic/holistic weighting used'}</div>
                 </div>
                 <div class="cm-result-tier-wrap">
                     <span class="cm-tier-badge cm-tier-${tier.key}">${tier.label}</span>
@@ -777,12 +780,12 @@ if (typeof document !== 'undefined') {
                     <div class="cm-detail-row"><span>Academic Index</span><span>${result.ai.value.toFixed(1)} / 100</span></div>
                     <div class="cm-detail-row"><span>Holistic Index</span><span>${result.hi.value.toFixed(1)} / 100</span></div>
                     <div class="cm-detail-row"><span>Blend used (this school's CDS weighting)</span><span>${Math.round(result.academicWeight * 100)}% academic / ${Math.round(result.holisticWeight * 100)}% holistic</span></div>
-                    ${!result.ai.gpaSourced && result.ai.gpaPct != null ? `<div class="cm-detail-row"><span>GPA percentile</span><span>estimated — school doesn't report a GPA distribution</span></div>` : ''}
-                    ${!result.ai.testSourced && result.ai.testPct != null ? `<div class="cm-detail-row"><span>Test-score percentile</span><span>estimated — school doesn't report a test-score range</span></div>` : ''}
+                    ${!result.ai.gpaSourced && result.ai.gpaPct != null ? `<div class="cm-detail-row"><span>GPA percentile</span><span>estimated - school doesn't report a GPA distribution</span></div>` : ''}
+                    ${!result.ai.testSourced && result.ai.testPct != null ? `<div class="cm-detail-row"><span>Test-score percentile</span><span>estimated - school doesn't report a test-score range</span></div>` : ''}
                     ${result.hi.interviewWeight > 0 ? `<div class="cm-detail-row"><span>Interview weight at this school</span><span>${Math.round(result.hi.interviewWeight * 100)}% of Holistic Index</span></div>` : ''}
                     ${result.modifier !== 0 ? `<div class="cm-detail-row"><span>Residency / legacy / first-gen / international-aid adjustments</span><span>${result.modifier > 0 ? '+' : ''}${result.modifier.toFixed(1)}</span></div>` : ''}
                     ${result.competitiveMajor ? `<div class="cm-detail-row"><span>Competitive-major haircut (generic heuristic)</span><span>×0.7 on base rate</span></div>` : ''}
-                    <div class="cm-detail-note">Academic Index blends GPA percentile, class-rank percentile (if given), test-score percentile, and course rigor against this school's own reported data. Holistic Index blends your Activities, Awards, Essay, Letters-of-Recommendation, and Interview ratings — Interview's weight above is this school's own.</div>
+                    <div class="cm-detail-note">Academic Index blends GPA percentile, class-rank percentile (if given), test-score percentile, and course rigor against this school's own reported data. Holistic Index blends your Activities, Awards, Essay, Letters-of-Recommendation, and Interview ratings - Interview's weight above is this school's own.</div>
                 </div>
             </div>`;
         }).join('');
@@ -805,10 +808,12 @@ if (typeof document !== 'undefined') {
         stateSelect.innerHTML = '<option value="">Select state…</option>' +
             US_STATES.map(([code, name]) => `<option value="${code}">${name}</option>`).join('');
 
-        const [{ schools }, plans] = await Promise.all([
+        const [{ schools }, plans, names] = await Promise.all([
             fetch('/data/schools-2025-2026.json').then(res => res.json()),
             loadAdmissionPlans(),
+            loadSchoolNames(),
         ]);
+        schoolNames = names;
         allSchools = schools
             .filter(s => s.name != null) // exclude records with no source data yet (e.g. bad/missing source PDF)
             .map(s => ({ ...s, _rounds: plans[s.slug] ?? cdsRounds(s) }));

@@ -46,7 +46,7 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                    </a>`;
             } else if (homepageUrl) {
-                cell = `<a class="resources-find-link resources-find-link--fallback" href="${homepageUrl}" target="_blank" rel="noopener" title="${escapeHtml(link?.note || 'No specific CDS page found — linking to their website instead.')}">Visit Website
+                cell = `<a class="resources-find-link resources-find-link--fallback" href="${homepageUrl}" target="_blank" rel="noopener" title="${escapeHtml(link?.note || 'No specific CDS page found - linking to their website instead.')}">Visit Website
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                    </a>`;
             } else {
@@ -98,7 +98,7 @@
             allSchools = schools.sort((a, b) => a.name.localeCompare(b.name));
         } catch {
             document.getElementById('resources-tbody').innerHTML =
-                '<tr><td colspan="3" class="resources-empty">Couldn\'t load the school list — try refreshing.</td></tr>';
+                '<tr><td colspan="3" class="resources-empty">Couldn\'t load the school list - try refreshing.</td></tr>';
             return;
         }
 

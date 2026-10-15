@@ -4,7 +4,7 @@
   "schools": [
     {
       "id": 1,
-      "name": "The University of Alabama at Birmingham",
+      "name": "University of Alabama at Birmingham",
       "data_year": "2025-26",
       "city": "Birmingham",
       "state": "AL",
@@ -511,7 +511,7 @@
     },
     {
       "id": 4,
-      "name": "Arizona State University Campus Immersion",
+      "name": "Arizona State University",
       "data_year": "2025-26",
       "city": "Tempe",
       "state": "AZ",
@@ -4868,7 +4868,7 @@
     },
     {
       "id": 29,
-      "name": "California State University, Fullerton",
+      "name": "Cal State Fullerton",
       "data_year": "2025-26",
       "city": "Fullerton",
       "state": "CA",
@@ -5033,7 +5033,7 @@
     },
     {
       "id": 30,
-      "name": "California State University, Long Beach",
+      "name": "Cal State Long Beach",
       "data_year": "2025-26",
       "city": "Long Beach",
       "state": "CA",
@@ -5191,7 +5191,7 @@
     },
     {
       "id": 31,
-      "name": "California State University, San Bernardino",
+      "name": "Cal State San Bernardino",
       "data_year": "2025-26",
       "city": "San Bernardino",
       "state": "CA",
@@ -13230,7 +13230,7 @@
     },
     {
       "id": 78,
-      "name": "Penn State University Park",
+      "name": "Penn State University",
       "data_year": "2025-26",
       "city": "University Park",
       "state": "PA",
@@ -14279,7 +14279,7 @@
     },
     {
       "id": 84,
-      "name": "William Marsh Rice University",
+      "name": "Rice University",
       "data_year": "2025-26",
       "city": "Houston",
       "state": "TX",
@@ -16232,7 +16232,7 @@
     },
     {
       "id": 95,
-      "name": "SUNY Environmental Science and Forestry",
+      "name": "SUNY College of Environmental Science and Forestry",
       "data_year": "2025-26",
       "city": "Syracuse",
       "state": "NY",
@@ -18115,7 +18115,7 @@
     },
     {
       "id": 106,
-      "name": "The University of Arizona",
+      "name": "University of Arizona",
       "data_year": "2025-26",
       "city": "Tucson",
       "state": "AZ",
@@ -26025,7 +26025,7 @@
     },
     {
       "id": 152,
-      "name": "Virginia Polytechnic Institute and State University",
+      "name": "Virginia Tech",
       "data_year": "2025-26",
       "city": "Blacksburg",
       "state": "VA",

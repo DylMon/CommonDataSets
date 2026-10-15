@@ -50,7 +50,7 @@ function pageHtml(slug, name, description) {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>${name} Admissions Data — CommonDataSets</title>
+  <title>${name} Admissions Data - CommonDataSets</title>
   <meta name="description" content="${description}">
   <link rel="canonical" href="https://commondatasets.com/schools/${slug}/">
   <link rel="preconnect" href="https://fonts.googleapis.com">

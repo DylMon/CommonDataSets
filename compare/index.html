@@ -12,7 +12,7 @@
     </script>
 
     <meta charset="utf-8" />
-    <title>Compare Schools — CommonDataSets</title>
+    <title>Compare Schools - CommonDataSets</title>
     <meta name="description" content="Side-by-side admissions comparison for top US universities. Compare acceptance rates, SAT/ACT scores, costs, and more.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -67,6 +67,7 @@
         import { loadOutsideGpa, withOutsideGpa } from '/js/outside-gpa.js?v=1';
         import { loadOutsideCosts, withOutsideCosts, isOutsideCost } from '/js/outside-costs.js?v=1';
         import { loadOutsideTests, withOutsideTests, isOutsideTest } from '/js/outside-tests.js?v=1';
+        import { loadSchoolNames, nameMatches } from '/js/school-names.js?v=1';
         import { withSatEstimates } from '/js/sat-estimate.js?v=1';
 
         // Fixed per-slot colors rather than each school's own brand color —
@@ -243,7 +244,7 @@
         }
 
         function headerRow(schools, first = '') {
-            return [first, ...schools.map(({ school }) => school.name)];
+            return [first, ...schools.map(({ school }) => shortName(school))];
         }
 
         function multiRow(label, schools, valueFn, fmtFn, opts = {}) {
@@ -254,8 +255,14 @@
             return [label, ...cells];
         }
 
+        // Names from data/school-names.json: search aliases, and the short name
+        // ("Harvard", "Texas A&M", "UT Dallas") used inside the comparison
+        // tables and charts. The cards keep the full name.
+        let schoolNames = {};
+        const shortName = school => schoolNames[school.slug]?.short ?? school.name;
+
         function matches(school, query) {
-            return school.name.toLowerCase().includes(query.toLowerCase());
+            return nameMatches(school, query.toLowerCase(), schoolNames);
         }
 
         function actMid(s) {
@@ -487,7 +494,7 @@
 
         function legendHtml(schools) {
             return `<div class="cmp-legend">${schools.map(({ school, color }) =>
-                `<span class="cmp-legend-item"><span class="cmp-legend-dot" style="background:${color}"></span>${school.name}</span>`
+                `<span class="cmp-legend-item"><span class="cmp-legend-dot" style="background:${color}"></span>${shortName(school)}</span>`
             ).join('')}</div>`;
         }
 
@@ -543,9 +550,9 @@
             return sectionHtml('Academic Profile', `
                 <div class="cols-2">
                     <div>
-                        <h3 class="subsection-title">SAT — 25th–75th</h3>
+                        <h3 class="subsection-title">SAT - 25th–75th</h3>
                         <div class="score-rows">${satRows}</div>
-                        <h3 class="subsection-title">ACT — 25th–75th</h3>
+                        <h3 class="subsection-title">ACT - 25th–75th</h3>
                         <div class="score-rows">${actRows}</div>
                     </div>
                     <div>
@@ -576,12 +583,12 @@
 
         function cmpFactorMeter(score, color, schoolName, factorLabel) {
             if (!score) {
-                return `<span class="cmp-factor-na" title="${schoolName} — ${factorLabel}: not reported">N/A</span>`;
+                return `<span class="cmp-factor-na" title="${schoolName} - ${factorLabel}: not reported">N/A</span>`;
             }
             const dots = [1, 2, 3, 4].map(n => n <= score
                 ? `<span class="factor-dot on" style="border-color:${color};background:${color}"></span>`
                 : `<span class="factor-dot" style="border-color:${color}"></span>`).join('');
-            return `<span class="factor-meter" title="${schoolName} — ${factorLabel}: ${CMP_FACTOR_SCORE_LABEL[score]}">${dots}</span>`;
+            return `<span class="factor-meter" title="${schoolName} - ${factorLabel}: ${CMP_FACTOR_SCORE_LABEL[score]}">${dots}</span>`;
         }
 
         function renderAdmissionFactorsCompare(schools) {
@@ -595,7 +602,7 @@
                     label,
                     cells: schools.map(({ school, color }) => ({
                         color,
-                        name: school.name,
+                        name: shortName(school),
                         score: CMP_FACTOR_SCORE[school.admission_factors?.[key]] ?? 0,
                     })),
                 }))
@@ -745,7 +752,7 @@
             const gpaCanvas = document.getElementById('cmp-gpa-chart');
             if (gpaCanvas) {
                 renderGpaComparisonChart(gpaCanvas, schools.map(({ school, color }) => ({
-                    distribution: school.gpa_distribution, color, name: school.name,
+                    distribution: school.gpa_distribution, color, name: shortName(school),
                 })));
             }
             applyCollapsedState(container);
@@ -813,6 +820,7 @@
                 allSchools = withOutsideTests(allSchools, await loadOutsideTests());
                 // Composite SAT estimated from section scores when the CDS gives no composite.
                 allSchools = withSatEstimates(allSchools);
+                schoolNames = await loadSchoolNames();
             } catch (err) {
                 console.error('Failed to load school data:', err);
             }

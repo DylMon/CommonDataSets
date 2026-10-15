@@ -836,13 +836,13 @@ function renderAcademicProfileSection(s, policy = null) {
 
   const scoresCol = `
     <div>${testPolicyHtml(policy)}
-      <h3 class="subsection-title">SAT — 25th to 75th Percentile</h3>
+      <h3 class="subsection-title">SAT - 25th to 75th Percentile</h3>
       <div class="score-rows">
         ${scoreBarHtml(s._satEstimated ? `<span class="stat-anchor">Composite${infoTip(SAT_ESTIMATE_NOTE)}</span>` : 'Composite', s.sat_composite_25, s.sat_composite_75, 400, 1600)}
         ${scoreBarHtml('Reading &amp; Writing', s.sat_reading_25, s.sat_reading_75, 200, 800)}
         ${scoreBarHtml('Math', s.sat_math_25, s.sat_math_75, 200, 800)}
       </div>
-      <h3 class="subsection-title">ACT — 25th to 75th Percentile</h3>
+      <h3 class="subsection-title">ACT - 25th to 75th Percentile</h3>
       <div class="score-rows">
         ${scoreBarHtml('Composite', s.act_composite_25, s.act_composite_75, 1, 36)}
         ${scoreBarHtml('Math', s.act_math_25, s.act_math_75, 1, 36)}
@@ -1343,7 +1343,7 @@ async function init() {
     currentYearKey = yearKey;
     const s = yearRecords.get(yearKey);
 
-    document.title = `${s.name} Admissions Data — CommonDataSets`;
+    document.title = `${s.name} Admissions Data - CommonDataSets`;
 
     const pct = s.acceptance_rate != null ? (s.acceptance_rate * 100).toFixed(1) + '%' : null;
     const descParts = [`${s.name} admissions data for ${s.data_year}`];

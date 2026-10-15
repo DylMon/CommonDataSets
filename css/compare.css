@@ -300,7 +300,11 @@
     gap: 10px;
     cursor: pointer;
     user-select: none;
+    /* Section boxes use the header's brown; orange stays for the smaller
+       accents (table lines, dots). */
+    background: #3a281e;
 }
+#compare-sections .school-section { border-color: #3a281e; }
 
 #compare-sections .section-title:hover { opacity: 0.75; }
 
@@ -328,15 +332,12 @@
     transition: max-height 0.3s ease, opacity 0.15s ease;
 }
 
-/* Two schools per row, so three or four long names never leave one
-   stranded on its own line. Columns are as wide as their longest name
-   (shrinking if the row runs out of room), so short names stay close
-   together instead of being pushed to the middle. */
+/* All schools on one row, by their short names (data/school-names.json),
+   which fit side by side. Wraps only if the screen is too narrow. */
 .cmp-legend {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, max-content));
-    justify-content: start;
-    gap: 10px 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 24px;
     margin: 40px 0 0;
 }
 
