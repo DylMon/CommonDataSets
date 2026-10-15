@@ -16,11 +16,6 @@
     /* .nav-wrapper's min-height (the header is a single orange bar).
        Used to offset sticky sidebars/pickers below the fixed header. */
     --header-height: 84px;
-    /* .rail-tab's diameter (it's a circle). Pinned to #school-hero
-       (position: relative), not the viewport, so it scrolls away with
-       the hero rather than floating for the whole page. .rail-drawer
-       shares its top so it pops out from directly underneath it. */
-    --rail-tab-h: 44px;
 }
 
 html {
@@ -83,13 +78,18 @@ body {
     flex-direction: column;
 
     /* Header colors: Umber bar, orange block highlight (picked from the
-       header-option-3 preview panel). */
+       header-option-3 preview panel). Accent/line are hardcoded #ed6d0b,
+       not var(--brand): school pages override --brand to that school's
+       own color for the page's tables/underlines, but the header is site
+       chrome, not school content — it should always read as the site's
+       own orange regardless of which school's page it's on (same
+       reasoning as .print-fab below). */
     --hdr-bg: #3a281e;
     --hdr-fg: #f6ebe2;                           /* link text */
     --hdr-wordmark: #fff;
-    --hdr-accent: var(--brand, #ed6d0b);        /* fill behind a hovered/active link */
+    --hdr-accent: #ed6d0b;                      /* fill behind a hovered/active link */
     --hdr-on-accent: #fff;                      /* text on that fill */
-    --hdr-line: var(--brand, #ed6d0b);          /* underline/outline highlight */
+    --hdr-line: #ed6d0b;                        /* underline/outline highlight */
     --hdr-line-text: #fff;                      /* text with an underline/outline */
     --hdr-divider: rgba(255, 255, 255, 0.25);
     --hdr-border: transparent;
@@ -162,15 +162,207 @@ body.page-compare {
     text-decoration: none;
 }
 
+/* Wraps .left-side + .nav-right-group — exists purely so the mobile
+   hamburger drawer (see the max-width: 1250px block below) has one
+   element to collapse into a panel. display: contents here (desktop/
+   tablet) removes this wrapper from layout entirely, so its two
+   children land directly in .nav-wrapper's grid at their own explicit
+   grid-column values exactly as if it weren't there — zero effect on
+   that layout. Only the mobile breakpoint turns it into a real,
+   independently-positioned element. */
+.nav-drawer {
+    display: contents;
+}
+
+/* Hamburger button that opens .nav-drawer below the mobile breakpoint —
+   hidden above it (see .nav-hamburger display: flex in that block).
+   Same outlined-circle treatment as .header-search-toggle. */
+.nav-hamburger {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 1.5px solid #fff;
+    background: none;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    /* .nav-wrapper's align-items: stretch is a grid-level default that
+       only takes effect on an item with no fixed size — this button's
+       own explicit height opts it out of being stretched, but without
+       this it still defaults to start-aligned (flush against the
+       header's top edge) rather than centered in its grid row. */
+    align-self: center;
+}
+
+.nav-hamburger svg {
+    width: 20px;
+    height: 20px;
+}
+
+.nav-hamburger:hover {
+    background: var(--hdr-accent);
+    border-color: var(--hdr-accent);
+    color: var(--hdr-on-accent);
+}
+
 /* Redundant shortcuts to /info/ and /contact/ (both also live in the
    footer). Plain text, side by side, no box/border. */
-.nav-corner-links {
+/* Wraps .header-search + .nav-corner-links — this is what actually
+   occupies grid-column 3 now, so the search bar can sit in the gap to
+   the left of the links and grow/shrink to fill whatever room is left,
+   rather than the links alone owning that column. */
+.nav-right-group {
     grid-column: 3;
     justify-self: end;
-    align-self: center;
+    /* No align-self override — inherits .nav-wrapper's align-items:
+       stretch, so this spans the bar's full height (see .header-search
+       below, which relies on that same stretch to anchor its dropdown
+       flush under the whole header rather than just its own icon). */
     display: flex;
     align-items: center;
     gap: 20px;
+    min-width: 0;
+}
+
+.nav-corner-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-shrink: 0;
+}
+
+/* Homepage-only search bar, relocated from the top of .content-wrapper
+   into the header (js/header.js only includes this markup when
+   active === 'index') — sits in .nav-right-group before .nav-corner-
+   links. Collapsed to just the round toggle icon by default at every
+   width; clicking it expands the real input in place over the same row
+   instead of claiming permanent space in the header. */
+.header-search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    /* Stretches to .nav-right-group's full (bar-height) box instead of
+       shrinking to the 36px toggle — .search-wrap is position:absolute
+       (out of flow), so the toggle would otherwise be this box's only
+       flow child, and hiding it on expand would collapse the box to 0
+       height and re-center it mid-bar instead of staying put where the
+       icon was. align-items: center above keeps the icon itself centered
+       within this taller box, and .search-wrap below centers on that
+       same point when expanded, so it's vertically flush with the icon
+       rather than overlapping the header or dropping below it. */
+    align-self: stretch;
+}
+
+.header-search .search-wrap {
+    display: none;
+}
+
+.header-search.expanded .header-search-toggle {
+    display: none;
+}
+
+.header-search.expanded .search-wrap {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 260px;
+    z-index: 20;
+}
+
+.header-search .search-input {
+    font-size: 0.92em;
+    padding: 7px 34px;
+}
+
+/* Recently-viewed (empty query) or autocomplete (query typed) results —
+   see index.html's updateSearchDropdown(). Nested inside .search-wrap
+   (not .header-search) specifically so it's positioned relative to
+   wherever *that* ends up: inline in the normal-width header, or the
+   floating overlay .search-wrap becomes once expanded from the
+   collapsed icon (see the @media block below) — same anchor either way,
+   no separate narrow-width positioning needed for the dropdown itself. */
+.search-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 1.5px solid #ed6d0b;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+    padding: 8px;
+    max-height: 360px;
+    overflow-y: auto;
+    z-index: 25;
+}
+
+.search-dropdown[hidden] {
+    display: none;
+}
+
+.search-dropdown-label {
+    font-size: 0.72em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #ed6d0b;
+    padding: 6px 10px 4px;
+}
+
+.search-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #000;
+    font-size: 0.93em;
+}
+
+.search-dropdown-item:hover {
+    background: #fff3e9;
+}
+
+.search-dropdown-empty {
+    padding: 8px 10px;
+    font-size: 0.88em;
+    color: #777;
+    font-style: italic;
+}
+
+.header-search-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 1.5px solid #fff;
+    background: none;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.header-search-toggle svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+}
+
+.header-search-toggle:hover {
+    background: var(--hdr-accent);
+    border-color: var(--hdr-accent);
+    color: var(--hdr-on-accent);
 }
 
 /* Smaller and slightly faded so they rank below the main page links.
@@ -358,8 +550,8 @@ body.page-resources .hero-banner {
 }
 
 /* Hero CTA buttons — replace the search bar's old spot at the bottom of
-   the hero photo; the search bar itself now lives at the top of
-   .content-wrapper (see .search-bar below). */
+   the hero photo; the search bar itself now lives in the header (see
+   .header-search in this file and js/header.js). */
 .hero-cta-group {
     display: flex;
     justify-content: center;
@@ -832,7 +1024,9 @@ body.page-resources .hero-banner {
 }
 
 .logo-glow .nav-brand:hover .site-logo {
-    filter: drop-shadow(0 0 10px #FFFCFA) drop-shadow(0 0 18px color-mix(in srgb, var(--brand, #ed6d0b) 80%, #ffd27a));
+    /* #ed6d0b not var(--brand) — same reasoning as --hdr-accent/--hdr-line
+       above: header chrome stays the site's own orange on school pages. */
+    filter: drop-shadow(0 0 10px #FFFCFA) drop-shadow(0 0 18px color-mix(in srgb, #ed6d0b 80%, #ffd27a));
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -982,11 +1176,16 @@ body.page-resources .hero-banner {
     }
 }
 
-/* Search bar — first thing in .content-wrapper, above the results count.
-   Same width formula as a school card: content-wrapper's inner width minus
-   the two 230px sidebars and their two 20px gaps (see .sidebar / .page-layout). */
+/* Page-level search bar — first thing in .content-wrapper, above the
+   results count. Restored alongside the header search (which now only
+   drives its own dropdown, not this grid) so both coexist: this one
+   still filters #school-list directly via searchQuery/renderList().
+   Same width formula as a school card: content-wrapper's inner width
+   minus the one remaining 230px sidebar and its 20px gap (see .sidebar
+   / .page-layout — .right-sidebar is gone now that favorites/history
+   live in the header search dropdown instead). */
 .search-bar {
-    width: calc(100% - 500px);
+    width: calc(100% - 250px);
     max-width: none;
     margin: 0 auto 8px;
 }
@@ -1153,173 +1352,45 @@ body.page-resources .hero-banner {
     padding: 14px 16px;
 }
 
-/* Right sidebar column */
-.right-sidebar {
-    width: 230px;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    position: sticky;
-    top: calc(var(--header-height) + 20px);
-    align-self: flex-start;
-    transition: top 0.25s ease;
-}
-
-/* Positioning context for .rail-tab/.rail-drawer below — they're
-   children of this wrapper (not document.body), so "position: absolute"
-   on them is relative to it. #school-hero itself is stable across a
-   year switch (only its content — the inner .school-hero div — gets
-   replaced), unlike that inner div, so it's the anchor rather than the
-   element that actually owns the banner's own height/background. */
-#school-hero {
-    position: relative;
-}
-
-/* Favorites/history pullout tab (school pages) — pinned to the bottom
-   of the hero banner (#school-hero) rather than the viewport, so it
-   scrolls away with the hero instead of floating for the whole page.
-   Reuses the same star glyph as .fav-btn so it reads as "your
-   favorites live here" at a glance. Inset 12px from the hero's bottom-
-   right corner (not flush) so it has breathing room from both edges
-   instead of sitting jammed into them.
-
-   Styled like the header's Contact Us button (.cta-outline .nav-corner-
-   links a:last-child in this file): an outlined pill that fills solid
-   orange on hover. Round here (border-radius: 50%) rather than a text
-   pill since there's no label, just the icon.
-
-   Shares .rail-drawer's top (see below) and sits above it in the
-   stacking order (z-index 9999 > drawer's 9998) — the drawer pops out
-   from underneath it rather than starting at the tab's bottom edge, so
-   the tab reads as a fixed control the drawer slides out from behind,
-   not a separate piece stacked on top of it. Keeps its own background/
-   border regardless, so it's still a clearly-clickable, visible
-   control even while the drawer itself is collapsed to nothing and
-   closed. */
-.rail-tab {
-    position: absolute;
-    top: calc(100% + 12px);
-    right: 12px;
-    display: flex;
+/* Collapses .controls-container behind this button below the mobile
+   breakpoint (see the max-width: 640px block) — hidden entirely above
+   it, where the filters stay permanently visible exactly as before. */
+.filters-toggle {
+    display: none;
+    width: 100%;
     align-items: center;
     justify-content: center;
-    width: var(--rail-tab-h);
-    height: var(--rail-tab-h);
-    background: #fff;
-    border: 1.5px solid #ed6d0b;
-    border-radius: 50%;
-    color: #ed6d0b;
-    cursor: pointer;
-    box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 9999;
-    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-}
-
-.rail-tab:hover {
-    background: #ed6d0b;
-    border-color: #ed6d0b;
-    color: #fff;
-}
-
-.rail-tab svg {
-    width: 20px;
-    height: 20px;
-    fill: currentColor;
-}
-
-/* Same top/right as .rail-tab above (not below it) — the tab's higher
-   z-index means it visually sits in front of this box's top-right
-   corner, so the drawer reads as popping out from underneath the tab
-   as it animates open (max-width: 0 -> full) rather than sliding in
-   from off-screen via transform, or starting at the tab's bottom edge.
-   The right edge never moves in either state, so it's always anchored
-   at exactly the tab's position. overflow-x hidden is what makes the
-   collapse actually invisible (not just clipped-looking) — combined
-   with the global border-box reset, max-width: 0 forces the rendered
-   box, border included, to true zero width.
-
-   .rail-drawer-inner (below) holds the fixed 230px width + padding
-   that used to live directly on this element — needed as a separate
-   child so collapsing *this* element's max-width doesn't also squeeze
-   and reflow the content itself before it's clipped.
-
-   max-height is a generic "don't grow absurdly tall and bury the
-   content below the hero" cap, not tuned against any specific fixed
-   element the way it was when this was viewport-pinned — pinned to
-   the hero now, it scrolls out of view with the page rather than
-   competing with .print-fab for the same on-screen space. Still
-   vh-based, so a short viewport still shrinks it automatically, with
-   overflow-y scrolling whatever doesn't fit. */
-.rail-drawer {
-    position: absolute;
-    top: calc(100% + 12px);
-    right: 12px;
-    max-width: 0;
-    max-height: calc(100vh - 220px);
-    overflow-x: hidden;
-    overflow-y: auto;
-    background: #FFFCFA;
-    border: 2px solid #d0d0d0;
-    box-shadow: -2px 2px 16px rgba(0, 0, 0, 0.15);
-    z-index: 9998;
-    transition: max-width 0.2s ease;
-}
-
-.rail-drawer.open {
-    max-width: calc(100vw - 32px);
-}
-
-.rail-drawer-inner {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width: 230px;
-    max-width: calc(100vw - 32px);
-    padding: 16px;
-    box-sizing: border-box;
-}
-
-/* History / Favorites boxes */
-.history-box {
+    gap: 8px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
     background: #fff;
     border: 2px solid #d0d0d0;
     border-radius: 8px;
-    padding: 14px 16px;
-}
-
-.history-title {
-    font-size: 0.75em;
+    font-family: inherit;
+    font-size: 1em;
     font-weight: 600;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
-    letter-spacing: 0.07em;
-    color: #ed6d0b;
-    margin-bottom: 10px;
-}
-
-.history-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 0;
-    text-decoration: none;
     color: #000;
-    border-bottom: 1px solid #f5f5f5;
-    font-size: 0.93em;
-    font-weight: 400;
-    transition: color 0.15s;
-    min-width: 0;
+    cursor: pointer;
 }
 
-.history-item:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
+.filters-toggle .sort-chevron {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s ease;
 }
 
-.history-item:hover {
-    color: #ed6d0b;
+.filters-toggle[aria-expanded="true"] .sort-chevron {
+    transform: rotate(180deg);
 }
 
+/* .history-logo/.history-name are still used by the header search
+   dropdown's items (js/header-search.js) — .right-sidebar/.history-box/
+   .history-title/.history-item (the standalone favorites/history rail
+   those used to live in, on the homepage, school pages, and compare)
+   are gone now that all three show favorites/history via that dropdown
+   instead, so those four are removed rather than left as dead CSS. */
 .history-logo {
     width: 28px;
     height: 18px;
@@ -1644,10 +1715,10 @@ body.page-resources .hero-banner {
     gap: 20px;
 }
 
-/* Single column now that favorites/history live in the .rail-tab/
-   .rail-drawer pullout (fixed overlays, outside this layout entirely)
-   instead of a right-hand grid column — #school-sections gets the full
-   width this container has to give. */
+/* Single column — favorites/history for this school's own page live in
+   the header search dropdown now (see js/header-search.js), not a
+   right-hand column here, so #school-sections gets the full width this
+   container has to give. */
 .school-page-layout {
     width: 100%;
     max-width: 1440px;
@@ -2421,10 +2492,9 @@ body.page-resources .hero-banner {
     .detail-section:nth-child(odd) { padding-left: 0; }
 }
 
-/* The rail is a fixed overlay now (.rail-tab/.rail-drawer), not a layout
-   column, so #school-sections no longer competes with it for width —
-   just narrow the container's own max-width to match this tier's other
-   content-width adjustments. */
+/* #school-sections is single-column with no competing rail column (see
+   .school-page-layout above) — just narrow the container's own
+   max-width to match this tier's other content-width adjustments. */
 @media (max-width: 1040px) {
     .school-page-layout {
         max-width: 1000px;
@@ -2448,9 +2518,9 @@ body.page-resources .hero-banner {
     }
 
     /* Same formula as the default .search-bar rule, updated for this
-       tier's narrower 160px sidebars + 14px gaps (160+14+160+14 = 348). */
+       tier's narrower 160px sidebar + 14px gap (160+14 = 174). */
     .search-bar {
-        width: calc(100% - 348px);
+        width: calc(100% - 174px);
     }
 
     /* At 160px even the shortest labels ("Student Body") run past the
@@ -2506,8 +2576,16 @@ body.page-resources .hero-banner {
 }
 
 @media (max-width: 640px) {
+    /* .content-wrapper's own margin-top shrinks to 16px at the 540px
+       tier below — against the hero photo's dark edge that reads as
+       barely any gap at all, cramped next to how much breathing room
+       everything else on this row gets. Give the search bar its own
+       explicit top margin so it's not solely at the mercy of
+       .content-wrapper's (which other pages without a search bar as
+       their first child also depend on, so it's left alone here). */
     .search-bar {
         width: 100%;
+        margin-top: 20px;
     }
 
     .page-layout {
@@ -2527,66 +2605,145 @@ body.page-resources .hero-banner {
         position: static;
     }
 
-    .filter-bar {
-        flex-direction: row;
-        flex-wrap: wrap;
+    .filters-toggle {
+        display: flex;
     }
 
-    .filter-group {
-        flex-direction: row;
-        flex-wrap: wrap;
+    /* Only matches once index.html's JS has relocated #category-filter-bar
+       in here (see the matchMedia listener in init()) — adds the gap
+       before Reset All Filters that its own margin (top-only, meant for
+       its original spot above .page-layout) doesn't provide on its own. */
+    #controls-container .category-filter-bar {
+        margin-bottom: 18px;
     }
 
-    .filter-sep {
-        width: 1px;
-        height: 16px;
-        margin: 0 6px;
+    /* Collapsed by default — overflow: hidden clips the content, and
+       max-height: 0 is what actually makes that collapse invisible
+       rather than just clipped-looking. A generous fixed max-height
+       (rather than measuring the content's real height in JS) is the
+       simplest way to animate an accordion whose open height depends on
+       content neither side needs to calculate. .filter-bar/.filter-group
+       are left at their base column layout here (not overridden to a
+       wrapping row — that row layout was making each filter's slider
+       track stop at a different width/right edge, since a row-wrap flex
+       item with no explicit flex-basis sizes to its own content instead
+       of stretching full-width), so every filter group still stacks as
+       one full-width row with a uniformly aligned slider underneath it. */
+    .controls-container {
+        max-height: 0;
+        overflow: hidden;
+        padding-top: 0;
+        padding-bottom: 0;
+        border-width: 0;
+        transition: max-height 0.3s ease, padding 0.3s ease, border-width 0.3s ease;
+    }
+
+    .controls-container.open {
+        max-height: 2000px;
+        padding-top: 14px;
+        padding-bottom: 14px;
+        border-width: 2px;
     }
 }
 
-/* Not enough room for brand + page links + shortcuts in one row — drop
-   the About/Contact shortcuts first (both are also in the footer). */
+/* Not enough room for brand + page links + search + shortcuts in one
+   row — collapse everything but the brand into a hamburger-triggered
+   drawer instead of progressively stacking/hiding pieces (previously:
+   corner links vanished outright here with no replacement, then the
+   brand/links stacked into two centered rows at 960px — both replaced
+   by this single breakpoint). .nav-drawer switches from display:
+   contents (desktop, see above) to a real collapsible panel; its
+   children (.left-side, .nav-right-group) stop being grid items (their
+   grid-column values are simply ignored once their parent isn't
+   display: grid) and become a plain stacked flex column instead. */
 @media (max-width: 1250px) {
-    .nav-corner-links {
-        display: none;
+    .nav-wrapper {
+        grid-template-columns: max-content 1fr max-content;
     }
 
-    .nav-wrapper {
-        grid-template-columns: max-content 1fr;
+    .nav-hamburger {
+        display: flex;
+        grid-column: 3;
+    }
+
+    .nav-drawer {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        max-height: 0;
+        overflow: hidden;
+        background: var(--hdr-bg);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        transition: max-height 0.25s ease;
+        z-index: 400;
+    }
+
+    .nav-drawer.open {
+        max-height: calc(100vh - var(--bar-height));
+        overflow-y: auto;
     }
 
     .left-side {
-        justify-self: end;
-    }
-}
-
-/* Narrower still: stack the brand above the page links, both centered,
-   still inside the one orange bar. */
-@media (max-width: 960px) {
-    .nav-wrapper {
-        grid-template-columns: 1fr;
-        justify-items: center;
-        row-gap: 6px;
-        padding: 10px 16px 0;
-    }
-
-    .nav-brand {
-        justify-self: center;
-    }
-
-    .left-side {
-        grid-column: 1;
-        justify-self: center;
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        gap: 0;
     }
 
     .nav-link-wrapper {
-        padding: 8px 12px;
+        padding: 14px 24px;
+        justify-content: center;
     }
 
-    :is(.hl-pill, .hl-outline) .left-side {
-        padding-bottom: 8px;
+    /* display: contents (same trick as .nav-drawer itself on desktop) so
+       .header-search and .nav-corner-links become direct flex children
+       of .nav-drawer — true siblings of .left-side instead of nested a
+       level deeper — which is what lets the order property below move
+       the search bar above the nav links independent of either one. */
+    .nav-right-group {
+        display: contents;
+    }
+
+    .nav-corner-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        padding: 16px 24px 22px;
+        border-top: 1px solid var(--hdr-divider);
+    }
+
+    /* Search collapses to icon-only everywhere else (see .header-search
+       above) — inside the drawer there's no width pressure forcing that,
+       so show the real input directly instead of making a visitor tap
+       twice (once to open the drawer, again to open the search).
+       order: -1 puts it first — the highest element in the drawer,
+       above the nav links — with its own border-bottom standing in for
+       the divider that used to sit above this whole section when it
+       was below the nav links instead of above them. */
+    .nav-drawer .header-search {
+        width: 100%;
+        align-self: stretch;
+        order: -1;
+        padding: 18px 24px 16px;
+        border-bottom: 1px solid var(--hdr-divider);
+    }
+
+    .nav-drawer .header-search-toggle {
+        display: none;
+    }
+
+    /* position stays the inherited "relative" from .search-wrap's base
+       rule (not overridden here) — .search-dropdown below anchors its
+       "top: 100%" to this element specifically, not whatever ancestor
+       happens to be positioned, and .header-search-toggle (the only way
+       .expanded ever gets set) is hidden above, so the .expanded
+       absolute-overlay rule never actually applies inside the drawer. */
+    .nav-drawer .header-search .search-wrap {
+        display: flex;
+        width: 100%;
     }
 }
 

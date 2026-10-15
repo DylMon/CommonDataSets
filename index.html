@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="/css/base.css?v=6">
     <script src="/js/scorecard-merge.js?v=6"></script>
     <script src="/js/header.js?v=6" defer></script>
+    <script src="/js/header-search.js?v=1" defer></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2245119166025427"
      crossorigin="anonymous"></script>
 </head>
@@ -83,8 +84,8 @@
                     <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
                     </svg>
-                    <input type="text" id="school-search" class="search-input" placeholder="Search schools…" autocomplete="off">
-                    <button type="button" class="search-clear" id="search-clear" aria-label="Clear search" hidden>
+                    <input type="text" id="home-search-input" class="search-input" placeholder="Search schools…" autocomplete="off">
+                    <button type="button" class="search-clear" id="home-search-clear" aria-label="Clear search" hidden>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                     </button>
                 </div>
@@ -94,7 +95,11 @@
             <p class="gpa-legend" id="gpa-legend" hidden><span class="gpa-mark" aria-hidden="true">*</span><span>marks data that isn't from the school's Common Data Set</span></p>
             <div class="page-layout">
             <div class="sidebar">
-            <div class="controls-container">
+            <button type="button" class="filters-toggle" id="filters-toggle" aria-expanded="false" aria-controls="controls-container">
+                <span>Filters</span>
+                <svg class="sort-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="controls-container" id="controls-container">
             <button class="reset-btn" id="reset-filters-btn">Reset All Filters</button>
             <div class="year-filter-bar">
                 <div class="sort-dropdown" id="year-dropdown">
@@ -178,16 +183,6 @@
             </div>
             </div><!-- /.sidebar -->
             <div id="school-list"><p class="loading">Loading…</p></div>
-            <div class="right-sidebar">
-                <div class="history-box" id="favorites-box" style="display:none">
-                    <div class="history-title">Favorites</div>
-                    <div id="favorites-list"></div>
-                </div>
-                <div class="history-box" id="history-box" style="display:none">
-                    <div class="history-title">History</div>
-                    <div id="history-list"></div>
-                </div>
-            </div>
             </div><!-- /.page-layout -->
         </div>
         <footer class="site-footer">
@@ -316,8 +311,95 @@
         const PAGE_SIZE = 25;
         let currentPage = 1;
         let allSchools = [];
-        let searchQuery = '';
         let currentSort = 'us-news';
+        // Drives renderList()'s grid filtering — fed by the page's own
+        // .search-bar input (#home-search-input), separate from the
+        // header search's #school-search, which only drives its dropdown
+        // (recently-viewed/autocomplete) and never touches this.
+        let searchQuery = '';
+
+        // Common acronyms/nicknames that don't already appear as a substring
+        // of the school's official name (so searching them wouldn't
+        // otherwise match anything) — keyed by slug, see the header
+        // search dropdown's schoolMatchesSearch() filter. Not exhaustive;
+        // add to a school's array as more come up.
+        const SCHOOL_ALIASES = {
+            'american': ['AU'],
+            'asu': ['Arizona State'],
+            'berkeley': ['Cal', 'UC Berkeley', 'UCB'],
+            'boston-college': ['BC'],
+            'boston-university': ['BU'],
+            'caltech': ['Cal Tech'],
+            'case-western': ['CWRU'],
+            'claremont-mckenna': ['CMC'],
+            'cmu': ['Carnegie Mellon'],
+            'coloradoboulder': ['CU Boulder', 'CU'],
+            'csufullerton': ['Cal State Fullerton', 'CSUF'],
+            'csulb': ['Long Beach State', 'LBSU'],
+            'csusb': ['Cal State San Bernardino', 'CSUSB'],
+            'fsu': ['Florida State'],
+            'georgia-tech': ['Georgia Tech', 'GT'],
+            'georgetown': ['GU'],
+            'gwu': ['GW', 'George Washington'],
+            'harvey-mudd': ['Mudd'],
+            'jhu': ['Johns Hopkins', 'Hopkins'],
+            'mit': ['MIT'],
+            'miami': ['The U'],
+            'michigan-tech': ['Michigan Tech', 'MTU'],
+            'mizzou': ['Mizzou', 'Missouri'],
+            'nc-state': ['NC State', 'North Carolina State'],
+            'notre-dame': ['ND'],
+            'ohio-state': ['OSU', 'Ohio State'],
+            'olemiss': ['Ole Miss', 'Mississippi'],
+            'penn-state': ['Penn State', 'PSU'],
+            'pitt': ['Pitt'],
+            'rutgers-camden': ['Rutgers'],
+            'rutgers-newark': ['Rutgers'],
+            'smu': ['SMU'],
+            'stony-brook': ['SBU'],
+            'suny-albany': ['SUNY Albany', 'Albany'],
+            'texaschristian': ['TCU'],
+            'texas-am': ['Texas A&M', 'A&M'],
+            'uc-davis': ['UCD', 'Davis'],
+            'uc-irvine': ['UCI', 'Irvine'],
+            'uc-merced': ['UCM', 'Merced'],
+            'uc-riverside': ['UCR', 'Riverside'],
+            'uc-san-diego': ['UCSD'],
+            'uc-santa-cruz': ['UCSC'],
+            'uchicago': ['UChicago'],
+            'uconn': ['UConn', 'Connecticut'],
+            'ucsb': ['UCSB'],
+            'udelaware': ['UDel', 'Delaware'],
+            'uf': ['UF'],
+            'uga': ['UGA'],
+            'uic': ['UIC'],
+            'uiuc': ['UIUC', 'Illinois'],
+            'umass-amherst': ['UMass', 'UMass Amherst'],
+            'umass-lowell': ['UMass Lowell'],
+            'umbc': ['UMBC'],
+            'umich': ['Michigan', 'UMich'],
+            'unc': ['UNC', 'Chapel Hill'],
+            'university-maryland-college-park': ['Maryland', 'UMD'],
+            'uofminnesota-twin-cities': ['Minnesota', 'UMN'],
+            'upenn': ['Penn', 'UPenn'],
+            'usc': ['USC'],
+            'usf': ['USF', 'South Florida'],
+            'usma-west-point': ['West Point', 'Army'],
+            'ut-austin': ['UT Austin', 'Texas', 'UT'],
+            'ut-dallas': ['UT Dallas', 'UTD'],
+            'uva': ['UVA', 'Virginia'],
+            'vanderbilt': ['Vandy'],
+            'villanova': ['Nova'],
+            'virginia-tech': ['Virginia Tech', 'VT'],
+            'virginiacommonwealth': ['VCU'],
+            'wake-forest': ['Wake'],
+            'washington-seattle': ['UW', 'Washington'],
+            'washington-stateu': ['WSU'],
+            'washu': ['WashU'],
+            'william-mary': ['W&M', 'William and Mary'],
+            'wisconsin-madison': ['UW-Madison', 'Wisconsin'],
+            'wpi': ['WPI'],
+        };
 
         // Every year we've ever parsed CDS data for, oldest first. A school
         // present in more than one of these (most are only in the latest)
@@ -333,9 +415,12 @@
             '/data/schools-2024-2025.json',
             '/data/schools-2025-2026.json',
         ];
-        // Scorecard data lives in its own file, kept separate from CDS data,
-        // and merged in here rather than pre-baked — only 2025-26 has one so far.
-        const SCORECARD_FILE = '/data/scorecard-2025-2026.json';
+        // Scorecard data lives in its own file per year, kept separate from
+        // CDS data and merged in here rather than pre-baked. Scorecard's
+        // latest.* fields return its one current snapshot regardless of
+        // which year's file asked for it, so which of these actually has a
+        // given school doesn't matter — fetch them all and merge the union.
+        const ALL_SCORECARD_FILES = ALL_YEAR_FILES.map(url => url.replace('/schools-', '/scorecard-'));
 
         // '/data/schools-2025-2026.json' -> '2025-2026'
         function yearKeyFromUrl(url) {
@@ -347,50 +432,6 @@
         function shortYearLabel(key) {
             const [start, end] = key.split('-');
             return `${start}–${end.slice(2)}`;
-        }
-
-        function renderFavoritesBox() {
-            const slugs = [...favorites];
-            const box = document.getElementById('favorites-box');
-            if (!slugs.length) { box.style.display = 'none'; return; }
-            box.style.display = '';
-            document.getElementById('favorites-list').innerHTML = slugs.map(slug => {
-                const school = allSchools.find(s => s.slug === slug);
-                if (!school) return '';
-                return `<a class="history-item" href="/schools/${slug}/">
-                    <img class="history-logo" src="${logoSrc(slug)}" alt="" onerror="${LOGO_ONERR}">
-                    <span class="history-name">${school.name}</span>
-                </a>`;
-            }).filter(Boolean).join('');
-        }
-
-        function renderHistory() {
-            const slugs = JSON.parse(localStorage.getItem('cds_recently_viewed') ?? '[]');
-            const box = document.getElementById('history-box');
-            if (!slugs.length) { box.style.display = 'none'; return; }
-            box.style.display = '';
-            document.getElementById('history-list').innerHTML = slugs.map(slug => {
-                const school = allSchools.find(s => s.slug === slug);
-                if (!school) return '';
-                return `<a class="history-item" href="/schools/${slug}/">
-                    <img class="history-logo" src="${logoSrc(slug)}" alt="" onerror="${LOGO_ONERR}">
-                    <span class="history-name">${school.name}</span>
-                </a>`;
-            }).filter(Boolean).join('');
-        }
-
-        // Collapses the whole .right-sidebar (not just its two inner boxes)
-        // when neither has content — otherwise a first-time visitor with no
-        // favorites/history yet still pays its reserved width on every card
-        // row, which is cramped enough at some breakpoints to crush the
-        // school-name column down to a few characters.
-        function refreshRightSidebar() {
-            renderFavoritesBox();
-            renderHistory();
-            const sidebar = document.querySelector('.right-sidebar');
-            const empty = ['favorites-box', 'history-box']
-                .every(id => document.getElementById(id).style.display === 'none');
-            sidebar.style.display = empty ? 'none' : '';
         }
 
         function renderDetailPanel(s) {
@@ -447,10 +488,16 @@
             </div>`;
         }
 
+        function schoolMatchesSearch(s, q) {
+            if (s.name.toLowerCase().includes(q)) return true;
+            const aliases = SCHOOL_ALIASES[s.slug];
+            return aliases ? aliases.some(a => a.toLowerCase().includes(q)) : false;
+        }
+
         function renderList(sortKey) {
             const q = searchQuery.toLowerCase();
-            let source = q ? allSchools.filter(s => s.name.toLowerCase().includes(q)) : allSchools;
-            source = applyFilters(source);
+            const matched = q ? allSchools.filter(s => schoolMatchesSearch(s, q)) : allSchools;
+            const source = applyFilters(matched);
             const sorted = [...source].sort(SORTERS[sortKey]);
 
             // The rank badge always reflects a school's true position across
@@ -576,11 +623,23 @@
             }
 
             try {
-                const scRes = await fetch(SCORECARD_FILE);
-                if (scRes.ok) {
-                    const { schools: scSchools } = await scRes.json();
-                    merged = mergeScorecard(merged, scSchools);
+                const scResults = await Promise.all(ALL_SCORECARD_FILES.map(async url => {
+                    const res = await fetch(url);
+                    if (!res.ok) return [];
+                    const { schools } = await res.json();
+                    return schools;
+                }));
+                // Oldest-first like ALL_YEAR_FILES, though in practice a school
+                // in more than one of these has identical data in each (it's
+                // all the same "latest" snapshot) — last-one-wins is just for
+                // determinism, not because the values actually differ.
+                const scBySlug = new Map();
+                for (const scSchools of scResults) {
+                    for (const s of scSchools) {
+                        if (s.slug) scBySlug.set(s.slug, s);
+                    }
                 }
+                merged = mergeScorecard(merged, [...scBySlug.values()]);
             } catch (err) {
                 console.error('Scorecard fetch failed, showing CDS data without it:', err);
             }
@@ -590,32 +649,78 @@
                 `Official Common Data Set submissions gathered directly from ${allSchools.length} top US universities, giving students and families one place to compare verified admissions statistics, test score ranges, cost of attendance, and enrollment data without the noise.`;
             renderCategoryBar();
             renderList(currentSort);
-            refreshRightSidebar();
         }
 
         async function init() {
-            const searchInput = document.getElementById('school-search');
-            const searchClear = document.getElementById('search-clear');
+            // Header search dropdown (#school-search/#search-clear/
+            // #search-dropdown) is wired by the shared js/header-search.js
+            // now, not here — that script runs on every page, not just this
+            // one. See that file for the Recently Viewed/Favorites/
+            // autocomplete logic.
 
-            function updateSearchClear() {
-                searchClear.hidden = searchInput.value.length === 0;
+            // Restored page-level search bar (.search-bar, above the
+            // category filter bar) — independent of the header search
+            // above: this one drives searchQuery/renderList() to filter
+            // the visible grid directly, same as it did before the header
+            // search dropdown was added. Separate ids (#home-search-*)
+            // so the two coexist without colliding.
+            const homeSearchInput = document.getElementById('home-search-input');
+            const homeSearchClear = document.getElementById('home-search-clear');
+
+            function updateHomeSearchClear() {
+                homeSearchClear.hidden = homeSearchInput.value.length === 0;
             }
 
-            searchInput.addEventListener('input', e => {
+            homeSearchInput.addEventListener('input', e => {
                 searchQuery = e.target.value.trim();
                 currentPage = 1;
-                updateSearchClear();
+                updateHomeSearchClear();
                 renderList(currentSort);
             });
 
-            searchClear.addEventListener('click', () => {
-                searchInput.value = '';
+            homeSearchClear.addEventListener('click', () => {
+                homeSearchInput.value = '';
                 searchQuery = '';
                 currentPage = 1;
-                updateSearchClear();
+                updateHomeSearchClear();
                 renderList(currentSort);
-                searchInput.focus();
+                homeSearchInput.focus();
             });
+
+            // Mobile only (see css/base.css's max-width: 640px block) —
+            // .filters-toggle is hidden entirely above that breakpoint, so
+            // this listener just never fires on desktop/tablet.
+            const filtersToggle = document.getElementById('filters-toggle');
+            const controlsContainer = document.getElementById('controls-container');
+            filtersToggle.addEventListener('click', () => {
+                const open = !controlsContainer.classList.contains('open');
+                controlsContainer.classList.toggle('open', open);
+                filtersToggle.setAttribute('aria-expanded', String(open));
+            });
+
+            // Mobile only: physically relocates #category-filter-bar into
+            // the collapsible filters panel instead of leaving it in its
+            // desktop spot above .page-layout — CSS alone can't do this
+            // since the two positions are in unrelated branches of the
+            // DOM, not just different layouts of the same container. The
+            // node itself (not a clone) moves, so its existing click
+            // listener/active-category state carries over automatically
+            // wherever it currently lives. Re-runs on every breakpoint
+            // crossing, not just once on load, so resizing the window
+            // (or rotating a tablet) across 640px keeps it in the right
+            // place either direction.
+            const categoryFilterBar = document.getElementById('category-filter-bar');
+            const resultsCount = document.getElementById('results-count');
+            const mobileQuery = window.matchMedia('(max-width: 640px)');
+            function placeCategoryFilterBar(isMobile) {
+                if (isMobile) {
+                    controlsContainer.prepend(categoryFilterBar);
+                } else {
+                    resultsCount.parentElement.insertBefore(categoryFilterBar, resultsCount);
+                }
+            }
+            placeCategoryFilterBar(mobileQuery.matches);
+            mobileQuery.addEventListener('change', e => placeCategoryFilterBar(e.matches));
 
             // Delegated (not bound per-button) since renderCategoryBar() can
             // redraw this bar's contents — a plain per-button listener would
@@ -719,7 +824,6 @@
                     btn.title = 'Remove from favorites';
                 }
                 saveFavorites();
-                refreshRightSidebar();
                 if (currentSort === 'favorites') renderList('favorites');
             });
 
@@ -989,9 +1093,13 @@
             }
         }
 
-        init();
-
-        window.addEventListener('pageshow', refreshRightSidebar);
+        // Waits for DOMContentLoaded rather than calling init() directly:
+        // the search input/clear button now live inside the header, which
+        // js/header.js injects on this same event. header.js's <script>
+        // tag comes first in the document, so its listener registers (and
+        // therefore fires) before this one — the header exists by the time
+        // init() looks for #school-search.
+        document.addEventListener('DOMContentLoaded', init);
 
         // CSS `position: sticky` on .sidebar (see base.css) pins it under
         // the header, but once it's taller than the room left below the

@@ -1,0 +1,29 @@
+{
+  "generated": "2026-10-13",
+  "schools": [
+    {
+      "slug": "saintlouisu",
+      "name": "Saint Louis University",
+      "scorecard_id": 179159,
+      "us_news_rank": null,
+      "us_news_rank_year": null,
+      "test_policy": null,
+      "endowment_total": null,
+      "endowment_per_student": null,
+      "graduation_rate_4yr": 0.7965,
+      "graduation_rate_6yr": 0.7499,
+      "median_earnings_6yr": 60716,
+      "median_earnings_10yr": 70783,
+      "median_debt_graduates": 25000,
+      "median_debt_all": 8750,
+      "pct_borrowing": null,
+      "pell_grant_pct": 0.1689,
+      "avg_net_price_0_30k": null,
+      "avg_net_price_30_48k": null,
+      "avg_net_price_48_75k": null,
+      "avg_net_price_75_110k": null,
+      "avg_net_price_110k_plus": null,
+      "student_faculty_ratio": 9
+    }
+  ]
+}
