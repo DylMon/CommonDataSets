@@ -2906,7 +2906,12 @@ body.page-resources .hero-banner {
     .school-rank-logo {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        /* Left-aligns both against the column's own left edge (the
+           column's width is set by the wider logo, so centering here
+           left a gap between .school-row's left edge and the smaller
+           rank circle above it) instead of centering them relative to
+           each other. */
+        align-items: flex-start;
         gap: 18px;
         /* .school-row centers everything on its own full height (name +
            stats grid), which put the rank/logo column's vertical center
