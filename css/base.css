@@ -2906,12 +2906,19 @@ body.page-resources .hero-banner {
     .school-rank-logo {
         display: flex;
         flex-direction: column;
-        /* Left-aligns both against the column's own left edge (the
-           column's width is set by the wider logo, so centering here
-           left a gap between .school-row's left edge and the smaller
-           rank circle above it) instead of centering them relative to
-           each other. */
+        /* Left-aligns both against the column's own left edge instead
+           of centering them relative to each other — the rank circle
+           doesn't stretch to this width (it keeps its own fixed
+           34x34), only .school-logo (width: 100%, below) does. */
         align-items: flex-start;
+        /* Fixed width (not flex-grow) — .school-name (flex: 1) takes
+           whatever's left, same trade-off as before, just now an
+           explicit number .school-logo can size itself against instead
+           of shrink-wrapping to a hardcoded logo width. 110px made
+           "SAT Range" wrap to two lines at a typical phone width by
+           taking too much from .school-name's stats grid — 90px still
+           grows the logo noticeably from its old 82px cap without that. */
+        width: 90px;
         gap: 18px;
         /* .school-row centers everything on its own full height (name +
            stats grid), which put the rank/logo column's vertical center
@@ -2927,12 +2934,17 @@ body.page-resources .hero-banner {
         font-size: 0.95em; /* smaller circle than desktop, so scaled down further for the same triple-digit fit */
     }
 
-    /* Noticeably bigger than .school-rank now — the two don't need to
-       match, and the logo reads better larger than the 34px it was
-       capped at just to fit beside the rank before they were stacked. */
+    /* Fills .school-rank-logo's full 90px width instead of a hardcoded
+       size, so a wide/rectangular logo mark uses the full column —
+       height stays capped rather than auto: these logo files are all
+       stored on a square canvas regardless of the visible mark's own
+       shape, so height: auto scaled every one of them to a square
+       matching the column's width and blew out the card (wrapping the
+       stat values below). object-fit: contain (base rule) scales each
+       logo to fit within this box without distorting it either way. */
     .school-logo {
-        height: 50px;
-        width: 82px;
+        width: 100%;
+        height: 70px;
     }
 
     .school-name-link {
