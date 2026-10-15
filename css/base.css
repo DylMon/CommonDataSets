@@ -2906,11 +2906,10 @@ body.page-resources .hero-banner {
     .school-rank-logo {
         display: flex;
         flex-direction: column;
-        /* Left-aligns both against the column's own left edge instead
-           of centering them relative to each other — the rank circle
-           doesn't stretch to this width (it keeps its own fixed
-           34x34), only .school-logo (width: 100%, below) does. */
-        align-items: flex-start;
+        /* Centers the rank circle horizontally against the full-width
+           logo below it (the logo itself still fills the column edge
+           to edge via width: 100%, unaffected by this). */
+        align-items: center;
         /* Fixed width (not flex-grow) — .school-name (flex: 1) takes
            whatever's left, same trade-off as before, just now an
            explicit number .school-logo can size itself against instead
