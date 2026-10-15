@@ -211,7 +211,12 @@ body {
 .section-title { font-size: 1.05em; padding: 6px 14px; margin: 0 0 8px; }
 .subsection-title { margin: 14px 0 6px; }
 .cols-2 { gap: 14px 28px; }
-.gpa-chart-wrap { height: 180px; }
+/* 180px clipped Chart.js's rotated x-axis tick labels into the table below it.
+   220px (screen uses 240px) is the shortest height that gives the rotated
+   labels enough room to render without overflow — 200px still showed a faint
+   overlap, and since 200px and 220px already cost the same extra page either
+   way, there's no benefit to shaving it further. */
+.gpa-chart-wrap { height: 220px; }
 
 /* ── Keep small, atomic pieces of content together across a page break —
    a table row or chart splitting mid-way looks broken. Deliberately NOT
