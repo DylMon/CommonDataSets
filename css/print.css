@@ -37,7 +37,7 @@ body {
 .site-header,
 .floating-back,
 .fav-btn,
-.print-fab,
+.admissions-cta-strip,
 .year-switcher-btn .sort-chevron,
 .year-switcher-menu,
 .adsbygoogle {
@@ -155,7 +155,13 @@ body {
    gain. ── */
 .school-section { margin-top: 22px; }
 .school-section-row { margin-top: 22px; gap: 28px; }
-.section-title { margin: 0 0 10px; padding-bottom: 6px; }
+/* Same solid brand-color bar as on screen, just shallower — the 1.45em/
+   10px-18px padding that reads fine as a card header on a scrolling
+   page is oversized for a paper handout squeezing 7 of these in, and
+   costs real page count across the whole document. font-size first
+   (it's what padding's 10px top/bottom was sized against) then padding
+   itself, both cut by roughly half. */
+.section-title { font-size: 1.05em; padding: 6px 14px; margin: 0 0 8px; }
 .subsection-title { margin: 14px 0 6px; }
 .cols-2 { gap: 14px 28px; }
 .gpa-chart-wrap { height: 180px; }
