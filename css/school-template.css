@@ -329,6 +329,102 @@
   left: -80px;
 }
 
+/* Class rank: one 100% bar split into rank bands (top of class on the left),
+   2px white gaps between segments, rounded only at the bar's two ends. */
+.rank-bar {
+  display: flex;
+  gap: 2px;
+  height: 34px;
+  margin: 10px 0 0;
+}
+.rank-seg {
+  position: relative;
+  flex-basis: 0;
+  min-width: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.82em;
+  font-weight: 600;
+  outline: none;
+}
+.rank-seg:first-child { border-radius: 4px 0 0 4px; }
+.rank-seg:last-child  { border-radius: 0 4px 4px 0; }
+.rank-seg:hover, .rank-seg:focus-visible { filter: brightness(0.92); }
+.rank-seg-tip {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 20;
+  width: max-content;
+  max-width: 220px;
+  padding: 6px 9px;
+  border-radius: 6px;
+  background: #222;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.35;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+}
+.rank-seg:last-child .rank-seg-tip { left: auto; right: 0; }
+.rank-seg:hover .rank-seg-tip, .rank-seg:focus-visible .rank-seg-tip { display: block; }
+.rank-axis {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+  font-size: 0.75em;
+  color: #777;
+}
+.rank-legend {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+}
+.rank-legend li {
+  display: grid;
+  grid-template-columns: 12px 1fr auto;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 0.9em;
+}
+.rank-swatch { width: 12px; height: 12px; border-radius: 3px; }
+.rank-legend-val { font-weight: 600; text-align: right; }
+.rank-legend-unit { font-weight: 400; }
+
+/* Academic Profile: the school's SAT/ACT policy under its own mini header.
+   Its info dot's tip opens to the right for the same clipping reason. */
+.test-policy {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0 0;
+}
+.test-policy-pill {
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: #f1f1f1;
+  color: #a8a8a8;
+  font-size: 0.92em;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.test-policy-pill.active {
+  background: var(--brand);
+  color: var(--brand-ink, #fff);
+  font-weight: 600;
+}
+.test-policy .stat-info { margin-left: 2px; }
+.test-policy .stat-info-tip {
+  left: auto;
+  right: -8px;
+  transform: none;
+}
+
 .stat-divider {
   width: 1px;
   background: #eee;

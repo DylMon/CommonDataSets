@@ -1,6 +1,6 @@
 {
-  "generated": "2026-10-13",
-  "note": "Hand-curated — not available from the CDS or the College Scorecard API. sat/act values: \"required\" (must submit to be considered), \"optional\" (may submit; considered if sent), \"blind\" (not considered even if submitted), or null (not yet researched). Verify against the school's own admissions page for the CURRENT application cycle (policies are frequently extended or changed year to year — check for an explicit end date, e.g. \"through Fall 2027 applicants\"). source = the URL you verified it on. sat/act/source filled where parsed with high confidence from each school's own CDS Section C8 (SAT/ACT Policies); everything else is still null pending manual review or further automated parsing.",
+  "generated": "2026-10-14",
+  "note": "Testing policy per school for Fall 2027 applicants: \"required\" (must submit to be considered), \"optional\" (may submit; considered if sent) or \"blind\" (not considered even if submitted). sat and act are kept separately but currently match. note = a short caveat shown as an info dot on the school page (no em dashes). source = the school's CDS (Section C8) or the page it was checked on; everything was reviewed in the School Testing Policies doc (https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f). GPA-based requirements are shown as optional with a note.",
   "slugs": {
     "american": {
       "name": "American University",
@@ -22,15 +22,15 @@
     },
     "auburn": {
       "name": "Auburn University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "required",
+      "act": "required",
+      "source": "https://www.connectprep.com/colleges-that-require-sat-act/"
     },
     "barnard": {
       "name": "Barnard College",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "baylor": {
       "name": "Baylor University",
@@ -40,9 +40,9 @@
     },
     "binghamton": {
       "name": "Binghamton University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "boston-college": {
       "name": "Boston College",
@@ -76,9 +76,9 @@
     },
     "byu": {
       "name": "Brigham Young University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "data/cds-pdfs/2025-2026/byu.pdf"
     },
     "brown": {
       "name": "Brown University",
@@ -88,27 +88,27 @@
     },
     "caltech": {
       "name": "California Institute of Technology",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "required",
+      "act": "required",
+      "source": "https://www.connectprep.com/colleges-that-require-sat-act/"
     },
     "csufullerton": {
       "name": "California State University, Fullerton",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "blind",
+      "act": "blind",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "csulb": {
       "name": "California State University, Long Beach",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "blind",
+      "act": "blind",
+      "source": "data/cds-pdfs/2025-2026/csulb.pdf"
     },
     "csusb": {
       "name": "California State University, San Bernardino",
-      "sat": "optional",
-      "act": "optional",
-      "source": "data/cds-pdfs/2025-2026/csusb.pdf"
+      "sat": "blind",
+      "act": "blind",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "carleton": {
       "name": "Carleton College",
@@ -118,9 +118,10 @@
     },
     "cmu": {
       "name": "Carnegie Mellon University",
-      "sat": "blind",
-      "act": "blind",
-      "source": "data/cds-pdfs/2025-2026/cmu-2526.pdf"
+      "sat": "optional",
+      "act": "optional",
+      "note": "Required for some majors.",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "case-western": {
       "name": "Case Western Reserve University",
@@ -130,9 +131,9 @@
     },
     "chapman": {
       "name": "Chapman University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "claremont-mckenna": {
       "name": "Claremont McKenna College",
@@ -154,27 +155,28 @@
     },
     "clemson": {
       "name": "Clemson University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "colorado-school-of-mines": {
       "name": "Colorado School of Mines",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "colorado-state": {
       "name": "Colorado State University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "data/cds-pdfs/2025-2026/colorado-state.pdf"
     },
     "columbia": {
       "name": "Columbia University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "note": "Required starting Fall 2028.",
+      "source": "https://www.compassprep.com/testing-spotlight/"
     },
     "cornell": {
       "name": "Cornell University",
@@ -184,9 +186,9 @@
     },
     "creighton": {
       "name": "Creighton University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "dartmouth": {
       "name": "Dartmouth College",
@@ -208,9 +210,9 @@
     },
     "drexel": {
       "name": "Drexel University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "duke": {
       "name": "Duke University",
@@ -220,21 +222,22 @@
     },
     "duquesne": {
       "name": "Duquesne University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "east-carolina": {
       "name": "East Carolina University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "note": "Required with a weighted GPA below 2.8.",
+      "source": "https://www.connectprep.com/colleges-that-require-sat-act/"
     },
     "elon": {
       "name": "Elon University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "emory": {
       "name": "Emory University",
@@ -250,15 +253,15 @@
     },
     "famu": {
       "name": "Florida A&M University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "required",
+      "act": "required",
+      "source": "https://www.connectprep.com/colleges-that-require-sat-act/"
     },
     "florida-atlantic": {
       "name": "Florida Atlantic University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "required",
+      "act": "required",
+      "source": "https://www.connectprep.com/colleges-that-require-sat-act/"
     },
     "fiu": {
       "name": "Florida International University",
@@ -268,9 +271,9 @@
     },
     "fsu": {
       "name": "Florida State University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "required",
+      "act": "required",
+      "source": "https://www.connectprep.com/colleges-that-require-sat-act/"
     },
     "georgemason": {
       "name": "George Mason University",
@@ -280,9 +283,9 @@
     },
     "gwu": {
       "name": "George Washington University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "georgetown": {
       "name": "Georgetown University",
@@ -298,21 +301,22 @@
     },
     "georgia-state": {
       "name": "Georgia State University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "required",
+      "act": "required",
+      "source": "https://www.connectprep.com/colleges-that-require-sat-act/"
     },
     "gonzaga": {
       "name": "Gonzaga University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "note": "Required for homeschooled students with fewer than 30 college credits.",
+      "source": "data/cds-pdfs/2025-2026/gonzaga.pdf"
     },
     "grinnell": {
       "name": "Grinnell College",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "hamilton": {
       "name": "Hamilton College",
@@ -334,9 +338,9 @@
     },
     "hofstra": {
       "name": "Hofstra University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "howard": {
       "name": "Howard University",
@@ -346,15 +350,15 @@
     },
     "illinois-tech": {
       "name": "Illinois Institute of Technology",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "indiana-bloomington": {
       "name": "Indiana University Bloomington",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "iowa-state-science-tech": {
       "name": "Iowa State University",
@@ -364,15 +368,15 @@
     },
     "james-madison": {
       "name": "James Madison University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "jhu": {
       "name": "Johns Hopkins University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "required",
+      "act": "required",
+      "source": "https://www.connectprep.com/colleges-that-require-sat-act/"
     },
     "kansas-state": {
       "name": "Kansas State University",
@@ -394,9 +398,9 @@
     },
     "marquette": {
       "name": "Marquette University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "mit": {
       "name": "Massachusetts Institute of Technology",
@@ -406,9 +410,9 @@
     },
     "miamiu": {
       "name": "Miami University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "michigan-state": {
       "name": "Michigan State University",
@@ -418,15 +422,15 @@
     },
     "michigan-tech": {
       "name": "Michigan Technological University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "missourri-s&t": {
       "name": "Missouri University of Science and Technology",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "montclair-state": {
       "name": "Montclair State University",
@@ -436,39 +440,40 @@
     },
     "njit": {
       "name": "New Jersey Institute of Technology",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "nyu": {
       "name": "New York University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "nc-state": {
       "name": "North Carolina State University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "note": "Required with a weighted GPA below 2.8.",
+      "source": "https://www.connectprep.com/colleges-that-require-sat-act/"
     },
     "northeastern": {
       "name": "Northeastern University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "northwestern": {
       "name": "Northwestern University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "ohio-state": {
       "name": "Ohio State University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "required",
+      "act": "required",
+      "source": "https://www.connectprep.com/colleges-that-require-sat-act/"
     },
     "oklahoma-state": {
       "name": "Oklahoma State University",
@@ -484,9 +489,9 @@
     },
     "penn-state": {
       "name": "Penn State University Park",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "pepperdine": {
       "name": "Pepperdine University",
@@ -496,9 +501,9 @@
     },
     "pomona": {
       "name": "Pomona College",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "princeton": {
       "name": "Princeton University",
@@ -508,33 +513,34 @@
     },
     "purdue": {
       "name": "Purdue University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "required",
+      "act": "required",
+      "note": "Test expected. Applicants who can't test can still apply.",
+      "source": "https://www.connectprep.com/colleges-that-require-sat-act/"
     },
     "quinnipiac": {
       "name": "Quinnipiac University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "rpi": {
       "name": "Rensselaer Polytechnic Institute",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "rit": {
       "name": "Rochester Institute of Technology",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "rowan": {
       "name": "Rowan University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "rutgers-camden": {
       "name": "Rutgers University, Camden",
@@ -546,7 +552,8 @@
       "name": "Rutgers University, Newark",
       "sat": "blind",
       "act": "blind",
-      "source": "data/cds-pdfs/2023-2024/rutgers-newark.pdf"
+      "note": "Required for some majors.",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "rutgers-new-brunswick": {
       "name": "Rutgers University–New Brunswick",
@@ -556,15 +563,15 @@
     },
     "suny-esf": {
       "name": "SUNY Environmental Science and Forestry",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "saintlouisu": {
       "name": "Saint Louis University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "data/cds-pdfs/2021-2022/saintlouisu.pdf"
     },
     "sdsu": {
       "name": "San Diego State University",
@@ -574,9 +581,9 @@
     },
     "santa-clara": {
       "name": "Santa Clara University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "smu": {
       "name": "Southern Methodist University",
@@ -592,9 +599,9 @@
     },
     "stevens": {
       "name": "Stevens Institute of Technology",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "stockton": {
       "name": "Stockton University",
@@ -604,9 +611,9 @@
     },
     "stony-brook": {
       "name": "Stony Brook University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "swarthmore": {
       "name": "Swarthmore College",
@@ -628,9 +635,9 @@
     },
     "texas-am": {
       "name": "Texas A&M University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "texaschristian": {
       "name": "Texas Christian University",
@@ -646,27 +653,28 @@
     },
     "alabama-birmingham": {
       "name": "The University of Alabama at Birmingham",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "note": "Required with a GPA below 3.5. Required for all applicants starting Fall 2028.",
+      "source": "https://www.connectprep.com/colleges-that-require-sat-act/"
     },
     "uarizona": {
       "name": "The University of Arizona",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "data/cds-pdfs/2025-2026/uarizona.pdf"
     },
     "thomas-jefferson": {
       "name": "Thomas Jefferson University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "tufts": {
       "name": "Tufts University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "tulane": {
       "name": "Tulane University",
@@ -676,15 +684,15 @@
     },
     "berkeley": {
       "name": "UC Berkeley",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "blind",
+      "act": "blind",
+      "source": "data/cds-xlsx/2025-2026/berkeley.xlsx"
     },
     "uc-davis": {
       "name": "UC Davis",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "blind",
+      "act": "blind",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "uc-irvine": {
       "name": "UC Irvine",
@@ -694,9 +702,9 @@
     },
     "uc-merced": {
       "name": "UC Merced",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "blind",
+      "act": "blind",
+      "source": "data/cds-xlsx/2025-2026/uc-merced.xlsx"
     },
     "uc-riverside": {
       "name": "UC Riverside",
@@ -718,9 +726,9 @@
     },
     "uc-santa-cruz": {
       "name": "UC Santa Cruz",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "blind",
+      "act": "blind",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "ucla": {
       "name": "UCLA",
@@ -736,27 +744,29 @@
     },
     "suny-albany": {
       "name": "University at Albany",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "buffalo": {
       "name": "University at Buffalo",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "ualabama": {
       "name": "University of Alabama",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "note": "Required with a GPA below 3.0. Required for all applicants starting Fall 2028.",
+      "source": "https://www.connectprep.com/colleges-that-require-sat-act/"
     },
     "uarkansas": {
       "name": "University of Arkansas",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "note": "Required with a GPA below 3.2.",
+      "source": "https://www.connectprep.com/colleges-that-require-sat-act/"
     },
     "ucentralflorida": {
       "name": "University of Central Florida",
@@ -790,15 +800,15 @@
     },
     "udayton": {
       "name": "University of Dayton",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "udelaware": {
       "name": "University of Delaware",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "udenver": {
       "name": "University of Denver",
@@ -820,21 +830,21 @@
     },
     "hawaii-manoa": {
       "name": "University of Hawaiʻi at Mānoa",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "data/cds-pdfs/2025-2026/hawaii-manoa.pdf"
     },
     "uhouston": {
       "name": "University of Houston",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "uidaho": {
       "name": "University of Idaho",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "uic": {
       "name": "University of Illinois Chicago",
@@ -844,45 +854,45 @@
     },
     "uiuc": {
       "name": "University of Illinois Urbana-Champaign",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "uofiowa": {
       "name": "University of Iowa",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "ukansas": {
       "name": "University of Kansas",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "ukentucky": {
       "name": "University of Kentucky",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "ulouisville": {
       "name": "University of Louisville",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "university-maryland-college-park": {
       "name": "University of Maryland",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "umbc": {
       "name": "University of Maryland, Baltimore County",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "umass-amherst": {
       "name": "University of Massachusetts Amherst",
@@ -898,39 +908,41 @@
     },
     "miami": {
       "name": "University of Miami",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "required",
+      "act": "required",
+      "note": "Optional for some majors.",
+      "source": "https://www.connectprep.com/colleges-that-require-sat-act/"
     },
     "umich": {
       "name": "University of Michigan",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "uofminnesota-twin-cities": {
       "name": "University of Minnesota, Twin Cities",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "olemiss": {
       "name": "University of Mississippi",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "note": "Required with a GPA below 3.0.",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "mizzou": {
       "name": "University of Missouri",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "unebraska-lincoln": {
       "name": "University of Nebraska, Lincoln",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "unevada-reno": {
       "name": "University of Nevada, Reno",
@@ -946,21 +958,24 @@
     },
     "unc-wilmington": {
       "name": "University of North Carolina Wilmington",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "note": "Required with a weighted GPA below 2.8.",
+      "source": "https://www.connectprep.com/colleges-that-require-sat-act/"
     },
     "unc": {
       "name": "University of North Carolina at Chapel Hill",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "note": "Required with a weighted GPA below 2.8.",
+      "source": "https://www.connectprep.com/colleges-that-require-sat-act/"
     },
     "north-carolina-charolette": {
       "name": "University of North Carolina at Charlotte",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "note": "Required with a weighted GPA below 2.8.",
+      "source": "https://www.connectprep.com/colleges-that-require-sat-act/"
     },
     "notre-dame": {
       "name": "University of Notre Dame",
@@ -970,9 +985,9 @@
     },
     "uoklahoma": {
       "name": "University of Oklahoma",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "uoregon": {
       "name": "University of Oregon",
@@ -988,9 +1003,9 @@
     },
     "pitt": {
       "name": "University of Pittsburgh",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "urhodeisland": {
       "name": "University of Rhode Island",
@@ -1000,9 +1015,9 @@
     },
     "urichmond": {
       "name": "University of Richmond",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "rochester": {
       "name": "University of Rochester",
@@ -1042,9 +1057,9 @@
     },
     "ut-austin": {
       "name": "University of Texas at Austin",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "required",
+      "act": "required",
+      "source": "https://www.connectprep.com/colleges-that-require-sat-act/"
     },
     "ut-dallas": {
       "name": "University of Texas at Dallas",
@@ -1054,9 +1069,9 @@
     },
     "uutah": {
       "name": "University of Utah",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "uvermont": {
       "name": "University of Vermont",
@@ -1072,15 +1087,15 @@
     },
     "washington-seattle": {
       "name": "University of Washington",
-      "sat": "blind",
-      "act": "blind",
-      "source": "data/cds-pdfs/2025-2026/washington-seattle-2526.pdf"
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "wisconsin-madison": {
       "name": "University of Wisconsin-Madison",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "upacific": {
       "name": "University of the Pacific",
@@ -1096,9 +1111,10 @@
     },
     "vanderbilt": {
       "name": "Vanderbilt University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "note": "Required starting Fall 2029.",
+      "source": "https://www.compassprep.com/testing-spotlight/"
     },
     "vassar": {
       "name": "Vassar College",
@@ -1108,21 +1124,21 @@
     },
     "villanova": {
       "name": "Villanova University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "virginiacommonwealth": {
       "name": "Virginia Commonwealth University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "virginia-tech": {
       "name": "Virginia Polytechnic Institute and State University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "wake-forest": {
       "name": "Wake Forest University",
@@ -1132,15 +1148,15 @@
     },
     "washington-stateu": {
       "name": "Washington State University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "blind",
+      "act": "blind",
+      "source": "data/cds-pdfs/2025-2026/washington-stateu.pdf"
     },
     "washu": {
       "name": "Washington University in St. Louis",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "washington-and-lee": {
       "name": "Washington and Lee University",
@@ -1150,9 +1166,9 @@
     },
     "wayne-state": {
       "name": "Wayne State University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "wellesley": {
       "name": "Wellesley College",
@@ -1162,9 +1178,9 @@
     },
     "wesleyan": {
       "name": "Wesleyan University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "william-mary": {
       "name": "William & Mary",
@@ -1174,33 +1190,34 @@
     },
     "rice": {
       "name": "William Marsh Rice University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "note": "Test scores recommended.",
+      "source": "https://www.compassprep.com/testing-spotlight/"
     },
     "williams": {
       "name": "Williams College",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "wpi": {
       "name": "Worcester Polytechnic Institute",
-      "sat": "blind",
-      "act": "blind",
-      "source": "data/cds-pdfs/2025-2026/wpi-2526.pdf"
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://www.wpi.edu/admissions/undergraduate/apply/how-to/test-blind-admissions"
     },
     "yale": {
       "name": "Yale University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "required",
+      "act": "required",
+      "source": "https://www.connectprep.com/colleges-that-require-sat-act/"
     },
     "yeshiva": {
       "name": "Yeshiva University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     }
   }
 }
