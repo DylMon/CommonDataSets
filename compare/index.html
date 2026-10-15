@@ -68,6 +68,7 @@
         import { loadOutsideCosts, withOutsideCosts, isOutsideCost } from '/js/outside-costs.js?v=1';
         import { loadOutsideTests, withOutsideTests, isOutsideTest } from '/js/outside-tests.js?v=1';
         import { loadSchoolNames, nameMatches } from '/js/school-names.js?v=1';
+        import { loadLatestSchools, loadLatestScorecard } from '/js/latest-schools.js?v=1';
         import { withSatEstimates } from '/js/sat-estimate.js?v=1';
 
         // Fixed per-slot colors rather than each school's own brand color —
@@ -796,23 +797,12 @@
 
         async function loadSchools() {
             try {
-                const res = await fetch('/data/schools-2025-2026.json');
-                if (!res.ok) return;
-                const { schools: rawSchools } = await res.json();
-                const schools = rawSchools.filter(s => s.name != null); // exclude records with no source data yet (e.g. bad/missing source PDF)
-
-                let merged = schools;
-                try {
-                    const scRes = await fetch('/data/scorecard-2025-2026.json');
-                    if (scRes.ok) {
-                        const { schools: scSchools } = await scRes.json();
-                        merged = mergeScorecard(schools, scSchools);
-                    }
-                } catch (err) {
-                    console.error('Scorecard fetch failed, showing CDS data without it:', err);
-                }
-                // GPAs from outside the CDS for schools whose CDS left it blank
-                // (this page only uses the 2025-26 file, each school's latest).
+                // Each school's latest CDS year (same set as the home page and
+                // school pages), with its newest College Scorecard record.
+                const [schools, scBySlug] = await Promise.all([loadLatestSchools(), loadLatestScorecard()]);
+                if (!schools.length) return;
+                const merged = mergeScorecard(schools, [...scBySlug.values()]);
+                // GPAs from outside the CDS for schools whose CDS left it blank.
                 allSchools = withOutsideGpa(merged, await loadOutsideGpa());
                 // Cost fields the CDS left blank, from each school's own cost page.
                 allSchools = withOutsideCosts(allSchools, await loadOutsideCosts());

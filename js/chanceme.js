@@ -5,6 +5,9 @@
 import { normalizeGpaDistribution } from './charts.js?v=6';
 import { loadAdmissionPlans, cdsRounds } from './admission-plans.js?v=1';
 import { loadSchoolNames, nameMatches } from './school-names.js?v=1';
+import { loadLatestSchools, withRankBandFixes } from './latest-schools.js?v=1';
+import { loadOutsideTests, withOutsideTests } from './outside-tests.js?v=1';
+import { withSatEstimates } from './sat-estimate.js?v=1';
 
 // Logos live at images/logos/<slug>.png. A few schools have none yet; the
 // onerror hook hides the broken <img> rather than showing a torn-image icon.
@@ -808,15 +811,19 @@ if (typeof document !== 'undefined') {
         stateSelect.innerHTML = '<option value="">Select state…</option>' +
             US_STATES.map(([code, name]) => `<option value="${code}">${name}</option>`).join('');
 
-        const [{ schools }, plans, names] = await Promise.all([
-            fetch('/data/schools-2025-2026.json').then(res => res.json()),
+        // Each school's latest CDS year (same set as the home page and school
+        // pages), with the same test-score and class-rank fixes the school
+        // page shows: outside SAT/ACT ranges, estimated SAT composites, and
+        // class rank reported as bands.
+        const [latest, plans, names, outsideTests] = await Promise.all([
+            loadLatestSchools(),
             loadAdmissionPlans(),
             loadSchoolNames(),
+            loadOutsideTests(),
         ]);
         schoolNames = names;
-        allSchools = schools
-            .filter(s => s.name != null) // exclude records with no source data yet (e.g. bad/missing source PDF)
-            .map(s => ({ ...s, _rounds: plans[s.slug] ?? cdsRounds(s) }));
+        const fixed = withSatEstimates(withOutsideTests(await withRankBandFixes(latest), outsideTests));
+        allSchools = fixed.map(s => ({ ...s, _rounds: plans[s.slug] ?? cdsRounds(s) }));
 
         loadDraft();
         // A saved draft may name a plan a school no longer offers (its plans
