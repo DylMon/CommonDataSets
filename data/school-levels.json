@@ -1,0 +1,10 @@
+{
+  "generated": "2026-10-15",
+  "note": "Chance Me judges GPA against a school's level, normally its acceptance rate nudged by its SAT range. These schools' acceptance rates understate how competitive their applicants are (UC applicants apply to several UCs at once, and these test-blind schools have no SAT range to correct it), so Chance Me treats them as if they admitted this share instead. Affects only the GPA comparison; the odds still start from the school's real acceptance rate.",
+  "levels": {
+    "uc-san-diego": { "rate": 0.15 },
+    "uc-irvine": { "rate": 0.17 },
+    "ucsb": { "rate": 0.18 },
+    "uc-davis": { "rate": 0.22 }
+  }
+}

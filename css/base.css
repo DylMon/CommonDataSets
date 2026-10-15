@@ -450,6 +450,9 @@ body.page-resources .hero-banner,
 body.page-contact .hero-banner {
     padding: 28px 0 18px;
     min-height: 195px;
+    /* The short strip shows mostly sky at the default 30%; lower frames
+       the buildings instead. */
+    background-position: center 55%;
 }
 
 /* Dark scrim for text contrast — was baked into .hero-banner's own
@@ -461,6 +464,30 @@ body.page-contact .hero-banner {
     inset: 0;
     background: linear-gradient(rgba(0, 0, 0, 0.48), rgba(0, 0, 0, 0.56));
     z-index: 1;
+}
+
+/* Required attribution for CC-licensed banner photos (Compare, Resources).
+   Same look as the school pages' credit (css/school-template.css), above
+   the scrim. */
+.hero-banner .hero-credit {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    z-index: 3;
+    padding: 3px 8px;
+    background: rgba(0, 0, 0, 0.45);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.7em;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.15s, color 0.15s;
+}
+
+.hero-banner .hero-credit:hover {
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
 }
 
 .hero-slides {

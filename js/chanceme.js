@@ -2,12 +2,12 @@
 // Everything here runs client-side against data/schools.json. No AI, no server,
 // nothing typed into the form is ever transmitted anywhere.
 
-import { normalizeGpaDistribution } from './charts.js?v=6';
 import { loadAdmissionPlans, cdsRounds } from './admission-plans.js?v=1';
 import { loadSchoolNames, nameMatches } from './school-names.js?v=1';
 import { loadLatestSchools, withRankBandFixes } from './latest-schools.js?v=1';
 import { loadOutsideTests, withOutsideTests } from './outside-tests.js?v=1';
 import { withSatEstimates } from './sat-estimate.js?v=1';
+import { loadTestPolicies } from './test-policy.js?v=1';
 
 // Logos live at images/logos/<slug>.png. A few schools have none yet; the
 // onerror hook hides the broken <img> rather than showing a torn-image icon.
@@ -130,18 +130,6 @@ const IMPORTANCE_WEIGHT = { very_important: 3, important: 2, considered: 1, not_
 // all but a handful of privates limit or condition aid for international students).
 const NEED_BLIND_INTERNATIONAL_SLUGS = new Set(['harvard', 'mit', 'princeton', 'yale', 'dartmouth']);
 
-const GPA_BANDS = [
-    { min: 0.00, max: 0.999, key: 'below_1_0' },
-    { min: 1.00, max: 1.99,  key: '1_00_to_1_99' },
-    { min: 2.00, max: 2.49,  key: '2_00_to_2_49' },
-    { min: 2.50, max: 2.99,  key: '2_50_to_2_99' },
-    { min: 3.00, max: 3.24,  key: '3_00_to_3_24' },
-    { min: 3.25, max: 3.49,  key: '3_25_to_3_49' },
-    { min: 3.50, max: 3.74,  key: '3_50_to_3_74' },
-    { min: 3.75, max: 3.99,  key: '3_75_to_3_99' },
-    { min: 4.00, max: 4.00,  key: '4_0' },
-];
-
 // Competitive majors (CS, Engineering, Business, etc.) are admitted at a
 // meaningfully lower rate than a school's overall pool at most universities.
 // We don't have per-major CDS data, so this is a disclosed, generic haircut
@@ -179,6 +167,92 @@ function profileSensitivity(baseRate) {
     return clamp(0.55 + baseRate * 1.5, 0.55, 1.0);
 }
 
+// ── School level ─────────────────────────────────────────────────────────
+// A school's own GPA figures can't be trusted for this: the CDS never says
+// whether they're weighted, and many schools average weighted and
+// unweighted GPAs together. So GPA is judged against what a school at this
+// level of selectivity typically admits instead. Level comes from the
+// acceptance rate, nudged by the class's SAT midpoint when there is one (a
+// low-rate school with modest scores reads a bit lower, a high-rate school
+// with very high scores a bit higher).
+//
+// Each anchor is a level, by acceptance rate: the typical admitted
+// unweighted GPA (uw) and its spread, the typical weighted GPA on a 5.0
+// scale (w) and its spread, and the typical SAT midpoint and spread (used
+// only for schools that report no range). Values between
+// anchors are interpolated on a log scale of the rate. These are hand-set
+// estimates, not CDS figures: at a ~4% school an unweighted 3.85 lands
+// around the 8th percentile, at a ~9% school around the 25th, and at a ~70%
+// school around the 85th.
+const LEVEL_ANCHORS = [
+    { rate: 0.03, uw: 3.98, uwSd: 0.085, w: 4.55, wSd: 0.20, sat: 1550, satSd: 45 },
+    { rate: 0.08, uw: 3.95, uwSd: 0.13,  w: 4.45, wSd: 0.22, sat: 1500, satSd: 55 },
+    { rate: 0.15, uw: 3.90, uwSd: 0.16,  w: 4.35, wSd: 0.25, sat: 1440, satSd: 70 },
+    { rate: 0.30, uw: 3.80, uwSd: 0.25,  w: 4.15, wSd: 0.33, sat: 1360, satSd: 90 },
+    { rate: 0.50, uw: 3.65, uwSd: 0.32,  w: 3.95, wSd: 0.39, sat: 1260, satSd: 105 },
+    { rate: 0.70, uw: 3.50, uwSd: 0.35,  w: 3.75, wSd: 0.41, sat: 1170, satSd: 110 },
+    { rate: 0.90, uw: 3.30, uwSd: 0.38,  w: 3.50, wSd: 0.42, sat: 1080, satSd: 115 },
+];
+// How much the SAT midpoint moves a school's level vs its acceptance rate.
+const LEVEL_SAT_SHARE = 0.35;
+// Unweighted GPA counts for most of the GPA score; weighted adds a little.
+const GPA_UNWEIGHTED_SHARE = 0.75;
+
+// Standard normal CDF (Abramowitz & Stegun 7.1.26), as a 0-100 percentile.
+function normalPct(z) {
+    const t = 1 / (1 + 0.3275911 * Math.abs(z) / Math.SQRT2);
+    const erf = 1 - (((((1.061405429 * t - 1.453152027) * t) + 1.421413741) * t - 0.284496736) * t + 0.254829592) * t * Math.exp(-z * z / 2);
+    return 50 * (1 + Math.sign(z) * erf);
+}
+
+// Anchor values at a given acceptance rate.
+function levelAt(rate) {
+    const r = clamp(rate, LEVEL_ANCHORS[0].rate, LEVEL_ANCHORS[LEVEL_ANCHORS.length - 1].rate);
+    let i = 0;
+    while (i < LEVEL_ANCHORS.length - 2 && r > LEVEL_ANCHORS[i + 1].rate) i++;
+    const a = LEVEL_ANCHORS[i], b = LEVEL_ANCHORS[i + 1];
+    const f = (Math.log(r) - Math.log(a.rate)) / (Math.log(b.rate) - Math.log(a.rate));
+    const out = {};
+    for (const k of ['uw', 'uwSd', 'w', 'wSd', 'sat', 'satSd']) out[k] = a[k] + (b[k] - a[k]) * f;
+    return out;
+}
+
+// The acceptance rate a school with this SAT midpoint would typically have.
+function rateForSat(sat) {
+    const A = LEVEL_ANCHORS;
+    if (sat >= A[0].sat) return A[0].rate;
+    if (sat <= A[A.length - 1].sat) return A[A.length - 1].rate;
+    let i = 0;
+    while (sat < A[i + 1].sat) i++;
+    const f = (A[i].sat - sat) / (A[i].sat - A[i + 1].sat);
+    return Math.exp(Math.log(A[i].rate) + (Math.log(A[i + 1].rate) - Math.log(A[i].rate)) * f);
+}
+
+// Rough ACT -> SAT concordance, close enough for placing a school's level
+// or a student's score.
+function actToSat(act) {
+    return act == null ? null : clamp(1040 + (act - 20) * 34.4, 400, 1600);
+}
+
+function satMidpoint(school) {
+    if (school.sat_composite_25 != null && school.sat_composite_75 != null) return (school.sat_composite_25 + school.sat_composite_75) / 2;
+    if (school.act_composite_25 != null && school.act_composite_75 != null) return actToSat((school.act_composite_25 + school.act_composite_75) / 2);
+    return null;
+}
+
+// The school's level as an effective acceptance rate (null without a rate).
+// data/school-levels.json (attached as _levelRate) sets it directly for the
+// few schools whose acceptance rate is misleading.
+export function schoolLevel(school) {
+    if (school._levelRate != null) return { effRate: school._levelRate, ...levelAt(school._levelRate) };
+    const rate = school.acceptance_rate;
+    if (rate == null || rate <= 0) return null;
+    const mid = satMidpoint(school);
+    const effRate = mid == null ? rate
+        : Math.exp((1 - LEVEL_SAT_SHARE) * Math.log(rate) + LEVEL_SAT_SHARE * Math.log(rateForSat(mid)));
+    return { effRate, ...levelAt(effRate) };
+}
+
 // ── GPA ──────────────────────────────────────────────────────────────────
 
 export function effectiveUnweightedGpa(profile) {
@@ -189,36 +263,38 @@ export function effectiveWeightedGpa(profile) {
     return profile.gpaWeighted ?? null;
 }
 
-export function gpaPercentile(unweightedGpa, gpaDist) {
-    if (unweightedGpa == null || !gpaDist) return null;
-    gpaDist = normalizeGpaDistribution(gpaDist);
-    let below = 0, own = 0, total = 0;
-    for (const b of GPA_BANDS) {
-        const v = gpaDist[b.key] ?? 0;
-        total += v;
-        if (unweightedGpa > b.max) below += v;
-        else if (unweightedGpa >= b.min && unweightedGpa <= b.max) own += v;
-    }
-    if (total <= 0) return null;
-    return clamp((below + own / 2) / total * 100, 1, 99);
+// Puts a weighted GPA on a 5.0 scale: the part above 4.0 is stretched or
+// squeezed so the student's school's max maps to 5.0 (a 4.3 out of 4.5 ->
+// 4.6). No max given -> assume 5.0, the most common.
+function weightedOn5(gpaWeighted, gpaMaxWeighted) {
+    if (gpaWeighted == null) return null;
+    if (gpaWeighted <= 4 || !gpaMaxWeighted || gpaMaxWeighted <= 4) return gpaWeighted;
+    return 4 + (gpaWeighted - 4) / (gpaMaxWeighted - 4);
 }
 
-// Used only when a school doesn't report a GPA distribution at all. Anchored
-// so 3.7 unweighted ≈ 50th percentile of a selective applicant pool (these
-// are all top-33 schools, not the general population) — a rough, disclosed
-// estimate, capped short of the 1-99 confidence range a real CDS figure gets.
-function genericGpaPercentile(gpa) {
-    if (gpa == null) return null;
-    return clamp(50 + (gpa - 3.7) * 100, 5, 92);
+// GPA percentile against the school's level: mostly unweighted, a little
+// weighted. Either one alone is used by itself.
+export function gpaPercentile(profile, level) {
+    if (!level) return null;
+    const uw = effectiveUnweightedGpa(profile);
+    const w = weightedOn5(effectiveWeightedGpa(profile), profile.gpaMaxWeighted);
+    const uwPct = uw == null ? null : normalPct((uw - level.uw) / level.uwSd);
+    const wPct = w == null ? null : normalPct((w - level.w) / level.wSd);
+    const pct = uwPct != null && wPct != null ? uwPct * GPA_UNWEIGHTED_SHARE + wPct * (1 - GPA_UNWEIGHTED_SHARE)
+        : uwPct ?? wPct;
+    return pct == null ? null : clamp(pct, 1, 99);
 }
 
 // ── Test scores (composite only) ────────────────────────────────────────
 
+// A bell curve fitted to the school's 25th-75th range: exactly the 25th and
+// 75th percentiles at those scores, tailing off past them (a 1450 against a
+// 1500-1560 range is about the 4th percentile, a 1200 about the 1st).
 export function scorePercentile(score, p25, p75) {
     if (score == null || p25 == null || p75 == null) return null;
-    if (p75 === p25) return score >= p75 ? 75 : 25;
-    const slope = 50 / (p75 - p25);
-    return clamp(25 + (score - p25) * slope, 1, 99);
+    if (p75 <= p25) return score >= p75 ? 75 : 25;
+    const sd = (p75 - p25) / 1.349;
+    return clamp(normalPct((score - (p25 + p75) / 2) / sd), 1, 99);
 }
 
 function combinedTestPercentile(school, profile) {
@@ -227,20 +303,19 @@ function combinedTestPercentile(school, profile) {
     return maxOf([satPct, actPct]);
 }
 
-// Used only when a school reports no test-score ranges at all (test-blind
-// schools, or gaps in our CDS data). Anchored the same way as the generic
-// GPA fallback — 1350 SAT / 30 ACT ≈ 50th percentile of a selective pool.
-function genericTestPercentile(sat, act) {
-    const satP = sat != null ? clamp(50 + (sat - 1350) * 0.15, 3, 92) : null;
-    const actP = act != null ? clamp(50 + (act - 30) * 4, 3, 92) : null;
-    return maxOf([satP, actP]);
+// Used only when a school that considers scores reports no range at all:
+// a bell curve around the SAT midpoint and spread typical of its level.
+function genericTestPercentile(school, profile) {
+    if (school.acceptance_rate == null) return null;
+    const { sat: mid, satSd } = levelAt(school.acceptance_rate);
+    const pct = sat => sat == null ? null : clamp(normalPct((sat - mid) / satSd), 1, 99);
+    return maxOf([pct(profile.sat), pct(actToSat(profile.act))]);
 }
 
 // ── Class rank ───────────────────────────────────────────────────────────
 // CDS class-rank buckets are cumulative-from-the-top (top10 ⊆ top25 ⊆ top50)
 // and top50/bottom50 are complementary halves. We convert them into five
-// mutually exclusive bands and estimate the user's percentile the same way
-// gpaPercentile does: count bands strictly worse than the user's, plus half
+// mutually exclusive bands and estimate the user's percentile: count bands strictly worse than the user's, plus half
 // of their own band. userTopPct is the midpoint of the slider band the user
 // picked (e.g. "Top 5-10%" -> 7.5).
 export function classRankPercentile(userTopPct, buckets) {
@@ -292,13 +367,17 @@ export function rigorScore(numCourses, avgScore, gpaWeighted, gpaMaxWeighted) {
 // ── Academic Index ──────────────────────────────────────────────────────
 
 export function academicIndex(school, profile) {
-    const effGpa = effectiveUnweightedGpa(profile);
-    const gpaSpecific = gpaPercentile(effGpa, school.gpa_distribution);
-    const gpaPct = gpaSpecific ?? genericGpaPercentile(effGpa);
-    const gpaSourced = gpaSpecific != null;
+    const level = schoolLevel(school);
+    const gpaPct = gpaPercentile(profile, level);
 
-    const testSpecific = combinedTestPercentile(school, profile);
-    const testPct = testSpecific ?? genericTestPercentile(profile.sat, profile.act);
+    // Test-blind schools don't look at scores, so they're left out entirely.
+    // Where scores are required, a blank one counts as the bottom of the
+    // range (25th percentile) instead of dropping out, so leaving it blank
+    // never reads better than a real score would.
+    const testBlind = school._testPolicy === 'blind';
+    const testMissing = school._testPolicy === 'required' && profile.sat == null && profile.act == null;
+    const testSpecific = testBlind ? null : combinedTestPercentile(school, profile);
+    const testPct = testBlind ? null : testMissing ? 25 : testSpecific ?? genericTestPercentile(school, profile);
     const testSourced = testSpecific != null;
 
     const classRankPct = classRankPercentile(profile.classRankTopPct, school.class_rank);
@@ -314,7 +393,7 @@ export function academicIndex(school, profile) {
     const totalW = parts.reduce((s, p) => s + p.w, 0);
     const value = clamp(parts.reduce((s, p) => s + p.v * p.w, 0) / totalW, 0, 100);
 
-    return { value, gpaPct, gpaSourced, testPct, testSourced, classRankPct, rigor };
+    return { value, level, gpaPct, testPct, testSourced, testBlind, testMissing, classRankPct, rigor };
 }
 
 // ── Holistic Index (self-rated: Activities, Awards, Essay, LOR, Interview) ──
@@ -370,9 +449,14 @@ function factorWeightSum(factors, keys) {
     return keys.reduce((sum, k) => sum + (IMPORTANCE_WEIGHT[factors[k]] ?? 0), 0);
 }
 
+// A test-blind school's CDS may still rate test scores from before it went
+// blind, so they count as not considered there.
 export function academicHolisticSplit(school) {
-    const a = factorWeightSum(school.admission_factors, ACADEMIC_FACTOR_KEYS);
-    const h = factorWeightSum(school.admission_factors, HOLISTIC_FACTOR_KEYS);
+    const factors = school._testPolicy === 'blind' && school.admission_factors
+        ? { ...school.admission_factors, test_scores: 'not_considered' }
+        : school.admission_factors;
+    const a = factorWeightSum(factors, ACADEMIC_FACTOR_KEYS);
+    const h = factorWeightSum(factors, HOLISTIC_FACTOR_KEYS);
     if (a == null || a + h === 0) {
         return { academicWeight: 0.55, holisticWeight: 0.45, sourced: false };
     }
@@ -487,6 +571,7 @@ export function estimateProbability(school, profile, selection = {}) {
     const k = profileSensitivity(base);
     const baseLogit = Math.log(base / (1 - base));
     const logit = baseLogit + ADMIT_MEDIAN_ANCHOR_SHIFT * k + k * ((combined - 50) / 10) + modifier / 10;
+    // Never certain either way: odds stay between 0.05% and 99.5%.
     const p = clamp(1 / (1 + Math.exp(-logit)), 0.0005, 0.995);
 
     return {
@@ -745,6 +830,10 @@ if (typeof document !== 'undefined') {
     }
 
     function pctLabel(p) { return (p * 100).toFixed(1) + '%'; }
+    function ordinal(n) {
+        const r = Math.round(n), t = r % 100;
+        return r + (t >= 11 && t <= 13 ? 'th' : ({ 1: 'st', 2: 'nd', 3: 'rd' }[r % 10] ?? 'th'));
+    }
 
     function renderResults(profile) {
         const list = document.getElementById('cm-results-list');
@@ -766,11 +855,13 @@ if (typeof document !== 'undefined') {
             }
             const tier = tierFor(result.p);
             const detailId = `cm-detail-${school.slug}`;
+            const needsTest = school._testPolicy === 'required' && profile.sat == null && profile.act == null;
+            const lvl = result.ai.level;
             return `<div class="cm-result-card border-${tier.key}">
                 <img class="cm-result-logo" src="${logoSrc(school.slug)}" alt="" onerror="${LOGO_ONERR}">
                 <div class="cm-result-body">
                     <div class="cm-result-name">${school.name}</div>
-                    <div class="cm-result-meta">${planLabel}${result.planSourced ? '' : ' (school-specific round data unavailable - generic estimate)'} · Base rate used: ${pctLabel(result.effectiveBaseRate)}${result.competitiveMajor ? ' (competitive-major adjustment applied)' : ''}${result.sourced ? '' : ' · limited CDS data - generic academic/holistic weighting used'}</div>
+                    <div class="cm-result-meta">${planLabel}${result.planSourced ? '' : ' (school-specific round data unavailable - generic estimate)'} · Base rate used: ${pctLabel(result.effectiveBaseRate)}${result.competitiveMajor ? ' (competitive-major adjustment applied)' : ''}${result.sourced ? '' : ' · limited CDS data - generic academic/holistic weighting used'}${needsTest ? '<br><strong>This school requires the SAT or ACT.</strong> Add a score for a realistic estimate.' : ''}</div>
                 </div>
                 <div class="cm-result-tier-wrap">
                     <span class="cm-tier-badge cm-tier-${tier.key}">${tier.label}</span>
@@ -783,12 +874,14 @@ if (typeof document !== 'undefined') {
                     <div class="cm-detail-row"><span>Academic Index</span><span>${result.ai.value.toFixed(1)} / 100</span></div>
                     <div class="cm-detail-row"><span>Holistic Index</span><span>${result.hi.value.toFixed(1)} / 100</span></div>
                     <div class="cm-detail-row"><span>Blend used (this school's CDS weighting)</span><span>${Math.round(result.academicWeight * 100)}% academic / ${Math.round(result.holisticWeight * 100)}% holistic</span></div>
-                    ${!result.ai.gpaSourced && result.ai.gpaPct != null ? `<div class="cm-detail-row"><span>GPA percentile</span><span>estimated - school doesn't report a GPA distribution</span></div>` : ''}
-                    ${!result.ai.testSourced && result.ai.testPct != null ? `<div class="cm-detail-row"><span>Test-score percentile</span><span>estimated - school doesn't report a test-score range</span></div>` : ''}
+                    ${lvl ? `<div class="cm-detail-row"><span>Typical admit at this school's level</span><span>${lvl.uw.toFixed(2)} unweighted / ${lvl.w.toFixed(2)} weighted (5.0 scale)</span></div>` : ''}
+                    ${result.ai.gpaPct != null ? `<div class="cm-detail-row"><span>GPA percentile</span><span>${ordinal(result.ai.gpaPct)}</span></div>` : ''}
+                    ${result.ai.testBlind ? `<div class="cm-detail-row"><span>Test scores</span><span>not used - this school is test-blind</span></div>`
+                        : result.ai.testPct != null ? `<div class="cm-detail-row"><span>Test-score percentile</span><span>${ordinal(result.ai.testPct)}${result.ai.testMissing ? ' (no score entered - counted as the bottom of the range)' : result.ai.testSourced ? '' : " (estimated - school doesn't report a test-score range)"}</span></div>` : ''}
                     ${result.hi.interviewWeight > 0 ? `<div class="cm-detail-row"><span>Interview weight at this school</span><span>${Math.round(result.hi.interviewWeight * 100)}% of Holistic Index</span></div>` : ''}
                     ${result.modifier !== 0 ? `<div class="cm-detail-row"><span>Residency / legacy / first-gen / international-aid adjustments</span><span>${result.modifier > 0 ? '+' : ''}${result.modifier.toFixed(1)}</span></div>` : ''}
                     ${result.competitiveMajor ? `<div class="cm-detail-row"><span>Competitive-major haircut (generic heuristic)</span><span>×0.7 on base rate</span></div>` : ''}
-                    <div class="cm-detail-note">Academic Index blends GPA percentile, class-rank percentile (if given), test-score percentile, and course rigor against this school's own reported data. Holistic Index blends your Activities, Awards, Essay, Letters-of-Recommendation, and Interview ratings - Interview's weight above is this school's own.</div>
+                    <div class="cm-detail-note">Academic Index blends your GPA against what schools this selective typically admit (mostly unweighted, partly weighted), class-rank percentile (if given), test-score percentile against this school's range (left out at test-blind schools), and course rigor. Holistic Index blends your Activities, Awards, Essay, Letters-of-Recommendation, and Interview ratings - Interview's weight above is this school's own.</div>
                 </div>
             </div>`;
         }).join('');
@@ -815,15 +908,17 @@ if (typeof document !== 'undefined') {
         // pages), with the same test-score and class-rank fixes the school
         // page shows: outside SAT/ACT ranges, estimated SAT composites, and
         // class rank reported as bands.
-        const [latest, plans, names, outsideTests] = await Promise.all([
+        const [latest, plans, names, outsideTests, testPolicies, levels] = await Promise.all([
             loadLatestSchools(),
             loadAdmissionPlans(),
             loadSchoolNames(),
             loadOutsideTests(),
+            loadTestPolicies(),
+            fetch('/data/school-levels.json').then(r => (r.ok ? r.json() : {})).then(j => j.levels ?? {}).catch(() => ({})),
         ]);
         schoolNames = names;
         const fixed = withSatEstimates(withOutsideTests(await withRankBandFixes(latest), outsideTests));
-        allSchools = fixed.map(s => ({ ...s, _rounds: plans[s.slug] ?? cdsRounds(s) }));
+        allSchools = fixed.map(s => ({ ...s, _rounds: plans[s.slug] ?? cdsRounds(s), _testPolicy: testPolicies[s.slug]?.sat ?? null, _levelRate: levels[s.slug]?.rate ?? null }));
 
         loadDraft();
         // A saved draft may name a plan a school no longer offers (its plans
