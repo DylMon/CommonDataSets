@@ -138,8 +138,10 @@
                 // Hysteresis band (not a single y > 30 cutoff) so the
                 // shrink/grow toggle can't flap back and forth when the
                 // scroll position settles right at the boundary.
+                const wasScrolled = header.classList.contains('is-scrolled');
                 if (y > 40) header.classList.add('is-scrolled');
                 else if (y < 15) header.classList.remove('is-scrolled');
+                if (header.classList.contains('is-scrolled') !== wasScrolled) followHeaderResize();
                 const hides = header.classList.contains('scroll-hide');
                 if (!hides) {
                     header.classList.remove('site-header--hidden');
@@ -160,8 +162,21 @@
                 }
             }, { passive: true });
 
-            // Shrink changes the header's height mid-scroll; keep the sticky
-            // sidebars' offset in step once it settles.
+            // Shrink changes the header's height mid-scroll. Track it every
+            // frame while it animates (0.25s in base.css), not just once it
+            // settles: sticky sidebars offset themselves by --header-height,
+            // and waiting for transitionend left them frozen at the old
+            // offset for the whole animation, then jumping.
+            let resizeUntil = 0;
+            function followHeaderResize() {
+                const running = resizeUntil > performance.now();
+                resizeUntil = performance.now() + 350;
+                if (running) return;
+                (function step() {
+                    syncHeaderHeight();
+                    if (performance.now() < resizeUntil) requestAnimationFrame(step);
+                })();
+            }
             header.addEventListener('transitionend', syncHeaderHeight);
             updateHeader();
         }
