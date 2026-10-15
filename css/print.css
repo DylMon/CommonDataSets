@@ -131,7 +131,7 @@ body {
    the interactive dropdown look. ── */
 .year-bar-strip {
   max-width: none;
-  margin: 10px 0 0;
+  margin: 8px 0 0;
   padding: 0;
 }
 
@@ -149,7 +149,7 @@ body {
    used and the handout doesn't run any longer than it has to. ── */
 .quick-facts-strip {
   max-width: none;
-  margin-top: 14px;
+  margin-top: 10px;
 }
 
 .stat-chip {
@@ -200,23 +200,22 @@ body {
    a hard page boundary, so the spacious screen margins (meant for a
    scrolling viewport) just cost extra pages here for no readability
    gain. ── */
-.school-section { margin-top: 22px; }
-.school-section-row { margin-top: 22px; gap: 28px; }
+.school-section { margin-top: 16px; }
+.school-section-row { margin-top: 16px; gap: 22px; }
 /* Same solid brand-color bar as on screen, just shallower — the 1.45em/
    10px-18px padding that reads fine as a card header on a scrolling
    page is oversized for a paper handout squeezing 7 of these in, and
    costs real page count across the whole document. font-size first
    (it's what padding's 10px top/bottom was sized against) then padding
    itself, both cut by roughly half. */
-.section-title { font-size: 1.05em; padding: 6px 14px; margin: 0 0 8px; }
-.subsection-title { margin: 14px 0 6px; }
-.cols-2 { gap: 14px 28px; }
-/* 180px clipped Chart.js's rotated x-axis tick labels into the table below it.
-   220px (screen uses 240px) is the shortest height that gives the rotated
-   labels enough room to render without overflow — 200px still showed a faint
-   overlap, and since 200px and 220px already cost the same extra page either
-   way, there's no benefit to shaving it further. */
-.gpa-chart-wrap { height: 220px; }
+.section-title { font-size: 1.05em; padding: 6px 14px; margin: 0 0 6px; }
+.subsection-title { margin: 10px 0 6px; }
+.cols-2 { gap: 10px 22px; }
+/* 220px was already overlap-free, but tight — 260px gives the rotated x-axis
+   labels real breathing room above the table instead of just clearing it.
+   Paid for by trimming section/header margins above (22px→16px, 14px→10px,
+   etc.) rather than letting it grow the page count further. */
+.gpa-chart-wrap { height: 260px; }
 
 /* ── Keep small, atomic pieces of content together across a page break —
    a table row or chart splitting mid-way looks broken. Deliberately NOT
