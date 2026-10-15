@@ -466,6 +466,70 @@ body.page-contact .hero-banner {
     z-index: 1;
 }
 
+/* Title + description pages (Compare, Chance Me, About, Resources, Contact):
+   their photos are busy right behind the text, so darken the middle more
+   than the edges and give the text a tighter shadow and heavier weight. */
+body.page-compare .hero-banner::before,
+body.page-chanceme .hero-banner::before,
+body.page-info .hero-banner::before,
+body.page-resources .hero-banner::before,
+body.page-contact .hero-banner::before {
+    background:
+        radial-gradient(ellipse 60% 85% at 50% 55%, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0) 100%),
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.58));
+}
+
+:is(.page-compare, .page-chanceme, .page-info, .page-resources, .page-contact) .hero-content .page-intro-title,
+:is(.page-compare, .page-chanceme, .page-info, .page-resources, .page-contact) .hero-content .page-intro-desc {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.75), 0 2px 12px rgba(0, 0, 0, 0.6);
+}
+
+:is(.page-compare, .page-chanceme, .page-info, .page-resources, .page-contact) .hero-content .page-intro-desc {
+    font-weight: 400;
+}
+
+/* Resources' Bowdoin quad photo is darker to begin with, so it gets a
+   lighter scrim; the text shadow above keeps it readable. */
+body.page-resources .hero-banner::before {
+    background:
+        radial-gradient(ellipse 55% 80% at 50% 55%, rgba(0, 0, 0, 0.32), rgba(0, 0, 0, 0) 100%),
+        linear-gradient(rgba(0, 0, 0, 0.32), rgba(0, 0, 0, 0.4));
+}
+
+/* Compare's Yale | MIT photo is busy, so it keeps a scrim between the
+   default and Resources' lighter one. */
+body.page-compare .hero-banner::before {
+    background:
+        radial-gradient(ellipse 60% 85% at 50% 55%, rgba(0, 0, 0, 0.36), rgba(0, 0, 0, 0) 100%),
+        linear-gradient(rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.46));
+}
+
+/* Every title + description banner uses the same larger, centered title.
+   About, Resources and Contact hold just the title, so it sits in the true
+   center; on Compare and Chance Me a smaller description sits under it. */
+:is(.page-compare, .page-chanceme, .page-info, .page-resources, .page-contact) .hero-content .page-intro-title {
+    font-size: 2.1em;
+    margin: 0;
+}
+
+:is(.page-compare, .page-chanceme) .hero-content .page-intro-desc {
+    font-size: 0.92em;
+    line-height: 1.6;
+    max-width: 680px;
+    margin: 8px auto 0;
+    text-wrap: balance;
+}
+
+@media (max-width: 540px) {
+    :is(.page-compare, .page-chanceme, .page-info, .page-resources, .page-contact) .hero-content .page-intro-title {
+        font-size: 1.7em;
+    }
+
+    :is(.page-compare, .page-chanceme) .hero-content .page-intro-desc {
+        font-size: 0.85em;
+    }
+}
+
 /* Required attribution for CC-licensed banner photos (Compare, Resources).
    Same look as the school pages' credit (css/school-template.css), above
    the scrim. */
@@ -483,6 +547,18 @@ body.page-contact .hero-banner {
     text-decoration: none;
     border-radius: 4px;
     transition: background 0.15s, color 0.15s;
+}
+
+/* A banner made of two photos (Compare) credits each one: the credit is a
+   span holding two links, which take the credit's own look. */
+.hero-banner .hero-credit a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.hero-banner .hero-credit a:hover {
+    color: #fff;
+    text-decoration: underline;
 }
 
 .hero-banner .hero-credit:hover {

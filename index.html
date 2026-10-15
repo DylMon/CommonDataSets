@@ -323,7 +323,7 @@
         }
 
         function fmtPct(val) { return val != null ? (val * 100).toFixed(1) + '%' : '<span class="stat-na">N/A</span>'; }
-        function fmtMoney(val) { return val != null ? '$' + val.toLocaleString() : '<span class="stat-na">N/A</span>'; }
+        function fmtMoney(val) { return val != null ? '$' + Math.round(val).toLocaleString() : '<span class="stat-na">N/A</span>'; }
 
         // Asterisk after a label whose value isn't from the school's Common Data
         // Set: outside GPAs and costs, admission-plans.json deadlines, and the
