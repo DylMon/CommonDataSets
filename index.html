@@ -534,8 +534,10 @@
                 return `
                 <div class="school-card">
                     <div class="school-row">
-                        <div class="school-rank">${rankBySlug.get(s.slug)}</div>
-                        <img class="school-logo" src="${logoSrc(s.slug)}" alt="${s.name}" onerror="${LOGO_ONERR}" />
+                        <div class="school-rank-logo">
+                            <div class="school-rank">${rankBySlug.get(s.slug)}</div>
+                            <img class="school-logo" src="${logoSrc(s.slug)}" alt="${s.name}" onerror="${LOGO_ONERR}" />
+                        </div>
                         <div class="school-name">
                             <div class="school-name-main">
                                 <div class="school-name-top">

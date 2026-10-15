@@ -2069,6 +2069,16 @@ body.page-resources .hero-banner {
     height: 22px;
 }
 
+/* Wraps .school-rank + .school-logo — exists purely so the mobile tier
+   below (see max-width: 540px) can stack them vertically instead of
+   side by side, freeing up width for .school-name. display: contents
+   here (desktop/tablet) removes this wrapper from layout entirely, so
+   both land as direct flex items of .school-row exactly as if it
+   weren't there — zero effect on that layout. */
+.school-rank-logo {
+    display: contents;
+}
+
 .school-rank {
     display: flex;
     align-items: center;
@@ -2888,6 +2898,17 @@ body.page-resources .hero-banner {
 
     /* .details-toggle is already the compact icon form by this width (see
        the 1024px tier) — nothing further needed here. */
+
+    /* Stacks rank above logo instead of side by side — the column's
+       width then only has to fit the wider of the two (the 38px logo)
+       rather than both plus the gap between them, handing the freed-up
+       width to .school-name. */
+    .school-rank-logo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+    }
 
     .school-rank {
         width: 26px;
