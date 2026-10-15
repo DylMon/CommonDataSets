@@ -6,9 +6,9 @@
    the screen rather than pushed to one side. */
 .compare-layout {
     display: grid;
-    grid-template-columns: minmax(220px, 280px) minmax(0, 1fr) minmax(220px, 280px);
+    grid-template-columns: minmax(200px, 240px) minmax(0, 1fr) minmax(200px, 240px);
     align-items: start;
-    column-gap: 40px;
+    column-gap: 32px;
     max-width: 1400px;
     margin: 32px auto 0;
     padding: 0 24px;
@@ -50,6 +50,11 @@
     grid-column: 2;
     min-width: 0;
 }
+
+/* Right column: schools 3 and 4, and the add cell once two schools are in.
+   The blank title keeps its cards level with the left column's. Plain
+   sticky (no reveal shift needed: it never holds more than two cards). */
+.compare-picker-right { grid-column: 3; }
 
 .compare-picker-title {
     font-family: var(--font-display);
@@ -323,10 +328,15 @@
     transition: max-height 0.3s ease, opacity 0.15s ease;
 }
 
+/* Two schools per row, so three or four long names never leave one
+   stranded on its own line. Columns are as wide as their longest name
+   (shrinking if the row runs out of room), so short names stay close
+   together instead of being pushed to the middle. */
 .cmp-legend {
-    display: flex;
-    gap: 28px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, max-content));
+    justify-content: start;
+    gap: 10px 28px;
     margin: 40px 0 0;
 }
 
@@ -344,6 +354,23 @@
     height: 11px;
     border-radius: 50%;
     flex-shrink: 0;
+}
+
+/* Comparison table school headers: black name after the school's dot. */
+.tbl th.cmp-col-head { color: #000; }
+/* Dot and name side by side, so a wrapped name lines up under its own
+   first line rather than under the dot. */
+.cmp-col-head-inner {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+}
+.tbl th.cmp-col-head .cmp-legend-dot {
+    width: 9px;
+    height: 9px;
+    flex: none;
+    align-self: flex-start;
+    margin-top: 0.4em; /* level with the name's first line */
 }
 
 /* Two stacked score bars (one per school) inside a single row */
@@ -385,8 +412,12 @@
    at a centered reading width. The picker's cells wrap side by side here
    so four schools don't build a tall wall above the data. */
 @media (max-width: 1080px) {
+    /* Flex column so the right picker can sit right under the left one,
+       above the data, instead of after it. */
     .compare-layout {
-        display: block;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
         max-width: 860px;
         padding: 0 20px;
     }
@@ -394,6 +425,10 @@
         position: static;
         margin-bottom: 18px;
     }
+    .compare-picker-right { order: -1; margin-top: -4px; }
+    .compare-picker:not(.compare-picker-right) { order: -2; }
+    .compare-picker-right .compare-picker-title { display: none; }
+    .compare-picker-right.is-empty { display: none; }
     .compare-picker.dropdown-open { padding-bottom: 0; }
     .compare-grid {
         grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));

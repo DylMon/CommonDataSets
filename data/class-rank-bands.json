@@ -1,0 +1,22 @@
+{
+  "generated": "2026-10-14",
+  "note": "Schools whose CDS (C10) class rank can't be read as the usual cumulative shares (top 10% inside top 25% inside top 50%). The school page draws these bands as given, for that CDS year only. Shares are fractions of students who submitted rank; each school's bands add up to 100%. Davidson, Grinnell and JMU reported separate bands; Davidson's 'top half' cell says 100 but its other bands already total 100%, so that cell is ignored. Arkansas reported cumulative shares but its 'top half' cell says 14.6%; bottom half is 15.0% and its 2024-25 CDS had top half at 86%, so top half is taken as 85.0%.",
+  "slugs": {
+    "davidson": {
+      "year": "2025-26",
+      "bands": { "top10": 0.80, "top10_25": 0.20, "top25_50": 0, "middle50_75": 0, "bottom25": 0 }
+    },
+    "grinnell": {
+      "year": "2024-25",
+      "bands": { "top10": 0.562, "top10_25": 0.314, "top25_50": 0.109, "bottom50": 0.015 }
+    },
+    "james-madison": {
+      "year": "2025-26",
+      "bands": { "top10": 0.212, "top10_25": 0.346, "top25_50": 0.346, "middle50_75": 0.091, "bottom25": 0.005 }
+    },
+    "uarkansas": {
+      "year": "2025-26",
+      "bands": { "top10": 0.259, "top10_25": 0.273, "top25_50": 0.318, "middle50_75": 0.131, "bottom25": 0.019 }
+    }
+  }
+}

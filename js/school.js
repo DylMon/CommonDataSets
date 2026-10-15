@@ -4,6 +4,7 @@ import { loadOutsideGpa } from './outside-gpa.js?v=1';
 import { loadOutsideCosts, withOutsideCost, isOutsideCost } from './outside-costs.js?v=1';
 import { loadOutsideTests, withOutsideTest, isOutsideTest } from './outside-tests.js?v=1';
 import { withSatEstimate, SAT_ESTIMATE_NOTE } from './sat-estimate.js?v=1';
+import { loadTestPolicies, TEST_POLICY_LABEL } from './test-policy.js?v=1';
 
 const SCHOOL_META = {
   'mit': { color: '#a41931', banner: 'mit.jpg', y: 50, credit: { author: 'Scutter', license: 'CC BY-NC-ND 2.0', url: 'https://www.flickr.com/photos/scutter/38005464/' } },
@@ -670,15 +671,13 @@ function renderAdmissionsSummary(s, rounds = cdsRounds(s)) {
 
 // ── Render: Selectivity (funnel + admit rates by round and by gender) ───
 
-// By Round rows. The CDS counts only one early round on its own (C21 is Early
-// Decision; Early Action has no counts), so the second row is what's left:
+// By Round rows. The CDS reports one early count; it's shown as "EA / ED"
+// (taken to cover every early round), and the second row is what's left:
 //   - an RD pool the CDS reports → "RD"
-//   - total minus the early round → "RD" when that's the school's only early
-//     round, "EA + RD" when it also has Early Action / REA
+//   - total minus the early count → "RD"
 //   - no early counts → "Total" (every applicant), with an ⓘ saying why
 // Display only: Chance Me still uses just the RD rates schools report.
 const ROUND_TIP = {
-  eaRd: "The Common Data Set only counts Early Decision applicants on their own, so this row combines Early Action and Regular Decision.",
   total: "This school doesn't report its early applicants separately, so this is the total for all applicants.",
   totalNoEarly: "This school has no early round, so this is the total for all applicants.",
 };
@@ -700,9 +699,9 @@ function byRoundRows(s, rounds) {
   if (rd.applied != null && rd.admitted != null && !rdIsTotal) {
     second = { label: 'RD', ...rd };
   } else if (hasEarly && tA != null && tD != null && early.applied < tA && early.admitted <= tD) {
-    const lumped = fam.has('ED') && (fam.has('EA') || fam.has('REA'));
-    second = { label: lumped ? 'EA + RD' : 'RD', tip: lumped ? ROUND_TIP.eaRd : null,
-               applied: tA - early.applied, admitted: tD - early.admitted };
+    // The CDS early count is taken to cover every early round (EA and ED),
+    // so everyone else is RD.
+    second = { label: 'RD', applied: tA - early.applied, admitted: tD - early.admitted };
   } else if (!hasEarly && tA != null && tD != null) {
     const offersEarly = fam.has('ED') || fam.has('EA') || fam.has('REA');
     second = { label: 'Total', tip: offersEarly ? ROUND_TIP.total : ROUND_TIP.totalNoEarly, applied: tA, admitted: tD };
@@ -737,9 +736,9 @@ function renderSelectivitySection(s, rounds) {
         r.label + (r.tip ? infoTip(r.tip) : ''), fmt(r.applied), fmt(r.admitted),
         r.applied && r.admitted != null ? (r.admitted / r.applied * 100).toFixed(1) + '%' : '<span class="stat-na">N/A</span>',
       ]))
-    : '<p class="no-data">Data not yet available.</p>';
+    : '<p class="no-data">Not reported</p>';
 
-  let waitlistHtml = '<p class="no-data">Data not yet available.</p>';
+  let waitlistHtml = '<p class="no-data">Not reported</p>';
   // Some records hold the waitlist only in the flat waitlist_* fields (no
   // applicant_pools.waitlist, or one left blank), so fall back field by field.
   const pw = s.applicant_pools?.waitlist ?? {};
@@ -762,7 +761,7 @@ function renderSelectivitySection(s, rounds) {
     )}</div>`;
   }
 
-  let genderRoundsHtml = '<p class="no-data">Data not yet available.</p>';
+  let genderRoundsHtml = '<p class="no-data">Not reported</p>';
   if (s.gender_breakdown) {
     const g = s.gender_breakdown;
     genderRoundsHtml = tableHtml(
@@ -774,7 +773,7 @@ function renderSelectivitySection(s, rounds) {
     );
   }
 
-  let transferHtml = '<p class="no-data">Data not yet available.</p>';
+  let transferHtml = '<p class="no-data">Not reported</p>';
   if (s.transfer_stats) {
     const t = s.transfer_stats;
     transferHtml = tableHtml(
@@ -807,7 +806,20 @@ function renderSelectivitySection(s, rounds) {
 
 // ── Render: Academic Profile (test score ranges + GPA distribution) ─────
 
-function renderAcademicProfileSection(s) {
+// The school's current SAT/ACT policy (data/test-policy.json), with its
+// short caveat (if any) as an info dot.
+// All three options as pills, the school's own one filled in.
+function testPolicyHtml(policy) {
+  if (!policy || !TEST_POLICY_LABEL[policy.sat]) return '';
+  const pills = Object.entries(TEST_POLICY_LABEL).map(([key, label]) =>
+    `<span class="test-policy-pill${key === policy.sat ? ' active' : ''}"${key === policy.sat ? ' aria-current="true"' : ''}>${label}</span>`).join('');
+  return `
+      <h3 class="subsection-title">Testing Policy</h3>
+      <div class="test-policy">${pills}${policy.note ? infoTip(policy.note) : ''}</div>`;
+}
+
+// policy: the school's entry in data/test-policy.json (not year-specific).
+function renderAcademicProfileSection(s, policy = null) {
   let submissionHtml = '';
   if (s.sat_act_breakdown) {
     const b = s.sat_act_breakdown;
@@ -823,7 +835,7 @@ function renderAcademicProfileSection(s) {
   }
 
   const scoresCol = `
-    <div>
+    <div>${testPolicyHtml(policy)}
       <h3 class="subsection-title">SAT — 25th to 75th Percentile</h3>
       <div class="score-rows">
         ${scoreBarHtml(s._satEstimated ? `<span class="stat-anchor">Composite${infoTip(SAT_ESTIMATE_NOTE)}</span>` : 'Composite', s.sat_composite_25, s.sat_composite_75, 400, 1600)}
@@ -844,7 +856,7 @@ function renderAcademicProfileSection(s) {
   let gpaCol = `
     <div>
       <h3 class="subsection-title">GPA Distribution of Enrolled Students</h3>
-      <p class="no-data">Data not yet available.</p>
+      <p class="no-data">Not reported</p>
     </div>`;
   const g = normalizeGpaDistribution(s.gpa_distribution);
   if (g) {
@@ -857,8 +869,7 @@ function renderAcademicProfileSection(s) {
       .filter(p => p.value != null);
 
     const chartBlock = chartPoints.length >= 2
-      ? `<div class="gpa-chart-wrap"><canvas id="gpa-chart"></canvas></div>
-         <p class="chart-caption">GPA bands aren't evenly sized (the top band is a single value, 4.0, while others span up to a full point), and schools often don't report bands below 3.0 — read this as a shape, not a precise curve.</p>`
+      ? `<div class="gpa-chart-wrap"><canvas id="gpa-chart"></canvas></div>`
       : '';
 
     gpaCol = `
@@ -878,22 +889,81 @@ function renderAcademicProfileSection(s) {
 
 // ── Class Rank — folded into Academic Profile, under Score Submission ───
 
+// The CDS reports class rank cumulatively (top 10% is inside top 25%, which
+// is inside top 50%). Splits that into separate bands that add up to 100%,
+// or returns null when the reported numbers don't nest or don't add up
+// (some schools fill the form in wrong), so the page falls back to a table.
+function classRankBands(cr) {
+  const { top10: t10, top25: t25, top50: t50, bottom25: b25 } = cr;
+  if (t50 == null) return null;
+  const b50 = cr.bottom50 ?? 1 - t50;
+  const ok = (lo, hi) => lo == null || hi == null || lo <= hi + 0.005;
+  if (!ok(t10, t25) || !ok(t25, t50) || !ok(t10, t50) || !ok(b25, b50)) return null;
+  if (Math.abs(t50 + b50 - 1) > 0.015) return null;
+
+  const bands = [];
+  let prev = 0;
+  for (const [label, cum] of [['Top 10%', t10], ['10–25%', t25], ['25–50%', t50]]) {
+    if (cum == null) continue;
+    bands.push({ label, share: cum - prev });
+    prev = cum;
+  }
+  if (b25 != null) {
+    bands.push({ label: '50–75%', share: b50 - b25 });
+    bands.push({ label: 'Bottom 25%', share: b25 });
+  } else {
+    bands.push({ label: 'Bottom 50%', share: b50 });
+  }
+  return bands.map(b => ({ ...b, share: Math.max(0, b.share) }));
+}
+
+// Darkest shade for the top band, lightening toward the bottom of the class:
+// one hue (the school's brand color) mixed with white.
+const RANK_SHADES = [100, 76, 54, 34, 18];
+
+// Bands given directly in data/class-rank-bands.json, in the same shape
+// classRankBands() returns.
+const RANK_BAND_LABELS = { top10: 'Top 10%', top10_25: '10–25%', top25_50: '25–50%', middle50_75: '50–75%', bottom25: 'Bottom 25%', bottom50: 'Bottom 50%' };
+const givenRankBands = given => Object.entries(RANK_BAND_LABELS)
+  .filter(([key]) => given[key] != null)
+  .map(([key, label]) => ({ label, share: given[key] }));
+
 function classRankHtml(s) {
   const cr = s.class_rank ?? {};
+  const reported = s._rankBands || ['top10', 'top25', 'top50', 'bottom50', 'bottom25'].some(k => cr[k] != null);
+  const bands = s._rankBands ? givenRankBands(s._rankBands) : reported ? classRankBands(cr) : null;
+  const pct = v => (v * 100).toFixed(0) + '%';
 
-  const rows = [
-    ['Top 10%', cr.top10],
-    ['Top 25%', cr.top25],
-    ['Top 50%', cr.top50],
-    ['Bottom 50%', cr.bottom50],
-    ['Bottom 25%', cr.bottom25],
-  ]
-    .filter(([, v]) => v != null)
-    .map(([label, v]) => [label, (v * 100).toFixed(0) + '%']);
-
-  const body = rows.length
-    ? tableHtml(['Percentile', 'Cumulative Share'], rows)
-    : '<p class="no-data">Not reported in CDS — many high schools no longer calculate class rank.</p>';
+  let body;
+  if (bands) {
+    const shades = bands.length === 5 ? RANK_SHADES : RANK_SHADES.filter((_, i) => i !== 3).slice(0, bands.length);
+    const segs = bands.map((b, i) => {
+      // An empty band would still draw as a sliver; leave it to the legend.
+      if (b.share < 0.0005) return '';
+      const fill = `color-mix(in srgb, var(--brand) ${shades[i]}%, #fff)`;
+      const ink = shades[i] >= 54 ? 'var(--brand-ink, #fff)' : '#111';
+      const tip = `${b.label} of their class: ${pct(b.share)} of enrolled students`;
+      return `<div class="rank-seg" style="flex-grow:${b.share};background:${fill};color:${ink}" tabindex="0" aria-label="${escapeHtml(tip)}">
+          ${b.share >= 0.08 ? `<span class="rank-seg-val">${pct(b.share)}</span>` : ''}
+          <span class="rank-seg-tip" role="tooltip">${escapeHtml(tip)}</span>
+        </div>`;
+    }).join('');
+    const legend = bands.map((b, i) => `
+        <li><span class="rank-swatch" style="background:color-mix(in srgb, var(--brand) ${shades[i]}%, #fff)"></span>
+          <span class="rank-legend-label">${b.label}</span>
+          <span class="rank-legend-val">${pct(b.share)} <span class="rank-legend-unit">of students</span></span></li>`).join('');
+    body = `
+      <div class="rank-bar" role="img" aria-label="Class rank of enrolled students">${segs}</div>
+      <div class="rank-axis"><span>Top of class</span><span>Bottom of class</span></div>
+      <ul class="rank-legend">${legend}</ul>`;
+  } else if (reported) {
+    const rows = [['Top 10%', cr.top10], ['Top 25%', cr.top25], ['Top 50%', cr.top50], ['Bottom 50%', cr.bottom50], ['Bottom 25%', cr.bottom25]]
+      .filter(([, v]) => v != null)
+      .map(([label, v]) => [label, pct(v)]);
+    body = tableHtml(['Percentile', 'Cumulative Share'], rows);
+  } else {
+    body = '<p class="no-data">Not reported</p>';
+  }
 
   return `
     <h3 class="subsection-title">Class Rank of Enrolled Students</h3>
@@ -925,7 +995,7 @@ function factorMeter(score) {
 }
 
 function renderAdmissionFactorsSection(s) {
-  let body = '<p class="no-data">Data not yet available.</p>';
+  let body = '<p class="no-data">Not reported</p>';
 
   if (s.admission_factors) {
     const items = Object.entries(FACTOR_LABELS)
@@ -1018,7 +1088,7 @@ function renderOutcomesSection(s) {
 // ── Render: Student Body section ────────────────────────────────────────
 
 function renderStudentBodySection(s) {
-  let raceHtml = '<p class="no-data">Data not yet available.</p>';
+  let raceHtml = '<p class="no-data">Not reported</p>';
 
   if (s.demographics_detail?.undergrad) {
     // CDS path — raw counts; convert to fractions using total
@@ -1037,7 +1107,7 @@ function renderStudentBodySection(s) {
     </div>`;
   }
 
-  let genderHtml = '<p class="no-data">Data not yet available.</p>';
+  let genderHtml = '<p class="no-data">Not reported</p>';
   if (s.undergrads_male != null && s.total_undergrads) {
     // CDS path — raw counts
     const total = s.total_undergrads;
@@ -1047,7 +1117,7 @@ function renderStudentBodySection(s) {
     </div>`;
   }
 
-  let geoHtml = '<p class="no-data">Data not yet available.</p>';
+  let geoHtml = '<p class="no-data">Not reported</p>';
   if (s.pct_out_of_state != null) {
     const inState = 1 - s.pct_out_of_state;
     geoHtml = `<div class="demo-bars">
@@ -1207,11 +1277,13 @@ async function init() {
   recentHistory = [slug, ...recentHistory.filter(s => s !== slug)].slice(0, 5);
   localStorage.setItem(historyKey, JSON.stringify(recentHistory));
 
-  const [{ yearRecords, availableYearKeys }, admissionPlans, outsideGpa, outsideCosts, outsideTests, noWaitlist, scBySlug, admissionsLinks] =
+  const [{ yearRecords, availableYearKeys }, admissionPlans, outsideGpa, outsideCosts, outsideTests, noWaitlist, scBySlug, admissionsLinks, testPolicies, rankBands] =
     await Promise.all([loadAllYears(slug), loadAdmissionPlans(), loadOutsideGpa(), loadOutsideCosts(), loadOutsideTests(),
       fetch('/data/no-waitlist.json').then(r => (r.ok ? r.json() : {})).then(j => j.slugs ?? {}).catch(() => ({})),
       loadScorecardBySlug(),
-      fetch('/data/admissions-links.json').then(r => (r.ok ? r.json() : {})).then(j => j.slugs ?? {}).catch(() => ({}))]);
+      fetch('/data/admissions-links.json').then(r => (r.ok ? r.json() : {})).then(j => j.slugs ?? {}).catch(() => ({})),
+      loadTestPolicies(),
+      fetch('/data/class-rank-bands.json').then(r => (r.ok ? r.json() : {})).then(j => j.slugs ?? {}).catch(() => ({}))]);
 
   if (availableYearKeys.length === 0) {
     document.getElementById('school-sections').innerHTML =
@@ -1240,6 +1312,11 @@ async function init() {
   for (const [key, rec] of yearRecords) yearRecords.set(key, withSatEstimate(rec));
   // Its CDS says it doesn't use a waitlist: the Waitlist box says so.
   if (noWaitlist[slug]) yearRecords.set(latestAvailableKey, { ...yearRecords.get(latestAvailableKey), _noWaitlist: true });
+  // Its CDS reported class rank as separate bands, not cumulative shares
+  // (data/class-rank-bands.json), for that one CDS year.
+  for (const [key, rec] of yearRecords) {
+    if (rankBands[slug] && rec.data_year === rankBands[slug].year) yearRecords.set(key, { ...rec, _rankBands: rankBands[slug].bands });
+  }
   let currentYearKey = latestAvailableKey;
 
   document.documentElement.style.setProperty('--brand', meta.color);
@@ -1340,7 +1417,7 @@ async function init() {
         ${renderAdmissionsSummary(s, rounds)}
         ${renderCostSection(s)}
       </div>` +
-      renderAcademicProfileSection(s) +
+      renderAcademicProfileSection(s, testPolicies[slug]) +
       renderAdmissionFactorsSection(s) +
       renderStudentBodySection(s) +
       renderOutcomesSection(s);

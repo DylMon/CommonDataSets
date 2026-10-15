@@ -53,6 +53,12 @@
                     <p class="compare-placeholder">Search for a school on the left to see its data.</p>
                 </div>
             </div>
+            <!-- Schools 3 and 4 (and the add cell, once two schools are in)
+                 go in the otherwise-empty right track. -->
+            <aside class="compare-picker compare-picker-right">
+                <h2 class="compare-picker-title" aria-hidden="true">&nbsp;</h2>
+                <div class="compare-grid" id="compare-grid-right"></div>
+            </aside>
         </div>
     </div>
 
@@ -61,13 +67,19 @@
         import { loadOutsideGpa, withOutsideGpa } from '/js/outside-gpa.js?v=1';
         import { loadOutsideCosts, withOutsideCosts, isOutsideCost } from '/js/outside-costs.js?v=1';
         import { loadOutsideTests, withOutsideTests, isOutsideTest } from '/js/outside-tests.js?v=1';
+        import { withSatEstimates } from '/js/sat-estimate.js?v=1';
 
         // Fixed per-slot colors rather than each school's own brand color —
         // brand hexes are arbitrary and sometimes literally identical
         // (Harvard and UChicago are both #a6152c), which made it hard to
         // tell schools apart in the comparison charts. Slot identity is
         // what matters here, not brand identity.
-        const SLOT_COLORS = { 1: '#51CC3B', 2: '#3B5DCC', 3: '#CCB43B', 4: '#CC3B3B' };
+        // Muted to sit with the site's cream/brown/orange (orange itself is
+        // left out: it's the section-header color). Checked with the dataviz
+        // palette validator across all pairs, colorblind views included;
+        // gold is under 3:1 on white, which is fine because a school's color
+        // always appears next to its name.
+        const SLOT_COLORS = { 1: '#2D4F8E', 2: '#2A9D8F', 3: '#C9962A', 4: '#B5372E' };
         const MAX_SLOTS = 4;
         let activeSlots = [1, 2];
 
@@ -134,19 +146,21 @@
         ];
 
         // colColors (optional): one solid hex per school data column, in
-        // display order — column 0 is the row label and never tinted. Each
-        // school header gets a thick underline in its color and each body
-        // cell a faint (~10%) wash of it, so a school reads as one column
-        // straight down a wide table.
+        // display order — column 0 is the row label and never colored. Each
+        // school header gets a dot and a thick underline in its color (name in
+        // black, like the legend above), and the same bar closes the column
+        // under the last row; body cells stay plain.
         function tableHtml(headers, rows, colColors) {
             const colorAt = i => colColors && colColors[i - 1];
             const th = headers.map((h, i) => {
                 const c = colorAt(i);
-                return `<th${c ? ` style="border-bottom:3px solid ${c}"` : ''}>${h}</th>`;
+                return c
+                    ? `<th class="cmp-col-head" style="border-bottom:3px solid ${c}"><span class="cmp-col-head-inner"><span class="cmp-legend-dot" style="background:${c}"></span><span>${h}</span></span></th>`
+                    : `<th>${h}</th>`;
             }).join('');
-            const tbody = rows.map(r => `<tr>${r.map((cell, i) => {
-                const c = colorAt(i);
-                return `<td${c ? ` style="background:${c}1a"` : ''}>${cell}</td>`;
+            const tbody = rows.map((r, ri) => `<tr>${r.map((cell, i) => {
+                const c = ri === rows.length - 1 && colorAt(i);
+                return `<td${c ? ` style="border-bottom:3px solid ${c}"` : ''}>${cell}</td>`;
             }).join('')}</tr>`).join('');
             return `<div class="tbl-wrap"><table class="tbl"><thead><tr>${th}</tr></thead><tbody>${tbody}</tbody></table></div>`;
         }
@@ -248,6 +262,20 @@
             return s.act_composite_25 != null && s.act_composite_75 != null ? (s.act_composite_25 + s.act_composite_75) / 2 : null;
         }
 
+        function satMid(s) {
+            return s.sat_composite_25 != null && s.sat_composite_75 != null ? (s.sat_composite_25 + s.sat_composite_75) / 2 : null;
+        }
+
+        // SAT range, with the non-CDS * when it came from outside the CDS or
+        // was estimated from section scores (js/sat-estimate.js).
+        function satRangeText(s) {
+            if (s.sat_composite_25 == null || s.sat_composite_75 == null) return '<span class="stat-na">N/A</span>';
+            const mark = s._satEstimated
+                ? '<span class="gpa-mark" title="Estimated: Reading &amp; Writing plus Math (the school reports no composite)">*</span>'
+                : isOutsideTest(s, 'sat_composite_25', 'sat_composite_75') ? '<span class="gpa-mark" title="Not from the school\'s Common Data Set">*</span>' : '';
+            return `${s.sat_composite_25}–${s.sat_composite_75}${mark}`;
+        }
+
         function activeSchoolEntries() {
             return activeSlots
                 .map(slot => selected[slot] ? { slot, school: selected[slot], color: SLOT_COLORS[slot] } : null)
@@ -266,7 +294,7 @@
         // is what's displayed — ACT shows a range but ranks on its midpoint.
         const PICKER_STATS = [
             { key: 'acceptance', label: 'Acceptance',   text: s => fmtPct(s.acceptance_rate),                       val: s => s.acceptance_rate },
-            { key: 'sat',        label: 'SAT Avg',       text: s => s.sat_avg != null ? s.sat_avg : '<span class="stat-na">N/A</span>',            val: s => s.sat_avg },
+            { key: 'sat',        label: 'SAT Range',     text: satRangeText,                                          val: s => satMid(s) },
             { key: 'act',        label: 'ACT Range',     text: s => (s.act_composite_25 != null && s.act_composite_75 != null) ? `${s.act_composite_25}–${s.act_composite_75}` + (isOutsideTest(s, 'act_composite_25', 'act_composite_75') ? '<span class="gpa-mark" title="Not from the school\'s Common Data Set">*</span>' : '') : '<span class="stat-na">N/A</span>', val: s => actMid(s) },
             { key: 'undergrads', label: 'Undergrads',    text: s => s.total_undergrads != null ? s.total_undergrads.toLocaleString() : '<span class="stat-na">N/A</span>', val: s => s.total_undergrads },
             { key: 'gpa',        label: 'Avg GPA',       text: s => fmtGpa(s.avg_gpa_weighted) + (s._gpaOutside && s.avg_gpa_weighted != null ? '<span class="gpa-mark" title="Not from the school\'s Common Data Set">*</span>' : ''), val: s => s.avg_gpa_weighted },
@@ -326,15 +354,24 @@
             </button>`;
         }
 
+        // Schools 1 and 2 go in the left column, schools 3 and 4 in the right
+        // one. The add cell stays under school 2 until two schools are
+        // chosen, then moves to the right column too, so the page doesn't
+        // leave that side empty.
         function renderPickerGrid() {
-            const grid = document.getElementById('compare-grid');
             const colorsBySlot = statClassMap(activeSchoolEntries());
-            const cells = activeSlots.map(slot => selected[slot]
+            const cellFor = slot => selected[slot]
                 ? cardCellHtml(slot, selected[slot], colorsBySlot[slot] || {})
-                : searchCellHtml(slot));
-            if (activeSlots.length < MAX_SLOTS) cells.push(addCellHtml());
-            grid.innerHTML = cells.join('');
-            document.getElementById('gpa-legend').hidden = !activeSchoolEntries().some(({ school }) => school._gpaOutside || school._costOutside || school._testsOutside);
+                : searchCellHtml(slot);
+            const left = activeSlots.filter(slot => slot <= 2).map(cellFor);
+            const right = activeSlots.filter(slot => slot > 2).map(cellFor);
+            if (activeSlots.length < MAX_SLOTS) {
+                (right.length || (selected[1] && selected[2]) ? right : left).push(addCellHtml());
+            }
+            document.getElementById('compare-grid').innerHTML = left.join('');
+            document.getElementById('compare-grid-right').innerHTML = right.join('');
+            document.querySelector('.compare-picker-right').classList.toggle('is-empty', right.length === 0);
+            document.getElementById('gpa-legend').hidden = !activeSchoolEntries().some(({ school }) => school._gpaOutside || school._costOutside || school._testsOutside || school._satEstimated);
         }
 
         function compareOptionHtml(slot, school) {
@@ -396,8 +433,8 @@
         // in-flow height (bites in the empty state, when the right column is
         // just the placeholder line).
         function updatePickerPadding() {
-            const anyOpen = document.querySelector('.compare-dropdown.open');
-            document.querySelector('.compare-picker').classList.toggle('dropdown-open', !!anyOpen);
+            document.querySelectorAll('.compare-picker').forEach(picker =>
+                picker.classList.toggle('dropdown-open', !!picker.querySelector('.compare-dropdown.open')));
         }
 
         function selectSchool(slot, slug) {
@@ -467,7 +504,7 @@
         function scoreCompareRow(label, schools, loKey, hiKey, min, max) {
             const bar = (lo, hi, color) => {
                 if (lo == null || hi == null) {
-                    return `<div class="score-bar-wrap"><span class="score-na-text">Not reported</span></div>`;
+                    return `<div class="score-bar-wrap"><span class="score-na-text" style="color:${color}">Not reported</span></div>`;
                 }
                 const left = ((lo - min) / (max - min) * 100).toFixed(1);
                 const width = ((hi - lo) / (max - min) * 100).toFixed(1);
@@ -500,16 +537,15 @@
             ].join('');
 
             const gpaBody = schools.some(({ school }) => hasGpaData(school))
-                ? `<div class="gpa-chart-wrap" style="height:300px"><canvas id="cmp-gpa-chart"></canvas></div>
-                   <p class="chart-caption">GPA bands aren't evenly sized, and schools often don't report bands below 3.0 — read this as a shape, not a precise curve.</p>`
+                ? `<div class="gpa-chart-wrap" style="height:300px"><canvas id="cmp-gpa-chart"></canvas></div>`
                 : noDataHtml('GPA distribution not provided by any selected institution.');
 
             return sectionHtml('Academic Profile', `
                 <div class="cols-2">
                     <div>
-                        <h3 class="subsection-title">SAT — 25th to 75th Percentile</h3>
+                        <h3 class="subsection-title">SAT — 25th–75th</h3>
                         <div class="score-rows">${satRows}</div>
-                        <h3 class="subsection-title">ACT — 25th to 75th Percentile</h3>
+                        <h3 class="subsection-title">ACT — 25th–75th</h3>
                         <div class="score-rows">${actRows}</div>
                     </div>
                     <div>
@@ -719,24 +755,27 @@
         // are driven by delegated listeners bound once to the stable
         // #compare-grid container rather than per-element wiring.
         function wirePickerGrid() {
-            const grid = document.getElementById('compare-grid');
             const slotOf = el => Number(el.dataset.slot);
 
-            grid.addEventListener('focusin', (e) => {
-                if (e.target.classList.contains('compare-input')) renderDropdown(slotOf(e.target));
-            });
-            grid.addEventListener('input', (e) => {
-                if (e.target.classList.contains('compare-input')) renderDropdown(slotOf(e.target));
-            });
-            grid.addEventListener('click', (e) => {
-                const opt = e.target.closest('.compare-option');
-                if (opt) { selectSchool(slotOf(opt), opt.dataset.slug); return; }
-                const remove = e.target.closest('.compare-cell-remove');
-                if (remove) { removeSchool(slotOf(remove)); return; }
-                const dismiss = e.target.closest('.compare-cell-dismiss');
-                if (dismiss) { dismissSlot(slotOf(dismiss)); return; }
-                if (e.target.closest('#compare-add-school')) addSlot();
-            });
+            // Same handlers on both picker columns (left: schools 1-2; right:
+            // schools 3-4 and the add cell).
+            for (const grid of document.querySelectorAll('#compare-grid, #compare-grid-right')) {
+                grid.addEventListener('focusin', (e) => {
+                    if (e.target.classList.contains('compare-input')) renderDropdown(slotOf(e.target));
+                });
+                grid.addEventListener('input', (e) => {
+                    if (e.target.classList.contains('compare-input')) renderDropdown(slotOf(e.target));
+                });
+                grid.addEventListener('click', (e) => {
+                    const opt = e.target.closest('.compare-option');
+                    if (opt) { selectSchool(slotOf(opt), opt.dataset.slug); return; }
+                    const remove = e.target.closest('.compare-cell-remove');
+                    if (remove) { removeSchool(slotOf(remove)); return; }
+                    const dismiss = e.target.closest('.compare-cell-dismiss');
+                    if (dismiss) { dismissSlot(slotOf(dismiss)); return; }
+                    if (e.target.closest('#compare-add-school')) addSlot();
+                });
+            }
 
             // Click anywhere outside an open dropdown's own cell closes it.
             document.addEventListener('click', (e) => {
@@ -772,6 +811,8 @@
                 allSchools = withOutsideCosts(allSchools, await loadOutsideCosts());
                 // SAT/ACT ranges the CDS left blank, from figures the school publishes.
                 allSchools = withOutsideTests(allSchools, await loadOutsideTests());
+                // Composite SAT estimated from section scores when the CDS gives no composite.
+                allSchools = withSatEstimates(allSchools);
             } catch (err) {
                 console.error('Failed to load school data:', err);
             }
@@ -937,6 +978,11 @@
             // clamped relative to the current baseline so the total never
             // exceeds [0, maxShift], regardless of how it got there.
             stickyPicker.addEventListener('wheel', function (e) {
+                // Scrolling inside an open search list scrolls the list, not
+                // the picker. (An open list adds padding under the picker,
+                // which can make it taller than the screen and would
+                // otherwise hijack the wheel here.)
+                if (e.target.closest('.compare-dropdown')) return;
                 const { topOffset, maxShift } = metrics();
                 if (maxShift <= 0) return;
                 e.preventDefault();

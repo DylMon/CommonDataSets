@@ -471,7 +471,7 @@
             const waitlistBody = s.waitlist_offered != null
                 ? `<div class="detail-kv"><span>Offered</span><span>${s.waitlist_offered.toLocaleString()}</span></div>
                    <div class="detail-kv"><span>Admitted</span><span>${s.waitlist_admitted != null ? s.waitlist_admitted.toLocaleString() : '<span class="stat-na">N/A</span>'}</span></div>`
-                : `<div class="detail-kv"><span>Not reported in CDS</span><span></span></div>`;
+                : `<div class="detail-kv"><span>Not reported</span><span></span></div>`;
 
             return `
                 <div class="detail-grid">
