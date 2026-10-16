@@ -1321,5 +1321,82 @@
     "url": "https://irds.vcu.edu/institutional-reporting/common-data-set/",
     "confidence": "verified",
     "note": ""
+  },
+  {
+    "slug": "rutgers-new-brunswick",
+    "name": "Rutgers University-New Brunswick",
+    "url": "https://oirds.rutgers.edu/ReportingCommonDataSet.html",
+    "confidence": "verified",
+    "note": "Same Rutgers page as Camden and Newark; lists New Brunswick CDS files through 2023-24."
+  },
+  {
+    "slug": "alabama-birmingham",
+    "name": "University of Alabama at Birmingham",
+    "url": "https://www.uab.edu/institutionaleffectiveness/data-library/common-data-set",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "byu",
+    "name": "Brigham Young University",
+    "url": "https://assessmentandplanning.byu.edu/common-data-set",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "georgemason",
+    "name": "George Mason University",
+    "url": "https://oiep2.gmu.edu/cds/",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "gonzaga",
+    "name": "Gonzaga University",
+    "url": "https://www.gonzaga.edu/academics/academic-resources/registrars-office/institutional-research/reports",
+    "confidence": "uncertain",
+    "note": "Institutional Research reports page, which search results show hosts the 2024-25 and 2025-26 CDS; the site blocks automated visits, so its contents could not be checked directly."
+  },
+  {
+    "slug": "hawaii-manoa",
+    "name": "University of Hawaiʻi at Mānoa",
+    "url": "https://manoa.hawaii.edu/miro/reports/",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "james-madison",
+    "name": "James Madison University",
+    "url": "https://www.jmu.edu/pair/ir/common-data-set/index.shtml",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "syracuse",
+    "name": "Syracuse University",
+    "url": "https://effectiveness.syr.edu/institutional-data-and-reporting/key-data/",
+    "confidence": "verified",
+    "note": "Key Data page; the 2025-2026 Common Data Set is linked there."
+  },
+  {
+    "slug": "texas-tech",
+    "name": "Texas Tech University",
+    "url": "https://www.depts.ttu.edu/irim/CommonDataSets/",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "uarizona",
+    "name": "University of Arizona",
+    "url": "https://uair.arizona.edu/content/common-data-set",
+    "confidence": "verified",
+    "note": ""
+  },
+  {
+    "slug": "ucincinnati",
+    "name": "University of Cincinnati",
+    "url": "https://www.uc.edu/about/provost/colleges-and-offices/offices/institutional-research/facts-dashboards.html",
+    "confidence": "verified",
+    "note": "Facts & Dashboards page; the 2025-2026 Common Data Set is linked there."
   }
 ]
