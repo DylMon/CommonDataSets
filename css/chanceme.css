@@ -269,6 +269,23 @@ body.page-chanceme {
     margin-top: 8px;
 }
 
+/* Opt-out toggle under a scale (currently just Interview) — styled to sit
+   quietly alongside .cm-section-hint (same indent, same muted weight)
+   rather than compete with the bold scale buttons above it. */
+.cm-no-interview-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-left: 48px;
+    margin-top: 2px;
+    font-size: 0.93em;
+    font-weight: 300;
+    color: var(--cm-muted);
+    cursor: pointer;
+}
+
+.cm-no-interview-toggle input { width: 15px; height: 15px; cursor: pointer; accent-color: var(--cm-accent); }
+
 /* Worked examples under a 1-10 self-rating scale — a collapsed
    "See examples" toggle that opens into the list. */
 .cm-scale-examples {
@@ -338,9 +355,10 @@ body.page-chanceme {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 28px;
+    min-width: 28px;
     height: 28px;
-    border-radius: 50%;
+    padding: 0 8px;
+    border-radius: 14px;
     background: var(--cm-accent-fill);
     color: white;
     font-weight: 600;
@@ -705,4 +723,5 @@ body.page-chanceme {
     .cm-section-icon { width: 30px; height: 30px; }
     .cm-section-icon svg { width: 15px; height: 15px; }
     .cm-section-hint { padding-left: 0; margin-top: 10px; }
+    .cm-no-interview-toggle { padding-left: 0; }
 }

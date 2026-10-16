@@ -39,32 +39,32 @@ export const SCALE_5_LABELS = [
     'Weak', 'Below Average', 'Average', 'Strong', 'Exceptional',
 ];
 
-// Worked examples at the 1/3/5/8/10 marks, calibrated against the kind of
-// profiles actually admitted to the selective schools we track (not a
-// generic curve). Display only — shown in a collapsible "See examples"
-// list under each 1-10 scale; the formula never reads them.
+// Worked examples grouped in five bands across the 1-10 scale, calibrated
+// against the kind of profiles actually admitted to the selective schools
+// we track (not a generic curve). Display only — shown in a collapsible
+// "See examples" list under each 1-10 scale; the formula never reads them.
 export const ACTIVITY_SCALE_EXAMPLES = [
-    { score: 1, desc: 'Little or nothing outside the classroom - no clubs, teams, jobs, or regular volunteering.' },
-    { score: 3, desc: 'General member of 1–2 clubs or a rec team; casual volunteering (~1 hr/wk); no leadership, minimal time commitment.' },
-    { score: 5, desc: 'Club officer, JV/varsity athlete, or part-time job (~5–8 hrs/wk) sustained 2+ years - solid but not stand-out.' },
-    { score: 8, desc: 'President/founder/captain of a club, team, or venture; sustained research or a leadership volunteer role; 15+ hrs/wk over multiple years with a measurable result - grew a club, published research, ran a nonprofit.' },
-    { score: 10, desc: 'Nationally recognized impact - founded something with real reach (a nonprofit or venture serving thousands), a recruited Division I athlete, or nationally recognized research, backed by years of deep commitment.' },
+    { score: '1–2', desc: 'Little to nothing outside class - no clubs, teams, jobs, or regular volunteering.' },
+    { score: '3–4', desc: 'Casual involvement - general club or team member, light volunteering, no leadership.' },
+    { score: '5–6', desc: 'Club officer, JV/varsity athlete, or part-time job sustained 2+ years - solid, not stand-out.' },
+    { score: '7–8', desc: 'President, founder, or captain with a real result - grew a club, published research, ran a nonprofit.' },
+    { score: '9–10', desc: 'Nationally recognized impact - a venture reaching thousands, a recruited D1 athlete, or national research.' },
 ];
 
 export const AWARD_SCALE_EXAMPLES = [
-    { score: 1, desc: 'No awards or honors yet.' },
-    { score: 3, desc: 'School-level honor - Honor Roll, a departmental award, JV MVP, a school-wide competition win.' },
-    { score: 5, desc: 'Regional or state-level recognition - All-State music/athletics, a state science-fair placement, a district honor.' },
-    { score: 8, desc: 'National or international recognition - National Merit Semifinalist/Finalist, an Olympiad qualifier, a national championship, published or patented work.' },
-    { score: 10, desc: 'Top national or international winner - an International Olympiad medalist, a Regeneron STS or ISEF top-award winner, a national champion, or a U.S. Presidential Scholar.' },
+    { score: '1–2', desc: 'No awards or honors yet.' },
+    { score: '3–4', desc: 'School-level honor - Honor Roll, a department award, a school-wide competition win.' },
+    { score: '5–6', desc: 'Regional or state-level recognition - All-State, a state science-fair placement.' },
+    { score: '7–8', desc: 'National recognition - National Merit Semifinalist/Finalist, an Olympiad qualifier, published work.' },
+    { score: '9–10', desc: 'Top international winner - an Olympiad medalist, Regeneron/ISEF top award, U.S. Presidential Scholar.' },
 ];
 
 export const ESSAY_SCALE_EXAMPLES = [
-    { score: 1, desc: 'Rushed or off-topic - reads like a résumé or list, with errors and no real story or reflection.' },
-    { score: 3, desc: 'Generic and surface-level - tells rather than shows, with little personal voice or reflection.' },
-    { score: 5, desc: 'Clear and well-organized with some specific detail and genuine voice, but limited depth of insight.' },
-    { score: 8, desc: 'Distinctive and vivid - concrete specific details, a strong personal voice, and real self-reflection that shows who you are.' },
-    { score: 10, desc: 'Unforgettable - a fresh angle on a meaningful story, beautifully written, with insight an admissions reader would remember long after.' },
+    { score: '1–2', desc: 'Rushed or off-topic - reads like a résumé, with errors and no real story.' },
+    { score: '3–4', desc: 'Generic and surface-level - tells rather than shows, little personal voice.' },
+    { score: '5–6', desc: 'Clear and organized, with some specific detail and genuine voice.' },
+    { score: '7–8', desc: 'Distinctive and vivid - concrete details and real self-reflection.' },
+    { score: '9–10', desc: 'Unforgettable - a fresh, beautifully written story a reader would remember.' },
 ];
 
 // Class-rank slider bands: 20 five-point bands, top-of-class first. `topPct`
@@ -338,6 +338,14 @@ function combinedTestPercentile(school, profile) {
 // no estimate is shown for that school until a score is entered.
 export function missingRequiredTest(school, profile) {
     return school._testPolicy === 'required' && profile.sat == null && profile.act == null;
+}
+
+// True when the student said none of their schools interview, but this one
+// actually considers interviews: no estimate until that's resolved, same as
+// a required test left blank.
+export function missingRequiredInterview(school, profile) {
+    const importance = school?.admission_factors?.interview;
+    return !!profile.noInterview && !!importance && importance !== 'not_considered';
 }
 
 // Used only when a school that considers scores reports no range at all:
@@ -724,6 +732,7 @@ function academicFloorSteps(academicGap, baseRate) {
 
 export function estimateProbability(school, profile, selection = {}) {
     if (missingRequiredTest(school, profile)) return { needsTest: true };
+    if (missingRequiredInterview(school, profile)) return { needsInterview: true };
     const { rate: rawPlanRate, sourced: planSourced } = planBaseRate(school, selection.plan ?? 'rd');
     if (rawPlanRate == null || rawPlanRate <= 0 || rawPlanRate >= 1) return null;
 
@@ -805,7 +814,7 @@ if (typeof document !== 'undefined') {
         'cm-course-track', 'cm-ap-count', 'cm-ap-avg', 'cm-ib-count', 'cm-ib-avg',
         'cm-dual-enrollment-check', 'cm-dual-enrollment-count',
         'cm-sat', 'cm-act', 'cm-class-rank-band',
-        'cm-country', 'cm-state', 'cm-demographic', 'cm-first-gen', 'cm-income', 'cm-intl-aid',
+        'cm-country', 'cm-state', 'cm-first-gen', 'cm-income', 'cm-intl-aid', 'cm-no-interview',
     ];
 
     function saveDraft() {
@@ -839,6 +848,12 @@ if (typeof document !== 'undefined') {
 
     function toggleDualEnrollmentCount() {
         document.getElementById('cm-dual-enrollment-count').style.display = checked('cm-dual-enrollment-check') ? '' : 'none';
+    }
+
+    function toggleInterviewScale() {
+        const noInterview = checked('cm-no-interview');
+        document.getElementById('cm-scale-interview').style.display = noInterview ? 'none' : '';
+        document.getElementById('cm-scale-interview-caption').style.display = noInterview ? 'none' : '';
     }
 
     function renderClassRankBandLabel() {
@@ -1012,6 +1027,7 @@ if (typeof document !== 'undefined') {
             essayRating: state.ratings.essay,
             lorRating: state.ratings.lor,
             interviewRating: state.ratings.interview,
+            noInterview: checked('cm-no-interview'),
         };
     }
 
@@ -1030,12 +1046,17 @@ if (typeof document !== 'undefined') {
             const result = estimateProbability(school, profile, t);
             const planLabel = schoolPlanOptions(school).find(o => o.value === t.plan)?.label ?? 'Regular Decision';
 
-            if (!result || result.needsTest) {
+            if (!result || result.needsTest || result.needsInterview) {
+                const message = result?.needsTest
+                    ? 'This school requires the SAT or ACT. Add a score to see an estimate.'
+                    : result?.needsInterview
+                    ? "This school considers interviews. Uncheck \"None of my schools interview\" and rate yours to see an estimate."
+                    : 'No acceptance-rate data available for this school.';
                 return `<div class="cm-result-card">
                     <img class="cm-result-logo" src="${logoSrc(school.slug)}" alt="" onerror="${LOGO_ONERR}">
                     <div class="cm-result-body">
                         <div class="cm-result-name">${school.name}</div>
-                        <div class="cm-result-meta">${result?.needsTest ? 'This school requires the SAT or ACT. Add a score to see an estimate.' : 'No acceptance-rate data available for this school.'}</div>
+                        <div class="cm-result-meta">${message}</div>
                     </div>
                 </div>`;
             }
@@ -1121,6 +1142,7 @@ if (typeof document !== 'undefined') {
         toggleStateField();
         toggleCourseTrackFields();
         toggleDualEnrollmentCount();
+        toggleInterviewScale();
         renderClassRankBandLabel();
         renderTargetSchools();
 
@@ -1137,6 +1159,7 @@ if (typeof document !== 'undefined') {
         document.getElementById('cm-country').addEventListener('change', () => { toggleStateField(); saveDraft(); });
         document.getElementById('cm-course-track').addEventListener('change', () => { toggleCourseTrackFields(); saveDraft(); });
         document.getElementById('cm-dual-enrollment-check').addEventListener('change', () => { toggleDualEnrollmentCount(); saveDraft(); });
+        document.getElementById('cm-no-interview').addEventListener('change', () => { toggleInterviewScale(); saveDraft(); });
 
         document.getElementById('cm-class-rank-band').addEventListener('input', renderClassRankBandLabel);
 
