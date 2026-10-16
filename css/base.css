@@ -679,6 +679,23 @@ body.page-compare .hero-banner::before {
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
 }
 
+/* Home's title otherwise inherits the plain (non-hero) .page-intro-title
+   size (1.75em) — bump it to match the title size every other hero page
+   uses, and trim the subtext down just a touch to balance it. */
+body.page-home .hero-content .page-intro-title {
+    font-size: 2.1em;
+}
+
+body.page-home .hero-content .page-intro-desc {
+    font-size: 1.05em;
+}
+
+@media (max-width: 540px) {
+    body.page-home .hero-content .page-intro-title {
+        font-size: 1.7em;
+    }
+}
+
 /* Hero CTA buttons — replace the search bar's old spot at the bottom of
    the hero photo; the search bar itself now lives in the header (see
    .header-search in this file and js/header.js). */
@@ -686,7 +703,7 @@ body.page-compare .hero-banner::before {
     display: flex;
     justify-content: center;
     gap: 16px;
-    margin: 24px auto 0;
+    margin: 48px auto 0;
 }
 
 .hero-cta-btn {

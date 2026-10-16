@@ -38,7 +38,7 @@
             <div class="hero-inner">
                 <div class="hero-content">
                     <h1 class="page-intro-title">The Common Dataset, simplified.</h1>
-                    <p class="page-intro-desc" id="page-intro-desc">CommonDataSets compiles official Common Data Set submissions directly from top US universities, giving students and families one place to compare verified admissions statistics, test score ranges, cost of attendance, and enrollment data without the noise.</p>
+                    <p class="page-intro-desc" id="page-intro-desc">Explore admissions data from 200 top US universities, all in one place and made easy to understand. Compare university statistics, student profiles, and admissions criteria to help you navigate the college application process.</p>
                 </div>
                 <div class="hero-cta-group">
                     <a class="hero-cta-btn" href="/compare/">Compare University Stats</a>
@@ -601,8 +601,6 @@
             }
 
             allSchools = withSatAvg(merged);
-            document.getElementById('page-intro-desc').textContent =
-                `Official Common Data Set submissions gathered directly from ${allSchools.length} top US universities, giving students and families one place to compare verified admissions statistics, test score ranges, cost of attendance, and enrollment data without the noise.`;
             renderCategoryBar();
             renderList(currentSort);
         }
