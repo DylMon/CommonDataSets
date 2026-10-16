@@ -181,7 +181,8 @@
       },
       "slug": "colorado-school-of-mines",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [],
+      "general_ranking": 90
     },
     {
       "id": 2,
@@ -362,7 +363,8 @@
       },
       "slug": "stockton",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [],
+      "general_ranking": 129
     }
   ]
 }

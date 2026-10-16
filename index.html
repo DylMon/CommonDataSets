@@ -114,11 +114,11 @@
                 <span class="sort-label">Sort by</span>
                 <div class="sort-dropdown" id="sort-dropdown">
                     <button class="sort-dropdown-btn" id="sort-dropdown-btn">
-                        <span id="sort-label-text">US News</span>
+                        <span id="sort-label-text">General</span>
                         <svg class="sort-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                     </button>
                     <div class="sort-dropdown-menu" id="sort-dropdown-menu">
-                        <button class="sort-option active" data-sort="us-news">US News</button>
+                        <button class="sort-option active" data-sort="general">General</button>
                         <button class="sort-option" data-sort="acceptance-asc">Acceptance (Low → High)</button>
                         <button class="sort-option" data-sort="acceptance-desc">Acceptance (High → Low)</button>
                         <button class="sort-option" data-sort="sat">SAT Score</button>
@@ -300,7 +300,7 @@
         }
 
         const SORTERS = {
-            'us-news':        (a, b) => (a.us_news_ranking ?? 999) - (b.us_news_ranking ?? 999),
+            'general':        (a, b) => (a.general_ranking ?? 999) - (b.general_ranking ?? 999),
             'acceptance-asc': (a, b) => (a.acceptance_rate ?? 1) - (b.acceptance_rate ?? 1),
             'acceptance-desc':(a, b) => (b.acceptance_rate ?? 0) - (a.acceptance_rate ?? 0),
             'sat':            (a, b) => (b.sat_avg ?? 0) - (a.sat_avg ?? 0),
@@ -312,7 +312,7 @@
                 const af = favorites.has(a.slug) ? 0 : 1;
                 const bf = favorites.has(b.slug) ? 0 : 1;
                 if (af !== bf) return af - bf;
-                return (a.us_news_ranking ?? 999) - (b.us_news_ranking ?? 999);
+                return (a.general_ranking ?? 999) - (b.general_ranking ?? 999);
             },
         };
 
@@ -337,7 +337,7 @@
         const PAGE_SIZE = 25;
         let currentPage = 1;
         let allSchools = [];
-        let currentSort = 'us-news';
+        let currentSort = 'general';
         // Drives renderList()'s grid filtering — fed by the page's own
         // .search-bar input (#home-search-input), separate from the
         // header search's #school-search, which only drives its dropdown

@@ -169,7 +169,8 @@
       },
       "slug": "illinois-tech",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [],
+      "general_ranking": 142
     },
     {
       "id": 2,
@@ -329,7 +330,8 @@
       },
       "slug": "mizzou",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [],
+      "general_ranking": 112
     },
     {
       "id": 3,
@@ -682,7 +684,8 @@
       },
       "slug": "quinnipiac",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [],
+      "general_ranking": 172
     },
     {
       "id": 5,
@@ -842,7 +845,8 @@
       },
       "slug": "rutgers-camden",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [],
+      "general_ranking": 110
     },
     {
       "id": 6,
@@ -1002,7 +1006,8 @@
       },
       "slug": "rutgers-new-brunswick",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [],
+      "general_ranking": 48
     },
     {
       "id": 7,
@@ -1157,7 +1162,8 @@
       },
       "slug": "rutgers-newark",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [],
+      "general_ranking": 85
     },
     {
       "id": 8,
@@ -1322,7 +1328,8 @@
       },
       "slug": "yeshiva",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [],
+      "general_ranking": 106
     }
   ]
 }

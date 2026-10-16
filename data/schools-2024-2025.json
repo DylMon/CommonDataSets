@@ -172,7 +172,8 @@
       },
       "slug": "boston-college",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [],
+      "general_ranking": 31
     },
     {
       "id": 2,
@@ -341,7 +342,8 @@
       },
       "slug": "bradley",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [],
+      "general_ranking": 175
     },
     {
       "id": 3,
@@ -872,7 +874,8 @@
       },
       "slug": "clark",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [],
+      "general_ranking": 150
     },
     {
       "id": 6,
@@ -1769,7 +1772,8 @@
       },
       "slug": "depaul",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [],
+      "general_ranking": 177
     },
     {
       "id": 11,
@@ -2068,7 +2072,8 @@
       "transfer_stats": null,
       "slug": "east-carolina",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [],
+      "general_ranking": 197
     },
     {
       "id": 13,
@@ -2431,7 +2436,8 @@
       },
       "slug": "fairfield",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [],
+      "general_ranking": 126
     },
     {
       "id": 15,
@@ -2779,7 +2785,8 @@
       "us_news_ranking": null,
       "categories": [
         "liberal-arts"
-      ]
+      ],
+      "general_ranking": 123
     },
     {
       "id": 17,
@@ -3144,7 +3151,8 @@
       },
       "slug": "hofstra",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [],
+      "general_ranking": 191
     },
     {
       "id": 19,
@@ -3507,7 +3515,8 @@
       },
       "slug": "miamiu",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [],
+      "general_ranking": 151
     },
     {
       "id": 21,
@@ -4886,7 +4895,8 @@
       },
       "slug": "suny-albany",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [],
+      "general_ranking": 143
     },
     {
       "id": 29,
@@ -5057,7 +5067,8 @@
       },
       "slug": "thomas-jefferson",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [],
+      "general_ranking": 152
     },
     {
       "id": 30,
@@ -5935,7 +5946,8 @@
       },
       "slug": "udelaware",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [],
+      "general_ranking": 100
     },
     {
       "id": 35,
@@ -6276,7 +6288,8 @@
       },
       "slug": "ukansas",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [],
+      "general_ranking": 161
     },
     {
       "id": 37,
@@ -6453,7 +6466,8 @@
       },
       "slug": "ulouisville",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [],
+      "general_ranking": 182
     },
     {
       "id": 38,
@@ -6630,7 +6644,8 @@
       },
       "slug": "umass-lowell",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [],
+      "general_ranking": 163
     },
     {
       "id": 39,
@@ -7123,7 +7138,8 @@
       },
       "slug": "unc-wilmington",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [],
+      "general_ranking": 199
     },
     {
       "id": 42,
@@ -7294,7 +7310,8 @@
       },
       "slug": "unebraska-lincoln",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [],
+      "general_ranking": 179
     },
     {
       "id": 43,
@@ -7475,7 +7492,8 @@
       },
       "slug": "uofiowa",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [],
+      "general_ranking": 121
     },
     {
       "id": 44,
@@ -7635,7 +7653,8 @@
       },
       "slug": "uofminnesota-twin-cities",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [],
+      "general_ranking": 73
     },
     {
       "id": 45,
@@ -7812,7 +7831,8 @@
       },
       "slug": "uoklahoma",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [],
+      "general_ranking": 137
     },
     {
       "id": 46,
@@ -8166,7 +8186,8 @@
       },
       "slug": "usanfrancisco",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [],
+      "general_ranking": 139
     },
     {
       "id": 48,
@@ -8500,7 +8521,8 @@
       "us_news_ranking": null,
       "categories": [
         "liberal-arts"
-      ]
+      ],
+      "general_ranking": 82
     },
     {
       "id": 50,
@@ -8842,7 +8864,8 @@
       },
       "slug": "virginiacommonwealth",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [],
+      "general_ranking": 174
     },
     {
       "id": 52,
@@ -9540,7 +9563,8 @@
       },
       "slug": "uidaho",
       "us_news_ranking": null,
-      "categories": []
+      "categories": [],
+      "general_ranking": 198
     },
     {
       "id": 56,
@@ -9713,7 +9737,8 @@
       },
       "slug": "northeastern",
       "us_news_ranking": 46,
-      "categories": []
+      "categories": [],
+      "general_ranking": 42
     }
   ]
 }
