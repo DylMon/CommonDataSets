@@ -992,10 +992,10 @@ if (typeof document !== 'undefined') {
     function renderSchoolDropdown(query) {
         const dropdown = document.getElementById('cm-school-dropdown');
 
-        // Empty query, just focused: Recently Viewed then Favorites, same as
-        // the header search dropdown (js/header-search.js) — falls through
-        // to the full browsable list below when neither exists, same as
-        // this dropdown always did before favorites/history.
+        // Empty query, just focused: Recently Viewed and Favorites on top,
+        // same as the header search dropdown (js/header-search.js), then
+        // every school under "All Schools" so the list stays browsable.
+        let topSections = '';
         if (query === '') {
             const bySlug = new Map(allSchools.map(s => [s.slug, s]));
             const historySlugs = JSON.parse(localStorage.getItem('cds_recently_viewed') ?? '[]');
@@ -1005,11 +1005,7 @@ if (typeof document !== 'undefined') {
             const sections = [];
             if (historyItems.length) sections.push(`<div class="search-dropdown-label">Recently Viewed</div>${historyItems.map(cmSchoolOptionHtml).join('')}`);
             if (favoriteItems.length) sections.push(`<div class="search-dropdown-label">Favorites</div>${favoriteItems.map(cmSchoolOptionHtml).join('')}`);
-            if (sections.length) {
-                dropdown.innerHTML = sections.join('');
-                dropdown.classList.add('open');
-                return;
-            }
+            if (sections.length) topSections = sections.join('') + '<div class="search-dropdown-label">All Schools</div>';
         }
 
         const results = allSchools
@@ -1017,7 +1013,7 @@ if (typeof document !== 'undefined') {
             .sort((a, b) => a.name.localeCompare(b.name));
 
         dropdown.innerHTML = results.length
-            ? results.map(cmSchoolOptionHtml).join('')
+            ? topSections + results.map(cmSchoolOptionHtml).join('')
             : '<div class="cm-list-empty" style="padding:12px 16px">No schools found.</div>';
         dropdown.classList.add('open');
     }
