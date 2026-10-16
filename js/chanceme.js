@@ -28,7 +28,7 @@ export const US_STATES = [
     ['WA','Washington'],['WV','West Virginia'],['WI','Wisconsin'],['WY','Wyoming'],
 ];
 
-// Shared 1-10 scale used for Activities, Awards, and Essay.
+// Shared 1-10 scale used for Activities and Awards, and for the essay rating the rubric produces.
 export const SCALE_10_LABELS = [
     'Very Weak', 'Weak', 'Below Average', 'Modest', 'Average',
     'Above Average', 'Good', 'Strong', 'Excellent', 'Elite',
@@ -44,28 +44,67 @@ export const SCALE_5_LABELS = [
 // we track (not a generic curve). Display only — shown in a collapsible
 // "See examples" list under each 1-10 scale; the formula never reads them.
 export const ACTIVITY_SCALE_EXAMPLES = [
-    { score: '1–2', desc: 'Little to nothing outside class - no clubs, teams, jobs, or regular volunteering.' },
-    { score: '3–4', desc: 'Casual involvement - general club or team member, light volunteering, no leadership.' },
-    { score: '5–6', desc: 'Club officer, JV/varsity athlete, or part-time job sustained 2+ years - solid, not stand-out.' },
-    { score: '7–8', desc: 'President, founder, or captain with a real result - grew a club, published research, ran a nonprofit.' },
-    { score: '9–10', desc: 'Nationally recognized impact - a venture reaching thousands, a recruited D1 athlete, or national research.' },
+    { score: '1–2', desc: 'Little to Nothing Outside Class: no clubs, teams, jobs, or regular volunteering.' },
+    { score: '3–4', desc: 'Casual Involvement: general club or team member, light volunteering, no leadership.' },
+    { score: '5–6', desc: 'Solid Involvement: club officer, JV/varsity athlete, sustained part-time job, heavy volunteering.' },
+    { score: '7–8', desc: 'Standout Impact: president/founder/captain with real results, published research, ran a nonprofit.' },
+    { score: '9–10', desc: 'National Impact: a venture reaching thousands, a recruited D1 athlete, research at top programs.' },
 ];
+
+// Shown under the Activities and Awards examples: they're guides, not cutoffs.
+export const SCALE_EXAMPLES_NOTE = 'These are examples, not strict cutoffs. If something you’ve done stands out more than its tier suggests, rate yourself higher.';
 
 export const AWARD_SCALE_EXAMPLES = [
-    { score: '1–2', desc: 'No awards or honors yet.' },
-    { score: '3–4', desc: 'School-level honor - Honor Roll, a department award, a school-wide competition win.' },
-    { score: '5–6', desc: 'Regional or state-level recognition - All-State, a state science-fair placement.' },
-    { score: '7–8', desc: 'National recognition - National Merit Semifinalist/Finalist, an Olympiad qualifier, published work.' },
-    { score: '9–10', desc: 'Top international winner - an Olympiad medalist, Regeneron/ISEF top award, U.S. Presidential Scholar.' },
+    { score: '1–2', desc: 'None or Insignificant.' },
+    { score: '3–4', desc: 'School-Level Honor: department award, school-wide competition win, AP Scholar.' },
+    { score: '5–6', desc: 'Regional/State Recognition: regional competition win, All-State, state science-fair placement.' },
+    { score: '7–8', desc: 'National Recognition: National Merit Semifinalist/Finalist, Olympiad qualifier, published work.' },
+    { score: '9–10', desc: 'International/Top Recognition: Olympiad medalist, ISEF top award, U.S. Presidential Scholar.' },
 ];
 
-export const ESSAY_SCALE_EXAMPLES = [
-    { score: '1–2', desc: 'Rushed or off-topic - reads like a résumé, with errors and no real story.' },
-    { score: '3–4', desc: 'Generic and surface-level - tells rather than shows, little personal voice.' },
-    { score: '5–6', desc: 'Clear and organized, with some specific detail and genuine voice.' },
-    { score: '7–8', desc: 'Distinctive and vivid - concrete details and real self-reflection.' },
-    { score: '9–10', desc: 'Unforgettable - a fresh, beautifully written story a reader would remember.' },
-];
+// Personal-essay rubric: the student picks one level (5 = best) in each of
+// four categories, and the picks become the essay's 1-10 rating. Drawn from
+// common personal-statement rubrics and admissions readers' checklists.
+export const ESSAY_RUBRIC = [
+    { key: 'theme', title: 'Theme', levels: {
+        5: 'Unique theme with real insight; deeply personal.',
+        4: 'Meaningful theme with thoughtful reflection.',
+        3: 'Clear theme, but a common angle.',
+        2: 'Weak theme; the lesson feels tacked on.',
+        1: 'No clear theme or reflection.' } },
+    { key: 'show', title: 'Show, Don\'t Tell', levels: {
+        5: 'Every key point shown through vivid moments.',
+        4: 'Specific scenes; very little telling.',
+        3: 'Some examples; key traits still stated.',
+        2: 'Mostly tells, with a few examples.',
+        1: 'Only claims, no examples.' } },
+    { key: 'voice', title: 'Voice', levels: {
+        5: 'Unmistakably you; your personality shines through.',
+        4: 'Sounds like you; your values come through.',
+        3: 'Personal, but could be many applicants.',
+        2: 'Stiff or forced; little sense of you.',
+        1: 'Generic; says nothing about you.' } },
+    { key: 'writing', title: 'Writing', levels: {
+        5: 'Polished and tight; every paragraph builds.',
+        4: 'Clear, well organized, few to no errors.',
+        3: 'Readable, but drifts or has some errors.',
+        2: 'Choppy or hard to follow in places.',
+        1: 'Disorganized, with frequent errors.' } },
+]
+export const ESSAY_RUBRIC_LEVELS = { 5: 'Exceptional', 4: 'Strong', 3: 'Solid', 2: 'Developing', 1: 'Weak' };
+
+// Each pick is worth these points on the 1-10 essay scale, and the rating is
+// their average, to one decimal: all Solid = 5, all Strong = 7, all
+// Exceptional = 10. The jump to Exceptional is the biggest, and it's worded
+// to be rare, so a top-school essay (about 8) needs real Exceptional picks.
+// Null until every category is picked, so a half-done rubric counts as
+// blank (an ordinary essay, see BLANK_RATINGS).
+const ESSAY_RUBRIC_POINTS = { 1: 1, 2: 3, 3: 5, 4: 7, 5: 10 };
+export function essayRubricScore(picks) {
+    const vals = ESSAY_RUBRIC.map(c => picks?.[c.key]);
+    if (vals.some(v => v == null)) return null;
+    return Math.round(vals.reduce((a, v) => a + ESSAY_RUBRIC_POINTS[v], 0) / vals.length * 10) / 10;
+}
 
 // Class-rank slider bands: 20 five-point bands, top-of-class first. `topPct`
 // is each band's midpoint (percent from the top of the class), used directly
@@ -444,9 +483,12 @@ export function academicIndex(school, profile) {
 // ── Holistic Index (self-rated: Activities, Awards, Essay, LOR, Interview) ──
 
 // Each rating as a percentile against the typical admit at the school's
-// level (LEVEL_ANCHORS), like GPA. A blank rating is neutral (50).
+// level (LEVEL_ANCHORS), like GPA. A blank rating counts as an ordinary
+// applicant's (BLANK_RATINGS), not the typical admit's: otherwise skipping a
+// scale would beat rating yourself honestly as good-but-not-exceptional.
+const BLANK_RATINGS = { activities: 5, essay: 5, awards: 4, lor: 3, interview: 3 };
 function ratingPct(rating, typical, sd) {
-    return rating == null ? 50 : clamp(normalPct((rating - typical) / sd), 1, 99);
+    return clamp(normalPct((rating - typical) / sd), 1, 99);
 }
 
 // Interview isn't a fixed weight like the others — plenty of schools don't
@@ -461,11 +503,11 @@ const INTERVIEW_MAX_WEIGHT = 0.15;
 const INTERVIEW_IMPORTANCE_SCALE = { very_important: 1, important: 0.66, considered: 0.33, not_considered: 0 };
 
 export function holisticIndex(profile, school, level = schoolLevel(school) ?? levelAt(0.5)) {
-    const ec = ratingPct(profile.activitiesRating, level.hol, RATING_SD_10);
-    const essay = ratingPct(profile.essayRating, level.hol, RATING_SD_10);
-    const awards = ratingPct(profile.awardsRating, level.awd, RATING_SD_10);
-    const lor = ratingPct(profile.lorRating, level.small, RATING_SD_5);
-    const interview = ratingPct(profile.interviewRating, level.small, RATING_SD_5);
+    const ec = ratingPct(profile.activitiesRating ?? BLANK_RATINGS.activities, level.hol, RATING_SD_10);
+    const essay = ratingPct(profile.essayRating ?? BLANK_RATINGS.essay, level.hol, RATING_SD_10);
+    const awards = ratingPct(profile.awardsRating ?? BLANK_RATINGS.awards, level.awd, RATING_SD_10);
+    const lor = ratingPct(profile.lorRating ?? BLANK_RATINGS.lor, level.small, RATING_SD_5);
+    const interview = ratingPct(profile.interviewRating ?? BLANK_RATINGS.interview, level.small, RATING_SD_5);
 
     const interviewImportance = INTERVIEW_IMPORTANCE_SCALE[school?.admission_factors?.interview] ?? 0;
     const interviewWeight = INTERVIEW_MAX_WEIGHT * interviewImportance;
@@ -562,7 +604,7 @@ export function residencyModifier(school, profile) {
 // Income (when given) sets how severe the need-aware penalty is; leaving it
 // blank defaults to the same mid-severity penalty as before, consistent with
 // this being a real structural disadvantage rather than a self-rating (unlike
-// the 1-10/1-5 scales, silence here isn't treated as neutral).
+// the 1-10/1-5 scales, where silence counts as an ordinary applicant).
 export function internationalModifier(school, profile) {
     if (profile.country !== 'international') return 0;
     if (profile.needsFinancialAid === false) return 0;
@@ -787,6 +829,7 @@ if (typeof document !== 'undefined') {
     const state = {
         targetSchools: [], // { slug, plan, legacy, competitiveMajor }
         ratings: { activities: null, awards: null, essay: null, lor: null, interview: null },
+        essayRubric: {}, // { theme, show, voice, writing }: 1-5 each
     };
 
     let allSchools = [];
@@ -806,6 +849,10 @@ if (typeof document !== 'undefined') {
             });
             state.targetSchools = draft.targetSchools ?? [];
             state.ratings = { ...state.ratings, ...(draft.ratings ?? {}) };
+            state.essayRubric = draft.essayRubric ?? {};
+            // The essay rating only comes from the rubric now (older drafts
+            // saved a 1-10 pick).
+            state.ratings.essay = essayRubricScore(state.essayRubric);
         } catch { /* ignore corrupt draft */ }
     }
 
@@ -824,7 +871,7 @@ if (typeof document !== 'undefined') {
             if (el) fields[id] = el.type === 'checkbox' ? el.checked : el.value;
         });
         localStorage.setItem(DRAFT_KEY, JSON.stringify({
-            fields, targetSchools: state.targetSchools, ratings: state.ratings,
+            fields, targetSchools: state.targetSchools, ratings: state.ratings, essayRubric: state.essayRubric,
         }));
     }
 
@@ -888,7 +935,33 @@ if (typeof document !== 'undefined') {
         });
     }
 
-    function renderScaleExamples(containerId, examples) {
+    // Essay rubric as a table: a level-label column, then one column per
+    // category with levels 5 (top) to 1. Items go column by column so on
+    // phones (one column, labels hidden) it stacks by category.
+    function renderEssayRubric() {
+        const el = document.getElementById('cm-essay-rubric');
+        const caption = document.getElementById('cm-essay-rubric-caption');
+        if (!el) return;
+        const levels = [5, 4, 3, 2, 1];
+        el.innerHTML = `
+            <div class="cm-rubric-corner"></div>
+            ${levels.map(lv => `
+            <div class="cm-rubric-rowlabel"><strong>${lv}</strong>${ESSAY_RUBRIC_LEVELS[lv]}</div>`).join('')}
+            ${ESSAY_RUBRIC.map(c => `
+            <div class="cm-rubric-head">${c.title}</div>
+            ${levels.map(lv => `
+            <button type="button" class="cm-rubric-cell${state.essayRubric[c.key] === lv ? ' active' : ''}" data-key="${c.key}" data-level="${lv}">
+                <span class="cm-rubric-level">${lv} · ${ESSAY_RUBRIC_LEVELS[lv]}</span>
+                <span class="cm-rubric-desc">${c.levels[lv]}</span>
+            </button>`).join('')}`).join('')}`;
+        const picked = ESSAY_RUBRIC.filter(c => state.essayRubric[c.key] != null).length;
+        const score = essayRubricScore(state.essayRubric);
+        caption.textContent = score != null
+            ? `Essay score: ${score}/10 (${SCALE_10_LABELS[Math.round(score) - 1]})`
+            : picked ? `${picked} of ${ESSAY_RUBRIC.length} categories picked` : '';
+    }
+
+    function renderScaleExamples(containerId, examples, note) {
         const el = document.getElementById(containerId);
         if (!el) return;
         // Collapsed by default — the scale itself stays front and center, and
@@ -903,6 +976,7 @@ if (typeof document !== 'undefined') {
                         <span class="cm-scale-example-desc">${ex.desc}</span>
                     </div>`).join('')}
                 </div>
+                ${note ? `<p class="cm-scale-examples-note">${note}</p>` : ''}
             </details>`;
     }
 
@@ -1148,13 +1222,20 @@ if (typeof document !== 'undefined') {
 
         renderScale('cm-scale-activities', 'cm-scale-activities-caption', 'activities');
         renderScale('cm-scale-awards', 'cm-scale-awards-caption', 'awards');
-        renderScale('cm-scale-essay', 'cm-scale-essay-caption', 'essay');
+        renderEssayRubric();
         renderScale('cm-scale-lor', 'cm-scale-lor-caption', 'lor');
         renderScale('cm-scale-interview', 'cm-scale-interview-caption', 'interview');
 
-        renderScaleExamples('cm-scale-activities-examples', ACTIVITY_SCALE_EXAMPLES);
-        renderScaleExamples('cm-scale-awards-examples', AWARD_SCALE_EXAMPLES);
-        renderScaleExamples('cm-scale-essay-examples', ESSAY_SCALE_EXAMPLES);
+        renderScaleExamples('cm-scale-activities-examples', ACTIVITY_SCALE_EXAMPLES, SCALE_EXAMPLES_NOTE);
+        renderScaleExamples('cm-scale-awards-examples', AWARD_SCALE_EXAMPLES, SCALE_EXAMPLES_NOTE);
+        document.getElementById('cm-essay-rubric').addEventListener('click', (e) => {
+            const btn = e.target.closest('.cm-rubric-cell');
+            if (!btn) return;
+            state.essayRubric[btn.dataset.key] = Number(btn.dataset.level);
+            state.ratings.essay = essayRubricScore(state.essayRubric);
+            renderEssayRubric();
+            saveDraft();
+        });
 
         document.getElementById('cm-country').addEventListener('change', () => { toggleStateField(); saveDraft(); });
         document.getElementById('cm-course-track').addEventListener('change', () => { toggleCourseTrackFields(); saveDraft(); });

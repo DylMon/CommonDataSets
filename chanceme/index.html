@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=Spectral:wght@500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/base.css?v=19">
-    <link rel="stylesheet" href="/css/chanceme.css?v=19">
+    <link rel="stylesheet" href="/css/chanceme.css?v=25">
     <script src="/js/header.js?v=6" defer></script>
     <script src="/js/header-search.js?v=1" defer></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2245119166025427"
@@ -187,10 +187,9 @@
                         <span class="cm-section-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span>
                         <h2 class="cm-section-title">Personal Essay</h2>
                     </div>
-                    <p class="cm-section-hint">Rate your own personal statement honestly, on a 1–10 scale - be as objective as you can.</p>
-                    <div class="cm-scale" id="cm-scale-essay" data-max="10"></div>
-                    <div class="cm-scale-caption" id="cm-scale-essay-caption"></div>
-                    <div class="cm-scale-examples" id="cm-scale-essay-examples"></div>
+                    <p class="cm-section-hint">Pick the descriptions that best fit your personal essay. Your essay will be scored (1–10).</p>
+                    <div class="cm-rubric" id="cm-essay-rubric"></div>
+                    <div class="cm-scale-caption" id="cm-essay-rubric-caption"></div>
                 </section>
 
                 <!-- Letters of Recommendation -->
@@ -225,7 +224,7 @@
                         <span class="cm-section-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></span>
                         <h2 class="cm-section-title">Target Schools</h2>
                     </div>
-                    <p class="cm-section-hint">Pick from the schools we track Common Data Set statistics for. For each one, set your application plan, whether you're a legacy applicant, and whether your intended major is competitive there - all three affect that school's estimate.</p>
+                    <p class="cm-section-hint">Add your schools, then set your plan, legacy status, and major for each.</p>
                     <div class="cm-school-search">
                         <input class="cm-input" id="cm-school-input" type="text" placeholder="Search schools…" autocomplete="off">
                         <div class="cm-school-dropdown" id="cm-school-dropdown"></div>
@@ -246,7 +245,7 @@
 
                 <details class="cm-methodology">
                     <summary>How this is calculated</summary>
-                    <p>Activities, Awards, and Essay are self-rated on a 1–10 scale; Letters of Recommendation and Interview on a 1–5 scale. Each scale's examples (in that section, above) are calibrated against the profiles admitted to the selective schools we track, not a generic curve. Leaving a category unrated never counts against you - it's treated as neutral, not weak.</p>
+                    <p>Activities and Awards are self-rated on a 1–10 scale, and the Essay gets a 1–10 score from a four-part rubric; Letters of Recommendation and Interview on a 1–5 scale. Each scale's examples (in that section, above) are calibrated against the profiles admitted to the selective schools we track, not a generic curve. Leaving a category unrated counts it as an ordinary applicant's (for example, a 5/10 essay), so rating yourself honestly is never worse than skipping it.</p>
                     <p>Each school gets an <strong>Academic Index</strong> (your GPA against what schools at that level of selectivity typically admit, class-rank percentile against its reported rank bands if you set the Class Rank slider, SAT/ACT composite percentile against its 25th–75th range, and course rigor from your AP or IB load, average score, and weighted-GPA strength - dual-enrollment courses add to the course-count side of rigor even without a track selected) and a <strong>Holistic Index</strong> (your Activities, Awards, Essay, Letters-of-Recommendation, and Interview ratings, each judged against what a typical admit at that school's level brings, so a 6/10 essay reads as below typical at a school admitting 4% and above typical at one admitting 80%). Class rank matters most at schools that weigh it heavily in their own CDS "Admission Factors" table - some schools lean on it more than GPA. Interview works the same way: its weight within the Holistic Index scales with how important that specific school says interviews are, from zero at schools that don't consider them up to on par with Letters of Recommendation at schools that call them "Very Important."</p>
                     <p><strong>GPA</strong> isn't compared against a school's own reported GPA: the Common Data Set doesn't say whether it's weighted, and many schools average weighted and unweighted GPAs together. Instead, each school gets a level from its acceptance rate, nudged by its SAT range when it reports one, and your GPA is compared against what schools at that level typically admit. An unweighted 3.85 is well below typical at a school admitting under 5%, below typical at one admitting around 10%, and above typical at one admitting most applicants. Your unweighted GPA counts for three quarters of the GPA score and your weighted GPA (put on a 5.0 scale using the max you enter) for the rest. These levels are our own estimates, not school data.</p>
                     <p><strong>Test scores</strong> follow each school's current testing policy. Test-blind schools ignore them entirely. At test-optional schools, leaving SAT/ACT blank simply leaves tests out. At schools that require them, no estimate is shown until you enter an SAT or ACT score. Scores are placed on a bell curve fitted to the school's 25th–75th range, so a score well below the range counts as very low but not zero.</p>
@@ -294,6 +293,6 @@
         </footer>
     </div>
 
-    <script type="module" src="/js/chanceme.js?v=11"></script>
+    <script type="module" src="/js/chanceme.js?v=33"></script>
 </body>
 </html>
