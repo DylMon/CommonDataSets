@@ -67,7 +67,7 @@ export const AWARD_SCALE_EXAMPLES = [
 // common personal-statement rubrics and admissions readers' checklists.
 export const ESSAY_RUBRIC = [
     { key: 'theme', title: 'Theme', levels: {
-        5: 'Unique theme with real insight; deeply personal.',
+        5: 'Unique, personal theme with real insight.',
         4: 'Meaningful theme with thoughtful reflection.',
         3: 'Clear theme, but a common angle.',
         2: 'Weak theme; the lesson feels tacked on.',
@@ -79,7 +79,7 @@ export const ESSAY_RUBRIC = [
         2: 'Mostly tells, with a few examples.',
         1: 'Only claims, no examples.' } },
     { key: 'voice', title: 'Voice', levels: {
-        5: 'Unmistakably you; your personality shines through.',
+        5: 'Unmistakably you; your personality shines.',
         4: 'Sounds like you; your values come through.',
         3: 'Personal, but could be many applicants.',
         2: 'Stiff or forced; little sense of you.',
@@ -91,12 +91,12 @@ export const ESSAY_RUBRIC = [
         2: 'Choppy or hard to follow in places.',
         1: 'Disorganized, with frequent errors.' } },
 ]
-export const ESSAY_RUBRIC_LEVELS = { 5: 'Exceptional', 4: 'Strong', 3: 'Solid', 2: 'Developing', 1: 'Weak' };
+export const ESSAY_RUBRIC_LEVELS = { 5: 'Elite', 4: 'Strong', 3: 'Solid', 2: 'Subpar', 1: 'Weak' };
 
 // Each pick is worth these points on the 1-10 essay scale, and the rating is
 // their average, to one decimal: all Solid = 5, all Strong = 7, all
-// Exceptional = 10. The jump to Exceptional is the biggest, and it's worded
-// to be rare, so a top-school essay (about 8) needs real Exceptional picks.
+// Elite = 10. The jump to Elite is the biggest, and it's worded to be
+// rare, so a top-school essay (about 8) needs real Elite picks.
 // Null until every category is picked, so a half-done rubric counts as
 // blank (an ordinary essay, see BLANK_RATINGS).
 const ESSAY_RUBRIC_POINTS = { 1: 1, 2: 3, 3: 5, 4: 7, 5: 10 };

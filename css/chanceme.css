@@ -276,7 +276,7 @@ body.page-chanceme {
    level label moved into each cell. */
 .cm-rubric {
     display: grid;
-    grid-template-columns: 92px repeat(4, minmax(0, 1fr));
+    grid-template-columns: 82px repeat(4, minmax(0, 1fr));
     grid-template-rows: auto repeat(5, 1fr);
     grid-auto-flow: column;
     gap: 1px;
@@ -296,7 +296,7 @@ body.page-chanceme {
     align-items: center;
     justify-content: center;
     padding: 9px 6px;
-    font-size: 0.82em;
+    font-size: 0.9em;
     font-weight: 700;
     text-align: center;
     color: var(--cm-text);
@@ -335,6 +335,7 @@ body.page-chanceme {
     background: white;
     color: var(--cm-text);
     font-family: 'Public Sans', sans-serif;
+    font-size: inherit; /* buttons default to ~13px, which made the text tiny */
     text-align: left;
     cursor: pointer;
     transition: background 0.12s, box-shadow 0.12s;
@@ -355,7 +356,7 @@ body.page-chanceme {
 }
 
 .cm-rubric-desc {
-    font-size: 0.82em;
+    font-size: 0.86em;
     line-height: 1.35;
 }
 
