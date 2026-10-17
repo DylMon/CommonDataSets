@@ -51,7 +51,7 @@ function pageHtml(slug, name, description) {
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/png" href="/favicon.png">
-  <title>${name} Admissions Data — CommonDataSets</title>
+  <title>${name} Admissions Data - CommonDataSets</title>
   <meta name="description" content="${description}">
   <link rel="canonical" href="https://commondatasets.com/schools/${slug}/">
   <meta property="og:type" content="website">

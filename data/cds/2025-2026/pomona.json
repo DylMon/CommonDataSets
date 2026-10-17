@@ -13,14 +13,14 @@
   "admitted_men": 418,
   "admitted_women": 471,
   "enrolled_total": 421,
-  "enrolled_men": 221,
-  "enrolled_women": 199,
+  "enrolled_men": 199,
+  "enrolled_women": 221,
   "acceptance_rate": 0.0714,
   "application_fee": 80,
   "avg_gpa_weighted": null,
   "rd_deadline": "1/8",
-  "waitlist_offered": 716,
-  "waitlist_accepted": 1017,
+  "waitlist_offered": 1017,
+  "waitlist_accepted": 716,
   "waitlist_admitted": 31,
   "ea_ed_type": "ED I & II",
   "ea_ed_deadline": "11/15",
@@ -34,16 +34,16 @@
   "sat_composite_25": 1490,
   "sat_composite_50": 1520,
   "sat_composite_75": 1550,
-  "sat_reading_25": 755,
-  "sat_reading_75": 790,
+  "sat_reading_25": 740,
+  "sat_reading_75": 770,
   "sat_math_25": 730,
-  "sat_math_75": 770,
-  "act_composite_25": 34,
-  "act_composite_50": 35,
-  "act_composite_75": 36,
-  "act_math_25": 33,
+  "sat_math_75": 790,
+  "act_composite_25": 32,
+  "act_composite_50": 34,
+  "act_composite_75": 34,
+  "act_math_25": 29,
   "act_math_75": 35,
-  "act_english_25": 32,
+  "act_english_25": 34,
   "act_english_75": 35,
   "total_undergrads": 1617,
   "undergrads_male": 733,
@@ -66,8 +66,8 @@
       "rate": 0.0613
     },
     "waitlist": {
-      "offered": 716,
-      "accepted_spots": 1017,
+      "offered": 1017,
+      "accepted_spots": 716,
       "enrolled": 31
     }
   },
@@ -81,8 +81,8 @@
       "female": 471
     },
     "enrolled": {
-      "male": 221,
-      "female": 199
+      "male": 199,
+      "female": 221
     }
   },
   "demographics_detail": {
@@ -127,22 +127,22 @@
     "rigor": "very_important",
     "class_rank": "very_important",
     "academic_gpa": "very_important",
-    "test_scores": "very_important",
+    "test_scores": "considered",
     "essay": "very_important",
-    "recommendations": "considered",
-    "interview": "very_important",
+    "recommendations": "very_important",
+    "interview": "not_considered",
     "extracurriculars": "very_important",
     "talent": "very_important",
-    "character": "not_considered",
-    "first_gen": "not_considered",
+    "character": "very_important",
+    "first_gen": "considered",
     "alumni_relation": "not_considered",
-    "geo_residence": "not_considered",
+    "geo_residence": "considered",
     "state_residence": "not_considered",
-    "religious": "considered",
+    "religious": "not_considered",
     "racial_ethnic": null,
     "volunteer": "considered",
     "work_experience": "considered",
-    "applicant_interest": "considered"
+    "applicant_interest": "not_considered"
   },
   "transfer_stats": {
     "male": {

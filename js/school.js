@@ -243,7 +243,7 @@ function saveFavs(set) { localStorage.setItem(FAV_KEY, JSON.stringify([...set]))
 
 function fmt(val, type) {
   if (val == null) return '<span class="stat-na">N/A</span>';
-  if (type === 'money') return '$' + Number(val).toLocaleString();
+  if (type === 'money') return '$' + Math.round(Number(val)).toLocaleString();
   if (type === 'pct')   return (val * 100).toFixed(1) + '%';
   return val;
 }
@@ -495,7 +495,7 @@ function renderQuickFacts(s, outside = null) {
                         gpaVal],
     ['Undergrads',      s.total_undergrads != null ? s.total_undergrads.toLocaleString() : '<span class="stat-na">N/A</span>'],
     ['Tuition (OOS)',   tuitionOOS != null
-      ? '$' + tuitionOOS.toLocaleString() + (isOutsideCost(s, s.tuition_out_of_state != null ? 'tuition_out_of_state' : 'tuition') ? OUTSIDE_COST_MARK : '')
+      ? '$' + Math.round(tuitionOOS).toLocaleString() + (isOutsideCost(s, s.tuition_out_of_state != null ? 'tuition_out_of_state' : 'tuition') ? OUTSIDE_COST_MARK : '')
       : '<span class="stat-na">N/A</span>'],
   ];
   return chips.map((c, i) =>
@@ -836,17 +836,23 @@ function renderAcademicProfileSection(s, policy = null) {
 
   const scoresCol = `
     <div>${testPolicyHtml(policy)}
-      <h3 class="subsection-title">SAT — 25th to 75th Percentile</h3>
+      <h3 class="subsection-title">SAT - 25th to 75th Percentile</h3>
       <div class="score-rows">
         ${scoreBarHtml(s._satEstimated ? `<span class="stat-anchor">Composite${infoTip(SAT_ESTIMATE_NOTE)}</span>` : 'Composite', s.sat_composite_25, s.sat_composite_75, 400, 1600)}
         ${scoreBarHtml('Reading &amp; Writing', s.sat_reading_25, s.sat_reading_75, 200, 800)}
         ${scoreBarHtml('Math', s.sat_math_25, s.sat_math_75, 200, 800)}
       </div>
-      <h3 class="subsection-title">ACT — 25th to 75th Percentile</h3>
+      <h3 class="subsection-title">ACT - 25th to 75th Percentile</h3>
       <div class="score-rows">
         ${scoreBarHtml('Composite', s.act_composite_25, s.act_composite_75, 1, 36)}
-        ${scoreBarHtml('Math', s.act_math_25, s.act_math_75, 1, 36)}
-        ${scoreBarHtml('English', s.act_english_25, s.act_english_75, 1, 36)}
+        <div class="score-pair">
+          ${scoreBarHtml('Math', s.act_math_25, s.act_math_75, 1, 36)}
+          ${scoreBarHtml('Science', s.act_science_25, s.act_science_75, 1, 36)}
+        </div>
+        <div class="score-pair">
+          ${scoreBarHtml('English', s.act_english_25, s.act_english_75, 1, 36)}
+          ${scoreBarHtml('Reading', s.act_reading_25, s.act_reading_75, 1, 36)}
+        </div>
       </div>
       ${s._testsOutside ? outsideTestSourceLine(s) : ''}
       ${submissionHtml}
@@ -1052,8 +1058,8 @@ function renderCostSection(s) {
     ['Other Expenses',                cell('other_expenses'),   cell(otherOutField)],
     [
       '<strong>Total Cost of Attendance</strong>',
-      inTotal  != null ? `<strong>$${inTotal.toLocaleString()}</strong>`  : '<span class="stat-na">N/A</span>',
-      outTotal != null ? `<strong>$${outTotal.toLocaleString()}</strong>` : '<span class="stat-na">N/A</span>',
+      inTotal  != null ? `<strong>$${Math.round(inTotal).toLocaleString()}</strong>`  : '<span class="stat-na">N/A</span>',
+      outTotal != null ? `<strong>$${Math.round(outTotal).toLocaleString()}</strong>` : '<span class="stat-na">N/A</span>',
     ],
   ];
 
@@ -1277,13 +1283,14 @@ async function init() {
   recentHistory = [slug, ...recentHistory.filter(s => s !== slug)].slice(0, 5);
   localStorage.setItem(historyKey, JSON.stringify(recentHistory));
 
-  const [{ yearRecords, availableYearKeys }, admissionPlans, outsideGpa, outsideCosts, outsideTests, noWaitlist, scBySlug, admissionsLinks, testPolicies, rankBands] =
+  const [{ yearRecords, availableYearKeys }, admissionPlans, outsideGpa, outsideCosts, outsideTests, noWaitlist, scBySlug, admissionsLinks, testPolicies, rankBands, actSections] =
     await Promise.all([loadAllYears(slug), loadAdmissionPlans(), loadOutsideGpa(), loadOutsideCosts(), loadOutsideTests(),
       fetch('/data/no-waitlist.json').then(r => (r.ok ? r.json() : {})).then(j => j.slugs ?? {}).catch(() => ({})),
       loadScorecardBySlug(),
       fetch('/data/admissions-links.json').then(r => (r.ok ? r.json() : {})).then(j => j.slugs ?? {}).catch(() => ({})),
       loadTestPolicies(),
-      fetch('/data/class-rank-bands.json').then(r => (r.ok ? r.json() : {})).then(j => j.slugs ?? {}).catch(() => ({}))]);
+      fetch('/data/class-rank-bands.json').then(r => (r.ok ? r.json() : {})).then(j => j.slugs ?? {}).catch(() => ({})),
+      fetch('/data/act-sections.json').then(r => (r.ok ? r.json() : {})).then(j => j.act ?? {}).catch(() => ({}))]);
 
   if (availableYearKeys.length === 0) {
     document.getElementById('school-sections').innerHTML =
@@ -1312,6 +1319,17 @@ async function init() {
   for (const [key, rec] of yearRecords) yearRecords.set(key, withSatEstimate(rec));
   // Its CDS says it doesn't use a waitlist: the Waitlist box says so.
   if (noWaitlist[slug]) yearRecords.set(latestAvailableKey, { ...yearRecords.get(latestAvailableKey), _noWaitlist: true });
+  // ACT Reading / Science ranges from the school's CDS (data/act-sections.json),
+  // for the CDS year they were read from.
+  for (const [key, rec] of yearRecords) {
+    const a = actSections[slug];
+    if (!a || a.year !== rec.data_year) continue;
+    yearRecords.set(key, {
+      ...rec,
+      act_reading_25: rec.act_reading_25 ?? a.reading?.[0], act_reading_75: rec.act_reading_75 ?? a.reading?.[1],
+      act_science_25: rec.act_science_25 ?? a.science?.[0], act_science_75: rec.act_science_75 ?? a.science?.[1],
+    });
+  }
   // Its CDS reported class rank as separate bands, not cumulative shares
   // (data/class-rank-bands.json), for that one CDS year.
   for (const [key, rec] of yearRecords) {
@@ -1343,7 +1361,7 @@ async function init() {
     currentYearKey = yearKey;
     const s = yearRecords.get(yearKey);
 
-    document.title = `${s.name} Admissions Data — CommonDataSets`;
+    document.title = `${s.name} Admissions Data - CommonDataSets`;
 
     const pct = s.acceptance_rate != null ? (s.acceptance_rate * 100).toFixed(1) + '%' : null;
     const descParts = [`${s.name} admissions data for ${s.data_year}`];

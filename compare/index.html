@@ -12,7 +12,7 @@
     </script>
 
     <meta charset="utf-8" />
-    <title>Compare Schools — CommonDataSets</title>
+    <title>Compare Schools - CommonDataSets</title>
     <meta name="description" content="Side-by-side admissions comparison for top US universities. Compare acceptance rates, SAT/ACT scores, costs, and more.">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="CommonDataSets">
@@ -30,7 +30,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=Spectral:wght@500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="stylesheet" href="/css/base.css?v=6">
+    <link rel="stylesheet" href="/css/base.css?v=19">
     <link rel="stylesheet" href="/css/school-template.css?v=6">
     <link rel="stylesheet" href="/css/compare.css?v=6">
     <script src="/js/scorecard-merge.js?v=6"></script>
@@ -42,11 +42,12 @@
 </head>
 <body class="page-compare">
     <div class="container">
-        <div class="hero-banner" style="background-image:url('/images/heroes/upenn1.jpg')">
+        <div class="hero-banner" style="background-image:url('/images/heroes/yale-mit-split.jpg?v=5'); background-position:center 62%">
+            <span class="hero-credit">Photos: <a href="https://commons.wikimedia.org/wiki/File:Yale_University_Library_-_Sterling_Memorial_Library_(54105136782).jpg" target="_blank" rel="noopener">Ajay Suresh · CC BY 2.0</a> | <a href="https://commons.wikimedia.org/wiki/File:Massachusetts_Institute_of_Technology_(MIT)_-_panoramio.jpg" target="_blank" rel="noopener">Jiaqian AirplaneFan · CC BY 3.0</a></span>
             <div class="hero-inner">
                 <div class="hero-content">
                     <h1 class="page-intro-title">School Comparison Tool</h1>
-                    <p class="page-intro-desc">Compare up to four schools of your choice to quickly compare admissions data side-by-side</p>
+                    <p class="page-intro-desc">Quick comparison tool to view the admissions data of up to four schools side-by-side</p>
                 </div>
             </div>
         </div>
@@ -79,6 +80,8 @@
         import { loadOutsideGpa, withOutsideGpa } from '/js/outside-gpa.js?v=1';
         import { loadOutsideCosts, withOutsideCosts, isOutsideCost } from '/js/outside-costs.js?v=1';
         import { loadOutsideTests, withOutsideTests, isOutsideTest } from '/js/outside-tests.js?v=1';
+        import { loadSchoolNames, nameMatches } from '/js/school-names.js?v=1';
+        import { loadLatestSchools, loadLatestScorecard } from '/js/latest-schools.js?v=1';
         import { withSatEstimates } from '/js/sat-estimate.js?v=1';
 
         // Fixed per-slot colors rather than each school's own brand color —
@@ -108,7 +111,7 @@
         }
 
         function fmtMoney(val) {
-            return val != null ? '$' + val.toLocaleString() : '<span class="stat-na">N/A</span>';
+            return val != null ? '$' + Math.round(val).toLocaleString() : '<span class="stat-na">N/A</span>';
         }
 
         // Most fees are numbers; a few CDS fees are text that already carries
@@ -255,7 +258,7 @@
         }
 
         function headerRow(schools, first = '') {
-            return [first, ...schools.map(({ school }) => school.name)];
+            return [first, ...schools.map(({ school }) => shortName(school))];
         }
 
         function multiRow(label, schools, valueFn, fmtFn, opts = {}) {
@@ -266,8 +269,14 @@
             return [label, ...cells];
         }
 
+        // Names from data/school-names.json: search aliases, and the short name
+        // ("Harvard", "Texas A&M", "UT Dallas") used inside the comparison
+        // tables and charts. The cards keep the full name.
+        let schoolNames = {};
+        const shortName = school => schoolNames[school.slug]?.short ?? school.name;
+
         function matches(school, query) {
-            return school.name.toLowerCase().includes(query.toLowerCase());
+            return nameMatches(school, query.toLowerCase(), schoolNames);
         }
 
         function actMid(s) {
@@ -406,10 +415,10 @@
             );
             const available = allSchools.filter(s => !chosenElsewhere.has(s.slug));
 
-            // Empty query, just focused: Recently Viewed then Favorites, same
-            // as the header search dropdown (js/header-search.js) — falls
-            // through to the full browsable list below when neither exists,
-            // same as this dropdown always did before favorites/history.
+            // Empty query, just focused: Recently Viewed and Favorites on top,
+            // same as the header search dropdown (js/header-search.js), then
+            // every school under "All Schools" so the list stays browsable.
+            let topSections = '';
             if (query === '') {
                 const bySlug = new Map(available.map(s => [s.slug, s]));
                 const historySlugs = JSON.parse(localStorage.getItem('cds_recently_viewed') ?? '[]');
@@ -419,12 +428,7 @@
                 const sections = [];
                 if (historyItems.length) sections.push(`<div class="search-dropdown-label">Recently Viewed</div>${historyItems.map(s => compareOptionHtml(slot, s)).join('')}`);
                 if (favoriteItems.length) sections.push(`<div class="search-dropdown-label">Favorites</div>${favoriteItems.map(s => compareOptionHtml(slot, s)).join('')}`);
-                if (sections.length) {
-                    dropdown.innerHTML = sections.join('');
-                    dropdown.classList.add('open');
-                    updatePickerPadding();
-                    return;
-                }
+                if (sections.length) topSections = sections.join('') + '<div class="search-dropdown-label">All Schools</div>';
             }
 
             const results = available
@@ -432,7 +436,7 @@
                 .sort((a, b) => a.name.localeCompare(b.name));
 
             dropdown.innerHTML = results.length
-                ? results.map(s => compareOptionHtml(slot, s)).join('')
+                ? topSections + results.map(s => compareOptionHtml(slot, s)).join('')
                 : `<div class="compare-empty">No schools found.</div>`;
 
             dropdown.classList.add('open');
@@ -499,7 +503,7 @@
 
         function legendHtml(schools) {
             return `<div class="cmp-legend">${schools.map(({ school, color }) =>
-                `<span class="cmp-legend-item"><span class="cmp-legend-dot" style="background:${color}"></span>${school.name}</span>`
+                `<span class="cmp-legend-item"><span class="cmp-legend-dot" style="background:${color}"></span>${shortName(school)}</span>`
             ).join('')}</div>`;
         }
 
@@ -555,9 +559,9 @@
             return sectionHtml('Academic Profile', `
                 <div class="cols-2">
                     <div>
-                        <h3 class="subsection-title">SAT — 25th–75th</h3>
+                        <h3 class="subsection-title">SAT - 25th–75th</h3>
                         <div class="score-rows">${satRows}</div>
-                        <h3 class="subsection-title">ACT — 25th–75th</h3>
+                        <h3 class="subsection-title">ACT - 25th–75th</h3>
                         <div class="score-rows">${actRows}</div>
                     </div>
                     <div>
@@ -588,12 +592,12 @@
 
         function cmpFactorMeter(score, color, schoolName, factorLabel) {
             if (!score) {
-                return `<span class="cmp-factor-na" title="${schoolName} — ${factorLabel}: not reported">N/A</span>`;
+                return `<span class="cmp-factor-na" title="${schoolName} - ${factorLabel}: not reported">N/A</span>`;
             }
             const dots = [1, 2, 3, 4].map(n => n <= score
                 ? `<span class="factor-dot on" style="border-color:${color};background:${color}"></span>`
                 : `<span class="factor-dot" style="border-color:${color}"></span>`).join('');
-            return `<span class="factor-meter" title="${schoolName} — ${factorLabel}: ${CMP_FACTOR_SCORE_LABEL[score]}">${dots}</span>`;
+            return `<span class="factor-meter" title="${schoolName} - ${factorLabel}: ${CMP_FACTOR_SCORE_LABEL[score]}">${dots}</span>`;
         }
 
         function renderAdmissionFactorsCompare(schools) {
@@ -607,7 +611,7 @@
                     label,
                     cells: schools.map(({ school, color }) => ({
                         color,
-                        name: school.name,
+                        name: shortName(school),
                         score: CMP_FACTOR_SCORE[school.admission_factors?.[key]] ?? 0,
                     })),
                 }))
@@ -757,7 +761,7 @@
             const gpaCanvas = document.getElementById('cmp-gpa-chart');
             if (gpaCanvas) {
                 renderGpaComparisonChart(gpaCanvas, schools.map(({ school, color }) => ({
-                    distribution: school.gpa_distribution, color, name: school.name,
+                    distribution: school.gpa_distribution, color, name: shortName(school),
                 })));
             }
             applyCollapsedState(container);
@@ -801,23 +805,12 @@
 
         async function loadSchools() {
             try {
-                const res = await fetch('/data/schools-2025-2026.json');
-                if (!res.ok) return;
-                const { schools: rawSchools } = await res.json();
-                const schools = rawSchools.filter(s => s.name != null); // exclude records with no source data yet (e.g. bad/missing source PDF)
-
-                let merged = schools;
-                try {
-                    const scRes = await fetch('/data/scorecard-2025-2026.json');
-                    if (scRes.ok) {
-                        const { schools: scSchools } = await scRes.json();
-                        merged = mergeScorecard(schools, scSchools);
-                    }
-                } catch (err) {
-                    console.error('Scorecard fetch failed, showing CDS data without it:', err);
-                }
-                // GPAs from outside the CDS for schools whose CDS left it blank
-                // (this page only uses the 2025-26 file, each school's latest).
+                // Each school's latest CDS year (same set as the home page and
+                // school pages), with its newest College Scorecard record.
+                const [schools, scBySlug] = await Promise.all([loadLatestSchools(), loadLatestScorecard()]);
+                if (!schools.length) return;
+                const merged = mergeScorecard(schools, [...scBySlug.values()]);
+                // GPAs from outside the CDS for schools whose CDS left it blank.
                 allSchools = withOutsideGpa(merged, await loadOutsideGpa());
                 // Cost fields the CDS left blank, from each school's own cost page.
                 allSchools = withOutsideCosts(allSchools, await loadOutsideCosts());
@@ -825,6 +818,7 @@
                 allSchools = withOutsideTests(allSchools, await loadOutsideTests());
                 // Composite SAT estimated from section scores when the CDS gives no composite.
                 allSchools = withSatEstimates(allSchools);
+                schoolNames = await loadSchoolNames();
             } catch (err) {
                 console.error('Failed to load school data:', err);
             }

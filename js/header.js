@@ -9,7 +9,7 @@
                  : path.includes('chanceme')  ? 'chanceme'
                  : path.includes('info')      ? 'info'
                  : path.includes('resources') ? 'resources'
-                 : path.includes('privacy') || path.includes('terms') ? null
+                 : path.includes('privacy') || path.includes('terms') || path.includes('contact') ? null
                  : 'index';
 
     function navLink(href, label, key) {

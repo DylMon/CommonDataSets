@@ -14,8 +14,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="/favicon.png">
-    <title>CommonDataSets — College Admissions Data for Top US Universities</title>
-    <meta name="description" content="Acceptance rates, SAT scores, GPA, tuition, and admissions data for 200 top US universities — all in one place, sourced directly from official Common Data Set submissions.">
+    <title>CommonDataSets - College Admissions Data for Top US Universities</title>
+    <meta name="description" content="Compare acceptance rates, SAT and ACT scores, GPA, tuition, and admissions data for 200 US colleges, taken straight from each school's official Common Data Set.">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="CommonDataSets">
     <meta property="og:title" content="CommonDataSets — College Admissions Data for Top US Universities">
@@ -50,7 +50,7 @@
             <div class="hero-inner">
                 <div class="hero-content">
                     <h1 class="page-intro-title">The Common Dataset, simplified.</h1>
-                    <p class="page-intro-desc" id="page-intro-desc">CommonDataSets compiles official Common Data Set submissions directly from top US universities, giving students and families one place to compare verified admissions statistics, test score ranges, cost of attendance, and enrollment data without the noise.</p>
+                    <p class="page-intro-desc" id="page-intro-desc">Explore admissions data from 200 top US universities, all in one place and made easy to understand. Compare university statistics, student profiles, and admissions criteria to help you navigate the college application process.</p>
                 </div>
                 <div class="hero-cta-group">
                     <a class="hero-cta-btn" href="/compare/">Compare University Stats</a>
@@ -234,6 +234,7 @@
         import { loadOutsideCosts, withOutsideCosts, isOutsideCost } from '/js/outside-costs.js?v=1';
         import { loadOutsideTests, withOutsideTests, isOutsideTest } from '/js/outside-tests.js?v=1';
         import { withSatEstimates } from '/js/sat-estimate.js?v=1';
+        import { loadSchoolNames } from '/js/school-names.js?v=1';
 
         // Logos live at images/logos/<slug>.png. A few schools have none yet;
         // the onerror hook hides the broken <img> instead of a torn-image icon.
@@ -334,7 +335,7 @@
         }
 
         function fmtPct(val) { return val != null ? (val * 100).toFixed(1) + '%' : '<span class="stat-na">N/A</span>'; }
-        function fmtMoney(val) { return val != null ? '$' + val.toLocaleString() : '<span class="stat-na">N/A</span>'; }
+        function fmtMoney(val) { return val != null ? '$' + Math.round(val).toLocaleString() : '<span class="stat-na">N/A</span>'; }
 
         // Asterisk after a label whose value isn't from the school's Common Data
         // Set: outside GPAs and costs, admission-plans.json deadlines, and the
@@ -356,88 +357,10 @@
         // (recently-viewed/autocomplete) and never touches this.
         let searchQuery = '';
 
-        // Common acronyms/nicknames that don't already appear as a substring
-        // of the school's official name (so searching them wouldn't
-        // otherwise match anything) — keyed by slug, see the header
-        // search dropdown's schoolMatchesSearch() filter. Not exhaustive;
-        // add to a school's array as more come up.
-        const SCHOOL_ALIASES = {
-            'american': ['AU'],
-            'asu': ['Arizona State'],
-            'berkeley': ['Cal', 'UC Berkeley', 'UCB'],
-            'boston-college': ['BC'],
-            'boston-university': ['BU'],
-            'caltech': ['Cal Tech'],
-            'case-western': ['CWRU'],
-            'claremont-mckenna': ['CMC'],
-            'cmu': ['Carnegie Mellon'],
-            'coloradoboulder': ['CU Boulder', 'CU'],
-            'csufullerton': ['Cal State Fullerton', 'CSUF'],
-            'csulb': ['Long Beach State', 'LBSU'],
-            'csusb': ['Cal State San Bernardino', 'CSUSB'],
-            'fsu': ['Florida State'],
-            'georgia-tech': ['Georgia Tech', 'GT'],
-            'georgetown': ['GU'],
-            'gwu': ['GW', 'George Washington'],
-            'harvey-mudd': ['Mudd'],
-            'jhu': ['Johns Hopkins', 'Hopkins'],
-            'mit': ['MIT'],
-            'miami': ['The U'],
-            'michigan-tech': ['Michigan Tech', 'MTU'],
-            'mizzou': ['Mizzou', 'Missouri'],
-            'nc-state': ['NC State', 'North Carolina State'],
-            'notre-dame': ['ND'],
-            'ohio-state': ['OSU', 'Ohio State'],
-            'olemiss': ['Ole Miss', 'Mississippi'],
-            'penn-state': ['Penn State', 'PSU'],
-            'pitt': ['Pitt'],
-            'rutgers-camden': ['Rutgers'],
-            'rutgers-newark': ['Rutgers'],
-            'smu': ['SMU'],
-            'stony-brook': ['SBU'],
-            'suny-albany': ['SUNY Albany', 'Albany'],
-            'texaschristian': ['TCU'],
-            'texas-am': ['Texas A&M', 'A&M'],
-            'uc-davis': ['UCD', 'Davis'],
-            'uc-irvine': ['UCI', 'Irvine'],
-            'uc-merced': ['UCM', 'Merced'],
-            'uc-riverside': ['UCR', 'Riverside'],
-            'uc-san-diego': ['UCSD'],
-            'uc-santa-cruz': ['UCSC'],
-            'uchicago': ['UChicago'],
-            'uconn': ['UConn', 'Connecticut'],
-            'ucsb': ['UCSB'],
-            'udelaware': ['UDel', 'Delaware'],
-            'uf': ['UF'],
-            'uga': ['UGA'],
-            'uic': ['UIC'],
-            'uiuc': ['UIUC', 'Illinois'],
-            'umass-amherst': ['UMass', 'UMass Amherst'],
-            'umass-lowell': ['UMass Lowell'],
-            'umbc': ['UMBC'],
-            'umich': ['Michigan', 'UMich'],
-            'unc': ['UNC', 'Chapel Hill'],
-            'university-maryland-college-park': ['Maryland', 'UMD'],
-            'uofminnesota-twin-cities': ['Minnesota', 'UMN'],
-            'upenn': ['Penn', 'UPenn'],
-            'usc': ['USC'],
-            'usf': ['USF', 'South Florida'],
-            'usma-west-point': ['West Point', 'Army'],
-            'ut-austin': ['UT Austin', 'Texas', 'UT'],
-            'ut-dallas': ['UT Dallas', 'UTD'],
-            'uva': ['UVA', 'Virginia'],
-            'vanderbilt': ['Vandy'],
-            'villanova': ['Nova'],
-            'virginia-tech': ['Virginia Tech', 'VT'],
-            'virginiacommonwealth': ['VCU'],
-            'wake-forest': ['Wake'],
-            'washington-seattle': ['UW', 'Washington'],
-            'washington-stateu': ['WSU'],
-            'washu': ['WashU'],
-            'william-mary': ['W&M', 'William and Mary'],
-            'wisconsin-madison': ['UW-Madison', 'Wisconsin'],
-            'wpi': ['WPI'],
-        };
+        // Search aliases (abbreviations and nicknames that don't already appear
+        // in the name), from data/school-names.json via js/school-names.js.
+        // Filled in once the school data loads.
+        let SCHOOL_ALIASES = {};
 
         // Every year we've ever parsed CDS data for, oldest first. A school
         // present in more than one of these (most are only in the latest)
@@ -650,7 +573,8 @@
 
             // Verified current-cycle application rounds (data/admission-plans.json),
             // falling back to the CDS fields for a school the file doesn't cover.
-            const [plans, outsideGpa, outsideCosts, outsideTests] = await Promise.all([loadAdmissionPlans(), loadOutsideGpa(), loadOutsideCosts(), loadOutsideTests()]);
+            const [plans, outsideGpa, outsideCosts, outsideTests, schoolNames] = await Promise.all([loadAdmissionPlans(), loadOutsideGpa(), loadOutsideCosts(), loadOutsideTests(), loadSchoolNames()]);
+            SCHOOL_ALIASES = Object.fromEntries(Object.entries(schoolNames).map(([slug, n]) => [slug, n.aliases ?? []]));
             merged = merged.map(s => ({ ...s, _rounds: plans[s.slug] ?? cdsRounds(s), _roundsOutside: !!plans[s.slug] }));
             // GPAs from outside the CDS for schools whose latest CDS left it blank.
             merged = withOutsideGpa(merged, outsideGpa);
@@ -689,8 +613,6 @@
             }
 
             allSchools = withSatAvg(merged);
-            document.getElementById('page-intro-desc').textContent =
-                `Official Common Data Set submissions gathered directly from ${allSchools.length} top US universities, giving students and families one place to compare verified admissions statistics, test score ranges, cost of attendance, and enrollment data without the noise.`;
             renderCategoryBar();
             renderList(currentSort);
         }

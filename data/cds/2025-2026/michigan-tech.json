@@ -126,7 +126,27 @@
     "gpa_200_249": null,
     "gpa_100_199": null
   },
-  "admission_factors": null,
+  "admission_factors": {
+    "rigor": "important",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "important",
+    "essay": "considered",
+    "recommendations": "considered",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "considered",
+    "character": "considered",
+    "first_gen": "not_considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "not_considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "not_considered",
+    "work_experience": "not_considered",
+    "applicant_interest": "not_considered"
+  },
   "transfer_stats": {
     "male": {
       "applied": 409,

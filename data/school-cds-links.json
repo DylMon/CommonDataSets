@@ -15,7 +15,7 @@
   },
   {
     "slug": "asu",
-    "name": "Arizona State University Campus Immersion",
+    "name": "Arizona State University",
     "url": "https://uoia.asu.edu/common-data-set",
     "confidence": "verified",
     "note": ""
@@ -85,21 +85,21 @@
   },
   {
     "slug": "csufullerton",
-    "name": "California State University, Fullerton",
+    "name": "Cal State Fullerton",
     "url": "https://www.fullerton.edu/data/institutional-research/facts-and-figures.html",
     "confidence": "verified",
     "note": "This is the Facts & Figures page of CSUF's Institutional Research office; it explicitly hosts/links the Common Data Set files (no separate dedicated CDS-only page was found)."
   },
   {
     "slug": "csulb",
-    "name": "California State University, Long Beach",
+    "name": "Cal State Long Beach",
     "url": "https://www.csulb.edu/institutional-research-analytics/common-data-set",
     "confidence": "verified",
     "note": ""
   },
   {
     "slug": "csusb",
-    "name": "California State University, San Bernardino",
+    "name": "Cal State San Bernardino",
     "url": "https://www.csusb.edu/institutional-research/studies-reports",
     "confidence": "verified",
     "note": ""
@@ -449,7 +449,7 @@
   },
   {
     "slug": "penn-state",
-    "name": "Penn State University Park",
+    "name": "Penn State University",
     "url": "https://opair.psu.edu/institutional-research/projects/cds",
     "confidence": "verified",
     "note": ""
@@ -547,7 +547,7 @@
   },
   {
     "slug": "suny-esf",
-    "name": "SUNY Environmental Science and Forestry",
+    "name": "SUNY College of Environmental Science and Forestry",
     "url": "https://www.esf.edu/institutional-research/institutional-data.php",
     "confidence": "verified",
     "note": "This is ESF's institutional data page, which hosts the 'ESF Common Data Set (CDS)' section with PDFs by year; there is no narrower CDS-only URL."
@@ -582,42 +582,42 @@
   },
   {
     "slug": "ohio-state",
-    "name": "The Ohio State University",
+    "name": "Ohio State University",
     "url": "https://irp.osu.edu/institutional-data-and-reports",
     "confidence": "verified",
     "note": "OSU's Office of Institutional Research & Planning page listing/linking Common Data Set PDFs by campus and year; no separate single-purpose CDS page found distinct from this hub."
   },
   {
     "slug": "ualabama",
-    "name": "The University of Alabama",
+    "name": "University of Alabama",
     "url": "https://oira.ua.edu/new/reports/common-data-set/",
     "confidence": "verified",
     "note": ""
   },
   {
     "slug": "uchicago",
-    "name": "The University of Chicago",
+    "name": "University of Chicago",
     "url": "https://data.uchicago.edu/common-data-set",
     "confidence": "verified",
     "note": ""
   },
   {
     "slug": "north-carolina-charolette",
-    "name": "The University of North Carolina at Charlotte",
+    "name": "University of North Carolina at Charlotte",
     "url": "https://ir.charlotte.edu/home/common-data-set",
     "confidence": "verified",
     "note": ""
   },
   {
     "slug": "ut-austin",
-    "name": "The University of Texas at Austin",
+    "name": "University of Texas at Austin",
     "url": "https://reports.utexas.edu/common-data-set",
     "confidence": "verified",
     "note": ""
   },
   {
     "slug": "ut-dallas",
-    "name": "The University of Texas at Dallas",
+    "name": "University of Texas at Dallas",
     "url": "https://oisds.utdallas.edu/common-data-set",
     "confidence": "verified",
     "note": ""
@@ -652,63 +652,63 @@
   },
   {
     "slug": "uc-davis",
-    "name": "University of California - Davis",
+    "name": "UC Davis",
     "url": "https://aggiedata.ucdavis.edu/common-data-set",
     "confidence": "verified",
     "note": ""
   },
   {
     "slug": "uc-merced",
-    "name": "University of California-Merced",
+    "name": "UC Merced",
     "url": "https://cie.ucmerced.edu/archive/external-reporting",
     "confidence": "verified",
     "note": ""
   },
   {
     "slug": "berkeley",
-    "name": "University of California, Berkeley",
+    "name": "UC Berkeley",
     "url": "https://opa.berkeley.edu/campus-data/common-data-set",
     "confidence": "verified",
     "note": ""
   },
   {
     "slug": "uc-irvine",
-    "name": "University of California, Irvine",
+    "name": "UC Irvine",
     "url": "https://irap.uci.edu/common-data-set/",
     "confidence": "verified",
     "note": ""
   },
   {
     "slug": "ucla",
-    "name": "University of California, Los Angeles",
+    "name": "UCLA",
     "url": "https://www.apb.ucla.edu/campus-statistics/common-data-set",
     "confidence": "verified",
     "note": ""
   },
   {
     "slug": "uc-riverside",
-    "name": "University of California, Riverside",
+    "name": "UC Riverside",
     "url": "https://ir.ucr.edu/cds",
     "confidence": "verified",
     "note": ""
   },
   {
     "slug": "uc-san-diego",
-    "name": "University of California, San Diego",
+    "name": "UC San Diego",
     "url": "https://ir.ucsd.edu/stats/undergrad/common-data-set.html",
     "confidence": "verified",
     "note": ""
   },
   {
     "slug": "ucsb",
-    "name": "University of California, Santa Barbara",
+    "name": "UC Santa Barbara",
     "url": "https://bap.ucsb.edu/institutional-research",
     "confidence": "verified",
     "note": ""
   },
   {
     "slug": "uc-santa-cruz",
-    "name": "University of California, Santa Cruz",
+    "name": "UC Santa Cruz",
     "url": "https://iraps.ucsc.edu/about-ucsc/common-data-set/",
     "confidence": "verified",
     "note": ""
@@ -932,7 +932,7 @@
   },
   {
     "slug": "tennessee-knoxville",
-    "name": "University of Tennessee - Knoxville",
+    "name": "University of Tennessee, Knoxville",
     "url": "https://irsa.utk.edu/home/common-data-set/",
     "confidence": "verified",
     "note": ""
@@ -1009,7 +1009,7 @@
   },
   {
     "slug": "virginia-tech",
-    "name": "Virginia Polytechnic Institute and State University",
+    "name": "Virginia Tech",
     "url": "https://aie.vt.edu/analytics-and-ai/common-data-set.html",
     "confidence": "verified",
     "note": "Page explains the CDS and directs requests for current/historical files to aiesupport@vt.edu rather than linking PDFs directly, but it is Virginia Tech's official CDS landing page."
@@ -1072,7 +1072,7 @@
   },
   {
     "slug": "rice",
-    "name": "William Marsh Rice University",
+    "name": "Rice University",
     "url": "https://ideas.rice.edu/common-data-set/",
     "confidence": "verified",
     "note": ""
@@ -1142,14 +1142,14 @@
   },
   {
     "slug": "rutgers-camden",
-    "name": "Rutgers University, Camden",
+    "name": "Rutgers University-Camden",
     "url": "https://oirds.rutgers.edu/ReportingCommonDataSet.html",
     "confidence": "verified",
     "note": ""
   },
   {
     "slug": "rutgers-newark",
-    "name": "Rutgers University, Newark",
+    "name": "Rutgers University-Newark",
     "url": "https://oirds.rutgers.edu/ReportingCommonDataSet.html",
     "confidence": "verified",
     "note": ""
@@ -1219,7 +1219,7 @@
   },
   {
     "slug": "miamiu",
-    "name": "Miami University",
+    "name": "Miami University (Ohio)",
     "url": "https://miamioh.edu/analytics-institutional-research/common-data-set.html",
     "confidence": "verified",
     "note": ""
@@ -1289,7 +1289,7 @@
   },
   {
     "slug": "uofminnesota-twin-cities",
-    "name": "University of Minnesota, Twin Cities",
+    "name": "University of Minnesota Twin Cities",
     "url": "https://oem.umn.edu/common-data-set",
     "confidence": "verified",
     "note": ""
@@ -1310,7 +1310,7 @@
   },
   {
     "slug": "usma-west-point",
-    "name": "United States Military Academy at West Point",
+    "name": "USMA West Point",
     "url": "https://www.westpoint.edu/about/institutional-accreditation-and-assessment",
     "confidence": "verified",
     "note": ""

@@ -269,6 +269,157 @@ body.page-chanceme {
     margin-top: 8px;
 }
 
+/* Essay rubric, drawn as a table: a level-label column plus one column
+   per category, with 1px gaps over a line-colored background as the grid
+   lines. Items come column by column; the 1fr rows give every level row
+   the same height. On phones it's one column grouped by category, with the
+   level label moved into each cell. */
+.cm-rubric {
+    display: grid;
+    grid-template-columns: 82px repeat(4, minmax(0, 1fr));
+    grid-template-rows: auto repeat(5, 1fr);
+    grid-auto-flow: column;
+    gap: 1px;
+    background: #ddd;
+    border: 1px solid #ddd;
+    border-radius: var(--cm-btn-radius);
+    overflow: hidden;
+}
+
+.cm-rubric-corner,
+.cm-rubric-head {
+    background: var(--cm-accent-soft);
+}
+
+.cm-rubric-head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9px 6px;
+    font-size: 0.9em;
+    font-weight: 700;
+    text-align: center;
+    color: var(--cm-text);
+}
+
+.cm-rubric-rowlabel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+    padding: 6px 4px;
+    background: var(--cm-inset-bg);
+    font-size: 0.72em;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--cm-muted);
+}
+
+.cm-rubric-rowlabel strong {
+    font-size: 1.6em;
+    line-height: 1.1;
+    color: var(--cm-accent);
+}
+
+.cm-rubric-cell {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3px;
+    min-height: 64px;
+    padding: 8px 10px;
+    border: 0;
+    border-radius: 0;
+    background: white;
+    color: var(--cm-text);
+    font-family: 'Public Sans', sans-serif;
+    font-size: inherit; /* buttons default to ~13px, which made the text tiny */
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.12s, box-shadow 0.12s;
+}
+
+.cm-rubric-cell:hover {
+    background: var(--cm-accent-soft);
+}
+
+/* Shown only on phones, where the row labels are hidden. */
+.cm-rubric-level {
+    display: none;
+    font-size: 0.72em;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--cm-accent);
+}
+
+.cm-rubric-desc {
+    font-size: 0.86em;
+    line-height: 1.35;
+}
+
+.cm-rubric-cell.active {
+    background: var(--cm-accent-fill);
+    color: white;
+    font-weight: 600;
+    box-shadow: inset 0 0 0 2px var(--cm-accent);
+}
+
+.cm-rubric-cell.active .cm-rubric-level {
+    color: white;
+}
+
+@media (max-width: 760px) {
+    .cm-rubric {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+        grid-auto-flow: row;
+    }
+
+    .cm-rubric-corner,
+    .cm-rubric-rowlabel {
+        display: none;
+    }
+
+    .cm-rubric-head {
+        justify-content: flex-start;
+        padding: 10px 12px;
+    }
+
+    .cm-rubric-cell {
+        min-height: 0;
+    }
+
+    .cm-rubric-level {
+        display: block;
+    }
+}
+
+/* Opt-out toggle under a scale (currently just Interview): lined up with
+   the scale's left edge, in the hint's muted weight so it doesn't compete
+   with the scale buttons. Until a rating is picked, the empty caption above
+   it collapses, so it sits just under the bar. */
+#cm-scale-interview-caption:empty {
+    min-height: 0;
+    margin-top: 0;
+}
+
+.cm-no-interview-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    margin-top: 12px;
+    font-size: 0.93em;
+    font-weight: 300;
+    color: var(--cm-muted);
+    cursor: pointer;
+}
+
+.cm-no-interview-toggle input { width: 15px; height: 15px; cursor: pointer; accent-color: var(--cm-accent); }
+
 /* Worked examples under a 1-10 self-rating scale — a collapsed
    "See examples" toggle that opens into the list. */
 .cm-scale-examples {
@@ -338,9 +489,10 @@ body.page-chanceme {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 28px;
+    min-width: 28px;
     height: 28px;
-    border-radius: 50%;
+    padding: 0 8px;
+    border-radius: 14px;
     background: var(--cm-accent-fill);
     color: white;
     font-weight: 600;
@@ -350,6 +502,16 @@ body.page-chanceme {
 
 .cm-scale-example-desc {
     font-size: 0.93em;
+    font-weight: 300;
+    color: var(--cm-muted);
+    line-height: 1.5;
+}
+
+/* Under the Activities and Awards examples: they're guides, not cutoffs. */
+.cm-scale-examples-note {
+    margin: 12px 2px 0;
+    font-size: 0.85em;
+    font-style: italic;
     font-weight: 300;
     color: var(--cm-muted);
     line-height: 1.5;
@@ -705,4 +867,5 @@ body.page-chanceme {
     .cm-section-icon { width: 30px; height: 30px; }
     .cm-section-icon svg { width: 15px; height: 15px; }
     .cm-section-hint { padding-left: 0; margin-top: 10px; }
+    .cm-no-interview-toggle { padding-left: 0; }
 }

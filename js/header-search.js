@@ -24,86 +24,10 @@
         '/data/schools-2025-2026.json',
     ];
 
-    // Common acronyms/nicknames that don't already appear as a substring of
-    // the school's official name — kept in sync with index.html's own copy
-    // (used there for the restored page-level search bar's grid filter).
-    const SCHOOL_ALIASES = {
-        'american': ['AU'],
-        'asu': ['Arizona State'],
-        'berkeley': ['Cal', 'UC Berkeley', 'UCB'],
-        'boston-college': ['BC'],
-        'boston-university': ['BU'],
-        'caltech': ['Cal Tech'],
-        'case-western': ['CWRU'],
-        'claremont-mckenna': ['CMC'],
-        'cmu': ['Carnegie Mellon'],
-        'coloradoboulder': ['CU Boulder', 'CU'],
-        'csufullerton': ['Cal State Fullerton', 'CSUF'],
-        'csulb': ['Long Beach State', 'LBSU'],
-        'csusb': ['Cal State San Bernardino', 'CSUSB'],
-        'fsu': ['Florida State'],
-        'georgia-tech': ['Georgia Tech', 'GT'],
-        'georgetown': ['GU'],
-        'gwu': ['GW', 'George Washington'],
-        'harvey-mudd': ['Mudd'],
-        'jhu': ['Johns Hopkins', 'Hopkins'],
-        'mit': ['MIT'],
-        'miami': ['The U'],
-        'michigan-tech': ['Michigan Tech', 'MTU'],
-        'mizzou': ['Mizzou', 'Missouri'],
-        'nc-state': ['NC State', 'North Carolina State'],
-        'notre-dame': ['ND'],
-        'ohio-state': ['OSU', 'Ohio State'],
-        'olemiss': ['Ole Miss', 'Mississippi'],
-        'penn-state': ['Penn State', 'PSU'],
-        'pitt': ['Pitt'],
-        'rutgers-camden': ['Rutgers'],
-        'rutgers-newark': ['Rutgers'],
-        'smu': ['SMU'],
-        'stony-brook': ['SBU'],
-        'suny-albany': ['SUNY Albany', 'Albany'],
-        'texaschristian': ['TCU'],
-        'texas-am': ['Texas A&M', 'A&M'],
-        'uc-davis': ['UCD', 'Davis'],
-        'uc-irvine': ['UCI', 'Irvine'],
-        'uc-merced': ['UCM', 'Merced'],
-        'uc-riverside': ['UCR', 'Riverside'],
-        'uc-san-diego': ['UCSD'],
-        'uc-santa-cruz': ['UCSC'],
-        'uchicago': ['UChicago'],
-        'uconn': ['UConn', 'Connecticut'],
-        'ucsb': ['UCSB'],
-        'udelaware': ['UDel', 'Delaware'],
-        'uf': ['UF'],
-        'uga': ['UGA'],
-        'uic': ['UIC'],
-        'uiuc': ['UIUC', 'Illinois'],
-        'umass-amherst': ['UMass', 'UMass Amherst'],
-        'umass-lowell': ['UMass Lowell'],
-        'umbc': ['UMBC'],
-        'umich': ['Michigan', 'UMich'],
-        'unc': ['UNC', 'Chapel Hill'],
-        'university-maryland-college-park': ['Maryland', 'UMD'],
-        'uofminnesota-twin-cities': ['Minnesota', 'UMN'],
-        'upenn': ['Penn', 'UPenn'],
-        'usc': ['USC'],
-        'usf': ['USF', 'South Florida'],
-        'usma-west-point': ['West Point', 'Army'],
-        'ut-austin': ['UT Austin', 'Texas', 'UT'],
-        'ut-dallas': ['UT Dallas', 'UTD'],
-        'uva': ['UVA', 'Virginia'],
-        'vanderbilt': ['Vandy'],
-        'villanova': ['Nova'],
-        'virginia-tech': ['Virginia Tech', 'VT'],
-        'virginiacommonwealth': ['VCU'],
-        'wake-forest': ['Wake'],
-        'washington-seattle': ['UW', 'Washington'],
-        'washington-stateu': ['WSU'],
-        'washu': ['WashU'],
-        'william-mary': ['W&M', 'William and Mary'],
-        'wisconsin-madison': ['UW-Madison', 'Wisconsin'],
-        'wpi': ['WPI'],
-    };
+    // Search aliases (abbreviations and nicknames that don't already appear in
+    // the school's name), from data/school-names.json, shared with the home
+    // page and Compare. Filled in by loadAllSchools().
+    let SCHOOL_ALIASES = {};
 
     function schoolMatchesSearch(s, q) {
         if (s.name.toLowerCase().includes(q)) return true;
@@ -135,6 +59,16 @@
             }
         }
         allSchools = [...bySlug.values()];
+
+        try {
+            const res = await fetch('/data/school-names.json');
+            if (res.ok) {
+                const { schools } = await res.json();
+                SCHOOL_ALIASES = Object.fromEntries(Object.entries(schools).map(([slug, n]) => [slug, n.aliases ?? []]));
+            }
+        } catch (err) {
+            console.error('Header search failed to load school names:', err);
+        }
     }
 
     // One row of the dropdown — same logo/name markup as the favorites/

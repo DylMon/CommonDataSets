@@ -15,7 +15,7 @@
       "source": "data/cds-pdfs/2025-2026/amherst.pdf"
     },
     "asu": {
-      "name": "Arizona State University Campus Immersion",
+      "name": "Arizona State University",
       "sat": "optional",
       "act": "optional",
       "source": "data/cds-pdfs/2025-2026/asu.pdf"
@@ -93,19 +93,19 @@
       "source": "https://www.connectprep.com/colleges-that-require-sat-act/"
     },
     "csufullerton": {
-      "name": "California State University, Fullerton",
+      "name": "Cal State Fullerton",
       "sat": "blind",
       "act": "blind",
       "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "csulb": {
-      "name": "California State University, Long Beach",
+      "name": "Cal State Long Beach",
       "sat": "blind",
       "act": "blind",
       "source": "data/cds-pdfs/2025-2026/csulb.pdf"
     },
     "csusb": {
-      "name": "California State University, San Bernardino",
+      "name": "Cal State San Bernardino",
       "sat": "blind",
       "act": "blind",
       "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
@@ -409,7 +409,7 @@
       "source": "data/cds-pdfs/2025-2026/mit-2526.pdf"
     },
     "miamiu": {
-      "name": "Miami University",
+      "name": "Miami University (Ohio)",
       "sat": "optional",
       "act": "optional",
       "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
@@ -488,7 +488,7 @@
       "source": "data/cds-pdfs/2025-2026/oregon-state.pdf"
     },
     "penn-state": {
-      "name": "Penn State University Park",
+      "name": "Penn State University",
       "sat": "optional",
       "act": "optional",
       "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
@@ -543,26 +543,26 @@
       "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "rutgers-camden": {
-      "name": "Rutgers University, Camden",
+      "name": "Rutgers University-Camden",
       "sat": "optional",
       "act": "optional",
       "source": "data/cds-pdfs/2023-2024/rutgers-camden.pdf"
     },
     "rutgers-newark": {
-      "name": "Rutgers University, Newark",
+      "name": "Rutgers University-Newark",
       "sat": "blind",
       "act": "blind",
       "note": "Required for some majors.",
       "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "rutgers-new-brunswick": {
-      "name": "Rutgers University–New Brunswick",
+      "name": "Rutgers University-New Brunswick",
       "sat": "optional",
       "act": "optional",
       "source": "data/cds-pdfs/2023-2024/rutgers-new-brunswick.pdf"
     },
     "suny-esf": {
-      "name": "SUNY Environmental Science and Forestry",
+      "name": "SUNY College of Environmental Science and Forestry",
       "sat": "optional",
       "act": "optional",
       "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
@@ -652,14 +652,14 @@
       "source": "data/cds-pdfs/2025-2026/texas-tech.pdf"
     },
     "alabama-birmingham": {
-      "name": "The University of Alabama at Birmingham",
+      "name": "University of Alabama at Birmingham",
       "sat": "optional",
       "act": "optional",
       "note": "Required with a GPA below 3.5. Required for all applicants starting Fall 2028.",
       "source": "https://www.connectprep.com/colleges-that-require-sat-act/"
     },
     "uarizona": {
-      "name": "The University of Arizona",
+      "name": "University of Arizona",
       "sat": "optional",
       "act": "optional",
       "source": "data/cds-pdfs/2025-2026/uarizona.pdf"
@@ -737,7 +737,7 @@
       "source": "data/cds-pdfs/2025-2026/ucla-2526.pdf"
     },
     "usma-west-point": {
-      "name": "United States Military Academy at West Point",
+      "name": "USMA West Point",
       "sat": "required",
       "act": "required",
       "source": "data/cds-pdfs/2024-2025/usma-west-point.pdf"
@@ -920,7 +920,7 @@
       "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "uofminnesota-twin-cities": {
-      "name": "University of Minnesota, Twin Cities",
+      "name": "University of Minnesota Twin Cities",
       "sat": "optional",
       "act": "optional",
       "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
@@ -1135,7 +1135,7 @@
       "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
     },
     "virginia-tech": {
-      "name": "Virginia Polytechnic Institute and State University",
+      "name": "Virginia Tech",
       "sat": "optional",
       "act": "optional",
       "source": "https://claude.ai/code/artifact/cf6f2235-b8cd-42fb-98df-26bddd36e60f"
@@ -1189,7 +1189,7 @@
       "source": "data/cds-pdfs/2025-2026/william-mary-2526.pdf"
     },
     "rice": {
-      "name": "William Marsh Rice University",
+      "name": "Rice University",
       "sat": "optional",
       "act": "optional",
       "note": "Test scores recommended.",

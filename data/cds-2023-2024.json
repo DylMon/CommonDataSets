@@ -686,7 +686,7 @@
     },
     {
       "id": 5,
-      "name": "Rutgers University, Camden",
+      "name": "Rutgers University-Camden",
       "data_year": "2023-24",
       "city": "Camden",
       "state": "NJ",
@@ -846,7 +846,7 @@
     },
     {
       "id": 6,
-      "name": "Rutgers University–New Brunswick",
+      "name": "Rutgers University-New Brunswick",
       "data_year": "2023-24",
       "city": "New Brunswick",
       "state": "NJ",
@@ -1006,7 +1006,7 @@
     },
     {
       "id": 7,
-      "name": "Rutgers University, Newark",
+      "name": "Rutgers University-Newark",
       "data_year": "2023-24",
       "city": "Newark",
       "state": "NJ",

@@ -1,0 +1,13 @@
+{
+  "generated": "2026-10-15",
+  "note": "Chance Me-only corrections to a school's level (rate) or SAT range (sat), used where the acceptance rate or our data misstates what the school's admitted students look like. A level changes only what Chance Me treats as the typical admit (GPA, ratings, AP load); the odds still start from the school's real acceptance rate. School pages are unaffected.",
+  "levels": {
+    "uc-san-diego": { "rate": 0.15, "why": "UC applicants apply to several UCs at once, so the acceptance rate understates the competition; test-blind, so no SAT range to correct it." },
+    "uc-irvine": { "rate": 0.17, "why": "Same as UC San Diego." },
+    "ucsb": { "rate": 0.18, "why": "Same as UC San Diego." },
+    "uc-davis": { "rate": 0.22, "why": "Same as UC San Diego." },
+    "tulane": { "rate": 0.28, "why": "Its 14% rate comes from heavy early-decision yield management; admitted students average a 3.77 unweighted GPA (enrolled 3.67) and a 1430-1500 SAT, per Tulane's Class of 2029 profile, closer to a school admitting about 28%." },
+    "famu": { "rate": 0.5, "why": "Its 19% rate reflects a very large applicant pool; admitted students average about a 3.65-3.75 GPA and a 1050-1170 SAT (PrepScholar, Acely, College Scorecard), closer to a school admitting about half." },
+    "harvard": { "sat": [1510, 1580], "why": "The 2025-26 CDS gives only section scores, whose sum (1450-1560) understates the composite; Harvard's 2024-25 CDS reports a 1510-1580 composite range." }
+  }
+}

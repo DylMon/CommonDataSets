@@ -1063,6 +1063,27 @@
   .cols-2 .score-bar-vals { min-width: 78px; font-size: 0.98em; }
 }
 
+/* ACT Math | Science and English | Reading: two half-width bars per row, in
+   the same width one full bar takes. Shorter labels and value boxes so each
+   half still fits a label, a short bar and "27 – 34". Placed after the
+   .cols-2 rule above so these win at equal specificity. */
+.score-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  min-width: 0;
+}
+.score-pair .score-row { gap: 8px; }
+.score-pair .score-row-label { width: 64px; }
+.score-pair .score-bar-wrap { gap: 8px; }
+.score-pair .score-bar-track { min-width: 28px; }
+.score-pair .score-bar-vals { min-width: 52px; }
+/* Phones: too narrow for two bars side by side, so they stack again. */
+@media (max-width: 460px) {
+  .score-pair { grid-template-columns: 1fr; gap: 14px; }
+  .score-pair .score-row-label { width: 100px; }
+}
+
 /* ── Admission factors: name + 4-dot importance meter ── */
 .factor-legend {
   display: flex;

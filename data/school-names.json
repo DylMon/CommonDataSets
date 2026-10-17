@@ -1,0 +1,1362 @@
+{
+  "generated": "2026-10-14",
+  "note": "Per-school names, reviewed in the School Names and Abbreviations doc (https://claude.ai/code/artifact/071b8d64-8efa-4fb5-8370-7968ccadce73). name = display name (also written into each school's data files and page title). short = the name used inside Compare's tables and charts. aliases = extra search terms (abbreviations and nicknames) that don't already appear in the name.",
+  "schools": {
+    "alabama-birmingham": {
+      "name": "University of Alabama at Birmingham",
+      "short": "UAB",
+      "aliases": [
+        "UAB"
+      ]
+    },
+    "american": {
+      "name": "American University",
+      "short": "American",
+      "aliases": [
+        "AU"
+      ]
+    },
+    "amherst": {
+      "name": "Amherst College",
+      "short": "Amherst",
+      "aliases": []
+    },
+    "asu": {
+      "name": "Arizona State University",
+      "short": "Arizona State",
+      "aliases": [
+        "Arizona State",
+        "ASU"
+      ]
+    },
+    "auburn": {
+      "name": "Auburn University",
+      "short": "Auburn",
+      "aliases": []
+    },
+    "barnard": {
+      "name": "Barnard College",
+      "short": "Barnard",
+      "aliases": []
+    },
+    "baylor": {
+      "name": "Baylor University",
+      "short": "Baylor",
+      "aliases": []
+    },
+    "berkeley": {
+      "name": "UC Berkeley",
+      "short": "UC Berkeley",
+      "aliases": [
+        "Cal",
+        "UCB",
+        "University of California, Berkeley"
+      ]
+    },
+    "binghamton": {
+      "name": "Binghamton University",
+      "short": "Binghamton",
+      "aliases": [
+        "SUNY Binghamton"
+      ]
+    },
+    "boston-college": {
+      "name": "Boston College",
+      "short": "Boston College",
+      "aliases": [
+        "BC"
+      ]
+    },
+    "boston-university": {
+      "name": "Boston University",
+      "short": "Boston University",
+      "aliases": [
+        "BU"
+      ]
+    },
+    "bowdoin": {
+      "name": "Bowdoin College",
+      "short": "Bowdoin",
+      "aliases": []
+    },
+    "bradley": {
+      "name": "Bradley University",
+      "short": "Bradley",
+      "aliases": []
+    },
+    "brandeis": {
+      "name": "Brandeis University",
+      "short": "Brandeis",
+      "aliases": []
+    },
+    "brown": {
+      "name": "Brown University",
+      "short": "Brown",
+      "aliases": []
+    },
+    "buffalo": {
+      "name": "University at Buffalo",
+      "short": "Buffalo",
+      "aliases": [
+        "UB",
+        "SUNY Buffalo"
+      ]
+    },
+    "byu": {
+      "name": "Brigham Young University",
+      "short": "BYU",
+      "aliases": [
+        "BYU"
+      ]
+    },
+    "caltech": {
+      "name": "California Institute of Technology",
+      "short": "Caltech",
+      "aliases": [
+        "Cal Tech",
+        "Caltech"
+      ]
+    },
+    "carleton": {
+      "name": "Carleton College",
+      "short": "Carleton",
+      "aliases": []
+    },
+    "case-western": {
+      "name": "Case Western Reserve University",
+      "short": "Case Western",
+      "aliases": [
+        "CWRU"
+      ]
+    },
+    "chapman": {
+      "name": "Chapman University",
+      "short": "Chapman",
+      "aliases": []
+    },
+    "claremont-mckenna": {
+      "name": "Claremont McKenna College",
+      "short": "Claremont McKenna",
+      "aliases": [
+        "CMC"
+      ]
+    },
+    "clark": {
+      "name": "Clark University",
+      "short": "Clark",
+      "aliases": []
+    },
+    "clarkson": {
+      "name": "Clarkson University",
+      "short": "Clarkson",
+      "aliases": []
+    },
+    "clemson": {
+      "name": "Clemson University",
+      "short": "Clemson",
+      "aliases": []
+    },
+    "cmu": {
+      "name": "Carnegie Mellon University",
+      "short": "Carnegie Mellon",
+      "aliases": [
+        "Carnegie Mellon",
+        "CMU"
+      ]
+    },
+    "colorado-school-of-mines": {
+      "name": "Colorado School of Mines",
+      "short": "Colorado Mines",
+      "aliases": [
+        "Mines"
+      ]
+    },
+    "colorado-state": {
+      "name": "Colorado State University",
+      "short": "Colorado State",
+      "aliases": []
+    },
+    "coloradoboulder": {
+      "name": "University of Colorado Boulder",
+      "short": "CU Boulder",
+      "aliases": [
+        "CU Boulder",
+        "CU"
+      ]
+    },
+    "columbia": {
+      "name": "Columbia University",
+      "short": "Columbia",
+      "aliases": []
+    },
+    "cornell": {
+      "name": "Cornell University",
+      "short": "Cornell",
+      "aliases": []
+    },
+    "creighton": {
+      "name": "Creighton University",
+      "short": "Creighton",
+      "aliases": []
+    },
+    "csufullerton": {
+      "name": "Cal State Fullerton",
+      "short": "Cal State Fullerton",
+      "aliases": [
+        "CSUF",
+        "California State University, Fullerton"
+      ]
+    },
+    "csulb": {
+      "name": "Cal State Long Beach",
+      "short": "Cal State Long Beach",
+      "aliases": [
+        "CSULB",
+        "California State University, Long Beach"
+      ]
+    },
+    "csusb": {
+      "name": "Cal State San Bernardino",
+      "short": "Cal State San Bernardino",
+      "aliases": [
+        "CSUSB",
+        "California State University, San Bernardino"
+      ]
+    },
+    "dartmouth": {
+      "name": "Dartmouth College",
+      "short": "Dartmouth",
+      "aliases": []
+    },
+    "davidson": {
+      "name": "Davidson College",
+      "short": "Davidson",
+      "aliases": []
+    },
+    "depaul": {
+      "name": "DePaul University",
+      "short": "DePaul",
+      "aliases": []
+    },
+    "drexel": {
+      "name": "Drexel University",
+      "short": "Drexel",
+      "aliases": []
+    },
+    "duke": {
+      "name": "Duke University",
+      "short": "Duke",
+      "aliases": []
+    },
+    "duquesne": {
+      "name": "Duquesne University",
+      "short": "Duquesne",
+      "aliases": []
+    },
+    "east-carolina": {
+      "name": "East Carolina University",
+      "short": "East Carolina",
+      "aliases": [
+        "ECU"
+      ]
+    },
+    "elon": {
+      "name": "Elon University",
+      "short": "Elon",
+      "aliases": []
+    },
+    "emory": {
+      "name": "Emory University",
+      "short": "Emory",
+      "aliases": []
+    },
+    "fairfield": {
+      "name": "Fairfield University",
+      "short": "Fairfield",
+      "aliases": []
+    },
+    "famu": {
+      "name": "Florida A&M University",
+      "short": "Florida A&M",
+      "aliases": [
+        "FAMU"
+      ]
+    },
+    "fiu": {
+      "name": "Florida International University",
+      "short": "Florida International",
+      "aliases": [
+        "FIU"
+      ]
+    },
+    "florida-atlantic": {
+      "name": "Florida Atlantic University",
+      "short": "Florida Atlantic",
+      "aliases": [
+        "FAU"
+      ]
+    },
+    "fsu": {
+      "name": "Florida State University",
+      "short": "Florida State",
+      "aliases": [
+        "Florida State"
+      ]
+    },
+    "georgemason": {
+      "name": "George Mason University",
+      "short": "George Mason",
+      "aliases": [
+        "GMU",
+        "Mason"
+      ]
+    },
+    "georgetown": {
+      "name": "Georgetown University",
+      "short": "Georgetown",
+      "aliases": [
+        "GU"
+      ]
+    },
+    "georgia-state": {
+      "name": "Georgia State University",
+      "short": "Georgia State",
+      "aliases": [
+        "GSU"
+      ]
+    },
+    "georgia-tech": {
+      "name": "Georgia Institute of Technology",
+      "short": "Georgia Tech",
+      "aliases": [
+        "Georgia Tech",
+        "GT"
+      ]
+    },
+    "gonzaga": {
+      "name": "Gonzaga University",
+      "short": "Gonzaga",
+      "aliases": []
+    },
+    "grinnell": {
+      "name": "Grinnell College",
+      "short": "Grinnell",
+      "aliases": []
+    },
+    "gwu": {
+      "name": "George Washington University",
+      "short": "George Washington",
+      "aliases": [
+        "GW",
+        "George Washington"
+      ]
+    },
+    "hamilton": {
+      "name": "Hamilton College",
+      "short": "Hamilton",
+      "aliases": []
+    },
+    "harvard": {
+      "name": "Harvard University",
+      "short": "Harvard",
+      "aliases": []
+    },
+    "harvey-mudd": {
+      "name": "Harvey Mudd College",
+      "short": "Harvey Mudd",
+      "aliases": [
+        "Mudd"
+      ]
+    },
+    "hawaii-manoa": {
+      "name": "University of Hawaiʻi at Mānoa",
+      "short": "Hawaiʻi",
+      "aliases": [
+        "University of Hawaii",
+        "Hawaii",
+        "UH Manoa",
+        "Manoa"
+      ]
+    },
+    "hofstra": {
+      "name": "Hofstra University",
+      "short": "Hofstra",
+      "aliases": []
+    },
+    "howard": {
+      "name": "Howard University",
+      "short": "Howard",
+      "aliases": []
+    },
+    "illinois-tech": {
+      "name": "Illinois Institute of Technology",
+      "short": "Illinois Tech",
+      "aliases": []
+    },
+    "indiana-bloomington": {
+      "name": "Indiana University Bloomington",
+      "short": "Indiana",
+      "aliases": [
+        "IU",
+        "Indiana"
+      ]
+    },
+    "iowa-state-science-tech": {
+      "name": "Iowa State University",
+      "short": "Iowa State",
+      "aliases": [
+        "Iowa State"
+      ]
+    },
+    "james-madison": {
+      "name": "James Madison University",
+      "short": "James Madison",
+      "aliases": [
+        "JMU"
+      ]
+    },
+    "jhu": {
+      "name": "Johns Hopkins University",
+      "short": "Johns Hopkins",
+      "aliases": [
+        "Johns Hopkins",
+        "Hopkins",
+        "JHU"
+      ]
+    },
+    "kansas-state": {
+      "name": "Kansas State University",
+      "short": "Kansas State",
+      "aliases": [
+        "K-State",
+        "KSU"
+      ]
+    },
+    "lehigh": {
+      "name": "Lehigh University",
+      "short": "Lehigh",
+      "aliases": []
+    },
+    "loyola-marymount": {
+      "name": "Loyola Marymount University",
+      "short": "Loyola Marymount",
+      "aliases": [
+        "LMU"
+      ]
+    },
+    "marquette": {
+      "name": "Marquette University",
+      "short": "Marquette",
+      "aliases": []
+    },
+    "miami": {
+      "name": "University of Miami",
+      "short": "Miami",
+      "aliases": [
+        "The U"
+      ]
+    },
+    "miamiu": {
+      "name": "Miami University (Ohio)",
+      "short": "Miami (OH)",
+      "aliases": [
+        "Miami OH",
+        "Miami Ohio"
+      ]
+    },
+    "michigan-state": {
+      "name": "Michigan State University",
+      "short": "Michigan State",
+      "aliases": [
+        "MSU"
+      ]
+    },
+    "michigan-tech": {
+      "name": "Michigan Technological University",
+      "short": "Michigan Tech",
+      "aliases": [
+        "Michigan Tech",
+        "MTU"
+      ]
+    },
+    "missourri-s&t": {
+      "name": "Missouri University of Science and Technology",
+      "short": "Missouri S&T",
+      "aliases": [
+        "Missouri S&T"
+      ]
+    },
+    "mit": {
+      "name": "Massachusetts Institute of Technology",
+      "short": "MIT",
+      "aliases": [
+        "MIT"
+      ]
+    },
+    "mizzou": {
+      "name": "University of Missouri",
+      "short": "Mizzou",
+      "aliases": [
+        "Mizzou",
+        "Missouri"
+      ]
+    },
+    "montclair-state": {
+      "name": "Montclair State University",
+      "short": "Montclair State",
+      "aliases": [
+        "MSU"
+      ]
+    },
+    "nc-state": {
+      "name": "North Carolina State University",
+      "short": "NC State",
+      "aliases": [
+        "NC State",
+        "North Carolina State"
+      ]
+    },
+    "njit": {
+      "name": "New Jersey Institute of Technology",
+      "short": "NJIT",
+      "aliases": [
+        "NJIT"
+      ]
+    },
+    "north-carolina-charolette": {
+      "name": "University of North Carolina at Charlotte",
+      "short": "UNC Charlotte",
+      "aliases": [
+        "UNC Charlotte",
+        "Charlotte"
+      ]
+    },
+    "northeastern": {
+      "name": "Northeastern University",
+      "short": "Northeastern",
+      "aliases": [
+        "NEU"
+      ]
+    },
+    "northwestern": {
+      "name": "Northwestern University",
+      "short": "Northwestern",
+      "aliases": [
+        "NWU"
+      ]
+    },
+    "notre-dame": {
+      "name": "University of Notre Dame",
+      "short": "Notre Dame",
+      "aliases": [
+        "ND"
+      ]
+    },
+    "nyu": {
+      "name": "New York University",
+      "short": "NYU",
+      "aliases": [
+        "NYU"
+      ]
+    },
+    "ohio-state": {
+      "name": "Ohio State University",
+      "short": "Ohio State",
+      "aliases": [
+        "OSU",
+        "Ohio State"
+      ]
+    },
+    "oklahoma-state": {
+      "name": "Oklahoma State University",
+      "short": "Oklahoma State",
+      "aliases": [
+        "OK State"
+      ]
+    },
+    "olemiss": {
+      "name": "University of Mississippi",
+      "short": "Ole Miss",
+      "aliases": [
+        "Ole Miss",
+        "Mississippi"
+      ]
+    },
+    "oregon-state": {
+      "name": "Oregon State University",
+      "short": "Oregon State",
+      "aliases": [
+        "OSU"
+      ]
+    },
+    "penn-state": {
+      "name": "Penn State University",
+      "short": "Penn State",
+      "aliases": [
+        "Penn State",
+        "PSU",
+        "Penn State University Park"
+      ]
+    },
+    "pepperdine": {
+      "name": "Pepperdine University",
+      "short": "Pepperdine",
+      "aliases": []
+    },
+    "pitt": {
+      "name": "University of Pittsburgh",
+      "short": "Pitt",
+      "aliases": [
+        "Pitt"
+      ]
+    },
+    "pomona": {
+      "name": "Pomona College",
+      "short": "Pomona",
+      "aliases": []
+    },
+    "princeton": {
+      "name": "Princeton University",
+      "short": "Princeton",
+      "aliases": []
+    },
+    "purdue": {
+      "name": "Purdue University",
+      "short": "Purdue",
+      "aliases": []
+    },
+    "quinnipiac": {
+      "name": "Quinnipiac University",
+      "short": "Quinnipiac",
+      "aliases": []
+    },
+    "rice": {
+      "name": "Rice University",
+      "short": "Rice",
+      "aliases": [
+        "Rice",
+        "William Marsh Rice University"
+      ]
+    },
+    "rit": {
+      "name": "Rochester Institute of Technology",
+      "short": "RIT",
+      "aliases": [
+        "RIT"
+      ]
+    },
+    "rochester": {
+      "name": "University of Rochester",
+      "short": "Rochester",
+      "aliases": []
+    },
+    "rowan": {
+      "name": "Rowan University",
+      "short": "Rowan",
+      "aliases": []
+    },
+    "rpi": {
+      "name": "Rensselaer Polytechnic Institute",
+      "short": "Rensselaer",
+      "aliases": [
+        "RPI"
+      ]
+    },
+    "rutgers-camden": {
+      "name": "Rutgers University-Camden",
+      "short": "Rutgers-Camden",
+      "aliases": [
+        "Rutgers Camden"
+      ]
+    },
+    "rutgers-new-brunswick": {
+      "name": "Rutgers University-New Brunswick",
+      "short": "Rutgers-New Brunswick",
+      "aliases": [
+        "Rutgers NB"
+      ]
+    },
+    "rutgers-newark": {
+      "name": "Rutgers University-Newark",
+      "short": "Rutgers-Newark",
+      "aliases": [
+        "Rutgers Newark"
+      ]
+    },
+    "saintlouisu": {
+      "name": "Saint Louis University",
+      "short": "Saint Louis",
+      "aliases": [
+        "SLU"
+      ]
+    },
+    "santa-clara": {
+      "name": "Santa Clara University",
+      "short": "Santa Clara",
+      "aliases": [
+        "SCU"
+      ]
+    },
+    "sdsu": {
+      "name": "San Diego State University",
+      "short": "San Diego State",
+      "aliases": [
+        "SDSU"
+      ]
+    },
+    "smu": {
+      "name": "Southern Methodist University",
+      "short": "SMU",
+      "aliases": [
+        "SMU"
+      ]
+    },
+    "stanford": {
+      "name": "Stanford University",
+      "short": "Stanford",
+      "aliases": []
+    },
+    "stevens": {
+      "name": "Stevens Institute of Technology",
+      "short": "Stevens",
+      "aliases": [
+        "SIT"
+      ]
+    },
+    "stockton": {
+      "name": "Stockton University",
+      "short": "Stockton",
+      "aliases": []
+    },
+    "stony-brook": {
+      "name": "Stony Brook University",
+      "short": "Stony Brook",
+      "aliases": [
+        "SBU",
+        "SUNY Stony Brook"
+      ]
+    },
+    "suny-albany": {
+      "name": "University at Albany",
+      "short": "Albany",
+      "aliases": [
+        "SUNY Albany",
+        "Albany"
+      ]
+    },
+    "suny-esf": {
+      "name": "SUNY College of Environmental Science and Forestry",
+      "short": "SUNY ESF",
+      "aliases": [
+        "SUNY ESF",
+        "ESF"
+      ]
+    },
+    "swarthmore": {
+      "name": "Swarthmore College",
+      "short": "Swarthmore",
+      "aliases": []
+    },
+    "syracuse": {
+      "name": "Syracuse University",
+      "short": "Syracuse",
+      "aliases": []
+    },
+    "templeu": {
+      "name": "Temple University",
+      "short": "Temple",
+      "aliases": []
+    },
+    "tennessee-knoxville": {
+      "name": "University of Tennessee, Knoxville",
+      "short": "Tennessee",
+      "aliases": [
+        "UTK",
+        "Tennessee"
+      ]
+    },
+    "texas-am": {
+      "name": "Texas A&M University",
+      "short": "Texas A&M",
+      "aliases": [
+        "Texas A&M",
+        "A&M",
+        "TAMU"
+      ]
+    },
+    "texas-tech": {
+      "name": "Texas Tech University",
+      "short": "Texas Tech",
+      "aliases": [
+        "TTU"
+      ]
+    },
+    "texaschristian": {
+      "name": "Texas Christian University",
+      "short": "TCU",
+      "aliases": [
+        "TCU"
+      ]
+    },
+    "thomas-jefferson": {
+      "name": "Thomas Jefferson University",
+      "short": "Jefferson",
+      "aliases": [
+        "Jefferson",
+        "TJU"
+      ]
+    },
+    "tufts": {
+      "name": "Tufts University",
+      "short": "Tufts",
+      "aliases": []
+    },
+    "tulane": {
+      "name": "Tulane University",
+      "short": "Tulane",
+      "aliases": []
+    },
+    "ualabama": {
+      "name": "University of Alabama",
+      "short": "Alabama",
+      "aliases": []
+    },
+    "uarizona": {
+      "name": "University of Arizona",
+      "short": "Arizona",
+      "aliases": [
+        "UArizona",
+        "UA"
+      ]
+    },
+    "uarkansas": {
+      "name": "University of Arkansas",
+      "short": "Arkansas",
+      "aliases": []
+    },
+    "uc-davis": {
+      "name": "UC Davis",
+      "short": "UC Davis",
+      "aliases": [
+        "UCD",
+        "Davis",
+        "University of California, Davis"
+      ]
+    },
+    "uc-irvine": {
+      "name": "UC Irvine",
+      "short": "UC Irvine",
+      "aliases": [
+        "UCI",
+        "Irvine",
+        "University of California, Irvine"
+      ]
+    },
+    "uc-merced": {
+      "name": "UC Merced",
+      "short": "UC Merced",
+      "aliases": [
+        "UCM",
+        "Merced",
+        "University of California, Merced"
+      ]
+    },
+    "uc-riverside": {
+      "name": "UC Riverside",
+      "short": "UC Riverside",
+      "aliases": [
+        "UCR",
+        "Riverside",
+        "University of California, Riverside"
+      ]
+    },
+    "uc-san-diego": {
+      "name": "UC San Diego",
+      "short": "UC San Diego",
+      "aliases": [
+        "UCSD",
+        "University of California, San Diego"
+      ]
+    },
+    "uc-santa-cruz": {
+      "name": "UC Santa Cruz",
+      "short": "UC Santa Cruz",
+      "aliases": [
+        "UCSC",
+        "University of California, Santa Cruz"
+      ]
+    },
+    "ucentralflorida": {
+      "name": "University of Central Florida",
+      "short": "Central Florida",
+      "aliases": [
+        "UCF"
+      ]
+    },
+    "uchicago": {
+      "name": "University of Chicago",
+      "short": "UChicago",
+      "aliases": [
+        "UChicago"
+      ]
+    },
+    "ucincinnati": {
+      "name": "University of Cincinnati",
+      "short": "Cincinnati",
+      "aliases": [
+        "UC",
+        "Cincinnati"
+      ]
+    },
+    "ucla": {
+      "name": "UCLA",
+      "short": "UCLA",
+      "aliases": [
+        "University of California, Los Angeles",
+        "Los Angeles"
+      ]
+    },
+    "uconn": {
+      "name": "University of Connecticut",
+      "short": "UConn",
+      "aliases": [
+        "UConn"
+      ]
+    },
+    "ucsb": {
+      "name": "UC Santa Barbara",
+      "short": "UC Santa Barbara",
+      "aliases": [
+        "UCSB",
+        "University of California, Santa Barbara"
+      ]
+    },
+    "udayton": {
+      "name": "University of Dayton",
+      "short": "Dayton",
+      "aliases": [
+        "UD",
+        "Dayton"
+      ]
+    },
+    "udelaware": {
+      "name": "University of Delaware",
+      "short": "Delaware",
+      "aliases": [
+        "UDel"
+      ]
+    },
+    "udenver": {
+      "name": "University of Denver",
+      "short": "Denver",
+      "aliases": [
+        "DU"
+      ]
+    },
+    "uf": {
+      "name": "University of Florida",
+      "short": "Florida",
+      "aliases": [
+        "UF"
+      ]
+    },
+    "uga": {
+      "name": "University of Georgia",
+      "short": "Georgia",
+      "aliases": [
+        "UGA"
+      ]
+    },
+    "uhouston": {
+      "name": "University of Houston",
+      "short": "Houston",
+      "aliases": [
+        "UH",
+        "Houston"
+      ]
+    },
+    "uic": {
+      "name": "University of Illinois Chicago",
+      "short": "UIC",
+      "aliases": [
+        "UIC"
+      ]
+    },
+    "uidaho": {
+      "name": "University of Idaho",
+      "short": "Idaho",
+      "aliases": [
+        "Idaho"
+      ]
+    },
+    "uiuc": {
+      "name": "University of Illinois Urbana-Champaign",
+      "short": "Illinois",
+      "aliases": [
+        "UIUC",
+        "Illinois"
+      ]
+    },
+    "ukansas": {
+      "name": "University of Kansas",
+      "short": "Kansas",
+      "aliases": [
+        "KU",
+        "Kansas"
+      ]
+    },
+    "ukentucky": {
+      "name": "University of Kentucky",
+      "short": "Kentucky",
+      "aliases": [
+        "UK",
+        "Kentucky"
+      ]
+    },
+    "ulouisville": {
+      "name": "University of Louisville",
+      "short": "Louisville",
+      "aliases": [
+        "UofL",
+        "Louisville"
+      ]
+    },
+    "umass-amherst": {
+      "name": "University of Massachusetts Amherst",
+      "short": "UMass Amherst",
+      "aliases": [
+        "UMass",
+        "UMass Amherst"
+      ]
+    },
+    "umass-lowell": {
+      "name": "University of Massachusetts Lowell",
+      "short": "UMass Lowell",
+      "aliases": [
+        "UMass Lowell"
+      ]
+    },
+    "umbc": {
+      "name": "University of Maryland, Baltimore County",
+      "short": "UMBC",
+      "aliases": [
+        "UMBC"
+      ]
+    },
+    "umich": {
+      "name": "University of Michigan",
+      "short": "Michigan",
+      "aliases": [
+        "Michigan",
+        "UMich"
+      ]
+    },
+    "unc": {
+      "name": "University of North Carolina at Chapel Hill",
+      "short": "UNC Chapel Hill",
+      "aliases": [
+        "UNC",
+        "Chapel Hill"
+      ]
+    },
+    "unc-wilmington": {
+      "name": "University of North Carolina Wilmington",
+      "short": "UNC Wilmington",
+      "aliases": [
+        "UNCW"
+      ]
+    },
+    "unebraska-lincoln": {
+      "name": "University of Nebraska, Lincoln",
+      "short": "Nebraska",
+      "aliases": [
+        "UNL",
+        "Nebraska"
+      ]
+    },
+    "unevada-reno": {
+      "name": "University of Nevada, Reno",
+      "short": "Nevada",
+      "aliases": [
+        "UNR",
+        "Nevada"
+      ]
+    },
+    "unewhampshire": {
+      "name": "University of New Hampshire",
+      "short": "New Hampshire",
+      "aliases": [
+        "UNH"
+      ]
+    },
+    "university-maryland-college-park": {
+      "name": "University of Maryland",
+      "short": "Maryland",
+      "aliases": [
+        "Maryland",
+        "UMD"
+      ]
+    },
+    "uofiowa": {
+      "name": "University of Iowa",
+      "short": "Iowa",
+      "aliases": [
+        "Iowa"
+      ]
+    },
+    "uofminnesota-twin-cities": {
+      "name": "University of Minnesota Twin Cities",
+      "short": "Minnesota",
+      "aliases": [
+        "Minnesota",
+        "UMN"
+      ]
+    },
+    "uoklahoma": {
+      "name": "University of Oklahoma",
+      "short": "Oklahoma",
+      "aliases": [
+        "OU",
+        "Oklahoma"
+      ]
+    },
+    "uoregon": {
+      "name": "University of Oregon",
+      "short": "Oregon",
+      "aliases": []
+    },
+    "upacific": {
+      "name": "University of the Pacific",
+      "short": "Pacific",
+      "aliases": [
+        "Pacific"
+      ]
+    },
+    "upenn": {
+      "name": "University of Pennsylvania",
+      "short": "Penn",
+      "aliases": [
+        "Penn",
+        "UPenn"
+      ]
+    },
+    "urhodeisland": {
+      "name": "University of Rhode Island",
+      "short": "Rhode Island",
+      "aliases": [
+        "URI"
+      ]
+    },
+    "urichmond": {
+      "name": "University of Richmond",
+      "short": "Richmond",
+      "aliases": []
+    },
+    "usandiego": {
+      "name": "University of San Diego",
+      "short": "San Diego",
+      "aliases": []
+    },
+    "usanfrancisco": {
+      "name": "University of San Francisco",
+      "short": "San Francisco",
+      "aliases": [
+        "USF"
+      ]
+    },
+    "usc": {
+      "name": "University of Southern California",
+      "short": "USC",
+      "aliases": [
+        "USC"
+      ]
+    },
+    "usf": {
+      "name": "University of South Florida",
+      "short": "South Florida",
+      "aliases": [
+        "USF",
+        "South Florida"
+      ]
+    },
+    "usma-west-point": {
+      "name": "USMA West Point",
+      "short": "West Point",
+      "aliases": [
+        "West Point",
+        "Army",
+        "USMA",
+        "United States Military Academy at West Point"
+      ]
+    },
+    "ut-austin": {
+      "name": "University of Texas at Austin",
+      "short": "UT Austin",
+      "aliases": [
+        "UT Austin",
+        "Texas",
+        "UT"
+      ]
+    },
+    "ut-dallas": {
+      "name": "University of Texas at Dallas",
+      "short": "UT Dallas",
+      "aliases": [
+        "UT Dallas",
+        "UTD"
+      ]
+    },
+    "uutah": {
+      "name": "University of Utah",
+      "short": "Utah",
+      "aliases": [
+        "Utah"
+      ]
+    },
+    "uva": {
+      "name": "University of Virginia",
+      "short": "Virginia",
+      "aliases": [
+        "UVA",
+        "Virginia"
+      ]
+    },
+    "uvermont": {
+      "name": "University of Vermont",
+      "short": "Vermont",
+      "aliases": [
+        "UVM"
+      ]
+    },
+    "valparaiso": {
+      "name": "Valparaiso University",
+      "short": "Valparaiso",
+      "aliases": []
+    },
+    "vanderbilt": {
+      "name": "Vanderbilt University",
+      "short": "Vanderbilt",
+      "aliases": [
+        "Vandy"
+      ]
+    },
+    "vassar": {
+      "name": "Vassar College",
+      "short": "Vassar",
+      "aliases": []
+    },
+    "villanova": {
+      "name": "Villanova University",
+      "short": "Villanova",
+      "aliases": [
+        "Nova"
+      ]
+    },
+    "virginia-tech": {
+      "name": "Virginia Tech",
+      "short": "Virginia Tech",
+      "aliases": [
+        "Virginia Polytechnic Institute and State University",
+        "VT",
+        "VPI"
+      ]
+    },
+    "virginiacommonwealth": {
+      "name": "Virginia Commonwealth University",
+      "short": "VCU",
+      "aliases": [
+        "VCU"
+      ]
+    },
+    "wake-forest": {
+      "name": "Wake Forest University",
+      "short": "Wake Forest",
+      "aliases": [
+        "Wake"
+      ]
+    },
+    "washington-and-lee": {
+      "name": "Washington and Lee University",
+      "short": "Washington and Lee",
+      "aliases": [
+        "W&L"
+      ]
+    },
+    "washington-seattle": {
+      "name": "University of Washington",
+      "short": "Washington",
+      "aliases": [
+        "UW",
+        "Washington"
+      ]
+    },
+    "washington-stateu": {
+      "name": "Washington State University",
+      "short": "Washington State",
+      "aliases": [
+        "WSU"
+      ]
+    },
+    "washu": {
+      "name": "Washington University in St. Louis",
+      "short": "WashU",
+      "aliases": [
+        "WashU",
+        "WUSTL"
+      ]
+    },
+    "wayne-state": {
+      "name": "Wayne State University",
+      "short": "Wayne State",
+      "aliases": []
+    },
+    "wellesley": {
+      "name": "Wellesley College",
+      "short": "Wellesley",
+      "aliases": []
+    },
+    "wesleyan": {
+      "name": "Wesleyan University",
+      "short": "Wesleyan",
+      "aliases": []
+    },
+    "william-mary": {
+      "name": "William & Mary",
+      "short": "William & Mary",
+      "aliases": [
+        "W&M",
+        "William and Mary"
+      ]
+    },
+    "williams": {
+      "name": "Williams College",
+      "short": "Williams",
+      "aliases": []
+    },
+    "wisconsin-madison": {
+      "name": "University of Wisconsin-Madison",
+      "short": "Wisconsin",
+      "aliases": [
+        "UW-Madison",
+        "Wisconsin"
+      ]
+    },
+    "wpi": {
+      "name": "Worcester Polytechnic Institute",
+      "short": "WPI",
+      "aliases": [
+        "WPI"
+      ]
+    },
+    "yale": {
+      "name": "Yale University",
+      "short": "Yale",
+      "aliases": []
+    },
+    "yeshiva": {
+      "name": "Yeshiva University",
+      "short": "Yeshiva",
+      "aliases": []
+    }
+  }
+}
