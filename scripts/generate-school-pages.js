@@ -50,6 +50,7 @@ function pageHtml(slug, name, description) {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="/favicon.png">
   <title>${name} Admissions Data — CommonDataSets</title>
   <meta name="description" content="${description}">
   <link rel="canonical" href="https://commondatasets.com/schools/${slug}/">
@@ -117,6 +118,30 @@ function sitemapXml(slugs) {
     <loc>https://commondatasets.com/chanceme/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://commondatasets.com/info/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://commondatasets.com/contact/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://commondatasets.com/privacy/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+
+  <url>
+    <loc>https://commondatasets.com/terms/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
   </url>
 ${schoolUrls}
 </urlset>
