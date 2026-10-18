@@ -377,6 +377,57 @@
 /* Two stacked score bars (one per school) inside a single row */
 .cmp-score-row { align-items: flex-start; }
 
+/* Faint line between Composite / Reading & Writing / Math (and the ACT
+   rows), so each group of stacked bars reads as one unit. */
+.cmp-score-row + .cmp-score-row {
+    border-top: 1px solid #ececec;
+    padding-top: 14px;
+}
+
+/* The Academic Profile's color key, centered above both columns. */
+.cmp-legend.cmp-legend-section {
+    justify-content: center;
+    margin: 0 0 20px;
+}
+
+/* "Not reported by <school>" under the GPA chart, in the school's color. */
+.cmp-gpa-na { margin: 10px 0 0; text-align: center; }
+.cmp-gpa-na-name { color: #000; font-size: 0.95em; }
+
+/* What Matters in the Decision: each school's meters sit in a fixed-width
+   column so the school header above lines up with them. */
+.cmp-factor-col {
+    width: 84px;
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.cmp-factor-head { padding: 0 0 8px; }
+
+/* Header cells stretch to the tallest one, so every school's colored line
+   lines up even when one name wraps to two lines. Dot and name sit at the
+   top, the dot level with the name's first line, like the table headers. */
+.cmp-factor-head .cmp-factor-meters { align-items: stretch; }
+
+.cmp-factor-col-head {
+    align-items: flex-start;
+    gap: 6px;
+    padding-bottom: 6px;
+    border-bottom: 3px solid transparent;
+    font-size: 0.95em;
+    line-height: 1.2;
+    text-align: left;
+    color: #000;
+}
+
+.cmp-factor-col-head .cmp-legend-dot {
+    width: 9px;
+    height: 9px;
+    flex: none;
+    margin-top: 0.3em; /* level with the name's first line */
+}
+
 .cmp-score-bars {
     flex: 1;
     display: flex;
@@ -405,7 +456,12 @@
 
 @media (max-width: 560px) {
     .factor-row { flex-wrap: wrap; gap: 6px; }
-    .cmp-factor-meters { gap: 14px; }
+    .cmp-factor-meters { gap: 8px; }
+    .cmp-factor-col { width: 68px; }
+    .cmp-factor-head .factor-name { display: none; }
+    /* Dots always on their own line under the name, so every row lines up
+       under the school headers. */
+    .factor-row:not(.cmp-factor-head) .factor-name { flex-basis: 100%; }
 }
 
 /* Below this the picker + its mirrored gutter leave too little for the

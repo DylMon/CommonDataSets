@@ -32,7 +32,7 @@
     <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="stylesheet" href="/css/base.css?v=19">
     <link rel="stylesheet" href="/css/school-template.css?v=6">
-    <link rel="stylesheet" href="/css/compare.css?v=6">
+    <link rel="stylesheet" href="/css/compare.css?v=10">
     <script src="/js/scorecard-merge.js?v=6"></script>
     <script src="/js/header.js?v=6" defer></script>
     <script src="/js/header-search.js?v=1" defer></script>
@@ -76,7 +76,7 @@
     </div>
 
     <script type="module">
-        import { renderGpaComparisonChart } from '/js/charts.js?v=6';
+        import { renderGpaComparisonChart } from '/js/charts.js?v=7';
         import { loadOutsideGpa, withOutsideGpa } from '/js/outside-gpa.js?v=1';
         import { loadOutsideCosts, withOutsideCosts, isOutsideCost } from '/js/outside-costs.js?v=1';
         import { loadOutsideTests, withOutsideTests, isOutsideTest } from '/js/outside-tests.js?v=1';
@@ -501,8 +501,8 @@
         // two or more slots are filled. The headline six-stat summary lives
         // in the picker cards on the left.
 
-        function legendHtml(schools) {
-            return `<div class="cmp-legend">${schools.map(({ school, color }) =>
+        function legendHtml(schools, extraClass = '') {
+            return `<div class="cmp-legend ${extraClass}">${schools.map(({ school, color }) =>
                 `<span class="cmp-legend-item"><span class="cmp-legend-dot" style="background:${color}"></span>${shortName(school)}</span>`
             ).join('')}</div>`;
         }
@@ -552,11 +552,19 @@
                 scoreCompareRow('English', schools, 'act_english_25', 'act_english_75', 1, 36),
             ].join('');
 
-            const gpaBody = schools.some(({ school }) => hasGpaData(school))
+            // Schools without a GPA distribution get a "Not reported" line in
+            // their color under the chart, like the score bars.
+            const gpaMissing = schools.filter(({ school }) => !hasGpaData(school))
+                .map(({ school, color }) => `<p class="cmp-gpa-na"><span class="score-na-text" style="color:${color}">Not reported</span> <span class="cmp-gpa-na-name">by ${shortName(school)}</span></p>`)
+                .join('');
+            const gpaBody = (schools.some(({ school }) => hasGpaData(school))
                 ? `<div class="gpa-chart-wrap" style="height:300px"><canvas id="cmp-gpa-chart"></canvas></div>`
-                : noDataHtml('GPA distribution not provided by any selected institution.');
+                : '') + gpaMissing;
 
+            // One color key for the whole section (score bars and GPA chart),
+            // centered above both columns.
             return sectionHtml('Academic Profile', `
+                ${legendHtml(schools, 'cmp-legend-section')}
                 <div class="cols-2">
                     <div>
                         <h3 class="subsection-title">SAT - 25th–75th</h3>
@@ -621,17 +629,27 @@
                 `<span>${[1, 2, 3, 4].map(d => `<span class="factor-dot${d <= n ? ' on' : ''}"></span>`).join('')} ${CMP_FACTOR_SCORE_LABEL[n]}</span>`
             ).join('');
 
+            // School header over the meter columns: dot, name and a bar in each
+            // school's color, like the column headers on the tables.
+            const head = `
+                <div class="factor-row cmp-factor-head">
+                    <span class="factor-name"></span>
+                    <div class="cmp-factor-meters">
+                        ${schools.map(({ school, color }) => `<span class="cmp-factor-col cmp-factor-col-head" style="border-bottom-color:${color}"><span class="cmp-legend-dot" style="background:${color}"></span><span>${shortName(school)}</span></span>`).join('')}
+                    </div>
+                </div>`;
+
             const list = rows.map(r => `
                 <div class="factor-row">
                     <span class="factor-name">${r.label}</span>
                     <div class="cmp-factor-meters">
-                        ${r.cells.map(c => cmpFactorMeter(c.score, c.color, c.name, r.label)).join('')}
+                        ${r.cells.map(c => `<span class="cmp-factor-col">${cmpFactorMeter(c.score, c.color, c.name, r.label)}</span>`).join('')}
                     </div>
                 </div>`).join('');
 
             return sectionHtml('What Matters in the Decision', `
                 <div class="factor-legend">${scaleLegend}</div>
-                <div class="factor-list">${list}</div>`);
+                <div class="factor-list">${head}${list}</div>`);
         }
 
         function totalCOA(s, variant) {
@@ -760,9 +778,10 @@
 
             const gpaCanvas = document.getElementById('cmp-gpa-chart');
             if (gpaCanvas) {
+                // The section's own key above names the colors, so no chart legend.
                 renderGpaComparisonChart(gpaCanvas, schools.map(({ school, color }) => ({
                     distribution: school.gpa_distribution, color, name: shortName(school),
-                })));
+                })), { legend: false });
             }
             applyCollapsedState(container);
         }

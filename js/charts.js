@@ -114,7 +114,9 @@ export function renderGpaHistogram(canvas, distribution, brandColor) {
 // categorical/identity comparison, not a magnitude ramp), with a legend
 // since there are now two series sharing the same axis. `entries` is
 // [{ distribution, color, name }, { distribution, color, name }].
-export function renderGpaComparisonChart(canvas, entries) {
+// options.legend = false hides the chart's own legend (Compare shows one
+// key for the whole section instead).
+export function renderGpaComparisonChart(canvas, entries, { legend = true } = {}) {
   if (!canvas) return false;
 
   entries = entries.map(e => ({ ...e, distribution: normalizeGpaDistribution(e.distribution) }));
@@ -140,7 +142,7 @@ export function renderGpaComparisonChart(canvas, entries) {
       font: { family: 'Public Sans' },
       plugins: {
         legend: {
-          display: true,
+          display: legend,
           position: 'top',
           labels: { font: { family: 'Public Sans', size: 12 }, boxWidth: 12, usePointStyle: true, pointStyle: 'circle' },
         },
