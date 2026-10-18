@@ -2608,23 +2608,43 @@ body.page-home .hero-content .page-intro-desc {
     font-style: italic;
 }
 
-/* Floating back button (mobile only) */
+/* Floating back button (mobile only) — same icon-only circle sizing as
+   .print-fab below (48px), but inverted: solid orange fill by default
+   (it's the only floating circle on a school page without a labeled
+   sibling button next to it to lean on for visual weight, so it reads
+   better solid than as a second outline circle) and drops back to the
+   outline treatment on hover/focus. Hardcoded #ed6d0b for the same
+   reason as .print-fab: this is site chrome, not school content, so it
+   ignores the page's --brand. */
 .floating-back {
     display: none;
+    align-items: center;
+    justify-content: center;
     position: fixed;
-    bottom: 0;
-    left: 0;
-    background: rgba(0,0,0,0.82);
-    color: white;
-    padding: 14px 22px;
-    text-decoration: none;
-    font-family: 'Public Sans', sans-serif;
-    font-size: 16px;
-    letter-spacing: 0.04em;
+    bottom: 20px;
+    left: 20px;
+    width: 48px;
+    height: 48px;
+    background: #ed6d0b;
+    border: 1.5px solid #ed6d0b;
+    border-radius: 50%;
+    color: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.18);
     z-index: 9999;
-    transition: background 0.15s;
+    transition: background-color 0.15s, color 0.15s;
 }
-.floating-back:active { background: #000; }
+
+.floating-back:hover,
+.floating-back:focus-visible {
+    background: #fff;
+    color: #ed6d0b;
+}
+
+.floating-back svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
 
 /* Print button (school pages) — icon-only outline circle, sized to sit
    beside .hero-cta-btn (the admissions CTA) inside .admissions-cta-strip.
@@ -3105,5 +3125,5 @@ body.page-home .hero-content .page-intro-desc {
 }
 
 @media (max-width: 768px) {
-    .floating-back { display: block; }
+    .floating-back { display: flex; }
 }

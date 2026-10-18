@@ -1222,6 +1222,13 @@ abbr.short-label[title] {
   .hero-logo { width: 28px; height: 28px; }
   .hero-name { font-size: 1.25em; }
   .hero-overlay { padding: 16px; gap: 10px; }
+  /* "Official Site →" is one phrase — nowrap keeps it from splitting
+     mid-link ("Official" / "Site →") when .hero-meta wraps here; it just
+     drops to its own full line instead, same as any other wrapped word
+     would. Desktop never needs this (the meta line has room), so it's
+     scoped to this tier only rather than touching .hero-site-link's
+     base rule. */
+  .hero-site-link { white-space: nowrap; }
   .stat-chip { padding: 14px 16px; }
   .stat-chip-val { font-size: 1.4em; }
   .stat-divider { display: none; }
