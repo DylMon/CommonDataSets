@@ -1053,7 +1053,8 @@ if (typeof document !== 'undefined') {
     function addSchool(slug) {
         if (state.targetSchools.some(t => t.slug === slug)) return;
         const school = allSchools.find(s => s.slug === slug);
-        state.targetSchools.push({ slug, plan: schoolPlanOptions(school)[0].value, legacy: false, competitiveMajor: false });
+        // New schools start on Regular Decision; early rounds are opt-in.
+        state.targetSchools.push({ slug, plan: 'rd', legacy: false, competitiveMajor: false });
         renderTargetSchools();
         saveDraft();
     }
@@ -1207,7 +1208,7 @@ if (typeof document !== 'undefined') {
         // were corrected since); fall back to that school's default plan.
         for (const t of state.targetSchools) {
             const school = allSchools.find(s => s.slug === t.slug);
-            if (school && !schoolPlanOptions(school).some(o => o.value === t.plan)) t.plan = schoolPlanOptions(school)[0].value;
+            if (school && !schoolPlanOptions(school).some(o => o.value === t.plan)) t.plan = 'rd';
         }
         toggleStateField();
         toggleCourseTrackFields();
