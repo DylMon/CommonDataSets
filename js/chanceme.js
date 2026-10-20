@@ -366,6 +366,9 @@ export function scorePercentile(score, p25, p75, minSd = 0) {
 }
 
 const MIN_SAT_SD = 40, MIN_ACT_SD = 1.2;
+// Test-score percentile for a student who submits no score to a school that
+// considers scores (test-optional): slightly below the school's middle.
+const NO_TEST_PCT = 40;
 
 function combinedTestPercentile(school, profile) {
     const satPct = scorePercentile(profile.sat, school.sat_composite_25, school.sat_composite_75, MIN_SAT_SD);
@@ -399,9 +402,12 @@ function genericTestPercentile(school, profile) {
 // ── Class rank ───────────────────────────────────────────────────────────
 // CDS class-rank buckets are cumulative-from-the-top (top10 ⊆ top25 ⊆ top50)
 // and top50/bottom50 are complementary halves. We convert them into five
-// mutually exclusive bands and estimate the user's percentile: count bands strictly worse than the user's, plus half
-// of their own band. userTopPct is the midpoint of the slider band the user
-// picked (e.g. "Top 5-10%" -> 7.5).
+// mutually exclusive bands and estimate the user's percentile: count bands
+// strictly worse than the user's, plus the part of their own band they're
+// ahead of, assuming students are spread evenly within a band (the same
+// assumption medianRankTopPct uses, so the typical admit lands at 50).
+// userTopPct is the midpoint of the slider band the user picked (e.g.
+// "Top 5-10%" -> 7.5).
 export function classRankPercentile(userTopPct, buckets) {
     if (userTopPct == null || !buckets) return null;
     const { top10, top25, top50, bottom50, bottom25 } = buckets;
@@ -417,12 +423,12 @@ export function classRankPercentile(userTopPct, buckets) {
     const total = bands.reduce((s, b) => s + b.frac, 0);
     if (total <= 0) return null;
 
-    let worse = 0, own = 0;
+    let beaten = 0;
     for (const b of bands) {
-        if (userTopPct <= b.lo) worse += b.frac;
-        else if (userTopPct > b.lo && userTopPct <= b.hi) own += b.frac;
+        if (userTopPct <= b.lo) beaten += b.frac;
+        else if (userTopPct < b.hi) beaten += b.frac * (b.hi - userTopPct) / (b.hi - b.lo);
     }
-    return clamp((worse + own / 2) / total * 100, 1, 99);
+    return clamp(beaten / total * 100, 1, 99);
 }
 
 // No official IB-to-AP concordance table exists; this is a disclosed, commonly-
@@ -457,8 +463,8 @@ export function academicIndex(school, profile) {
     // Test-blind schools don't look at scores, so they're left out entirely.
     // (A required test left blank never gets this far: see missingRequiredTest.)
     const testBlind = school._testPolicy === 'blind';
+    const testSubmitted = profile.sat != null || profile.act != null;
     const testSpecific = testBlind ? null : combinedTestPercentile(school, profile);
-    const testPct = testBlind ? null : testSpecific ?? genericTestPercentile(school, profile);
     const testSourced = testSpecific != null;
 
     const classRankPct = classRankPercentile(profile.classRankTopPct, school.class_rank);
@@ -470,14 +476,24 @@ export function academicIndex(school, profile) {
     // rank can read as below average there.
     const parts = [];
     if (gpaPct != null) parts.push({ v: gpaPct, w: 0.32 });
-    if (testPct != null) parts.push({ v: testPct, w: 0.30 });
     if (classRankPct != null) parts.push({ v: classRankPct, w: 0.10 });
     parts.push({ v: rigor, w: 0.18 });
+    const average = list => list.reduce((s, p) => s + p.v * p.w, 0) / list.reduce((s, p) => s + p.w, 0);
 
-    const totalW = parts.reduce((s, p) => s + p.w, 0);
-    const value = clamp(parts.reduce((s, p) => s + p.v * p.w, 0) / totalW, 0, 100);
+    // At a test-optional school, not submitting counts as slightly below the
+    // school's middle (NO_TEST_PCT) rather than being left out: left out, any
+    // score below a student's grades and courses would score worse than no
+    // score, and non-submitters are admitted at lower rates at many of these
+    // schools. Capped at the rest of the student's academics, so not
+    // submitting never reads as stronger than their own record.
+    const testPct = testBlind ? null
+        : !testSubmitted ? Math.min(NO_TEST_PCT, average(parts))
+        : testSpecific ?? genericTestPercentile(school, profile);
+    if (testPct != null) parts.push({ v: testPct, w: 0.30 });
 
-    return { value, level, gpaPct, testPct, testSourced, testBlind, classRankPct, rigor };
+    const value = clamp(average(parts), 0, 100);
+
+    return { value, level, gpaPct, testPct, testSourced, testBlind, testSubmitted, classRankPct, rigor };
 }
 
 // ── Holistic Index (self-rated: Activities, Awards, Essay, LOR, Interview) ──
@@ -772,7 +788,34 @@ function academicFloorSteps(academicGap, baseRate) {
 
 // ── Probability + tier ──────────────────────────────────────────────────
 
+// Guards, so a better-than-typical answer never lowers the estimate:
+// - a class rank at or above the school's typical admit's never does worse
+//   than leaving rank blank;
+// - at a test-optional school, a score at or above the school's middle never
+//   does worse than not submitting.
+// Rank and scores are only parts of the academic score, so a strong
+// student's other parts can sit above where even a good rank or score lands
+// among admits, which would otherwise pull the average down.
 export function estimateProbability(school, profile, selection = {}) {
+    const result = estimateProbabilityRaw(school, profile, selection);
+    if (result?.p == null) return result;
+    const typicalRank = medianRankTopPct(school.class_rank);
+    const rankGuard = profile.classRankTopPct != null && typicalRank != null && profile.classRankTopPct <= typicalRank;
+    const scorePct = combinedTestPercentile(school, profile);
+    const testGuard = school._testPolicy !== 'required' && school._testPolicy !== 'blind' && scorePct != null && scorePct >= 50;
+    const alternatives = [];
+    if (rankGuard) alternatives.push({ ...profile, classRankTopPct: null });
+    if (testGuard) alternatives.push({ ...profile, sat: null, act: null });
+    if (rankGuard && testGuard) alternatives.push({ ...profile, classRankTopPct: null, sat: null, act: null });
+    let best = result.p;
+    for (const alt of alternatives) {
+        const r = estimateProbabilityRaw(school, alt, selection);
+        if (r?.p != null && r.p > best) best = r.p;
+    }
+    return best > result.p ? { ...result, p: best } : result;
+}
+
+function estimateProbabilityRaw(school, profile, selection = {}) {
     if (missingRequiredTest(school, profile)) return { needsTest: true };
     if (missingRequiredInterview(school, profile)) return { needsInterview: true };
     const { rate: rawPlanRate, sourced: planSourced } = planBaseRate(school, selection.plan ?? 'rd');
@@ -1154,6 +1197,7 @@ if (typeof document !== 'undefined') {
                     ${lvl ? `<div class="cm-detail-row"><span>Typical admit at this school's level</span><span>${lvl.uw.toFixed(2)} unweighted / ${lvl.w.toFixed(2)} weighted (5.0 scale)</span></div>` : ''}
                     ${result.ai.gpaPct != null ? `<div class="cm-detail-row"><span>GPA percentile</span><span>${ordinal(result.ai.gpaPct)}</span></div>` : ''}
                     ${result.ai.testBlind ? `<div class="cm-detail-row"><span>Test scores</span><span>not used - this school is test-blind</span></div>`
+                        : !result.ai.testSubmitted ? `<div class="cm-detail-row"><span>Test scores</span><span>not submitted (counted as ${ordinal(result.ai.testPct)} percentile)</span></div>`
                         : result.ai.testPct != null ? `<div class="cm-detail-row"><span>Test-score percentile</span><span>${ordinal(result.ai.testPct)}${result.ai.testSourced ? '' : " (estimated - school doesn't report a test-score range)"}</span></div>` : ''}
                     ${result.hi.interviewWeight > 0 ? `<div class="cm-detail-row"><span>Interview weight at this school</span><span>${Math.round(result.hi.interviewWeight * 100)}% of Holistic Index</span></div>` : ''}
                     ${result.modifier !== 0 ? `<div class="cm-detail-row"><span>Residency / legacy / first-gen / international-aid adjustments</span><span>${result.modifier > 0 ? '+' : ''}${result.modifier.toFixed(1)}</span></div>` : ''}
