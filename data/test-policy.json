@@ -605,9 +605,9 @@
     },
     "stockton": {
       "name": "Stockton University",
-      "sat": null,
-      "act": null,
-      "source": null
+      "sat": "optional",
+      "act": "optional",
+      "source": "https://www.stockton.edu/admissions/test-optional.html"
     },
     "stony-brook": {
       "name": "Stony Brook University",
