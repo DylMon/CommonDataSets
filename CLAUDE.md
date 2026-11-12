@@ -1,0 +1,42 @@
+# CommonDataSets
+
+Static site publishing college admissions data (Common Data Set + College Scorecard) for ~165 schools. No frontend framework, no build step — plain HTML/CSS/vanilla JS modules served as static files.
+
+## Architecture
+
+- **No database.** Supabase was used historically and has been fully phased out — dependency/SQL files/scripts still reference it but nothing live uses it. Don't reintroduce it or trust old comments that mention it as "the backend."
+- All data lives in static JSON under `data/`, fetched client-side with `fetch('/data/...')`. Key files: `data/schools-{year}.json` (main per-school dataset the frontend reads), `data/scorecard-{year}.json` (College Scorecard data), `data/categories.json` and `data/us-news-ranking.json` (hand-maintained overlays merged in at build time).
+- `js/scorecard-merge.js` merges CDS + Scorecard data client-side; CDS wins on field collisions.
+- `supabase/*.sql` is legacy schema, not applied to anything live.
+
+## Data pipeline (local scripts, not run in CI except CDS parsing)
+
+1. `scripts/parse-cds.py` / `parse-cds-batch.py` — Claude-assisted extraction of CDS PDFs/xlsx into `data/cds/{year}/{slug}.json`. Runs via `.github/workflows/parse-cds*.yml` on the `cds-data-staging` branch only (never main).
+2. `scripts/build-cds-json.py` — aggregates per-school CDS JSON + the hand-maintained overlays into `data/cds-{year}.json` and `data/schools-{year}.json` (default year `2025-2026` — don't assume `2023-24`, that was the old pinned year and is now stale except where it's a school's genuine last-filed year under `data/cds/2023-2024/`).
+3. `scripts/fetch-scorecard-2025-2026.py` — pulls College Scorecard API data into `data/scorecard-{year}.json` independently.
+4. `node scripts/generate-school-pages.js` (`npm run generate`) — reads `data/schools-{year}.json` directly (no Supabase, no hardcoded name map) and writes `schools/<slug>/index.html` + `sitemap.xml` for any school that doesn't already have a page. Existing pages are never overwritten.
+
+`npm run seed:cds` / `seed:scorecard` / `export` in package.json are the **old Supabase-era scripts** — don't use them; they're dead weight kept for reference pending removal.
+
+## Adding or updating a school
+
+1. Get the school's data into `data/schools-{year}.json` via the CDS/Scorecard pipeline above (not by hand-editing the JSON directly, unless just patching one field).
+2. Add an entry to `SCHOOL_META` in `js/school.js` (brand color + banner filename).
+3. Drop the logo at `images/logos/<slug>.png` (exact filename match, no code change needed) and the banner at `images/banners/<slug>.png`.
+4. Optionally add a per-school CSS override at `css/<slug>.css` if the default brand color isn't enough.
+5. Run `npm run generate` to create `schools/<slug>/index.html` and update `sitemap.xml`.
+6. Commit the new/changed files.
+
+School pages are directory-per-slug (`schools/<slug>/index.html`); old `schools/<slug>.html` files are redirect stubs only (see `scripts/migrate-clean-urls.js`) — don't edit those directly.
+
+## Testing & linting
+
+There is none configured — no test framework, no ESLint/Prettier config. Don't assume `npm test` or `npm run lint` exist.
+
+## Running locally
+
+No dev server script beyond `scripts/serve-local.py` (plain static file server, fixes `.js` MIME type on Windows). Otherwise just open the static files or serve the root with any static file server.
+
+## Deployment
+
+`CNAME` → `commondatasets.com`. No deploy workflow in CI — only the CDS-parsing workflows exist, and those run on a staging branch, not main. Assume deploys happen outside this repo's CI (e.g. manually or via host-level sync) unless told otherwise.
