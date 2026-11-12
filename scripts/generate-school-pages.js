@@ -21,11 +21,13 @@
 // updates, since nothing regenerates them otherwise).
 //
 // Run with --force to also refresh every already-existing page's title/
-// description/og/twitter tags from the current JSON data. A page is only
-// refreshed if its current description ends with the exact standard
-// closing clause (see STANDARD_CLOSING below) — pages with hand-edited
-// wording that doesn't match (e.g. Princeton's SAT range instead of an
-// average) are left untouched and reported instead.
+// description/og/twitter tags and static intro paragraph from the current
+// JSON data. A page's description is only recomputed if it ends with the
+// exact standard closing clause (see STANDARD_CLOSING below) — pages with
+// hand-edited wording that doesn't match (e.g. Princeton's SAT range
+// instead of an average) keep their existing description verbatim, but
+// still get the rest of the template refresh (including the new intro
+// paragraph).
 
 import { readFileSync, writeFileSync, existsSync, readdirSync, mkdirSync, statSync } from 'fs';
 import { join, dirname } from 'path';
@@ -58,6 +60,11 @@ function hasStandardDescriptionShape(html) {
   return parts[parts.length - 1] === STANDARD_CLOSING;
 }
 
+function extractDescription(html) {
+  const m = html.match(/<meta name="description" content="([^"]*)">/);
+  return m ? m[1] : null;
+}
+
 // Many existing pages use a short display name in the title (e.g. "MIT",
 // "UVA", "WashU") rather than the full official s.name from the JSON (e.g.
 // "Massachusetts Institute of Technology"). --force must refresh stats
@@ -78,7 +85,15 @@ function buildDescription(s) {
   return parts.join(' · ');
 }
 
-function pageHtml(slug, name, description) {
+// Static, human-visible SEO copy — js/school.js never touches this (see the
+// placement comment in pageHtml() below), so it's safe to hardcode here
+// rather than only existing after client-side render.
+function buildIntroSentence(s) {
+  const possessive = s.name.endsWith('s') ? `${s.name}'` : `${s.name}'s`;
+  return `Explore ${possessive} Common Data Set (CDS) data for ${s.data_year || '2025-26'}, including admissions statistics, tuition, demographics, and more.`;
+}
+
+function pageHtml(slug, name, description, introSentence) {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -116,6 +131,15 @@ function pageHtml(slug, name, description) {
   <div class="container">
     <div id="school-hero"></div>
     <div class="stats-strip" id="stats-strip"></div>
+    <!-- Static, hardcoded SEO/intro copy. js/school.js inserts the CTA/
+         year-bar/quick-facts strips via insertAdjacentHTML('afterend')
+         anchored at #stats-strip, which always lands them as the new
+         immediate next sibling — pushing this paragraph down past all of
+         them on every render. End result: hero -> stats -> those strips ->
+         this sentence -> #school-sections, without this element ever being
+         touched by JS. Do not move it inside #school-hero/#stats-strip/
+         #school-sections — those are wholesale innerHTML-replaced. -->
+    <p class="page-intro-desc school-intro-desc">${introSentence}</p>
     <div class="school-sections" id="school-sections">
       <p class="loading">Loading…</p>
     </div>
@@ -193,8 +217,8 @@ function main() {
 
   const created = [];
   const refreshed = [];
+  const refreshedKeepingCustomDescription = [];
   const skipped = [];
-  const skippedCustom = [];
 
   for (const s of schools) {
     const outDir = join(SCHOOLS_DIR, s.slug);
@@ -203,26 +227,31 @@ function main() {
     if (existsSync(outPath)) {
       if (!FORCE) { skipped.push(s.slug); continue; }
       const existingHtml = readFileSync(outPath, 'utf8');
-      if (!hasStandardDescriptionShape(existingHtml)) {
-        skippedCustom.push(s.slug);
-        continue;
-      }
       const displayName = extractDisplayName(existingHtml) ?? s.name;
-      const description = buildDescription({ ...s, name: displayName });
-      writeFileSync(outPath, pageHtml(s.slug, displayName, description), 'utf8');
-      refreshed.push(s.slug);
-      console.log(`  ~ schools/${s.slug}/index.html (refreshed)`);
+      const introSentence = buildIntroSentence({ ...s, name: displayName });
+      const isStandard = hasStandardDescriptionShape(existingHtml);
+      // Hand-edited description wording (e.g. Princeton's SAT range instead
+      // of an average) is preserved verbatim rather than recomputed — but
+      // the page is still rewritten so it picks up the new intro paragraph
+      // and any other template changes.
+      const description = isStandard
+        ? buildDescription({ ...s, name: displayName })
+        : extractDescription(existingHtml);
+      writeFileSync(outPath, pageHtml(s.slug, displayName, description, introSentence), 'utf8');
+      (isStandard ? refreshed : refreshedKeepingCustomDescription).push(s.slug);
+      console.log(`  ~ schools/${s.slug}/index.html (refreshed${isStandard ? '' : ', kept custom description'})`);
       continue;
     }
 
     mkdirSync(outDir, { recursive: true });
     const description = buildDescription(s);
-    writeFileSync(outPath, pageHtml(s.slug, s.name, description), 'utf8');
+    const introSentence = buildIntroSentence(s);
+    writeFileSync(outPath, pageHtml(s.slug, s.name, description, introSentence), 'utf8');
     created.push(s.slug);
     console.log(`  + schools/${s.slug}/index.html`);
   }
 
-  console.log(`\nCreated ${created.length} new page(s). Refreshed ${refreshed.length} existing page(s). Skipped ${skipped.length} already present (no --force). Skipped ${skippedCustom.length} with custom description wording: ${skippedCustom.join(', ')}`);
+  console.log(`\nCreated ${created.length} new page(s). Refreshed ${refreshed.length} existing page(s). Refreshed ${refreshedKeepingCustomDescription.length} keeping custom description wording: ${refreshedKeepingCustomDescription.join(', ')}. Skipped ${skipped.length} already present (no --force).`);
 
   // Sitemap covers every school currently on disk, not just the ones created this run.
   const allSlugs = [...existingSlugs, ...created].sort();

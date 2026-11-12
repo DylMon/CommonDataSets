@@ -35,6 +35,15 @@
   <div class="container">
     <div id="school-hero"></div>
     <div class="stats-strip" id="stats-strip"></div>
+    <!-- Static, hardcoded SEO/intro copy. js/school.js inserts the CTA/
+         year-bar/quick-facts strips via insertAdjacentHTML('afterend')
+         anchored at #stats-strip, which always lands them as the new
+         immediate next sibling — pushing this paragraph down past all of
+         them on every render. End result: hero -> stats -> those strips ->
+         this sentence -> #school-sections, without this element ever being
+         touched by JS. Do not move it inside #school-hero/#stats-strip/
+         #school-sections — those are wholesale innerHTML-replaced. -->
+    <p class="page-intro-desc school-intro-desc">Explore Howard University's Common Data Set (CDS) data for 2025-26, including admissions statistics, tuition, demographics, and more.</p>
     <div class="school-sections" id="school-sections">
       <p class="loading">Loading…</p>
     </div>

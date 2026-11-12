@@ -229,6 +229,17 @@
   margin-top: 30px;
 }
 
+/* Static intro sentence sitting between the quick-facts strip and
+   #school-sections (see the placement comment in generate-school-pages.js
+   pageHtml()). Reuses .page-intro-desc's type/color/max-width but needs
+   its own spacing since it isn't inside a top-of-page .page-intro wrapper
+   here. */
+.school-intro-desc {
+  margin: 32px auto 8px;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
 .stat-chip {
   display: flex;
   flex-direction: column;
