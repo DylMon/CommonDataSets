@@ -231,12 +231,17 @@
 
 /* Static intro sentence sitting between the quick-facts strip and
    #school-sections (see the placement comment in generate-school-pages.js
-   pageHtml()). Reuses .page-intro-desc's type/color/max-width but needs
-   its own spacing since it isn't inside a top-of-page .page-intro wrapper
-   here. */
+   pageHtml()). Reuses .page-intro-desc's type/color but overrides its
+   680px max-width to match #school-sections' 920px column below (same
+   24px side padding, so edges line up) — wide enough that the sentence
+   usually fits on one line on desktop. Explicitly centered since it isn't
+   inside a top-of-page .page-intro wrapper, so any wrapped lines on
+   narrow/mobile viewports stay centered rather than left-aligned. */
 .school-intro-desc {
+  max-width: 920px;
   margin: 32px auto 8px;
   padding: 0 24px;
+  text-align: center;
   box-sizing: border-box;
 }
 
