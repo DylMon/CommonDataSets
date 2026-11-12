@@ -16,8 +16,16 @@
 // that's already the site's live data source.
 //
 // Run:  node scripts/generate-school-pages.js
-// Only writes pages that don't already exist; existing pages (including the
-// original 33, which may have hand-tuned descriptions) are left untouched.
+// By default, only writes pages that don't already exist; existing pages
+// are left untouched (their baked-in stats go stale as the JSON data
+// updates, since nothing regenerates them otherwise).
+//
+// Run with --force to also refresh every already-existing page's title/
+// description/og/twitter tags from the current JSON data. A page is only
+// refreshed if its current description ends with the exact standard
+// closing clause (see STANDARD_CLOSING below) — pages with hand-edited
+// wording that doesn't match (e.g. Princeton's SAT range instead of an
+// average) are left untouched and reported instead.
 
 import { readFileSync, writeFileSync, existsSync, readdirSync, mkdirSync, statSync } from 'fs';
 import { join, dirname } from 'path';
@@ -31,8 +39,34 @@ function getYearArg() {
   return i === -1 ? '2025-2026' : process.argv[i + 1];
 }
 
+const FORCE = process.argv.includes('--force');
 const SCHOOLS_DATA_PATH = join(ROOT, 'data', `schools-${getYearArg()}.json`);
 const SCHOOLS_DIR = join(ROOT, 'schools');
+
+// The fixed closing clause every auto-generated description ends with,
+// regardless of which optional stats (acceptance rate/SAT/location) are
+// present. A page whose description doesn't end with this exact sentence
+// has hand-edited wording (e.g. Princeton's SAT range instead of average)
+// rather than just stale stats in the standard template, so --force must
+// never overwrite it.
+const STANDARD_CLOSING = 'SAT/ACT scores, GPA, tuition, and student demographics.';
+
+function hasStandardDescriptionShape(html) {
+  const m = html.match(/<meta name="description" content="([^"]*)">/);
+  if (!m) return false;
+  const parts = m[1].split(' · ');
+  return parts[parts.length - 1] === STANDARD_CLOSING;
+}
+
+// Many existing pages use a short display name in the title (e.g. "MIT",
+// "UVA", "WashU") rather than the full official s.name from the JSON (e.g.
+// "Massachusetts Institute of Technology"). --force must refresh stats
+// without clobbering that branding choice, so pull whatever name is
+// currently in the title and keep using it.
+function extractDisplayName(html) {
+  const m = html.match(/<title>(.*) Common Data Set & Admissions Data - CommonDataSets<\/title>/);
+  return m ? m[1] : null;
+}
 
 function buildDescription(s) {
   const parts = [`${s.name} Common Data Set (CDS) and admissions data for ${s.data_year || '2025-26'}`];
@@ -56,12 +90,12 @@ function pageHtml(slug, name, description) {
   <link rel="canonical" href="https://commondatasets.com/schools/${slug}/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="CommonDataSets">
-  <meta property="og:title" content="${name} Common Data Set & Admissions Data — CommonDataSets">
+  <meta property="og:title" content="${name} Common Data Set & Admissions Data - CommonDataSets">
   <meta property="og:description" content="${description}">
   <meta property="og:url" content="https://commondatasets.com/schools/${slug}/">
   <meta property="og:image" content="https://commondatasets.com/images/og-share.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="${name} Common Data Set & Admissions Data — CommonDataSets">
+  <meta name="twitter:title" content="${name} Common Data Set & Admissions Data - CommonDataSets">
   <meta name="twitter:description" content="${description}">
   <meta name="twitter:image" content="https://commondatasets.com/images/og-share.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -158,15 +192,29 @@ function main() {
   );
 
   const created = [];
+  const refreshed = [];
   const skipped = [];
+  const skippedCustom = [];
 
   for (const s of schools) {
     const outDir = join(SCHOOLS_DIR, s.slug);
     const outPath = join(outDir, 'index.html');
+
     if (existsSync(outPath)) {
-      skipped.push(s.slug);
+      if (!FORCE) { skipped.push(s.slug); continue; }
+      const existingHtml = readFileSync(outPath, 'utf8');
+      if (!hasStandardDescriptionShape(existingHtml)) {
+        skippedCustom.push(s.slug);
+        continue;
+      }
+      const displayName = extractDisplayName(existingHtml) ?? s.name;
+      const description = buildDescription({ ...s, name: displayName });
+      writeFileSync(outPath, pageHtml(s.slug, displayName, description), 'utf8');
+      refreshed.push(s.slug);
+      console.log(`  ~ schools/${s.slug}/index.html (refreshed)`);
       continue;
     }
+
     mkdirSync(outDir, { recursive: true });
     const description = buildDescription(s);
     writeFileSync(outPath, pageHtml(s.slug, s.name, description), 'utf8');
@@ -174,7 +222,7 @@ function main() {
     console.log(`  + schools/${s.slug}/index.html`);
   }
 
-  console.log(`\nCreated ${created.length} new page(s). Skipped ${skipped.length} already present.`);
+  console.log(`\nCreated ${created.length} new page(s). Refreshed ${refreshed.length} existing page(s). Skipped ${skipped.length} already present (no --force). Skipped ${skippedCustom.length} with custom description wording: ${skippedCustom.join(', ')}`);
 
   // Sitemap covers every school currently on disk, not just the ones created this run.
   const allSlugs = [...existingSlugs, ...created].sort();
