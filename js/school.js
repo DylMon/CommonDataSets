@@ -193,6 +193,7 @@ const SCHOOL_META = {
   'loyola-marymount': { color: '#80777a', banner: 'loyola-marymount.jpg', y: 50, credit: { author: 'Rami Ammoun', license: 'CC BY 3.0', url: 'https://commons.wikimedia.org/wiki/File:Downtown_La_At_Sunrise_(250094139).jpeg' } },
   'suny-esf': { color: '#a8aea7', banner: 'suny-esf.jpg', y: 55, credit: { author: 'SUNY ESF', license: 'CC BY-NC-SA 2.0', url: 'https://www.flickr.com/photos/sunyesf/11424070635/' } },
   'depaul': { color: '#6c675d', banner: 'depaul.jpg', y: 50, credit: { author: 'quinntheislander', license: 'CC0', url: 'https://commons.wikimedia.org/wiki/File:Chicago-illinois-skyline-skyscrapers-161963.jpg' } },
+  'cpp-2526': { color: '#014421' },
 };
 
 // Logos live at images/logos/<slug>.png. A few schools have none yet; the
