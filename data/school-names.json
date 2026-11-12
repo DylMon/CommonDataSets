@@ -109,6 +109,14 @@
         "BYU"
       ]
     },
+    "cal-poly-pomona": {
+      "name": "California State Polytechnic University, Pomona",
+      "short": "Cal Poly Pomona",
+      "aliases": [
+        "CPP",
+        "Cal Poly Pomona"
+      ]
+    },
     "caltech": {
       "name": "California Institute of Technology",
       "short": "Caltech",
