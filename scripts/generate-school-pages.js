@@ -87,10 +87,13 @@ function buildDescription(s) {
 
 // Static, human-visible SEO copy — js/school.js never touches this (see the
 // placement comment in pageHtml() below), so it's safe to hardcode here
-// rather than only existing after client-side render.
+// rather than only existing after client-side render. Deliberately year-
+// agnostic: js/school.js's year switcher (renderForYear) lets visitors view
+// older CDS years without updating this paragraph, so naming a specific
+// year here would go stale/wrong the moment someone switches.
 function buildIntroSentence(s) {
   const possessive = s.name.endsWith('s') ? `${s.name}'` : `${s.name}'s`;
-  return `Explore ${possessive} Common Data Set (CDS) data for ${s.data_year || '2025-26'}, including admissions statistics, tuition, demographics, and more.`;
+  return `Explore ${possessive} Common Data Set (CDS) data, including admissions statistics, tuition, demographics, and more.`;
 }
 
 function pageHtml(slug, name, description, introSentence) {
