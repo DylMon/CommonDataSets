@@ -35,7 +35,7 @@ const SCHOOLS_DATA_PATH = join(ROOT, 'data', `schools-${getYearArg()}.json`);
 const SCHOOLS_DIR = join(ROOT, 'schools');
 
 function buildDescription(s) {
-  const parts = [`${s.name} admissions data for ${s.data_year || '2025-26'}`];
+  const parts = [`${s.name} Common Data Set (CDS) and admissions data for ${s.data_year || '2025-26'}`];
   if (s.acceptance_rate != null) parts.push(`${(s.acceptance_rate * 100).toFixed(1)}% acceptance rate`);
   const sat25 = s.sat_composite_25, sat75 = s.sat_composite_75;
   if (sat25 != null && sat75 != null) parts.push(`${Math.round((sat25 + sat75) / 2)} SAT average`);
@@ -51,17 +51,17 @@ function pageHtml(slug, name, description) {
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/png" href="/favicon.png">
-  <title>${name} Admissions Data - CommonDataSets</title>
+  <title>${name} Common Data Set & Admissions Data - CommonDataSets</title>
   <meta name="description" content="${description}">
   <link rel="canonical" href="https://commondatasets.com/schools/${slug}/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="CommonDataSets">
-  <meta property="og:title" content="${name} Admissions Data — CommonDataSets">
+  <meta property="og:title" content="${name} Common Data Set & Admissions Data — CommonDataSets">
   <meta property="og:description" content="${description}">
   <meta property="og:url" content="https://commondatasets.com/schools/${slug}/">
   <meta property="og:image" content="https://commondatasets.com/images/og-share.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="${name} Admissions Data — CommonDataSets">
+  <meta name="twitter:title" content="${name} Common Data Set & Admissions Data — CommonDataSets">
   <meta name="twitter:description" content="${description}">
   <meta name="twitter:image" content="https://commondatasets.com/images/og-share.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
