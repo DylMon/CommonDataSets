@@ -1,0 +1,169 @@
+{
+  "name": "California State Polytechnic University, Pomona",
+  "data_year": "2025-26",
+  "city": "Pomona",
+  "state": "CA",
+  "location": "Pomona, CA",
+  "school_type": "Public",
+  "website": "www.cpp.edu",
+  "applicants_total": 48258,
+  "applicants_men": 24899,
+  "applicants_women": 22411,
+  "admitted_total": 35688,
+  "admitted_men": 17027,
+  "admitted_women": 17920,
+  "enrolled_total": 4004,
+  "enrolled_men": 2274,
+  "enrolled_women": 1646,
+  "acceptance_rate": 0.7395,
+  "application_fee": 70,
+  "avg_gpa_weighted": 3.7,
+  "rd_deadline": "12/2",
+  "waitlist_offered": 1152,
+  "waitlist_accepted": 596,
+  "waitlist_admitted": 58,
+  "ea_ed_type": "None",
+  "ea_ed_deadline": null,
+  "ea_ed_notification": null,
+  "ea_apps_received": null,
+  "ea_apps_admitted": null,
+  "sat_submitted_pct": null,
+  "sat_submitted_count": null,
+  "act_submitted_pct": null,
+  "act_submitted_count": null,
+  "sat_composite_25": null,
+  "sat_composite_50": null,
+  "sat_composite_75": null,
+  "sat_reading_25": null,
+  "sat_reading_75": null,
+  "sat_math_25": null,
+  "sat_math_75": null,
+  "act_composite_25": null,
+  "act_composite_50": null,
+  "act_composite_75": null,
+  "act_math_25": null,
+  "act_math_75": null,
+  "act_english_25": null,
+  "act_english_75": null,
+  "total_undergrads": 25312,
+  "undergrads_male": 14174,
+  "undergrads_female": 10927,
+  "retention_rate": 0.891,
+  "tuition": null,
+  "tuition_in_state": 6838,
+  "tuition_out_of_state": 20968,
+  "required_fees": 1727.94,
+  "room_and_board": 16909,
+  "books_supplies": 1112,
+  "other_expenses": 2778,
+  "pct_out_of_state": 0.01,
+  "pct_on_campus_housing": 0.38,
+  "applicant_pools": {
+    "ea": null,
+    "rd": {
+      "applied": 48258,
+      "admitted": 35688,
+      "rate": 0.7395
+    },
+    "waitlist": {
+      "offered": 1152,
+      "accepted_spots": 596,
+      "enrolled": 58
+    }
+  },
+  "gender_breakdown": {
+    "applied": {
+      "male": 24899,
+      "female": 22411
+    },
+    "accepted": {
+      "male": 17027,
+      "female": 17920
+    },
+    "enrolled": {
+      "male": 2274,
+      "female": 1646
+    }
+  },
+  "demographics_detail": {
+    "first_year": {
+      "nonresident_aliens": 29,
+      "hispanic": 2332,
+      "black": 99,
+      "white": 469,
+      "american_indian": 5,
+      "asian": 830,
+      "pacific_islander": 3,
+      "two_or_more": 163,
+      "unknown": 74,
+      "total": 4004
+    },
+    "undergrad": {
+      "nonresident_aliens": 289,
+      "hispanic": 14072,
+      "black": 590,
+      "white": 3228,
+      "american_indian": 28,
+      "asian": 5317,
+      "pacific_islander": 36,
+      "two_or_more": 1012,
+      "unknown": 740,
+      "total": 25312
+    }
+  },
+  "geographic_breakdown": {
+    "out_of_state_pct": 0.01,
+    "international_pct": null
+  },
+  "sat_act_breakdown": null,
+  "class_rank": null,
+  "gpa_distribution": {
+    "gpa_40": 0.3153,
+    "gpa_375_399": 0.2368,
+    "gpa_350_374": 0.1555,
+    "gpa_325_349": 0.1171,
+    "gpa_300_324": 0.0952,
+    "gpa_250_299": 0.079,
+    "gpa_200_249": 0.0011,
+    "gpa_100_199": null
+  },
+  "admission_factors": {
+    "rigor": "very_important",
+    "class_rank": "not_considered",
+    "academic_gpa": "very_important",
+    "test_scores": "not_considered",
+    "essay": "not_considered",
+    "recommendations": "not_considered",
+    "interview": "not_considered",
+    "extracurriculars": "considered",
+    "talent": "not_considered",
+    "character": "not_considered",
+    "first_gen": "considered",
+    "alumni_relation": "not_considered",
+    "geo_residence": "considered",
+    "state_residence": "not_considered",
+    "religious": "not_considered",
+    "racial_ethnic": null,
+    "volunteer": "considered",
+    "work_experience": "considered",
+    "applicant_interest": "not_considered"
+  },
+  "transfer_stats": {
+    "male": {
+      "applied": 6461,
+      "admitted": 4294,
+      "enrolled": 1303
+    },
+    "female": {
+      "applied": 5836,
+      "admitted": 4483,
+      "enrolled": 1078
+    },
+    "total": {
+      "applied": 12677,
+      "admitted": 9053,
+      "enrolled": 2448
+    }
+  },
+  "slug": "cal-poly-pomona"
+}

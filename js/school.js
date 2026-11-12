@@ -207,6 +207,7 @@ const SCHOOL_META = {
   'texas-tech': { color: '#cc0000', banner: 'texas-tech.jpg', y: 58, credit: { author: 'Johan Hendrikse', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:TTU_English_Philosophy_Building.jpg' } },
   'uarizona': { color: '#0c234b', banner: 'uarizona.jpg', y: 50, credit: { author: 'Michael Barera', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:University_of_Arizona_May_2019_39_(Meinel_Optical_Sciences).jpg' } },
   'ucincinnati': { color: '#e00122', banner: 'ucincinnati.jpg', y: 75, credit: { author: 'Abhijith Athreya Mysore Gopinath', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Tangeman_University_Center_at_the_University_of_Cincinnati.jpg' } },
+  'cal-poly-pomona': { color: '#014421' },
 };
 
 // Logos live at images/logos/<slug>.png. A few schools have none yet; the
