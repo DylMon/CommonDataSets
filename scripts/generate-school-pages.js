@@ -93,7 +93,7 @@ function buildDescription(s) {
 // year here would go stale/wrong the moment someone switches.
 function buildIntroSentence(s) {
   const possessive = s.name.endsWith('s') ? `${s.name}'` : `${s.name}'s`;
-  return `Explore ${possessive} Common Data Set (CDS) data, including admissions statistics, tuition, demographics, and more.`;
+  return `Explore ${possessive} Common Data Set (CDS) data, including admissions statistics, tuition, and demographics.`;
 }
 
 function pageHtml(slug, name, description, introSentence) {
