@@ -239,10 +239,19 @@
    narrow/mobile viewports stay centered rather than left-aligned. */
 .school-intro-desc {
   max-width: 920px;
-  margin: 32px auto 8px;
+  margin: 32px auto 0;
   padding: 0 24px;
   text-align: center;
   box-sizing: border-box;
+}
+
+/* .school-section's shared 40px margin-top (further down this file) is
+   meant as breathing room *between* section cards, but it's also what the
+   first card inherits right after this intro sentence — scoped override
+   so the first chart sits closer to the sentence without shrinking the
+   gap between every other section. */
+#school-sections > .school-section:first-child {
+  margin-top: 16px;
 }
 
 .stat-chip {
